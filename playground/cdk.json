@@ -1,0 +1,8 @@
+{
+  "app": "pnpx esmo index.ts",
+  "watch": {
+    "include": [
+      "*.ts"
+    ]
+  }
+}
