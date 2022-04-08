@@ -74,3 +74,37 @@ pnpm install
 ```
 
 Then, go to the `playground` folder and follow the instructions in there.
+
+## Contributing
+
+### Setup
+
+Install dependencies:
+
+```sh
+pnpm install
+```
+
+Enable Git hooks:
+
+```sh
+pnpx husky install
+```
+
+### Lint
+
+```sh
+pnpx eslint --ext js,mjs,cjs,ts,mts,cts .
+```
+
+### Update Dependencies
+
+```sh
+pnpm up -r
+```
+
+Interactive, with the latest versions:
+
+```sh
+pnpm up -iLr
+```
