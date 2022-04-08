@@ -1,5 +1,5 @@
 {
-  "name": "@cloudy/playground",
+  "name": "@cloudy-ts/playground",
   "version": "1.0.0",
   "type": "module",
   "dependencies": {
