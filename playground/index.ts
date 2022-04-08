@@ -7,7 +7,7 @@ const app = new cdk.App()
 const stack = new cdk.Stack(app, "cloudy-playground")
 
 const topic = new cloudy.aws_sns.Topic(stack, "topic")
-  .withMessageType<"a">()
+  .withMessageType<"Hello" | "World!">()
   // .withMessageGroupIdType<"b">()
   // .withMessageDeduplicationIdType<"c">()
   .withMessageAttributesType<{
@@ -26,7 +26,7 @@ const publishMessage = new cloudy.aws_lambda.Function(stack, "function", {
     await sns.send(
       new PublishCommand({
         TopicArn: topic.topicArn,
-        Message: "a",
+        Message: "Hello",
         MessageAttributes: {
           userId: {
             DataType: "Number",

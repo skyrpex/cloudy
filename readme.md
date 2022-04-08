@@ -10,7 +10,9 @@ Cloudy is a set of constructs for the [AWS Cloud Development Kit](https://github
 - Consistency with the AWS CDK constructs: offer the same API for constructs, but enhanced with types
 - Consistency with the AWS SDK v3: offer the same API, but enhanced with types
 
-## Usage
+## Example
+
+### Publishing typed messages on a topic using an inline lambda function
 
 ```ts
 import * as cdk from "aws-cdk-lib"
@@ -21,37 +23,41 @@ const app = new cdk.App()
 
 const stack = new cdk.Stack(app, "cloudy-playground")
 
-const topic = new cdk.aws_sns.Topic(stack, "topic")
+const topic = new cloudy.aws_sns.Topic(stack, "topic").withMessageType<
+  "Hello" | "World!"
+>()
 
-const publishMessage = new cloudy.Function(stack, "function", {
+const sns = new SNSClient({})
+const publishMessage = new cloudy.aws_lambda.Function(stack, "function", {
   async handler() {
-    console.log(`This is the topic's ARN: ${topic.topicArn}`)
-
-    console.log("Now, we're going to publish a message")
-    const sns = new SNSClient({})
     await sns.send(
       new PublishCommand({
         TopicArn: topic.topicArn,
-        Message: "hello world!",
+        Message: "Hello",
+      }),
+    )
+    await sns.send(
+      new PublishCommand({
+        TopicArn: topic.topicArn,
+        Message: "World!",
       }),
     )
   },
 })
-
 topic.grantPublish(publishMessage)
 ```
 
 ## Explanation
 
-The `cloudy.Function` is a CDK Lambda Function construct that uses [Pulumi's Function Serialization](https://www.pulumi.com/docs/intro/concepts/function-serialization/) to generate the asset code for the lambda.
+The `cloudy.aws_lambda.Function` is a CDK Lambda Function construct that uses [Pulumi's Function Serialization](https://www.pulumi.com/docs/intro/concepts/function-serialization/) to generate the asset code for the lambda.
 
-The important part of the implementation lives in [`src/code-from-function.ts`](src/code-from-function.ts). It calls `pulumi.runtime.serializeFunction` to generate the serialized function code, while gathering all the CloudFormation tokens that are accessed (such as queue URLs, queue ARNs, table names, etc.). The CloudFormation tokens are then replaced by environment variables.
+The important part of the implementation lives in [`packages/cdk/src/aws-lambda/code-from-function.ts`](packages/cdk/src/aws-lambda/code-from-function.ts). It calls `pulumi.runtime.serializeFunction` to generate the serialized function code, while gathering all the CloudFormation tokens that are accessed (such as queue URLs, queue ARNs, table names, etc.). The CloudFormation tokens are then replaced by environment variables.
 
-The [`src/function.ts`](src/function.ts) is just a copy&paste of the original `cdk.aws_lambda.Function` that resolves the asset code asynchronously. This is necessary due to `pulumi.runtime.serializeFunction` being an async function. It would be great if the original construct just allowed us to pass a `Promise<cdk.aws_lambda.AssetCode>` instead.
+The [`packages/cdk/src/aws-lambda/function.ts`](packages/cdk/src/aws-lambda/function.ts) is just a copy&paste of the original `cdk.aws_lambda.Function` that resolves the asset code asynchronously. This is necessary due to `pulumi.runtime.serializeFunction` being an async function. It would be great if the original construct just allowed us to pass a `Promise<cdk.aws_lambda.AssetCode>` instead.
 
 ## Further improvements
 
-The idea of this project is to leverage the [TypeScript](https://www.typescriptlang.org/) typing system and provide type-enhanced CDK constructs such as `cloudy.sns.Topic`, `cloudy.sqs.Queue`, `cloudy.dynamodb.Table`, etc. as well as type-enhanced [AWS SDK v3](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html) client. In conjunction, it would allow a supreme developer experience.
+The idea of this project is to leverage the [TypeScript](https://www.typescriptlang.org/) typing system and provide type-enhanced CDK constructs such as `cloudy.aws_sns.Topic`, `cloudy.aws_sqs.Queue`, `cloudy.aws_dynamodb.Table`, etc. as well as type-enhanced [AWS SDK v3](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html) client. In conjunction, it would allow a supreme developer experience.
 
 Huge thanks to [Sam Goodwin](https://github.com/sam-goodwin) to promote this movement. See their projects:
 
