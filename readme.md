@@ -6,9 +6,9 @@ Cloudy is a set of constructs for the [AWS Cloud Development Kit](https://github
 
 ## Design Goals
 
-- Use a subset of TypeScript that doesn't generate code and can be striped away. This will come in handy if the [Type Annotations Proposal](https://github.com/tc39/proposal-type-annotations) gets accepted.
+- Use ESM modules along with a subset of TypeScript that doesn't generate code and can be striped away. This will come in handy if the [Type Annotations Proposal](https://github.com/tc39/proposal-type-annotations) gets accepted.
 - Consistency with the AWS CDK constructs: offer the same API for constructs, but enhanced with types
-- Consistency with the AWS SDK v3: offer the same API, but enhanced with types
+- Consistency with the AWS SDK v3: offer the same API for clients, but enhanced with types
 
 ## Example
 
