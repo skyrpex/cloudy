@@ -9,6 +9,7 @@
     "@cloudy-ts/client-sns": "workspace:^1.0.0",
     "aws-cdk": "^2.19.0",
     "aws-cdk-lib": "^2.19.0",
+    "constructs": "^10.0.108",
     "esno": "^0.14.1"
   },
   "engines": {
