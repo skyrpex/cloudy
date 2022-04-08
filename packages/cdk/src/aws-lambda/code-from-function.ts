@@ -2,7 +2,7 @@ import { runtime } from "@pulumi/pulumi"
 import * as cdk from "aws-cdk-lib"
 import { Construct } from "constructs"
 
-import { EsbuildBundling } from "./esbuild-bundling"
+import { EsbuildBundling } from "./esbuild-bundling.js"
 
 export async function codeFromFunction(function_: (...any: any[]) => any) {
   const tokens: {

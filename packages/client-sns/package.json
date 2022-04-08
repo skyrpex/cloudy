@@ -5,6 +5,7 @@
   "dependencies": {
     "@aws-sdk/client-sns": "^3.58.0",
     "@aws-sdk/smithy-client": "^3.55.0",
+    "@aws-sdk/types": "^3.55.0",
     "ts-toolbelt": "^9.6.0"
   },
   "peerDependencies": {

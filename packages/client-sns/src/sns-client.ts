@@ -8,7 +8,7 @@ import {
 import { Client } from "@aws-sdk/smithy-client"
 import { Command, HttpHandlerOptions } from "@aws-sdk/types"
 
-import { PublishCommandInput, PublishCommandOutput } from "./commands"
+import { PublishCommandInput, PublishCommandOutput } from "./commands/index.js"
 
 export type ServiceInputTypes = PublishCommandInput | BaseServiceInputTypes
 export type ServiceOutputTypes = PublishCommandOutput | BaseServiceOutputTypes

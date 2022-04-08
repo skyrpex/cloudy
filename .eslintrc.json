@@ -1,6 +1,14 @@
 {
   "root": true,
+  "env": {
+    "es2021": true,
+    "node": true
+  },
   "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2020
+  },
   "extends": [
     "plugin:unicorn/recommended",
     "plugin:@typescript-eslint/recommended",
@@ -8,23 +16,33 @@
     "plugin:import/typescript",
     "prettier"
   ],
+  "plugins": ["@cloudy-ts"],
   "settings": {
     "import/parsers": {
       "@typescript-eslint/parser": [".ts"]
     },
     "import/resolver": {
       "typescript": {
-        "alwaysTryTypes": true,
+        "alwaysTryTypes": true
       }
     }
   },
   "rules": {
     "@typescript-eslint/no-empty-interface": 0,
     "@typescript-eslint/no-empty-function": 0,
+    "@typescript-eslint/ban-types": 0,
+    "@cloudy-ts/extensions": ["error", "ignorePackages", { ".ts": "never" }],
     "import/order": [
       "error",
       {
         "newlines-between": "always",
+        "pathGroups": [
+          {
+            "pattern": "@cloudy-ts/**",
+            "group": "external",
+            "position": "after"
+          }
+        ],
         "pathGroupsExcludedImportTypes": ["builtin"],
         "alphabetize": {
           "order": "asc",

@@ -1,5 +1,5 @@
-export * from "./commands"
-export * from "./sns-client"
+export * from "./commands/index.js"
+export * from "./sns-client.js"
 export {
   AddPermissionCommand,
   CheckIfPhoneNumberIsOptedOutCommand,

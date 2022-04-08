@@ -1,0 +1,16 @@
+{
+  "name": "@cloudy-ts/eslint-plugin",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "src/index.cjs",
+  "engines": {
+    "node": "^14.13.1 || >=16.0.0"
+  },
+  "dependencies": {
+    "eslint-module-utils": "^2.7.3",
+    "is-core-module": "^2.8.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.12.0"
+  }
+}

@@ -8,7 +8,8 @@ import { Command } from "@aws-sdk/smithy-client"
 import { MiddlewareStack } from "@aws-sdk/types"
 
 import { aws_sns } from "@cloudy-ts/cdk"
-import { ServiceInputTypes, ServiceOutputTypes } from "../sns-client"
+
+import { ServiceInputTypes, ServiceOutputTypes } from "../sns-client.js"
 
 export type PublishCommandInput<TopicArnType = aws_sns.TopicArn> = Omit<
   BaseCommandInput,

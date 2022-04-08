@@ -11,7 +11,7 @@ import { Function, Union } from "ts-toolbelt"
 
 import { OpaqueType } from "@cloudy-ts/opaque-type"
 
-import { staticTest } from "../static-test"
+import { staticTest } from "../static-test.js"
 
 export { AttributeValue } from "@aws-sdk/client-dynamodb"
 export {

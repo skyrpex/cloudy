@@ -34,8 +34,8 @@ import * as sns from "aws-cdk-lib/aws-sns"
 import * as sqs from "aws-cdk-lib/aws-sqs"
 import { Construct } from "constructs"
 
-import { codeFromFunction } from "./code-from-function"
-import { calculateFunctionHash, trimFromStart } from "./function-hash"
+import { codeFromFunction } from "./code-from-function.js"
+import { calculateFunctionHash, trimFromStart } from "./function-hash.js"
 
 export interface FunctionProperties<InputType, OutputType>
   extends Omit<cdk.aws_lambda.FunctionProps, "code" | "handler" | "runtime"> {
