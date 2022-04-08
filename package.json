@@ -6,6 +6,17 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm"
   },
+  "ava": {
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "esbuild-register"
+    ],
+    "files": [
+      "**/*.test.ts"
+    ]
+  },
   "devDependencies": {
     "@cloudy-ts/eslint-plugin": "workspace:^1.0.0",
     "@commitlint/cli": "^16.2.3",
@@ -14,6 +25,8 @@
     "@typescript-eslint/eslint-plugin": "^5.18.0",
     "@typescript-eslint/parser": "^5.18.0",
     "ava": "^4.1.0",
+    "esbuild": "^0.14.34",
+    "esbuild-register": "^3.3.2",
     "eslint": "^8.12.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^2.7.1",

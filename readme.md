@@ -91,6 +91,12 @@ Enable Git hooks:
 pnpx husky install
 ```
 
+Start testing:
+
+```sh
+pnpx ava --watch
+```
+
 ### Lint
 
 ```sh
