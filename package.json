@@ -6,15 +6,6 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm"
   },
-  "lint-staged": {
-    "*.{js,mjs,cjs,ts,mts,cts}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.json": [
-      "prettier --write"
-    ]
-  },
   "dependencies": {
     "@pulumi/pulumi": "^3.28.0",
     "esbuild": "^0.14.34",
