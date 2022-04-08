@@ -26,6 +26,8 @@
   },
   "devDependencies": {
     "@cloudy-ts/eslint-plugin": "workspace:^1.0.0",
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
     "@tsconfig/node14": "^1.0.1",
     "@typescript-eslint/eslint-plugin": "^5.18.0",
     "@typescript-eslint/parser": "^5.18.0",
