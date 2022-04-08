@@ -64,6 +64,21 @@ importers:
       aws-cdk-lib: 2.20.0_constructs@10.0.108
       constructs: 10.0.108
 
+  packages/client-dynamodb:
+    specifiers:
+      '@aws-sdk/client-dynamodb': ^3.58.0
+      '@aws-sdk/smithy-client': ^3.55.0
+      '@aws-sdk/types': ^3.55.0
+      '@cloudy-ts/cdk': workspace:^1.0.0
+      ts-toolbelt: ^9.6.0
+    dependencies:
+      '@aws-sdk/client-dynamodb': 3.58.0
+      '@aws-sdk/smithy-client': 3.55.0
+      '@aws-sdk/types': 3.55.0
+      ts-toolbelt: 9.6.0
+    devDependencies:
+      '@cloudy-ts/cdk': link:../cdk
+
   packages/client-sns:
     specifiers:
       '@aws-sdk/client-sns': ^3.58.0
@@ -83,6 +98,7 @@ importers:
     specifiers:
       '@aws-sdk/client-sns': ^3.58.0
       '@cloudy-ts/cdk': workspace:^1.0.0
+      '@cloudy-ts/client-dynamodb': workspace:^1.0.0
       '@cloudy-ts/client-sns': workspace:^1.0.0
       aws-cdk: ^2.19.0
       aws-cdk-lib: ^2.19.0
@@ -90,6 +106,7 @@ importers:
     dependencies:
       '@aws-sdk/client-sns': 3.58.0
       '@cloudy-ts/cdk': link:../packages/cdk
+      '@cloudy-ts/client-dynamodb': link:../packages/client-dynamodb
       '@cloudy-ts/client-sns': link:../packages/client-sns
       aws-cdk: 2.20.0
       aws-cdk-lib: 2.20.0_constructs@10.0.108
@@ -200,7 +217,6 @@ packages:
       '@aws-sdk/util-waiter': 3.55.0
       tslib: 2.3.1
       uuid: 8.3.2
-    dev: true
 
   /@aws-sdk/client-sns/3.58.0:
     resolution: {integrity: sha512-NJF0rZ5Kyksmta684qyTB4lp2aHGMJ9ASY1lz6F3yQy4elGup9ZgLYFXJOUjJ6SFcAlmxkFjP5cG0Cnsxl1+UA==}
@@ -407,7 +423,6 @@ packages:
     dependencies:
       mnemonist: 0.38.3
       tslib: 2.3.1
-    dev: true
 
   /@aws-sdk/fetch-http-handler/3.58.0:
     resolution: {integrity: sha512-timF3FjPV5Bd+Kgph83LIKVlPCFObVYzious1a6doeLAT6YFwZpRrWbfP/HzS+DCoYiwUsH69oVJ91BoV66oyA==}
@@ -455,7 +470,6 @@ packages:
       '@aws-sdk/protocol-http': 3.58.0
       '@aws-sdk/types': 3.55.0
       tslib: 2.3.1
-    dev: true
 
   /@aws-sdk/middleware-host-header/3.58.0:
     resolution: {integrity: sha512-q/UKGcanm9e6DBRNN6UKhVqLvpRRdZWbmmPCeDNr4HqhCmgT6i1OvWdhAMOnT++hvCX8DpTsIXzNSlY6zWAxBg==}
@@ -727,7 +741,6 @@ packages:
       '@aws-sdk/abort-controller': 3.55.0
       '@aws-sdk/types': 3.55.0
       tslib: 2.3.1
-    dev: true
 
   /@babel/code-frame/7.16.7:
     resolution: {integrity: sha512-iAXqUn8IIeBTNd72xsFlgaXHkMBMt6y4HJp1tIaK465CWLT/fG1aqB7ykr95gHHmlBdGbFeWWfyB4NJJ0nmeIg==}
@@ -2778,7 +2791,6 @@ packages:
     resolution: {integrity: sha512-2K9QYubXx/NAjv4VLq1d1Ly8pWNC5L3BrixtdkyTegXWJIqY+zLNDhhX/A+ZwWt70tB1S8H4BE8FLYEFyNoOBw==}
     dependencies:
       obliterator: 1.6.1
-    dev: true
 
   /ms/2.0.0:
     resolution: {integrity: sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=}
@@ -2853,7 +2865,6 @@ packages:
 
   /obliterator/1.6.1:
     resolution: {integrity: sha512-9WXswnqINnnhOG/5SLimUlzuU1hFJUc8zkwyD59Sd+dPOMf05PmnYG/d6Q7HZ+KmgkZJa1PxRso6QdM3sTNHig==}
-    dev: true
 
   /once/1.4.0:
     resolution: {integrity: sha1-WDsap3WWHUsROsF9nFC6753Xa9E=}
