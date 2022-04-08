@@ -28,7 +28,6 @@ export type PublishCommandInput<TopicArnType = aws_sns.TopicArn> = Omit<
   ? {
       TopicArn: TopicArnType
       Message: Message
-      // MessageAttributes: MessageAttributes
     } & (Fifo extends true
       ? {
           MessageGroupId: MessageGroupId
@@ -40,12 +39,12 @@ export type PublishCommandInput<TopicArnType = aws_sns.TopicArn> = Omit<
         : {
             MessageAttributes: MessageAttributes
           })
-  : never
+  : BaseCommandInput
 
 export interface PublishCommandOutput extends BaseCommandOutput {}
 
 export class PublishCommand<
-  TopicArnType extends aws_sns.TopicArn<string, string, string, any>,
+  TopicArnType extends aws_sns.TopicArn<string, string, string, any> | string,
 > implements
     Command<BaseCommandInput, BaseCommandOutput, ResolvedConfiguration>
 {

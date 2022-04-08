@@ -6,10 +6,16 @@ const app = new cdk.App()
 
 const stack = new cdk.Stack(app, "cloudy-playground")
 
-const topic = new cloudy.aws_sns.Topic(
-  stack,
-  "topic",
-).withMessageType<"restricted to hello world!">()
+const topic = new cloudy.aws_sns.Topic(stack, "topic")
+  .withMessageType<"a">()
+  // .withMessageGroupIdType<"b">()
+  // .withMessageDeduplicationIdType<"c">()
+  .withMessageAttributesType<{
+    userId: {
+      DataType: "Number"
+      StringValue: string
+    }
+  }>()
 
 const sns = new SNSClient({})
 const publishMessage = new cloudy.aws_lambda.Function(stack, "function", {
@@ -20,7 +26,13 @@ const publishMessage = new cloudy.aws_lambda.Function(stack, "function", {
     await sns.send(
       new PublishCommand({
         TopicArn: topic.topicArn,
-        Message: "restricted to hello world!",
+        Message: "a",
+        MessageAttributes: {
+          userId: {
+            DataType: "Number",
+            StringValue: "1",
+          },
+        },
       }),
     )
   },
