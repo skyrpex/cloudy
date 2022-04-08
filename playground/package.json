@@ -4,9 +4,10 @@
   "type": "module",
   "dependencies": {
     "@aws-sdk/client-sns": "^3.58.0",
+    "@cloudy-ts/cdk": "workspace:^1.0.0",
+    "@cloudy-ts/client-sns": "workspace:^1.0.0",
     "aws-cdk": "^2.19.0",
     "aws-cdk-lib": "^2.19.0",
-    "cloudy": "file:..",
     "esno": "^0.14.1"
   }
 }

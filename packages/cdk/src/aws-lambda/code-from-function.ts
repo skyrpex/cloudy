@@ -1,8 +1,8 @@
-import * as cdk from "aws-cdk-lib"
 import { runtime } from "@pulumi/pulumi"
+import * as cdk from "aws-cdk-lib"
+import { Construct } from "constructs"
 
 import { EsbuildBundling } from "./esbuild-bundling"
-import { Construct } from "constructs"
 
 export async function codeFromFunction(function_: (...any: any[]) => any) {
   const tokens: {

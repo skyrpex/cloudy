@@ -3,6 +3,9 @@
   "compilerOptions": {
     "module": "ES2022",
     "moduleResolution": "node",
+    "paths": {
+      "@cloudy-ts/*": ["./packages/*", "./tools/*"]
+    },
     "noUncheckedIndexedAccess": true
   }
 }

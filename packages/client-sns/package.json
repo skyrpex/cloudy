@@ -1,0 +1,16 @@
+{
+  "name": "@cloudy-ts/client-sns",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "@aws-sdk/client-sns": "^3.58.0",
+    "@aws-sdk/smithy-client": "^3.55.0",
+    "ts-toolbelt": "^9.6.0"
+  },
+  "peerDependencies": {
+    "@cloudy-ts/cdk": "workspace:^1.0.0"
+  },
+  "devDependencies": {
+    "@cloudy-ts/cdk": "workspace:^1.0.0"
+  }
+}

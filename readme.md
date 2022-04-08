@@ -1,13 +1,21 @@
-# cloudy
+# cloudy-ts
+
+> These packages aren't yet published on npm. This is still highly experimental.
 
 Cloudy is a set of constructs for the [AWS Cloud Development Kit](https://github.com/aws/aws-cdk) that aim to improve the DX by providing a faster and type-safe code environment.
+
+## Design Goals
+
+- Use a subset of TypeScript that doesn't generate code and can be striped away. This will come in handy if the [Type Annotations Proposal](https://github.com/tc39/proposal-type-annotations) gets accepted.
+- Consistency with the AWS CDK constructs: offer the same API for constructs, but enhanced with types
+- Consistency with the AWS SDK v3: offer the same API, but enhanced with types
 
 ## Usage
 
 ```ts
 import * as cdk from "aws-cdk-lib"
-import * as cloudy from "cloudy"
-import { SNSClient, PublishCommand } from "@aws-sdk/client-sns"
+import * as cloudy from "@cloudy-ts/cdk"
+import { SNSClient, PublishCommand } from "@cloudy-ts/client-sns"
 
 const app = new cdk.App()
 
@@ -53,4 +61,10 @@ Huge thanks to [Sam Goodwin](https://github.com/sam-goodwin) to promote this mov
 
 ## Try the playground
 
-Go to the `playground` folder and follow the instructions in there.
+Install with pnpm:
+
+```sh
+pnpm install
+```
+
+Then, go to the `playground` folder and follow the instructions in there.
