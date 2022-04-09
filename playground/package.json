@@ -8,9 +8,9 @@
   },
   "dependencies": {
     "@aws-sdk/client-sns": "^3.67.0",
-    "@cloudy-ts/cdk": "workspace:^0.0.0",
-    "@cloudy-ts/client-dynamodb": "workspace:^0.0.0",
-    "@cloudy-ts/client-sns": "workspace:^0.0.0",
+    "@cloudy-ts/cdk": "workspace:^",
+    "@cloudy-ts/client-dynamodb": "workspace:^",
+    "@cloudy-ts/client-sns": "workspace:^",
     "aws-cdk": "^2.20.0",
     "aws-cdk-lib": "^2.20.0",
     "constructs": "^10.0.109",

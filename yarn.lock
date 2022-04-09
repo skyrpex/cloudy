@@ -1063,12 +1063,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cloudy-ts/cdk@workspace:^0.0.0, @cloudy-ts/cdk@workspace:packages/cdk":
+"@cloudy-ts/cdk@workspace:^, @cloudy-ts/cdk@workspace:packages/cdk":
   version: 0.0.0-use.local
   resolution: "@cloudy-ts/cdk@workspace:packages/cdk"
   dependencies:
     "@aws-sdk/client-dynamodb": ^3.67.0
-    "@cloudy-ts/opaque-type": "workspace:^0.0.0"
+    "@cloudy-ts/opaque-type": "workspace:^"
     "@pulumi/pulumi": ^3.28.0
     aws-cdk-lib: ^2.20.0
     constructs: ^10.0.109
@@ -1082,37 +1082,37 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@cloudy-ts/client-dynamodb@workspace:^0.0.0, @cloudy-ts/client-dynamodb@workspace:packages/client-dynamodb":
+"@cloudy-ts/client-dynamodb@workspace:^, @cloudy-ts/client-dynamodb@workspace:packages/client-dynamodb":
   version: 0.0.0-use.local
   resolution: "@cloudy-ts/client-dynamodb@workspace:packages/client-dynamodb"
   dependencies:
     "@aws-sdk/client-dynamodb": ^3.67.0
     "@aws-sdk/smithy-client": ^3.55.0
     "@aws-sdk/types": ^3.55.0
-    "@cloudy-ts/cdk": "workspace:^0.0.0"
+    "@cloudy-ts/cdk": "workspace:^"
     ts-toolbelt: ^9.6.0
     unbuild: ^0.7.2
   peerDependencies:
-    "@cloudy-ts/cdk": "workspace:^0.0.0"
+    "@cloudy-ts/cdk": "workspace:^"
   languageName: unknown
   linkType: soft
 
-"@cloudy-ts/client-sns@workspace:^0.0.0, @cloudy-ts/client-sns@workspace:packages/client-sns":
+"@cloudy-ts/client-sns@workspace:^, @cloudy-ts/client-sns@workspace:packages/client-sns":
   version: 0.0.0-use.local
   resolution: "@cloudy-ts/client-sns@workspace:packages/client-sns"
   dependencies:
     "@aws-sdk/client-sns": ^3.67.0
     "@aws-sdk/smithy-client": ^3.55.0
     "@aws-sdk/types": ^3.55.0
-    "@cloudy-ts/cdk": "workspace:^0.0.0"
+    "@cloudy-ts/cdk": "workspace:^"
     ts-toolbelt: ^9.6.0
     unbuild: ^0.7.2
   peerDependencies:
-    "@cloudy-ts/cdk": "workspace:^0.0.0"
+    "@cloudy-ts/cdk": "workspace:^"
   languageName: unknown
   linkType: soft
 
-"@cloudy-ts/eslint-plugin@workspace:^0.0.0, @cloudy-ts/eslint-plugin@workspace:tools/eslint-plugin":
+"@cloudy-ts/eslint-plugin@workspace:^, @cloudy-ts/eslint-plugin@workspace:tools/eslint-plugin":
   version: 0.0.0-use.local
   resolution: "@cloudy-ts/eslint-plugin@workspace:tools/eslint-plugin"
   dependencies:
@@ -1127,7 +1127,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@cloudy-ts/json-codec@workspace:tools/json-codec"
   dependencies:
-    "@cloudy-ts/opaque-type": "workspace:^0.0.0"
+    "@cloudy-ts/opaque-type": "workspace:^"
     unbuild: ^0.7.2
   languageName: unknown
   linkType: soft
@@ -1136,7 +1136,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@cloudy-ts/monorepo@workspace:."
   dependencies:
-    "@cloudy-ts/eslint-plugin": "workspace:^0.0.0"
+    "@cloudy-ts/eslint-plugin": "workspace:^"
     "@commitlint/cli": ^16.2.3
     "@commitlint/config-conventional": ^16.2.1
     "@tsconfig/node14": ^1.0.1
@@ -1160,7 +1160,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@cloudy-ts/opaque-type@workspace:^0.0.0, @cloudy-ts/opaque-type@workspace:tools/opaque-type":
+"@cloudy-ts/opaque-type@workspace:^, @cloudy-ts/opaque-type@workspace:tools/opaque-type":
   version: 0.0.0-use.local
   resolution: "@cloudy-ts/opaque-type@workspace:tools/opaque-type"
   dependencies:
@@ -1173,9 +1173,9 @@ __metadata:
   resolution: "@cloudy-ts/playground@workspace:playground"
   dependencies:
     "@aws-sdk/client-sns": ^3.67.0
-    "@cloudy-ts/cdk": "workspace:^0.0.0"
-    "@cloudy-ts/client-dynamodb": "workspace:^0.0.0"
-    "@cloudy-ts/client-sns": "workspace:^0.0.0"
+    "@cloudy-ts/cdk": "workspace:^"
+    "@cloudy-ts/client-dynamodb": "workspace:^"
+    "@cloudy-ts/client-sns": "workspace:^"
     aws-cdk: ^2.20.0
     aws-cdk-lib: ^2.20.0
     constructs: ^10.0.109

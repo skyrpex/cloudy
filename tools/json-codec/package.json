@@ -14,7 +14,7 @@
     "test": "ava"
   },
   "dependencies": {
-    "@cloudy-ts/opaque-type": "workspace:^0.0.0"
+    "@cloudy-ts/opaque-type": "workspace:^"
   },
   "devDependencies": {
     "unbuild": "^0.7.2"
