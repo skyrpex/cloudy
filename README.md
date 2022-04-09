@@ -1,6 +1,11 @@
 # cloudy-ts
 
 > These packages aren't yet published on npm. This is still highly experimental.
+> Need to figure out a few things before releasing the first version:
+> - Define a good Github Actions workflow (linting, testing, auto releases, auto upgrades, etc)
+> - Explore a few more typed constructs and clients
+> - Move to a Github Organization
+> - Add some more documentation
 
 Cloudy is a set of constructs for the [AWS Cloud Development Kit](https://github.com/aws/aws-cdk) that aim to improve the DX by providing a faster and type-safe code environment.
 
@@ -113,4 +118,12 @@ Interactive, with the latest versions:
 
 ```sh
 yarn upgrade-interactive
+```
+
+### Release
+
+```sh
+yarn turbo run lint test build
+yarn standard-version # --first-release
+git push --folow-tags origin main
 ```
