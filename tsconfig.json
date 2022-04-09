@@ -1,11 +1,13 @@
 {
   "extends": "@tsconfig/node14/tsconfig.json",
   "compilerOptions": {
-    "module": "ES2022",
+    "module": "ES2020",
     "moduleResolution": "node",
+    "noUncheckedIndexedAccess": true,
+    "useDefineForClassFields": false,
+    "resolveJsonModule": true,
     "paths": {
       "@cloudy-ts/*": ["./packages/*", "./tools/*"]
-    },
-    "noUncheckedIndexedAccess": true
+    }
   }
 }

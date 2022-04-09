@@ -1,5 +1,5 @@
 {
-  "app": "pnpx esmo index.ts",
+  "app": "yarn esmo index.ts",
   "watch": {
     "include": [
       "*.ts"

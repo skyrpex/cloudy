@@ -1,8 +1,33 @@
 {
   "name": "@cloudy-ts/opaque-type",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "type": "module",
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "sideEffects": false,
   "engines": {
     "node": "^14.13.1 || >=16.0.0"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "lint": "eslint --ext ts ."
+  },
+  "devDependencies": {
+    "unbuild": "^0.7.2"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "exports": {
+      ".": {
+        "require": "./dist/index.cjs",
+        "import": "./dist/index.mjs",
+        "types": "./dist/index.d.ts"
+      }
+    }
   }
 }

@@ -1,13 +1,13 @@
-const {
-  isAbsolute: nodeIsAbsolute,
+import {
+  isAbsolute as nodeIsAbsolute,
   relative,
-  resolve: nodeResolve,
-} = require("node:path")
+  resolve as nodeResolve,
+} from "node:path"
 
-const resolve = require("eslint-module-utils/resolve.js")
-const isCoreModule = require("is-core-module")
+import resolve from "eslint-module-utils/resolve"
+import isCoreModule from "is-core-module"
 
-const { getContextPackagePath } = require("./package-path.cjs")
+import { getContextPackagePath } from "./package-path.js"
 
 function baseModule(name) {
   if (isScoped(name)) {
@@ -28,14 +28,14 @@ function isAbsolute(name) {
 }
 
 // path is defined only when a resolver resolves to a non-standard path
-exports.isBuiltIn = function isBuiltIn(name, settings, path) {
+export function isBuiltIn(name, settings, path) {
   if (path || !name) return false
   const base = baseModule(name)
   const extras = (settings && settings["import/core-modules"]) || []
   return isCoreModule(base) || extras.includes(base)
 }
 
-function isExternalModule(name, path, context) {
+export function isExternalModule(name, path, context) {
   if (arguments.length < 3) {
     throw new TypeError(
       "isExternalModule: name, path, and context are all required",
@@ -47,7 +47,7 @@ function isExternalModule(name, path, context) {
   )
 }
 
-exports.isExternalModule = function isExternalModuleMain(name, path, context) {
+export function isExternalModuleMain(name, path, context) {
   if (arguments.length < 3) {
     throw new TypeError(
       "isExternalModule: name, path, and context are all required",
@@ -67,10 +67,9 @@ function isModuleMain(name) {
 }
 
 const scopedRegExp = /^@[^/]+\/?[^/]+/
-function isScoped(name) {
+export function isScoped(name) {
   return name && scopedRegExp.test(name)
 }
-exports.isScoped = isScoped
 
 const scopedMainRegExp = /^@[^/]+\/?[^/]+$/
 function isScopedMain(name) {

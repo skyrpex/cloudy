@@ -1,9 +1,9 @@
-const { dirname } = require("node:path")
+import { dirname } from "node:path"
 
-const pkgUp = require("eslint-module-utils/pkgUp.js")
-const readPkgUp = require("eslint-module-utils/readPkgUp.js")
+import pkgUp from "eslint-module-utils/pkgUp"
+import readPkgUp from "eslint-module-utils/readPkgUp"
 
-exports.getContextPackagePath = function getContextPackagePath(context) {
+export function getContextPackagePath(context) {
   return getFilePackagePath(
     context.getPhysicalFilename
       ? context.getPhysicalFilename()
@@ -11,12 +11,12 @@ exports.getContextPackagePath = function getContextPackagePath(context) {
   )
 }
 
-exports.getFilePackagePath = function getFilePackagePath(filePath) {
+export function getFilePackagePath(filePath) {
   const fp = pkgUp({ cwd: filePath })
   return dirname(fp)
 }
 
-exports.getFilePackageName = function getFilePackageName(filePath) {
+export function getFilePackageName(filePath): string | undefined {
   const { pkg, path } = readPkgUp({ cwd: filePath, normalize: false })
   if (pkg) {
     // recursion in case of intermediate esm package.json without name found

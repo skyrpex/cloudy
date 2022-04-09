@@ -1,13 +1,9 @@
-const path = require("node:path")
+import path from "node:path"
 
-const moduleVisitor = require("eslint-module-utils/moduleVisitor.js").default
-const resolve = require("eslint-module-utils/resolve.js").default
+import moduleVisitor from "eslint-module-utils/moduleVisitor"
+import resolve from "eslint-module-utils/resolve"
 
-const {
-  isBuiltIn,
-  isExternalModule,
-  isScoped,
-} = require("../core/import-type.cjs")
+import { isBuiltIn, isExternalModule, isScoped } from "../core/import-type.js"
 // import docsUrl from "../docsUrl"
 
 const enumValues = { enum: ["always", "ignorePackages", "never"] }
@@ -63,7 +59,7 @@ function buildProperties(context) {
 }
 
 /** @type {import('eslint').Rule.RuleModule} */
-module.exports = {
+export default {
   meta: {
     type: "suggestion",
     docs: {

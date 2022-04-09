@@ -67,10 +67,10 @@ Huge thanks to [Sam Goodwin](https://github.com/sam-goodwin) to promote this mov
 
 ## Try the playground
 
-Install with pnpm:
+Install with yarn:
 
 ```sh
-pnpm install
+yarn install
 ```
 
 Then, go to the `playground` folder and follow the instructions in there.
@@ -82,35 +82,35 @@ Then, go to the `playground` folder and follow the instructions in there.
 Install dependencies:
 
 ```sh
-pnpm install
+yarn install
 ```
 
 Enable Git hooks:
 
 ```sh
-pnpx husky install
+yarn husky install
 ```
 
 Start testing:
 
 ```sh
-pnpx ava --watch
+yarn ava --watch
 ```
 
 ### Lint
 
 ```sh
-pnpx eslint --ext js,mjs,cjs,ts,mts,cts .
+yarn eslint --ext js,mjs,cjs,ts,mts,cts .
 ```
 
 ### Update Dependencies
 
 ```sh
-pnpm up -r
+yarn up && yarn up -R
 ```
 
 Interactive, with the latest versions:
 
 ```sh
-pnpm up -iLr
+yarn upgrade-interactive
 ```

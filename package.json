@@ -1,10 +1,18 @@
 {
   "name": "@cloudy-ts/monorepo",
-  "version": "1.0.0",
-  "type": "module",
+  "version": "0.0.0",
   "private": true,
+  "packageManager": "yarn@3.2.0",
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "tools/*",
+    "playground"
+  ],
   "scripts": {
-    "preinstall": "npx only-allow pnpm"
+    "test": "ava",
+    "test:watch": "ava --watch",
+    "lint": "turbo run lint"
   },
   "ava": {
     "extensions": [
@@ -18,7 +26,7 @@
     ]
   },
   "devDependencies": {
-    "@cloudy-ts/eslint-plugin": "workspace:^1.0.0",
+    "@cloudy-ts/eslint-plugin": "workspace:^0.0.0",
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
     "@tsconfig/node14": "^1.0.1",
@@ -27,7 +35,7 @@
     "ava": "^4.1.0",
     "esbuild": "^0.14.34",
     "esbuild-register": "^3.3.2",
-    "eslint": "^8.12.0",
+    "eslint": "^8.13.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^2.7.1",
     "eslint-plugin-import": "^2.26.0",
@@ -36,6 +44,8 @@
     "husky": "^7.0.4",
     "lint-staged": "^12.3.7",
     "prettier": "^2.6.2",
+    "standard-version": "^9.3.2",
+    "turbo": "^1.2.1",
     "typescript": "^4.6.3"
   },
   "engines": {

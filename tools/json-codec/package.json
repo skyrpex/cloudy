@@ -1,11 +1,48 @@
 {
   "name": "@cloudy-ts/json-codec",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "type": "module",
-  "dependencies": {
-    "@cloudy-ts/opaque-type": "workspace:^1.0.0"
-  },
+  "sideEffects": false,
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
   "engines": {
     "node": "^14.13.1 || >=16.0.0"
+  },
+  "scripts": {
+    "build": "unbuild",
+    "lint": "eslint --ext ts .",
+    "test": "ava"
+  },
+  "dependencies": {
+    "@cloudy-ts/opaque-type": "workspace:^0.0.0"
+  },
+  "devDependencies": {
+    "unbuild": "^0.7.2"
+  },
+  "ava": {
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "esbuild-register"
+    ],
+    "files": [
+      "**/*.test.ts"
+    ]
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "exports": {
+      ".": {
+        "require": "./dist/index.cjs",
+        "import": "./dist/index.mjs",
+        "types": "./dist/index.d.ts"
+      }
+    }
   }
 }
