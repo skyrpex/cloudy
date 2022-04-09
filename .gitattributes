@@ -1,0 +1,16 @@
+/.github/* linguist-generated
+/.yarn/* linguist-generated
+/.yarnrc.yml linguist-generated
+/LICENSE linguist-generated
+/tsconfig* linguist-generated
+/turbo.json linguist-generated
+/yarn.lock linguist-generated
+.commitlintrc* linguist-generated
+.editorconfig linguist-generated
+.eslintrc* linguist-generated
+.gitattributes linguist-generated
+.gitignore linguist-generated
+.lintstagedrc* linguist-generated
+.prettierignore linguist-generated
+.prettierrc* linguist-generated
+package.json linguist-generated
