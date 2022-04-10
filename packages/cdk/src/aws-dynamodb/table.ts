@@ -4,7 +4,6 @@ import {
   AttributeType,
   StreamViewType,
   TableProps,
-  BillingMode,
 } from "aws-cdk-lib/aws-dynamodb"
 import { Construct } from "constructs"
 import { Function, Union } from "ts-toolbelt"
@@ -225,95 +224,4 @@ staticTest((table: Table<{ id: { S: string } }, any>) => {
   const item: TableItemType<typeof table> = {
     id: { S: "user_1" },
   }
-})
-
-/**
- * Returns the table stream view type.
- */
-export type TableStreamViewType<T extends Table> = T extends Table<any, infer P>
-  ? P["stream"] extends StreamViewType
-    ? P["stream"]
-    : never
-  : never
-
-/**
- * Represents an empty object.
- *
- * Useful to merge types with nothing in it.
- */
-// eslint-disable-next-line @typescript-eslint/ban-types
-type Empty = {}
-
-/**
- * Represents a dynamodb stream event change record for lambda.
- */
-type StreamEventDynamodbType<T extends Table> =
-  TableStreamViewType<T> extends never
-    ? never
-    : Union.Merge<
-        {
-          ApproximateCreationDateTime: number
-          // Keys?: TableAttributes
-          SequenceNumber: string
-          SizeBytes: number
-          StreamViewType: TableStreamViewType<T>
-        } & (TableStreamViewType<T> extends StreamViewType.NEW_IMAGE
-          ? {
-              NewImage: TableItemType<T> | undefined
-            }
-          : TableStreamViewType<T> extends StreamViewType.NEW_AND_OLD_IMAGES
-          ? {
-              NewImage: TableItemType<T> | undefined
-            }
-          : Empty) &
-          (TableStreamViewType<T> extends StreamViewType.OLD_IMAGE
-            ? {
-                OldImage: TableItemType<T> | undefined
-              }
-            : TableStreamViewType<T> extends StreamViewType.NEW_AND_OLD_IMAGES
-            ? {
-                OldImage: TableItemType<T> | undefined
-              }
-            : Empty)
-      >
-
-/**
- * Represents a dynamodb stream event for lambda.
- */
-export type StreamEventType<T extends Table> =
-  TableStreamViewType<T> extends never
-    ? never
-    : {
-        Records: {
-          eventID: string
-          eventName: "INSERT" | "MODIFY" | "REMOVE"
-          eventVersion: string
-          eventSource: "aws:dynamodb"
-          awsRegion: string
-          dynamodb: StreamEventDynamodbType<T>
-          eventSourceARN: string
-        }[]
-      }
-
-staticTest(() => {
-  type User = {
-    pk: { S: string }
-    sk: { N: string }
-  }
-  const table = new Table(undefined as unknown as Construct, "table", {
-    partitionKey: {
-      name: "pk",
-      type: AttributeType.STRING,
-    },
-    sortKey: {
-      name: "sk",
-      type: AttributeType.NUMBER,
-    },
-    // stream: StreamViewType.OLD_IMAGE,
-    // stream: StreamViewType.NEW_IMAGE,
-    stream: StreamViewType.NEW_AND_OLD_IMAGES,
-    billingMode: BillingMode.PAY_PER_REQUEST,
-  })
-  const table2 = table.withItemType<User>()
-  type x = StreamEventType<typeof table2>
 })
