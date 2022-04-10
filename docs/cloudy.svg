@@ -2,13 +2,13 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="491.78207mm"
-   height="294.25507mm"
-   viewBox="0 0 491.78207 294.25507"
+   width="135.46666mm"
+   height="81.055725mm"
+   viewBox="0 0 135.46666 81.055726"
    version="1.1"
    id="svg5"
+   sodipodi:docname="cloudy.svg"
    inkscape:version="1.1.2 (08b2f3d93c, 2022-04-05)"
-   sodipodi:docname="cloudy-big.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -28,8 +28,8 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:zoom="0.38885732"
-     inkscape:cx="597.90567"
-     inkscape:cy="342.02776"
+     inkscape:cx="-75.863301"
+     inkscape:cy="-61.719295"
      inkscape:window-width="2560"
      inkscape:window-height="1363"
      inkscape:window-x="0"
@@ -118,11 +118,14 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(161.86012,45.065675)">
+     transform="translate(-16.29759,-61.534002)">
     <g
        id="g2264"
        style="display:inline"
-       transform="matrix(0.35277777,0,0,-0.35277777,-1240.1452,849.31447)">
+       transform="matrix(0.09717643,0,0,-0.09717643,-280.72763,307.90063)"
+       inkscape:export-filename="/home/virtualtools/Documents/cloudy-logo/cloudy-big.png"
+       inkscape:export-xdpi="61.439999"
+       inkscape:export-ydpi="61.439999">
       <g
          id="g16"
          transform="matrix(0.12922,0,0,0.12922,2355.5842,385.40086)">
