@@ -38,8 +38,20 @@ import { codeFromFunction } from "./code-from-function.js"
 import { calculateFunctionHash, trimFromStart } from "./function-hash.js"
 
 export interface FunctionProperties<InputType, OutputType>
-  extends Omit<cdk.aws_lambda.FunctionProps, "code" | "handler" | "runtime"> {
+  extends Omit<
+    cdk.aws_lambda.FunctionProps,
+    "code" | "handler" | "runtime" | "events"
+  > {
   handler: (input: InputType) => Promise<OutputType>
+
+  /**
+   * Event sources for this function.
+   *
+   * You can also add event sources using `addEventSource`.
+   *
+   * @default - No event sources.
+   */
+  events?: IEventSource<InputType>[]
 }
 
 const inputTypeSymbol = Symbol("@cloudy-ts/cdk/aws_lambda/function/inputType")
