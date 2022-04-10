@@ -42,9 +42,62 @@ export interface FunctionProperties<InputType, OutputType>
   handler: (input: InputType) => Promise<OutputType>
 }
 
-// export class Function<InputType = any, OutputType = any> extends cdk.aws_lambda
-export class Function<InputType, OutputType> extends cdk.aws_lambda
-  .FunctionBase {
+const inputTypeSymbol = Symbol("@cloudy-ts/cdk/aws_lambda/function/inputType")
+
+export interface IEventSource<InputType> {
+  /**
+   * Called by `lambda.addEventSource` to allow the event source to bind to this
+   * function.
+   *
+   * @param target That lambda function to bind to.
+   */
+  bind(target: IFunction<InputType, any>): void
+
+  /**
+   * This property is necessary because otherwise, TypeScript will allow
+   * interchanging between event sources of different InputType's.
+   *
+   * Adding a property with the type InputType, will forbid interchanges
+   * unless the InputType's are of the same shape.
+   */
+  readonly [inputTypeSymbol]: InputType | undefined
+}
+
+export abstract class BaseEventSource<InputType>
+  implements IEventSource<InputType>
+{
+  abstract bind(target: IFunction<InputType, any>): void
+
+  readonly [inputTypeSymbol]!: InputType | undefined
+}
+
+export interface IFunction<InputType, OutputType> {
+  /**
+   * Adds an event source to this function.
+   */
+  addEventSource(source: IEventSource<InputType>): void
+}
+
+export class Function<InputType, OutputType>
+  extends cdk.aws_lambda.FunctionBase
+  implements IFunction<InputType, OutputType>
+{
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  addEventSource(source: IEventSource<InputType>): void {
+    source.bind(this)
+  }
+
+  // addEventSource<E>(
+  //   source: E extends IEventSource<infer SourceInputType>
+  //     ? SourceInputType extends InputType
+  //       ? E
+  //       : never
+  //     : never,
+  // ): void {
+  //   source.bind(this)
+  // }
+
   /**
    * Returns a `lambda.Version` which represents the current version of this
    * Lambda function. A new version will be created every time the function's
@@ -920,6 +973,21 @@ export class Function<InputType, OutputType> extends cdk.aws_lambda
       )
     }
   }
+
+  // /**
+  //    * Adds an event source to this function.
+  //    *
+  //    * Event sources are implemented in the @aws-cdk/aws-lambda-event-sources module.
+  //    *
+  //    * The following example adds an SQS Queue as an event source:
+  //    * ```
+  //    * import { SqsEventSource } from '@aws-cdk/aws-lambda-event-sources';
+  //    * myFunction.addEventSource(new SqsEventSource(myQueue));
+  //    * ```
+  //    */
+  //  addEventSource(source: IEventSource): void {
+
+  //  }
 }
 
 /**
@@ -928,3 +996,7 @@ export class Function<InputType, OutputType> extends cdk.aws_lambda
 interface EnvironmentConfig extends EnvironmentOptions {
   readonly value: string
 }
+
+// declare const source: IEventSource<{ age: number }>
+// declare const handler: Function<{ age: number }, {}>
+// handler.addEventSource(source)
