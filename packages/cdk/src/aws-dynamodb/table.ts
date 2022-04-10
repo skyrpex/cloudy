@@ -100,7 +100,7 @@ type KeyDefinition = {
  *
  * Those are used to provide type-safe constraints.
  */
-type StaticProperties = {
+export type StaticProperties = {
   partitionKey: KeyDefinition
   sortKey?: KeyDefinition | undefined
   stream?: StreamViewType | undefined
@@ -225,3 +225,50 @@ staticTest((table: Table<{ id: { S: string } }, any>) => {
     id: { S: "user_1" },
   }
 })
+
+export type TableKeys<T extends Table<any, any>> = T extends Table<
+  infer I,
+  infer P
+>
+  ? Union.Merge<
+      {
+        [name in P["partitionKey"]["name"]]: TableItemType<T>[name]
+      } & (P["sortKey"] extends KeyDefinition
+        ? {
+            [name in P["sortKey"]["name"]]: TableItemType<T>[name]
+          }
+        : {})
+    >
+  : never
+
+export type TableProperties<T extends Table<any, any>> = T extends Table<
+  infer I,
+  infer P
+>
+  ? P
+  : never
+
+staticTest((scope: Construct, id: string) => {
+  const transactions = new Table(scope, id, {
+    partitionKey: {
+      name: "streamId",
+      type: AttributeType.STRING,
+    },
+    sortKey: {
+      name: "revision",
+      type: AttributeType.NUMBER,
+    },
+  }).withItemType<{
+    streamId: { S: string }
+    revision: { N: string }
+  }>()
+
+  type x = TableKeys<typeof transactions>
+})
+
+export type TableNameFor<T extends Table<any, any>> = T extends Table<
+  infer I,
+  infer P
+>
+  ? TableName<I, P>
+  : never
