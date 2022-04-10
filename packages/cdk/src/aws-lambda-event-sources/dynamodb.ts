@@ -34,38 +34,61 @@ export type TableStreamViewType<T extends Table> = T extends Table<any, infer P>
     : never
   : never
 
+type StreamEventDynamodbImage<T extends Table> =
+  (TableStreamViewType<T> extends StreamViewType.NEW_IMAGE
+    ? {
+        NewImage: TableItemType<T>
+      }
+    : TableStreamViewType<T> extends StreamViewType.NEW_AND_OLD_IMAGES
+    ? {
+        NewImage: TableItemType<T>
+      }
+    : Empty) &
+    (TableStreamViewType<T> extends StreamViewType.OLD_IMAGE
+      ? {
+          OldImage: TableItemType<T>
+        }
+      : TableStreamViewType<T> extends StreamViewType.NEW_AND_OLD_IMAGES
+      ? {
+          OldImage: TableItemType<T>
+        }
+      : Empty)
+
 /**
  * Represents a dynamodb stream event change record for lambda.
  */
-type StreamEventDynamodbType<T extends Table> =
-  TableStreamViewType<T> extends never
-    ? never
-    : Union.Merge<
-        {
-          ApproximateCreationDateTime: number
-          // Keys?: TableAttributes
-          SequenceNumber: string
-          SizeBytes: number
-          StreamViewType: TableStreamViewType<T>
-        } & (TableStreamViewType<T> extends StreamViewType.NEW_IMAGE
-          ? {
-              NewImage: TableItemType<T> | undefined
-            }
-          : TableStreamViewType<T> extends StreamViewType.NEW_AND_OLD_IMAGES
-          ? {
-              NewImage: TableItemType<T> | undefined
-            }
-          : Empty) &
-          (TableStreamViewType<T> extends StreamViewType.OLD_IMAGE
-            ? {
-                OldImage: TableItemType<T> | undefined
-              }
-            : TableStreamViewType<T> extends StreamViewType.NEW_AND_OLD_IMAGES
-            ? {
-                OldImage: TableItemType<T> | undefined
-              }
-            : Empty)
-      >
+type DynamoStreamEventRecordDynamodb<
+  T extends Table,
+  IncludeImage extends boolean,
+> = Union.Merge<
+  {
+    ApproximateCreationDateTime: number
+    // Keys?: TableAttributes
+    SequenceNumber: string
+    SizeBytes: number
+    StreamViewType: TableStreamViewType<T>
+  } & (IncludeImage extends true ? StreamEventDynamodbImage<T> : {})
+>
+
+type DynamoStreamEventRecord<T extends Table> =
+  | {
+      eventID: string
+      eventName: "INSERT" | "MODIFY"
+      eventVersion: string
+      eventSource: "aws:dynamodb"
+      awsRegion: string
+      dynamodb: DynamoStreamEventRecordDynamodb<T, true>
+      eventSourceARN: string
+    }
+  | {
+      eventID: string
+      eventName: "REMOVE"
+      eventVersion: string
+      eventSource: "aws:dynamodb"
+      awsRegion: string
+      dynamodb: DynamoStreamEventRecordDynamodb<T, false>
+      eventSourceARN: string
+    }
 
 /**
  * Represents a dynamodb stream event for lambda.
@@ -74,15 +97,7 @@ export type DynamoStreamEventType<T extends Table> =
   TableStreamViewType<T> extends never
     ? never
     : {
-        Records: {
-          eventID: string
-          eventName: "INSERT" | "MODIFY" | "REMOVE"
-          eventVersion: string
-          eventSource: "aws:dynamodb"
-          awsRegion: string
-          dynamodb: StreamEventDynamodbType<T>
-          eventSourceARN: string
-        }[]
+        Records: DynamoStreamEventRecord<T>[]
       }
 
 export interface DynamoEventSourceProperties extends DynamoEventSourceProps {}
