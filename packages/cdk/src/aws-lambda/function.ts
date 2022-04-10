@@ -35,6 +35,8 @@ import * as sqs from "aws-cdk-lib/aws-sqs"
 import { Construct } from "constructs"
 
 import { codeFromFunction } from "./code-from-function.js"
+import { IEventSource } from "./event-source.js"
+import { IFunction } from "./function-base.js"
 import { calculateFunctionHash, trimFromStart } from "./function-hash.js"
 
 export interface FunctionProperties<InputType, OutputType>
@@ -52,42 +54,6 @@ export interface FunctionProperties<InputType, OutputType>
    * @default - No event sources.
    */
   events?: IEventSource<InputType>[]
-}
-
-const inputTypeSymbol = Symbol("@cloudy-ts/cdk/aws_lambda/function/inputType")
-
-export interface IEventSource<InputType> {
-  /**
-   * Called by `lambda.addEventSource` to allow the event source to bind to this
-   * function.
-   *
-   * @param target That lambda function to bind to.
-   */
-  bind(target: IFunction<InputType, any>): void
-
-  /**
-   * This property is necessary because otherwise, TypeScript will allow
-   * interchanging between event sources of different InputType's.
-   *
-   * Adding a property with the type InputType, will forbid interchanges
-   * unless the InputType's are of the same shape.
-   */
-  readonly [inputTypeSymbol]: InputType | undefined
-}
-
-export abstract class BaseEventSource<InputType>
-  implements IEventSource<InputType>
-{
-  abstract bind(target: IFunction<InputType, any>): void
-
-  readonly [inputTypeSymbol]!: InputType | undefined
-}
-
-export interface IFunction<InputType, OutputType> {
-  /**
-   * Adds an event source to this function.
-   */
-  addEventSource(source: IEventSource<InputType>): void
 }
 
 export class Function<InputType, OutputType>
