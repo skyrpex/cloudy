@@ -1,7 +1,10 @@
-# cloudy-ts
+# Cloudy
+
+![Cloudy](docs/cloudy.svg)
 
 > These packages aren't yet published on npm. This is still highly experimental.
 > Need to figure out a few things before releasing the first version:
+>
 > - Define a good Github Actions workflow (linting, testing, auto releases, auto upgrades, etc)
 > - Explore a few more typed constructs and clients
 > - Move to a Github Organization
@@ -127,3 +130,7 @@ yarn turbo run lint test build
 yarn standard-version # --first-release
 git push --folow-tags origin main
 ```
+
+## Other
+
+Temporary logo from <a href="https://www.vecteezy.com/free-vector/web">Web Vectors by Vecteezy</a>.
