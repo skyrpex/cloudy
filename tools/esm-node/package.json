@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "cross-spawn": "^7.0.3",
-    "esbuild": "^0.14.34",
+    "esbuild": "^0.14.36",
     "node-fetch": "^3.2.3",
     "semver": "^7.3.6"
   },

@@ -16,7 +16,7 @@
     "@cloudy-ts/opaque-type": "workspace:^",
     "@cloudy-ts/string-codec": "workspace:^",
     "@pulumi/pulumi": "^3.28.0",
-    "esbuild": "^0.14.34",
+    "esbuild": "^0.14.36",
     "find-up": "^6.3.0",
     "ts-toolbelt": "^9.6.0"
   },
@@ -27,7 +27,7 @@
   "devDependencies": {
     "@aws-sdk/client-dynamodb": "^3.67.0",
     "aws-cdk-lib": "^2.20.0",
-    "constructs": "^10.0.110",
+    "constructs": "^10.0.112",
     "unbuild": "^0.7.2"
   },
   "files": [
