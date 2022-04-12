@@ -12,6 +12,7 @@ import { MiddlewareStack } from "@aws-sdk/types"
 
 import { aws_dynamodb } from "@cloudy-ts/cdk"
 
+import { ToAttributeMap } from "../attribute-value.js"
 import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js"
 
 export type PutItemCommandInput<
@@ -23,7 +24,7 @@ export type PutItemCommandInput<
   > = aws_dynamodb.AccessPattern<PartitionKey, SortKey>,
 > = BaseCommandInput & {
   TableName: aws_dynamodb.TableName<PartitionKey, SortKey, AccessPatterns, any>
-  Item: AccessPatterns
+  Item: ToAttributeMap<AccessPatterns>
   // ReturnConsumedCapacity?: ReturnConsumedCapacity
   // ReturnItemCollectionMetrics?: ReturnItemCollectionMetrics
   // ConditionExpression?: string

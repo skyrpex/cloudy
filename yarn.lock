@@ -1101,7 +1101,10 @@ __metadata:
     "@aws-sdk/client-dynamodb": ^3.67.0
     "@aws-sdk/smithy-client": ^3.55.0
     "@aws-sdk/types": ^3.55.0
+    "@aws-sdk/util-dynamodb": ^3.67.0
     "@cloudy-ts/cdk": "workspace:^"
+    "@cloudy-ts/opaque-type": "workspace:^"
+    "@cloudy-ts/string-codec": "workspace:^"
     ts-toolbelt: ^9.6.0
     unbuild: ^0.7.2
   peerDependencies:

@@ -21,12 +21,13 @@ const topic = new cloudy.aws_sns.Topic(stack, "topic")
 
 const table = new cloudy.aws_dynamodb.Table(stack, "table", {
   partitionKey: { name: "pk", type: cdk.aws_dynamodb.AttributeType.STRING },
+  accessPatterns: cloudy.aws_dynamodb.AccessPatterns.from<{
+    pk: string
+    text: string
+  }>(),
   billingMode: cdk.aws_dynamodb.BillingMode.PAY_PER_REQUEST,
   removalPolicy: cdk.RemovalPolicy.DESTROY,
-}).withItemType<{
-  pk: { S: string }
-  text: { S: string }
-}>()
+})
 
 const sns = new SNSClient({})
 const dynamodb = new DynamoDBClient({})

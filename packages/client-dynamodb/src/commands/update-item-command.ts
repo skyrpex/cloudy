@@ -9,6 +9,7 @@ import { MiddlewareStack } from "@aws-sdk/types"
 
 import { aws_dynamodb } from "@cloudy-ts/cdk"
 
+import { ToAttributeMap } from "../attribute-value.js"
 import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js"
 import {
   ExpressionAttributeNames,
@@ -28,7 +29,7 @@ export type UpdateItemCommandInput<
   ConditionExpression extends string = string,
 > = BaseCommandInput & {
   TableName: aws_dynamodb.TableName<PartitionKey, SortKey, AccessPatterns, any>
-  Key: aws_dynamodb.AccessPattern<PartitionKey, SortKey>
+  Key: ToAttributeMap<aws_dynamodb.AccessPattern<PartitionKey, SortKey>>
   UpdateExpression: UpdateExpression
   ConditionExpression: ConditionExpression
   // Item: Item
