@@ -3,8 +3,6 @@
   "version": "0.0.0",
   "type": "module",
   "sideEffects": false,
-  "main": "./src/index.ts",
-  "module": "./src/index.ts",
   "engines": {
     "node": "^14.13.1 || >=16.0.0"
   },

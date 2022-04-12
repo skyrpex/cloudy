@@ -3,6 +3,8 @@ import { Construct } from "constructs"
 
 import { OpaqueType } from "@cloudy-ts/opaque-type"
 
+import { ITopicSubscription } from "./subscription.js"
+
 export interface FifoType {
   fifo: boolean
 }
@@ -49,9 +51,9 @@ export type TopicArn<
 >
 
 export class Topic<
-  Message extends string,
-  MessageGroupId extends string,
-  MessageDeduplicationId extends string,
+  Message extends string = string,
+  MessageGroupId extends string = string,
+  MessageDeduplicationId extends string = string,
   MessageAttributes extends MessageAttributesType = undefined,
   Fifo extends boolean = false,
 > extends cdk.aws_sns.Topic {
@@ -72,6 +74,13 @@ export class Topic<
       topicName: properties?.fifo ? buildFifoName(scope, id) : undefined,
       ...(properties as cdk.aws_sns.TopicProps),
     })
+  }
+
+  addSubscription(
+    // subscription: ITopicSubscription<Message> | cdk.aws_sns.ITopicSubscription,
+    subscription: ITopicSubscription<Message>,
+  ) {
+    return super.addSubscription(subscription)
   }
 
   public withMessageType<Message extends string>(): Topic<

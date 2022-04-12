@@ -10,15 +10,17 @@ import {
 import { Command } from "@aws-sdk/smithy-client"
 import { MiddlewareStack } from "@aws-sdk/types"
 
-import { aws_dynamodb } from "@cloudy-ts/cdk"
+import { AccessPattern, KeyDefinition, TableName } from "@cloudy-ts/cdk"
 
 import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js"
 
 export type PutItemCommandInput<
-  Item extends aws_dynamodb.DynamodbItem = aws_dynamodb.DynamodbItem,
+  PartitionKey extends KeyDefinition,
+  SortKey extends KeyDefinition | undefined,
+  AccessPatterns extends AccessPattern<PartitionKey, SortKey>,
 > = BaseCommandInput & {
-  TableName: aws_dynamodb.TableName<Item, any>
-  Item: Item
+  TableName: TableName<PartitionKey, SortKey, AccessPatterns, any>
+  Item: AccessPatterns
   // ReturnConsumedCapacity?: ReturnConsumedCapacity
   // ReturnItemCollectionMetrics?: ReturnItemCollectionMetrics
   // ConditionExpression?: string
@@ -122,13 +124,18 @@ export interface PutItemCommandOutput extends BaseCommandOutput {}
  * @see {@link DynamoDBClientResolvedConfig} for DynamoDBClient's `configuration` shape.
  *
  */
-export class PutItemCommand<Item extends aws_dynamodb.DynamodbItem>
-  implements
+export class PutItemCommand<
+  PartitionKey extends KeyDefinition,
+  SortKey extends KeyDefinition | undefined,
+  AccessPatterns extends AccessPattern<PartitionKey, SortKey>,
+> implements
     Command<BaseCommandInput, BaseCommandOutput, DynamoDBClientResolvedConfig>
 {
   private readonly command: BaseCommand
 
-  constructor(readonly input: PutItemCommandInput<Item>) {
+  constructor(
+    readonly input: PutItemCommandInput<PartitionKey, SortKey, AccessPatterns>,
+  ) {
     this.command = new BaseCommand(input as unknown as BaseCommandInput)
   }
 

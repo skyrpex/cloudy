@@ -39,7 +39,7 @@ import { IEventSource } from "./event-source.js"
 import { IFunction } from "./function-base.js"
 import { calculateFunctionHash, trimFromStart } from "./function-hash.js"
 
-export interface FunctionProperties<InputType, OutputType>
+export interface CallbackFunctionProperties<InputType, OutputType>
   extends Omit<
     cdk.aws_lambda.FunctionProps,
     "code" | "handler" | "runtime" | "events"
@@ -56,14 +56,16 @@ export interface FunctionProperties<InputType, OutputType>
   events?: IEventSource<InputType>[]
 }
 
-export class Function<InputType, OutputType>
+export class CallbackFunction<InputType, OutputType>
   extends cdk.aws_lambda.FunctionBase
   implements IFunction<InputType, OutputType>
 {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  addEventSource(source: IEventSource<InputType>): void {
-    source.bind(this)
+  addEventSource(
+    // source: IEventSource<InputType> | cdk.aws_lambda.IEventSource,
+    source: IEventSource<InputType>,
+  ): void {
+    super.addEventSource(source)
+    // source.bind(this)
   }
 
   // addEventSource<E>(
@@ -288,7 +290,7 @@ export class Function<InputType, OutputType>
   constructor(
     scope: Construct,
     id: string,
-    properties: FunctionProperties<InputType, OutputType>,
+    properties: CallbackFunctionProperties<InputType, OutputType>,
   ) {
     super(scope, id, {
       physicalName: properties.functionName,
@@ -719,7 +721,7 @@ export class Function<InputType, OutputType>
    * https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Lambda-Insights-extension-versions.html
    */
   private configureLambdaInsights(
-    properties: FunctionProperties<any, any>,
+    properties: CallbackFunctionProperties<any, any>,
   ): void {
     if (properties.insightsVersion === undefined) {
       return
@@ -776,7 +778,7 @@ export class Function<InputType, OutputType>
    * Lambda creation properties.
    */
   private configureVpc(
-    properties: FunctionProperties<any, any>,
+    properties: CallbackFunctionProperties<any, any>,
   ): CfnFunction.VpcConfigProperty | undefined {
     if (properties.allowAllOutbound !== undefined && !properties.vpc) {
       throw new Error(
@@ -852,7 +854,7 @@ export class Function<InputType, OutputType>
   }
 
   private buildDeadLetterQueue(
-    properties: FunctionProperties<any, any>,
+    properties: CallbackFunctionProperties<any, any>,
   ): sqs.IQueue | sns.ITopic | undefined {
     if (
       !properties.deadLetterQueue &&
@@ -915,7 +917,7 @@ export class Function<InputType, OutputType>
       : undefined
   }
 
-  private buildTracingConfig(properties: FunctionProperties<any, any>) {
+  private buildTracingConfig(properties: CallbackFunctionProperties<any, any>) {
     if (
       properties.tracing === undefined ||
       properties.tracing === Tracing.DISABLED
@@ -935,7 +937,7 @@ export class Function<InputType, OutputType>
     }
   }
 
-  private validateProfiling(properties: FunctionProperties<any, any>) {
+  private validateProfiling(properties: CallbackFunctionProperties<any, any>) {
     // if (!properties.runtime.supportsCodeGuruProfiling) {
     //   throw new Error(
     //     `CodeGuru profiling is not supported by runtime ${properties.runtime.name}`,

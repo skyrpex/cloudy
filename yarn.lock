@@ -742,6 +742,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@aws-sdk/util-dynamodb@npm:^3.67.0":
+  version: 3.67.0
+  resolution: "@aws-sdk/util-dynamodb@npm:3.67.0"
+  dependencies:
+    tslib: ^2.3.1
+  checksum: 11badb7a1810e16e7875a4a6aa1ceb492bd4fdc204aed3032a91ac07b1040da2f336ade18eea0823c654b0982c1d058a8606e993a6c4ae6c718e2a1f3c4db492
+  languageName: node
+  linkType: hard
+
 "@aws-sdk/util-hex-encoding@npm:3.58.0":
   version: 3.58.0
   resolution: "@aws-sdk/util-hex-encoding@npm:3.58.0"
@@ -1068,10 +1077,13 @@ __metadata:
   resolution: "@cloudy-ts/cdk@workspace:packages/cdk"
   dependencies:
     "@aws-sdk/client-dynamodb": ^3.67.0
+    "@aws-sdk/util-dynamodb": ^3.67.0
+    "@cloudy-ts/json-codec": "workspace:^"
     "@cloudy-ts/opaque-type": "workspace:^"
+    "@cloudy-ts/string-codec": "workspace:^"
     "@pulumi/pulumi": ^3.28.0
     aws-cdk-lib: ^2.20.0
-    constructs: ^10.0.109
+    constructs: ^10.0.110
     esbuild: ^0.14.34
     find-up: ^6.3.0
     ts-toolbelt: ^9.6.0
@@ -1123,7 +1135,22 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@cloudy-ts/json-codec@workspace:tools/json-codec":
+"@cloudy-ts/esm-node@workspace:^, @cloudy-ts/esm-node@workspace:tools/esm-node":
+  version: 0.0.0-use.local
+  resolution: "@cloudy-ts/esm-node@workspace:tools/esm-node"
+  dependencies:
+    cross-spawn: ^7.0.3
+    esbuild: ^0.14.34
+    eslint: ^8.13.0
+    node-fetch: ^3.2.3
+    semver: ^7.3.6
+    unbuild: ^0.7.2
+  bin:
+    esm-node: ./bin/esm-node.js
+  languageName: unknown
+  linkType: soft
+
+"@cloudy-ts/json-codec@workspace:^, @cloudy-ts/json-codec@workspace:tools/json-codec":
   version: 0.0.0-use.local
   resolution: "@cloudy-ts/json-codec@workspace:tools/json-codec"
   dependencies:
@@ -1140,6 +1167,7 @@ __metadata:
     "@commitlint/cli": ^16.2.3
     "@commitlint/config-conventional": ^16.2.1
     "@tsconfig/node14": ^1.0.1
+    "@types/node": ^17.0.23
     "@typescript-eslint/eslint-plugin": ^5.18.0
     "@typescript-eslint/parser": ^5.18.0
     ava: ^4.1.0
@@ -1176,10 +1204,18 @@ __metadata:
     "@cloudy-ts/cdk": "workspace:^"
     "@cloudy-ts/client-dynamodb": "workspace:^"
     "@cloudy-ts/client-sns": "workspace:^"
+    "@cloudy-ts/esm-node": "workspace:^"
     aws-cdk: ^2.20.0
     aws-cdk-lib: ^2.20.0
-    constructs: ^10.0.109
-    esno: ^0.14.1
+    constructs: ^10.0.110
+  languageName: unknown
+  linkType: soft
+
+"@cloudy-ts/string-codec@workspace:^, @cloudy-ts/string-codec@workspace:tools/string-codec":
+  version: 0.0.0-use.local
+  resolution: "@cloudy-ts/string-codec@workspace:tools/string-codec"
+  dependencies:
+    "@cloudy-ts/opaque-type": "workspace:^"
   languageName: unknown
   linkType: soft
 
@@ -1794,7 +1830,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:>=12, @types/node@npm:>=12.12.47, @types/node@npm:>=13.7.0":
+"@types/node@npm:*, @types/node@npm:>=12, @types/node@npm:>=12.12.47, @types/node@npm:>=13.7.0, @types/node@npm:^17.0.23":
   version: 17.0.23
   resolution: "@types/node@npm:17.0.23"
   checksum: a3517554737cbb042e76c30d0e5482192ac4d9bea0eeb086e2622d9cabf460a0eb52a696b99fcd18e7fcc93c96db6cc7ae507f6608f256ef0b5c1d8c87a5a470
@@ -2398,15 +2434,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"builtins@npm:^4.0.0":
-  version: 4.1.0
-  resolution: "builtins@npm:4.1.0"
-  dependencies:
-    semver: ^7.0.0
-  checksum: 3524f5a5898c3f77a73fee2e0046e676abbb0acc18db1e495676ee07fbef1537134b0e9c4da525f4cb12ba3cd1b430a26c373d32b59b80a5c048f8ace31b595f
-  languageName: node
-  linkType: hard
-
 "cacache@npm:^16.0.2":
   version: 16.0.4
   resolution: "cacache@npm:16.0.4"
@@ -2782,10 +2809,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"constructs@npm:^10.0.109":
-  version: 10.0.109
-  resolution: "constructs@npm:10.0.109"
-  checksum: 2d4c15882d9de95f85df8ec93c872740ddd2b750c530e3bf997cd9a0e301c56cd48fd70d87f103751f439716b42d8e5683364ed33d3578e7cb35d0c53c153f69
+"constructs@npm:^10.0.110":
+  version: 10.0.110
+  resolution: "constructs@npm:10.0.110"
+  checksum: c5f17976876f56fb928d80212c8f3d56790fb8df0963bb6a4a98578e47920390b0af8563bb0f70544282bac6e5d9f90cd247b87d98972b083f8e93cc825ee7cc
   languageName: node
   linkType: hard
 
@@ -3084,6 +3111,13 @@ __metadata:
   version: 7.0.0
   resolution: "dargs@npm:7.0.0"
   checksum: b8f1e3cba59c42e1f13a114ad4848c3fc1cf7470f633ee9e9f1043762429bc97d91ae31b826fb135eefde203a3fdb20deb0c0a0222ac29d937b8046085d668d1
+  languageName: node
+  linkType: hard
+
+"data-uri-to-buffer@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "data-uri-to-buffer@npm:4.0.0"
+  checksum: a010653869abe8bb51259432894ac62c52bf79ad761d418d94396f48c346f2ae739c46b254e8bb5987bded8a653d467db1968db3a69bab1d33aa5567baa5cfc7
   languageName: node
   linkType: hard
 
@@ -3610,15 +3644,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esbuild-node-loader@npm:^0.6.5":
-  version: 0.6.5
-  resolution: "esbuild-node-loader@npm:0.6.5"
-  dependencies:
-    esbuild: ">=0.13.12"
-  checksum: 564a60a0827f9461e250381462aa1397c01680e9673ed75b5aa80939e868ac1538882c2a7bdcdd04defa9a85a593db16720ac44dddd87e51ab91f1182ee9c03e
-  languageName: node
-  linkType: hard
-
 "esbuild-openbsd-64@npm:0.13.15":
   version: 0.13.15
   resolution: "esbuild-openbsd-64@npm:0.13.15"
@@ -3698,7 +3723,69 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esbuild@npm:>=0.13.0, esbuild@npm:>=0.13.12, esbuild@npm:^0.14.25, esbuild@npm:^0.14.34":
+"esbuild@npm:^0.13.8":
+  version: 0.13.15
+  resolution: "esbuild@npm:0.13.15"
+  dependencies:
+    esbuild-android-arm64: 0.13.15
+    esbuild-darwin-64: 0.13.15
+    esbuild-darwin-arm64: 0.13.15
+    esbuild-freebsd-64: 0.13.15
+    esbuild-freebsd-arm64: 0.13.15
+    esbuild-linux-32: 0.13.15
+    esbuild-linux-64: 0.13.15
+    esbuild-linux-arm: 0.13.15
+    esbuild-linux-arm64: 0.13.15
+    esbuild-linux-mips64le: 0.13.15
+    esbuild-linux-ppc64le: 0.13.15
+    esbuild-netbsd-64: 0.13.15
+    esbuild-openbsd-64: 0.13.15
+    esbuild-sunos-64: 0.13.15
+    esbuild-windows-32: 0.13.15
+    esbuild-windows-64: 0.13.15
+    esbuild-windows-arm64: 0.13.15
+  dependenciesMeta:
+    esbuild-android-arm64:
+      optional: true
+    esbuild-darwin-64:
+      optional: true
+    esbuild-darwin-arm64:
+      optional: true
+    esbuild-freebsd-64:
+      optional: true
+    esbuild-freebsd-arm64:
+      optional: true
+    esbuild-linux-32:
+      optional: true
+    esbuild-linux-64:
+      optional: true
+    esbuild-linux-arm:
+      optional: true
+    esbuild-linux-arm64:
+      optional: true
+    esbuild-linux-mips64le:
+      optional: true
+    esbuild-linux-ppc64le:
+      optional: true
+    esbuild-netbsd-64:
+      optional: true
+    esbuild-openbsd-64:
+      optional: true
+    esbuild-sunos-64:
+      optional: true
+    esbuild-windows-32:
+      optional: true
+    esbuild-windows-64:
+      optional: true
+    esbuild-windows-arm64:
+      optional: true
+  bin:
+    esbuild: bin/esbuild
+  checksum: d5fac8f28a6328592e45f9d49a7e98420cf2c2a3ff5a753bbf011ab79bcb5c062209ef862d3ae0875d8f2a50d40c112b0224e8b419a7cbffc6e2b02cee11ef7e
+  languageName: node
+  linkType: hard
+
+"esbuild@npm:^0.14.25, esbuild@npm:^0.14.34":
   version: 0.14.34
   resolution: "esbuild@npm:0.14.34"
   dependencies:
@@ -3766,68 +3853,6 @@ __metadata:
   bin:
     esbuild: bin/esbuild
   checksum: 2f50fc1d48a307c8e1a4ca790e448fd4742aea0405d424989eb03e0b435faa6f5184b14a8244ab17611f91238605bb129e53a6d2e157f44eacea67e5c648bdae
-  languageName: node
-  linkType: hard
-
-"esbuild@npm:^0.13.8":
-  version: 0.13.15
-  resolution: "esbuild@npm:0.13.15"
-  dependencies:
-    esbuild-android-arm64: 0.13.15
-    esbuild-darwin-64: 0.13.15
-    esbuild-darwin-arm64: 0.13.15
-    esbuild-freebsd-64: 0.13.15
-    esbuild-freebsd-arm64: 0.13.15
-    esbuild-linux-32: 0.13.15
-    esbuild-linux-64: 0.13.15
-    esbuild-linux-arm: 0.13.15
-    esbuild-linux-arm64: 0.13.15
-    esbuild-linux-mips64le: 0.13.15
-    esbuild-linux-ppc64le: 0.13.15
-    esbuild-netbsd-64: 0.13.15
-    esbuild-openbsd-64: 0.13.15
-    esbuild-sunos-64: 0.13.15
-    esbuild-windows-32: 0.13.15
-    esbuild-windows-64: 0.13.15
-    esbuild-windows-arm64: 0.13.15
-  dependenciesMeta:
-    esbuild-android-arm64:
-      optional: true
-    esbuild-darwin-64:
-      optional: true
-    esbuild-darwin-arm64:
-      optional: true
-    esbuild-freebsd-64:
-      optional: true
-    esbuild-freebsd-arm64:
-      optional: true
-    esbuild-linux-32:
-      optional: true
-    esbuild-linux-64:
-      optional: true
-    esbuild-linux-arm:
-      optional: true
-    esbuild-linux-arm64:
-      optional: true
-    esbuild-linux-mips64le:
-      optional: true
-    esbuild-linux-ppc64le:
-      optional: true
-    esbuild-netbsd-64:
-      optional: true
-    esbuild-openbsd-64:
-      optional: true
-    esbuild-sunos-64:
-      optional: true
-    esbuild-windows-32:
-      optional: true
-    esbuild-windows-64:
-      optional: true
-    esbuild-windows-arm64:
-      optional: true
-  bin:
-    esbuild: bin/esbuild
-  checksum: d5fac8f28a6328592e45f9d49a7e98420cf2c2a3ff5a753bbf011ab79bcb5c062209ef862d3ae0875d8f2a50d40c112b0224e8b419a7cbffc6e2b02cee11ef7e
   languageName: node
   linkType: hard
 
@@ -4094,22 +4119,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esno@npm:^0.14.1":
-  version: 0.14.1
-  resolution: "esno@npm:0.14.1"
-  dependencies:
-    cross-spawn: ^7.0.3
-    esbuild: ">=0.13.0"
-    esbuild-node-loader: ^0.6.5
-    esbuild-register: ^3.3.2
-    import-meta-resolve: ^1.1.1
-  bin:
-    esmo: esmo.mjs
-    esno: esno.js
-  checksum: 1d1b15c10e610577a83be0b071b3794c2c89d7257287f8d4379ffe75844c1b238d5c3938163e8451740e233563b34596caf81cf053d8c64e118a2b29015b3808
-  languageName: node
-  linkType: hard
-
 "espree@npm:^9.3.1":
   version: 9.3.1
   resolution: "espree@npm:9.3.1"
@@ -4260,6 +4269,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fetch-blob@npm:^3.1.2, fetch-blob@npm:^3.1.4":
+  version: 3.1.5
+  resolution: "fetch-blob@npm:3.1.5"
+  dependencies:
+    node-domexception: ^1.0.0
+    web-streams-polyfill: ^3.0.3
+  checksum: 6493f21bfe196798343431d20c0284835202728d076dd2cbf502a2846679f9265f3b0c3a7224750ae1a770b925da09e592b05fe7c3a22ca27794a39a0039ab21
+  languageName: node
+  linkType: hard
+
 "figures@npm:^3.1.0":
   version: 3.2.0
   resolution: "figures@npm:3.2.0"
@@ -4359,6 +4378,15 @@ __metadata:
   version: 3.2.5
   resolution: "flatted@npm:3.2.5"
   checksum: 3c436e9695ccca29620b4be5671dd72e5dd0a7500e0856611b7ca9bd8169f177f408c3b9abfa78dfe1493ee2d873e2c119080a8a9bee4e1a186a9e60ca6c89f1
+  languageName: node
+  linkType: hard
+
+"formdata-polyfill@npm:^4.0.10":
+  version: 4.0.10
+  resolution: "formdata-polyfill@npm:4.0.10"
+  dependencies:
+    fetch-blob: ^3.1.2
+  checksum: 82a34df292afadd82b43d4a740ce387bc08541e0a534358425193017bf9fb3567875dc5f69564984b1da979979b70703aa73dee715a17b6c229752ae736dd9db
   languageName: node
   linkType: hard
 
@@ -4843,15 +4871,6 @@ __metadata:
     parent-module: ^1.0.0
     resolve-from: ^4.0.0
   checksum: 2cacfad06e652b1edc50be650f7ec3be08c5e5a6f6d12d035c440a42a8cc028e60a5b99ca08a77ab4d6b1346da7d971915828f33cdab730d3d42f08242d09baa
-  languageName: node
-  linkType: hard
-
-"import-meta-resolve@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "import-meta-resolve@npm:1.1.1"
-  dependencies:
-    builtins: ^4.0.0
-  checksum: 2024161e169c45ed25a9f51d984a432a9cc342c35737f9410266bab237ca2f756c1f80c15e2297df83c92f585743d5105291f2ad24094a513f804c6023ea1472
   languageName: node
   linkType: hard
 
@@ -5947,6 +5966,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"node-domexception@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "node-domexception@npm:1.0.0"
+  checksum: ee1d37dd2a4eb26a8a92cd6b64dfc29caec72bff5e1ed9aba80c294f57a31ba4895a60fd48347cf17dd6e766da0ae87d75657dfd1f384ebfa60462c2283f5c7f
+  languageName: node
+  linkType: hard
+
+"node-fetch@npm:^3.2.3":
+  version: 3.2.3
+  resolution: "node-fetch@npm:3.2.3"
+  dependencies:
+    data-uri-to-buffer: ^4.0.0
+    fetch-blob: ^3.1.4
+    formdata-polyfill: ^4.0.10
+  checksum: 6f702b2683d6e1c097e99888bedaac4625d6895f2a8a60573a2bc04916f5577ea61d274f26e308c08cfb724b23d45de7d3514c14b59e0293e9809c66c88ac12c
+  languageName: node
+  linkType: hard
+
 "node-gyp@npm:latest":
   version: 9.0.0
   resolution: "node-gyp@npm:9.0.0"
@@ -6950,7 +6987,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:^7.0.0, semver@npm:^7.1.1, semver@npm:^7.3.2, semver@npm:^7.3.4, semver@npm:^7.3.5":
+"semver@npm:^7.1.1, semver@npm:^7.3.2, semver@npm:^7.3.4, semver@npm:^7.3.5, semver@npm:^7.3.6":
   version: 7.3.6
   resolution: "semver@npm:7.3.6"
   dependencies:
@@ -7970,6 +8007,13 @@ __metadata:
     spdx-correct: ^3.0.0
     spdx-expression-parse: ^3.0.0
   checksum: 35703ac889d419cf2aceef63daeadbe4e77227c39ab6287eeb6c1b36a746b364f50ba22e88591f5d017bc54685d8137bc2d328d0a896e4d3fd22093c0f32a9ad
+  languageName: node
+  linkType: hard
+
+"web-streams-polyfill@npm:^3.0.3":
+  version: 3.2.1
+  resolution: "web-streams-polyfill@npm:3.2.1"
+  checksum: b119c78574b6d65935e35098c2afdcd752b84268e18746606af149e3c424e15621b6f1ff0b42b2676dc012fc4f0d313f964b41a4b5031e525faa03997457da02
   languageName: node
   linkType: hard
 
