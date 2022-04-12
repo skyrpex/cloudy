@@ -1,0 +1,8 @@
+{
+  "name": "@cloudy-ts/string-codec",
+  "version": "0.0.0",
+  "type": "module",
+  "dependencies": {
+    "@cloudy-ts/opaque-type": "workspace:^"
+  }
+}

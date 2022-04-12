@@ -11,16 +11,20 @@ import { Command, HttpHandlerOptions } from "@aws-sdk/types"
 import {
   PutItemCommandInput,
   PutItemCommandOutput,
+  QueryCommandInput,
+  QueryCommandOutput,
   UpdateItemCommandInput,
   UpdateItemCommandOutput,
 } from "./commands/index.js"
 
 export type ServiceInputTypes =
   | PutItemCommandInput
+  | QueryCommandInput
   | UpdateItemCommandInput
   | BaseServiceInputTypes
 export type ServiceOutputTypes =
   | PutItemCommandOutput
+  | QueryCommandOutput
   | UpdateItemCommandOutput
   | BaseServiceOutputTypes
 

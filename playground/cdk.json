@@ -1,8 +1,6 @@
 {
-  "app": "yarn esmo index.ts",
+  "app": "yarn esm-node index.ts",
   "watch": {
-    "include": [
-      "*.ts"
-    ]
+    "include": ["*.ts"]
   }
 }

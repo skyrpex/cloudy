@@ -3,8 +3,6 @@
   "version": "0.0.0",
   "type": "module",
   "sideEffects": false,
-  "main": "./src/index.ts",
-  "module": "./src/index.ts",
   "engines": {
     "node": "^14.13.1 || >=16.0.0"
   },
@@ -13,7 +11,10 @@
     "lint": "eslint --ext ts ."
   },
   "dependencies": {
+    "@aws-sdk/util-dynamodb": "^3.67.0",
+    "@cloudy-ts/json-codec": "workspace:^",
     "@cloudy-ts/opaque-type": "workspace:^",
+    "@cloudy-ts/string-codec": "workspace:^",
     "@pulumi/pulumi": "^3.28.0",
     "esbuild": "^0.14.34",
     "find-up": "^6.3.0",
@@ -26,7 +27,7 @@
   "devDependencies": {
     "@aws-sdk/client-dynamodb": "^3.67.0",
     "aws-cdk-lib": "^2.20.0",
-    "constructs": "^10.0.109",
+    "constructs": "^10.0.110",
     "unbuild": "^0.7.2"
   },
   "files": [

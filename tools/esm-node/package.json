@@ -1,8 +1,12 @@
 {
-  "name": "@cloudy-ts/client-sns",
+  "name": "@cloudy-ts/esm-node",
   "version": "0.0.0",
   "type": "module",
   "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "module": "./src/index.js",
+  "exports": "./src/index.js",
+  "bin": "./bin/esm-node.js",
   "engines": {
     "node": "^14.13.1 || >=16.0.0"
   },
@@ -11,16 +15,13 @@
     "lint": "eslint --ext ts ."
   },
   "dependencies": {
-    "@aws-sdk/client-sns": "^3.67.0",
-    "@aws-sdk/smithy-client": "^3.55.0",
-    "@aws-sdk/types": "^3.55.0",
-    "ts-toolbelt": "^9.6.0"
-  },
-  "peerDependencies": {
-    "@cloudy-ts/cdk": "workspace:^"
+    "cross-spawn": "^7.0.3",
+    "esbuild": "^0.14.34",
+    "node-fetch": "^3.2.3",
+    "semver": "^7.3.6"
   },
   "devDependencies": {
-    "@cloudy-ts/cdk": "workspace:^",
+    "eslint": "^8.13.0",
     "unbuild": "^0.7.2"
   },
   "files": [

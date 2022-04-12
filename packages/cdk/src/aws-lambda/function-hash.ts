@@ -3,7 +3,7 @@ import * as crypto from "node:crypto"
 import { CfnResource, FeatureFlags, Stack } from "aws-cdk-lib"
 import { LAMBDA_RECOGNIZE_VERSION_PROPS } from "aws-cdk-lib/cx-api"
 
-import { Function as LambdaFunction } from "./function.js"
+import { CallbackFunction as LambdaFunction } from "./callback-function.js"
 
 export function calculateFunctionHash(function_: LambdaFunction<any, any>) {
   const stack = Stack.of(function_)
