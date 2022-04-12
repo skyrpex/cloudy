@@ -1155,11 +1155,30 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@cloudy-ts/examples@workspace:examples":
+  version: 0.0.0-use.local
+  resolution: "@cloudy-ts/examples@workspace:examples"
+  dependencies:
+    "@aws-sdk/client-sns": ^3.67.0
+    "@cloudy-ts/cdk": "workspace:^"
+    "@cloudy-ts/client-dynamodb": "workspace:^"
+    "@cloudy-ts/client-sns": "workspace:^"
+    "@cloudy-ts/esm-node": "workspace:^"
+    "@cloudy-ts/opaque-type": "workspace:^"
+    aws-cdk: ^2.20.0
+    aws-cdk-lib: ^2.20.0
+    constructs: ^10.0.112
+    typescript: ^4.6.3
+  languageName: unknown
+  linkType: soft
+
 "@cloudy-ts/json-codec@workspace:^, @cloudy-ts/json-codec@workspace:tools/json-codec":
   version: 0.0.0-use.local
   resolution: "@cloudy-ts/json-codec@workspace:tools/json-codec"
   dependencies:
     "@cloudy-ts/opaque-type": "workspace:^"
+    ava: ^4.2.0
+    esbuild-register: ^3.3.2
     unbuild: ^0.7.2
   languageName: unknown
   linkType: soft
@@ -2338,6 +2357,66 @@ __metadata:
   bin:
     ava: entrypoints/cli.mjs
   checksum: 09ef03da8ef0ec612018252930e8d05565a5ad6079bb144935784dfec81c2625a35ff07c068ebce08eb20e41821466d2895d2b1fd94d867e6f9da8766714557c
+  languageName: node
+  linkType: hard
+
+"ava@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "ava@npm:4.2.0"
+  dependencies:
+    acorn: ^8.7.0
+    acorn-walk: ^8.2.0
+    ansi-styles: ^6.1.0
+    arrgv: ^1.0.2
+    arrify: ^3.0.0
+    callsites: ^4.0.0
+    cbor: ^8.1.0
+    chalk: ^5.0.0
+    chokidar: ^3.5.3
+    chunkd: ^2.0.1
+    ci-info: ^3.3.0
+    ci-parallel-vars: ^1.0.1
+    clean-yaml-object: ^0.1.0
+    cli-truncate: ^3.1.0
+    code-excerpt: ^4.0.0
+    common-path-prefix: ^3.0.0
+    concordance: ^5.0.4
+    currently-unhandled: ^0.4.1
+    debug: ^4.3.3
+    del: ^6.0.0
+    emittery: ^0.10.1
+    figures: ^4.0.0
+    globby: ^13.1.1
+    ignore-by-default: ^2.0.0
+    indent-string: ^5.0.0
+    is-error: ^2.2.2
+    is-plain-object: ^5.0.0
+    is-promise: ^4.0.0
+    matcher: ^5.0.0
+    mem: ^9.0.2
+    ms: ^2.1.3
+    p-event: ^5.0.1
+    p-map: ^5.3.0
+    picomatch: ^2.3.1
+    pkg-conf: ^4.0.0
+    plur: ^5.1.0
+    pretty-ms: ^7.0.1
+    resolve-cwd: ^3.0.0
+    slash: ^3.0.0
+    stack-utils: ^2.0.5
+    strip-ansi: ^7.0.1
+    supertap: ^3.0.1
+    temp-dir: ^2.0.0
+    write-file-atomic: ^4.0.1
+    yargs: ^17.3.1
+  peerDependencies:
+    "@ava/typescript": "*"
+  peerDependenciesMeta:
+    "@ava/typescript":
+      optional: true
+  bin:
+    ava: entrypoints/cli.mjs
+  checksum: dc43f8b775f93f6fe2332de83e0051cdfef63014921fe79a57fc3c2b586d6443981091f7c193131a25b378655449fce9f5080460360a09d258f1697e3bfbb04d
   languageName: node
   linkType: hard
 

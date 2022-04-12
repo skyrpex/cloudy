@@ -17,6 +17,8 @@
     "@cloudy-ts/opaque-type": "workspace:^"
   },
   "devDependencies": {
+    "ava": "^4.2.0",
+    "esbuild-register": "^3.3.2",
     "unbuild": "^0.7.2"
   },
   "ava": {

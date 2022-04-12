@@ -7,7 +7,8 @@
   "workspaces": [
     "packages/*",
     "tools/*",
-    "playground"
+    "playground",
+    "examples"
   ],
   "scripts": {
     "test": "ava",

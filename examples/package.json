@@ -1,0 +1,27 @@
+{
+  "name": "@cloudy-ts/examples",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "tsc --noEmit",
+    "lint": "eslint --ext ts ."
+  },
+  "dependencies": {
+    "@aws-sdk/client-sns": "^3.67.0",
+    "@cloudy-ts/cdk": "workspace:^",
+    "@cloudy-ts/client-dynamodb": "workspace:^",
+    "@cloudy-ts/client-sns": "workspace:^",
+    "@cloudy-ts/esm-node": "workspace:^",
+    "@cloudy-ts/opaque-type": "workspace:^",
+    "aws-cdk": "^2.20.0",
+    "aws-cdk-lib": "^2.20.0",
+    "constructs": "^10.0.112"
+  },
+  "engines": {
+    "node": "^14.13.1 || >=16.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.6.3"
+  }
+}
