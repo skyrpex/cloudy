@@ -1,6 +1,8 @@
 import * as cdk from "aws-cdk-lib"
 import { Construct } from "constructs"
+import { T } from "ts-toolbelt"
 
+import { JsonSerializable, JsonEncoded } from "@cloudy-ts/json-codec"
 import { OpaqueType } from "@cloudy-ts/opaque-type"
 
 import { ITopicSubscription } from "./subscription.js"
@@ -19,24 +21,15 @@ type MessageAttributeType =
       BinaryValue: Uint8Array
     }
 
-export type MessageAttributesType =
-  | {
-      [key: string]: MessageAttributeType
-    }
-  | undefined
-
-export type MessageTypes = {
-  Message: string
-  MessageGroupId?: string
-  MessageDeduplicationId?: string
-  MessageAttributes?: MessageAttributesType
+export interface MessageAttributesBaseType {
+  [key: string]: MessageAttributeType
 }
 
 export type TopicArn<
   Message extends string = string,
   MessageGroupId extends string = string,
   MessageDeduplicationId extends string = string,
-  MessageAttributes extends MessageAttributesType = undefined,
+  MessageAttributes extends MessageAttributesBaseType | undefined = undefined,
   Fifo extends boolean = boolean,
 > = OpaqueType<
   string,
@@ -50,11 +43,46 @@ export type TopicArn<
   }
 >
 
+export class MessageType<T extends string = string> {
+  public static as<T extends string>() {
+    return new MessageType<T>()
+  }
+
+  public static asJson<T extends JsonSerializable>() {
+    return new MessageType<JsonEncoded<T>>()
+  }
+}
+
+export class MessageAttributesType<
+  T extends MessageAttributesBaseType | undefined,
+> {
+  public static as<T extends MessageAttributesBaseType>() {
+    return new MessageAttributesType<T>()
+  }
+}
+
+export interface TopicProperties<
+  Message extends string = string,
+  MessageGroupId extends string = string,
+  MessageDeduplicationId extends string = string,
+  MessageAttributes extends
+    | MessageAttributesBaseType
+    | undefined = MessageAttributesBaseType,
+  Fifo extends boolean = boolean,
+> extends cdk.aws_sns.TopicProps {
+  fifo?: Fifo
+  messageType?: MessageType<Message>
+  messageGroupIdType?: MessageType<MessageGroupId>
+  messageDeduplicationIdType?: MessageType<MessageDeduplicationId>
+  messageAttributesType?: MessageAttributesType<MessageAttributes>
+}
+
 export class Topic<
   Message extends string = string,
   MessageGroupId extends string = string,
   MessageDeduplicationId extends string = string,
-  MessageAttributes extends MessageAttributesType = undefined,
+  // MessageAttributes extends MessageAttributesType = undefined,
+  MessageAttributes extends MessageAttributesBaseType | undefined = undefined,
   Fifo extends boolean = false,
 > extends cdk.aws_sns.Topic {
   public readonly topicArn!: TopicArn<
@@ -68,7 +96,13 @@ export class Topic<
   public constructor(
     scope: Construct,
     id: string,
-    properties?: { fifo: Fifo } & cdk.aws_sns.TopicProps,
+    properties?: TopicProperties<
+      Message,
+      MessageGroupId,
+      MessageDeduplicationId,
+      MessageAttributes,
+      Fifo
+    >,
   ) {
     super(scope, id, {
       topicName: properties?.fifo ? buildFifoName(scope, id) : undefined,
@@ -82,100 +116,6 @@ export class Topic<
   ) {
     return super.addSubscription(subscription)
   }
-
-  public withMessageType<Message extends string>(): Topic<
-    Message,
-    MessageGroupId,
-    MessageDeduplicationId,
-    MessageAttributes,
-    Fifo
-  > {
-    return this as any
-  }
-
-  public withMessageGroupIdType<MessageGroupId extends string>(): Topic<
-    Message,
-    MessageGroupId,
-    MessageDeduplicationId,
-    MessageAttributes,
-    Fifo
-  > {
-    return this as any
-  }
-
-  public withMessageDeduplicationIdType<
-    MessageDeduplicationId extends string,
-  >(): Topic<
-    Message,
-    MessageGroupId,
-    MessageDeduplicationId,
-    MessageAttributes,
-    Fifo
-  > {
-    return this as any
-  }
-
-  /**
-   * Returns a topic that requires the given message attributes.
-   *
-   * @example
-   * ```ts
-   * const topic = new Topic(scope, id).withMessageAttributesType<{
-   *   userId?: {
-   *     DataType: "String"
-   *     StringValue: string,
-   *   },
-   *   age: {
-   *     DataType: "Number"
-   *     StringValue: string,
-   *   },
-   *   somethingBinary: {
-   *     DataType: "Binary"
-   *     BinaryValue: Uint8Array,
-   *   },
-   * }>()
-   * ```
-   */
-  public withMessageAttributesType<
-    MessageAttributes extends MessageAttributesType,
-  >(): Topic<
-    Message,
-    MessageGroupId,
-    MessageDeduplicationId,
-    MessageAttributes,
-    Fifo
-  > {
-    return this as any
-  }
-
-  // /**
-  //  * Returns a topic that requires a message attribute with the given properties.
-  //  *
-  //  * @example
-  //  * ```ts
-  //  * const topic = new Topic(scope, id)
-  //  *   .withMessageAttributeType<"userId", "String">()
-  //  *   .withMessageAttributeType<"age", "Number">()
-  //  * ```
-  //  */
-  // public withMessageAttributeType<
-  //   Name extends string,
-  //   DataType extends MessageAttributeType["DataType"],
-  //   Type extends MessageAttributeValueType<DataType> = MessageAttributeValueType<DataType>,
-  // >(): Topic<
-  //   {
-  //     Message: Message["Message"]
-  //     MessageGroupId: Message["MessageGroupId"]
-  //     MessageDeduplicationId: Message["MessageDeduplicationId"]
-  //     MessageAttributes: Union.Merge<
-  //       Message["MessageAttributes"] &
-  //         Record<Name, MessageAttributeValueType2<DataType, Type>>
-  //     >
-  //   },
-  //   Fifo
-  // > {
-  //   return this as any
-  // }
 }
 
 function buildFifoName(construct: Construct, id: string) {
