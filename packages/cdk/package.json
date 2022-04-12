@@ -15,6 +15,7 @@
     "@cloudy-ts/json-codec": "workspace:^",
     "@cloudy-ts/opaque-type": "workspace:^",
     "@cloudy-ts/string-codec": "workspace:^",
+    "@cloudy-ts/util-dynamodb": "workspace:^",
     "@pulumi/pulumi": "^3.28.0",
     "esbuild": "^0.14.36",
     "find-up": "^6.3.0",

@@ -10,7 +10,7 @@ import { JsonEncoded } from "@cloudy-ts/json-codec"
 import { StringEncoded } from "@cloudy-ts/string-codec"
 
 import { BaseEventSource, IFunction } from "../aws-lambda/index.js"
-import { MessageAttributesType } from "../aws-sns/topic.js"
+import { MessageAttributesBaseType } from "../aws-sns/topic.js"
 import { Queue } from "../aws-sqs/queue.js"
 import { staticTest } from "../static-test.js"
 
@@ -30,7 +30,7 @@ interface SqsEventTypeRaw<
   Message extends string = string,
   MessageGroupId extends string = string,
   MessageDeduplicationId extends string = string,
-  MessageAttributes extends MessageAttributesType = undefined,
+  MessageAttributes extends MessageAttributesBaseType | undefined = undefined,
   Fifo extends boolean = boolean,
   RawMessageDelivery extends boolean = boolean,
 > {

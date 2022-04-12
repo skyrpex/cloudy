@@ -11,12 +11,12 @@ import { Command } from "@aws-sdk/smithy-client"
 import { MiddlewareStack } from "@aws-sdk/types"
 
 import { aws_dynamodb } from "@cloudy-ts/cdk"
-
-import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js"
 import {
   ExpressionAttributeNames,
   ExpressionAttributeValues,
-} from "../expression-attributes.js"
+} from "@cloudy-ts/util-dynamodb"
+
+import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js"
 
 export type QueryCommandInput<
   PartitionKey extends aws_dynamodb.KeyDefinition = aws_dynamodb.KeyDefinition,

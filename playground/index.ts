@@ -1,30 +1,48 @@
 import * as cdk from "aws-cdk-lib"
 
 import * as cloudy from "@cloudy-ts/cdk"
+import { stringEncode } from "@cloudy-ts/cdk"
 import { DynamoDBClient, PutItemCommand } from "@cloudy-ts/client-dynamodb"
 import { SNSClient, PublishCommand } from "@cloudy-ts/client-sns"
+import { OpaqueType } from "@cloudy-ts/opaque-type"
 
 const app = new cdk.App()
 
 const stack = new cdk.Stack(app, "cloudy-playground")
 
-const topic = new cloudy.aws_sns.Topic(stack, "topic")
-  .withMessageType<"Hello" | "World!">()
-  // .withMessageGroupIdType<"b">()
-  // .withMessageDeduplicationIdType<"c">()
-  .withMessageAttributesType<{
+const topic = new cloudy.aws_sns.Topic(stack, "topic", {
+  messageType: cloudy.aws_sns.MessageType.as<"Hello" | "World!">(),
+  messageAttributesType: cloudy.aws_sns.MessageAttributesType.as<{
     userId: {
       DataType: "Number"
       StringValue: string
     }
-  }>()
+  }>(),
+})
+
+type CustomBigInt = OpaqueType<bigint, { readonly t: unique symbol }>
 
 const table = new cloudy.aws_dynamodb.Table(stack, "table", {
   partitionKey: { name: "pk", type: cdk.aws_dynamodb.AttributeType.STRING },
-  accessPatterns: cloudy.aws_dynamodb.AccessPatterns.from<{
-    pk: string
-    text: string
-  }>(),
+  sortKey: { name: "sk", type: cdk.aws_dynamodb.AttributeType.STRING },
+  accessPatterns: cloudy.aws_dynamodb.AccessPatterns.as<
+    | {
+        pk: `user#${string}`
+        sk: "profile"
+        userName: string
+      }
+    | {
+        pk: `user#${string}`
+        sk: "metadata"
+        // age: MyBigInt
+        number: number
+        number2: number
+        bigint: bigint
+        bigint2: bigint
+        CustomBigInt: CustomBigInt
+      }
+  >(),
+  // accessPatterns: cloudy.aws_dynamodb.AccessPatterns.any(),
   billingMode: cdk.aws_dynamodb.BillingMode.PAY_PER_REQUEST,
   removalPolicy: cdk.RemovalPolicy.DESTROY,
 })
@@ -55,8 +73,24 @@ const publishMessage = new cloudy.aws_lambda.CallbackFunction(
         new PutItemCommand({
           TableName: table.tableName,
           Item: {
-            pk: { S: "message_1" },
-            text: { S: "hello world!" },
+            pk: { S: "user#1" },
+            sk: { S: "profile" },
+            userName: { S: "Cristian" },
+          },
+        }),
+      )
+
+      await dynamodb.send(
+        new PutItemCommand({
+          TableName: table.tableName,
+          Item: {
+            pk: { S: "user#1" },
+            sk: { S: "metadata" },
+            number: { N: "1" },
+            number2: { N: stringEncode(1) },
+            bigint: { N: "1" },
+            bigint2: { N: stringEncode(1n) },
+            CustomBigInt: { N: stringEncode(1n as CustomBigInt) },
           },
         }),
       )

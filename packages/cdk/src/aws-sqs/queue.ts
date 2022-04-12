@@ -4,7 +4,7 @@ import { Construct } from "constructs"
 import { JsonEncoded } from "@cloudy-ts/json-codec"
 import { StringEncoded } from "@cloudy-ts/string-codec"
 
-import { MessageAttributesType } from "../aws-sns/topic.js"
+import { MessageAttributesBaseType } from "../aws-sns/topic.js"
 
 export interface QueueProperties<Fifo extends boolean = false>
   extends aws_sqs.QueueProps {
@@ -15,7 +15,7 @@ export class Queue<
   Message extends string = string,
   MessageGroupId extends string = string,
   MessageDeduplicationId extends string = string,
-  MessageAttributes extends MessageAttributesType = undefined,
+  MessageAttributes extends MessageAttributesBaseType | undefined = undefined,
   Fifo extends boolean = boolean,
 > extends aws_sqs.Queue {
   public constructor(

@@ -1,5 +1,5 @@
 {
-  "name": "@cloudy-ts/client-dynamodb",
+  "name": "@cloudy-ts/util-dynamodb",
   "version": "0.0.0",
   "type": "module",
   "sideEffects": false,
@@ -12,19 +12,9 @@
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.67.0",
-    "@aws-sdk/smithy-client": "^3.55.0",
-    "@aws-sdk/types": "^3.55.0",
-    "@aws-sdk/util-dynamodb": "^3.67.0",
-    "@cloudy-ts/opaque-type": "workspace:^",
-    "@cloudy-ts/string-codec": "workspace:^",
-    "@cloudy-ts/util-dynamodb": "workspace:^",
-    "ts-toolbelt": "^9.6.0"
-  },
-  "peerDependencies": {
-    "@cloudy-ts/cdk": "workspace:^"
+    "@cloudy-ts/string-codec": "workspace:^"
   },
   "devDependencies": {
-    "@cloudy-ts/cdk": "workspace:^",
     "unbuild": "^0.7.2"
   },
   "files": [

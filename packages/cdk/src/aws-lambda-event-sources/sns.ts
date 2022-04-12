@@ -43,18 +43,18 @@ export class SnsEventSource<T extends AnyTopic> extends BaseEventSource<
   }
 }
 
-staticTest((scope: Construct, id: string) => {
-  const topic = new Topic(scope, id, {
-    fifo: true,
-  })
-    // .withMessageGroupIdType<"default">()
-    // .withMessageDeduplicationIdType<EventId>()
-    .withMessageType<
-      JsonEncoded<{
-        streamId: string
-        timestamp: number
-      }>
-    >()
+// staticTest((scope: Construct, id: string) => {
+//   const topic = new Topic(scope, id, {
+//     fifo: true,
+//   })
+//     // .withMessageGroupIdType<"default">()
+//     // .withMessageDeduplicationIdType<EventId>()
+//     .withMessageType<
+//       JsonEncoded<{
+//         streamId: string
+//         timestamp: number
+//       }>
+//     >()
 
-  const eventSource = new SnsEventSource(topic)
-})
+//   const eventSource = new SnsEventSource(topic)
+// })

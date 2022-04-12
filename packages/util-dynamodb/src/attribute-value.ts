@@ -1,4 +1,4 @@
-import { OpaqueType } from "@cloudy-ts/opaque-type"
+// import { OpaqueType } from "@cloudy-ts/opaque-type"
 import { StringEncoded } from "@cloudy-ts/string-codec"
 
 export type AttributeValue =
@@ -76,33 +76,33 @@ export type ToAttributeValue<T> = T extends undefined
       [name in keyof T]: ToAttributeValue<T[name]>
     }>
 
-export function isS(a: any): a is S {
-  return a !== undefined && "S" in a
-}
+// export function isS(a: any): a is S {
+//   return a !== undefined && "S" in a
+// }
 
 export interface S<S extends string = string> {
   S: S
 }
 
-export function isB(a: any): a is B {
-  return a !== undefined && "B" in a
-}
+// export function isB(a: any): a is B {
+//   return a !== undefined && "B" in a
+// }
 
 export interface B {
   B: Buffer
 }
 
-export function isBOOL(a: any): a is BOOL {
-  return a !== undefined && "BOOL" in a
-}
+// export function isBOOL(a: any): a is BOOL {
+//   return a !== undefined && "BOOL" in a
+// }
 
 export interface BOOL<B = boolean> {
   BOOL: B
 }
 
-export function isM(a: any): a is M {
-  return a !== undefined && "M" in a
-}
+// export function isM(a: any): a is M {
+//   return a !== undefined && "M" in a
+// }
 
 export interface M<
   M extends Record<string, AttributeValue> = Record<string, AttributeValue>,
@@ -110,32 +110,35 @@ export interface M<
   M: M
 }
 
-export function isN(a: any): a is N {
-  return a !== undefined && "N" in a
-}
+// export function isN(a: any): a is N {
+//   return a !== undefined && "N" in a
+// }
 
 export interface N<N extends number = number> {
-  // N: `${N}`
-  // N: string
-  N: StringEncoded<N>
-}
-export interface NB<N extends bigint = bigint> {
-  // N: `${N}`
-  // N: string
-  N: StringEncoded<N>
+  // If number extends N, it means that N is just a plain number,
+  // so we make it acceptable to pass raw number strings instead
+  // of forcing the user to use the `stringEncode` method.
+  N: number extends N ? `${N}` | StringEncoded<N> : StringEncoded<N>
 }
 
-export function isNULL(a: any): a is NULL {
-  return a !== undefined && "NULL" in a
+export interface NB<N extends bigint = bigint> {
+  // If bigint extends N, it means that N is just a plain bigint,
+  // so we make it acceptable to pass raw bigint strings instead
+  // of forcing the user to use the `stringEncode` method.
+  N: bigint extends N ? `${N}` | StringEncoded<N> : StringEncoded<N>
 }
+
+// export function isNULL(a: any): a is NULL {
+//   return a !== undefined && "NULL" in a
+// }
 
 export interface NULL {
   NULL: boolean
 }
 
-export function isL(a: any): a is L {
-  return a !== undefined && "L" in a
-}
+// export function isL(a: any): a is L {
+//   return a !== undefined && "L" in a
+// }
 
 export interface L<
   L extends ArrayLike<AttributeValue> = ArrayLike<AttributeValue>,

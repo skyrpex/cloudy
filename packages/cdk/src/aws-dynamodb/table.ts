@@ -279,6 +279,11 @@ export const AccessPatterns = {
   // array: arrayType,
   // object: objectType,
   from: accessPatternsFrom,
+  as: accessPatternsFrom,
+  // asAny() {
+  //   // return undefined as unknown as DynamodbMap
+  //   return "any" as const
+  // },
   any() {
     // return undefined as unknown as DynamodbMap
     return "any" as const
@@ -482,3 +487,41 @@ staticTest((scope: Construct, id: string) => {
 // >
 //   ? TableName<I, P>
 //   : never
+
+// staticTest((scope: Construct, id: string) => {
+//   type AccessPatternsFromTable<T extends Table<any, any, any, any>> = T extends Table<any, any, infer AccessPatterns, any> ? AccessPatterns : never
+
+//   // interface Input<T extends Table<any, any, any, any>> {
+//   //   TableName: T["tableName"]
+//   //   // Item: T["accessPatterns"]
+//   //   Item: AccessPatternsFromTable<T>
+//   // }
+
+//   type Input<T extends Table<any, any, any, any>> = T extends Table<infer PartitionKey, infer SortKey, infer AccessPatterns, infer StreamViewType> ? {
+//     TableName: TableName<PartitionKey, SortKey, AccessPatterns, StreamViewType>
+//     // Item: T["accessPatterns"]
+//     Item: AccessPatternsFromTable<T>
+//   } : never
+
+//   class Command<T extends Table<any, any, any, any>> {
+//     constructor(input: Function.Narrow<Input<T>>) {}
+//   }
+
+//   const table = new Table(scope, id, {
+//     partitionKey: {
+//       name: "pk",
+//       type: AttributeType.STRING,
+//     },
+//     accessPatterns: AccessPatterns.as<{
+//       pk: string
+//       // text: string
+//     }>()
+//   })
+
+//   new Command({
+//     TableName: table.tableName,
+//     Item: {
+
+//     }
+//   })
+// })

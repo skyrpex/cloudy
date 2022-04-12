@@ -8,13 +8,13 @@ import { Command } from "@aws-sdk/smithy-client"
 import { MiddlewareStack } from "@aws-sdk/types"
 
 import { aws_dynamodb } from "@cloudy-ts/cdk"
-
-import { ToAttributeMap } from "../attribute-value.js"
-import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js"
 import {
   ExpressionAttributeNames,
   ExpressionAttributeValues,
-} from "../expression-attributes.js"
+  ToAttributeMap,
+} from "@cloudy-ts/util-dynamodb"
+
+import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js"
 
 // type TableItem<T extends aws_dynamodb.TableName<any, any>> = T extends aws_dynamodb.TableName<infer Item, any> ? Item : never
 

@@ -6,7 +6,8 @@ import {
 import { Construct } from "constructs"
 import { Union } from "ts-toolbelt"
 
-import { ToAttributeMap } from "../aws-dynamodb/attribute-value.js"
+import { ToAttributeMap } from "@cloudy-ts/util-dynamodb"
+
 import {
   AccessPatterns,
   AttributeType,
