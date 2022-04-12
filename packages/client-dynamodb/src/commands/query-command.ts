@@ -10,12 +10,7 @@ import {
 import { Command } from "@aws-sdk/smithy-client"
 import { MiddlewareStack } from "@aws-sdk/types"
 
-import {
-  AccessPattern,
-  AttributeFromKeyDefinition,
-  KeyDefinition,
-  TableName,
-} from "@cloudy-ts/cdk"
+import { aws_dynamodb } from "@cloudy-ts/cdk"
 
 import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js"
 import {
@@ -24,14 +19,17 @@ import {
 } from "../expression-attributes.js"
 
 export type QueryCommandInput<
-  PartitionKey extends KeyDefinition,
-  SortKey extends KeyDefinition | undefined,
-  AccessPatterns extends AccessPattern<PartitionKey, SortKey>,
+  PartitionKey extends aws_dynamodb.KeyDefinition = aws_dynamodb.KeyDefinition,
+  SortKey extends aws_dynamodb.KeyDefinition | undefined = undefined,
+  AccessPatterns extends aws_dynamodb.AccessPattern<
+    PartitionKey,
+    SortKey
+  > = aws_dynamodb.AccessPattern<PartitionKey, SortKey>,
   FilterExpression extends string = string,
   KeyConditionExpression extends string = string,
   ProjectionExpression extends string = string,
 > = BaseCommandInput & {
-  TableName: TableName<PartitionKey, SortKey, AccessPatterns, any>
+  TableName: aws_dynamodb.TableName<PartitionKey, SortKey, AccessPatterns, any>
 
   FilterExpression?: FilterExpression
   KeyConditionExpression?: KeyConditionExpression
@@ -56,9 +54,9 @@ export type QueryCommandInput<
 export interface QueryCommandOutput extends BaseCommandOutput {}
 
 export class QueryCommand<
-  PartitionKey extends KeyDefinition,
-  SortKey extends KeyDefinition | undefined,
-  AccessPatterns extends AccessPattern<PartitionKey, SortKey>,
+  PartitionKey extends aws_dynamodb.KeyDefinition,
+  SortKey extends aws_dynamodb.KeyDefinition | undefined,
+  AccessPatterns extends aws_dynamodb.AccessPattern<PartitionKey, SortKey>,
   FilterExpression extends string = string,
   KeyConditionExpression extends string = string,
   ProjectionExpression extends string = string,

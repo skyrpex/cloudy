@@ -10,16 +10,19 @@ import {
 import { Command } from "@aws-sdk/smithy-client"
 import { MiddlewareStack } from "@aws-sdk/types"
 
-import { AccessPattern, KeyDefinition, TableName } from "@cloudy-ts/cdk"
+import { aws_dynamodb } from "@cloudy-ts/cdk"
 
 import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js"
 
 export type PutItemCommandInput<
-  PartitionKey extends KeyDefinition,
-  SortKey extends KeyDefinition | undefined,
-  AccessPatterns extends AccessPattern<PartitionKey, SortKey>,
+  PartitionKey extends aws_dynamodb.KeyDefinition = aws_dynamodb.KeyDefinition,
+  SortKey extends aws_dynamodb.KeyDefinition | undefined = undefined,
+  AccessPatterns extends aws_dynamodb.AccessPattern<
+    PartitionKey,
+    SortKey
+  > = aws_dynamodb.AccessPattern<PartitionKey, SortKey>,
 > = BaseCommandInput & {
-  TableName: TableName<PartitionKey, SortKey, AccessPatterns, any>
+  TableName: aws_dynamodb.TableName<PartitionKey, SortKey, AccessPatterns, any>
   Item: AccessPatterns
   // ReturnConsumedCapacity?: ReturnConsumedCapacity
   // ReturnItemCollectionMetrics?: ReturnItemCollectionMetrics
@@ -125,9 +128,9 @@ export interface PutItemCommandOutput extends BaseCommandOutput {}
  *
  */
 export class PutItemCommand<
-  PartitionKey extends KeyDefinition,
-  SortKey extends KeyDefinition | undefined,
-  AccessPatterns extends AccessPattern<PartitionKey, SortKey>,
+  PartitionKey extends aws_dynamodb.KeyDefinition,
+  SortKey extends aws_dynamodb.KeyDefinition | undefined,
+  AccessPatterns extends aws_dynamodb.AccessPattern<PartitionKey, SortKey>,
 > implements
     Command<BaseCommandInput, BaseCommandOutput, DynamoDBClientResolvedConfig>
 {

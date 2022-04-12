@@ -18,13 +18,17 @@ import {
 // type TableItem<T extends aws_dynamodb.TableName<any, any>> = T extends aws_dynamodb.TableName<infer Item, any> ? Item : never
 
 export type UpdateItemCommandInput<
-  Item extends aws_dynamodb.DynamodbItem = aws_dynamodb.DynamodbItem,
-  Properties extends aws_dynamodb.StaticProperties = aws_dynamodb.StaticProperties,
+  PartitionKey extends aws_dynamodb.KeyDefinition = aws_dynamodb.KeyDefinition,
+  SortKey extends aws_dynamodb.KeyDefinition | undefined = undefined,
+  AccessPatterns extends aws_dynamodb.AccessPattern<
+    PartitionKey,
+    SortKey
+  > = aws_dynamodb.AccessPattern<PartitionKey, SortKey>,
   UpdateExpression extends string = string,
   ConditionExpression extends string = string,
 > = BaseCommandInput & {
-  TableName: aws_dynamodb.TableName<Item, Properties>
-  Key: aws_dynamodb.TableKeys<aws_dynamodb.Table<Item, Properties>>
+  TableName: aws_dynamodb.TableName<PartitionKey, SortKey, AccessPatterns, any>
+  Key: aws_dynamodb.AccessPattern<PartitionKey, SortKey>
   UpdateExpression: UpdateExpression
   ConditionExpression: ConditionExpression
   // Item: Item
@@ -42,8 +46,9 @@ export type UpdateItemCommandInput<
 export interface UpdateItemCommandOutput extends BaseCommandOutput {}
 
 export class UpdateItemCommand<
-  Item extends aws_dynamodb.DynamodbItem,
-  Properties extends aws_dynamodb.StaticProperties,
+  PartitionKey extends aws_dynamodb.KeyDefinition,
+  SortKey extends aws_dynamodb.KeyDefinition | undefined,
+  AccessPatterns extends aws_dynamodb.AccessPattern<PartitionKey, SortKey>,
   UpdateExpression extends string,
   ConditionExpression extends string,
 > implements
@@ -53,8 +58,9 @@ export class UpdateItemCommand<
 
   constructor(
     readonly input: UpdateItemCommandInput<
-      Item,
-      Properties,
+      PartitionKey,
+      SortKey,
+      AccessPatterns,
       UpdateExpression,
       ConditionExpression
     >,
