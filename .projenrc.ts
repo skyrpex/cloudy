@@ -13,7 +13,7 @@ const project = new DefaultNodeProject({
   devDeps: [
     "@commitlint/cli",
     "@commitlint/config-conventional",
-    "esbuild",
+    // "esbuild",
     "husky",
     "lint-staged",
   ],
