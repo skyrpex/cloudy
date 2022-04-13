@@ -8,7 +8,8 @@ import { WorkspaceProject } from "./.projenrc.workspace-project.js"
 const project = new DefaultNodeProject({
   name: "@cloudy-ts/monorepo",
   defaultReleaseBranch: "main",
-  packageManager: NodePackageManager.YARN,
+  // packageManager: NodePackageManager.YARN,
+  packageManager: NodePackageManager.PNPM,
   devDeps: [
     "@commitlint/cli",
     "@commitlint/config-conventional",
