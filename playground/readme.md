@@ -3,5 +3,5 @@
 Deploy the CDK application:
 
 ```sh
-yarn cdk deploy
+pnpm cdk deploy
 ```

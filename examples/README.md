@@ -4,10 +4,10 @@
 
 ```sh
 # Deploy example 1:
-yarn cdk deploy --app "esm-node src/1-hello-world/index.ts"
+pnpm cdk deploy --app "esm-node src/1-hello-world/index.ts"
 
 # Deploy example 2:
-yarn cdk deploy --app "esm-node src/2-publish-to-topic/index.ts"
+pnpm cdk deploy --app "esm-node src/2-publish-to-topic/index.ts"
 
 # And so on...
 ```

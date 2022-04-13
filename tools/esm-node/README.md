@@ -11,7 +11,7 @@ The main reason to do this fork is that esno will generate helpers that break Pu
 ## Usage
 
 ```sh
-yarn esm-node index.ts
+pnpm esm-node index.ts
 ```
 
 Or manually:
