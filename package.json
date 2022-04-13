@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@cloudy-ts/eslint-plugin": "workspace:^",
+    "@cloudy-ts/esm-node": "workspace:^",
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
     "@tsconfig/node14": "^1.0.1",
