@@ -42,6 +42,9 @@ export class DefaultNodeProject extends NodeProject {
       ...options,
     })
 
+    this.package.addField("type", "module")
+    this.package.addField("sideEffects", false)
+
     this.prettier?.ignoreFile?.addPatterns("node_modules/")
 
     this.eslint = new Eslint(this, {

@@ -10,7 +10,7 @@ const isWindows = process.platform === "win32"
 const httpRegex = /^https?:\/\//
 const extensionsRegex = /\.m?(tsx?|json)$/
 
-async function esbuildResolve(id, directory) {
+async function esbuildResolve(id: string, directory: string) {
   let result
 
   await build({
@@ -39,7 +39,12 @@ async function esbuildResolve(id, directory) {
   return result
 }
 
-function esbuildTransformSync(rawSource, filename, url, format) {
+function esbuildTransformSync(
+  rawSource: string,
+  filename: string,
+  url: string,
+  format: string,
+) {
   const {
     code: js,
     warnings,
@@ -47,7 +52,7 @@ function esbuildTransformSync(rawSource, filename, url, format) {
   } = transformSync(rawSource.toString(), {
     sourcefile: filename,
     sourcemap: "both",
-    loader: new URL(url).pathname.match(extensionsRegex)[1],
+    // loader: new URL(url).pathname.match(extensionsRegex)?.[1],
     // target: `node${process.versions.node}`,
     target: `es2020`,
     format: format === "module" ? "esm" : "cjs",
@@ -63,7 +68,7 @@ function esbuildTransformSync(rawSource, filename, url, format) {
   return { js, jsSourceMap }
 }
 
-function getTsCompatSpecifier(parentURL, specifier) {
+function getTsCompatSpecifier(parentURL: string, specifier: string) {
   let tsSpecifier
   let search
 
@@ -94,7 +99,7 @@ function isValidURL(s) {
   }
 }
 
-async function resolveBase(specifier, context, defaultResolve) {
+async function resolveBase(specifier: string, context, defaultResolve) {
   const { parentURL } = context
 
   if (httpRegex.test(specifier) || httpRegex.test(parentURL)) {
@@ -140,7 +145,7 @@ async function resolveBase(specifier, context, defaultResolve) {
   return defaultResolve(specifier, context, defaultResolve)
 }
 
-async function loadBase(url, context, defaultLoad) {
+async function loadBase(url: string, context, defaultLoad) {
   if (httpRegex.test(url)) {
     return {
       format: "module",
@@ -167,7 +172,7 @@ async function loadBase(url, context, defaultLoad) {
   return defaultLoad(url, context, defaultLoad)
 }
 
-function getFormatBase(url, context, defaultGetFormat) {
+function getFormatBase(url: string, context, defaultGetFormat) {
   if (httpRegex.test(url)) {
     return {
       format: "module",
@@ -184,7 +189,11 @@ function getFormatBase(url, context, defaultGetFormat) {
   return defaultGetFormat(url, context, defaultGetFormat)
 }
 
-async function transformSourceBase(source, context, defaultTransformSource) {
+async function transformSourceBase(
+  source: string,
+  context,
+  defaultTransformSource,
+) {
   const { url, format } = context
 
   if (httpRegex.test(url)) {
@@ -209,7 +218,7 @@ async function transformSourceBase(source, context, defaultTransformSource) {
   return defaultTransformSource(source, context, defaultTransformSource)
 }
 
-async function getSourceBase(url, context, defaultGetSource) {
+async function getSourceBase(url: string, context, defaultGetSource) {
   if (httpRegex.test(url)) {
     return {
       source: await fetchNetworkModule(url),
@@ -221,7 +230,7 @@ async function getSourceBase(url, context, defaultGetSource) {
 
 const networkModuleCache = new Map()
 
-function fetchNetworkModule(url) {
+function fetchNetworkModule(url: string) {
   if (!networkModuleCache.has(url)) {
     const promise = (async () => {
       const _fetch =
