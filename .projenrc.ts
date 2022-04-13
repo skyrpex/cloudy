@@ -9,7 +9,6 @@ const project = new DefaultNodeProject({
   name: "@cloudy-ts/monorepo",
   defaultReleaseBranch: "main",
   packageManager: NodePackageManager.YARN,
-  // projenCommand: "projen",
   devDeps: [
     "@commitlint/cli",
     "@commitlint/config-conventional",
@@ -37,7 +36,7 @@ project.eslint.ignoreFile.addPatterns("cdk.out/", "dist/")
 
 // Setup Turborepo.
 new Turborepo(project, {
-  additionalWorkspaces: ["packages/*", "tools/*", "cloudy/**/*", "playground"],
+  additionalWorkspaces: ["packages/*", "tools/*", "playground"],
   pipeline: {
     release: {
       dependsOn: ["^release"],

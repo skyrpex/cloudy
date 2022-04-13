@@ -1,5 +1,6 @@
 {
   "files": [
+    ".editorconfig",
     ".eslintignore",
     ".eslintrc.json",
     ".gitattributes",

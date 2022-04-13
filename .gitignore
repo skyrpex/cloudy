@@ -34,6 +34,7 @@ jspm_packages/
 !/.prettierrc.json
 !/.eslintignore
 !/.eslintrc.json
+!/.editorconfig
 cdk.out/
 dist/
 .turbo/
