@@ -1,3 +1,4 @@
+import { execSync } from "node:child_process"
 import path from "node:path"
 
 import { Component, JsonFile, Project, YamlFile } from "projen"
@@ -68,6 +69,21 @@ export class Turborepo extends Component {
   }
 
   preSynthesize(): void {
+    if (this.nodeProject.package.packageManager === NodePackageManager.YARN) {
+      if (execSync("yarn -v").toString().startsWith("1.")) {
+        // Do nothing on Yarn 1.
+      } else {
+        // Stop using `yarn --check-files`, which doesn't work on Yarn 2/3.
+        Object.assign(this.nodeProject.package, {
+          renderInstallCommand(frozen: boolean) {
+            return `yarn install ${
+              frozen ? "--immutable --immutable-cache" : ""
+            }`
+          },
+        })
+      }
+    }
+
     // // Avoid installing dependencies on the subprojects.
     // for (const workspaceProject of this.workspaceProjects) {
     //   Object.assign(workspaceProject, {
@@ -79,7 +95,7 @@ export class Turborepo extends Component {
     //     },
     //   })
     // }
-    const workspaces: string[] = this.options.additionalWorkspaces ?? []
+    const workspaces: string[] = this.options?.additionalWorkspaces ?? []
     for (const workspaceProject of this.workspaceProjects) {
       const workspace = path.relative(
         this.project.outdir,

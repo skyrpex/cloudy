@@ -1,72 +1,15 @@
-import {
-  NodePackageManager,
-  NodeProject,
-  NodeProjectOptions,
-  TrailingComma,
-} from "projen/lib/javascript"
+import { NodePackageManager } from "projen/lib/javascript"
 
-import { Eslint } from "./.projenrc.eslint.js"
+import { DefaultNodeProject } from "./.projenrc.default-node-project.js"
 import { Turborepo } from "./.projenrc.turborepo.js"
 import { TypeScript } from "./.projenrc.typescript.js"
 import { WorkspaceProject } from "./.projenrc.workspace-project.js"
 
-class MyProject extends NodeProject {
-  constructor(options: NodeProjectOptions) {
-    super({
-      jest: false,
-      buildWorkflow: false,
-      depsUpgrade: false,
-      entrypoint: "",
-      github: false,
-      package: false,
-      prettier: true,
-      prettierOptions: {
-        settings: {
-          tabWidth: 2,
-          trailingComma: TrailingComma.ALL,
-          semi: false,
-        },
-      },
-      projenrcJs: false,
-      publishDryRun: true,
-      publishTasks: false,
-      release: false,
-      stale: false,
-      // vscode: false,
-      ...options,
-    })
-
-    this.gitignore.exclude("dist/", "cdk.out/")
-    this.prettier?.ignoreFile?.addPatterns("node_modules/", "cdk.out/", "dist/")
-
-    // this.addDevDeps("@cloudy-ts/eslint-plugin", "eslint-plugin-unicorn")
-    const eslint = new Eslint(this, {
-      pathGroups: [
-        {
-          pattern: "@cloudy-ts/**",
-          group: "external",
-          position: "after",
-        },
-      ],
-      devFiles: [".projenrc*.ts", "**/*.test.ts"],
-    })
-
-    this.addDevDeps("@cloudy-ts/eslint-plugin")
-    eslint.addPlugins("@cloudy-ts")
-    eslint.addRules({
-      "@cloudy-ts/extensions": ["error", "ignorePackages", { ".ts": "never" }],
-    })
-    eslint.ignoreFile.addPatterns("cdk.out/", "dist/")
-
-    this.addDevDeps("@cloudy-ts/esm-node")
-    this.defaultTask?.exec(`esm-node .projenrc.ts`)
-  }
-}
-
-const project = new MyProject({
+const project = new DefaultNodeProject({
   name: "@cloudy-ts/monorepo",
   defaultReleaseBranch: "main",
   packageManager: NodePackageManager.YARN,
+  // projenCommand: "projen",
   devDeps: [
     "@commitlint/cli",
     "@commitlint/config-conventional",
@@ -76,6 +19,23 @@ const project = new MyProject({
   ],
 })
 
+// Use esm-node to run projen.
+project.addDevDeps("@cloudy-ts/esm-node")
+project.defaultTask?.exec(`esm-node .projenrc.ts`)
+
+// Use Cloudy's ESLint plugin.
+project.addDevDeps("@cloudy-ts/eslint-plugin")
+project.eslint.addPlugins("@cloudy-ts")
+project.eslint.addRules({
+  "@cloudy-ts/extensions": ["error", "ignorePackages", { ".ts": "never" }],
+})
+
+// Ignore CDK and build outputs.
+project.gitignore.exclude("cdk.out/", "dist/")
+project.prettier?.ignoreFile?.addPatterns("cdk.out/", "dist/")
+project.eslint.ignoreFile.addPatterns("cdk.out/", "dist/")
+
+// Setup Turborepo.
 new Turborepo(project, {
   additionalWorkspaces: ["packages/*", "tools/*", "cloudy/**/*", "playground"],
   pipeline: {
@@ -98,25 +58,25 @@ new Turborepo(project, {
   },
 })
 
+// Setup TypeScript.
 new TypeScript(project, {
   tsconfig: {
     paths: {
-      "@chronosource-ts/*": ["./packages/*", "./tools/*"],
-      "@cloudy-ts/*": ["./cloudy/packages/*", "./cloudy/tools/*"],
+      "@cloudy-ts/*": ["./packages/*", "./tools/*"],
     },
   },
 })
 
-new WorkspaceProject(project, {
-  name: "@chronosource-ts/test-1",
-  outdir: "tools/test-1",
-  deps: [],
-})
+// new WorkspaceProject(project, {
+//   name: "@chronosource-ts/test-1",
+//   outdir: "tools/test-1",
+//   deps: [],
+// })
 
-new WorkspaceProject(project, {
-  name: "@chronosource-ts/test-2",
-  outdir: "tools/test-2",
-  deps: [],
-})
+// new WorkspaceProject(project, {
+//   name: "@chronosource-ts/test-2",
+//   outdir: "tools/test-2",
+//   deps: [],
+// })
 
 project.synth()

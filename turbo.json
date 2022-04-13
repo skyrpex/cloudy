@@ -3,19 +3,31 @@
   "baseBranch": "origin/main",
   "pipeline": {
     "release": {
-      "dependsOn": ["^release"],
-      "outputs": ["dist/**"]
+      "dependsOn": [
+        "^release"
+      ],
+      "outputs": [
+        "dist/**"
+      ]
     },
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**"]
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "dist/**"
+      ]
     },
     "test": {
-      "dependsOn": ["@cloudy-ts/esm-node#build"],
+      "dependsOn": [
+        "@cloudy-ts/esm-node#build"
+      ],
       "outputs": []
     },
     "lint": {
-      "dependsOn": ["@cloudy-ts/eslint-plugin#build"],
+      "dependsOn": [
+        "@cloudy-ts/eslint-plugin#build"
+      ],
       "outputs": []
     }
   }

@@ -14,12 +14,18 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:import/recommended",
     "plugin:import/typescript",
-    "prettier"
+    "prettier",
+    "plugin:prettier/recommended"
   ],
-  "plugins": ["@cloudy-ts"],
+  "plugins": [
+    "prettier",
+    "@cloudy-ts"
+  ],
   "settings": {
     "import/parsers": {
-      "@typescript-eslint/parser": [".ts"]
+      "@typescript-eslint/parser": [
+        ".ts"
+      ]
     },
     "import/resolver": {
       "typescript": {
@@ -28,12 +34,20 @@
     }
   },
   "rules": {
-    "@typescript-eslint/no-empty-interface": 0,
-    "@typescript-eslint/no-empty-function": 0,
-    "@typescript-eslint/ban-types": 0,
-    "@cloudy-ts/extensions": ["error", "ignorePackages", { ".ts": "never" }],
+    "prettier/prettier": [
+      "error"
+    ],
+    "@typescript-eslint/no-empty-interface": [
+      "off"
+    ],
+    "@typescript-eslint/no-empty-function": [
+      "off"
+    ],
+    "@typescript-eslint/ban-types": [
+      "off"
+    ],
     "import/order": [
-      "error",
+      "warn",
       {
         "newlines-between": "always",
         "pathGroups": [
@@ -43,11 +57,33 @@
             "position": "after"
           }
         ],
-        "pathGroupsExcludedImportTypes": ["builtin"],
+        "pathGroupsExcludedImportTypes": [
+          "builtin"
+        ],
+        "groups": [
+          "builtin",
+          "external"
+        ],
         "alphabetize": {
           "order": "asc",
-          "caseInsensitive": false
+          "caseInsensitive": true
         }
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          ".projenrc*.ts",
+          "**/*.test.ts"
+        ]
+      }
+    ],
+    "@cloudy-ts/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        ".ts": "never"
       }
     ]
   }
