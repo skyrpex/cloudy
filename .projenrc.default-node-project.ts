@@ -20,11 +20,11 @@ export class DefaultNodeProject extends NodeProject {
   constructor(options: DefaultNodeProjectOptions) {
     super({
       jest: false,
-      buildWorkflow: false,
-      depsUpgrade: false,
+      // buildWorkflow: false,
+      // depsUpgrade: false,
       entrypoint: "",
-      github: false,
-      package: false,
+      // github: false,
+      // package: false,
       prettier: true,
       prettierOptions: {
         settings: {
@@ -34,11 +34,11 @@ export class DefaultNodeProject extends NodeProject {
         },
       },
       projenrcJs: false,
-      publishDryRun: true,
-      publishTasks: false,
-      release: false,
-      stale: false,
-      vscode: false,
+      // publishDryRun: true,
+      // publishTasks: false,
+      // release: false,
+      // stale: false,
+      // vscode: false,
       ...options,
     })
 

@@ -1,7 +1,7 @@
+import { JsonFile } from "projen"
 import { NodePackageManager } from "projen/lib/javascript"
 
 import { DefaultNodeProject } from "./.projenrc.default-node-project.js"
-import { Eslint } from "./.projenrc.eslint.js"
 import { Turborepo } from "./.projenrc.turborepo.js"
 import { TypeScript } from "./.projenrc.typescript.js"
 import { WorkspaceProject } from "./.projenrc.workspace-project.js"
@@ -9,21 +9,13 @@ import { WorkspaceProject } from "./.projenrc.workspace-project.js"
 const project = new DefaultNodeProject({
   name: "@cloudy-ts/monorepo",
   defaultReleaseBranch: "main",
-  // packageManager: NodePackageManager.YARN,
   packageManager: NodePackageManager.PNPM,
   eslint: {
     devFiles: [".projenrc*.ts", "**/build.config.ts", "**/*.test.ts"],
   },
-  devDeps: [
-    "@commitlint/cli",
-    "@commitlint/config-conventional",
-    // "esbuild",
-    "husky",
-    "lint-staged",
-  ],
 })
 
-// Use esm-node to run projen.
+// Use Cloudy's esm-node to run projen.
 project.addDevDeps("@cloudy-ts/esm-node")
 project.defaultTask?.exec(`esm-node .projenrc.ts`)
 
@@ -34,10 +26,29 @@ project.eslint.addRules({
   "@cloudy-ts/extensions": ["error", "ignorePackages", { ".ts": "never" }],
 })
 
-// Ignore CDK and build outputs.
+// Ignore CDK and unbuild outputs.
 project.gitignore.exclude("cdk.out/", "dist/")
 project.prettier?.ignoreFile?.addPatterns("cdk.out/", "dist/")
 project.eslint.ignoreFile.addPatterns("cdk.out/", "dist/")
+
+// Setup commitlint.
+project.addDevDeps("@commitlint/cli", "@commitlint/config-conventional")
+new JsonFile(project, ".commitlintrc.json", {
+  obj: {
+    extends: ["@commitlint/config-conventional"],
+  },
+})
+
+// Setup lint-staged.
+project.addDevDeps("lint-staged")
+new JsonFile(project, ".lintstagedrc.json", {
+  obj: {
+    "*.{js,mjs,cjs,ts,mts,cts}": ["eslint --fix", "prettier --write"],
+  },
+})
+
+// Setup husky.
+project.addDevDeps("husky")
 
 // Setup Turborepo.
 new Turborepo(project, {
