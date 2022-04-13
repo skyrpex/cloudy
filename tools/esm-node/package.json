@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "eslint": "^8.13.0",
-    "unbuild": "^0.7.2"
+    "unbuild": "^0.7.4"
   },
   "files": [
     "bin",
