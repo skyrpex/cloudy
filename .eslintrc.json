@@ -75,6 +75,7 @@
       {
         "devDependencies": [
           ".projenrc*.ts",
+          "**/build.config.ts",
           "**/*.test.ts"
         ]
       }

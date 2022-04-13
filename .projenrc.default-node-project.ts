@@ -8,10 +8,16 @@ import {
 
 import { Eslint } from "./.projenrc.eslint.js"
 
+interface DefaultNodeProjectOptions extends NodeProjectOptions {
+  eslint?: {
+    devFiles?: string[]
+  }
+}
+
 export class DefaultNodeProject extends NodeProject {
   public readonly eslint: Eslint
 
-  constructor(options: NodeProjectOptions) {
+  constructor(options: DefaultNodeProjectOptions) {
     super({
       jest: false,
       buildWorkflow: false,
@@ -48,7 +54,7 @@ export class DefaultNodeProject extends NodeProject {
             },
           ]
         : [],
-      devFiles: [".projenrc*.ts", "**/*.test.ts"],
+      devFiles: options.eslint?.devFiles ?? [".projenrc*.ts", "**/*.test.ts"],
     })
 
     new TextFile(this, ".editorconfig", {

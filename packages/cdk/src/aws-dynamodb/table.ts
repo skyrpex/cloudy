@@ -12,6 +12,7 @@ import { OpaqueType } from "@cloudy-ts/opaque-type"
 
 import { staticTest } from "../static-test.js"
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 export { AttributeValue } from "@aws-sdk/client-dynamodb"
 export {
   AttributeType,
@@ -238,7 +239,7 @@ export class Table<
    *
    * @attribute
    */
-  public readonly tableName!: TableName<
+  public declare readonly tableName: TableName<
     PartitionKey,
     SortKey,
     AccessPatterns,

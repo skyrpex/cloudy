@@ -1,6 +1,7 @@
 import { NodePackageManager } from "projen/lib/javascript"
 
 import { DefaultNodeProject } from "./.projenrc.default-node-project.js"
+import { Eslint } from "./.projenrc.eslint.js"
 import { Turborepo } from "./.projenrc.turborepo.js"
 import { TypeScript } from "./.projenrc.typescript.js"
 import { WorkspaceProject } from "./.projenrc.workspace-project.js"
@@ -10,6 +11,9 @@ const project = new DefaultNodeProject({
   defaultReleaseBranch: "main",
   // packageManager: NodePackageManager.YARN,
   packageManager: NodePackageManager.PNPM,
+  eslint: {
+    devFiles: [".projenrc*.ts", "**/build.config.ts", "**/*.test.ts"],
+  },
   devDeps: [
     "@commitlint/cli",
     "@commitlint/config-conventional",

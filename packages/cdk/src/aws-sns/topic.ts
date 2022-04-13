@@ -85,7 +85,7 @@ export class Topic<
   MessageAttributes extends MessageAttributesBaseType | undefined = undefined,
   Fifo extends boolean = false,
 > extends cdk.aws_sns.Topic {
-  public readonly topicArn!: TopicArn<
+  public declare readonly topicArn: TopicArn<
     Message,
     MessageGroupId,
     MessageDeduplicationId,
