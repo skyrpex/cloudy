@@ -4,8 +4,13 @@
   "type": "module",
   "sideEffects": false,
   "main": "./dist/index.cjs",
-  "module": "./src/index.js",
-  "exports": "./src/index.js",
+  "module": "./dist/index.mjs",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
   "bin": "./bin/esm-node.js",
   "engines": {
     "node": "^14.13.1 || >=16.0.0"
@@ -25,18 +30,7 @@
     "unbuild": "^0.7.2"
   },
   "files": [
+    "bin",
     "dist"
-  ],
-  "publishConfig": {
-    "main": "./dist/index.cjs",
-    "module": "./dist/index.mjs",
-    "types": "./dist/index.d.ts",
-    "exports": {
-      ".": {
-        "require": "./dist/index.cjs",
-        "import": "./dist/index.mjs",
-        "types": "./dist/index.d.ts"
-      }
-    }
-  }
+  ]
 }

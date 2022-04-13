@@ -1176,9 +1176,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@cloudy-ts/json-codec@workspace:tools/json-codec"
   dependencies:
+    "@cloudy-ts/esm-node": "workspace:^"
     "@cloudy-ts/opaque-type": "workspace:^"
     ava: ^4.2.0
-    esbuild-register: ^3.3.2
     unbuild: ^0.7.2
   languageName: unknown
   linkType: soft

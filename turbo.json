@@ -11,7 +11,7 @@
       "outputs": ["dist/**"]
     },
     "test": {
-      "dependsOn": [],
+      "dependsOn": ["@cloudy-ts/esm-node#build"],
       "outputs": []
     },
     "lint": {

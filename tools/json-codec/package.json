@@ -17,16 +17,16 @@
     "@cloudy-ts/opaque-type": "workspace:^"
   },
   "devDependencies": {
+    "@cloudy-ts/esm-node": "workspace:^",
     "ava": "^4.2.0",
-    "esbuild-register": "^3.3.2",
     "unbuild": "^0.7.2"
   },
   "ava": {
-    "extensions": [
-      "ts"
-    ],
-    "require": [
-      "esbuild-register"
+    "extensions": {
+      "ts": "module"
+    },
+    "nodeArguments": [
+      "--loader=@cloudy-ts/esm-node"
     ],
     "files": [
       "**/*.test.ts"
