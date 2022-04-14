@@ -1,30 +1,30 @@
-import type { AttributeValue } from "@aws-sdk/client-dynamodb"
+import type { AttributeValue } from "@aws-sdk/client-dynamodb";
 import {
   Table as BaseTable,
   AttributeType,
   StreamViewType,
   TableProps,
-} from "aws-cdk-lib/aws-dynamodb"
-import { Construct } from "constructs"
-import { Function, Union, Object, List } from "ts-toolbelt"
+} from "aws-cdk-lib/aws-dynamodb";
+import { Construct } from "constructs";
+import { Function, Union, Object, List } from "ts-toolbelt";
 
-import { OpaqueType } from "@cloudy-ts/opaque-type"
+import { OpaqueType } from "@cloudy-ts/opaque-type";
 
-import { staticTest } from "../static-test.js"
+import { staticTest } from "../static-test.js";
 
 // eslint-disable-next-line import/no-extraneous-dependencies
-export { AttributeValue } from "@aws-sdk/client-dynamodb"
+export { AttributeValue } from "@aws-sdk/client-dynamodb";
 export {
   AttributeType,
   StreamViewType,
   BillingMode,
-} from "aws-cdk-lib/aws-dynamodb"
+} from "aws-cdk-lib/aws-dynamodb";
 
 /**
  * Represents a DynamoDB item.
  */
 export interface DynamodbItem {
-  [key: string]: AttributeValue
+  [key: string]: AttributeValue;
 }
 
 // S: string;
@@ -46,16 +46,16 @@ type DynamodbPrimitiveValues =
   | string[]
   | (number | bigint)[]
   | Uint8Array[]
-  | boolean[]
+  | boolean[];
 
 interface DynamodbMapValue {
   [name: string]:
     | DynamodbPrimitiveValues
     | DynamodbMapValue
-    | DynamodbMapValue[]
+    | DynamodbMapValue[];
 }
 
-type DynamodbMap = DynamodbMapValue
+type DynamodbMap = DynamodbMapValue;
 
 // /**
 //  * Returns the AttributeValue of the given DynamoDB item key.
@@ -122,9 +122,9 @@ type DynamodbMap = DynamodbMapValue
  * Defines a table key such as partition key or sort key.
  */
 export type KeyDefinition = {
-  name: string
-  type: AttributeType
-}
+  name: string;
+  type: AttributeType;
+};
 
 // type AttributeFromKeyDefinition<T extends KeyDefinition | undefined> =
 //   T extends KeyDefinition
@@ -140,13 +140,13 @@ type TypeFromAttributeType<T extends AttributeType> =
     ? number | bigint
     : T extends AttributeType.BINARY
     ? Uint8Array
-    : never
+    : never;
 export type AttributeFromKeyDefinition<T extends KeyDefinition | undefined> =
   T extends KeyDefinition
     ? {
-        [name in T["name"]]: TypeFromAttributeType<T["type"]>
+        [name in T["name"]]: TypeFromAttributeType<T["type"]>;
       }
-    : {}
+    : {};
 
 // /**
 //  * Defines the properties that we're interested in: partitionKey, sortKey and stream.
@@ -169,7 +169,7 @@ export type AccessPattern<
   SortKey extends KeyDefinition | undefined,
 > = DynamodbMap &
   AttributeFromKeyDefinition<PartitionKey> &
-  AttributeFromKeyDefinition<SortKey>
+  AttributeFromKeyDefinition<SortKey>;
 
 interface TableProperties<
   PartitionKey extends KeyDefinition,
@@ -177,10 +177,10 @@ interface TableProperties<
   AccessPatterns extends AccessPattern<PartitionKey, SortKey> | "any",
   StreamView extends StreamViewType | undefined = undefined,
 > extends TableProps {
-  partitionKey: PartitionKey
-  sortKey?: SortKey
-  accessPatterns: AccessPatterns
-  stream?: StreamView
+  partitionKey: PartitionKey;
+  sortKey?: SortKey;
+  accessPatterns: AccessPatterns;
+  stream?: StreamView;
 }
 
 /**
@@ -194,13 +194,13 @@ export type TableName<
 > = OpaqueType<
   string,
   {
-    readonly t: unique symbol
-    AccessPatterns: AccessPatterns
-    PartitionKey: PartitionKey
-    SortKey: SortKey
-    StreamView: StreamView
+    readonly t: unique symbol;
+    AccessPatterns: AccessPatterns;
+    PartitionKey: PartitionKey;
+    SortKey: SortKey;
+    StreamView: StreamView;
   }
->
+>;
 
 // export type TopicArn<Types extends TopicTypes, Fifo extends boolean> = Opaque<
 //   string,
@@ -244,7 +244,7 @@ export class Table<
     SortKey,
     AccessPatterns,
     StreamView
-  >
+  >;
 
   public constructor(
     scope: Construct,
@@ -259,7 +259,7 @@ export class Table<
     //   StreamView
     // >,
   ) {
-    super(scope, id, properties as unknown as TableProps)
+    super(scope, id, properties as unknown as TableProps);
   }
 }
 
@@ -287,9 +287,9 @@ export const AccessPatterns = {
   // },
   any() {
     // return undefined as unknown as DynamodbMap
-    return "any" as const
+    return "any" as const;
   },
-}
+};
 
 // export function boolType() {
 //   // return { BOOL: undefined as unknown as T }
@@ -398,27 +398,27 @@ export const AccessPatterns = {
 // })
 
 function accessPatternsFrom<T extends DynamodbMap>() {
-  return {} as T
+  return {} as T;
 }
 
-type Revision = OpaqueType<bigint, { readonly t: unique symbol }>
+type Revision = OpaqueType<bigint, { readonly t: unique symbol }>;
 staticTest((scope: Construct, id: string) => {
   type A = {
-    id: `a#${string}`
-    ho: Revision
+    id: `a#${string}`;
+    ho: Revision;
     // a: "a"
-  }
+  };
   type B = {
-    id: `b#${string}`
-    ho: Revision
-    b: "b"
-    caca: boolean
+    id: `b#${string}`;
+    ho: Revision;
+    b: "b";
+    caca: boolean;
     // x: () => number
     cacas: {
-      lol: string
-      x: string[]
-    }[]
-  }
+      lol: string;
+      x: string[];
+    }[];
+  };
   const table = new Table(scope, id, {
     partitionKey: {
       name: "id",
@@ -444,8 +444,8 @@ staticTest((scope: Construct, id: string) => {
     //     no: AccessPatterns.stringType<"no">(),
     //   },
     // ),
-  })
-})
+  });
+});
 
 // /**
 //  * Returns the table item type.

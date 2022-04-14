@@ -3,14 +3,14 @@ import {
   PublishCommandInput as BaseCommandInput,
   PublishCommandOutput as BaseCommandOutput,
   SNSClientResolvedConfig as ResolvedConfiguration,
-} from "@aws-sdk/client-sns"
-import { Command } from "@aws-sdk/smithy-client"
-import { MiddlewareStack } from "@aws-sdk/types"
+} from "@aws-sdk/client-sns";
+import { Command } from "@aws-sdk/smithy-client";
+import { MiddlewareStack } from "@aws-sdk/types";
 
-import { aws_sns, OpaqueType } from "@cloudy-ts/cdk"
+import { aws_sns, OpaqueType } from "@cloudy-ts/cdk";
 
-import { ServiceInputTypes, ServiceOutputTypes } from "../sns-client.js"
-import { staticTest } from "../static-test.js"
+import { ServiceInputTypes, ServiceOutputTypes } from "../sns-client.js";
+import { staticTest } from "../static-test.js";
 
 /**
  * Returns the `T` in `ValueType<T>`, even if it's nested in a record.
@@ -19,7 +19,7 @@ type MapValueType<T> = T extends aws_sns.ValueType<infer V>
   ? V
   : T extends { [name: string]: any }
   ? { [name in keyof T]: MapValueType<T[name]> }
-  : T
+  : T;
 
 /**
  * Maps the value types of `Object[ObjectKey]` to
@@ -33,12 +33,12 @@ type MapValueTypeWithFallback<
   ObjectKey extends keyof Object,
   Fallback = {},
 > = Object extends {
-  [name in ObjectKey]: infer Value
+  [name in ObjectKey]: infer Value;
 }
   ? Value extends undefined
     ? Fallback
     : MapValueType<{ [name in DestinationKey]: Value }>
-  : Fallback
+  : Fallback;
 
 export type PublishCommandInput<T extends aws_sns.TopicProperties> = Omit<
   BaseCommandInput,
@@ -48,28 +48,23 @@ export type PublishCommandInput<T extends aws_sns.TopicProperties> = Omit<
   | "MessageDeduplicationId"
   | "MessageAttributes"
 > & {
-  TopicArn: aws_sns.TopicArn<T>
-} & MapValueTypeWithFallback<"Message", T, "messageType", { Message: string }> &
-  MapValueTypeWithFallback<
-    "MessageAttributes",
-    T,
-    "messageAttributesType",
-    {}
-  > &
-  (T["fifo"] extends true
-    ? MapValueTypeWithFallback<
-        "MessageGroupId",
-        T,
-        "messageGroupIdType",
-        { MessageGroupId: string }
-      > &
-        MapValueTypeWithFallback<
-          "MessageDeduplicationId",
-          T,
-          "messageDeduplicationIdType",
-          { MessageDeduplicationId: string }
-        >
-    : {})
+  TopicArn: aws_sns.TopicArn<T>;
+  Message: aws_sns.MaterializeTopicProperties<T>["message"];
+} & (aws_sns.MaterializeTopicProperties<T>["messageGroupId"] extends never
+    ? {}
+    : {
+        MessageGroupId: aws_sns.MaterializeTopicProperties<T>["messageGroupId"];
+      }) &
+  (aws_sns.MaterializeTopicProperties<T>["messageDeduplicationId"] extends never
+    ? {}
+    : {
+        MessageDeduplicationId: aws_sns.MaterializeTopicProperties<T>["messageDeduplicationId"];
+      }) &
+  (aws_sns.MaterializeTopicProperties<T>["messageAttributes"] extends never
+    ? {}
+    : {
+        MessageAttributes: aws_sns.MaterializeTopicProperties<T>["messageAttributes"];
+      });
 
 export interface PublishCommandOutput extends BaseCommandOutput {}
 
@@ -77,21 +72,21 @@ export class PublishCommand<T extends aws_sns.TopicProperties>
   implements
     Command<BaseCommandInput, BaseCommandOutput, ResolvedConfiguration>
 {
-  private readonly command: BaseCommand
+  private readonly command: BaseCommand;
 
   constructor(readonly input: PublishCommandInput<T>) {
-    this.command = new BaseCommand(input as unknown as BaseCommandInput)
+    this.command = new BaseCommand(input as unknown as BaseCommandInput);
   }
 
   get middlewareStack(): MiddlewareStack<BaseCommandInput, BaseCommandOutput> {
-    return this.command.middlewareStack as any
+    return this.command.middlewareStack as any;
   }
 
   resolveMiddleware(
     clientStack: MiddlewareStack<ServiceInputTypes, ServiceOutputTypes>,
     configuration: ResolvedConfiguration,
   ) {
-    return this.command.resolveMiddleware(clientStack as any, configuration)
+    return this.command.resolveMiddleware(clientStack as any, configuration);
   }
 }
 
@@ -99,15 +94,15 @@ staticTest((topic: aws_sns.Topic<{}>) => {
   new PublishCommand({
     TopicArn: topic.topicArn,
     Message: "",
-  })
+  });
   new PublishCommand({
     TopicArn: topic.topicArn,
     Message: "",
-    // @ts-expect-error: MessageGroupId and MessageDeduplicationId are forbidden if FIFO.
+    // @ts-expect-error: MessageGroupId and MessageDeduplicationId are forbidden.
     MessageGroupId: "",
     MessageDeduplicationId: "",
-  })
-})
+  });
+});
 
 staticTest((topic: aws_sns.Topic<{ fifo: true }>) => {
   new PublishCommand({
@@ -115,21 +110,48 @@ staticTest((topic: aws_sns.Topic<{ fifo: true }>) => {
     Message: "",
     MessageGroupId: "",
     MessageDeduplicationId: "",
-  })
-  // @ts-expect-error: MessageGroupId and MessageDeduplicationId are required if FIFO.
+  });
+  // @ts-expect-error: MessageGroupId and MessageDeduplicationId are required.
   new PublishCommand({
     TopicArn: topic.topicArn,
     Message: "",
-  })
-})
+  });
+});
 
-type MyString = OpaqueType<string, { readonly t: unique symbol }>
+type MyString = OpaqueType<string, { readonly t: unique symbol }>;
 staticTest(
   (topic: aws_sns.Topic<{ messageType: aws_sns.ValueType<MyString> }>) => {
     new PublishCommand({
       TopicArn: topic.topicArn,
+      Message: "" as MyString,
+    });
+    new PublishCommand({
+      TopicArn: topic.topicArn,
       // @ts-expect-error: Message must be of type MyString.
       Message: "",
-    })
+    });
   },
-)
+);
+
+staticTest(
+  (
+    topic: aws_sns.Topic<{
+      messageAttributesType: {
+        userId: { DataType: "String"; StringValue: aws_sns.ValueType<"test"> };
+      };
+    }>,
+  ) => {
+    new PublishCommand({
+      TopicArn: topic.topicArn,
+      Message: "",
+      MessageAttributes: {
+        userId: { DataType: "String", StringValue: "test" },
+      },
+    });
+    // @ts-expect-error: MessageAttributes are required.
+    new PublishCommand({
+      TopicArn: topic.topicArn,
+      Message: "",
+    });
+  },
+);

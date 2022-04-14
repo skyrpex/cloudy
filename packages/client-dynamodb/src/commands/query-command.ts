@@ -6,17 +6,17 @@ import {
   DynamoDBClientResolvedConfig,
   ReturnConsumedCapacity,
   ReturnItemCollectionMetrics,
-} from "@aws-sdk/client-dynamodb"
-import { Command } from "@aws-sdk/smithy-client"
-import { MiddlewareStack } from "@aws-sdk/types"
+} from "@aws-sdk/client-dynamodb";
+import { Command } from "@aws-sdk/smithy-client";
+import { MiddlewareStack } from "@aws-sdk/types";
 
-import { aws_dynamodb } from "@cloudy-ts/cdk"
+import { aws_dynamodb } from "@cloudy-ts/cdk";
 import {
   ExpressionAttributeNames,
   ExpressionAttributeValues,
-} from "@cloudy-ts/util-dynamodb"
+} from "@cloudy-ts/util-dynamodb";
 
-import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js"
+import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js";
 
 export type QueryCommandInput<
   PartitionKey extends aws_dynamodb.KeyDefinition = aws_dynamodb.KeyDefinition,
@@ -29,11 +29,11 @@ export type QueryCommandInput<
   KeyConditionExpression extends string = string,
   ProjectionExpression extends string = string,
 > = BaseCommandInput & {
-  TableName: aws_dynamodb.TableName<PartitionKey, SortKey, AccessPatterns, any>
+  TableName: aws_dynamodb.TableName<PartitionKey, SortKey, AccessPatterns, any>;
 
-  FilterExpression?: FilterExpression
-  KeyConditionExpression?: KeyConditionExpression
-  ProjectionExpression?: ProjectionExpression
+  FilterExpression?: FilterExpression;
+  KeyConditionExpression?: KeyConditionExpression;
+  ProjectionExpression?: ProjectionExpression;
   // Item: Item
   // ReturnConsumedCapacity?: ReturnConsumedCapacity
   // ReturnItemCollectionMetrics?: ReturnItemCollectionMetrics
@@ -49,7 +49,7 @@ export type QueryCommandInput<
   ExpressionAttributeValues<KeyConditionExpression> &
   ExpressionAttributeNames<KeyConditionExpression> &
   ExpressionAttributeValues<ProjectionExpression> &
-  ExpressionAttributeNames<ProjectionExpression>
+  ExpressionAttributeNames<ProjectionExpression>;
 
 export interface QueryCommandOutput extends BaseCommandOutput {}
 
@@ -63,7 +63,7 @@ export class QueryCommand<
 > implements
     Command<BaseCommandInput, BaseCommandOutput, DynamoDBClientResolvedConfig>
 {
-  private readonly command: BaseCommand
+  private readonly command: BaseCommand;
 
   constructor(
     readonly input: QueryCommandInput<
@@ -75,17 +75,17 @@ export class QueryCommand<
       ProjectionExpression
     >,
   ) {
-    this.command = new BaseCommand(input as unknown as BaseCommandInput)
+    this.command = new BaseCommand(input as unknown as BaseCommandInput);
   }
 
   get middlewareStack(): MiddlewareStack<BaseCommandInput, BaseCommandOutput> {
-    return this.command.middlewareStack as any
+    return this.command.middlewareStack as any;
   }
 
   resolveMiddleware(
     clientStack: MiddlewareStack<ServiceInputTypes, ServiceOutputTypes>,
     configuration: DynamoDBClientResolvedConfig,
   ) {
-    return this.command.resolveMiddleware(clientStack as any, configuration)
+    return this.command.resolveMiddleware(clientStack as any, configuration);
   }
 }

@@ -1,17 +1,17 @@
-import { aws_sns, aws_sns_subscriptions } from "aws-cdk-lib"
+import { aws_sns, aws_sns_subscriptions } from "aws-cdk-lib";
 
-import { BaseTopicSubscription } from "../aws-sns/subscription.js"
-import { Topic } from "../aws-sns/topic.js"
-import { Queue } from "../aws-sqs/queue.js"
+import { BaseTopicSubscription } from "../aws-sns/subscription.js";
+import { Topic } from "../aws-sns/topic.js";
+import { Queue } from "../aws-sqs/queue.js";
 
 export interface SqsSubscriptionProperties<RawMessageDelivery extends true>
   extends aws_sns_subscriptions.SqsSubscriptionProps {
-  rawMessageDelivery: RawMessageDelivery
+  rawMessageDelivery: RawMessageDelivery;
 }
 
 type QueueMessage<T extends Queue> = T extends Queue<infer Message>
   ? Message
-  : never
+  : never;
 
 type TopicFromQueue<T extends Queue> = Topic<
   T extends Queue<infer Message> ? Message : never,
@@ -23,13 +23,13 @@ type TopicFromQueue<T extends Queue> = Topic<
     ? MessageAttributes
     : never,
   T extends Queue<any, any, any, any, infer Fifo> ? Fifo : never
->
+>;
 
 export class SqsSubscription<T extends Queue, RawMessageDelivery extends true>
   extends BaseTopicSubscription<QueueMessage<T>>
   implements aws_sns.ITopicSubscription
 {
-  private readonly subscription: aws_sns_subscriptions.SqsSubscription
+  private readonly subscription: aws_sns_subscriptions.SqsSubscription;
 
   /**
    * Use an SQS queue as a subscription target
@@ -39,11 +39,11 @@ export class SqsSubscription<T extends Queue, RawMessageDelivery extends true>
     properties: SqsSubscriptionProperties<RawMessageDelivery>,
   ) {
     // super(queue, properties)
-    super()
+    super();
     this.subscription = new aws_sns_subscriptions.SqsSubscription(
       queue,
       properties,
-    )
+    );
   }
 
   /**
@@ -51,6 +51,6 @@ export class SqsSubscription<T extends Queue, RawMessageDelivery extends true>
    * @param topic — topic for which subscription will be configured
    */
   bind(topic: TopicFromQueue<T>): aws_sns.TopicSubscriptionConfig {
-    return this.subscription.bind(topic)
+    return this.subscription.bind(topic);
   }
 }

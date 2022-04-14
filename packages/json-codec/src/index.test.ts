@@ -1,6 +1,6 @@
-import test from "ava"
+import test from "ava";
 
-import { jsonEncode, jsonDecode } from "."
+import { jsonEncode, jsonDecode } from ".";
 
 test("encodes correctly", (t) => {
   t.deepEqual(
@@ -8,8 +8,8 @@ test("encodes correctly", (t) => {
       key: "value",
     }) as string,
     '{"key":"value"}',
-  )
-})
+  );
+});
 
 test("decodes correctly", (t) => {
   t.deepEqual(
@@ -21,5 +21,5 @@ test("decodes correctly", (t) => {
     {
       key: "value",
     },
-  )
-})
+  );
+});

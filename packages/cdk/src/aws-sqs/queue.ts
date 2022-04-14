@@ -1,14 +1,14 @@
-import { aws_sqs } from "aws-cdk-lib"
-import { Construct } from "constructs"
+import { aws_sqs } from "aws-cdk-lib";
+import { Construct } from "constructs";
 
-import { JsonEncoded } from "@cloudy-ts/json-codec"
-import { StringEncoded } from "@cloudy-ts/string-codec"
+import { JsonEncoded } from "@cloudy-ts/json-codec";
+import { StringEncoded } from "@cloudy-ts/string-codec";
 
-import { MessageAttributesBaseType } from "../aws-sns/topic.js"
+import { MessageAttributesBaseType } from "../aws-sns/topic.js";
 
 export interface QueueProperties<Fifo extends boolean = false>
   extends aws_sqs.QueueProps {
-  fifo?: Fifo
+  fifo?: Fifo;
 }
 
 export class Queue<
@@ -23,7 +23,7 @@ export class Queue<
     id: string,
     properties?: QueueProperties<Fifo>,
   ) {
-    super(scope, id, properties)
+    super(scope, id, properties);
   }
 }
 

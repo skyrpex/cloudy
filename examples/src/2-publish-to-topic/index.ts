@@ -1,13 +1,13 @@
-import * as cdk from "aws-cdk-lib"
+import * as cdk from "aws-cdk-lib";
 
-import * as cloudy from "@cloudy-ts/cdk"
-import { SNSClient, PublishCommand } from "@cloudy-ts/client-sns"
+import * as cloudy from "@cloudy-ts/cdk";
+import { SNSClient, PublishCommand } from "@cloudy-ts/client-sns";
 
-import { buildExampleStackName } from "../util.js"
+import { buildExampleStackName } from "../util.js";
 
-const app = new cdk.App()
+const app = new cdk.App();
 
-const stack = new cdk.Stack(app, buildExampleStackName(import.meta.url))
+const stack = new cdk.Stack(app, buildExampleStackName(import.meta.url));
 
 const topic = new cloudy.aws_sns.Topic(stack, "Topic", {
   // Cloudy allows you to restrict the SNS Topic message types. In this
@@ -16,16 +16,16 @@ const topic = new cloudy.aws_sns.Topic(stack, "Topic", {
   // We can also indicate the message attributes type.
   messageAttributesType: cloudy.aws_sns.MessageAttributesType.as<{
     userId: {
-      DataType: "Number"
-      StringValue: string
-    }
+      DataType: "Number";
+      StringValue: string;
+    };
   }>(),
-})
+});
 
 // Cloudy has a SNSClient proxy that enforces type constraints, depending
 // on the topic you're interacting with. The CallbackFunction will grab the
 // client even if it's defined outside of the handler.
-const sns = new SNSClient({})
+const sns = new SNSClient({});
 const publishMessage = new cloudy.aws_lambda.CallbackFunction(
   stack,
   "PublishMessage",
@@ -44,8 +44,8 @@ const publishMessage = new cloudy.aws_lambda.CallbackFunction(
             },
           },
         }),
-      )
+      );
     },
   },
-)
-topic.grantPublish(publishMessage)
+);
+topic.grantPublish(publishMessage);

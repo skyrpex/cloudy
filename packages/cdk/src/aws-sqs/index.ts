@@ -1,3 +1,3 @@
-export { FifoThroughputLimit, DeduplicationScope } from "aws-cdk-lib/aws-sqs"
+export { FifoThroughputLimit, DeduplicationScope } from "aws-cdk-lib/aws-sqs";
 
-export * from "./queue.js"
+export * from "./queue.js";

@@ -1,5 +1,5 @@
 // import { OpaqueType } from "@cloudy-ts/opaque-type"
-import { StringEncoded } from "@cloudy-ts/string-codec"
+import { StringEncoded } from "@cloudy-ts/string-codec";
 
 export type AttributeValue =
   | undefined
@@ -10,9 +10,9 @@ export type AttributeValue =
   | BOOL
   | NULL
   | L<ArrayLike<AttributeValue>>
-  | M<Record<string, AttributeValue>>
+  | M<Record<string, AttributeValue>>;
 
-export type AttributeMap = Record<string, AttributeValue>
+export type AttributeMap = Record<string, AttributeValue>;
 
 export type NativeBinaryAttribute =
   | ArrayBuffer
@@ -28,7 +28,7 @@ export type NativeBinaryAttribute =
   | Uint16Array
   | Uint32Array
   | Uint8Array
-  | Uint8ClampedArray
+  | Uint8ClampedArray;
 
 export type DocumentValue =
   | undefined
@@ -40,10 +40,10 @@ export type DocumentValue =
   | Document[]
   | NativeBinaryAttribute
   | {
-      [key: string]: DocumentValue
-    }
+      [key: string]: DocumentValue;
+    };
 
-export type ToAttributeMap<T extends object> = ToAttributeValue<T>["M"]
+export type ToAttributeMap<T extends object> = ToAttributeValue<T>["M"];
 
 /**
  * Computes the JSON representation of an object, {@link T}.
@@ -70,18 +70,18 @@ export type ToAttributeValue<T> = T extends undefined
   ? L<{
       [index in keyof T]: index extends "length"
         ? T[index]
-        : ToAttributeValue<T[index]>
+        : ToAttributeValue<T[index]>;
     }>
   : M<{
-      [name in keyof T]: ToAttributeValue<T[name]>
-    }>
+      [name in keyof T]: ToAttributeValue<T[name]>;
+    }>;
 
 // export function isS(a: any): a is S {
 //   return a !== undefined && "S" in a
 // }
 
 export interface S<S extends string = string> {
-  S: S
+  S: S;
 }
 
 // export function isB(a: any): a is B {
@@ -89,7 +89,7 @@ export interface S<S extends string = string> {
 // }
 
 export interface B {
-  B: Buffer
+  B: Buffer;
 }
 
 // export function isBOOL(a: any): a is BOOL {
@@ -97,7 +97,7 @@ export interface B {
 // }
 
 export interface BOOL<B = boolean> {
-  BOOL: B
+  BOOL: B;
 }
 
 // export function isM(a: any): a is M {
@@ -107,7 +107,7 @@ export interface BOOL<B = boolean> {
 export interface M<
   M extends Record<string, AttributeValue> = Record<string, AttributeValue>,
 > {
-  M: M
+  M: M;
 }
 
 // export function isN(a: any): a is N {
@@ -118,14 +118,14 @@ export interface N<N extends number = number> {
   // If number extends N, it means that N is just a plain number,
   // so we make it acceptable to pass raw number strings instead
   // of forcing the user to use the `stringEncode` method.
-  N: number extends N ? `${N}` | StringEncoded<N> : StringEncoded<N>
+  N: number extends N ? `${N}` | StringEncoded<N> : StringEncoded<N>;
 }
 
 export interface NB<N extends bigint = bigint> {
   // If bigint extends N, it means that N is just a plain bigint,
   // so we make it acceptable to pass raw bigint strings instead
   // of forcing the user to use the `stringEncode` method.
-  N: bigint extends N ? `${N}` | StringEncoded<N> : StringEncoded<N>
+  N: bigint extends N ? `${N}` | StringEncoded<N> : StringEncoded<N>;
 }
 
 // export function isNULL(a: any): a is NULL {
@@ -133,7 +133,7 @@ export interface NB<N extends bigint = bigint> {
 // }
 
 export interface NULL {
-  NULL: boolean
+  NULL: boolean;
 }
 
 // export function isL(a: any): a is L {
@@ -143,7 +143,7 @@ export interface NULL {
 export interface L<
   L extends ArrayLike<AttributeValue> = ArrayLike<AttributeValue>,
 > {
-  L: L
+  L: L;
 }
 
 // export interface Stringifable {

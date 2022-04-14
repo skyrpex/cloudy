@@ -1,4 +1,4 @@
-import * as cdk from "aws-cdk-lib"
+import * as cdk from "aws-cdk-lib";
 import {
   ArnFormat,
   CfnResource,
@@ -7,14 +7,14 @@ import {
   Names,
   Stack,
   Token,
-} from "aws-cdk-lib"
-import * as cloudwatch from "aws-cdk-lib/aws-cloudwatch"
+} from "aws-cdk-lib";
+import * as cloudwatch from "aws-cdk-lib/aws-cloudwatch";
 import {
   ComputePlatform,
   ProfilingGroup,
-} from "aws-cdk-lib/aws-codeguruprofiler"
-import * as ec2 from "aws-cdk-lib/aws-ec2"
-import * as iam from "aws-cdk-lib/aws-iam"
+} from "aws-cdk-lib/aws-codeguruprofiler";
+import * as ec2 from "aws-cdk-lib/aws-ec2";
+import * as iam from "aws-cdk-lib/aws-iam";
 import {
   Architecture,
   AssetCode,
@@ -28,23 +28,23 @@ import {
   verifyCodeConfig,
   Version,
   VersionOptions,
-} from "aws-cdk-lib/aws-lambda"
-import * as logs from "aws-cdk-lib/aws-logs"
-import * as sns from "aws-cdk-lib/aws-sns"
-import * as sqs from "aws-cdk-lib/aws-sqs"
-import { Construct } from "constructs"
+} from "aws-cdk-lib/aws-lambda";
+import * as logs from "aws-cdk-lib/aws-logs";
+import * as sns from "aws-cdk-lib/aws-sns";
+import * as sqs from "aws-cdk-lib/aws-sqs";
+import { Construct } from "constructs";
 
-import { codeFromFunction } from "./code-from-function.js"
-import { IEventSource } from "./event-source.js"
-import { IFunction } from "./function-base.js"
-import { calculateFunctionHash, trimFromStart } from "./function-hash.js"
+import { codeFromFunction } from "./code-from-function.js";
+import { IEventSource } from "./event-source.js";
+import { IFunction } from "./function-base.js";
+import { calculateFunctionHash, trimFromStart } from "./function-hash.js";
 
 export interface CallbackFunctionProperties<InputType, OutputType>
   extends Omit<
     cdk.aws_lambda.FunctionProps,
     "code" | "handler" | "runtime" | "events"
   > {
-  handler: (input: InputType) => Promise<OutputType>
+  handler: (input: InputType) => Promise<OutputType>;
 
   /**
    * Event sources for this function.
@@ -53,7 +53,7 @@ export interface CallbackFunctionProperties<InputType, OutputType>
    *
    * @default - No event sources.
    */
-  events?: IEventSource<InputType>[]
+  events?: IEventSource<InputType>[];
 }
 
 export class CallbackFunction<InputType, OutputType>
@@ -64,7 +64,7 @@ export class CallbackFunction<InputType, OutputType>
     // source: IEventSource<InputType> | cdk.aws_lambda.IEventSource,
     source: IEventSource<InputType>,
   ): void {
-    super.addEventSource(source)
+    super.addEventSource(source);
     // source.bind(this)
   }
 
@@ -88,39 +88,39 @@ export class CallbackFunction<InputType, OutputType>
    */
   public get currentVersion(): cdk.aws_lambda.Version {
     if (this._currentVersion) {
-      return this._currentVersion
+      return this._currentVersion;
     }
 
     this._currentVersion = new cdk.aws_lambda.Version(this, "CurrentVersion", {
       lambda: this,
       ...this.currentVersionOptions,
-    })
+    });
 
     // override the version's logical ID with a lazy string which includes the
     // hash of the function itself, so a new version resource is created when
     // the function configuration changes.
-    const cfn = this._currentVersion.node.defaultChild as cdk.CfnResource
-    const originalLogicalId = this.stack.resolve(cfn.logicalId) as string
+    const cfn = this._currentVersion.node.defaultChild as cdk.CfnResource;
+    const originalLogicalId = this.stack.resolve(cfn.logicalId) as string;
 
     cfn.overrideLogicalId(
       cdk.Lazy.uncachedString({
         produce: () => {
-          const hash = calculateFunctionHash(this)
-          const logicalId = trimFromStart(originalLogicalId, 255 - 32)
-          return `${logicalId}${hash}`
+          const hash = calculateFunctionHash(this);
+          const logicalId = trimFromStart(originalLogicalId, 255 - 32);
+          return `${logicalId}${hash}`;
         },
       }),
-    )
+    );
 
-    return this._currentVersion
+    return this._currentVersion;
   }
 
   public get resourceArnsForGrantInvoke() {
-    return [this.functionArn, `${this.functionArn}:*`]
+    return [this.functionArn, `${this.functionArn}:*`];
   }
 
   /** @internal */
-  public static _VER_PROPS: { [key: string]: boolean } = {}
+  public static _VER_PROPS: { [key: string]: boolean } = {};
 
   /**
    * Record whether specific properties in the `AWS::Lambda::Function` resource should
@@ -130,7 +130,7 @@ export class CallbackFunction<InputType, OutputType>
    * @param locked whether the property should be associated to the version or not.
    */
   public static classifyVersionProperty(propertyName: string, locked: boolean) {
-    this._VER_PROPS[propertyName] = locked
+    this._VER_PROPS[propertyName] = locked;
   }
 
   /**
@@ -144,7 +144,7 @@ export class CallbackFunction<InputType, OutputType>
       namespace: "AWS/Lambda",
       metricName,
       ...properties,
-    })
+    });
   }
   /**
    * Metric for the number of Errors executing all Lambdas
@@ -154,7 +154,7 @@ export class CallbackFunction<InputType, OutputType>
   public static metricAllErrors(
     properties?: cloudwatch.MetricOptions,
   ): cloudwatch.Metric {
-    return this.metricAll("Errors", { statistic: "sum", ...properties })
+    return this.metricAll("Errors", { statistic: "sum", ...properties });
   }
 
   /**
@@ -165,7 +165,7 @@ export class CallbackFunction<InputType, OutputType>
   public static metricAllDuration(
     properties?: cloudwatch.MetricOptions,
   ): cloudwatch.Metric {
-    return this.metricAll("Duration", properties)
+    return this.metricAll("Duration", properties);
   }
 
   /**
@@ -176,7 +176,7 @@ export class CallbackFunction<InputType, OutputType>
   public static metricAllInvocations(
     properties?: cloudwatch.MetricOptions,
   ): cloudwatch.Metric {
-    return this.metricAll("Invocations", { statistic: "sum", ...properties })
+    return this.metricAll("Invocations", { statistic: "sum", ...properties });
   }
 
   /**
@@ -187,7 +187,7 @@ export class CallbackFunction<InputType, OutputType>
   public static metricAllThrottles(
     properties?: cloudwatch.MetricOptions,
   ): cloudwatch.Metric {
-    return this.metricAll("Throttles", { statistic: "sum", ...properties })
+    return this.metricAll("Throttles", { statistic: "sum", ...properties });
   }
 
   /**
@@ -207,7 +207,7 @@ export class CallbackFunction<InputType, OutputType>
     return this.metricAll("ConcurrentExecutions", {
       statistic: "max",
       ...properties,
-    })
+    });
   }
 
   /**
@@ -221,71 +221,71 @@ export class CallbackFunction<InputType, OutputType>
     return this.metricAll("UnreservedConcurrentExecutions", {
       statistic: "max",
       ...properties,
-    })
+    });
   }
 
   /**
    * Name of this function
    */
-  public readonly functionName: string
+  public readonly functionName: string;
 
   /**
    * ARN of this function
    */
-  public readonly functionArn: string
+  public readonly functionArn: string;
 
   /**
    * Execution role associated with this function
    */
-  public readonly role: iam.IRole
+  public readonly role: iam.IRole;
 
   /**
    * The runtime configured for this lambda.
    */
-  public readonly runtime: Runtime = Runtime.NODEJS_14_X
+  public readonly runtime: Runtime = Runtime.NODEJS_14_X;
 
   /**
    * The principal this Lambda Function is running as
    */
-  public readonly grantPrincipal: iam.IPrincipal
+  public readonly grantPrincipal: iam.IPrincipal;
 
   /**
    * The DLQ (as queue) associated with this Lambda Function (this is an optional attribute).
    */
-  public readonly deadLetterQueue?: sqs.IQueue
+  public readonly deadLetterQueue?: sqs.IQueue;
 
   /**
    * The DLQ (as topic) associated with this Lambda Function (this is an optional attribute).
    */
-  public readonly deadLetterTopic?: sns.ITopic
+  public readonly deadLetterTopic?: sns.ITopic;
 
   /**
    * The architecture of this Lambda Function (this is an optional attribute and defaults to X86_64).
    */
-  public readonly architecture: Architecture
+  public readonly architecture: Architecture;
 
   /**
    * The timeout configured for this lambda.
    */
-  public readonly timeout?: Duration
+  public readonly timeout?: Duration;
 
-  public readonly permissionsNode = this.node
+  public readonly permissionsNode = this.node;
 
-  protected readonly canCreatePermissions = true
+  protected readonly canCreatePermissions = true;
 
-  private readonly layers: ILayerVersion[] = []
+  private readonly layers: ILayerVersion[] = [];
 
-  private _logGroup?: logs.ILogGroup
+  private _logGroup?: logs.ILogGroup;
 
   /**
    * Environment variables for this function
    */
-  private environment: { [key: string]: EnvironmentConfig } = {}
+  private environment: { [key: string]: EnvironmentConfig } = {};
 
-  private readonly currentVersionOptions?: VersionOptions
-  private _currentVersion?: Version
+  private readonly currentVersionOptions?: VersionOptions;
+  private _currentVersion?: Version;
 
-  private _architecture?: Architecture
+  private _architecture?: Architecture;
 
   constructor(
     scope: Construct,
@@ -294,7 +294,7 @@ export class CallbackFunction<InputType, OutputType>
   ) {
     super(scope, id, {
       physicalName: properties.functionName,
-    })
+    });
 
     if (
       properties.functionName &&
@@ -303,23 +303,23 @@ export class CallbackFunction<InputType, OutputType>
       if (properties.functionName.length > 64) {
         throw new Error(
           `Function name can not be longer than 64 characters but has ${properties.functionName.length} characters.`,
-        )
+        );
       }
       if (!/^[\w-]+$/.test(properties.functionName)) {
         throw new Error(
           `Function name ${properties.functionName} can contain only letters, numbers, hyphens, or underscores with no spaces.`,
-        )
+        );
       }
     }
 
-    const managedPolicies = new Array<iam.IManagedPolicy>()
+    const managedPolicies = new Array<iam.IManagedPolicy>();
 
     // the arn is in the form of - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
     managedPolicies.push(
       iam.ManagedPolicy.fromAwsManagedPolicyName(
         "service-role/AWSLambdaBasicExecutionRole",
       ),
-    )
+    );
 
     if (properties.vpc) {
       // Policy that will have ENI creation permissions
@@ -327,7 +327,7 @@ export class CallbackFunction<InputType, OutputType>
         iam.ManagedPolicy.fromAwsManagedPolicyName(
           "service-role/AWSLambdaVPCAccessExecutionRole",
         ),
-      )
+      );
     }
 
     this.role =
@@ -335,30 +335,30 @@ export class CallbackFunction<InputType, OutputType>
       new iam.Role(this, "ServiceRole", {
         assumedBy: new iam.ServicePrincipal("lambda.amazonaws.com"),
         managedPolicies,
-      })
-    this.grantPrincipal = this.role
+      });
+    this.grantPrincipal = this.role;
 
     // add additional managed policies when necessary
     if (properties.filesystem) {
-      const config = properties.filesystem.config
+      const config = properties.filesystem.config;
       if (config.policies) {
         for (const p of config.policies) {
-          this.role?.addToPrincipalPolicy(p)
+          this.role?.addToPrincipalPolicy(p);
         }
       }
     }
 
     for (const statement of properties.initialPolicy || []) {
-      this.role.addToPrincipalPolicy(statement)
+      this.role.addToPrincipalPolicy(statement);
     }
 
     // const code = properties.code.bind(this)
     // verifyCodeConfig(code, properties)
 
-    let profilingGroupEnvironmentVariables: { [key: string]: string } = {}
+    let profilingGroupEnvironmentVariables: { [key: string]: string } = {};
     if (properties.profilingGroup && properties.profiling !== false) {
-      this.validateProfiling(properties)
-      properties.profilingGroup.grantPublish(this.role)
+      this.validateProfiling(properties);
+      properties.profilingGroup.grantPublish(this.role);
       profilingGroupEnvironmentVariables = {
         AWS_CODEGURU_PROFILER_GROUP_ARN: Stack.of(scope).formatArn({
           service: "codeguru-profiler",
@@ -366,45 +366,45 @@ export class CallbackFunction<InputType, OutputType>
           resourceName: properties.profilingGroup.profilingGroupName,
         }),
         AWS_CODEGURU_PROFILER_ENABLED: "TRUE",
-      }
+      };
     } else if (properties.profiling) {
-      this.validateProfiling(properties)
+      this.validateProfiling(properties);
       const profilingGroup = new ProfilingGroup(this, "ProfilingGroup", {
         computePlatform: ComputePlatform.AWS_LAMBDA,
-      })
-      profilingGroup.grantPublish(this.role)
+      });
+      profilingGroup.grantPublish(this.role);
       profilingGroupEnvironmentVariables = {
         AWS_CODEGURU_PROFILER_GROUP_ARN: profilingGroup.profilingGroupArn,
         AWS_CODEGURU_PROFILER_ENABLED: "TRUE",
-      }
+      };
     }
 
     const environment = {
       ...profilingGroupEnvironmentVariables,
       ...properties.environment,
-    }
+    };
     for (const [key, value] of Object.entries(environment)) {
-      this.addEnvironment(key, value as string)
+      this.addEnvironment(key, value as string);
     }
 
     // DLQ can be either sns.ITopic or sqs.IQueue
-    const dlqTopicOrQueue = this.buildDeadLetterQueue(properties)
+    const dlqTopicOrQueue = this.buildDeadLetterQueue(properties);
     if (dlqTopicOrQueue !== undefined) {
       if (this.isQueue(dlqTopicOrQueue)) {
-        this.deadLetterQueue = dlqTopicOrQueue
+        this.deadLetterQueue = dlqTopicOrQueue;
       } else {
-        this.deadLetterTopic = dlqTopicOrQueue
+        this.deadLetterTopic = dlqTopicOrQueue;
       }
     }
 
-    let fileSystemConfigs: CfnFunction.FileSystemConfigProperty[] | undefined
+    let fileSystemConfigs: CfnFunction.FileSystemConfigProperty[] | undefined;
     if (properties.filesystem) {
       fileSystemConfigs = [
         {
           arn: properties.filesystem.config.arn,
           localMountPath: properties.filesystem.config.localMountPath,
         },
-      ]
+      ];
     }
 
     // if (properties.architecture && properties.architectures !== undefined) {
@@ -468,22 +468,22 @@ export class CallbackFunction<InputType, OutputType>
       fileSystemConfigs,
       codeSigningConfigArn: properties.codeSigningConfig?.codeSigningConfigArn,
       architectures: this._architecture ? [this._architecture.name] : undefined,
-    })
+    });
 
-    resource.node.addDependency(this.role)
+    resource.node.addDependency(this.role);
 
-    this.functionName = this.getResourceNameAttribute(resource.ref)
+    this.functionName = this.getResourceNameAttribute(resource.ref);
     this.functionArn = this.getResourceArnAttribute(resource.attrArn, {
       service: "lambda",
       resource: "function",
       resourceName: this.physicalName,
       arnFormat: ArnFormat.COLON_RESOURCE_NAME,
-    })
+    });
 
     // this.runtime = properties.runtime
-    this.timeout = properties.timeout
+    this.timeout = properties.timeout;
 
-    this.architecture = properties.architecture ?? Architecture.X86_64
+    this.architecture = properties.architecture ?? Architecture.X86_64;
 
     if (properties.layers) {
       // if (properties.runtime === Runtime.FROM_IMAGE) {
@@ -492,11 +492,11 @@ export class CallbackFunction<InputType, OutputType>
       //   )
       // }
 
-      this.addLayers(...properties.layers)
+      this.addLayers(...properties.layers);
     }
 
     for (const event of properties.events || []) {
-      this.addEventSource(event)
+      this.addEventSource(event);
     }
 
     // Log retention
@@ -507,22 +507,22 @@ export class CallbackFunction<InputType, OutputType>
         role: properties.logRetentionRole,
         logRetentionRetryOptions:
           properties.logRetentionRetryOptions as logs.LogRetentionRetryOptions,
-      })
+      });
       this._logGroup = logs.LogGroup.fromLogGroupArn(
         this,
         "LogGroup",
         logRetention.logGroupArn,
-      )
+      );
     }
 
     codeFromFunction(properties.handler).then(({ code, tokens }) => {
-      const codeConfig = code.bind(this)
+      const codeConfig = code.bind(this);
       verifyCodeConfig(codeConfig, {
         ...properties,
         runtime: Runtime.NODEJS_14_X,
         code,
         handler: "index.handler",
-      })
+      });
 
       resource.code = {
         s3Bucket: codeConfig.s3Location?.bucketName,
@@ -530,14 +530,14 @@ export class CallbackFunction<InputType, OutputType>
         s3ObjectVersion: codeConfig.s3Location?.objectVersion,
         // zipFile: codeConfig.inlineCode,
         // imageUri: codeConfig.image?.imageUri,
-      }
-      code.bindToResource(resource)
+      };
+      code.bindToResource(resource);
 
       for (const { construct, cfnToken, hash } of tokens) {
-        this.node.addDependency(construct)
-        this.addEnvironment(hash, cfnToken)
+        this.node.addDependency(construct);
+        this.addEnvironment(hash, cfnToken);
       }
-    })
+    });
 
     // Event Invoke Config
     if (
@@ -551,20 +551,20 @@ export class CallbackFunction<InputType, OutputType>
         onSuccess: properties.onSuccess,
         maxEventAge: properties.maxEventAge,
         retryAttempts: properties.retryAttempts,
-      })
+      });
     }
 
-    this.currentVersionOptions = properties.currentVersionOptions
+    this.currentVersionOptions = properties.currentVersionOptions;
 
     if (properties.filesystem) {
       if (!properties.vpc) {
         throw new Error(
           "Cannot configure 'filesystem' without configuring a VPC.",
-        )
+        );
       }
-      const config = properties.filesystem.config
+      const config = properties.filesystem.config;
       if (config.dependency) {
-        this.node.addDependency(...config.dependency)
+        this.node.addDependency(...config.dependency);
       }
       // There could be a race if the Lambda is used in a CustomResource. It is possible for the Lambda to
       // fail to attach to a given FileSystem if we do not have a dependency on the SecurityGroup ingress/egress
@@ -575,7 +575,7 @@ export class CallbackFunction<InputType, OutputType>
             child instanceof CfnResource &&
             child.cfnResourceType === "AWS::EC2::SecurityGroupEgress"
           ) {
-            resource.node.addDependency(child)
+            resource.node.addDependency(child);
           }
         }
       }
@@ -585,14 +585,14 @@ export class CallbackFunction<InputType, OutputType>
             child instanceof CfnResource &&
             child.cfnResourceType === "AWS::EC2::SecurityGroupIngress"
           ) {
-            resource.node.addDependency(child)
+            resource.node.addDependency(child);
           }
         }
       }
     }
 
     // Configure Lambda insights
-    this.configureLambdaInsights(properties)
+    this.configureLambdaInsights(properties);
   }
 
   /**
@@ -607,8 +607,8 @@ export class CallbackFunction<InputType, OutputType>
     value: string,
     options?: EnvironmentOptions,
   ): this {
-    this.environment[key] = { value, ...options }
-    return this
+    this.environment[key] = { value, ...options };
+    return this;
   }
 
   /**
@@ -623,7 +623,7 @@ export class CallbackFunction<InputType, OutputType>
       if (this.layers.length === 5) {
         throw new Error(
           "Unable to add layer: this lambda function already uses 5 layers.",
-        )
+        );
       }
       if (
         layer.compatibleRuntimes &&
@@ -633,17 +633,17 @@ export class CallbackFunction<InputType, OutputType>
       ) {
         const runtimes = layer.compatibleRuntimes
           .map((runtime) => runtime.name)
-          .join(", ")
+          .join(", ");
         throw new Error(
           `This lambda function uses a runtime that is incompatible with this layer (${this.runtime.name} is not in [${runtimes}])`,
-        )
+        );
       }
 
       // Currently no validations for compatible architectures since Lambda service
       // allows layers configured with one architecture to be used with a Lambda function
       // from another architecture.
 
-      this.layers.push(layer)
+      this.layers.push(layer);
     }
   }
 
@@ -686,7 +686,7 @@ export class CallbackFunction<InputType, OutputType>
       description,
       provisionedConcurrentExecutions: provisionedExecutions,
       ...asyncInvokeConfig,
-    })
+    });
   }
 
   /**
@@ -704,14 +704,14 @@ export class CallbackFunction<InputType, OutputType>
       const logRetention = new logs.LogRetention(this, "LogRetention", {
         logGroupName: `/aws/lambda/${this.functionName}`,
         retention: logs.RetentionDays.INFINITE,
-      })
+      });
       this._logGroup = logs.LogGroup.fromLogGroupArn(
         this,
         `${this.node.id}-LogGroup`,
         logRetention.logGroupArn,
-      )
+      );
     }
-    return this._logGroup
+    return this._logGroup;
   }
 
   /**
@@ -724,7 +724,7 @@ export class CallbackFunction<InputType, OutputType>
     properties: CallbackFunctionProperties<any, any>,
   ): void {
     if (properties.insightsVersion === undefined) {
-      return
+      return;
     }
     // if (properties.runtime !== Runtime.FROM_IMAGE) {
     //   // Layers cannot be added to Lambda container images. The image should have the insights agent installed.
@@ -741,15 +741,15 @@ export class CallbackFunction<InputType, OutputType>
       iam.ManagedPolicy.fromAwsManagedPolicyName(
         "CloudWatchLambdaInsightsExecutionRolePolicy",
       ),
-    )
+    );
   }
 
   private renderEnvironment() {
     if (!this.environment || Object.keys(this.environment).length === 0) {
-      return
+      return;
     }
 
-    const variables: { [key: string]: string } = {}
+    const variables: { [key: string]: string } = {};
     // Sort environment so the hash of the function used to create
     // `currentVersion` is not affected by key order (this is how lambda does
     // it). For backwards compatibility we do not sort environment variables in case
@@ -758,17 +758,17 @@ export class CallbackFunction<InputType, OutputType>
     // stacks.
     const keys = this._currentVersion
       ? Object.keys(this.environment).sort()
-      : Object.keys(this.environment)
+      : Object.keys(this.environment);
 
     for (const key of keys) {
       // variables[key] = this.environment[key].value
-      const { value } = this.environment[key] ?? {}
+      const { value } = this.environment[key] ?? {};
       if (value) {
-        variables[key] = value
+        variables[key] = value;
       }
     }
 
-    return { variables }
+    return { variables };
   }
 
   /**
@@ -783,29 +783,29 @@ export class CallbackFunction<InputType, OutputType>
     if (properties.allowAllOutbound !== undefined && !properties.vpc) {
       throw new Error(
         "Cannot configure 'securityGroup' or 'allowAllOutbound' without configuring a VPC",
-      )
+      );
     }
 
     if (!properties.vpc) {
-      return undefined
+      return undefined;
     }
 
     if (properties.allowAllOutbound !== undefined) {
       throw new Error(
         "Configure 'allowAllOutbound' directly on the supplied SecurityGroup.",
-      )
+      );
     }
 
-    let securityGroups: ec2.ISecurityGroup[]
+    let securityGroups: ec2.ISecurityGroup[];
 
     if (properties.securityGroups) {
       throw new Error(
         "Only one of the function props, securityGroup or securityGroups, is allowed",
-      )
+      );
     }
 
     if (properties.securityGroups) {
-      securityGroups = properties.securityGroups
+      securityGroups = properties.securityGroups;
     } else {
       const securityGroup = new ec2.SecurityGroup(this, "SecurityGroup", {
         vpc: properties.vpc,
@@ -813,27 +813,27 @@ export class CallbackFunction<InputType, OutputType>
           "Automatic security group for Lambda Function " +
           Names.uniqueId(this),
         allowAllOutbound: properties.allowAllOutbound,
-      })
-      securityGroups = [securityGroup]
+      });
+      securityGroups = [securityGroup];
     }
 
-    this._connections = new ec2.Connections({ securityGroups })
+    this._connections = new ec2.Connections({ securityGroups });
 
     if (properties.filesystem && properties.filesystem.config.connections) {
-      properties.filesystem.config.connections.allowDefaultPortFrom(this)
+      properties.filesystem.config.connections.allowDefaultPortFrom(this);
     }
 
-    const allowPublicSubnet = properties.allowPublicSubnet ?? false
-    const { subnetIds } = properties.vpc.selectSubnets(properties.vpcSubnets)
+    const allowPublicSubnet = properties.allowPublicSubnet ?? false;
+    const { subnetIds } = properties.vpc.selectSubnets(properties.vpcSubnets);
     const publicSubnetIds = new Set(
       properties.vpc.publicSubnets.map((s) => s.subnetId),
-    )
+    );
     for (const subnetId of subnetIds) {
       if (publicSubnetIds.has(subnetId) && !allowPublicSubnet) {
         throw new Error(
           "Lambda Functions in a public subnet can NOT access the internet. " +
             "If you are aware of this limitation and would still like to place the function int a public subnet, set `allowPublicSubnet` to true",
-        )
+        );
       }
     }
 
@@ -844,13 +844,13 @@ export class CallbackFunction<InputType, OutputType>
     return {
       subnetIds,
       securityGroupIds: securityGroups.map((sg) => sg.securityGroupId),
-    }
+    };
   }
 
   private isQueue(
     deadLetterQueue: sqs.IQueue | sns.ITopic,
   ): deadLetterQueue is sqs.IQueue {
-    return (<sqs.IQueue>deadLetterQueue).queueArn !== undefined
+    return (<sqs.IQueue>deadLetterQueue).queueArn !== undefined;
   }
 
   private buildDeadLetterQueue(
@@ -861,7 +861,7 @@ export class CallbackFunction<InputType, OutputType>
       !properties.deadLetterQueueEnabled &&
       !properties.deadLetterTopic
     ) {
-      return undefined
+      return undefined;
     }
     if (
       properties.deadLetterQueue &&
@@ -869,7 +869,7 @@ export class CallbackFunction<InputType, OutputType>
     ) {
       throw new Error(
         "deadLetterQueue defined but deadLetterQueueEnabled explicitly set to false",
-      )
+      );
     }
     if (
       properties.deadLetterTopic &&
@@ -878,33 +878,33 @@ export class CallbackFunction<InputType, OutputType>
     ) {
       throw new Error(
         "deadLetterQueue and deadLetterTopic cannot be specified together at the same time",
-      )
+      );
     }
 
-    let deadLetterQueue: sqs.IQueue | sns.ITopic
+    let deadLetterQueue: sqs.IQueue | sns.ITopic;
     if (properties.deadLetterTopic) {
-      deadLetterQueue = properties.deadLetterTopic
+      deadLetterQueue = properties.deadLetterTopic;
       this.addToRolePolicy(
         new iam.PolicyStatement({
           actions: ["sns:Publish"],
           resources: [deadLetterQueue.topicArn],
         }),
-      )
+      );
     } else {
       deadLetterQueue =
         properties.deadLetterQueue ||
         new sqs.Queue(this, "DeadLetterQueue", {
           retentionPeriod: Duration.days(14),
-        })
+        });
       this.addToRolePolicy(
         new iam.PolicyStatement({
           actions: ["sqs:SendMessage"],
           resources: [deadLetterQueue.queueArn],
         }),
-      )
+      );
     }
 
-    return deadLetterQueue
+    return deadLetterQueue;
   }
 
   private buildDeadLetterConfig(deadLetterQueue?: sqs.IQueue | sns.ITopic) {
@@ -914,7 +914,7 @@ export class CallbackFunction<InputType, OutputType>
             ? deadLetterQueue.queueArn
             : deadLetterQueue.topicArn,
         }
-      : undefined
+      : undefined;
   }
 
   private buildTracingConfig(properties: CallbackFunctionProperties<any, any>) {
@@ -922,7 +922,7 @@ export class CallbackFunction<InputType, OutputType>
       properties.tracing === undefined ||
       properties.tracing === Tracing.DISABLED
     ) {
-      return
+      return;
     }
 
     this.addToRolePolicy(
@@ -930,11 +930,11 @@ export class CallbackFunction<InputType, OutputType>
         actions: ["xray:PutTraceSegments", "xray:PutTelemetryRecords"],
         resources: ["*"],
       }),
-    )
+    );
 
     return {
       mode: properties.tracing,
-    }
+    };
   }
 
   private validateProfiling(properties: CallbackFunctionProperties<any, any>) {
@@ -950,7 +950,7 @@ export class CallbackFunction<InputType, OutputType>
     ) {
       throw new Error(
         "AWS_CODEGURU_PROFILER_GROUP_ARN and AWS_CODEGURU_PROFILER_ENABLED must not be set when profiling options enabled",
-      )
+      );
     }
   }
 
@@ -974,7 +974,7 @@ export class CallbackFunction<InputType, OutputType>
  * Configuration for an environment variable
  */
 interface EnvironmentConfig extends EnvironmentOptions {
-  readonly value: string
+  readonly value: string;
 }
 
 // declare const source: IEventSource<{ age: number }>

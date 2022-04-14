@@ -1,7 +1,7 @@
-declare const tag: unique symbol
+declare const tag: unique symbol;
 
 interface Tagged<Tag> {
-  readonly [tag]: Tag
+  readonly [tag]: Tag;
 }
 
 /**
@@ -18,4 +18,4 @@ interface Tagged<Tag> {
  * const accountId: AccountId = createPersonId();
  * ```
  */
-export type OpaqueType<Type, Tag = unknown> = Type & Tagged<Tag>
+export type OpaqueType<Type, Tag = unknown> = Type & Tagged<Tag>;

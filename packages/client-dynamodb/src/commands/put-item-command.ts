@@ -5,14 +5,14 @@ import {
   DynamoDBClientResolvedConfig as ResolvedConfiguration,
   ReturnConsumedCapacity,
   ReturnItemCollectionMetrics,
-} from "@aws-sdk/client-dynamodb"
-import { Command } from "@aws-sdk/smithy-client"
-import { MiddlewareStack } from "@aws-sdk/types"
+} from "@aws-sdk/client-dynamodb";
+import { Command } from "@aws-sdk/smithy-client";
+import { MiddlewareStack } from "@aws-sdk/types";
 
-import { aws_dynamodb } from "@cloudy-ts/cdk"
-import { ToAttributeMap } from "@cloudy-ts/util-dynamodb"
+import { aws_dynamodb } from "@cloudy-ts/cdk";
+import { ToAttributeMap } from "@cloudy-ts/util-dynamodb";
 
-import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js"
+import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js";
 
 export type PutItemCommandInput<
   PartitionKey extends aws_dynamodb.KeyDefinition = aws_dynamodb.KeyDefinition,
@@ -21,10 +21,10 @@ export type PutItemCommandInput<
     | aws_dynamodb.AccessPattern<PartitionKey, SortKey>
     | "any" = "any",
 > = Omit<BaseCommandInput, "Item"> & {
-  TableName: aws_dynamodb.TableName<PartitionKey, SortKey, AccessPatterns, any>
+  TableName: aws_dynamodb.TableName<PartitionKey, SortKey, AccessPatterns, any>;
   Item: AccessPatterns extends "any"
     ? ToAttributeMap<aws_dynamodb.AccessPattern<PartitionKey, SortKey>>
-    : ToAttributeMap<AccessPatterns extends object ? AccessPatterns : never>
+    : ToAttributeMap<AccessPatterns extends object ? AccessPatterns : never>;
   // ReturnConsumedCapacity?: ReturnConsumedCapacity
   // ReturnItemCollectionMetrics?: ReturnItemCollectionMetrics
   // ConditionExpression?: string
@@ -34,7 +34,7 @@ export type PutItemCommandInput<
   // ExpressionAttributeValues?: {
   //   [key: string]: AttributeValue
   // }
-}
+};
 
 export interface PutItemCommandOutput extends BaseCommandOutput {}
 
@@ -47,7 +47,7 @@ export class PutItemCommand<
 > implements
     Command<BaseCommandInput, BaseCommandOutput, ResolvedConfiguration>
 {
-  private readonly command: BaseCommand
+  private readonly command: BaseCommand;
 
   // This is necessary for TypeScript to stop complaining about not providing
   // the input that the Command interface requires. We can do that since we
@@ -56,22 +56,22 @@ export class PutItemCommand<
   //
   // Maybe we could create an abstract CommandProxy class that accepts a raw
   // command and defines all properties and methods that require our commands.
-  readonly input!: BaseCommandInput
+  readonly input!: BaseCommandInput;
 
   constructor(
     input: PutItemCommandInput<PartitionKey, SortKey, AccessPatterns>,
   ) {
-    this.command = new BaseCommand(input as unknown as BaseCommandInput)
+    this.command = new BaseCommand(input as unknown as BaseCommandInput);
   }
 
   get middlewareStack(): MiddlewareStack<BaseCommandInput, BaseCommandOutput> {
-    return this.command.middlewareStack
+    return this.command.middlewareStack;
   }
 
   resolveMiddleware(
     clientStack: MiddlewareStack<ServiceInputTypes, ServiceOutputTypes>,
     configuration: ResolvedConfiguration,
   ) {
-    return this.command.resolveMiddleware(clientStack, configuration)
+    return this.command.resolveMiddleware(clientStack, configuration);
   }
 }

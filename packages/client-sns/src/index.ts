@@ -1,5 +1,5 @@
-export * from "./commands/index.js"
-export * from "./sns-client.js"
+export * from "./commands/index.js";
+export * from "./sns-client.js";
 export {
   AddPermissionCommand,
   CheckIfPhoneNumberIsOptedOutCommand,
@@ -41,4 +41,4 @@ export {
   UnsubscribeCommand,
   UntagResourceCommand,
   VerifySMSSandboxPhoneNumberCommand,
-} from "@aws-sdk/client-sns"
+} from "@aws-sdk/client-sns";

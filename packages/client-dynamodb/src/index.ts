@@ -1,4 +1,4 @@
-export * from "./commands/index.js"
+export * from "./commands/index.js";
 export {
   BatchExecuteStatementCommand,
   type BatchExecuteStatementCommandInput,
@@ -150,5 +150,5 @@ export {
   UpdateTimeToLiveCommand,
   type UpdateTimeToLiveCommandInput,
   type UpdateTimeToLiveCommandOutput,
-} from "@aws-sdk/client-dynamodb"
-export * from "./dynamodb-client.js"
+} from "@aws-sdk/client-dynamodb";
+export * from "./dynamodb-client.js";

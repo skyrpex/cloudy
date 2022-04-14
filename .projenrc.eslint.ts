@@ -1,14 +1,14 @@
-import { Component, IgnoreFile, JsonFile, Project } from "projen"
-import { NodeProject, Prettier } from "projen/lib/javascript"
+import { Component, IgnoreFile, JsonFile, Project } from "projen";
+import { NodeProject, Prettier } from "projen/lib/javascript";
 
 export interface EslintOptions {
-  devFiles?: string[]
+  devFiles?: string[];
 
   pathGroups?: {
-    pattern: string
-    group: "external"
-    position: "after"
-  }[]
+    pattern: string;
+    group: "external";
+    position: "after";
+  }[];
   // /**
   //  * Path to `tsconfig.json` which should be used by eslint.
   //  * @default "./tsconfig.json"
@@ -51,7 +51,7 @@ export interface EslintOptions {
    * Enable prettier for code formatting
    * @default false
    */
-  readonly prettier?: boolean
+  readonly prettier?: boolean;
 
   // /**
   //  * Enable import alias for module paths
@@ -70,7 +70,7 @@ export interface EslintOptions {
    * This prevents `import/no-unresolved` eslint errors when importing a `@types/*` module that would otherwise remain unresolved.
    * @default true
    */
-  readonly tsAlwaysTryTypes?: boolean
+  readonly tsAlwaysTryTypes?: boolean;
 }
 
 /**
@@ -80,12 +80,12 @@ export interface EslintOverride {
   /**
    * Files or file patterns on which to apply the override
    */
-  readonly files: string[]
+  readonly files: string[];
 
   /**
    * The overriden rules
    */
-  readonly rules: { [rule: string]: any }
+  readonly rules: { [rule: string]: any };
 }
 
 export class Eslint extends Component {
@@ -93,47 +93,47 @@ export class Eslint extends Component {
    * Returns the singletone Eslint component of a project or undefined if there is none.
    */
   public static of(project: Project): Eslint | undefined {
-    const isEslint = (c: Component): c is Eslint => c instanceof Eslint
+    const isEslint = (c: Component): c is Eslint => c instanceof Eslint;
     // eslint-disable-next-line unicorn/no-array-callback-reference
-    return project.components.find(isEslint)
+    return project.components.find(isEslint);
   }
 
   /**
    * eslint rules.
    */
-  public readonly rules: { [rule: string]: any[] }
+  public readonly rules: { [rule: string]: any[] };
 
   /**
    * eslint overrides.
    */
-  public readonly overrides: EslintOverride[] = []
+  public readonly overrides: EslintOverride[] = [];
 
   /**
    * Direct access to the eslint configuration (escape hatch)
    */
-  public readonly config: any
+  public readonly config: any;
 
   /**
    * File patterns that should not be linted
    */
   // public readonly ignorePatterns: string[]
 
-  private _formattingRules: Record<string, any>
+  private _formattingRules: Record<string, any>;
   // private readonly _allowDevDeps: Set<string>
-  private readonly _plugins = new Array<string>()
-  private readonly _extends = new Array<string>()
+  private readonly _plugins = new Array<string>();
+  private readonly _extends = new Array<string>();
 
-  private readonly nodeProject: NodeProject
+  private readonly nodeProject: NodeProject;
 
-  public readonly ignoreFile: IgnoreFile
+  public readonly ignoreFile: IgnoreFile;
 
   constructor(project: NodeProject, options?: EslintOptions) {
-    super(project)
+    super(project);
 
-    this.nodeProject = project
-    this.ignoreFile = new IgnoreFile(project, ".eslintignore")
-    this.addIgnorePattern("!.*.ts")
-    this.addIgnorePattern("node_modules/")
+    this.nodeProject = project;
+    this.ignoreFile = new IgnoreFile(project, ".eslintignore");
+    this.addIgnorePattern("!.*.ts");
+    this.addIgnorePattern("node_modules/");
 
     project.addDevDeps(
       "eslint",
@@ -143,19 +143,19 @@ export class Eslint extends Component {
       "eslint-import-resolver-typescript",
       "eslint-plugin-import",
       "eslint-plugin-unicorn",
-    )
+    );
 
     this.addExtends(
       "plugin:unicorn/recommended",
       "plugin:@typescript-eslint/recommended",
       "plugin:import/recommended",
       "plugin:import/typescript",
-    )
+    );
 
     // exclude some files
-    project.npmignore?.exclude("/.eslintrc.json")
+    project.npmignore?.exclude("/.eslintrc.json");
 
-    this._formattingRules = {}
+    this._formattingRules = {};
     this.rules = {
       "@typescript-eslint/no-empty-interface": ["off"],
       "@typescript-eslint/no-empty-function": ["off"],
@@ -177,7 +177,7 @@ export class Eslint extends Component {
         "error",
         { devDependencies: options?.devFiles ?? [] },
       ],
-    }
+    };
 
     new JsonFile(project, ".eslintrc.json", {
       obj: {
@@ -206,10 +206,10 @@ export class Eslint extends Component {
         rules: () => ({ ...this._formattingRules, ...this.rules }),
       },
       marker: false,
-    })
+    });
 
     if (Prettier.of(project)) {
-      this.enablePrettier()
+      this.enablePrettier();
     }
   }
 
@@ -218,7 +218,7 @@ export class Eslint extends Component {
    */
   public addRules(rules: { [rule: string]: any }) {
     for (const [k, v] of Object.entries(rules)) {
-      this.rules[k] = v
+      this.rules[k] = v;
     }
   }
 
@@ -227,21 +227,21 @@ export class Eslint extends Component {
    * @param plugins The names of plugins to add
    */
   public addPlugins(...plugins: string[]) {
-    this._plugins.push(...plugins)
+    this._plugins.push(...plugins);
   }
 
   /**
    * Add an eslint override.
    */
   public addOverride(override: EslintOverride) {
-    this.overrides.push(override)
+    this.overrides.push(override);
   }
 
   /**
    * Do not lint these files.
    */
   public addIgnorePattern(pattern: string) {
-    this.ignoreFile.addPatterns(pattern)
+    this.ignoreFile.addPatterns(pattern);
   }
 
   /**
@@ -249,7 +249,7 @@ export class Eslint extends Component {
    * @param extendList The list of "extends" to add.
    */
   public addExtends(...extendList: string[]) {
-    this._extends.push(...extendList)
+    this._extends.push(...extendList);
   }
 
   /**
@@ -260,14 +260,14 @@ export class Eslint extends Component {
       "prettier",
       "eslint-plugin-prettier",
       "eslint-config-prettier",
-    )
+    );
 
-    this.addPlugins("prettier")
+    this.addPlugins("prettier");
 
     this._formattingRules = {
       "prettier/prettier": ["error"],
-    }
+    };
 
-    this.addExtends("prettier", "plugin:prettier/recommended")
+    this.addExtends("prettier", "plugin:prettier/recommended");
   }
 }

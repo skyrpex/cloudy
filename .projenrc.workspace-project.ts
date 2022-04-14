@@ -1,4 +1,4 @@
-import { NodeProject, NodeProjectOptions } from "projen/lib/javascript"
+import { NodeProject, NodeProjectOptions } from "projen/lib/javascript";
 
 export class WorkspaceProject extends NodeProject {
   constructor(
@@ -44,6 +44,6 @@ export class WorkspaceProject extends NodeProject {
           "",
         ].join("\n"),
       },
-    })
+    });
   }
 }

@@ -1,9 +1,9 @@
-import path from "node:path"
+import path from "node:path";
 
-import * as cdk from "aws-cdk-lib"
-import { AssetCode, Code } from "aws-cdk-lib/aws-lambda"
-import * as esbuild from "esbuild"
-import { findUpSync } from "find-up"
+import * as cdk from "aws-cdk-lib";
+import { AssetCode, Code } from "aws-cdk-lib/aws-lambda";
+import * as esbuild from "esbuild";
+import { findUpSync } from "find-up";
 
 const findDepsLockFilePath = (input: string) => {
   const lockFilePath = findUpSync(
@@ -11,16 +11,16 @@ const findDepsLockFilePath = (input: string) => {
     {
       cwd: input,
     },
-  )
+  );
 
   if (!lockFilePath) {
     throw new Error(
       "Couldn't find a lock file (package-lock.json or yarn.lock)",
-    )
+    );
   }
 
-  return lockFilePath
-}
+  return lockFilePath;
+};
 
 // /**
 //  * Converts a Lambda runtime to an esbuild node target.
@@ -37,34 +37,34 @@ export interface EsbuildBundlingProperties {
   // input: string
   // stdin: esbuild.StdinOptions
   stdin: {
-    contents: string
-    resolveDir: string
-  }
+    contents: string;
+    resolveDir: string;
+  };
   // runtime: Runtime
-  external?: string[]
+  external?: string[];
   define?: {
-    [key: string]: string
-  }
+    [key: string]: string;
+  };
 }
 
 export class EsbuildBundling {
   public static bundle(options: EsbuildBundlingProperties): AssetCode {
     // const depsLockFilePath = findDepsLockFilePath(options.input)
-    const depsLockFilePath = findDepsLockFilePath(options.stdin.resolveDir)
+    const depsLockFilePath = findDepsLockFilePath(options.stdin.resolveDir);
     // console.log({ depsLockFilePath })
 
     return Code.fromAsset(path.dirname(depsLockFilePath), {
       assetHashType: cdk.AssetHashType.OUTPUT,
       bundling: new EsbuildBundling(options),
-    })
+    });
   }
 
-  public readonly image: cdk.DockerImage
+  public readonly image: cdk.DockerImage;
 
-  public readonly local: cdk.ILocalBundling
+  public readonly local: cdk.ILocalBundling;
 
   constructor(private readonly properties: EsbuildBundlingProperties) {
-    this.image = cdk.DockerImage.fromRegistry("dummy")
+    this.image = cdk.DockerImage.fromRegistry("dummy");
     this.local = {
       tryBundle(outputDirectory) {
         // console.log({ outputDir: outputDirectory, input: properties.input })
@@ -79,9 +79,9 @@ export class EsbuildBundling {
           external: ["aws-sdk", ...(properties.external || [])],
           define: properties.define,
           // minify: true,
-        })
-        return true
+        });
+        return true;
       },
-    }
+    };
   }
 }

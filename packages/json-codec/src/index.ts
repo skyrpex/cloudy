@@ -1,6 +1,6 @@
-import { OpaqueType } from "@cloudy-ts/opaque-type"
+import { OpaqueType } from "@cloudy-ts/opaque-type";
 
-type JsonSerializablePrimitive = string | number | boolean
+type JsonSerializablePrimitive = string | number | boolean;
 
 export interface JsonSerializableRecord {
   [key: string]:
@@ -11,17 +11,17 @@ export interface JsonSerializableRecord {
     | null
     | null[]
     | undefined
-    | undefined[]
+    | undefined[];
 }
 
 export type JsonSerializable =
   | JsonSerializablePrimitive
   | JsonSerializablePrimitive[]
   | JsonSerializableRecord
-  | JsonSerializableRecord[]
+  | JsonSerializableRecord[];
 
 export type JsonEncoded<T extends JsonSerializable = JsonSerializable> =
-  OpaqueType<string, T>
+  OpaqueType<string, T>;
 
 /**
  * Converts a JavaScript value to a typed JavaScript Object Notation (JSON) string.
@@ -41,7 +41,7 @@ export function jsonEncode<T extends JsonSerializable>(
   value: T,
   replacer?: ((key: string, value: any) => any) | undefined,
   space?: string | number,
-): JsonEncoded<T>
+): JsonEncoded<T>;
 
 /**
  * Converts a JavaScript value to a typed JavaScript Object Notation (JSON) string.
@@ -53,14 +53,14 @@ export function jsonEncode<T extends JsonSerializable>(
   value: T,
   replacer?: (number | string)[] | undefined,
   space?: string | number,
-): JsonEncoded<T>
+): JsonEncoded<T>;
 
 export function jsonEncode<T extends JsonSerializable>(
   value: T,
   replacer?: any,
   space?: string | number | undefined,
 ): JsonEncoded<T> {
-  return JSON.stringify(value, replacer, space) as JsonEncoded<T>
+  return JSON.stringify(value, replacer, space) as JsonEncoded<T>;
 }
 
 /**
@@ -80,5 +80,5 @@ export function jsonDecode<T extends JsonSerializable>(
   json: JsonEncoded<T>,
   reviver?: ((this: any, key: string, value: any) => any) | undefined,
 ) {
-  return JSON.parse(json, reviver) as T
+  return JSON.parse(json, reviver) as T;
 }

@@ -3,18 +3,18 @@ import {
   UpdateItemCommandInput as BaseCommandInput,
   UpdateItemCommandOutput as BaseCommandOutput,
   DynamoDBClientResolvedConfig,
-} from "@aws-sdk/client-dynamodb"
-import { Command } from "@aws-sdk/smithy-client"
-import { MiddlewareStack } from "@aws-sdk/types"
+} from "@aws-sdk/client-dynamodb";
+import { Command } from "@aws-sdk/smithy-client";
+import { MiddlewareStack } from "@aws-sdk/types";
 
-import { aws_dynamodb } from "@cloudy-ts/cdk"
+import { aws_dynamodb } from "@cloudy-ts/cdk";
 import {
   ExpressionAttributeNames,
   ExpressionAttributeValues,
   ToAttributeMap,
-} from "@cloudy-ts/util-dynamodb"
+} from "@cloudy-ts/util-dynamodb";
 
-import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js"
+import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js";
 
 // type TableItem<T extends aws_dynamodb.TableName<any, any>> = T extends aws_dynamodb.TableName<infer Item, any> ? Item : never
 
@@ -28,10 +28,10 @@ export type UpdateItemCommandInput<
   UpdateExpression extends string = string,
   ConditionExpression extends string = string,
 > = BaseCommandInput & {
-  TableName: aws_dynamodb.TableName<PartitionKey, SortKey, AccessPatterns, any>
-  Key: ToAttributeMap<aws_dynamodb.AccessPattern<PartitionKey, SortKey>>
-  UpdateExpression: UpdateExpression
-  ConditionExpression: ConditionExpression
+  TableName: aws_dynamodb.TableName<PartitionKey, SortKey, AccessPatterns, any>;
+  Key: ToAttributeMap<aws_dynamodb.AccessPattern<PartitionKey, SortKey>>;
+  UpdateExpression: UpdateExpression;
+  ConditionExpression: ConditionExpression;
   // Item: Item
   // ReturnConsumedCapacity?: ReturnConsumedCapacity
   // ReturnItemCollectionMetrics?: ReturnItemCollectionMetrics
@@ -42,7 +42,7 @@ export type UpdateItemCommandInput<
 } & ExpressionAttributeValues<UpdateExpression> &
   ExpressionAttributeNames<UpdateExpression> &
   ExpressionAttributeValues<ConditionExpression> &
-  ExpressionAttributeNames<ConditionExpression>
+  ExpressionAttributeNames<ConditionExpression>;
 
 export interface UpdateItemCommandOutput extends BaseCommandOutput {}
 
@@ -55,7 +55,7 @@ export class UpdateItemCommand<
 > implements
     Command<BaseCommandInput, BaseCommandOutput, DynamoDBClientResolvedConfig>
 {
-  private readonly command: BaseCommand
+  private readonly command: BaseCommand;
 
   constructor(
     readonly input: UpdateItemCommandInput<
@@ -66,17 +66,17 @@ export class UpdateItemCommand<
       ConditionExpression
     >,
   ) {
-    this.command = new BaseCommand(input as unknown as BaseCommandInput)
+    this.command = new BaseCommand(input as unknown as BaseCommandInput);
   }
 
   get middlewareStack(): MiddlewareStack<BaseCommandInput, BaseCommandOutput> {
-    return this.command.middlewareStack as any
+    return this.command.middlewareStack as any;
   }
 
   resolveMiddleware(
     clientStack: MiddlewareStack<ServiceInputTypes, ServiceOutputTypes>,
     configuration: DynamoDBClientResolvedConfig,
   ) {
-    return this.command.resolveMiddleware(clientStack as any, configuration)
+    return this.command.resolveMiddleware(clientStack as any, configuration);
   }
 }

@@ -1,6 +1,10 @@
-import { defineBuildConfig } from "unbuild"
+import { defineBuildConfig } from "unbuild";
 
-import { dependencies, devDependencies, peerDependencies } from "./package.json"
+import {
+  dependencies,
+  devDependencies,
+  peerDependencies,
+} from "./package.json";
 
 export default defineBuildConfig({
   entries: ["src/index"],
@@ -13,4 +17,4 @@ export default defineBuildConfig({
   rollup: {
     emitCJS: true,
   },
-})
+});

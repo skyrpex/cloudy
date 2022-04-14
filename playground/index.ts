@@ -1,14 +1,14 @@
-import * as cdk from "aws-cdk-lib"
+import * as cdk from "aws-cdk-lib";
 
-import * as cloudy from "@cloudy-ts/cdk"
-import { stringEncode } from "@cloudy-ts/cdk"
-import { DynamoDBClient, PutItemCommand } from "@cloudy-ts/client-dynamodb"
-import { SNSClient, PublishCommand } from "@cloudy-ts/client-sns"
-import { OpaqueType } from "@cloudy-ts/opaque-type"
+import * as cloudy from "@cloudy-ts/cdk";
+import { stringEncode } from "@cloudy-ts/cdk";
+import { DynamoDBClient, PutItemCommand } from "@cloudy-ts/client-dynamodb";
+import { SNSClient, PublishCommand } from "@cloudy-ts/client-sns";
+import { OpaqueType } from "@cloudy-ts/opaque-type";
 
-const app = new cdk.App()
+const app = new cdk.App();
 
-const stack = new cdk.Stack(app, "cloudy-playground")
+const stack = new cdk.Stack(app, "cloudy-playground");
 
 const topic = new cloudy.aws_sns.Topic(stack, "topic", {
   messageType: cloudy.aws_sns.ValueType.string<"Hello" | "World!">(),
@@ -18,43 +18,43 @@ const topic = new cloudy.aws_sns.Topic(stack, "topic", {
       StringValue: cloudy.aws_sns.ValueType.string<`${number}`>(),
     },
   },
-})
+});
 
-type CustomBigInt = OpaqueType<bigint, { readonly t: unique symbol }>
+type CustomBigInt = OpaqueType<bigint, { readonly t: unique symbol }>;
 
 const table = new cloudy.aws_dynamodb.Table(stack, "table", {
   partitionKey: { name: "pk", type: cdk.aws_dynamodb.AttributeType.STRING },
   sortKey: { name: "sk", type: cdk.aws_dynamodb.AttributeType.STRING },
   accessPatterns: cloudy.aws_dynamodb.AccessPatterns.as<
     | {
-        pk: `user#${string}`
-        sk: "profile"
-        userName: string
+        pk: `user#${string}`;
+        sk: "profile";
+        userName: string;
       }
     | {
-        pk: `user#${string}`
-        sk: "metadata"
+        pk: `user#${string}`;
+        sk: "metadata";
         // age: MyBigInt
-        number: number
-        number2: number
-        bigint: bigint
-        bigint2: bigint
-        CustomBigInt: CustomBigInt
+        number: number;
+        number2: number;
+        bigint: bigint;
+        bigint2: bigint;
+        CustomBigInt: CustomBigInt;
       }
   >(),
   // accessPatterns: cloudy.aws_dynamodb.AccessPatterns.any(),
   billingMode: cdk.aws_dynamodb.BillingMode.PAY_PER_REQUEST,
   removalPolicy: cdk.RemovalPolicy.DESTROY,
-})
+});
 
-const sns = new SNSClient({})
-const dynamodb = new DynamoDBClient({})
+const sns = new SNSClient({});
+const dynamodb = new DynamoDBClient({});
 const publishMessage = new cloudy.aws_lambda.CallbackFunction(
   stack,
   "function",
   {
     async handler() {
-      console.log("We're going to publish a message to the topic")
+      console.log("We're going to publish a message to the topic");
       await sns.send(
         new PublishCommand({
           TopicArn: topic.topicArn,
@@ -66,9 +66,9 @@ const publishMessage = new cloudy.aws_lambda.CallbackFunction(
             },
           },
         }),
-      )
+      );
 
-      console.log("Now, we're going to put an item to the table")
+      console.log("Now, we're going to put an item to the table");
       await dynamodb.send(
         new PutItemCommand({
           TableName: table.tableName,
@@ -78,7 +78,7 @@ const publishMessage = new cloudy.aws_lambda.CallbackFunction(
             userName: { S: "Cristian" },
           },
         }),
-      )
+      );
 
       await dynamodb.send(
         new PutItemCommand({
@@ -93,9 +93,9 @@ const publishMessage = new cloudy.aws_lambda.CallbackFunction(
             CustomBigInt: { N: stringEncode(1n as CustomBigInt) },
           },
         }),
-      )
+      );
     },
   },
-)
-topic.grantPublish(publishMessage)
-table.grantWriteData(publishMessage)
+);
+topic.grantPublish(publishMessage);
+table.grantWriteData(publishMessage);

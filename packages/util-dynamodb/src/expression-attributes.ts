@@ -1,4 +1,4 @@
-import { AttributeValue } from "@aws-sdk/client-dynamodb"
+import { AttributeValue } from "@aws-sdk/client-dynamodb";
 
 // See https://github.com/sam-goodwin/typesafe-dynamodb/blob/2ca185f83cbc482b468f74a2b61f116a74206192/src/expression-attributes.ts
 
@@ -28,15 +28,15 @@ export type LowercaseLetter =
   | "w"
   | "x"
   | "y"
-  | "z"
+  | "z";
 
-export type UppercaseLetter = Uppercase<LowercaseLetter>
+export type UppercaseLetter = Uppercase<LowercaseLetter>;
 
-export type Letter = LowercaseLetter | UppercaseLetter
+export type Letter = LowercaseLetter | UppercaseLetter;
 
-export type Digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+export type Digit = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
 
-export type AlphaNumeric = Digit | Letter
+export type AlphaNumeric = Digit | Letter;
 
 export type ExpressionAttributeValues<Expression extends string | undefined> =
   undefined extends Expression
@@ -45,9 +45,9 @@ export type ExpressionAttributeValues<Expression extends string | undefined> =
     ? {}
     : {
         ExpressionAttributeValues: {
-          [name in ParseConditionExpressionValues<Expression> as `:${name}`]: AttributeValue
-        }
-      }
+          [name in ParseConditionExpressionValues<Expression> as `:${name}`]: AttributeValue;
+        };
+      };
 
 // type XV =
 //   ExpressionAttributeValues<"SET #events = :events, #timestamp = :timestamp ADD #revision :totalNewEvents">
@@ -77,19 +77,19 @@ export type ExpressionAttributeNames<Expression extends string | undefined> =
     ? {}
     : {
         ExpressionAttributeNames: {
-          [name in ParseConditionExpressionNames<Expression> as `#${name}`]: string
-        }
-      }
+          [name in ParseConditionExpressionNames<Expression> as `#${name}`]: string;
+        };
+      };
 
 type ParseConditionExpressionNames<Text extends string | undefined> = Extract<
   ParsePrefixedString<"#", Text>,
   string
->
+>;
 
 type ParseConditionExpressionValues<Text extends string | undefined> = Extract<
   ParsePrefixedString<":", Text>,
   string
->
+>;
 // type x = ParseConditionExpressionValues<":x :y">
 
 type ParsePrefixedString<
@@ -109,7 +109,7 @@ type ParsePrefixedString<
     >
   : Text extends `${string}${infer Tail}`
   ? ParsePrefixedString<Prefix, Tail, Names>
-  : Names
+  : Names;
 
 type Skip<
   S extends string,
@@ -118,7 +118,7 @@ type Skip<
   ? Skip<Tail, Char>
   : S extends `${Char}`
   ? ""
-  : S
+  : S;
 
 // type a = Read<"abc", "a" | "b">;
 
@@ -130,4 +130,4 @@ type Read<
   ? C extends Char
     ? Read<rest, Char, `${Accum}${C}`>
     : Accum
-  : Accum
+  : Accum;

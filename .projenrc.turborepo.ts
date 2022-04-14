@@ -1,44 +1,46 @@
-import { execSync } from "node:child_process"
-import path from "node:path"
+import { execSync } from "node:child_process";
+import path from "node:path";
 
-import { Component, JsonFile, Project, YamlFile } from "projen"
+import { Component, JsonFile, Project, YamlFile } from "projen";
 import {
   NodePackageManager,
   NodeProject,
   Prettier,
-} from "projen/lib/javascript"
+} from "projen/lib/javascript";
 
-import { Eslint } from "./.projenrc.eslint.js"
+import { Eslint } from "./.projenrc.eslint.js";
 
 interface TurborepoOptions {
-  readonly baseBranch?: string
+  readonly baseBranch?: string;
   readonly pipeline?: {
     [name: string]: {
-      dependsOn?: string[]
-      outputs?: string[]
-      cache?: boolean
-    }
-  }
-  readonly additionalWorkspaces?: string[]
+      dependsOn?: string[];
+      outputs?: string[];
+      cache?: boolean;
+    };
+  };
+  readonly additionalWorkspaces?: string[];
 }
 
 export class Turborepo extends Component {
   public static of(project: Project): Turborepo | undefined {
-    const isTurborepo = (c: Component): c is Turborepo => c instanceof Turborepo
+    const isTurborepo = (c: Component): c is Turborepo =>
+      c instanceof Turborepo;
     // eslint-disable-next-line unicorn/no-array-callback-reference
-    return project.components.find(isTurborepo)
+    return project.components.find(isTurborepo);
   }
 
   constructor(
     public readonly nodeProject: NodeProject,
     private readonly options?: TurborepoOptions,
   ) {
-    super(nodeProject)
+    super(nodeProject);
 
-    this.nodeProject.addGitIgnore(".turbo/")
-    this.nodeProject.addDevDeps("turbo")
+    this.nodeProject.addGitIgnore(".turbo/");
+    this.nodeProject.addDevDeps("turbo");
 
-    const defaultReleaseBranch = this.nodeProject.release?.branches[0] ?? "main"
+    const defaultReleaseBranch =
+      this.nodeProject.release?.branches[0] ?? "main";
 
     new JsonFile(nodeProject, "turbo.json", {
       obj: {
@@ -47,25 +49,25 @@ export class Turborepo extends Component {
         pipeline: options?.pipeline,
       },
       marker: false,
-    })
+    });
 
-    Eslint.of(nodeProject)?.ignoreFile.addPatterns(".turbo/")
-    Prettier.of(nodeProject)?.addIgnorePattern(".turbo/")
+    Eslint.of(nodeProject)?.ignoreFile.addPatterns(".turbo/");
+    Prettier.of(nodeProject)?.addIgnorePattern(".turbo/");
   }
 
   private get subprojects(): Project[] {
     // https://github.com/projen/projen/issues/1433
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    const subprojects: Project[] = this.project.subprojects || []
+    const subprojects: Project[] = this.project.subprojects || [];
 
-    return subprojects.sort((a, b) => a.name.localeCompare(b.name))
+    return subprojects.sort((a, b) => a.name.localeCompare(b.name));
   }
 
   private get workspaceProjects(): NodeProject[] {
     return this.subprojects.filter(
       (project): project is NodeProject => project instanceof NodeProject,
-    )
+    );
   }
 
   preSynthesize(): void {
@@ -78,9 +80,9 @@ export class Turborepo extends Component {
           renderInstallCommand(frozen: boolean) {
             return `yarn install ${
               frozen ? "--immutable --immutable-cache" : ""
-            }`
+            }`;
           },
-        })
+        });
       }
     }
 
@@ -95,37 +97,37 @@ export class Turborepo extends Component {
     //     },
     //   })
     // }
-    const workspaces: string[] = this.options?.additionalWorkspaces ?? []
+    const workspaces: string[] = this.options?.additionalWorkspaces ?? [];
     for (const workspaceProject of this.workspaceProjects) {
       const workspace = path.relative(
         this.project.outdir,
         workspaceProject.outdir,
-      )
-      workspaces.push(workspace)
+      );
+      workspaces.push(workspace);
     }
 
     if (workspaces.length > 0) {
-      const { package: package_ } = this.nodeProject
+      const { package: package_ } = this.nodeProject;
       switch (package_.packageManager) {
         case NodePackageManager.PNPM: {
           new YamlFile(this.project, "pnpm-workspace.yaml", {
             obj: {
               packages: workspaces,
             },
-          })
-          break
+          });
+          break;
         }
 
         case NodePackageManager.NPM:
         case NodePackageManager.YARN: {
-          package_.addField("workspaces", workspaces)
-          break
+          package_.addField("workspaces", workspaces);
+          break;
         }
 
         default:
           throw new Error(
             `unexpected package manager ${package_.packageManager}`,
-          )
+          );
       }
     }
   }

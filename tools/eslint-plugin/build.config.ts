@@ -1,6 +1,6 @@
-import { defineBuildConfig } from "unbuild"
+import { defineBuildConfig } from "unbuild";
 
-import { dependencies, devDependencies } from "./package.json"
+import { dependencies, devDependencies } from "./package.json";
 
 export default defineBuildConfig({
   entries: ["src/index"],
@@ -11,4 +11,4 @@ export default defineBuildConfig({
       target: "node14.14",
     },
   },
-})
+});

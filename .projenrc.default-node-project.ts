@@ -1,20 +1,20 @@
-import { TextFile } from "projen"
+import { TextFile } from "projen";
 import {
   NodeProject,
   NodeProjectOptions,
   TrailingComma,
-} from "projen/lib/javascript"
+} from "projen/lib/javascript";
 
-import { Eslint } from "./.projenrc.eslint.js"
+import { Eslint } from "./.projenrc.eslint.js";
 
 interface DefaultNodeProjectOptions extends NodeProjectOptions {
   eslint?: {
-    devFiles?: string[]
-  }
+    devFiles?: string[];
+  };
 }
 
 export class DefaultNodeProject extends NodeProject {
-  public readonly eslint: Eslint
+  public readonly eslint: Eslint;
 
   constructor(options: DefaultNodeProjectOptions) {
     super({
@@ -29,7 +29,8 @@ export class DefaultNodeProject extends NodeProject {
         settings: {
           tabWidth: 2,
           trailingComma: TrailingComma.ALL,
-          semi: false,
+          // semi: false,
+          semi: true,
         },
       },
       projenrcJs: false,
@@ -39,12 +40,12 @@ export class DefaultNodeProject extends NodeProject {
       // stale: false,
       // vscode: false,
       ...options,
-    })
+    });
 
-    this.package.addField("type", "module")
-    this.package.addField("sideEffects", false)
+    this.package.addField("type", "module");
+    this.package.addField("sideEffects", false);
 
-    this.prettier?.ignoreFile?.addPatterns("node_modules/")
+    this.prettier?.ignoreFile?.addPatterns("node_modules/");
 
     this.eslint = new Eslint(this, {
       pathGroups: this.packageScope
@@ -61,7 +62,7 @@ export class DefaultNodeProject extends NodeProject {
         "**/*.test.ts",
         ...(options.eslint?.devFiles ?? []),
       ],
-    })
+    });
 
     new TextFile(this, ".editorconfig", {
       lines: [
@@ -79,13 +80,13 @@ export class DefaultNodeProject extends NodeProject {
         "trim_trailing_whitespace = false",
         "",
       ],
-    })
+    });
   }
 
   private get packageScope() {
-    const result = this.package.packageName.match(/^(@.*?)\//)
+    const result = this.package.packageName.match(/^(@.*?)\//);
     if (result) {
-      return result[1]
+      return result[1];
     }
   }
 }

@@ -1,33 +1,33 @@
-import { Component, JsonFile, Project } from "projen"
-import { NodeProject } from "projen/lib/javascript"
+import { Component, JsonFile, Project } from "projen";
+import { NodeProject } from "projen/lib/javascript";
 
 interface TypeScriptOptions {
   tsconfig?: {
-    paths?: { [name: string]: string[] }
-  }
+    paths?: { [name: string]: string[] };
+  };
 }
 
 export class TypeScript extends Component {
-  public readonly tsconfig: JsonFile
+  public readonly tsconfig: JsonFile;
 
   public static of(project: Project): TypeScript | undefined {
     const isTypeScript = (c: Component): c is TypeScript =>
-      c instanceof TypeScript
+      c instanceof TypeScript;
     // eslint-disable-next-line unicorn/no-array-callback-reference
-    return project.components.find(isTypeScript)
+    return project.components.find(isTypeScript);
   }
 
   constructor(
     public readonly nodeProject: NodeProject,
     options?: TypeScriptOptions,
   ) {
-    super(nodeProject)
+    super(nodeProject);
 
     this.nodeProject.addDevDeps(
       "@tsconfig/node14",
       "@types/node@^14",
       "typescript",
-    )
+    );
 
     this.tsconfig = new JsonFile(this.project, "tsconfig.json", {
       obj: {
@@ -44,6 +44,6 @@ export class TypeScript extends Component {
         include: ["**/*.ts", "**/.*.ts"],
         exclude: ["**/node_modules/**"],
       },
-    })
+    });
   }
 }
