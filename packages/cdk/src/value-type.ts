@@ -16,4 +16,8 @@ export class ValueType<T> {
   public static binary<T extends Uint8Array>() {
     return new ValueType<T>();
   }
+
+  public static as<T>() {
+    return new ValueType<T>();
+  }
 }

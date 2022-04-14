@@ -4,6 +4,7 @@ import { F } from "ts-toolbelt";
 
 import { ITopicSubscription } from "./subscription.js";
 import { ValueType } from "../value-type.js";
+import { OpaqueType } from "@cloudy-ts/opaque-type";
 
 type MessageAttribute =
   | {
@@ -15,7 +16,7 @@ type MessageAttribute =
       BinaryValue: ValueType<Uint8Array>;
     };
 
-export interface TopicProperties {
+export interface TopicProperties extends cdk.aws_sns.TopicProps {
   fifo?: boolean;
   messageType?: ValueType<string>;
   messageGroupIdType?: ValueType<string>;
@@ -44,13 +45,14 @@ export interface MaterializedTopicProperties {
     | never;
 }
 
-export type TopicArn<T extends MaterializedTopicProperties> = string & {
-  readonly t: T;
-};
-// export type TopicArn<T extends MaterializedTopicProperties> = OpaqueType<
-//   string,
-//   T
-// >;
+// declare const tag: unique symbol
+// export type TopicArn<T extends MaterializedTopicProperties> = string & {
+//   readonly [tag]: T;
+// };
+export type TopicArn<T extends MaterializedTopicProperties> = OpaqueType<
+  string,
+  T
+>;
 
 // type MapValueType<T, Fallback = never> = T extends ValueType<infer V>
 //   ? V

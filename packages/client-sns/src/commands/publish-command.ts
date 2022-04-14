@@ -40,32 +40,33 @@ import { staticTest } from "../static-test.js";
 //     : MapValueType<{ [name in DestinationKey]: Value }>
 //   : Fallback;
 
-export type PublishCommandInput<T extends aws_sns.MaterializedTopicProperties> =
-  Omit<
-    BaseCommandInput,
-    | "TopicArn"
-    | "Message"
-    | "MessageGroupId"
-    | "MessageDeduplicationId"
-    | "MessageAttributes"
-  > & {
-    TopicArn: aws_sns.TopicArn<T>;
-    Message: T["message"];
-  } & (T["messageGroupId"] extends never
-      ? {}
-      : {
-          MessageGroupId: T["messageGroupId"];
-        }) &
-    (T["messageDeduplicationId"] extends never
-      ? {}
-      : {
-          MessageDeduplicationId: T["messageDeduplicationId"];
-        }) &
-    (T["messageAttributes"] extends never
-      ? {}
-      : {
-          MessageAttributes: T["messageAttributes"];
-        });
+export type PublishCommandInput<
+  T extends aws_sns.MaterializedTopicProperties = aws_sns.MaterializedTopicProperties,
+> = Omit<
+  BaseCommandInput,
+  | "TopicArn"
+  | "Message"
+  | "MessageGroupId"
+  | "MessageDeduplicationId"
+  | "MessageAttributes"
+> & {
+  TopicArn: aws_sns.TopicArn<T>;
+  Message: T["message"];
+} & (T["messageGroupId"] extends never
+    ? {}
+    : {
+        MessageGroupId: T["messageGroupId"];
+      }) &
+  (T["messageDeduplicationId"] extends never
+    ? {}
+    : {
+        MessageDeduplicationId: T["messageDeduplicationId"];
+      }) &
+  (T["messageAttributes"] extends never
+    ? {}
+    : {
+        MessageAttributes: T["messageAttributes"];
+      });
 
 export interface PublishCommandOutput extends BaseCommandOutput {}
 
