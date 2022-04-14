@@ -7,7 +7,7 @@ import {
 import { Command } from "@aws-sdk/smithy-client";
 import { MiddlewareStack } from "@aws-sdk/types";
 
-import { aws_sns, OpaqueType } from "@cloudy-ts/cdk";
+import { aws_sns, OpaqueType, ValueType } from "@cloudy-ts/cdk";
 
 import { ServiceInputTypes, ServiceOutputTypes } from "../sns-client.js";
 import { staticTest } from "../static-test.js";
@@ -15,7 +15,7 @@ import { staticTest } from "../static-test.js";
 // /**
 //  * Returns the `T` in `ValueType<T>`, even if it's nested in a record.
 //  */
-// type MapValueType<T> = T extends aws_sns.ValueType<infer V>
+// type MapValueType<T> = T extends ValueType<infer V>
 //   ? V
 //   : T extends { [name: string]: any }
 //   ? { [name in keyof T]: MapValueType<T[name]> }
@@ -120,25 +120,23 @@ staticTest((topic: aws_sns.Topic<{ fifo: true }>) => {
 });
 
 type MyString = OpaqueType<string, { readonly t: unique symbol }>;
-staticTest(
-  (topic: aws_sns.Topic<{ messageType: aws_sns.ValueType<MyString> }>) => {
-    new PublishCommand({
-      TopicArn: topic.topicArn,
-      Message: "" as MyString,
-    });
-    new PublishCommand({
-      TopicArn: topic.topicArn,
-      // @ts-expect-error: Message must be of type MyString.
-      Message: "",
-    });
-  },
-);
+staticTest((topic: aws_sns.Topic<{ messageType: ValueType<MyString> }>) => {
+  new PublishCommand({
+    TopicArn: topic.topicArn,
+    Message: "" as MyString,
+  });
+  new PublishCommand({
+    TopicArn: topic.topicArn,
+    // @ts-expect-error: Message must be of type MyString.
+    Message: "",
+  });
+});
 
 staticTest(
   (
     topic: aws_sns.Topic<{
       messageAttributesType: {
-        userId: { DataType: "String"; StringValue: aws_sns.ValueType<"test"> };
+        userId: { DataType: "String"; StringValue: ValueType<"test"> };
       };
     }>,
   ) => {

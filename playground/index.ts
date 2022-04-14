@@ -11,11 +11,11 @@ const app = new cdk.App();
 const stack = new cdk.Stack(app, "cloudy-playground");
 
 const topic = new cloudy.aws_sns.Topic(stack, "topic", {
-  messageType: cloudy.aws_sns.ValueType.string<"Hello" | "World!">(),
+  messageType: cloudy.ValueType.string<"Hello" | "World!">(),
   messageAttributesType: {
     userId: {
       DataType: "Number",
-      StringValue: cloudy.aws_sns.ValueType.string<`${number}`>(),
+      StringValue: cloudy.ValueType.string<`${number}`>(),
     },
   },
 });
