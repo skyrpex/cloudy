@@ -1,4 +1,6 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { Component, JsonFile, Project } from "projen"
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { NodeProject } from "projen/lib/javascript"
 
 interface TypeScriptOptions {

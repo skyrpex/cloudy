@@ -1,4 +1,6 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { JsonFile } from "projen"
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { NodePackageManager } from "projen/lib/javascript"
 
 import { DefaultNodeProject } from "./.projenrc.default-node-project.js"
@@ -11,7 +13,7 @@ const project = new DefaultNodeProject({
   defaultReleaseBranch: "main",
   packageManager: NodePackageManager.PNPM,
   eslint: {
-    devFiles: [".projenrc*.ts", "**/build.config.ts", "**/*.test.ts"],
+    devFiles: ["**/build.config.ts", ".projenrc*.ts", "**/*.test.ts"],
   },
 })
 

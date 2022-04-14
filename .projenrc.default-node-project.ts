@@ -1,6 +1,7 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { TextFile } from "projen"
+// eslint-disable-next-line import/no-extraneous-dependencies
 import {
-  NodePackageManager,
   NodeProject,
   NodeProjectOptions,
   TrailingComma,

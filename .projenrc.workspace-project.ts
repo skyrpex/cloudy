@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { NodeProject, NodeProjectOptions } from "projen/lib/javascript"
 
 export class WorkspaceProject extends NodeProject {

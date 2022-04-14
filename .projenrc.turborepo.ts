@@ -1,7 +1,9 @@
 import { execSync } from "node:child_process"
 import path from "node:path"
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { Component, JsonFile, Project, YamlFile } from "projen"
+// eslint-disable-next-line import/no-extraneous-dependencies
 import {
   NodePackageManager,
   NodeProject,
