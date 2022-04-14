@@ -12,63 +12,64 @@ import { aws_sns, OpaqueType } from "@cloudy-ts/cdk";
 import { ServiceInputTypes, ServiceOutputTypes } from "../sns-client.js";
 import { staticTest } from "../static-test.js";
 
-/**
- * Returns the `T` in `ValueType<T>`, even if it's nested in a record.
- */
-type MapValueType<T> = T extends aws_sns.ValueType<infer V>
-  ? V
-  : T extends { [name: string]: any }
-  ? { [name in keyof T]: MapValueType<T[name]> }
-  : T;
+// /**
+//  * Returns the `T` in `ValueType<T>`, even if it's nested in a record.
+//  */
+// type MapValueType<T> = T extends aws_sns.ValueType<infer V>
+//   ? V
+//   : T extends { [name: string]: any }
+//   ? { [name in keyof T]: MapValueType<T[name]> }
+//   : T;
 
-/**
- * Maps the value types of `Object[ObjectKey]` to
- * `{ [DestinationKey]: Object[ObjectKey] }`, if the value of
- * `Object[ObjectKey]` is not undefined. If it's undefined, the returned value
- * will be `Fallback`.
- */
-type MapValueTypeWithFallback<
-  DestinationKey extends string,
-  Object,
-  ObjectKey extends keyof Object,
-  Fallback = {},
-> = Object extends {
-  [name in ObjectKey]: infer Value;
-}
-  ? Value extends undefined
-    ? Fallback
-    : MapValueType<{ [name in DestinationKey]: Value }>
-  : Fallback;
+// /**
+//  * Maps the value types of `Object[ObjectKey]` to
+//  * `{ [DestinationKey]: Object[ObjectKey] }`, if the value of
+//  * `Object[ObjectKey]` is not undefined. If it's undefined, the returned value
+//  * will be `Fallback`.
+//  */
+// type MapValueTypeWithFallback<
+//   DestinationKey extends string,
+//   Object,
+//   ObjectKey extends keyof Object,
+//   Fallback = {},
+// > = Object extends {
+//   [name in ObjectKey]: infer Value;
+// }
+//   ? Value extends undefined
+//     ? Fallback
+//     : MapValueType<{ [name in DestinationKey]: Value }>
+//   : Fallback;
 
-export type PublishCommandInput<T extends aws_sns.TopicProperties> = Omit<
-  BaseCommandInput,
-  | "TopicArn"
-  | "Message"
-  | "MessageGroupId"
-  | "MessageDeduplicationId"
-  | "MessageAttributes"
-> & {
-  TopicArn: aws_sns.TopicArn<T>;
-  Message: aws_sns.MaterializeTopicProperties<T>["message"];
-} & (aws_sns.MaterializeTopicProperties<T>["messageGroupId"] extends never
-    ? {}
-    : {
-        MessageGroupId: aws_sns.MaterializeTopicProperties<T>["messageGroupId"];
-      }) &
-  (aws_sns.MaterializeTopicProperties<T>["messageDeduplicationId"] extends never
-    ? {}
-    : {
-        MessageDeduplicationId: aws_sns.MaterializeTopicProperties<T>["messageDeduplicationId"];
-      }) &
-  (aws_sns.MaterializeTopicProperties<T>["messageAttributes"] extends never
-    ? {}
-    : {
-        MessageAttributes: aws_sns.MaterializeTopicProperties<T>["messageAttributes"];
-      });
+export type PublishCommandInput<T extends aws_sns.MaterializedTopicProperties> =
+  Omit<
+    BaseCommandInput,
+    | "TopicArn"
+    | "Message"
+    | "MessageGroupId"
+    | "MessageDeduplicationId"
+    | "MessageAttributes"
+  > & {
+    TopicArn: aws_sns.TopicArn<T>;
+    Message: T["message"];
+  } & (T["messageGroupId"] extends never
+      ? {}
+      : {
+          MessageGroupId: T["messageGroupId"];
+        }) &
+    (T["messageDeduplicationId"] extends never
+      ? {}
+      : {
+          MessageDeduplicationId: T["messageDeduplicationId"];
+        }) &
+    (T["messageAttributes"] extends never
+      ? {}
+      : {
+          MessageAttributes: T["messageAttributes"];
+        });
 
 export interface PublishCommandOutput extends BaseCommandOutput {}
 
-export class PublishCommand<T extends aws_sns.TopicProperties>
+export class PublishCommand<T extends aws_sns.MaterializedTopicProperties>
   implements
     Command<BaseCommandInput, BaseCommandOutput, ResolvedConfiguration>
 {
