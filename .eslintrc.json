@@ -74,9 +74,9 @@
       "error",
       {
         "devDependencies": [
-          "**/build.config.ts",
-          ".projenrc*.ts",
-          "**/*.test.ts"
+          "**/.projenrc*.ts",
+          "**/*.test.ts",
+          "**/build.config.ts"
         ]
       }
     ],

@@ -1,6 +1,4 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { TextFile } from "projen"
-// eslint-disable-next-line import/no-extraneous-dependencies
 import {
   NodeProject,
   NodeProjectOptions,
@@ -58,7 +56,11 @@ export class DefaultNodeProject extends NodeProject {
             },
           ]
         : [],
-      devFiles: options.eslint?.devFiles ?? [".projenrc*.ts", "**/*.test.ts"],
+      devFiles: [
+        "**/.projenrc*.ts",
+        "**/*.test.ts",
+        ...(options.eslint?.devFiles ?? []),
+      ],
     })
 
     new TextFile(this, ".editorconfig", {

@@ -13,7 +13,7 @@ const project = new DefaultNodeProject({
   defaultReleaseBranch: "main",
   packageManager: NodePackageManager.PNPM,
   eslint: {
-    devFiles: ["**/build.config.ts", ".projenrc*.ts", "**/*.test.ts"],
+    devFiles: ["**/build.config.ts"],
   },
 })
 

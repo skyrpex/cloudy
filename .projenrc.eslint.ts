@@ -1,6 +1,4 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { Component, IgnoreFile, JsonFile, Project } from "projen"
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { NodeProject, Prettier } from "projen/lib/javascript"
 
 export interface EslintOptions {
