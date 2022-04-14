@@ -53,6 +53,7 @@ function esbuildTransformSync(
     sourcefile: filename,
     sourcemap: "both",
     // loader: new URL(url).pathname.match(extensionsRegex)?.[1],
+    loader: "ts",
     // target: `node${process.versions.node}`,
     target: `es2020`,
     format: format === "module" ? "esm" : "cjs",
