@@ -7,51 +7,79 @@ import {
 import { Command } from "@aws-sdk/smithy-client"
 import { MiddlewareStack } from "@aws-sdk/types"
 
-import { aws_sns } from "@cloudy-ts/cdk"
+import { aws_sns, OpaqueType } from "@cloudy-ts/cdk"
 
 import { ServiceInputTypes, ServiceOutputTypes } from "../sns-client.js"
+import { staticTest } from "../static-test.js"
 
-export type PublishCommandInput<TopicArnType = aws_sns.TopicArn> = Omit<
+/**
+ * Returns the `T` in `ValueType<T>`, even if it's nested in a record.
+ */
+type MapValueType<T> = T extends aws_sns.ValueType<infer V>
+  ? V
+  : T extends { [name: string]: any }
+  ? { [name in keyof T]: MapValueType<T[name]> }
+  : T
+
+/**
+ * Maps the value types of `Object[ObjectKey]` to
+ * `{ [DestinationKey]: Object[ObjectKey] }`, if the value of
+ * `Object[ObjectKey]` is not undefined. If it's undefined, the returned value
+ * will be `Fallback`.
+ */
+type MapValueTypeWithFallback<
+  DestinationKey extends string,
+  Object,
+  ObjectKey extends keyof Object,
+  Fallback = {},
+> = Object extends {
+  [name in ObjectKey]: infer Value
+}
+  ? Value extends undefined
+    ? Fallback
+    : MapValueType<{ [name in DestinationKey]: Value }>
+  : Fallback
+
+export type PublishCommandInput<T extends aws_sns.TopicProperties> = Omit<
   BaseCommandInput,
   | "TopicArn"
   | "Message"
   | "MessageGroupId"
   | "MessageDeduplicationId"
   | "MessageAttributes"
-> &
-  TopicArnType extends aws_sns.TopicArn<
-  infer Message,
-  infer MessageGroupId,
-  infer MessageDeduplicationId,
-  infer MessageAttributes,
-  infer Fifo
->
-  ? {
-      TopicArn: TopicArnType
-      Message: Message
-    } & (Fifo extends true
-      ? {
-          MessageGroupId: MessageGroupId
-          MessageDeduplicationId: MessageDeduplicationId
-        }
-      : {}) &
-      (MessageAttributes extends undefined
-        ? {}
-        : {
-            MessageAttributes: MessageAttributes
-          })
-  : BaseCommandInput
+> & {
+  TopicArn: aws_sns.TopicArn<T>
+} & MapValueTypeWithFallback<"Message", T, "messageType", { Message: string }> &
+  MapValueTypeWithFallback<
+    "MessageAttributes",
+    T,
+    "messageAttributesType",
+    {}
+  > &
+  (T["fifo"] extends true
+    ? MapValueTypeWithFallback<
+        "MessageGroupId",
+        T,
+        "messageGroupIdType",
+        { MessageGroupId: string }
+      > &
+        MapValueTypeWithFallback<
+          "MessageDeduplicationId",
+          T,
+          "messageDeduplicationIdType",
+          { MessageDeduplicationId: string }
+        >
+    : {})
 
 export interface PublishCommandOutput extends BaseCommandOutput {}
 
-export class PublishCommand<
-  TopicArnType extends aws_sns.TopicArn<string, string, string, any> | string,
-> implements
+export class PublishCommand<T extends aws_sns.TopicProperties>
+  implements
     Command<BaseCommandInput, BaseCommandOutput, ResolvedConfiguration>
 {
   private readonly command: BaseCommand
 
-  constructor(readonly input: PublishCommandInput<TopicArnType>) {
+  constructor(readonly input: PublishCommandInput<T>) {
     this.command = new BaseCommand(input as unknown as BaseCommandInput)
   }
 
@@ -66,3 +94,42 @@ export class PublishCommand<
     return this.command.resolveMiddleware(clientStack as any, configuration)
   }
 }
+
+staticTest((topic: aws_sns.Topic<{}>) => {
+  new PublishCommand({
+    TopicArn: topic.topicArn,
+    Message: "",
+  })
+  new PublishCommand({
+    TopicArn: topic.topicArn,
+    Message: "",
+    // @ts-expect-error: MessageGroupId and MessageDeduplicationId are forbidden if FIFO.
+    MessageGroupId: "",
+    MessageDeduplicationId: "",
+  })
+})
+
+staticTest((topic: aws_sns.Topic<{ fifo: true }>) => {
+  new PublishCommand({
+    TopicArn: topic.topicArn,
+    Message: "",
+    MessageGroupId: "",
+    MessageDeduplicationId: "",
+  })
+  // @ts-expect-error: MessageGroupId and MessageDeduplicationId are required if FIFO.
+  new PublishCommand({
+    TopicArn: topic.topicArn,
+    Message: "",
+  })
+})
+
+type MyString = OpaqueType<string, { readonly t: unique symbol }>
+staticTest(
+  (topic: aws_sns.Topic<{ messageType: aws_sns.ValueType<MyString> }>) => {
+    new PublishCommand({
+      TopicArn: topic.topicArn,
+      // @ts-expect-error: Message must be of type MyString.
+      Message: "",
+    })
+  },
+)

@@ -1,108 +1,41 @@
 import * as cdk from "aws-cdk-lib"
 import { Construct } from "constructs"
-import { T } from "ts-toolbelt"
-
-import { JsonSerializable, JsonEncoded } from "@cloudy-ts/json-codec"
-import { OpaqueType } from "@cloudy-ts/opaque-type"
+import { F } from "ts-toolbelt"
 
 import { ITopicSubscription } from "./subscription.js"
+import { ValueType } from "./value-type.js"
 
-export interface FifoType {
-  fifo: boolean
-}
-
-type MessageAttributeType =
+type MessageAttribute =
   | {
       DataType: "String" | "Number" | "String.Array"
-      StringValue: string
+      StringValue: ValueType<string>
     }
   | {
       DataType: "Binary"
-      BinaryValue: Uint8Array
+      BinaryValue: ValueType<Uint8Array>
     }
 
-export interface MessageAttributesBaseType {
-  [key: string]: MessageAttributeType
-}
-
-export type TopicArn<
-  Message extends string = string,
-  MessageGroupId extends string = string,
-  MessageDeduplicationId extends string = string,
-  MessageAttributes extends MessageAttributesBaseType | undefined = undefined,
-  Fifo extends boolean = boolean,
-> = OpaqueType<
-  string,
-  {
-    readonly t: unique symbol
-    Message: Message
-    MessageGroupId: MessageGroupId
-    MessageDeduplicationId: MessageDeduplicationId
-    MessageAttributes: MessageAttributes
-    Fifo: Fifo
-  }
->
-
-export class MessageType<T extends string = string> {
-  public static as<T extends string>() {
-    return new MessageType<T>()
-  }
-
-  public static asJson<T extends JsonSerializable>() {
-    return new MessageType<JsonEncoded<T>>()
+export interface TopicProperties {
+  fifo?: boolean
+  messageType?: ValueType<string>
+  messageGroupIdType?: ValueType<string>
+  messageDeduplicationIdType?: ValueType<string>
+  messageAttributesType?: {
+    [name: string]: MessageAttribute
   }
 }
 
-export class MessageAttributesType<
-  T extends MessageAttributesBaseType | undefined,
-> {
-  public static as<T extends MessageAttributesBaseType>() {
-    return new MessageAttributesType<T>()
-  }
-}
+export type TopicArn<T extends TopicProperties> = string & { readonly t: T }
 
-export interface TopicProperties<
-  Message extends string = string,
-  MessageGroupId extends string = string,
-  MessageDeduplicationId extends string = string,
-  MessageAttributes extends
-    | MessageAttributesBaseType
-    | undefined = MessageAttributesBaseType,
-  Fifo extends boolean = boolean,
-> extends cdk.aws_sns.TopicProps {
-  fifo?: Fifo
-  messageType?: MessageType<Message>
-  messageGroupIdType?: MessageType<MessageGroupId>
-  messageDeduplicationIdType?: MessageType<MessageDeduplicationId>
-  messageAttributesType?: MessageAttributesType<MessageAttributes>
-}
+type MapValueType<T, Fallback> = T extends ValueType<infer V> ? V : Fallback
 
-export class Topic<
-  Message extends string = string,
-  MessageGroupId extends string = string,
-  MessageDeduplicationId extends string = string,
-  // MessageAttributes extends MessageAttributesType = undefined,
-  MessageAttributes extends MessageAttributesBaseType | undefined = undefined,
-  Fifo extends boolean = false,
-> extends cdk.aws_sns.Topic {
-  public declare readonly topicArn: TopicArn<
-    Message,
-    MessageGroupId,
-    MessageDeduplicationId,
-    MessageAttributes,
-    Fifo
-  >
+export class Topic<T extends TopicProperties> extends cdk.aws_sns.Topic {
+  public declare readonly topicArn: TopicArn<T>
 
   public constructor(
     scope: Construct,
     id: string,
-    properties?: TopicProperties<
-      Message,
-      MessageGroupId,
-      MessageDeduplicationId,
-      MessageAttributes,
-      Fifo
-    >,
+    properties?: F.Exact<T, TopicProperties>,
   ) {
     super(scope, id, {
       topicName: properties?.fifo ? buildFifoName(scope, id) : undefined,
@@ -112,7 +45,8 @@ export class Topic<
 
   addSubscription(
     // subscription: ITopicSubscription<Message> | cdk.aws_sns.ITopicSubscription,
-    subscription: ITopicSubscription<Message>,
+    // subscription: ITopicSubscription<Message>,
+    subscription: ITopicSubscription<MapValueType<T["messageType"], string>>,
   ) {
     return super.addSubscription(subscription)
   }

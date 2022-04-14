@@ -11,13 +11,13 @@ const app = new cdk.App()
 const stack = new cdk.Stack(app, "cloudy-playground")
 
 const topic = new cloudy.aws_sns.Topic(stack, "topic", {
-  messageType: cloudy.aws_sns.MessageType.as<"Hello" | "World!">(),
-  messageAttributesType: cloudy.aws_sns.MessageAttributesType.as<{
+  messageType: cloudy.aws_sns.ValueType.string<"Hello" | "World!">(),
+  messageAttributesType: {
     userId: {
-      DataType: "Number"
-      StringValue: string
-    }
-  }>(),
+      DataType: "Number",
+      StringValue: cloudy.aws_sns.ValueType.string<`${number}`>(),
+    },
+  },
 })
 
 type CustomBigInt = OpaqueType<bigint, { readonly t: unique symbol }>
