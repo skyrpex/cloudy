@@ -1,7 +1,7 @@
 import { OpaqueType } from "@cloudy-ts/opaque-type";
 import { ToAttributeMap } from "@cloudy-ts/util-dynamodb";
-import { ValueType } from "../value-type";
-// import { DynamodbItem } from "./table";
+
+import { ValueType } from "../value-type.js";
 
 type DynamodbPrimitiveValues =
   | string

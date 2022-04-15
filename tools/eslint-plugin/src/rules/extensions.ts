@@ -4,6 +4,7 @@ import moduleVisitor from "eslint-module-utils/moduleVisitor";
 import resolve from "eslint-module-utils/resolve";
 
 import { isBuiltIn, isExternalModule, isScoped } from "../core/import-type.js";
+import { pathToFileURL } from "node:url";
 // import docsUrl from "../docsUrl"
 
 const enumValues = { enum: ["always", "ignorePackages", "never"] };
@@ -135,11 +136,19 @@ export default {
       return false;
     }
 
+    function getQueryString(path: string) {
+      const result = path.match(/(\?.*?)$/);
+      if (result) {
+        return result[1];
+      }
+    }
+
     function checkFileExtension(source, node) {
       // bail if the declaration doesn't have a source, e.g. "export { foo };", or if it's only partially typed like in an editor
       if (!source || !source.value) return;
 
-      const importPathWithQueryString = source.value;
+      console.log(new URL(source.value, "file://"));
+      const importPathWithQueryString = source.value.trim();
 
       // don't enforce anything on builtins
       if (isBuiltIn(importPathWithQueryString, context.settings)) return;
@@ -151,6 +160,11 @@ export default {
       if (isExternalRootModule(importPath)) return;
 
       const resolvedPath = resolve(importPath, context);
+
+      // const url = pathToFileURL(resolvedPath);
+      // // const url = new URL(resolvedPath);
+      // console.log({ sourceValue: source.value, url });
+      // return;
 
       // get extension from resolved path, if possible.
       // for unresolved, use source value.
@@ -169,54 +183,76 @@ export default {
         isExternalModule(importPath, resolve(importPath, context), context) ||
         isScoped(importPath);
 
-      // console.log(node)
+      const queryString = getQueryString(importPathWithQueryString) ?? "";
+
+      console.log({
+        source,
+        node,
+        raw: node.raw,
+        isPackage,
+        extension,
+        resolvedPath,
+        importPath,
+        importPathWithQueryString,
+      });
 
       if (importPath.endsWith(".ts")) {
-        const fixedPath = importPath.replace(/\.ts$/, ".js");
+        const fixedPath = `${importPath.replace(/\.ts$/, ".js")}${queryString}`;
         // console.log(node)
+        console.log("A!", node.source);
         context.report({
           node: source,
           // message: `Unexpected use of file extension ".ts" for "${importPathWithQueryString}"`,
           // message: `Change file extension to ".js" for "${importPathWithQueryString}"`,
           message: `Change import path to "${fixedPath}".`,
           fix(fixer) {
-            // fixer.replaceTextRange(node.range, fixedPath)
+            // return fixer.replaceTextRange(node.range, fixedPath)
             // return fixer.replaceText(node, fixedPath)
             // return fixer.replaceText(
             //   node,
             //   node.source.raw.replace(/\.ts$/, ".js"),
             // )
+            // return fixer.replaceTextRange(
+            //   [node.source.range[0] + 1, node.source.range[1] - 1],
+            //   fixedPath,
+            // );
             return fixer.replaceTextRange(
-              [node.source.range[0] + 1, node.source.range[1] - 1],
+              [source.range[0] + 1, source.range[1] - 1],
               fixedPath,
             );
           },
         });
       } else if (!extension) {
-        // ignore type-only imports
-        if (node.importKind === "type") return;
+        console.log("B!", node.source);
+        // // ignore type-only imports
+        // if (node.importKind === "type") return;
         const extensionRequired = isUseOfExtensionRequired(
           extension,
           isPackage,
         );
         const extensionForbidden = isUseOfExtensionForbidden(extension);
         if (extensionRequired && !extensionForbidden) {
-          const fixedPath = `${importPathWithQueryString}.js`;
+          const fixedPath = `${importPath}.js${queryString}`;
           context.report({
             node: source,
             // message: `Add file extension ".js" to "${importPathWithQueryString}"`,
             message: `Change import path to "${fixedPath}".`,
             fix(fixer) {
-              // fixer.replaceTextRange(node.range, fixedPath)
-              return fixer.insertTextAfterRange(
-                [node.range[0], node.range[1] - 1],
-                ".js",
+              // return fixer.replaceTextRange(node.range, fixedPath)
+              // return fixer.insertTextAfterRange(
+              //   [node.range[0], node.range[1] - 1],
+              //   ".js",
+              // );
+              return fixer.replaceTextRange(
+                [source.range[0] + 1, source.range[1] - 1],
+                fixedPath,
               );
               // return fixer.insertTextAfter(node, ".js")
             },
           });
         }
       } else if (extension === "ts") {
+        console.log("C!", node.source);
         // eslint-disable-next-line unicorn/no-lonely-if
         // if (
         //   isUseOfExtensionForbidden(extension) &&
@@ -226,18 +262,25 @@ export default {
         const includesIndex = importPath.endsWith("/index");
         const insertText =
           resolvesToIndex && !includesIndex ? "/index.js" : ".js";
-        const fixedPath = `${importPathWithQueryString}${insertText}`;
+        const fixedPath = `${importPath}${insertText}${queryString}`;
         // console.log({ resolvedPath, importPath, fixedPath })
         context.report({
           node: source,
           // message: `Missing file extension ".js" for "${importPathWithQueryString}"`,
           message: `Change import path to "${fixedPath}".`,
           fix(fixer) {
-            // fixer.replaceTextRange(node.range, fixedPath)
-            return fixer.insertTextAfterRange(
-              [node.range[0], node.range[1] - 1],
-              insertText,
+            // return fixer.replaceTextRange(node.range, fixedPath);
+            // return fixer.replaceTextRange(source.range, fixedPath);
+            return fixer.replaceTextRange(
+              [source.range[0] + 1, source.range[1] - 1],
+              fixedPath,
             );
+            // return fixer.replaceTextRange(node.range, "xyz");
+            // return fixer.replace(node.range, "xyz");
+            // return fixer.insertTextAfterRange(
+            //   [node.range[0], node.range[1] - 2],
+            //   insertText,
+            // );
             // return fixer.insertTextAfter(node, ".js")
           },
         });
