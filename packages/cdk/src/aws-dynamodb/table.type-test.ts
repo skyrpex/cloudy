@@ -1,6 +1,10 @@
 import { OpaqueType } from "@cloudy-ts/opaque-type";
 import { ToAttributeMap } from "@cloudy-ts/util-dynamodb";
-import { AttributeType } from "aws-cdk-lib/aws-dynamodb";
+import {
+  AttributeType,
+  StreamViewType,
+  TableProps,
+} from "aws-cdk-lib/aws-dynamodb";
 import { F } from "ts-toolbelt";
 import { staticTest } from "../static-test.js";
 
@@ -70,8 +74,8 @@ type AccessPattern<
 interface TableProperties<
   PartitionKey extends KeyDefinition,
   SortKey extends KeyDefinition | undefined,
-  ItemType extends AccessPattern<PartitionKey, SortKey>,
-> {
+  ItemType extends AccessPattern<PartitionKey, SortKey> | undefined,
+> extends TableProps {
   partitionKey: PartitionKey;
   sortKey?: SortKey;
   itemType?: ValueType<ItemType>;
@@ -102,6 +106,7 @@ interface MaterializedTableProperties<
   partitionKey: PartitionKey;
   sortKey: SortKey;
   itemType: AccessPattern<PartitionKey, SortKey>;
+  stream: StreamViewType | never;
 }
 
 type Materialize<T extends TableProperties<any, any, any>> = {
@@ -116,8 +121,11 @@ type Materialize<T extends TableProperties<any, any, any>> = {
   > extends infer ItemType
     ? unknown extends ItemType
       ? AccessPattern<T["partitionKey"], T["sortKey"]>
+      : ItemType extends undefined
+      ? AccessPattern<T["partitionKey"], T["sortKey"]>
       : ItemType
     : AccessPattern<T["partitionKey"], T["sortKey"]>;
+  stream: T["stream"] extends StreamViewType ? T["stream"] : never;
 };
 
 type p1 = Materialize<
@@ -161,6 +169,13 @@ type p6 = TableProperties<
   // @ts-expect-error: id is missing.
   {}
 >;
+type p7 = Materialize<
+  TableProperties<
+    { name: "id"; type: AttributeType.STRING },
+    undefined,
+    undefined
+  >
+>;
 
 type TableName<T extends MaterializedTableProperties> = OpaqueType<string, T>;
 
@@ -182,7 +197,7 @@ class Table<
   ) {}
 }
 
-function command<T extends MaterializedTableProperties>(input: {
+function command<T extends MaterializedTableProperties<any, any>>(input: {
   tableName: TableName<T>;
   item: ToAttributeMap<T["itemType"]>;
 }) {}
@@ -271,25 +286,78 @@ staticTest(() => {
 });
 
 staticTest(() => {
-  // type P = TableProperties<
-  //   { name: "id"; type: AttributeType.STRING },
-  //   { name: "sk"; type: AttributeType.NUMBER },
-  //   { id: string; sk: number }
-  // >;
-  // const table = new Table<P>({
-  //   partitionKey: {
-  //     name: "id",
-  //     type: AttributeType.STRING,
-  //   },
-  //   sortKey: {
-  //     name: "sk",
-  //     type: AttributeType.NUMBER,
-  //   },
-  //   // @ts-expect-error: itemType requires sk.
-  //   itemType: ValueType.as<{
-  //     id: string;
-  //   }>(),
-  // });
+  const table = new Table({
+    partitionKey: {
+      name: "id",
+      type: AttributeType.STRING,
+    },
+    itemType: ValueType.as<{
+      id: string;
+      age: number;
+    }>(),
+  });
+  command({
+    tableName: table.tableName,
+    item: {
+      id: { S: "id_1" },
+      age: { N: "1" },
+    },
+  });
+  command({
+    tableName: table.tableName,
+    // @ts-expect-error: age is missing.
+    item: {
+      id: { S: "id_1" },
+    },
+  });
+  command({
+    tableName: table.tableName,
+    item: {
+      id: { S: "id_1" },
+      age: { N: "1" },
+      // @ts-expect-error: x is not a known property.
+      x: { S: "" },
+    },
+  });
+});
+
+staticTest(() => {
+  const table = new Table({
+    partitionKey: {
+      name: "id",
+      type: AttributeType.STRING,
+    },
+  });
+  command({
+    tableName: table.tableName,
+    item: {
+      id: { S: "id_1" },
+      age: { N: "1" },
+    },
+  });
+  command({
+    tableName: table.tableName,
+    item: {
+      id: { S: "id_1" },
+    },
+  });
+  command({
+    tableName: table.tableName,
+    item: {
+      id: { S: "id_1" },
+      // @ts-expect-error: c is not a valid DynamoDB attribute.
+      c: "1",
+    },
+  });
+});
+
+staticTest(() => {
+  new Table({
+    partitionKey: {
+      name: "id",
+      type: AttributeType.STRING,
+    },
+  });
   new Table({
     partitionKey: {
       name: "id",

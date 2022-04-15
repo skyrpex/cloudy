@@ -17,7 +17,7 @@ type MessageAttribute =
     };
 
 export interface TopicProperties extends cdk.aws_sns.TopicProps {
-  fifo?: boolean;
+  // fifo?: boolean;
   messageType?: ValueType<string>;
   messageGroupIdType?: ValueType<string>;
   messageDeduplicationIdType?: ValueType<string>;
