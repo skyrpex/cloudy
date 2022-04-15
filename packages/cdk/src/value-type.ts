@@ -4,6 +4,8 @@ declare const tag: unique symbol;
 
 export class ValueType<T> {
   public readonly [tag]: T | undefined;
+  // public readonly [tag]!: T;
+  // public readonly t!: T;
 
   public static string<T extends string>() {
     return new ValueType<T>();
