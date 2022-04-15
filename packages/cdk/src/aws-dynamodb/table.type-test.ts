@@ -75,10 +75,12 @@ interface TableProperties<
   PartitionKey extends KeyDefinition,
   SortKey extends KeyDefinition | undefined,
   ItemType extends AccessPattern<PartitionKey, SortKey> | undefined,
+  Stream extends StreamViewType | undefined,
 > extends TableProps {
   partitionKey: PartitionKey;
   sortKey?: SortKey;
   itemType?: ValueType<ItemType>;
+  stream?: Stream;
 }
 // interface TableProperties<
 //   PartitionKey extends KeyDefinition = KeyDefinition,
@@ -99,22 +101,36 @@ type ResolveValueType<T> = T extends ValueType<infer V> ? V : T;
 //   sortKey: KeyDefinition | never;
 //   itemType: DynamodbItem;
 // }
-interface MaterializedTableProperties<
-  PartitionKey extends KeyDefinition = KeyDefinition,
-  SortKey extends KeyDefinition | undefined = undefined,
-> {
-  partitionKey: PartitionKey;
-  sortKey: SortKey;
-  itemType: AccessPattern<PartitionKey, SortKey>;
+// interface MaterializedTableProperties<
+//   PartitionKey extends KeyDefinition = KeyDefinition,
+//   SortKey extends KeyDefinition | undefined = undefined,
+// > {
+//   partitionKey: PartitionKey;
+//   sortKey: SortKey;
+//   itemType: AccessPattern<PartitionKey, SortKey>;
+//   stream: StreamViewType | never;
+// }
+// interface MaterializedTableProperties {
+//   partitionKey: string;
+//   sortKey: string | undefined;
+//   itemType: DynamodbItem;
+//   stream: StreamViewType | never;
+// }
+interface MaterializedTableProperties<T extends DynamodbItem = DynamodbItem> {
+  partitionKey: keyof T;
+  sortKey: keyof T | undefined;
+  itemType: T;
   stream: StreamViewType | never;
 }
 
-type Materialize<T extends TableProperties<any, any, any>> = {
-  partitionKey: T["partitionKey"];
+type Materialize<T extends TableProperties<any, any, any, any>> = {
+  partitionKey: T["partitionKey"]["name"];
+  // partitionKey: T["partitionKey"];
   sortKey: T["sortKey"] extends infer SortKey
     ? SortKey extends KeyDefinition
-      ? SortKey
-      : never
+      ? SortKey["name"]
+      : // SortKey
+        never
     : never;
   itemType: ResolveValueType<
     T["itemType"] extends infer ItemType | undefined ? ItemType : T["itemType"]
@@ -125,7 +141,11 @@ type Materialize<T extends TableProperties<any, any, any>> = {
       ? AccessPattern<T["partitionKey"], T["sortKey"]>
       : ItemType
     : AccessPattern<T["partitionKey"], T["sortKey"]>;
-  stream: T["stream"] extends StreamViewType ? T["stream"] : never;
+  stream: T["stream"] extends infer Stream
+    ? Stream extends StreamViewType
+      ? Stream
+      : never
+    : never;
 };
 
 type p1 = Materialize<
@@ -134,44 +154,51 @@ type p1 = Materialize<
     undefined,
     {
       id: string;
-    }
+    },
+    undefined
   >
 >;
 type p2 = Materialize<
   TableProperties<
     { name: "id"; type: AttributeType.STRING },
     { name: "sk"; type: AttributeType.STRING },
-    { id: string; sk: string }
+    { id: string; sk: string },
+    undefined
   >
 >;
 type p3 = Materialize<
   TableProperties<
     { name: "id"; type: AttributeType.STRING },
     { name: "sk"; type: AttributeType.STRING },
-    { id: string; sk: string; age: number }
+    { id: string; sk: string; age: number },
+    undefined
   >
 >;
 type p4 = TableProperties<
   { name: "id"; type: AttributeType.STRING },
   { name: "sk"; type: AttributeType.STRING },
   // @ts-expect-error: sk is missing.
-  { id: string }
+  { id: string },
+  undefined
 >;
 type p5 = TableProperties<
   { name: "id"; type: AttributeType.STRING },
   { name: "sk"; type: AttributeType.STRING },
   // @ts-expect-error: id is missing.
-  {}
+  {},
+  undefined
 >;
 type p6 = TableProperties<
   { name: "id"; type: AttributeType.STRING },
   undefined,
   // @ts-expect-error: id is missing.
-  {}
+  {},
+  undefined
 >;
 type p7 = Materialize<
   TableProperties<
     { name: "id"; type: AttributeType.STRING },
+    undefined,
     undefined,
     undefined
   >
@@ -187,17 +214,20 @@ class Table<
     PartitionKey,
     SortKey
   >,
+  Stream extends StreamViewType | undefined = undefined,
 > {
   public declare readonly tableName: TableName<
-    Materialize<TableProperties<PartitionKey, SortKey, ItemType>>
+    Materialize<TableProperties<PartitionKey, SortKey, ItemType, Stream>>
   >;
 
   constructor(
-    properties: F.Narrow<TableProperties<PartitionKey, SortKey, ItemType>>,
+    properties: F.Narrow<
+      TableProperties<PartitionKey, SortKey, ItemType, Stream>
+    >,
   ) {}
 }
 
-function command<T extends MaterializedTableProperties<any, any>>(input: {
+function command<T extends MaterializedTableProperties>(input: {
   tableName: TableName<T>;
   item: ToAttributeMap<T["itemType"]>;
 }) {}
@@ -417,4 +447,149 @@ staticTest(() => {
       sk: string;
     }>(),
   });
+});
+
+// staticTest(() => {
+//   // eslint-disable-next-line unicorn/consistent-function-scoping
+//   function command<T extends MaterializedTableProperties<any, any>>(input: {
+//     tableName: TableName<T>;
+//     item: ToAttributeMap<T["itemType"]>;
+//   }) {}
+
+// });
+
+staticTest(() => {
+  interface TableProperties2<
+    PartitionKey extends KeyDefinition,
+    SortKey extends KeyDefinition | undefined,
+    ItemType extends AccessPattern<PartitionKey, SortKey> | undefined,
+    Stream extends StreamViewType | undefined = StreamViewType | undefined,
+  > extends TableProps {
+    partitionKey: PartitionKey;
+    sortKey?: SortKey;
+    itemType?: ValueType<ItemType>;
+    stream?: Stream;
+  }
+
+  // interface MaterializedTableProperties2<ItemType extends DynamodbItem> {
+  //   partitionKey: keyof ItemType;
+  //   sortKey: keyof ItemType | never;
+  //   // itemType: ItemType;
+  //   stream: StreamViewType | never;
+  // }
+
+  type Materialize2<T extends TableProperties2<any, any, any>> = {
+    partitionKey: T["partitionKey"]["name"];
+    sortKey: T["sortKey"] extends infer SortKey
+      ? SortKey extends KeyDefinition
+        ? SortKey["name"]
+        : never
+      : never;
+    itemType: ResolveValueType<
+      T["itemType"] extends infer ItemType | undefined
+        ? ItemType
+        : T["itemType"]
+    > extends infer ItemType
+      ? unknown extends ItemType
+        ? AccessPattern<T["partitionKey"], T["sortKey"]>
+        : ItemType extends undefined
+        ? AccessPattern<T["partitionKey"], T["sortKey"]>
+        : ItemType
+      : AccessPattern<T["partitionKey"], T["sortKey"]>;
+    stream: T["stream"] extends infer Stream
+      ? Stream extends StreamViewType
+        ? Stream
+        : never
+      : never;
+  };
+
+  type t1 = Materialize2<
+    TableProperties2<
+      { name: "id"; type: AttributeType.STRING },
+      undefined,
+      undefined,
+      undefined
+    >
+  >;
+  type t2 = Materialize2<
+    TableProperties2<
+      { name: "id"; type: AttributeType.STRING },
+      { name: "sk"; type: AttributeType.STRING },
+      undefined,
+      undefined
+    >
+  >;
+  type t3 = Materialize2<
+    TableProperties2<
+      { name: "id"; type: AttributeType.STRING },
+      { name: "sk"; type: AttributeType.STRING },
+      undefined,
+      StreamViewType.NEW_IMAGE
+    >
+  >;
+  const t3: t3 = {
+    itemType: {
+      id: "",
+      // sk: 1,
+    },
+    partitionKey: "id",
+    sortKey: "sk",
+    stream: StreamViewType.NEW_IMAGE,
+  };
+  type t4 = Materialize2<
+    TableProperties2<
+      { name: "id"; type: AttributeType.STRING },
+      { name: "sk"; type: AttributeType.STRING },
+      { id: string; sk: string; age: number },
+      StreamViewType.NEW_IMAGE
+    >
+  >;
+});
+
+staticTest(() => {
+  type Event<T extends MaterializedTableProperties> = T["stream"] extends never
+    ? never
+    : {
+        item: T["itemType"];
+      };
+  type t1 = Event<
+    Materialize<
+      TableProperties<
+        { name: "id"; type: AttributeType.STRING },
+        undefined,
+        undefined,
+        undefined
+      >
+    >
+  >;
+  type t2 = Event<
+    Materialize<
+      TableProperties<
+        { name: "id"; type: AttributeType.STRING },
+        undefined,
+        undefined,
+        StreamViewType.NEW_IMAGE
+      >
+    >
+  >;
+  type t3 = Event<
+    Materialize<
+      TableProperties<
+        { name: "id"; type: AttributeType.STRING },
+        { name: "id2"; type: AttributeType.STRING },
+        undefined,
+        StreamViewType.NEW_IMAGE
+      >
+    >
+  >;
+  type t4 = Event<
+    Materialize<
+      TableProperties<
+        { name: "id"; type: AttributeType.STRING },
+        { name: "id2"; type: AttributeType.STRING },
+        { id: "a"; id2: string },
+        StreamViewType.NEW_IMAGE
+      >
+    >
+  >;
 });
