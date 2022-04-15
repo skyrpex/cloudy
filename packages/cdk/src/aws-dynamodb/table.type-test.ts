@@ -30,6 +30,7 @@ type KeyDefinition = {
   name: string;
   type: AttributeType;
 };
+
 type TypeFromAttributeType<T extends AttributeType> =
   T extends AttributeType.STRING
     ? string
@@ -38,17 +39,13 @@ type TypeFromAttributeType<T extends AttributeType> =
     : T extends AttributeType.BINARY
     ? Uint8Array
     : never;
-// type AttributeFromKeyDefinition<T extends KeyDefinition | undefined> =
-//   T extends KeyDefinition
-//     ? {
-//         [name in T["name"]]: TypeFromAttributeType<T["type"]>;
-//       }
-//     : {};
 
 type RemoveUndefined<T> = T extends undefined ? never : T;
+
 type AttributeFromKeyDefinition3Base<T extends KeyDefinition> = {
   [name in T["name"]]: TypeFromAttributeType<T["type"]>;
 };
+
 type AttributeFromKeyDefinition<T extends KeyDefinition | undefined> =
   AttributeFromKeyDefinition3Base<RemoveUndefined<T>>;
 
@@ -59,26 +56,6 @@ type AccessPattern<
   AttributeFromKeyDefinition<PartitionKey> &
   AttributeFromKeyDefinition<SortKey>;
 
-// interface TableProperties<
-//   PartitionKey extends KeyDefinition = KeyDefinition,
-//   ItemType extends AccessPattern<PartitionKey> = AccessPattern<PartitionKey>,
-// > {
-//   partitionKey: KeyDefinition;
-//   // sortKey?: KeyDefinition;
-//   itemType?: ValueType<ItemType>;
-// }
-// interface TableProperties<
-//   PartitionKey extends KeyDefinition = KeyDefinition,
-//   SortKey extends KeyDefinition | undefined = KeyDefinition | undefined,
-//   ItemType extends AccessPattern<PartitionKey, SortKey> = AccessPattern<
-//     PartitionKey,
-//     SortKey
-//   >,
-// > {
-//   partitionKey: PartitionKey;
-//   sortKey?: SortKey;
-//   itemType?: ValueType<ItemType>;
-// }
 interface TableProperties<
   PartitionKey extends KeyDefinition,
   SortKey extends KeyDefinition | undefined,
@@ -90,40 +67,9 @@ interface TableProperties<
   itemType?: ValueType<ItemType>;
   stream?: Stream;
 }
-// interface TableProperties<
-//   PartitionKey extends KeyDefinition = KeyDefinition,
-//   SortKey extends KeyDefinition | undefined = KeyDefinition | undefined,
-//   ItemType extends ValueType<AccessPattern<PartitionKey, SortKey>> = ValueType<
-//     AccessPattern<PartitionKey, SortKey>
-//   >,
-// > {
-//   partitionKey: PartitionKey;
-//   sortKey?: SortKey;
-//   itemType?: ItemType;
-// }
-// type RemoveUndefined<T> = T extends infer U | undefined ? U : T;
+
 type ResolveValueType<T> = T extends ValueType<infer V> ? V : T;
 
-// interface MaterializedTableProperties {
-//   partitionKey: KeyDefinition;
-//   sortKey: KeyDefinition | never;
-//   itemType: DynamodbItem;
-// }
-// interface MaterializedTableProperties<
-//   PartitionKey extends KeyDefinition = KeyDefinition,
-//   SortKey extends KeyDefinition | undefined = undefined,
-// > {
-//   partitionKey: PartitionKey;
-//   sortKey: SortKey;
-//   itemType: AccessPattern<PartitionKey, SortKey>;
-//   stream: StreamViewType | never;
-// }
-// interface MaterializedTableProperties {
-//   partitionKey: string;
-//   sortKey: string | undefined;
-//   itemType: DynamodbItem;
-//   stream: StreamViewType | never;
-// }
 interface MaterializedTableProperties<T extends DynamodbItem = DynamodbItem> {
   partitionKey: keyof T;
   sortKey: keyof T | undefined;
@@ -133,12 +79,10 @@ interface MaterializedTableProperties<T extends DynamodbItem = DynamodbItem> {
 
 type Materialize<T extends TableProperties<any, any, any, any>> = {
   partitionKey: T["partitionKey"]["name"];
-  // partitionKey: T["partitionKey"];
   sortKey: T["sortKey"] extends infer SortKey
     ? SortKey extends KeyDefinition
       ? SortKey["name"]
-      : // SortKey
-        never
+      : never
     : never;
   itemType: ResolveValueType<
     T["itemType"] extends infer ItemType | undefined ? ItemType : T["itemType"]
@@ -262,7 +206,6 @@ staticTest(() => {
 
 type TableName<T extends MaterializedTableProperties> = OpaqueType<string, T>;
 
-// class Table<T extends TableProperties<any, any, any>> {
 class Table<
   PartitionKey extends KeyDefinition,
   SortKey extends KeyDefinition | undefined = undefined,
