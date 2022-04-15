@@ -40,14 +40,12 @@ type TypeFromAttributeType<T extends AttributeType> =
     ? Uint8Array
     : never;
 
-type RemoveUndefined<T> = T extends undefined ? never : T;
-
 type AttributeFromKeyDefinition3Base<T extends KeyDefinition> = {
   [name in T["name"]]: TypeFromAttributeType<T["type"]>;
 };
 
 type AttributeFromKeyDefinition<T extends KeyDefinition | undefined> =
-  AttributeFromKeyDefinition3Base<RemoveUndefined<T>>;
+  AttributeFromKeyDefinition3Base<NonNullable<T>>;
 
 type AccessPattern<
   PartitionKey extends KeyDefinition,
