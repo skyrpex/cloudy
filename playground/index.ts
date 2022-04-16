@@ -22,10 +22,40 @@ const topic = new cloudy.aws_sns.Topic(stack, "topic", {
 
 type CustomBigInt = OpaqueType<bigint, { readonly t: unique symbol }>;
 
+const x = cloudy.ValueType.as<
+  | {
+      pk: `user#${string}`;
+      sk: "profile";
+      userName: string;
+    }
+  | {
+      pk: `user#${string}`;
+      sk: "metadata";
+      // age: MyBigInt
+      number: number;
+    }
+>();
+
+type TypeOfValueType<T extends cloudy.ValueType<any>> =
+  T extends cloudy.ValueType<infer V> ? V : never;
+type y = TypeOfValueType<typeof x>;
+const y: y[] = [
+  {
+    pk: "user#1",
+    sk: "profile",
+    userName: "ha",
+  },
+  {
+    pk: "user#1",
+    sk: "metadata",
+    number: 2,
+  },
+];
+
 const table = new cloudy.aws_dynamodb.Table(stack, "table", {
   partitionKey: { name: "pk", type: cdk.aws_dynamodb.AttributeType.STRING },
   sortKey: { name: "sk", type: cdk.aws_dynamodb.AttributeType.STRING },
-  accessPatterns: cloudy.aws_dynamodb.AccessPatterns.as<
+  itemType: cloudy.ValueType.as<
     | {
         pk: `user#${string}`;
         sk: "profile";

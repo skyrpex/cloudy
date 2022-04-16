@@ -1,5 +1,5 @@
 import { Command } from "@aws-sdk/smithy-client";
-import { MetadataBearer, MiddlewareStack } from "@aws-sdk/types";
+import { Handler, MetadataBearer, MiddlewareStack } from "@aws-sdk/types";
 
 export class CommandProxy<
   Input extends ClientInput,
@@ -34,11 +34,12 @@ export class CommandProxy<
     return this.command.middlewareStack;
   }
 
+  // abstract resolveMiddleware(stack: IMiddlewareStack<ClientInput, ClientOutput>, configuration: ResolvedClientConfiguration, options: any): Handler<Input, Output>;
   resolveMiddleware(
     clientStack: MiddlewareStack<ClientInput, ClientOutput>,
     configuration: ResolvedClientConfiguration,
     options: any,
-  ) {
+  ): Handler<Input, Output> {
     return this.command.resolveMiddleware(clientStack, configuration, options);
   }
 }

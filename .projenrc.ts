@@ -11,14 +11,14 @@ import { WorkspaceProject } from "./.projenrc.workspace-project.js";
 const project = new DefaultNodeProject({
   name: "@cloudy-ts/monorepo",
   defaultReleaseBranch: "main",
-  // packageManager: NodePackageManager.PNPM,
-  packageManager: NodePackageManager.YARN,
+  packageManager: NodePackageManager.PNPM,
+  // packageManager: NodePackageManager.YARN,
   eslint: {
     devFiles: ["**/build.config.ts"],
   },
 });
 
-project.addGitIgnore("/.yarn/cache/*");
+// project.addGitIgnore("/.yarn/cache/*");
 
 // Use Cloudy's esm-node to run projen.
 project.addDevDeps("@cloudy-ts/esm-node");

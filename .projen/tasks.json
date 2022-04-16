@@ -174,7 +174,7 @@
       },
       "steps": [
         {
-          "exec": "yarn upgrade npm-check-updates"
+          "exec": "pnpm update npm-check-updates"
         },
         {
           "exec": "npm-check-updates --dep dev --upgrade --target=minor"
@@ -192,10 +192,10 @@
           "exec": "npm-check-updates --dep bundle --upgrade --target=minor"
         },
         {
-          "exec": "yarn install "
+          "exec": "pnpm i"
         },
         {
-          "exec": "yarn upgrade"
+          "exec": "pnpm update"
         },
         {
           "exec": "npx projen"

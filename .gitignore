@@ -43,7 +43,6 @@ jspm_packages/
 !/.eslintignore
 !/.eslintrc.json
 !/.editorconfig
-/.yarn/cache/*
 cdk.out/
 dist/
 !/.commitlintrc.json
@@ -51,3 +50,4 @@ dist/
 .turbo/
 !/turbo.json
 !/tsconfig.json
+!/pnpm-workspace.yaml
