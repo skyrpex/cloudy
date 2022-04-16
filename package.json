@@ -18,7 +18,7 @@
     "projen": "npx projen"
   },
   "devDependencies": {
-    "@cloudy-ts/eslint-plugin": "*",
+    "@cloudy-ts/eslint-plugin": "^0.0.0",
     "@cloudy-ts/esm-node": "*",
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
@@ -51,7 +51,13 @@
     "packages/*",
     "tools/*",
     "playground",
+    "packages/cdk",
     "packages/client-dynamodb",
+    "packages/client-sns",
+    "tools/eslint-plugin",
+    "packages/json-codec",
+    "packages/opaque-type",
+    "packages/string-codec",
     "packages/util-command-proxy",
     "packages/util-dynamodb"
   ],

@@ -20,10 +20,10 @@
 /.projen/deps.json linguist-generated
 /.projen/files.json linguist-generated
 /.projen/tasks.json linguist-generated
+/build.config.ts linguist-generated
 /index.ts linguist-generated
 /LICENSE linguist-generated
 /package.json linguist-generated
 /tsconfig.json linguist-generated
 /turbo.json linguist-generated
-/unbuild.config.ts linguist-generated
 /yarn.lock linguist-generated

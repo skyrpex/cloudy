@@ -1078,14 +1078,17 @@ __metadata:
   dependencies:
     "@aws-sdk/client-dynamodb": ^3.72.0
     "@aws-sdk/util-dynamodb": ^3.72.0
+    "@cloudy-ts/esm-node": "*"
     "@cloudy-ts/json-codec": "workspace:^"
     "@cloudy-ts/opaque-type": "workspace:^"
     "@cloudy-ts/string-codec": "workspace:^"
     "@cloudy-ts/util-dynamodb": "workspace:^"
     "@pulumi/pulumi": ^3.29.1
+    ava: ^4.2.0
     aws-cdk-lib: ^2.20.0
     constructs: ^10.0.116
     esbuild: ^0.14.36
+    eslint: ^8.13.0
     find-up: ^6.3.0
     ts-toolbelt: ^9.6.0
     unbuild: ^0.7.4
@@ -1124,18 +1127,23 @@ __metadata:
     "@aws-sdk/client-sns": ^3.72.0
     "@aws-sdk/smithy-client": ^3.72.0
     "@aws-sdk/types": ^3.55.0
-    "@cloudy-ts/cdk": "workspace:^"
+    "@cloudy-ts/cdk": 0.0.0
+    "@cloudy-ts/esm-node": "*"
+    ava: ^4.2.0
+    eslint: ^8.13.0
     ts-toolbelt: ^9.6.0
     unbuild: ^0.7.4
   peerDependencies:
-    "@cloudy-ts/cdk": "workspace:^"
+    "@cloudy-ts/cdk": ^0.0.0
   languageName: unknown
   linkType: soft
 
-"@cloudy-ts/eslint-plugin@*, @cloudy-ts/eslint-plugin@workspace:tools/eslint-plugin":
+"@cloudy-ts/eslint-plugin@^0.0.0, @cloudy-ts/eslint-plugin@workspace:tools/eslint-plugin":
   version: 0.0.0-use.local
   resolution: "@cloudy-ts/eslint-plugin@workspace:tools/eslint-plugin"
   dependencies:
+    "@cloudy-ts/esm-node": "*"
+    ava: "*"
     eslint: ^8.13.0
     eslint-module-utils: ^2.7.3
     is-core-module: ^2.8.1
@@ -1166,6 +1174,7 @@ __metadata:
     "@cloudy-ts/esm-node": "workspace:^"
     "@cloudy-ts/opaque-type": "workspace:^"
     ava: ^4.2.0
+    eslint: ^8.13.0
     unbuild: ^0.7.4
   languageName: unknown
   linkType: soft
@@ -1174,7 +1183,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@cloudy-ts/monorepo@workspace:."
   dependencies:
-    "@cloudy-ts/eslint-plugin": "*"
+    "@cloudy-ts/eslint-plugin": ^0.0.0
     "@cloudy-ts/esm-node": "*"
     "@commitlint/cli": ^16.2.3
     "@commitlint/config-conventional": ^16.2.1
@@ -1204,6 +1213,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@cloudy-ts/opaque-type@workspace:packages/opaque-type"
   dependencies:
+    "@cloudy-ts/esm-node": "*"
+    ava: ^4.2.0
+    eslint: ^8.13.0
     unbuild: ^0.7.4
   languageName: unknown
   linkType: soft
@@ -1228,7 +1240,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@cloudy-ts/string-codec@workspace:packages/string-codec"
   dependencies:
+    "@cloudy-ts/esm-node": "*"
     "@cloudy-ts/opaque-type": "workspace:^"
+    ava: ^4.2.0
+    eslint: ^8.13.0
+    unbuild: ^0.7.4
   languageName: unknown
   linkType: soft
 
@@ -1252,7 +1268,7 @@ __metadata:
     "@aws-sdk/client-dynamodb": ^3.72.0
     "@cloudy-ts/esm-node": "*"
     "@cloudy-ts/string-codec": "workspace:^"
-    ava: "*"
+    ava: ^4.2.0
     eslint: ^8.13.0
     unbuild: ^0.7.4
   languageName: unknown

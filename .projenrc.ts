@@ -88,6 +88,29 @@ new TypeScript(project, {
 });
 
 new WorkspaceProject(project, {
+  name: "@cloudy-ts/eslint-plugin",
+  outdir: "tools/eslint-plugin",
+  deps: ["eslint-module-utils", "is-core-module"],
+});
+
+new WorkspaceProject(project, {
+  name: "@cloudy-ts/opaque-type",
+  outdir: "packages/opaque-type",
+});
+
+new WorkspaceProject(project, {
+  name: "@cloudy-ts/json-codec",
+  outdir: "packages/json-codec",
+  deps: ["@cloudy-ts/opaque-type"],
+});
+
+new WorkspaceProject(project, {
+  name: "@cloudy-ts/string-codec",
+  outdir: "packages/string-codec",
+  deps: ["@cloudy-ts/opaque-type"],
+});
+
+new WorkspaceProject(project, {
   name: "@cloudy-ts/util-command-proxy",
   outdir: "packages/util-command-proxy",
   deps: ["@aws-sdk/smithy-client", "@aws-sdk/types"],
@@ -114,6 +137,37 @@ new WorkspaceProject(project, {
   ],
   peerDeps: ["@cloudy-ts/cdk"],
   devDeps: ["@cloudy-ts/cdk"],
+});
+
+new WorkspaceProject(project, {
+  name: "@cloudy-ts/client-sns",
+  outdir: "packages/client-sns",
+  deps: [
+    "@aws-sdk/client-sns",
+    "@aws-sdk/smithy-client",
+    "@aws-sdk/types",
+    "ts-toolbelt",
+  ],
+  peerDeps: ["@cloudy-ts/cdk"],
+  devDeps: ["@cloudy-ts/cdk"],
+});
+
+new WorkspaceProject(project, {
+  name: "@cloudy-ts/cdk",
+  outdir: "packages/cdk",
+  deps: [
+    "@aws-sdk/util-dynamodb",
+    "@cloudy-ts/json-codec",
+    "@cloudy-ts/opaque-type",
+    "@cloudy-ts/string-codec",
+    "@cloudy-ts/util-dynamodb",
+    "@pulumi/pulumi",
+    "esbuild",
+    "find-up",
+    "ts-toolbelt",
+  ],
+  peerDeps: ["aws-cdk-lib", "constructs"],
+  devDeps: ["@aws-sdk/client-dynamodb", "aws-cdk-lib", "constructs"],
 });
 
 project.synth();
