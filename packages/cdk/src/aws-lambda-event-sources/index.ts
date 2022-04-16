@@ -9,9 +9,9 @@ export * from "./dynamodb.js";
 export * from "./sns.js";
 export * from "./sqs.js";
 
-export type LambdaEventType<T> = T extends Topic<any, any, any, any, any>
+export type LambdaEventType<T> = T extends Topic
   ? SnsEventType<T>
-  : T extends Queue<any, any, any, any, any>
+  : T extends Queue
   ? SqsEventType<T, true>
   : T extends Table<any, any, any, any>
   ? DynamoStreamEventType<T>

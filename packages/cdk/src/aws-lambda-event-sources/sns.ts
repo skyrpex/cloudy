@@ -9,26 +9,20 @@ import { Union } from "ts-toolbelt";
 import { JsonEncoded } from "@cloudy-ts/json-codec";
 
 import { BaseEventSource, IFunction } from "../aws-lambda/index.js";
-import { Topic } from "../aws-sns/topic.js";
+import { MaterializeTopicProperties, Topic } from "../aws-sns/topic.js";
 import { staticTest } from "../static-test.js";
 
 export interface SnsEventSourceProperties extends BaseProperties {}
 
-type AnyTopic = Topic<string, string, string, undefined, boolean>;
-
-type TopicMessageType<T extends AnyTopic> = T extends Topic<
-  infer Message,
-  string,
-  string
->
-  ? Message
+type TopicMessageType<T extends Topic> = T extends Topic<infer P>
+  ? MaterializeTopicProperties<P>["message"]
   : never;
 
-export type SnsEventType<T extends AnyTopic> = {
+export type SnsEventType<T extends Topic> = {
   Message: TopicMessageType<T>;
 };
 
-export class SnsEventSource<T extends AnyTopic> extends BaseEventSource<
+export class SnsEventSource<T extends Topic> extends BaseEventSource<
   SnsEventType<T>
 > {
   private readonly source: BaseSnsEventSource;

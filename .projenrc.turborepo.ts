@@ -19,7 +19,7 @@ interface TurborepoOptions {
       cache?: boolean;
     };
   };
-  readonly additionalWorkspaces?: string[];
+  readonly workspaces?: string[];
 }
 
 export class Turborepo extends Component {
@@ -36,6 +36,10 @@ export class Turborepo extends Component {
   ) {
     super(nodeProject);
 
+    this.nodeProject.addFields({
+      // Required by Yarn v1 Workspaces.
+      private: true,
+    });
     this.nodeProject.addGitIgnore(".turbo/");
     this.nodeProject.addDevDeps("turbo");
 
@@ -72,32 +76,35 @@ export class Turborepo extends Component {
 
   preSynthesize(): void {
     if (this.nodeProject.package.packageManager === NodePackageManager.YARN) {
+      // console.log(execSync("yarn -v").toString());
       if (execSync("yarn -v").toString().startsWith("1.")) {
         // Do nothing on Yarn 1.
       } else {
         // Stop using `yarn --check-files`, which doesn't work on Yarn 2/3.
-        Object.assign(this.nodeProject.package, {
-          renderInstallCommand(frozen: boolean) {
-            return `yarn install ${
-              frozen ? "--immutable --immutable-cache" : ""
-            }`;
-          },
-        });
+        const workspaces = [
+          this.nodeProject,
+          //...this.workspaceProjects
+        ];
+        for (const workspace of workspaces) {
+          Object.assign(workspace.package, {
+            renderInstallCommand(frozen: boolean) {
+              return `yarn install ${
+                frozen ? "--immutable --immutable-cache" : ""
+              }`;
+            },
+          });
+        }
       }
     }
 
-    // // Avoid installing dependencies on the subprojects.
-    // for (const workspaceProject of this.workspaceProjects) {
-    //   Object.assign(workspaceProject, {
-    //     installDependencies: () => {
-    //       console.log(
-    //         "avoiding [installDependencies] for ",
-    //         workspaceProject.name,
-    //       )
-    //     },
-    //   })
-    // }
-    const workspaces: string[] = this.options?.additionalWorkspaces ?? [];
+    // Avoid installing dependencies on the subprojects.
+    for (const workspaceProject of this.workspaceProjects) {
+      Object.assign(workspaceProject.package, {
+        installDependencies: () => {},
+      });
+    }
+
+    const workspaces: string[] = this.options?.workspaces ?? [];
     for (const workspaceProject of this.workspaceProjects) {
       const workspace = path.relative(
         this.project.outdir,

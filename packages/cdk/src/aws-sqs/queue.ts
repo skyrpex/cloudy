@@ -1,70 +1,95 @@
 import { aws_sqs } from "aws-cdk-lib";
 import { Construct } from "constructs";
+import { F } from "ts-toolbelt";
 
 import { JsonEncoded } from "@cloudy-ts/json-codec";
 import { StringEncoded } from "@cloudy-ts/string-codec";
 
-import { MessageAttributesBaseType } from "../aws-sns/topic.js";
+import { ValueType } from "../value-type.js";
+import { OpaqueType } from "@cloudy-ts/opaque-type";
 
-export interface QueueProperties<Fifo extends boolean = false>
-  extends aws_sqs.QueueProps {
-  fifo?: Fifo;
+type MessageAttribute =
+  | {
+      DataType: "String" | "Number" | "String.Array";
+      StringValue: ValueType<string>;
+    }
+  | {
+      DataType: "Binary";
+      BinaryValue: ValueType<Uint8Array>;
+    };
+
+export interface QueueProperties extends aws_sqs.QueueProps {
+  fifo?: boolean;
+  messageType?: ValueType<string>;
+  messageGroupIdType?: ValueType<string>;
+  messageDeduplicationIdType?: ValueType<string>;
+  messageAttributesType?: {
+    [name: string]: MessageAttribute;
+  };
 }
 
+export interface MaterializedQueueProperties {
+  fifo: boolean;
+  message: string;
+  messageGroupId: string | never;
+  messageDeduplicationId: string | never;
+  messageAttributes:
+    | {
+        [name: string]:
+          | {
+              DataType: "String" | "Number" | "String.Array";
+              StringValue: string;
+            }
+          | {
+              DataType: "Binary";
+              BinaryValue: Uint8Array;
+            };
+      }
+    | never;
+}
+
+type RecursivelyMapValueType<T> = T extends ValueType<infer V>
+  ? V
+  : T extends { [name: string]: any }
+  ? { [name in keyof T]: RecursivelyMapValueType<T[name]> }
+  : T;
+type DefaultTo<T, Default> = T extends ValueType<infer U>
+  ? unknown extends U
+    ? Default
+    : T
+  : Default;
+export type MaterializeQueueProperties<T extends QueueProperties> =
+  RecursivelyMapValueType<{
+    fifo: DefaultTo<T["fifo"], false>;
+    message: DefaultTo<T["messageType"], string>;
+    messageGroupId: T["fifo"] extends true
+      ? DefaultTo<T["messageGroupIdType"], string>
+      : never;
+    messageDeduplicationId: T["fifo"] extends true
+      ? DefaultTo<T["messageDeduplicationIdType"], string>
+      : never;
+    messageAttributes: T["messageAttributesType"] extends {
+      [name: string]: MessageAttribute;
+    }
+      ? T["messageAttributesType"]
+      : never;
+  }>;
+
+export type QueueUrl<T extends MaterializedQueueProperties> = OpaqueType<
+  string,
+  T
+>;
+
 export class Queue<
-  Message extends string = string,
-  MessageGroupId extends string = string,
-  MessageDeduplicationId extends string = string,
-  MessageAttributes extends MessageAttributesBaseType | undefined = undefined,
-  Fifo extends boolean = boolean,
+  T extends QueueProperties = QueueProperties,
 > extends aws_sqs.Queue {
+  public declare readonly queueUrl: QueueUrl<MaterializeQueueProperties<T>>;
+
   public constructor(
     scope: Construct,
     id: string,
-    properties?: QueueProperties<Fifo>,
+    properties?: F.Exact<T, QueueProperties>,
   ) {
-    super(scope, id, properties);
+    super(scope, id, properties as aws_sqs.QueueProps);
   }
 }
-
-// interface QueueEventType<
-//   Message extends string = string,
-//   MessageGroupId extends string = string,
-//   MessageDeduplicationId extends string = string,
-//   MessageAttributes extends MessageAttributesType = undefined,
-//   Fifo extends boolean = boolean,
-//   RawMessageDelivery extends boolean = boolean,
-// > {
-//   Records: {
-//     messageId: string
-//     receiptHandle: string
-//     body: RawMessageDelivery extends true
-//       ? Message
-//       : JsonEncoded<{
-//           Message: Message
-//           MessageId: string
-//           SequenceNumber: StringEncoded<bigint>
-//           Timestamp: "2022-04-11T16:25:46.848Z"
-//           TopicArn: string
-//           Type: "Notification"
-//           UnsubscribeURL: string
-//         }>
-//     attributes: {
-//       ApproximateReceiveCount: StringEncoded<number>
-//       SentTimestamp: StringEncoded<number>
-//       SequenceNumber: StringEncoded<bigint>
-//       SenderId: string
-//       ApproximateFirstReceiveTimestamp: StringEncoded<number>
-//     } & (Fifo extends true
-//       ? {
-//           MessageGroupId: MessageGroupId
-//           MessageDeduplicationId: MessageDeduplicationId
-//         }
-//       : {})
-//     messageAttributes: MessageAttributes
-//     md5OfBody: string
-//     eventSource: "aws:sqs"
-//     eventSourceARN: string
-//     awsRegion: string
-//   }[]
-// }

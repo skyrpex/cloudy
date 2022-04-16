@@ -3,14 +3,17 @@ import { NodeProject, NodeProjectOptions } from "projen/lib/javascript";
 
 import { Unbuild } from "./.projenrc.unbuild.js";
 
+export interface WorkspaceProjectOptions
+  extends Omit<
+    NodeProjectOptions,
+    "parent" | "defaultReleaseBranch" | "packageManager" | "jest"
+  > {
+  ava?: boolean;
+  lint?: boolean;
+}
+
 export class WorkspaceProject extends NodeProject {
-  constructor(
-    parent: NodeProject,
-    options: Omit<
-      NodeProjectOptions,
-      "parent" | "defaultReleaseBranch" | "packageManager"
-    >,
-  ) {
+  constructor(parent: NodeProject, options: WorkspaceProjectOptions) {
     super({
       parent,
       defaultReleaseBranch: parent.release?.branches[0] ?? "main",
@@ -69,6 +72,9 @@ export class WorkspaceProject extends NodeProject {
 
     this.package.addField("sideEffects", false);
     this.package.addField("type", "module");
+    this.package.addField("engines", {
+      node: "^14.13.1 || >=16.0.0",
+    });
 
     new TextFile(this, "index.ts", {
       lines: [
@@ -86,10 +92,12 @@ export class WorkspaceProject extends NodeProject {
       entries: ["src/index"],
     });
 
-    this.addDevDeps("eslint");
-    this.addTask("lint", {
-      exec: "eslint --ext ts .",
-    });
+    if (options.lint !== false) {
+      this.addDevDeps("eslint");
+      this.addTask("lint", {
+        exec: "eslint --ext ts .",
+      });
+    }
 
     this.addDevDeps("ava", "@cloudy-ts/esm-node");
     this.addTask("test", {
@@ -101,6 +109,7 @@ export class WorkspaceProject extends NodeProject {
       },
       nodeArguments: ["--loader=@cloudy-ts/esm-node"],
       files: ["**/*.test.ts"],
+      failWithoutAssertions: false,
     });
   }
 }

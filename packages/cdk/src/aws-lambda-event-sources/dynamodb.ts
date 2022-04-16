@@ -9,7 +9,7 @@ import { Union } from "ts-toolbelt";
 import { ToAttributeMap } from "@cloudy-ts/util-dynamodb";
 
 import {
-  AccessPatterns,
+  // AccessPatterns,
   AttributeType,
   BillingMode,
   DynamodbItem,
@@ -200,7 +200,7 @@ staticTest(() => {
       name: "sk",
       type: AttributeType.NUMBER,
     },
-    accessPatterns: AccessPatterns.from<User>(),
+    // accessPatterns: AccessPatterns.from<User>(),
     // stream: StreamViewType.OLD_IMAGE,
     // stream: StreamViewType.NEW_IMAGE,
     stream: StreamViewType.NEW_AND_OLD_IMAGES,

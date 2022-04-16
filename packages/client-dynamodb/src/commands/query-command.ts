@@ -19,17 +19,12 @@ import {
 import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js";
 
 export type QueryCommandInput<
-  PartitionKey extends aws_dynamodb.KeyDefinition = aws_dynamodb.KeyDefinition,
-  SortKey extends aws_dynamodb.KeyDefinition | undefined = undefined,
-  AccessPatterns extends aws_dynamodb.AccessPattern<
-    PartitionKey,
-    SortKey
-  > = aws_dynamodb.AccessPattern<PartitionKey, SortKey>,
+  T extends aws_dynamodb.MaterializedTableProperties = aws_dynamodb.MaterializedTableProperties,
   FilterExpression extends string = string,
   KeyConditionExpression extends string = string,
   ProjectionExpression extends string = string,
 > = BaseCommandInput & {
-  TableName: aws_dynamodb.TableName<PartitionKey, SortKey, AccessPatterns, any>;
+  TableName: aws_dynamodb.TableName<T>;
 
   FilterExpression?: FilterExpression;
   KeyConditionExpression?: KeyConditionExpression;
@@ -54,9 +49,7 @@ export type QueryCommandInput<
 export interface QueryCommandOutput extends BaseCommandOutput {}
 
 export class QueryCommand<
-  PartitionKey extends aws_dynamodb.KeyDefinition,
-  SortKey extends aws_dynamodb.KeyDefinition | undefined,
-  AccessPatterns extends aws_dynamodb.AccessPattern<PartitionKey, SortKey>,
+  T extends aws_dynamodb.MaterializedTableProperties = aws_dynamodb.MaterializedTableProperties,
   FilterExpression extends string = string,
   KeyConditionExpression extends string = string,
   ProjectionExpression extends string = string,
@@ -67,9 +60,7 @@ export class QueryCommand<
 
   constructor(
     readonly input: QueryCommandInput<
-      PartitionKey,
-      SortKey,
-      AccessPatterns,
+      T,
       FilterExpression,
       KeyConditionExpression,
       ProjectionExpression

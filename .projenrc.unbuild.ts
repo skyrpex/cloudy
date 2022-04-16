@@ -16,11 +16,12 @@ export class Unbuild extends Component {
 
   constructor(
     public readonly nodeProject: NodeProject,
-    options?: UnbuildOptions,
+    options: UnbuildOptions,
   ) {
     super(nodeProject);
 
     nodeProject.addGitIgnore("dist/");
+    nodeProject.package.addField("files", ["dist/"]);
 
     nodeProject.addDevDeps("unbuild");
 
@@ -28,15 +29,16 @@ export class Unbuild extends Component {
       exec: "unbuild",
     });
 
+    const { entries, emitCommonjs = true, emitTypes = true } = options;
     nodeProject.package.addField("publishConfig", {
-      main: options?.emitCommonjs ? "./dist/index.cjs" : undefined,
+      main: emitCommonjs ? "./dist/index.cjs" : undefined,
       module: "./dist/index.mjs",
-      types: options?.emitTypes ? "./dist/index.d.ts" : undefined,
+      types: emitTypes ? "./dist/index.d.ts" : undefined,
       exports: {
         ".": {
-          require: options?.emitCommonjs ? "./dist/index.cjs" : undefined,
+          require: emitCommonjs ? "./dist/index.cjs" : undefined,
           import: "./dist/index.mjs",
-          types: options?.emitTypes ? "./dist/index.d.ts" : undefined,
+          types: emitTypes ? "./dist/index.d.ts" : undefined,
         },
       },
     });
@@ -56,16 +58,16 @@ export class Unbuild extends Component {
     );
     source.line();
     source.open("export default defineBuildConfig({");
-    source.line(`entries: ${JSON.stringify(options?.entries)},`);
+    source.line(`entries: ${JSON.stringify(entries)},`);
     source.open("externals: [");
     source.line("...Object.keys(packageJson.dependencies ?? []),");
     source.line("...Object.keys(packageJson.devDependencies ?? []),");
     source.line("...Object.keys(packageJson.peerDependencies ?? []),");
     source.close("],");
-    if (options?.emitTypes) {
+    if (emitTypes) {
       source.line("declaration: true,");
     }
-    if (options?.emitCommonjs) {
+    if (emitCommonjs) {
       source.open("rollup: {");
       source.line("emitCJS: true,");
       source.close("},");

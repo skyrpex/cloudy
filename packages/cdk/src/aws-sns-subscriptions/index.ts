@@ -2,28 +2,28 @@ import { aws_sns, aws_sns_subscriptions } from "aws-cdk-lib";
 
 import { BaseTopicSubscription } from "../aws-sns/subscription.js";
 import { Topic } from "../aws-sns/topic.js";
-import { Queue } from "../aws-sqs/queue.js";
+import { MaterializeQueueProperties, Queue } from "../aws-sqs/queue.js";
+import { ValueType } from "../value-type.js";
 
 export interface SqsSubscriptionProperties<RawMessageDelivery extends true>
   extends aws_sns_subscriptions.SqsSubscriptionProps {
   rawMessageDelivery: RawMessageDelivery;
 }
 
-type QueueMessage<T extends Queue> = T extends Queue<infer Message>
-  ? Message
+type QueueMessage<T extends Queue> = T extends Queue<infer P>
+  ? MaterializeQueueProperties<P>["message"]
   : never;
 
-type TopicFromQueue<T extends Queue> = Topic<
-  T extends Queue<infer Message> ? Message : never,
-  T extends Queue<any, infer MessageGroupId> ? MessageGroupId : never,
-  T extends Queue<any, any, infer MessageDeduplicationId>
-    ? MessageDeduplicationId
-    : never,
-  T extends Queue<any, any, any, infer MessageAttributes>
-    ? MessageAttributes
-    : never,
-  T extends Queue<any, any, any, any, infer Fifo> ? Fifo : never
->;
+type TopicFromQueue<T extends Queue> = T extends Queue<infer P>
+  ? Topic<{
+      fifo: P["fifo"];
+      // messageType: ValueType<Message>;
+      messageType: P["messageType"];
+      messageGroupIdType: P["messageGroupIdType"];
+      messageDeduplicationIdType: P["messageDeduplicationIdType"];
+      messageAttributesType: P["messageAttributesType"];
+    }>
+  : never;
 
 export class SqsSubscription<T extends Queue, RawMessageDelivery extends true>
   extends BaseTopicSubscription<QueueMessage<T>>

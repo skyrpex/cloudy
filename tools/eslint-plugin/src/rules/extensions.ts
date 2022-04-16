@@ -147,7 +147,7 @@ export default {
       // bail if the declaration doesn't have a source, e.g. "export { foo };", or if it's only partially typed like in an editor
       if (!source || !source.value) return;
 
-      console.log(new URL(source.value, "file://"));
+      // console.log(new URL(source.value, "file://"));
       const importPathWithQueryString = source.value.trim();
 
       // don't enforce anything on builtins
@@ -163,7 +163,7 @@ export default {
 
       // const url = pathToFileURL(resolvedPath);
       // // const url = new URL(resolvedPath);
-      // console.log({ sourceValue: source.value, url });
+      // // console.log({ sourceValue: source.value, url });
       // return;
 
       // get extension from resolved path, if possible.
@@ -185,21 +185,21 @@ export default {
 
       const queryString = getQueryString(importPathWithQueryString) ?? "";
 
-      console.log({
-        source,
-        node,
-        raw: node.raw,
-        isPackage,
-        extension,
-        resolvedPath,
-        importPath,
-        importPathWithQueryString,
-      });
+      // console.log({
+      //   source,
+      //   node,
+      //   raw: node.raw,
+      //   isPackage,
+      //   extension,
+      //   resolvedPath,
+      //   importPath,
+      //   importPathWithQueryString,
+      // });
 
       if (importPath.endsWith(".ts")) {
         const fixedPath = `${importPath.replace(/\.ts$/, ".js")}${queryString}`;
         // console.log(node)
-        console.log("A!", node.source);
+        // console.log("A!", node.source);
         context.report({
           node: source,
           // message: `Unexpected use of file extension ".ts" for "${importPathWithQueryString}"`,
@@ -223,7 +223,7 @@ export default {
           },
         });
       } else if (!extension) {
-        console.log("B!", node.source);
+        // console.log("B!", node.source);
         // // ignore type-only imports
         // if (node.importKind === "type") return;
         const extensionRequired = isUseOfExtensionRequired(
@@ -252,7 +252,7 @@ export default {
           });
         }
       } else if (extension === "ts") {
-        console.log("C!", node.source);
+        // console.log("C!", node.source);
         // eslint-disable-next-line unicorn/no-lonely-if
         // if (
         //   isUseOfExtensionForbidden(extension) &&

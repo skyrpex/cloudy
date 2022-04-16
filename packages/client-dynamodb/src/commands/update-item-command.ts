@@ -19,17 +19,12 @@ import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js";
 // type TableItem<T extends aws_dynamodb.TableName<any, any>> = T extends aws_dynamodb.TableName<infer Item, any> ? Item : never
 
 export type UpdateItemCommandInput<
-  PartitionKey extends aws_dynamodb.KeyDefinition = aws_dynamodb.KeyDefinition,
-  SortKey extends aws_dynamodb.KeyDefinition | undefined = undefined,
-  AccessPatterns extends aws_dynamodb.AccessPattern<
-    PartitionKey,
-    SortKey
-  > = aws_dynamodb.AccessPattern<PartitionKey, SortKey>,
+  T extends aws_dynamodb.MaterializedTableProperties = aws_dynamodb.MaterializedTableProperties,
   UpdateExpression extends string = string,
   ConditionExpression extends string = string,
 > = BaseCommandInput & {
-  TableName: aws_dynamodb.TableName<PartitionKey, SortKey, AccessPatterns, any>;
-  Key: ToAttributeMap<aws_dynamodb.AccessPattern<PartitionKey, SortKey>>;
+  TableName: aws_dynamodb.TableName<T>;
+  Key: ToAttributeMap<T["itemType"]>;
   UpdateExpression: UpdateExpression;
   ConditionExpression: ConditionExpression;
   // Item: Item
@@ -47,9 +42,7 @@ export type UpdateItemCommandInput<
 export interface UpdateItemCommandOutput extends BaseCommandOutput {}
 
 export class UpdateItemCommand<
-  PartitionKey extends aws_dynamodb.KeyDefinition,
-  SortKey extends aws_dynamodb.KeyDefinition | undefined,
-  AccessPatterns extends aws_dynamodb.AccessPattern<PartitionKey, SortKey>,
+  T extends aws_dynamodb.MaterializedTableProperties,
   UpdateExpression extends string,
   ConditionExpression extends string,
 > implements
@@ -59,9 +52,7 @@ export class UpdateItemCommand<
 
   constructor(
     readonly input: UpdateItemCommandInput<
-      PartitionKey,
-      SortKey,
-      AccessPatterns,
+      T,
       UpdateExpression,
       ConditionExpression
     >,

@@ -1,6 +1,5 @@
 import { aws_sns } from "aws-cdk-lib";
 
-// const subscriptionSymbol = Symbol("@cloudy-ts/cdk/aws_sns/subscription");
 declare const tag: unique symbol;
 
 export interface ITopicSubscription<Message extends string>
@@ -20,7 +19,6 @@ export interface ITopicSubscription<Message extends string>
    * Adding a property with the type InputType, will forbid interchanges
    * unless the InputType's are of the same shape.
    */
-  // readonly [subscriptionSymbol]: Message | undefined;
   readonly [tag]: Message | undefined;
 }
 

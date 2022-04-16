@@ -11,11 +11,14 @@ import { WorkspaceProject } from "./.projenrc.workspace-project.js";
 const project = new DefaultNodeProject({
   name: "@cloudy-ts/monorepo",
   defaultReleaseBranch: "main",
-  packageManager: NodePackageManager.PNPM,
+  // packageManager: NodePackageManager.PNPM,
+  packageManager: NodePackageManager.YARN,
   eslint: {
     devFiles: ["**/build.config.ts"],
   },
 });
+
+project.addGitIgnore("/.yarn/cache/*");
 
 // Use Cloudy's esm-node to run projen.
 project.addDevDeps("@cloudy-ts/esm-node");
@@ -54,7 +57,7 @@ project.addDevDeps("husky");
 
 // Setup Turborepo.
 new Turborepo(project, {
-  additionalWorkspaces: ["packages/*", "tools/*", "playground"],
+  workspaces: ["packages/*", "tools/*", "playground"],
   pipeline: {
     release: {
       dependsOn: ["^release"],
@@ -90,10 +93,27 @@ new WorkspaceProject(project, {
   deps: ["@aws-sdk/smithy-client", "@aws-sdk/types"],
 });
 
-// new WorkspaceProject(project, {
-//   name: "@chronosource-ts/test-2",
-//   outdir: "tools/test-2",
-//   deps: [],
-// })
+new WorkspaceProject(project, {
+  name: "@cloudy-ts/util-dynamodb",
+  outdir: "packages/util-dynamodb",
+  deps: ["@aws-sdk/client-dynamodb", "@cloudy-ts/string-codec"],
+});
+
+new WorkspaceProject(project, {
+  name: "@cloudy-ts/client-dynamodb",
+  outdir: "packages/client-dynamodb",
+  deps: [
+    "@aws-sdk/client-dynamodb",
+    "@aws-sdk/smithy-client",
+    "@aws-sdk/types",
+    "@aws-sdk/util-dynamodb",
+    "@cloudy-ts/opaque-type",
+    "@cloudy-ts/string-codec",
+    "@cloudy-ts/util-dynamodb",
+    "ts-toolbelt",
+  ],
+  peerDeps: ["@cloudy-ts/cdk"],
+  devDeps: ["@cloudy-ts/cdk"],
+});
 
 project.synth();

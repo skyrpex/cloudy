@@ -18,10 +18,9 @@ import { ToAttributeMap } from "@cloudy-ts/util-dynamodb";
 
 import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js";
 
-export type PutItemCommandInput<T extends MaterializedTableProperties> = Omit<
-  BaseCommandInput,
-  "Item"
-> & {
+export type PutItemCommandInput<
+  T extends MaterializedTableProperties = MaterializedTableProperties,
+> = Omit<BaseCommandInput, "Item"> & {
   TableName: aws_dynamodb.TableName<T>;
   Item: ToAttributeMap<T["itemType"]>;
   // meh: T;

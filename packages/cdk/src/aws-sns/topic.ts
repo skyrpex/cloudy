@@ -45,44 +45,17 @@ export interface MaterializedTopicProperties {
     | never;
 }
 
-// declare const tag: unique symbol
-// export type TopicArn<T extends MaterializedTopicProperties> = string & {
-//   readonly [tag]: T;
-// };
 export type TopicArn<T extends MaterializedTopicProperties> = OpaqueType<
   string,
   T
 >;
 
-// type MapValueType<T, Fallback = never> = T extends ValueType<infer V>
-//   ? V
-//   : Fallback;
 type RecursivelyMapValueType<T> = T extends ValueType<infer V>
   ? V
   : T extends { [name: string]: any }
   ? { [name in keyof T]: RecursivelyMapValueType<T[name]> }
   : T;
 
-// export type MaterializeTopicProperties<T extends TopicProperties> = {
-//   message: MapValueType<T["messageType"], string>;
-//   messageGroupId: T["fifo"] extends true
-//     ? MapValueType<T["messageGroupIdType"], string>
-//     : never;
-//   messageDeduplicationId: T["fifo"] extends true
-//     ? MapValueType<T["messageDeduplicationIdType"], string>
-//     : never;
-//   // messageAttributes: T["messageAttributesType"] extends undefined ? "a" : "b";
-//   messageAttributes: T["messageAttributesType"] extends { [name: string]: MessageAttribute }
-//     ? RecursivelyMapValueType<T["messageAttributesType"]>
-//     : never;
-// };
-// type DefaultTo<T, Default> = T extends never ? Default : T;
-// type DefaultTo<T, Default> = unknown extends T ? Default : T;
-// type DefaultTo<T, Default> = T extends ValueType<infer U>
-//   ? unknown extends U
-//     ? Default
-//     : U
-//   : Default;
 type DefaultTo<T, Default> = T extends ValueType<infer U>
   ? unknown extends U
     ? Default
@@ -103,53 +76,9 @@ export type MaterializeTopicProperties<T extends TopicProperties> =
       ? T["messageAttributesType"]
       : never;
   }>;
-// type y1 = DefaultTo<ValueType<string>, number>;
-// type y2 = DefaultTo<ValueType<OpaqueType<string, "hi">>, number>;
 
-// type x1 = MaterializeTopicProperties<{}>;
-// type x1_0 = MaterializeTopicProperties<{ fifo: true }>;
-// type x1_1 = MaterializeTopicProperties<{
-//   fifo: true;
-//   // messageType: ValueType<OpaqueType<string, "MyString">>;
-//   messageType: ValueType<"a">;
-//   messageGroupIdType: ValueType<"a">;
-// }>;
-// // type x1_2 = MaterializeTopicProperties<{
-// //   messageAttributesType: {
-// //     userId: {
-// //       DataType: "String";
-// //       StringValue: ValueType<"hi">;
-// //     };
-// //     bin: {
-// //       DataType: "Binary";
-// //       BinaryValue: ValueType<Uint8Array>;
-// //     };
-// //   };
-// // }>;
-// // type x2_2 = MaterializeTopicProperties<{
-// //   fifo: true;
-// //   // messageGroupIdType: ValueType<OpaqueType<string>>,
-// //   messageAttributesType: {
-// //     userId: {
-// //       DataType: "String";
-// //       StringValue: ValueType<string>;
-// //     };
-// //     bin: {
-// //       DataType: "Binary";
-// //       BinaryValue: ValueType<Uint8Array>;
-// //     };
-// //   };
-// // }>;
-// // type x2 = MaterializeTopicProperties<{ fifo: true }>;
-// type Mystring = OpaqueType<string, "hi">;
-// type x2_1 = MaterializeTopicProperties<{
-//   fifo: true;
-//   messageType: ValueType<Mystring>;
-//   messageGroupIdType: ValueType<Mystring>;
-// }>;
-// // type x3 = x1_2["messageAttributes"] extends never ? "y" : "n";
-
-export class Topic<T extends TopicProperties> extends cdk.aws_sns.Topic {
+export class Topic<T extends TopicProperties = TopicProperties> extends cdk
+  .aws_sns.Topic {
   public declare readonly topicArn: TopicArn<MaterializeTopicProperties<T>>;
 
   public constructor(
