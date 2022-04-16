@@ -150,6 +150,23 @@ importers:
     dependencies:
       '@cloudy-ts/opaque-type': link:../opaque-type
 
+  packages/util-command-proxy:
+    specifiers:
+      '@aws-sdk/smithy-client': ^3.55.0
+      '@aws-sdk/types': ^3.55.0
+      '@cloudy-ts/esm-node': '*'
+      ava: '*'
+      eslint: ^8.13.0
+      unbuild: '*'
+    dependencies:
+      '@aws-sdk/smithy-client': 3.55.0
+      '@aws-sdk/types': 3.55.0
+    devDependencies:
+      '@cloudy-ts/esm-node': link:../../tools/esm-node
+      ava: 4.2.0
+      eslint: 8.13.0
+      unbuild: 0.7.4
+
   packages/util-dynamodb:
     specifiers:
       '@aws-sdk/client-dynamodb': ^3.67.0

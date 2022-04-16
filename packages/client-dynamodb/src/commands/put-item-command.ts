@@ -7,7 +7,7 @@ import {
   ReturnItemCollectionMetrics,
 } from "@aws-sdk/client-dynamodb";
 import { Command } from "@aws-sdk/smithy-client";
-import { MiddlewareStack } from "@aws-sdk/types";
+import { MetadataBearer, MiddlewareStack } from "@aws-sdk/types";
 
 import { aws_dynamodb, OpaqueType, ValueType } from "@cloudy-ts/cdk";
 import {
@@ -38,34 +38,57 @@ export type PutItemCommandInput<T extends MaterializedTableProperties> = Omit<
 
 export interface PutItemCommandOutput extends BaseCommandOutput {}
 
-export class PutItemCommand<T extends MaterializedTableProperties>
-  implements
-    Command<BaseCommandInput, BaseCommandOutput, ResolvedConfiguration>
+class CommandProxy<
+  Input extends ClientInput,
+  Output extends ClientOutput,
+  ResolvedClientConfiguration,
+  ClientInput extends object = any,
+  ClientOutput extends MetadataBearer = any,
+> implements
+    Command<
+      Input,
+      Output,
+      ResolvedClientConfiguration,
+      ClientInput,
+      ClientOutput
+    >
 {
-  private readonly command: BaseCommand;
+  constructor(
+    private readonly command: Command<
+      Input,
+      Output,
+      ResolvedClientConfiguration,
+      ClientInput,
+      ClientOutput
+    >,
+  ) {}
 
-  // This is necessary for TypeScript to stop complaining about not providing
-  // the input that the Command interface requires. We can do that since we
-  // don't really use the input object: we only proxy it to the base command
-  // implementation.
-  //
-  // Maybe we could create an abstract CommandProxy class that accepts a raw
-  // command and defines all properties and methods that require our commands.
-  readonly input!: BaseCommandInput;
-
-  constructor(input: PutItemCommandInput<T>) {
-    this.command = new BaseCommand(input as unknown as BaseCommandInput);
+  get input(): Input {
+    return this.command.input;
   }
 
-  get middlewareStack(): MiddlewareStack<BaseCommandInput, BaseCommandOutput> {
+  get middlewareStack(): MiddlewareStack<Input, Output> {
     return this.command.middlewareStack;
   }
 
   resolveMiddleware(
-    clientStack: MiddlewareStack<ServiceInputTypes, ServiceOutputTypes>,
-    configuration: ResolvedConfiguration,
+    clientStack: MiddlewareStack<ClientInput, ClientOutput>,
+    configuration: ResolvedClientConfiguration,
+    options: any,
   ) {
-    return this.command.resolveMiddleware(clientStack, configuration);
+    return this.command.resolveMiddleware(clientStack, configuration, options);
+  }
+}
+
+export class PutItemCommand<
+  T extends MaterializedTableProperties,
+> extends CommandProxy<
+  BaseCommandInput,
+  BaseCommandOutput,
+  ResolvedConfiguration
+> {
+  constructor(input: PutItemCommandInput<T>) {
+    super(new BaseCommand(input as unknown as BaseCommandInput));
   }
 }
 
@@ -82,7 +105,11 @@ export class PutItemCommand<T extends MaterializedTableProperties>
   });
   new PutItemCommand({
     TableName: table.tableName,
-    Item: { id: { S: "" as MyString } },
+    Item: {
+      id: { S: "" as MyString },
+      // @ts-expect-error: text is not defined in itemType.
+      text: { S: "" },
+    },
     // meh: {exact},
   });
 };

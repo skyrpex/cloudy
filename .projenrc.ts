@@ -84,11 +84,11 @@ new TypeScript(project, {
   },
 });
 
-// new WorkspaceProject(project, {
-//   name: "@chronosource-ts/test-1",
-//   outdir: "tools/test-1",
-//   deps: [],
-// })
+new WorkspaceProject(project, {
+  name: "@cloudy-ts/util-command-proxy",
+  outdir: "packages/util-command-proxy",
+  deps: ["@aws-sdk/smithy-client", "@aws-sdk/types"],
+});
 
 // new WorkspaceProject(project, {
 //   name: "@chronosource-ts/test-2",

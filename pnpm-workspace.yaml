@@ -4,3 +4,4 @@ packages:
   - packages/*
   - tools/*
   - playground
+  - packages/util-command-proxy
