@@ -1,11 +1,9 @@
 import { JsonEncoded, JsonSerializable } from "@cloudy-ts/json-codec";
 
-declare const tag: unique symbol;
+const tag = Symbol("@cloudy-ts/cdk/ValueType");
 
 export class ValueType<T> {
-  // public readonly [tag]: T | undefined;
-  public readonly [tag]!: T;
-  // public readonly t!: T;
+  declare readonly [tag]: T | undefined;
 
   public static string<T extends string>() {
     return new ValueType<T>();

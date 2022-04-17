@@ -119,7 +119,11 @@ new WorkspaceProject(project, {
 new WorkspaceProject(project, {
   name: "@cloudy-ts/util-dynamodb",
   outdir: "packages/util-dynamodb",
-  deps: ["@aws-sdk/client-dynamodb", "@cloudy-ts/string-codec"],
+  deps: [
+    "@aws-sdk/client-dynamodb",
+    "@cloudy-ts/string-codec",
+    "@cloudy-ts/util-command-proxy",
+  ],
 });
 
 new WorkspaceProject(project, {

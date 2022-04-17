@@ -9,6 +9,7 @@ import { MiddlewareStack } from "@aws-sdk/types";
 
 import { aws_dynamodb } from "@cloudy-ts/cdk";
 import { MaterializedTableProperties } from "@cloudy-ts/cdk/src/aws-dynamodb";
+import { CommandProxy } from "@cloudy-ts/util-command-proxy";
 import {
   ExpressionAttributeNames,
   ExpressionAttributeValues,
@@ -51,29 +52,14 @@ export class UpdateItemCommand<
   T extends aws_dynamodb.MaterializedTableProperties,
   UpdateExpression extends string,
   ConditionExpression extends string,
-> implements
-    Command<BaseCommandInput, BaseCommandOutput, DynamoDBClientResolvedConfig>
-{
-  private readonly command: BaseCommand;
-
+> extends CommandProxy<
+  BaseCommandInput,
+  BaseCommandOutput,
+  DynamoDBClientResolvedConfig
+> {
   constructor(
-    readonly input: UpdateItemCommandInput<
-      T,
-      UpdateExpression,
-      ConditionExpression
-    >,
+    input: UpdateItemCommandInput<T, UpdateExpression, ConditionExpression>,
   ) {
-    this.command = new BaseCommand(input as unknown as BaseCommandInput);
-  }
-
-  get middlewareStack(): MiddlewareStack<BaseCommandInput, BaseCommandOutput> {
-    return this.command.middlewareStack as any;
-  }
-
-  resolveMiddleware(
-    clientStack: MiddlewareStack<ServiceInputTypes, ServiceOutputTypes>,
-    configuration: DynamoDBClientResolvedConfig,
-  ) {
-    return this.command.resolveMiddleware(clientStack as any, configuration);
+    super(new BaseCommand(input as unknown as BaseCommandInput));
   }
 }

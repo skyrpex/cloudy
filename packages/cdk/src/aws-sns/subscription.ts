@@ -1,6 +1,6 @@
 import { aws_sns } from "aws-cdk-lib";
 
-declare const tag: unique symbol;
+const tag = Symbol("@cloudy-ts/cdk/aws-sns/Subscription");
 
 export interface ITopicSubscription<Message extends string>
   extends aws_sns.ITopicSubscription {
@@ -28,7 +28,7 @@ export abstract class BaseTopicSubscription<Message extends string>
   // abstract bind(target: IFunction<InputType, any>): void
 
   // readonly [subscriptionSymbol]!: Message | undefined;
-  readonly [tag]!: Message | undefined;
+  declare readonly [tag]: Message | undefined;
 
   abstract bind(topic: aws_sns.ITopic): aws_sns.TopicSubscriptionConfig;
 }

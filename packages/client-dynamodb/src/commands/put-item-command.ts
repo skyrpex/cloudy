@@ -14,6 +14,7 @@ import {
   DynamodbItem,
   MaterializedTableProperties,
 } from "@cloudy-ts/cdk/src/aws-dynamodb/table.js";
+import { CommandProxy } from "@cloudy-ts/util-command-proxy";
 import { ToAttributeMap } from "@cloudy-ts/util-dynamodb";
 
 import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js";
@@ -36,48 +37,6 @@ export type PutItemCommandInput<
 };
 
 export interface PutItemCommandOutput extends BaseCommandOutput {}
-
-class CommandProxy<
-  Input extends ClientInput,
-  Output extends ClientOutput,
-  ResolvedClientConfiguration,
-  ClientInput extends object = any,
-  ClientOutput extends MetadataBearer = any,
-> implements
-    Command<
-      Input,
-      Output,
-      ResolvedClientConfiguration,
-      ClientInput,
-      ClientOutput
-    >
-{
-  constructor(
-    private readonly command: Command<
-      Input,
-      Output,
-      ResolvedClientConfiguration,
-      ClientInput,
-      ClientOutput
-    >,
-  ) {}
-
-  get input(): Input {
-    return this.command.input;
-  }
-
-  get middlewareStack(): MiddlewareStack<Input, Output> {
-    return this.command.middlewareStack;
-  }
-
-  resolveMiddleware(
-    clientStack: MiddlewareStack<ClientInput, ClientOutput>,
-    configuration: ResolvedClientConfiguration,
-    options: any,
-  ) {
-    return this.command.resolveMiddleware(clientStack, configuration, options);
-  }
-}
 
 export class PutItemCommand<
   T extends MaterializedTableProperties,

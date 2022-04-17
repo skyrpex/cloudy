@@ -11,6 +11,7 @@ import { Command } from "@aws-sdk/smithy-client";
 import { MiddlewareStack } from "@aws-sdk/types";
 
 import { aws_dynamodb } from "@cloudy-ts/cdk";
+import { CommandProxy } from "@cloudy-ts/util-command-proxy";
 import {
   ExpressionAttributeNames,
   ExpressionAttributeValues,
@@ -25,7 +26,6 @@ export type QueryCommandInput<
   ProjectionExpression extends string = string,
 > = BaseCommandInput & {
   TableName: aws_dynamodb.TableName<T>;
-
   FilterExpression?: FilterExpression;
   KeyConditionExpression?: KeyConditionExpression;
   ProjectionExpression?: ProjectionExpression;
@@ -53,30 +53,19 @@ export class QueryCommand<
   FilterExpression extends string = string,
   KeyConditionExpression extends string = string,
   ProjectionExpression extends string = string,
-> implements
-    Command<BaseCommandInput, BaseCommandOutput, DynamoDBClientResolvedConfig>
-{
-  private readonly command: BaseCommand;
-
+> extends CommandProxy<
+  BaseCommandInput,
+  BaseCommandOutput,
+  DynamoDBClientResolvedConfig
+> {
   constructor(
-    readonly input: QueryCommandInput<
+    input: QueryCommandInput<
       T,
       FilterExpression,
       KeyConditionExpression,
       ProjectionExpression
     >,
   ) {
-    this.command = new BaseCommand(input as unknown as BaseCommandInput);
-  }
-
-  get middlewareStack(): MiddlewareStack<BaseCommandInput, BaseCommandOutput> {
-    return this.command.middlewareStack as any;
-  }
-
-  resolveMiddleware(
-    clientStack: MiddlewareStack<ServiceInputTypes, ServiceOutputTypes>,
-    configuration: DynamoDBClientResolvedConfig,
-  ) {
-    return this.command.resolveMiddleware(clientStack as any, configuration);
+    super(new BaseCommand(input as unknown as BaseCommandInput));
   }
 }
