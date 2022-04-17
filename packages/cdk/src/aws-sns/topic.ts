@@ -84,12 +84,16 @@ export class Topic<T extends TopicProperties = TopicProperties> extends cdk
   public constructor(
     scope: Construct,
     id: string,
-    properties?: F.Exact<T, TopicProperties>,
+    private readonly properties?: F.Exact<T, TopicProperties>,
   ) {
     super(scope, id, {
       topicName: properties?.fifo ? buildFifoName(scope, id) : undefined,
       ...(properties as cdk.aws_sns.TopicProps),
     });
+  }
+
+  public get messageType(): T["messageType"] {
+    return this.properties?.messageType;
   }
 
   addSubscription(

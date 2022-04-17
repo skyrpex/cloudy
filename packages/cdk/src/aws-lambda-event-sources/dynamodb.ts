@@ -13,8 +13,11 @@ import {
   AttributeType,
   BillingMode,
   DynamodbItem,
+  MaterializedTableProperties,
+  MaterializeTableProperties,
   StreamViewType,
   Table,
+  TableProperties,
   // TableItemType,
 } from "../aws-dynamodb/table.js";
 import { BaseEventSource, IFunction } from "../aws-lambda/index.js";
@@ -33,7 +36,7 @@ type AnyTable = Table<any, any, any, any>;
 /**
  * Returns the table stream view type.
  */
-export type TableStreamViewType<T extends AnyTable> = T extends Table<
+export type TableStreamViewType<T> = T extends Table<
   any,
   any,
   any,
@@ -42,40 +45,49 @@ export type TableStreamViewType<T extends AnyTable> = T extends Table<
   ? StreamView
   : never;
 
-type TableItemType<T extends AnyTable> = T extends Table<
-  any,
-  any,
-  infer AccessPattern,
-  any
+// type TableItemType<T extends Table> = T extends Table<
+//   any,
+//   any,
+//   infer ItemType,
+//   any
+// >
+//   ? ItemType extends "any"
+//     ? DynamodbItem
+//     : ItemType extends object
+//     ? ToAttributeMap<ItemType>
+//     : never
+//   : never;
+
+type PropertiesOfTable<T extends AnyTable> = T extends Table<
+  infer P,
+  infer S,
+  infer I,
+  infer Stream
 >
-  ? AccessPattern extends "any"
-    ? DynamodbItem
-    : AccessPattern extends object
-    ? ToAttributeMap<AccessPattern>
-    : never
+  ? TableProperties<P, S, I, Stream>
   : never;
-// ? AccessPattern extends object
-//   ? ToAttributeMap<AccessPattern>
-//   : never
-// : never
+
+type TableItemType<T extends AnyTable> = MaterializeTableProperties<
+  PropertiesOfTable<T>
+>["itemType"];
 
 type StreamEventDynamodbImage<T extends AnyTable> = Union.Merge<
   (TableStreamViewType<T> extends StreamViewType.NEW_IMAGE
     ? {
-        NewImage: TableItemType<T> | undefined;
+        NewImage: ToAttributeMap<TableItemType<T>> | undefined;
       }
     : TableStreamViewType<T> extends StreamViewType.NEW_AND_OLD_IMAGES
     ? {
-        NewImage: TableItemType<T> | undefined;
+        NewImage: ToAttributeMap<TableItemType<T>> | undefined;
       }
     : {}) &
     (TableStreamViewType<T> extends StreamViewType.OLD_IMAGE
       ? {
-          OldImage: TableItemType<T> | undefined;
+          OldImage: ToAttributeMap<TableItemType<T>> | undefined;
         }
       : TableStreamViewType<T> extends StreamViewType.NEW_AND_OLD_IMAGES
       ? {
-          OldImage: TableItemType<T> | undefined;
+          OldImage: ToAttributeMap<TableItemType<T>> | undefined;
         }
       : {})
 >;
@@ -84,7 +96,7 @@ type StreamEventDynamodbImage<T extends AnyTable> = Union.Merge<
 //  * Represents a dynamodb stream event change record for lambda.
 //  */
 // type DynamoStreamEventRecordDynamodb<
-//   T extends AnyTable,
+//   T extends Table,
 //   IncludeImage extends boolean,
 // > = Union.Merge<
 //   {
@@ -99,7 +111,7 @@ type StreamEventDynamodbImage<T extends AnyTable> = Union.Merge<
 //   })
 // >
 
-// type DynamoStreamEventRecord<T extends AnyTable> =
+// type DynamoStreamEventRecord<T extends Table> =
 //   | {
 //       eventID: string
 //       eventName: "INSERT" | "MODIFY"
@@ -123,7 +135,7 @@ type StreamEventDynamodbImage<T extends AnyTable> = Union.Merge<
 //  * Represents a dynamodb stream event change record for lambda.
 //  */
 //  type DynamoStreamEventRecordDynamodb<
-//  T extends AnyTable,
+//  T extends Table,
 //  IncludeImage extends boolean,
 // > = Union.Merge<
 //  {
@@ -200,9 +212,6 @@ staticTest(() => {
       name: "sk",
       type: AttributeType.NUMBER,
     },
-    // accessPatterns: AccessPatterns.from<User>(),
-    // stream: StreamViewType.OLD_IMAGE,
-    // stream: StreamViewType.NEW_IMAGE,
     stream: StreamViewType.NEW_AND_OLD_IMAGES,
     billingMode: BillingMode.PAY_PER_REQUEST,
   });

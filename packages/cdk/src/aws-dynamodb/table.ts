@@ -36,9 +36,12 @@ type DynamodbPrimitiveValues =
   | Uint8Array[]
   | boolean[];
 
-export interface DynamodbItem {
+// export interface DynamodbItem {
+//   [name: string]: DynamodbPrimitiveValues | DynamodbItem | DynamodbItem[];
+// }
+export type DynamodbItem = {
   [name: string]: DynamodbPrimitiveValues | DynamodbItem | DynamodbItem[];
-}
+};
 
 type KeyDefinition = {
   name: string;
@@ -54,19 +57,16 @@ type TypeFromAttributeType<T extends AttributeType> =
     ? Uint8Array
     : never;
 
-type AttributeFromKeyDefinition3Base<T extends KeyDefinition> = {
+type AttributeFromKeyDefinition<T extends KeyDefinition> = {
   [name in T["name"]]: TypeFromAttributeType<T["type"]>;
 };
-
-type AttributeFromKeyDefinition<T extends KeyDefinition | undefined> =
-  AttributeFromKeyDefinition3Base<NonNullable<T>>;
 
 type AccessPattern<
   PartitionKey extends KeyDefinition,
   SortKey extends KeyDefinition | undefined,
 > = DynamodbItem &
   AttributeFromKeyDefinition<PartitionKey> &
-  AttributeFromKeyDefinition<SortKey>;
+  AttributeFromKeyDefinition<NonNullable<SortKey>>;
 
 export interface TableProperties<
   PartitionKey extends KeyDefinition,
@@ -86,13 +86,17 @@ export interface MaterializedTableProperties<
   T extends DynamodbItem = DynamodbItem,
 > {
   partitionKey: keyof T;
-  sortKey: keyof T | undefined;
+  sortKey: keyof T | never;
   itemType: T;
   stream: StreamViewType | never;
 }
 
-type Materialize<T extends TableProperties<any, any, any, any>> = {
-  partitionKey: T["partitionKey"]["name"];
+export type MaterializeTableProperties<
+  T extends TableProperties<any, any, any, any>,
+> = {
+  partitionKey: T["partitionKey"]["name"] extends string
+    ? T["partitionKey"]["name"]
+    : never;
   sortKey: T["sortKey"] extends infer SortKey
     ? SortKey extends KeyDefinition
       ? SortKey["name"]
@@ -115,7 +119,7 @@ type Materialize<T extends TableProperties<any, any, any, any>> = {
 };
 
 staticTest(() => {
-  type p1 = Materialize<
+  type p1 = MaterializeTableProperties<
     TableProperties<
       { name: "id"; type: AttributeType.STRING },
       undefined,
@@ -135,7 +139,7 @@ staticTest(() => {
     >
   >(true);
 
-  type p2 = Materialize<
+  type p2 = MaterializeTableProperties<
     TableProperties<
       { name: "id"; type: AttributeType.STRING },
       { name: "sk"; type: AttributeType.STRING },
@@ -155,7 +159,7 @@ staticTest(() => {
     >
   >(true);
 
-  type p3 = Materialize<
+  type p3 = MaterializeTableProperties<
     TableProperties<
       { name: "id"; type: AttributeType.STRING },
       { name: "sk"; type: AttributeType.NUMBER },
@@ -198,7 +202,7 @@ staticTest(() => {
     undefined
   >;
 
-  type p7 = Materialize<
+  type p7 = MaterializeTableProperties<
     TableProperties<
       { name: "id"; type: AttributeType.STRING },
       undefined,
@@ -248,7 +252,7 @@ export type TableName<T extends MaterializedTableProperties> = OpaqueType<
  * ```
  */
 export class Table<
-  PartitionKey extends KeyDefinition,
+  PartitionKey extends KeyDefinition = KeyDefinition,
   SortKey extends KeyDefinition | undefined = undefined,
   ItemType extends AccessPattern<PartitionKey, SortKey> = AccessPattern<
     PartitionKey,
@@ -262,7 +266,9 @@ export class Table<
    * @attribute
    */
   public declare readonly tableName: TableName<
-    Materialize<TableProperties<PartitionKey, SortKey, ItemType, Stream>>
+    MaterializeTableProperties<
+      TableProperties<PartitionKey, SortKey, ItemType, Stream>
+    >
   >;
 
   public constructor(
@@ -275,3 +281,29 @@ export class Table<
     super(scope, id, properties as unknown as TableProps);
   }
 }
+
+() => {
+  const x: ValueType<
+    AccessPattern<{ name: "streamId"; type: AttributeType.STRING }, undefined>
+  > = ValueType.as<{
+    streamId: string;
+    events: {
+      id: string;
+      data: string;
+      // metadata: JsonEncoded
+    }[];
+  }>();
+
+  new Table(undefined as unknown as Construct, "Transactions", {
+    partitionKey: {
+      name: "streamId",
+      type: AttributeType.STRING,
+    },
+    itemType: ValueType.as<{
+      streamId: string;
+      events: {
+        id: string;
+      }[];
+    }>(),
+  });
+};
