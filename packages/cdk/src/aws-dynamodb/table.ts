@@ -36,12 +36,12 @@ type DynamodbPrimitiveValues =
   | Uint8Array[]
   | boolean[];
 
-// export interface DynamodbItem {
-//   [name: string]: DynamodbPrimitiveValues | DynamodbItem | DynamodbItem[];
-// }
-export type DynamodbItem = {
+export interface DynamodbItem {
   [name: string]: DynamodbPrimitiveValues | DynamodbItem | DynamodbItem[];
-};
+}
+// export type DynamodbItem = {
+//   [name: string]: DynamodbPrimitiveValues | DynamodbItem | DynamodbItem[];
+// };
 
 type KeyDefinition = {
   name: string;
