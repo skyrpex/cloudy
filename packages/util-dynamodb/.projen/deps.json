@@ -1,14 +1,6 @@
 {
   "dependencies": [
     {
-      "name": "@cloudy-ts/esm-node",
-      "type": "build"
-    },
-    {
-      "name": "ava",
-      "type": "build"
-    },
-    {
       "name": "eslint",
       "type": "build"
     },
@@ -22,6 +14,10 @@
     },
     {
       "name": "@cloudy-ts/string-codec",
+      "type": "runtime"
+    },
+    {
+      "name": "@cloudy-ts/util-command-proxy",
       "type": "runtime"
     }
   ],

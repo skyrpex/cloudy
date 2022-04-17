@@ -25,9 +25,14 @@ export class Unbuild extends Component {
 
     nodeProject.addDevDeps("unbuild");
 
+    // nodeProject.addTask("unbuild", {
+    //   exec: "unbuild",
+    // });
+    nodeProject.removeTask("build");
     nodeProject.addTask("build", {
       exec: "unbuild",
     });
+    // nodeProject.buildTask.exec("unbuild");
 
     const { entries, emitCommonjs = false, emitTypes = false } = options;
     nodeProject.package.addField("publishConfig", {

@@ -3,13 +3,14 @@
   "scripts": {
     "build": "npx projen build",
     "lint": "npx projen lint",
-    "test": "npx projen test"
+    "test": "npx projen test",
+    "projen": "npx projen"
   },
   "devDependencies": {
-    "@cloudy-ts/esm-node": "workspace:^",
-    "ava": "^4.2.0",
+    "@cloudy-ts/esm-node": "*",
+    "ava": "*",
     "eslint": "^8.13.0",
-    "unbuild": "^0.7.4"
+    "unbuild": "*"
   },
   "dependencies": {
     "@cloudy-ts/opaque-type": "workspace:^"

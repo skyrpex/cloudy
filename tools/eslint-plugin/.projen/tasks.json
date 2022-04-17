@@ -18,11 +18,7 @@
     },
     "test": {
       "name": "test",
-      "steps": [
-        {
-          "exec": "ava"
-        }
-      ]
+      "description": "Run tests"
     }
   },
   "env": {

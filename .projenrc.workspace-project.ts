@@ -62,13 +62,13 @@ export class WorkspaceProject extends NodeProject {
       "package",
       "post-compile",
       "pre-compile",
-      "test",
+      // "test",
       "projen",
     ]) {
       this.removeTask(task);
     }
 
-    this.removeScript("projen");
+    // this.removeScript("projen");
 
     this.package.addField("sideEffects", false);
     this.package.addField("type", "module");
@@ -99,17 +99,21 @@ export class WorkspaceProject extends NodeProject {
       });
     }
 
-    this.addDevDeps("ava", "@cloudy-ts/esm-node");
-    this.addTask("test", {
-      exec: "ava",
-    });
-    this.package.addField("ava", {
-      extensions: {
-        ts: "module",
-      },
-      nodeArguments: ["--loader=@cloudy-ts/esm-node"],
-      files: ["**/*.test.ts"],
-      failWithoutAssertions: false,
-    });
+    if (options.ava) {
+      this.addDevDeps("ava", "@cloudy-ts/esm-node");
+      this.package.addField("ava", {
+        extensions: {
+          ts: "module",
+        },
+        nodeArguments: ["--loader=@cloudy-ts/esm-node"],
+        files: ["**/*.test.ts"],
+        failWithoutAssertions: false,
+      });
+      // this.removeTask("test");
+      // this.addTask("test", {
+      //   exec: "ava",
+      // });
+      this.testTask.exec("ava");
+    }
   }
 }

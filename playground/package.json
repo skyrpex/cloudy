@@ -15,7 +15,7 @@
     "@cloudy-ts/opaque-type": "workspace:^",
     "aws-cdk": "^2.20.0",
     "aws-cdk-lib": "^2.20.0",
-    "constructs": "^10.0.116"
+    "constructs": "^10.0.117"
   },
   "engines": {
     "node": "^14.13.1 || >=16.0.0"

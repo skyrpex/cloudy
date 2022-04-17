@@ -1,14 +1,6 @@
 {
   "dependencies": [
     {
-      "name": "@cloudy-ts/esm-node",
-      "type": "build"
-    },
-    {
-      "name": "ava",
-      "type": "build"
-    },
-    {
       "name": "eslint",
       "type": "build"
     },

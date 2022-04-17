@@ -37,7 +37,7 @@
     "lint-staged": "^12.3.8",
     "npm-check-updates": "^12",
     "prettier": "^2.6.2",
-    "projen": "^0.54.28",
+    "projen": "^0.54.29",
     "standard-version": "^9",
     "turbo": "^1.2.4",
     "typescript": "^4.6.3"

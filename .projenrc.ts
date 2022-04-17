@@ -102,6 +102,7 @@ new WorkspaceProject(project, {
   name: "@cloudy-ts/json-codec",
   outdir: "packages/json-codec",
   deps: ["@cloudy-ts/opaque-type"],
+  ava: true,
 });
 
 new WorkspaceProject(project, {

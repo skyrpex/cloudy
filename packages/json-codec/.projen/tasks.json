@@ -18,6 +18,7 @@
     },
     "test": {
       "name": "test",
+      "description": "Run tests",
       "steps": [
         {
           "exec": "ava"
