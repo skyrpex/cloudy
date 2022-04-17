@@ -181,12 +181,14 @@ importers:
   packages/util-dynamodb:
     specifiers:
       '@aws-sdk/client-dynamodb': ^3.72.0
+      '@aws-sdk/util-dynamodb': ^3.72.0
       '@cloudy-ts/string-codec': ^0.0.0
       '@cloudy-ts/util-command-proxy': ^0.0.0
       eslint: ^8.13.0
       unbuild: '*'
     dependencies:
       '@aws-sdk/client-dynamodb': 3.72.0
+      '@aws-sdk/util-dynamodb': 3.72.0
       '@cloudy-ts/string-codec': link:../string-codec
       '@cloudy-ts/util-command-proxy': link:../util-command-proxy
     devDependencies:

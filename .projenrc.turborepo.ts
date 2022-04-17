@@ -97,12 +97,12 @@ export class Turborepo extends Component {
       }
     }
 
-    // Avoid installing dependencies on the subprojects.
-    for (const workspaceProject of this.workspaceProjects) {
-      Object.assign(workspaceProject.package, {
-        installDependencies: () => {},
-      });
-    }
+    // // Avoid installing dependencies on the subprojects.
+    // for (const workspaceProject of this.workspaceProjects) {
+    //   Object.assign(workspaceProject.package, {
+    //     installDependencies: () => {},
+    //   });
+    // }
 
     const workspaces: string[] = this.options?.workspaces ?? [];
     for (const workspaceProject of this.workspaceProjects) {

@@ -13,6 +13,10 @@
       "type": "runtime"
     },
     {
+      "name": "@aws-sdk/util-dynamodb",
+      "type": "runtime"
+    },
+    {
       "name": "@cloudy-ts/string-codec",
       "type": "runtime"
     },
