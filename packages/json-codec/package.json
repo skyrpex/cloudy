@@ -8,7 +8,7 @@
   },
   "devDependencies": {
     "@cloudy-ts/eslint-plugin": "*",
-    "@cloudy-ts/esm-node": "*",
+    "@cloudy-ts/esm-node": "^0.0.0",
     "@typescript-eslint/eslint-plugin": "^5.19.0",
     "@typescript-eslint/parser": "^5.19.0",
     "ava": "*",

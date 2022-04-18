@@ -1,6 +1,15 @@
 # @cloudy-ts/esm-node
 
+[![NPM version](https://img.shields.io/npm/v/@cloudy-ts/esm-node/latest.svg)](https://www.npmjs.com/package/@cloudy-ts/esm-node)
+[![NPM downloads](https://img.shields.io/npm/dm/@cloudy-ts/esm-node.svg)](https://www.npmjs.com/package/@cloudy-ts/esm-node)
+
 TypeScript and ESM node runtime powered by esbuild.
+
+## Installation
+
+```sh
+pnpm add @cloudy-ts/esm-node
+```
 
 ## Motivation
 

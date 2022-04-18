@@ -1,6 +1,6 @@
 import { Component, JsonFile, Project, SourceCode } from "projen";
 import { NodeProject, Prettier } from "projen/lib/javascript";
-import { Eslint } from "./.projenrc.eslint";
+import { Eslint } from "./.projenrc.eslint.js";
 
 export interface UnbuildOptions {
   entries: string[];

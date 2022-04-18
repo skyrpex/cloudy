@@ -8,6 +8,7 @@ packages:
   - packages/client-dynamodb
   - packages/client-sns
   - tools/eslint-plugin
+  - tools/esm-node
   - examples
   - packages/json-codec
   - packages/opaque-type

@@ -109,6 +109,30 @@ eslintPlugin.addFields({
   },
 });
 
+const esmNode = new WorkspaceProject(project, {
+  name: "@cloudy-ts/esm-node",
+  outdir: "tools/esm-node",
+  deps: ["cross-spawn", "esbuild", "node-fetch", "semver"],
+  build: {
+    entries: ["src/index"],
+    emitTypes: false,
+    sampleFiles: false,
+  },
+  autoDetectBin: false,
+  bin: {
+    "esm-node": "./bin/esm-node.js",
+  },
+});
+esmNode.addFields({
+  files: ["dist/", "bin/"],
+  module: "./src/index.js",
+  exports: {
+    ".": {
+      import: "./src/index.js",
+    },
+  },
+});
+
 new WorkspaceProject(project, {
   name: "@cloudy-ts/opaque-type",
   outdir: "packages/opaque-type",

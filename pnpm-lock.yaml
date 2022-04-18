@@ -58,7 +58,7 @@ importers:
       '@cloudy-ts/client-dynamodb': ^0.0.0
       '@cloudy-ts/client-sns': ^0.0.0
       '@cloudy-ts/eslint-plugin': '*'
-      '@cloudy-ts/esm-node': '*'
+      '@cloudy-ts/esm-node': ^0.0.0
       '@typescript-eslint/eslint-plugin': ^5.19.0
       '@typescript-eslint/parser': ^5.19.0
       aws-cdk: ^2.20.0
@@ -217,7 +217,7 @@ importers:
   packages/json-codec:
     specifiers:
       '@cloudy-ts/eslint-plugin': '*'
-      '@cloudy-ts/esm-node': '*'
+      '@cloudy-ts/esm-node': ^0.0.0
       '@cloudy-ts/opaque-type': workspace:^
       '@typescript-eslint/eslint-plugin': ^5.19.0
       '@typescript-eslint/parser': ^5.19.0
@@ -352,7 +352,7 @@ importers:
       '@cloudy-ts/client-dynamodb': ^0.0.0
       '@cloudy-ts/client-sns': ^0.0.0
       '@cloudy-ts/eslint-plugin': '*'
-      '@cloudy-ts/esm-node': '*'
+      '@cloudy-ts/esm-node': ^0.0.0
       '@typescript-eslint/eslint-plugin': ^5.19.0
       '@typescript-eslint/parser': ^5.19.0
       aws-cdk: ^2.20.0
@@ -394,10 +394,16 @@ importers:
 
   tools/esm-node:
     specifiers:
-      '@types/semver': ^7.3.9
+      '@cloudy-ts/eslint-plugin': '*'
+      '@typescript-eslint/eslint-plugin': ^5.19.0
+      '@typescript-eslint/parser': ^5.19.0
       cross-spawn: ^7.0.3
       esbuild: ^0.14.36
       eslint: ^8.13.0
+      eslint-import-resolver-node: ^0.3.6
+      eslint-import-resolver-typescript: ^2.7.1
+      eslint-plugin-import: ^2.26.0
+      eslint-plugin-unicorn: ^42.0.0
       node-fetch: ^3.2.3
       semver: ^7.3.7
       unbuild: ^0.7.4
@@ -407,8 +413,14 @@ importers:
       node-fetch: 3.2.3
       semver: 7.3.7
     devDependencies:
-      '@types/semver': 7.3.9
+      '@cloudy-ts/eslint-plugin': link:../eslint-plugin
+      '@typescript-eslint/eslint-plugin': 5.19.0_f34adc8488d2e4f014fe61432d70cbf2
+      '@typescript-eslint/parser': 5.19.0_eslint@8.13.0+typescript@4.6.3
       eslint: 8.13.0
+      eslint-import-resolver-node: 0.3.6
+      eslint-import-resolver-typescript: 2.7.1_25dbcfb8cfecb7418ebda712664abe37
+      eslint-plugin-import: 2.26.0_eslint@8.13.0
+      eslint-plugin-unicorn: 42.0.0_eslint@8.13.0
       unbuild: 0.7.4
 
 packages:
@@ -1813,10 +1825,6 @@ packages:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
     dependencies:
       '@types/node': 17.0.24
-    dev: true
-
-  /@types/semver/7.3.9:
-    resolution: {integrity: sha512-L/TMpyURfBkf+o/526Zb6kd/tchUP3iBDEPjqjb+U2MAJhVRxxrmr2fwpe08E7QsV7YLcpq0tUaQ9O9x97ZIxQ==}
     dev: true
 
   /@typescript-eslint/eslint-plugin/5.19.0_f34adc8488d2e4f014fe61432d70cbf2:
