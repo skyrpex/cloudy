@@ -31,6 +31,8 @@ export class Turborepo extends Component {
     return project.components.find(isTurborepo);
   }
 
+  private hasInstalledDependencies = false;
+
   constructor(
     public readonly nodeProject: NodeProject,
     private readonly options?: TurborepoOptions,
@@ -59,19 +61,13 @@ export class Turborepo extends Component {
       this.nodeProject.package.packageManager === NodePackageManager.YARN &&
       !execSync("yarn -v").toString().startsWith("1.")
     ) {
-      const workspaces = [
-        this.nodeProject,
-        //...this.workspaceProjects
-      ];
-      for (const workspace of workspaces) {
-        Object.assign(workspace.package, {
-          renderInstallCommand(frozen: boolean) {
-            return `yarn install ${
-              frozen ? "--immutable --immutable-cache" : ""
-            }`;
-          },
-        });
-      }
+      Object.assign(nodeProject.package, {
+        renderInstallCommand(frozen: boolean) {
+          return `yarn install ${
+            frozen ? "--immutable --immutable-cache" : ""
+          }`;
+        },
+      });
     }
   }
 
@@ -98,10 +94,21 @@ export class Turborepo extends Component {
       Prettier.of(project)?.addIgnorePattern(".turbo/");
     }
 
-    // Avoid running the install dependencies command on the subprojects.
+    // HACK: Avoid installing dependencies more than once, and also use the
+    // root project to do so.
     for (const project of this.workspaceProjects) {
       Object.assign(project.package, {
-        installDependencies: () => {},
+        installDependencies: () => {
+          if (this.hasInstalledDependencies) {
+            return;
+          }
+
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          this.nodeProject.package.installDependencies();
+
+          this.hasInstalledDependencies = true;
+        },
       });
     }
 

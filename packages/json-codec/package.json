@@ -7,7 +7,7 @@
   },
   "devDependencies": {
     "@cloudy-ts/eslint-plugin": "*",
-    "@cloudy-ts/esm-node": "^0.0.0",
+    "@cloudy-ts/esm-node": "*",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
     "ava": "*",
@@ -19,7 +19,7 @@
     "unbuild": "*"
   },
   "dependencies": {
-    "@cloudy-ts/opaque-type": "workspace:^"
+    "@cloudy-ts/opaque-type": "^0.0.0"
   },
   "engines": {
     "node": "^14.13.1 || >=16.0.0"
