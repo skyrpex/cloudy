@@ -20,6 +20,7 @@ interface TurborepoOptions {
     };
   };
   readonly workspaces?: string[];
+  readonly forAllWorkspaces?: (project: NodeProject) => void;
 }
 
 export class Turborepo extends Component {
@@ -36,15 +37,13 @@ export class Turborepo extends Component {
   ) {
     super(nodeProject);
 
-    this.nodeProject.addFields({
+    nodeProject.addFields({
       // Required by Yarn v1 Workspaces.
       private: true,
     });
-    this.nodeProject.addGitIgnore(".turbo/");
-    this.nodeProject.addDevDeps("turbo");
+    nodeProject.addDevDeps("turbo");
 
-    const defaultReleaseBranch =
-      this.nodeProject.release?.branches[0] ?? "main";
+    const defaultReleaseBranch = nodeProject.release?.branches[0] ?? "main";
 
     new JsonFile(nodeProject, "turbo.json", {
       obj: {
@@ -55,8 +54,25 @@ export class Turborepo extends Component {
       marker: false,
     });
 
-    Eslint.of(nodeProject)?.addIgnorePattern(".turbo/");
-    Prettier.of(nodeProject)?.addIgnorePattern(".turbo/");
+    // Stop using `yarn --check-files`, which doesn't work on Yarn 2/3.
+    if (
+      this.nodeProject.package.packageManager === NodePackageManager.YARN &&
+      !execSync("yarn -v").toString().startsWith("1.")
+    ) {
+      const workspaces = [
+        this.nodeProject,
+        //...this.workspaceProjects
+      ];
+      for (const workspace of workspaces) {
+        Object.assign(workspace.package, {
+          renderInstallCommand(frozen: boolean) {
+            return `yarn install ${
+              frozen ? "--immutable --immutable-cache" : ""
+            }`;
+          },
+        });
+      }
+    }
   }
 
   private get subprojects(): Project[] {
@@ -75,72 +91,56 @@ export class Turborepo extends Component {
   }
 
   preSynthesize(): void {
-    if (this.nodeProject.package.packageManager === NodePackageManager.YARN) {
-      // console.log(execSync("yarn -v").toString());
-      if (execSync("yarn -v").toString().startsWith("1.")) {
-        // Do nothing on Yarn 1.
-      } else {
-        // Stop using `yarn --check-files`, which doesn't work on Yarn 2/3.
-        const workspaces = [
-          this.nodeProject,
-          //...this.workspaceProjects
-        ];
-        for (const workspace of workspaces) {
-          Object.assign(workspace.package, {
-            renderInstallCommand(frozen: boolean) {
-              return `yarn install ${
-                frozen ? "--immutable --immutable-cache" : ""
-              }`;
-            },
-          });
-        }
-      }
+    // Ignore turbo files for the root project and its workspaces.
+    for (const project of [this.nodeProject, ...this.workspaceProjects]) {
+      project.addGitIgnore(".turbo/");
+      Eslint.of(project)?.addIgnorePattern(".turbo/");
+      Prettier.of(project)?.addIgnorePattern(".turbo/");
     }
 
-    for (const workspaceProject of this.workspaceProjects) {
-      Eslint.of(workspaceProject)?.addIgnorePattern(".turbo/");
-      Prettier.of(workspaceProject)?.addIgnorePattern(".turbo/");
-    }
-
-    // Avoid installing dependencies on the subprojects.
-    for (const workspaceProject of this.workspaceProjects) {
-      Object.assign(workspaceProject.package, {
+    // Avoid running the install dependencies command on the subprojects.
+    for (const project of this.workspaceProjects) {
+      Object.assign(project.package, {
         installDependencies: () => {},
       });
     }
 
-    const workspaces: string[] = this.options?.workspaces ?? [];
+    // Call options.forAllWorkspaces.
+    for (const project of this.workspaceProjects) {
+      this.options?.forAllWorkspaces?.(project);
+    }
+
+    // Create the workspaces entry (either in package.json or in a pnpm-workspace file).
+    const workspacesPaths: string[] = this.options?.workspaces ?? [];
     for (const workspaceProject of this.workspaceProjects) {
       const workspace = path.relative(
         this.project.outdir,
         workspaceProject.outdir,
       );
-      workspaces.push(workspace);
+      workspacesPaths.push(workspace);
     }
 
-    if (workspaces.length > 0) {
-      const { package: package_ } = this.nodeProject;
-      switch (package_.packageManager) {
-        case NodePackageManager.PNPM: {
-          new YamlFile(this.project, "pnpm-workspace.yaml", {
-            obj: {
-              packages: workspaces,
-            },
-          });
-          break;
-        }
-
-        case NodePackageManager.NPM:
-        case NodePackageManager.YARN: {
-          package_.addField("workspaces", workspaces);
-          break;
-        }
-
-        default:
-          throw new Error(
-            `unexpected package manager ${package_.packageManager}`,
-          );
+    const { package: package_ } = this.nodeProject;
+    switch (package_.packageManager) {
+      case NodePackageManager.PNPM: {
+        new YamlFile(this.project, "pnpm-workspace.yaml", {
+          obj: {
+            packages: workspacesPaths,
+          },
+        });
+        break;
       }
+
+      case NodePackageManager.NPM:
+      case NodePackageManager.YARN: {
+        package_.addField("workspaces", workspacesPaths);
+        break;
+      }
+
+      default:
+        throw new Error(
+          `unexpected package manager ${package_.packageManager}`,
+        );
     }
   }
 }

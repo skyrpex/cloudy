@@ -32,3 +32,5 @@ jspm_packages/
 !/.projenrc.js
 !/.eslintignore
 !/.eslintrc.json
+.turbo/
+!/tsconfig.json

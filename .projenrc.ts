@@ -1,3 +1,5 @@
+import * as path from "node:path";
+
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { JsonFile } from "projen";
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -75,6 +77,14 @@ new Turborepo(project, {
       dependsOn: ["@cloudy-ts/eslint-plugin#build"],
       outputs: [],
     },
+  },
+  forAllWorkspaces(workspace) {
+    const outdir = path.relative(workspace.outdir, project.outdir);
+    new JsonFile(workspace, "tsconfig.json", {
+      obj: {
+        extends: `${outdir}/tsconfig.json`,
+      },
+    });
   },
 });
 
@@ -250,12 +260,12 @@ const examples = new WorkspaceProject(project, {
 });
 examples.eslint?.addIgnorePattern("cdk.out/");
 examples.testTask.exec("tsc --noEmit");
-new JsonFile(examples, "tsconfig.json", {
-  obj: {
-    extends: "../tsconfig.json",
-    include: ["**/*.ts"],
-    exclude: ["**/node_modules/**/*"],
-  },
-});
+// new JsonFile(examples, "tsconfig.json", {
+//   obj: {
+//     extends: "../tsconfig.json",
+//     include: ["**/*.ts"],
+//     exclude: ["**/node_modules/**/*"],
+//   },
+// });
 
 project.synth();

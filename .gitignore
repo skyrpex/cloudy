@@ -47,7 +47,7 @@ cdk.out/
 dist/
 !/.commitlintrc.json
 !/.lintstagedrc.json
-.turbo/
 !/turbo.json
 !/tsconfig.json
+.turbo/
 !/pnpm-workspace.yaml

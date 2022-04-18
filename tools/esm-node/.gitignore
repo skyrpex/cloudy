@@ -34,3 +34,5 @@ jspm_packages/
 !/.eslintrc.json
 dist/
 !/build.config.ts
+.turbo/
+!/tsconfig.json
