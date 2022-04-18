@@ -4,7 +4,7 @@ import {
   SqsEventSourceProps as BaseProperties,
 } from "aws-cdk-lib/aws-lambda-event-sources";
 import { Construct } from "constructs";
-import { Union } from "ts-toolbelt";
+import { F } from "ts-toolbelt";
 
 import { JsonEncoded } from "@cloudy-ts/json-codec";
 import { StringEncoded } from "@cloudy-ts/string-codec";
@@ -16,10 +16,11 @@ import {
   Queue,
 } from "../aws-sqs/queue.js";
 import { staticTest } from "../static-test.js";
+import { ValueType } from "../value-type.js";
 
 export interface SqsEventSourceProperties extends BaseProperties {}
 
-type TopicMessageType<T extends Queue> = T extends Queue<infer P>
+type QueueMessageType<T extends Queue> = T extends Queue<infer P>
   ? MaterializeQueueProperties<P>["message"]
   : never;
 
@@ -30,6 +31,7 @@ interface SqsEventTypeRaw<
   Records: {
     messageId: string;
     receiptHandle: string;
+    // body: QueueMessageType<T>;
     body: RawMessageDelivery extends true
       ? T["message"]
       : JsonEncoded<{
@@ -41,6 +43,7 @@ interface SqsEventTypeRaw<
           Type: "Notification";
           UnsubscribeURL: string;
         }>;
+    // body: T["message"];
     attributes: {
       ApproximateReceiveCount: StringEncoded<number>;
       SentTimestamp: StringEncoded<number>;
@@ -66,7 +69,17 @@ interface SqsEventTypeRaw<
 export type SqsEventType<
   T extends Queue,
   RawMessageDelivery extends boolean,
-> = SqsEventTypeRaw<MaterializeQueueProperties<T>, RawMessageDelivery>;
+> = T extends Queue<infer P>
+  ? SqsEventTypeRaw<MaterializeQueueProperties<P>, RawMessageDelivery>
+  : never;
+// > = F.Narrow<{
+// > = T extends Queue<infer P>
+//   ? MaterializeQueueProperties<P> extends infer U
+//     ? U extends MaterializedQueueProperties
+//       ? SqsEventTypeRaw<U, RawMessageDelivery>
+//       : never
+//     : never
+//   : never;
 
 export class SqsEventSource<
   T extends Queue,
@@ -89,12 +102,34 @@ export class SqsEventSource<
 staticTest((scope: Construct, id: string) => {
   const queue = new Queue(scope, id, {
     fifo: true,
+    messageType: ValueType.as<"hello world">(),
+    messageAttributesType: {
+      test: {
+        DataType: "String",
+        StringValue: ValueType.as<"testvalue">(),
+      },
+    },
   });
+
+  type m = F.Narrow<MaterializeQueueProperties<typeof queue>>;
 
   const eventSource = new SqsEventSource(queue);
 
   type X1 = SqsEventType<typeof queue, true>;
   staticTest((event: X1) => {
     event.Records[0]?.body;
+    event.Records[0]?.messageAttributes.test.StringValue;
   });
+
+  // type X<T extends MaterializedQueueProperties> =
+  //   MaterializeQueueProperties<T>["message"];
+  type x = QueueMessageType<typeof queue>;
+
+  type QueueMessageType2<T extends Queue> = T extends Queue<infer P>
+    ? {
+        message: MaterializeQueueProperties<P>["message"];
+        messageAttributes: MaterializeQueueProperties<P>["messageAttributes"];
+      }
+    : never;
+  type y = QueueMessageType2<typeof queue>;
 });
