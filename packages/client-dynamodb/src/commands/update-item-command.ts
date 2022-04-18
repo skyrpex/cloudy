@@ -2,7 +2,7 @@ import {
   UpdateItemCommand as BaseCommand,
   UpdateItemCommandInput as BaseCommandInput,
   UpdateItemCommandOutput as BaseCommandOutput,
-  DynamoDBClientResolvedConfig,
+  DynamoDBClientResolvedConfig as ResolvedConfiguration,
 } from "@aws-sdk/client-dynamodb";
 import { Command } from "@aws-sdk/smithy-client";
 import { MiddlewareStack } from "@aws-sdk/types";
@@ -52,14 +52,34 @@ export class UpdateItemCommand<
   T extends aws_dynamodb.MaterializedTableProperties,
   UpdateExpression extends string,
   ConditionExpression extends string,
-> extends CommandProxy<
-  BaseCommandInput,
-  BaseCommandOutput,
-  DynamoDBClientResolvedConfig
-> {
-  constructor(
-    input: UpdateItemCommandInput<T, UpdateExpression, ConditionExpression>,
+> implements
+    Command<BaseCommandInput, BaseCommandOutput, ResolvedConfiguration>
+{
+  // constructor(
+  //   input: UpdateItemCommandInput<T, UpdateExpression, ConditionExpression>,
+  // ) {
+  //   super(new BaseCommand(input as unknown as BaseCommandInput));
+  // }
+  private readonly command: BaseCommand;
+
+  constructor(input: UpdateItemCommandInput<T>) {
+    this.command = new BaseCommand(input as unknown as BaseCommandInput);
+  }
+
+  get input(): BaseCommandInput {
+    return this.command.input;
+  }
+
+  get middlewareStack(): MiddlewareStack<BaseCommandInput, BaseCommandOutput> {
+    return this.command.middlewareStack;
+  }
+
+  resolveMiddleware(
+    clientStack: MiddlewareStack<ServiceInputTypes, ServiceOutputTypes>,
+    configuration: ResolvedConfiguration,
+    options: any,
+    // ): Handler<BaseCommandInput, BaseCommandOutput> {
   ) {
-    super(new BaseCommand(input as unknown as BaseCommandInput));
+    return this.command.resolveMiddleware(clientStack, configuration, options);
   }
 }

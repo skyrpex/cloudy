@@ -1,6 +1,9 @@
 import { Command } from "@aws-sdk/smithy-client";
 import { Handler, MetadataBearer, MiddlewareStack } from "@aws-sdk/types";
 
+/**
+ * @deprecated Can't really use this proxy class until https://github.com/pulumi/pulumi/issues/9168 gets resolved.
+ */
 export class CommandProxy<
   Input extends ClientInput,
   Output extends ClientOutput,

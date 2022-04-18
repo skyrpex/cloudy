@@ -5,41 +5,13 @@ import {
   SNSClientResolvedConfig as ResolvedConfiguration,
 } from "@aws-sdk/client-sns";
 import { Command } from "@aws-sdk/smithy-client";
-import { MiddlewareStack } from "@aws-sdk/types";
+import { Handler, MiddlewareStack } from "@aws-sdk/types";
 
 import { aws_sns, OpaqueType, ValueType } from "@cloudy-ts/cdk";
 import { CommandProxy } from "@cloudy-ts/util-command-proxy";
 
 import { ServiceInputTypes, ServiceOutputTypes } from "../sns-client.js";
 import { staticTest } from "../static-test.js";
-
-// /**
-//  * Returns the `T` in `ValueType<T>`, even if it's nested in a record.
-//  */
-// type MapValueType<T> = T extends ValueType<infer V>
-//   ? V
-//   : T extends { [name: string]: any }
-//   ? { [name in keyof T]: MapValueType<T[name]> }
-//   : T;
-
-// /**
-//  * Maps the value types of `Object[ObjectKey]` to
-//  * `{ [DestinationKey]: Object[ObjectKey] }`, if the value of
-//  * `Object[ObjectKey]` is not undefined. If it's undefined, the returned value
-//  * will be `Fallback`.
-//  */
-// type MapValueTypeWithFallback<
-//   DestinationKey extends string,
-//   Object,
-//   ObjectKey extends keyof Object,
-//   Fallback = {},
-// > = Object extends {
-//   [name in ObjectKey]: infer Value;
-// }
-//   ? Value extends undefined
-//     ? Fallback
-//     : MapValueType<{ [name in DestinationKey]: Value }>
-//   : Fallback;
 
 export type PublishCommandInput<
   T extends aws_sns.MaterializedTopicProperties = aws_sns.MaterializedTopicProperties,
@@ -71,15 +43,31 @@ export type PublishCommandInput<
 
 export interface PublishCommandOutput extends BaseCommandOutput {}
 
-export class PublishCommand<
-  T extends aws_sns.MaterializedTopicProperties,
-> extends CommandProxy<
-  BaseCommandInput,
-  BaseCommandOutput,
-  ResolvedConfiguration
-> {
+export class PublishCommand<T extends aws_sns.MaterializedTopicProperties>
+  implements
+    Command<BaseCommandInput, BaseCommandOutput, ResolvedConfiguration>
+{
+  private readonly command: BaseCommand;
+
   constructor(input: PublishCommandInput<T>) {
-    super(new BaseCommand(input as unknown as BaseCommandInput));
+    this.command = new BaseCommand(input as unknown as BaseCommandInput);
+  }
+
+  get input(): BaseCommandInput {
+    return this.command.input;
+  }
+
+  get middlewareStack(): MiddlewareStack<BaseCommandInput, BaseCommandOutput> {
+    return this.command.middlewareStack;
+  }
+
+  resolveMiddleware(
+    clientStack: MiddlewareStack<ServiceInputTypes, ServiceOutputTypes>,
+    configuration: ResolvedConfiguration,
+    options: any,
+    // ): Handler<BaseCommandInput, BaseCommandOutput> {
+  ) {
+    return this.command.resolveMiddleware(clientStack, configuration, options);
   }
 }
 

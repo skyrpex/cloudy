@@ -38,15 +38,42 @@ export type PutItemCommandInput<
 
 export interface PutItemCommandOutput extends BaseCommandOutput {}
 
-export class PutItemCommand<
-  T extends MaterializedTableProperties,
-> extends CommandProxy<
-  BaseCommandInput,
-  BaseCommandOutput,
-  ResolvedConfiguration
-> {
+// export class PutItemCommand<
+//   T extends MaterializedTableProperties,
+// > extends CommandProxy<
+//   BaseCommandInput,
+//   BaseCommandOutput,
+//   ResolvedConfiguration
+// > {
+//   constructor(input: PutItemCommandInput<T>) {
+//     super(new BaseCommand(input as unknown as BaseCommandInput));
+//   }
+// }
+export class PutItemCommand<T extends MaterializedTableProperties>
+  implements
+    Command<BaseCommandInput, BaseCommandOutput, ResolvedConfiguration>
+{
+  private readonly command: BaseCommand;
+
   constructor(input: PutItemCommandInput<T>) {
-    super(new BaseCommand(input as unknown as BaseCommandInput));
+    this.command = new BaseCommand(input as unknown as BaseCommandInput);
+  }
+
+  get input(): BaseCommandInput {
+    return this.command.input;
+  }
+
+  get middlewareStack(): MiddlewareStack<BaseCommandInput, BaseCommandOutput> {
+    return this.command.middlewareStack;
+  }
+
+  resolveMiddleware(
+    clientStack: MiddlewareStack<ServiceInputTypes, ServiceOutputTypes>,
+    configuration: ResolvedConfiguration,
+    options: any,
+    // ): Handler<BaseCommandInput, BaseCommandOutput> {
+  ) {
+    return this.command.resolveMiddleware(clientStack, configuration, options);
   }
 }
 
