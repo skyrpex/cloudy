@@ -175,7 +175,7 @@ export class Eslint extends Component {
       ],
       "import/no-extraneous-dependencies": [
         "error",
-        { devDependencies: options?.devFiles ?? [] },
+        { devDependencies: options?.devFiles ?? undefined },
       ],
     };
 

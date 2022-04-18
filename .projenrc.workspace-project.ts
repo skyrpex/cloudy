@@ -15,6 +15,7 @@ export interface WorkspaceProjectOptions
 }
 
 export class WorkspaceProject extends NodeProject {
+  public readonly eslint: Eslint | undefined;
   constructor(parent: NodeProject, options: WorkspaceProjectOptions) {
     super({
       parent,
@@ -79,11 +80,13 @@ export class WorkspaceProject extends NodeProject {
     });
 
     if (options.lint !== false) {
-      const eslint = new Eslint(this);
+      this.eslint = new Eslint(this, {
+        devFiles: ["**/*.test.ts"],
+      });
       // Use Cloudy's ESLint plugin.
       this.addDevDeps("@cloudy-ts/eslint-plugin");
-      eslint.addPlugins("@cloudy-ts");
-      eslint.addRules({
+      this.eslint.addPlugins("@cloudy-ts");
+      this.eslint.addRules({
         "@cloudy-ts/extensions": [
           "error",
           "ignorePackages",

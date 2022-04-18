@@ -4,7 +4,6 @@ import * as cloudy from "@cloudy-ts/cdk";
 import { stringEncode } from "@cloudy-ts/cdk";
 import { DynamoDBClient, PutItemCommand } from "@cloudy-ts/client-dynamodb";
 import { SNSClient, PublishCommand } from "@cloudy-ts/client-sns";
-import { OpaqueType } from "@cloudy-ts/opaque-type";
 
 const app = new cdk.App();
 
@@ -20,7 +19,7 @@ const topic = new cloudy.aws_sns.Topic(stack, "topic", {
   },
 });
 
-type CustomBigInt = OpaqueType<bigint, { readonly t: unique symbol }>;
+type CustomBigInt = cloudy.OpaqueType<bigint, { readonly t: unique symbol }>;
 
 const x = cloudy.ValueType.as<
   | {

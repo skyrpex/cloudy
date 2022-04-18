@@ -193,7 +193,7 @@ new WorkspaceProject(project, {
   devDeps: ["@aws-sdk/client-dynamodb", "aws-cdk-lib", "constructs"],
 });
 
-new WorkspaceProject(project, {
+const playground = new WorkspaceProject(project, {
   name: "@cloudy-ts/playground",
   outdir: "playground",
   deps: [
@@ -207,6 +207,7 @@ new WorkspaceProject(project, {
   ],
   build: false,
 });
+playground.eslint?.addIgnorePattern("cdk.out/");
 
 const examples = new WorkspaceProject(project, {
   name: "@cloudy-ts/examples",
@@ -223,6 +224,7 @@ const examples = new WorkspaceProject(project, {
   devDeps: ["typescript"],
   build: false,
 });
+examples.eslint?.addIgnorePattern("cdk.out/");
 examples.testTask.exec("tsc --noEmit");
 new JsonFile(examples, "tsconfig.json", {
   obj: {

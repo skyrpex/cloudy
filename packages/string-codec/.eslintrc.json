@@ -61,7 +61,9 @@
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "devDependencies": []
+        "devDependencies": [
+          "**/*.test.ts"
+        ]
       }
     ],
     "@cloudy-ts/extensions": [
