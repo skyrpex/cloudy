@@ -75,7 +75,7 @@ export class WorkspaceProject extends NodeProject {
       this.removeTask(task);
     }
 
-    // this.removeScript("projen");
+    this.removeScript("projen");
 
     this.package.addField("sideEffects", false);
     this.package.addField("type", "module");

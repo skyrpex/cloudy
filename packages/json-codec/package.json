@@ -3,14 +3,13 @@
   "scripts": {
     "build": "npx projen build",
     "lint": "npx projen lint",
-    "test": "npx projen test",
-    "projen": "npx projen"
+    "test": "npx projen test"
   },
   "devDependencies": {
     "@cloudy-ts/eslint-plugin": "*",
     "@cloudy-ts/esm-node": "^0.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.19.0",
-    "@typescript-eslint/parser": "^5.19.0",
+    "@typescript-eslint/eslint-plugin": "^5.20.0",
+    "@typescript-eslint/parser": "^5.20.0",
     "ava": "*",
     "eslint": "^8.13.0",
     "eslint-import-resolver-node": "^0.3.6",
