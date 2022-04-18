@@ -41,8 +41,8 @@ export class TypeScript extends Component {
           resolveJsonModule: true,
           paths: options?.tsconfig?.paths,
         },
-        include: ["**/*.ts", "**/.*.ts"],
-        exclude: ["**/node_modules/**"],
+        // include: ["**/*.ts", "**/.*.ts"],
+        // exclude: ["**/node_modules/**"],
       },
     });
   }
