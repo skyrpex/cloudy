@@ -13,8 +13,7 @@
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.72.0",
     "@aws-sdk/util-dynamodb": "^3.72.0",
-    "@cloudy-ts/string-codec": "^0.0.0",
-    "@cloudy-ts/util-command-proxy": "^0.0.0"
+    "@cloudy-ts/string-codec": "^0.0.0"
   },
   "engines": {
     "node": "^14.13.1 || >=16.0.0"

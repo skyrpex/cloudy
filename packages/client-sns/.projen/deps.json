@@ -29,6 +29,10 @@
       "type": "runtime"
     },
     {
+      "name": "@cloudy-ts/util-command-proxy",
+      "type": "runtime"
+    },
+    {
       "name": "ts-toolbelt",
       "type": "runtime"
     }

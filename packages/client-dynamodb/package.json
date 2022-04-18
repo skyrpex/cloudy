@@ -21,6 +21,7 @@
     "@aws-sdk/util-dynamodb": "^3.72.0",
     "@cloudy-ts/opaque-type": "^0.0.0",
     "@cloudy-ts/string-codec": "^0.0.0",
+    "@cloudy-ts/util-command-proxy": "^0.0.0",
     "@cloudy-ts/util-dynamodb": "^0.0.0",
     "ts-toolbelt": "^9.6.0"
   },

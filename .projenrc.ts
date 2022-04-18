@@ -124,7 +124,6 @@ new WorkspaceProject(project, {
     "@aws-sdk/client-dynamodb",
     "@aws-sdk/util-dynamodb",
     "@cloudy-ts/string-codec",
-    "@cloudy-ts/util-command-proxy",
   ],
 });
 
@@ -136,10 +135,11 @@ new WorkspaceProject(project, {
     "@aws-sdk/smithy-client",
     "@aws-sdk/types",
     "@aws-sdk/util-dynamodb",
+    "ts-toolbelt",
+    "@cloudy-ts/util-command-proxy",
     "@cloudy-ts/opaque-type",
     "@cloudy-ts/string-codec",
     "@cloudy-ts/util-dynamodb",
-    "ts-toolbelt",
   ],
   peerDeps: ["@cloudy-ts/cdk"],
   devDeps: ["@cloudy-ts/cdk"],
@@ -153,6 +153,7 @@ new WorkspaceProject(project, {
     "@aws-sdk/smithy-client",
     "@aws-sdk/types",
     "ts-toolbelt",
+    "@cloudy-ts/util-command-proxy",
   ],
   peerDeps: ["@cloudy-ts/cdk"],
   devDeps: ["@cloudy-ts/cdk"],

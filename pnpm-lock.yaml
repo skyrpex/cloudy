@@ -94,6 +94,7 @@ importers:
       '@cloudy-ts/cdk': 0.0.0
       '@cloudy-ts/opaque-type': ^0.0.0
       '@cloudy-ts/string-codec': ^0.0.0
+      '@cloudy-ts/util-command-proxy': ^0.0.0
       '@cloudy-ts/util-dynamodb': ^0.0.0
       eslint: ^8.13.0
       ts-toolbelt: ^9.6.0
@@ -105,6 +106,7 @@ importers:
       '@aws-sdk/util-dynamodb': 3.72.0
       '@cloudy-ts/opaque-type': link:../opaque-type
       '@cloudy-ts/string-codec': link:../string-codec
+      '@cloudy-ts/util-command-proxy': link:../util-command-proxy
       '@cloudy-ts/util-dynamodb': link:../util-dynamodb
       ts-toolbelt: 9.6.0
     devDependencies:
@@ -118,6 +120,7 @@ importers:
       '@aws-sdk/smithy-client': ^3.72.0
       '@aws-sdk/types': ^3.55.0
       '@cloudy-ts/cdk': 0.0.0
+      '@cloudy-ts/util-command-proxy': ^0.0.0
       eslint: ^8.13.0
       ts-toolbelt: ^9.6.0
       unbuild: '*'
@@ -125,6 +128,7 @@ importers:
       '@aws-sdk/client-sns': 3.72.0
       '@aws-sdk/smithy-client': 3.72.0
       '@aws-sdk/types': 3.55.0
+      '@cloudy-ts/util-command-proxy': link:../util-command-proxy
       ts-toolbelt: 9.6.0
     devDependencies:
       '@cloudy-ts/cdk': link:../cdk
@@ -183,14 +187,12 @@ importers:
       '@aws-sdk/client-dynamodb': ^3.72.0
       '@aws-sdk/util-dynamodb': ^3.72.0
       '@cloudy-ts/string-codec': ^0.0.0
-      '@cloudy-ts/util-command-proxy': ^0.0.0
       eslint: ^8.13.0
       unbuild: '*'
     dependencies:
       '@aws-sdk/client-dynamodb': 3.72.0
       '@aws-sdk/util-dynamodb': 3.72.0
       '@cloudy-ts/string-codec': link:../string-codec
-      '@cloudy-ts/util-command-proxy': link:../util-command-proxy
     devDependencies:
       eslint: 8.13.0
       unbuild: 0.7.4

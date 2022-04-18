@@ -8,6 +8,7 @@ import { Command } from "@aws-sdk/smithy-client";
 import { MiddlewareStack } from "@aws-sdk/types";
 
 import { aws_sns, OpaqueType, ValueType } from "@cloudy-ts/cdk";
+import { CommandProxy } from "@cloudy-ts/util-command-proxy";
 
 import { ServiceInputTypes, ServiceOutputTypes } from "../sns-client.js";
 import { staticTest } from "../static-test.js";
@@ -70,25 +71,15 @@ export type PublishCommandInput<
 
 export interface PublishCommandOutput extends BaseCommandOutput {}
 
-export class PublishCommand<T extends aws_sns.MaterializedTopicProperties>
-  implements
-    Command<BaseCommandInput, BaseCommandOutput, ResolvedConfiguration>
-{
-  private readonly command: BaseCommand;
-
-  constructor(readonly input: PublishCommandInput<T>) {
-    this.command = new BaseCommand(input as unknown as BaseCommandInput);
-  }
-
-  get middlewareStack(): MiddlewareStack<BaseCommandInput, BaseCommandOutput> {
-    return this.command.middlewareStack as any;
-  }
-
-  resolveMiddleware(
-    clientStack: MiddlewareStack<ServiceInputTypes, ServiceOutputTypes>,
-    configuration: ResolvedConfiguration,
-  ) {
-    return this.command.resolveMiddleware(clientStack as any, configuration);
+export class PublishCommand<
+  T extends aws_sns.MaterializedTopicProperties,
+> extends CommandProxy<
+  BaseCommandInput,
+  BaseCommandOutput,
+  ResolvedConfiguration
+> {
+  constructor(input: PublishCommandInput<T>) {
+    super(new BaseCommand(input as unknown as BaseCommandInput));
   }
 }
 
