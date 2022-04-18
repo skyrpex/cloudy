@@ -1,7 +1,8 @@
 import { Component, JsonFile, Project, SourceCode } from "projen";
-import { NodeProject } from "projen/lib/javascript";
+import { NodeProject, Prettier } from "projen/lib/javascript";
+import { Eslint } from "./.projenrc.eslint";
 
-interface UnbuildOptions {
+export interface UnbuildOptions {
   entries: string[];
   emitTypes?: boolean;
   emitCommonjs?: boolean;
@@ -79,5 +80,8 @@ export class Unbuild extends Component {
     }
     source.close("});");
     source.line();
+
+    Eslint.of(nodeProject)?.addIgnorePattern("dist/");
+    Prettier.of(nodeProject)?.addIgnorePattern("dist/");
   }
 }

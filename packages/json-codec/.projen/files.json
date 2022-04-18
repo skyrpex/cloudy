@@ -1,5 +1,7 @@
 {
   "files": [
+    ".eslintignore",
+    ".eslintrc.json",
     ".gitattributes",
     ".gitignore",
     ".npmignore",

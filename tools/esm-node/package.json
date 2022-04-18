@@ -14,8 +14,7 @@
     "node": "^14.13.1 || >=16.0.0"
   },
   "scripts": {
-    "build": "unbuild",
-    "lint": "eslint --ext ts ."
+    "build": "unbuild"
   },
   "dependencies": {
     "cross-spawn": "^7.0.3",

@@ -1,5 +1,5 @@
 {
-  "app": "pnpm esm-node index.ts",
+  "app": "pnpx esm-node index.ts",
   "watch": {
     "include": ["*.ts"]
   }

@@ -8,14 +8,6 @@
         }
       ]
     },
-    "lint": {
-      "name": "lint",
-      "steps": [
-        {
-          "exec": "eslint --ext ts ."
-        }
-      ]
-    },
     "test": {
       "name": "test",
       "description": "Run tests"

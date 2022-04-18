@@ -87,10 +87,26 @@ new TypeScript(project, {
   },
 });
 
-new WorkspaceProject(project, {
+const eslintPlugin = new WorkspaceProject(project, {
   name: "@cloudy-ts/eslint-plugin",
   outdir: "tools/eslint-plugin",
   deps: ["eslint-module-utils", "is-core-module"],
+  build: {
+    entries: ["src/index"],
+    emitTypes: false,
+    emitCommonjs: true,
+  },
+  lint: false,
+});
+eslintPlugin.addFields({
+  main: "./dist/index.cjs",
+  module: "./dist/index.mjs",
+  exports: {
+    ".": {
+      require: "./dist/index.cjs",
+      import: "./dist/index.mjs",
+    },
+  },
 });
 
 new WorkspaceProject(project, {
@@ -175,6 +191,45 @@ new WorkspaceProject(project, {
   ],
   peerDeps: ["aws-cdk-lib", "constructs"],
   devDeps: ["@aws-sdk/client-dynamodb", "aws-cdk-lib", "constructs"],
+});
+
+new WorkspaceProject(project, {
+  name: "@cloudy-ts/playground",
+  outdir: "playground",
+  deps: [
+    "aws-cdk",
+    "aws-cdk-lib",
+    "constructs",
+    "@cloudy-ts/cdk",
+    "@cloudy-ts/client-dynamodb",
+    "@cloudy-ts/client-sns",
+    "@cloudy-ts/esm-node",
+  ],
+  build: false,
+});
+
+const examples = new WorkspaceProject(project, {
+  name: "@cloudy-ts/examples",
+  outdir: "examples",
+  deps: [
+    "aws-cdk",
+    "aws-cdk-lib",
+    "constructs",
+    "@cloudy-ts/cdk",
+    "@cloudy-ts/client-dynamodb",
+    "@cloudy-ts/client-sns",
+    "@cloudy-ts/esm-node",
+  ],
+  devDeps: ["typescript"],
+  build: false,
+});
+examples.testTask.exec("tsc --noEmit");
+new JsonFile(examples, "tsconfig.json", {
+  obj: {
+    extends: "../tsconfig.json",
+    include: ["**/*.ts"],
+    exclude: ["**/node_modules/**/*"],
+  },
 });
 
 project.synth();

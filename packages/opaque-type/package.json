@@ -7,7 +7,14 @@
     "projen": "npx projen"
   },
   "devDependencies": {
+    "@cloudy-ts/eslint-plugin": "*",
+    "@typescript-eslint/eslint-plugin": "^5.19.0",
+    "@typescript-eslint/parser": "^5.19.0",
     "eslint": "^8.13.0",
+    "eslint-import-resolver-node": "^0.3.6",
+    "eslint-import-resolver-typescript": "^2.7.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-unicorn": "^42.0.0",
     "unbuild": "*"
   },
   "engines": {

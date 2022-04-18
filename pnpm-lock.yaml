@@ -52,19 +52,63 @@ importers:
       turbo: 1.2.4
       typescript: 4.6.3
 
+  examples:
+    specifiers:
+      '@cloudy-ts/cdk': ^0.0.0
+      '@cloudy-ts/client-dynamodb': ^0.0.0
+      '@cloudy-ts/client-sns': ^0.0.0
+      '@cloudy-ts/eslint-plugin': '*'
+      '@cloudy-ts/esm-node': '*'
+      '@typescript-eslint/eslint-plugin': ^5.19.0
+      '@typescript-eslint/parser': ^5.19.0
+      aws-cdk: ^2.20.0
+      aws-cdk-lib: ^2.20.0
+      constructs: ^10.0.117
+      eslint: ^8.13.0
+      eslint-import-resolver-node: ^0.3.6
+      eslint-import-resolver-typescript: ^2.7.1
+      eslint-plugin-import: ^2.26.0
+      eslint-plugin-unicorn: ^42.0.0
+      typescript: ^4.6.3
+    dependencies:
+      '@cloudy-ts/cdk': link:../packages/cdk
+      '@cloudy-ts/client-dynamodb': link:../packages/client-dynamodb
+      '@cloudy-ts/client-sns': link:../packages/client-sns
+      '@cloudy-ts/esm-node': link:../tools/esm-node
+      aws-cdk: 2.20.0
+      aws-cdk-lib: 2.20.0_constructs@10.0.117
+      constructs: 10.0.117
+    devDependencies:
+      '@cloudy-ts/eslint-plugin': link:../tools/eslint-plugin
+      '@typescript-eslint/eslint-plugin': 5.19.0_f34adc8488d2e4f014fe61432d70cbf2
+      '@typescript-eslint/parser': 5.19.0_eslint@8.13.0+typescript@4.6.3
+      eslint: 8.13.0
+      eslint-import-resolver-node: 0.3.6
+      eslint-import-resolver-typescript: 2.7.1_25dbcfb8cfecb7418ebda712664abe37
+      eslint-plugin-import: 2.26.0_eslint@8.13.0
+      eslint-plugin-unicorn: 42.0.0_eslint@8.13.0
+      typescript: 4.6.3
+
   packages/cdk:
     specifiers:
       '@aws-sdk/client-dynamodb': ^3.72.0
       '@aws-sdk/util-dynamodb': ^3.72.0
+      '@cloudy-ts/eslint-plugin': '*'
       '@cloudy-ts/json-codec': workspace:^
       '@cloudy-ts/opaque-type': workspace:^
       '@cloudy-ts/string-codec': workspace:^
       '@cloudy-ts/util-dynamodb': workspace:^
       '@pulumi/pulumi': ^3.29.1
+      '@typescript-eslint/eslint-plugin': ^5.19.0
+      '@typescript-eslint/parser': ^5.19.0
       aws-cdk-lib: ^2.20.0
       constructs: ^10.0.117
       esbuild: ^0.14.36
       eslint: ^8.13.0
+      eslint-import-resolver-node: ^0.3.6
+      eslint-import-resolver-typescript: ^2.7.1
+      eslint-plugin-import: ^2.26.0
+      eslint-plugin-unicorn: ^42.0.0
       find-up: ^6.3.0
       ts-toolbelt: ^9.6.0
       unbuild: '*'
@@ -80,9 +124,16 @@ importers:
       ts-toolbelt: 9.6.0
     devDependencies:
       '@aws-sdk/client-dynamodb': 3.72.0
+      '@cloudy-ts/eslint-plugin': link:../../tools/eslint-plugin
+      '@typescript-eslint/eslint-plugin': 5.19.0_f34adc8488d2e4f014fe61432d70cbf2
+      '@typescript-eslint/parser': 5.19.0_eslint@8.13.0+typescript@4.6.3
       aws-cdk-lib: 2.20.0_constructs@10.0.117
       constructs: 10.0.117
       eslint: 8.13.0
+      eslint-import-resolver-node: 0.3.6
+      eslint-import-resolver-typescript: 2.7.1_25dbcfb8cfecb7418ebda712664abe37
+      eslint-plugin-import: 2.26.0_eslint@8.13.0
+      eslint-plugin-unicorn: 42.0.0_eslint@8.13.0
       unbuild: 0.7.4
 
   packages/client-dynamodb:
@@ -92,11 +143,18 @@ importers:
       '@aws-sdk/types': ^3.55.0
       '@aws-sdk/util-dynamodb': ^3.72.0
       '@cloudy-ts/cdk': 0.0.0
+      '@cloudy-ts/eslint-plugin': '*'
       '@cloudy-ts/opaque-type': ^0.0.0
       '@cloudy-ts/string-codec': ^0.0.0
       '@cloudy-ts/util-command-proxy': ^0.0.0
       '@cloudy-ts/util-dynamodb': ^0.0.0
+      '@typescript-eslint/eslint-plugin': ^5.19.0
+      '@typescript-eslint/parser': ^5.19.0
       eslint: ^8.13.0
+      eslint-import-resolver-node: ^0.3.6
+      eslint-import-resolver-typescript: ^2.7.1
+      eslint-plugin-import: ^2.26.0
+      eslint-plugin-unicorn: ^42.0.0
       ts-toolbelt: ^9.6.0
       unbuild: '*'
     dependencies:
@@ -111,7 +169,14 @@ importers:
       ts-toolbelt: 9.6.0
     devDependencies:
       '@cloudy-ts/cdk': link:../cdk
+      '@cloudy-ts/eslint-plugin': link:../../tools/eslint-plugin
+      '@typescript-eslint/eslint-plugin': 5.19.0_f34adc8488d2e4f014fe61432d70cbf2
+      '@typescript-eslint/parser': 5.19.0_eslint@8.13.0+typescript@4.6.3
       eslint: 8.13.0
+      eslint-import-resolver-node: 0.3.6
+      eslint-import-resolver-typescript: 2.7.1_25dbcfb8cfecb7418ebda712664abe37
+      eslint-plugin-import: 2.26.0_eslint@8.13.0
+      eslint-plugin-unicorn: 42.0.0_eslint@8.13.0
       unbuild: 0.7.4
 
   packages/client-sns:
@@ -120,8 +185,15 @@ importers:
       '@aws-sdk/smithy-client': ^3.72.0
       '@aws-sdk/types': ^3.55.0
       '@cloudy-ts/cdk': 0.0.0
+      '@cloudy-ts/eslint-plugin': '*'
       '@cloudy-ts/util-command-proxy': ^0.0.0
+      '@typescript-eslint/eslint-plugin': ^5.19.0
+      '@typescript-eslint/parser': ^5.19.0
       eslint: ^8.13.0
+      eslint-import-resolver-node: ^0.3.6
+      eslint-import-resolver-typescript: ^2.7.1
+      eslint-plugin-import: ^2.26.0
+      eslint-plugin-unicorn: ^42.0.0
       ts-toolbelt: ^9.6.0
       unbuild: '*'
     dependencies:
@@ -132,96 +204,185 @@ importers:
       ts-toolbelt: 9.6.0
     devDependencies:
       '@cloudy-ts/cdk': link:../cdk
+      '@cloudy-ts/eslint-plugin': link:../../tools/eslint-plugin
+      '@typescript-eslint/eslint-plugin': 5.19.0_f34adc8488d2e4f014fe61432d70cbf2
+      '@typescript-eslint/parser': 5.19.0_eslint@8.13.0+typescript@4.6.3
       eslint: 8.13.0
+      eslint-import-resolver-node: 0.3.6
+      eslint-import-resolver-typescript: 2.7.1_25dbcfb8cfecb7418ebda712664abe37
+      eslint-plugin-import: 2.26.0_eslint@8.13.0
+      eslint-plugin-unicorn: 42.0.0_eslint@8.13.0
       unbuild: 0.7.4
 
   packages/json-codec:
     specifiers:
+      '@cloudy-ts/eslint-plugin': '*'
       '@cloudy-ts/esm-node': '*'
       '@cloudy-ts/opaque-type': workspace:^
+      '@typescript-eslint/eslint-plugin': ^5.19.0
+      '@typescript-eslint/parser': ^5.19.0
       ava: '*'
       eslint: ^8.13.0
+      eslint-import-resolver-node: ^0.3.6
+      eslint-import-resolver-typescript: ^2.7.1
+      eslint-plugin-import: ^2.26.0
+      eslint-plugin-unicorn: ^42.0.0
       unbuild: '*'
     dependencies:
       '@cloudy-ts/opaque-type': link:../opaque-type
     devDependencies:
+      '@cloudy-ts/eslint-plugin': link:../../tools/eslint-plugin
       '@cloudy-ts/esm-node': link:../../tools/esm-node
+      '@typescript-eslint/eslint-plugin': 5.19.0_f34adc8488d2e4f014fe61432d70cbf2
+      '@typescript-eslint/parser': 5.19.0_eslint@8.13.0+typescript@4.6.3
       ava: 4.2.0
       eslint: 8.13.0
+      eslint-import-resolver-node: 0.3.6
+      eslint-import-resolver-typescript: 2.7.1_25dbcfb8cfecb7418ebda712664abe37
+      eslint-plugin-import: 2.26.0_eslint@8.13.0
+      eslint-plugin-unicorn: 42.0.0_eslint@8.13.0
       unbuild: 0.7.4
 
   packages/opaque-type:
     specifiers:
+      '@cloudy-ts/eslint-plugin': '*'
+      '@typescript-eslint/eslint-plugin': ^5.19.0
+      '@typescript-eslint/parser': ^5.19.0
       eslint: ^8.13.0
+      eslint-import-resolver-node: ^0.3.6
+      eslint-import-resolver-typescript: ^2.7.1
+      eslint-plugin-import: ^2.26.0
+      eslint-plugin-unicorn: ^42.0.0
       unbuild: '*'
     devDependencies:
+      '@cloudy-ts/eslint-plugin': link:../../tools/eslint-plugin
+      '@typescript-eslint/eslint-plugin': 5.19.0_f34adc8488d2e4f014fe61432d70cbf2
+      '@typescript-eslint/parser': 5.19.0_eslint@8.13.0+typescript@4.6.3
       eslint: 8.13.0
+      eslint-import-resolver-node: 0.3.6
+      eslint-import-resolver-typescript: 2.7.1_25dbcfb8cfecb7418ebda712664abe37
+      eslint-plugin-import: 2.26.0_eslint@8.13.0
+      eslint-plugin-unicorn: 42.0.0_eslint@8.13.0
       unbuild: 0.7.4
 
   packages/string-codec:
     specifiers:
+      '@cloudy-ts/eslint-plugin': '*'
       '@cloudy-ts/opaque-type': workspace:^
+      '@typescript-eslint/eslint-plugin': ^5.19.0
+      '@typescript-eslint/parser': ^5.19.0
       eslint: ^8.13.0
+      eslint-import-resolver-node: ^0.3.6
+      eslint-import-resolver-typescript: ^2.7.1
+      eslint-plugin-import: ^2.26.0
+      eslint-plugin-unicorn: ^42.0.0
       unbuild: '*'
     dependencies:
       '@cloudy-ts/opaque-type': link:../opaque-type
     devDependencies:
+      '@cloudy-ts/eslint-plugin': link:../../tools/eslint-plugin
+      '@typescript-eslint/eslint-plugin': 5.19.0_f34adc8488d2e4f014fe61432d70cbf2
+      '@typescript-eslint/parser': 5.19.0_eslint@8.13.0+typescript@4.6.3
       eslint: 8.13.0
+      eslint-import-resolver-node: 0.3.6
+      eslint-import-resolver-typescript: 2.7.1_25dbcfb8cfecb7418ebda712664abe37
+      eslint-plugin-import: 2.26.0_eslint@8.13.0
+      eslint-plugin-unicorn: 42.0.0_eslint@8.13.0
       unbuild: 0.7.4
 
   packages/util-command-proxy:
     specifiers:
       '@aws-sdk/smithy-client': ^3.72.0
       '@aws-sdk/types': ^3.55.0
+      '@cloudy-ts/eslint-plugin': '*'
+      '@typescript-eslint/eslint-plugin': ^5.19.0
+      '@typescript-eslint/parser': ^5.19.0
       eslint: ^8.13.0
+      eslint-import-resolver-node: ^0.3.6
+      eslint-import-resolver-typescript: ^2.7.1
+      eslint-plugin-import: ^2.26.0
+      eslint-plugin-unicorn: ^42.0.0
       unbuild: '*'
     dependencies:
       '@aws-sdk/smithy-client': 3.72.0
       '@aws-sdk/types': 3.55.0
     devDependencies:
+      '@cloudy-ts/eslint-plugin': link:../../tools/eslint-plugin
+      '@typescript-eslint/eslint-plugin': 5.19.0_f34adc8488d2e4f014fe61432d70cbf2
+      '@typescript-eslint/parser': 5.19.0_eslint@8.13.0+typescript@4.6.3
       eslint: 8.13.0
+      eslint-import-resolver-node: 0.3.6
+      eslint-import-resolver-typescript: 2.7.1_25dbcfb8cfecb7418ebda712664abe37
+      eslint-plugin-import: 2.26.0_eslint@8.13.0
+      eslint-plugin-unicorn: 42.0.0_eslint@8.13.0
       unbuild: 0.7.4
 
   packages/util-dynamodb:
     specifiers:
       '@aws-sdk/client-dynamodb': ^3.72.0
       '@aws-sdk/util-dynamodb': ^3.72.0
+      '@cloudy-ts/eslint-plugin': '*'
       '@cloudy-ts/string-codec': ^0.0.0
+      '@typescript-eslint/eslint-plugin': ^5.19.0
+      '@typescript-eslint/parser': ^5.19.0
       eslint: ^8.13.0
+      eslint-import-resolver-node: ^0.3.6
+      eslint-import-resolver-typescript: ^2.7.1
+      eslint-plugin-import: ^2.26.0
+      eslint-plugin-unicorn: ^42.0.0
       unbuild: '*'
     dependencies:
       '@aws-sdk/client-dynamodb': 3.72.0
       '@aws-sdk/util-dynamodb': 3.72.0
       '@cloudy-ts/string-codec': link:../string-codec
     devDependencies:
+      '@cloudy-ts/eslint-plugin': link:../../tools/eslint-plugin
+      '@typescript-eslint/eslint-plugin': 5.19.0_f34adc8488d2e4f014fe61432d70cbf2
+      '@typescript-eslint/parser': 5.19.0_eslint@8.13.0+typescript@4.6.3
       eslint: 8.13.0
+      eslint-import-resolver-node: 0.3.6
+      eslint-import-resolver-typescript: 2.7.1_25dbcfb8cfecb7418ebda712664abe37
+      eslint-plugin-import: 2.26.0_eslint@8.13.0
+      eslint-plugin-unicorn: 42.0.0_eslint@8.13.0
       unbuild: 0.7.4
 
   playground:
     specifiers:
-      '@aws-sdk/client-sns': ^3.72.0
-      '@cloudy-ts/cdk': workspace:^
-      '@cloudy-ts/client-dynamodb': workspace:^
-      '@cloudy-ts/client-sns': workspace:^
-      '@cloudy-ts/esm-node': workspace:^
-      '@cloudy-ts/opaque-type': workspace:^
+      '@cloudy-ts/cdk': ^0.0.0
+      '@cloudy-ts/client-dynamodb': ^0.0.0
+      '@cloudy-ts/client-sns': ^0.0.0
+      '@cloudy-ts/eslint-plugin': '*'
+      '@cloudy-ts/esm-node': '*'
+      '@typescript-eslint/eslint-plugin': ^5.19.0
+      '@typescript-eslint/parser': ^5.19.0
       aws-cdk: ^2.20.0
       aws-cdk-lib: ^2.20.0
       constructs: ^10.0.117
+      eslint: ^8.13.0
+      eslint-import-resolver-node: ^0.3.6
+      eslint-import-resolver-typescript: ^2.7.1
+      eslint-plugin-import: ^2.26.0
+      eslint-plugin-unicorn: ^42.0.0
     dependencies:
-      '@aws-sdk/client-sns': 3.72.0
       '@cloudy-ts/cdk': link:../packages/cdk
       '@cloudy-ts/client-dynamodb': link:../packages/client-dynamodb
       '@cloudy-ts/client-sns': link:../packages/client-sns
       '@cloudy-ts/esm-node': link:../tools/esm-node
-      '@cloudy-ts/opaque-type': link:../packages/opaque-type
       aws-cdk: 2.20.0
       aws-cdk-lib: 2.20.0_constructs@10.0.117
       constructs: 10.0.117
+    devDependencies:
+      '@cloudy-ts/eslint-plugin': link:../tools/eslint-plugin
+      '@typescript-eslint/eslint-plugin': 5.19.0_f34adc8488d2e4f014fe61432d70cbf2
+      '@typescript-eslint/parser': 5.19.0_eslint@8.13.0+typescript@4.6.3
+      eslint: 8.13.0
+      eslint-import-resolver-node: 0.3.6
+      eslint-import-resolver-typescript: 2.7.1_25dbcfb8cfecb7418ebda712664abe37
+      eslint-plugin-import: 2.26.0_eslint@8.13.0
+      eslint-plugin-unicorn: 42.0.0_eslint@8.13.0
 
   tools/eslint-plugin:
     specifiers:
-      eslint: ^8.13.0
       eslint-module-utils: ^2.7.3
       is-core-module: ^2.8.1
       unbuild: '*'
@@ -229,7 +390,6 @@ importers:
       eslint-module-utils: 2.7.3
       is-core-module: 2.8.1
     devDependencies:
-      eslint: 8.13.0
       unbuild: 0.7.4
 
   tools/esm-node:

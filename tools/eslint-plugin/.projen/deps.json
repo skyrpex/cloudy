@@ -1,10 +1,6 @@
 {
   "dependencies": [
     {
-      "name": "eslint",
-      "type": "build"
-    },
-    {
       "name": "unbuild",
       "type": "build"
     },

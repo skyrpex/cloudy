@@ -8,8 +8,10 @@ packages:
   - packages/client-dynamodb
   - packages/client-sns
   - tools/eslint-plugin
+  - examples
   - packages/json-codec
   - packages/opaque-type
+  - playground
   - packages/string-codec
   - packages/util-command-proxy
   - packages/util-dynamodb

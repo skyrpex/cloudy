@@ -30,6 +30,8 @@ jspm_packages/
 .yarn-integrity
 .cache
 !/.projenrc.js
+!/.eslintignore
+!/.eslintrc.json
 !/index.ts
 dist/
 !/build.config.ts

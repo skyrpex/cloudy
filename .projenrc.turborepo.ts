@@ -55,7 +55,7 @@ export class Turborepo extends Component {
       marker: false,
     });
 
-    Eslint.of(nodeProject)?.ignoreFile.addPatterns(".turbo/");
+    Eslint.of(nodeProject)?.addIgnorePattern(".turbo/");
     Prettier.of(nodeProject)?.addIgnorePattern(".turbo/");
   }
 
@@ -97,12 +97,17 @@ export class Turborepo extends Component {
       }
     }
 
-    // // Avoid installing dependencies on the subprojects.
-    // for (const workspaceProject of this.workspaceProjects) {
-    //   Object.assign(workspaceProject.package, {
-    //     installDependencies: () => {},
-    //   });
-    // }
+    for (const workspaceProject of this.workspaceProjects) {
+      Eslint.of(workspaceProject)?.addIgnorePattern(".turbo/");
+      Prettier.of(workspaceProject)?.addIgnorePattern(".turbo/");
+    }
+
+    // Avoid installing dependencies on the subprojects.
+    for (const workspaceProject of this.workspaceProjects) {
+      Object.assign(workspaceProject.package, {
+        installDependencies: () => {},
+      });
+    }
 
     const workspaces: string[] = this.options?.workspaces ?? [];
     for (const workspaceProject of this.workspaceProjects) {
