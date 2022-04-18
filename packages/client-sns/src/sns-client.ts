@@ -8,10 +8,21 @@ import {
 import { Client } from "@aws-sdk/smithy-client";
 import { Command, HttpHandlerOptions, MiddlewareStack } from "@aws-sdk/types";
 
-import { PublishCommandInput, PublishCommandOutput } from "./commands/index.js";
+import {
+  PublishBatchCommandInput,
+  PublishBatchCommandOutput,
+  PublishCommandInput,
+  PublishCommandOutput,
+} from "./commands/index.js";
 
-export type ServiceInputTypes = PublishCommandInput | BaseServiceInputTypes;
-export type ServiceOutputTypes = PublishCommandOutput | BaseServiceOutputTypes;
+export type ServiceInputTypes =
+  | PublishBatchCommandInput
+  | PublishCommandInput
+  | BaseServiceInputTypes;
+export type ServiceOutputTypes =
+  | PublishBatchCommandOutput
+  | PublishCommandOutput
+  | BaseServiceOutputTypes;
 
 type IClient = Client<
   HttpHandlerOptions,

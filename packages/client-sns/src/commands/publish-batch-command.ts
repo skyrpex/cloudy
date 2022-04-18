@@ -1,8 +1,9 @@
 import {
-  PublishCommand as BaseCommand,
-  PublishCommandInput as BaseCommandInput,
-  PublishCommandOutput as BaseCommandOutput,
+  PublishBatchCommand as BaseCommand,
+  PublishBatchCommandInput as BaseCommandInput,
+  PublishBatchCommandOutput as BaseCommandOutput,
   SNSClientResolvedConfig as ResolvedConfiguration,
+  // PublishBatchRequestEntry as BasePublishBatchRequestEntry,
 } from "@aws-sdk/client-sns";
 import { Command } from "@aws-sdk/smithy-client";
 import { Handler, MiddlewareStack } from "@aws-sdk/types";
@@ -12,23 +13,17 @@ import { aws_sns, OpaqueType, ValueType } from "@cloudy-ts/cdk";
 import { ServiceInputTypes, ServiceOutputTypes } from "../sns-client.js";
 import { staticTest } from "../static-test.js";
 
-export type PublishCommandInput<
-  T extends aws_sns.MaterializedTopicProperties = aws_sns.MaterializedTopicProperties,
-> = Omit<
-  BaseCommandInput,
-  | "TopicArn"
-  | "Message"
-  | "MessageGroupId"
-  | "MessageDeduplicationId"
-  | "MessageAttributes"
-> & {
-  TopicArn: aws_sns.TopicArn<T>;
+export type PublishBatchRequestEntry<
+  T extends aws_sns.MaterializedTopicProperties,
+  // > = BasePublishBatchRequestEntry & {
+> = {
+  Id: string;
   Message: T["message"];
 } & (T["messageGroupId"] extends never
-    ? {}
-    : {
-        MessageGroupId: T["messageGroupId"];
-      }) &
+  ? {}
+  : {
+      MessageGroupId: T["messageGroupId"];
+    }) &
   (T["messageDeduplicationId"] extends never
     ? {}
     : {
@@ -40,15 +35,22 @@ export type PublishCommandInput<
         MessageAttributes: T["messageAttributes"];
       });
 
-export interface PublishCommandOutput extends BaseCommandOutput {}
+export type PublishBatchCommandInput<
+  T extends aws_sns.MaterializedTopicProperties = aws_sns.MaterializedTopicProperties,
+> = Omit<BaseCommandInput, "TopicArn" | "PublishBatchRequestEntries"> & {
+  TopicArn: aws_sns.TopicArn<T>;
+  PublishBatchRequestEntries: PublishBatchRequestEntry<T>[];
+};
 
-export class PublishCommand<T extends aws_sns.MaterializedTopicProperties>
+export interface PublishBatchCommandOutput extends BaseCommandOutput {}
+
+export class PublishBatchCommand<T extends aws_sns.MaterializedTopicProperties>
   implements
     Command<BaseCommandInput, BaseCommandOutput, ResolvedConfiguration>
 {
   private readonly command: BaseCommand;
 
-  constructor(input: PublishCommandInput<T>) {
+  constructor(input: PublishBatchCommandInput<T>) {
     this.command = new BaseCommand(input as unknown as BaseCommandInput);
   }
 
@@ -70,43 +72,57 @@ export class PublishCommand<T extends aws_sns.MaterializedTopicProperties>
 }
 
 staticTest((topic: aws_sns.Topic<{}>) => {
-  new PublishCommand({
+  new PublishBatchCommand({
     TopicArn: topic.topicArn,
-    Message: "",
+    PublishBatchRequestEntries: [{ Id: "", Message: "" }],
   });
-  new PublishCommand({
+  new PublishBatchCommand({
     TopicArn: topic.topicArn,
-    Message: "",
-    // @ts-expect-error: MessageGroupId and MessageDeduplicationId are forbidden.
-    MessageGroupId: "",
-    MessageDeduplicationId: "",
+    PublishBatchRequestEntries: [
+      {
+        Id: "",
+        Message: "",
+        // @ts-expect-error: MessageGroupId and MessageDeduplicationId are forbidden.
+        MessageGroupId: "",
+        MessageDeduplicationId: "",
+      },
+    ],
   });
 });
 
 staticTest((topic: aws_sns.Topic<{ fifo: true }>) => {
-  new PublishCommand({
+  new PublishBatchCommand({
     TopicArn: topic.topicArn,
-    Message: "",
-    MessageGroupId: "",
-    MessageDeduplicationId: "",
+    PublishBatchRequestEntries: [
+      {
+        Id: "",
+        Message: "",
+        MessageGroupId: "",
+        MessageDeduplicationId: "",
+      },
+    ],
   });
-  // @ts-expect-error: MessageGroupId and MessageDeduplicationId are required.
-  new PublishCommand({
+  new PublishBatchCommand({
     TopicArn: topic.topicArn,
-    Message: "",
+    PublishBatchRequestEntries: [
+      // @ts-expect-error: MessageGroupId and MessageDeduplicationId are required.
+      {
+        Message: "",
+      },
+    ],
   });
 });
 
 type MyString = OpaqueType<string, { readonly t: unique symbol }>;
 staticTest((topic: aws_sns.Topic<{ messageType: ValueType<MyString> }>) => {
-  new PublishCommand({
+  new PublishBatchCommand({
     TopicArn: topic.topicArn,
-    Message: "" as MyString,
+    PublishBatchRequestEntries: [{ Id: "", Message: "" as MyString }],
   });
-  new PublishCommand({
+  new PublishBatchCommand({
     TopicArn: topic.topicArn,
     // @ts-expect-error: Message must be of type MyString.
-    Message: "",
+    PublishBatchRequestEntries: [{ Id: "", Message: "" }],
   });
 });
 
@@ -118,17 +134,24 @@ staticTest(
       };
     }>,
   ) => {
-    new PublishCommand({
+    new PublishBatchCommand({
       TopicArn: topic.topicArn,
-      Message: "",
-      MessageAttributes: {
-        userId: { DataType: "String", StringValue: "test" },
-      },
+      PublishBatchRequestEntries: [
+        {
+          Id: "",
+          Message: "",
+          MessageAttributes: {
+            userId: { DataType: "String", StringValue: "test" },
+          },
+        },
+      ],
     });
-    // @ts-expect-error: MessageAttributes are required.
-    new PublishCommand({
+    new PublishBatchCommand({
       TopicArn: topic.topicArn,
-      Message: "",
+      PublishBatchRequestEntries: [
+        // @ts-expect-error: MessageAttributes are required.
+        { Id: "", Message: "" },
+      ],
     });
   },
 );
