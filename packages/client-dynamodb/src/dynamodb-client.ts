@@ -6,7 +6,7 @@ import {
   ServiceOutputTypes as BaseServiceOutputTypes,
 } from "@aws-sdk/client-dynamodb";
 import { Client } from "@aws-sdk/smithy-client";
-import { Command, HttpHandlerOptions } from "@aws-sdk/types";
+import { Command, HttpHandlerOptions, MiddlewareStack } from "@aws-sdk/types";
 
 import {
   PutItemCommandInput,
@@ -49,7 +49,10 @@ export class DynamoDBClient implements IClient {
     return this.resolveClient().config;
   }
 
-  get middlewareStack() {
+  get middlewareStack(): MiddlewareStack<
+    ServiceInputTypes,
+    ServiceOutputTypes
+  > {
     return this.resolveClient().middlewareStack;
   }
 
