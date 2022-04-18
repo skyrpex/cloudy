@@ -7,7 +7,7 @@ import {
   ReturnItemCollectionMetrics,
 } from "@aws-sdk/client-dynamodb";
 import { Command } from "@aws-sdk/smithy-client";
-import { MetadataBearer, MiddlewareStack } from "@aws-sdk/types";
+import { Handler, MetadataBearer, MiddlewareStack } from "@aws-sdk/types";
 
 import { aws_dynamodb, OpaqueType, ValueType } from "@cloudy-ts/cdk";
 import {
@@ -71,8 +71,7 @@ export class PutItemCommand<T extends MaterializedTableProperties>
     clientStack: MiddlewareStack<ServiceInputTypes, ServiceOutputTypes>,
     configuration: ResolvedConfiguration,
     options: any,
-    // ): Handler<BaseCommandInput, BaseCommandOutput> {
-  ) {
+  ): Handler<BaseCommandInput, BaseCommandOutput> {
     return this.command.resolveMiddleware(clientStack, configuration, options);
   }
 }

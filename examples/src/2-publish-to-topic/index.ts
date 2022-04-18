@@ -12,12 +12,12 @@ const stack = new cdk.Stack(app, buildExampleStackName(import.meta.url));
 const topic = new cloudy.aws_sns.Topic(stack, "Topic", {
   // Cloudy allows you to restrict the SNS Topic message types. In this
   // example, we will only allow messages with either "hello" or "world!".
-  messageType: cloudy.aws_sns.ValueType.string<"hello" | "world!">(),
+  messageType: cloudy.ValueType.string<"hello" | "world!">(),
   // We can also indicate the message attributes types.
   messageAttributesType: {
     userId: {
       DataType: "Number",
-      StringValue: cloudy.aws_sns.ValueType.string<`${number}`>(),
+      StringValue: cloudy.ValueType.string<`${number}`>(),
     },
   },
 });

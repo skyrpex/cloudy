@@ -222,6 +222,30 @@ staticTest(() => {
       }
     >
   >(true);
+
+  type p8 = MaterializeTableProperties<
+    TableProperties<
+      { name: "id"; type: AttributeType.STRING },
+      { name: "sk"; type: AttributeType.NUMBER },
+      | { id: "age"; sk: number; age: number }
+      | { id: "name"; sk: number; name: string },
+      undefined
+    >
+  >;
+  typeAssert<
+    IsExact<
+      p8,
+      {
+        partitionKey: "id";
+        sortKey: "sk";
+        itemType:
+          | { id: "age"; sk: number; age: number }
+          | { id: "name"; sk: number; name: string };
+        stream: never;
+        // exact: true;
+      }
+    >
+  >(true);
 });
 
 export type TableName<T extends MaterializedTableProperties> = OpaqueType<
@@ -252,13 +276,18 @@ export type TableName<T extends MaterializedTableProperties> = OpaqueType<
  * ```
  */
 export class Table<
-  PartitionKey extends KeyDefinition = KeyDefinition,
+  // PartitionKey extends KeyDefinition = KeyDefinition,
+  PartitionKey extends KeyDefinition,
   SortKey extends KeyDefinition | undefined = undefined,
   ItemType extends AccessPattern<PartitionKey, SortKey> = AccessPattern<
     PartitionKey,
     SortKey
   >,
   Stream extends StreamViewType | undefined = undefined,
+  // PartitionKey extends KeyDefinition,
+  // SortKey extends KeyDefinition | undefined,
+  // ItemType extends AccessPattern<PartitionKey, SortKey>,
+  // Stream extends StreamViewType | undefined,
 > extends BaseTable {
   /**
    * Name of the dynamodb table.
@@ -277,6 +306,7 @@ export class Table<
     properties: Function.Narrow<
       TableProperties<PartitionKey, SortKey, ItemType, Stream>
     >,
+    // properties: TableProperties<PartitionKey, SortKey, ItemType, Stream>,
   ) {
     super(scope, id, properties as unknown as TableProps);
   }
@@ -305,5 +335,19 @@ export class Table<
         id: string;
       }[];
     }>(),
+  });
+
+  new Table(undefined as unknown as Construct, "Transactions", {
+    partitionKey: { name: "pk", type: AttributeType.STRING },
+    itemType: ValueType.as<
+      | {
+          pk: "name";
+          name: string;
+        }
+      | {
+          pk: "age";
+          age: number;
+        }
+    >(),
   });
 };

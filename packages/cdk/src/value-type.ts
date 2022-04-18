@@ -3,7 +3,7 @@ import { JsonEncoded, JsonSerializable } from "@cloudy-ts/json-codec";
 const tag = Symbol("@cloudy-ts/cdk/ValueType");
 
 export class ValueType<T> {
-  declare readonly [tag]: T | undefined;
+  declare readonly [tag]: T;
 
   public static string<T extends string>() {
     return new ValueType<T>();

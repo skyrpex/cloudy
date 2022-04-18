@@ -5,7 +5,7 @@ import {
   DynamoDBClientResolvedConfig as ResolvedConfiguration,
 } from "@aws-sdk/client-dynamodb";
 import { Command } from "@aws-sdk/smithy-client";
-import { MiddlewareStack } from "@aws-sdk/types";
+import { Handler, MiddlewareStack } from "@aws-sdk/types";
 
 import { aws_dynamodb } from "@cloudy-ts/cdk";
 import { MaterializedTableProperties } from "@cloudy-ts/cdk/src/aws-dynamodb";
@@ -78,8 +78,7 @@ export class UpdateItemCommand<
     clientStack: MiddlewareStack<ServiceInputTypes, ServiceOutputTypes>,
     configuration: ResolvedConfiguration,
     options: any,
-    // ): Handler<BaseCommandInput, BaseCommandOutput> {
-  ) {
+  ): Handler<BaseCommandInput, BaseCommandOutput> {
     return this.command.resolveMiddleware(clientStack, configuration, options);
   }
 }

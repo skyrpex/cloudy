@@ -7,7 +7,7 @@ import {
   ReturnItemCollectionMetrics,
 } from "@aws-sdk/client-dynamodb";
 import { Command } from "@aws-sdk/smithy-client";
-import { MiddlewareStack } from "@aws-sdk/types";
+import { Handler, MiddlewareStack } from "@aws-sdk/types";
 
 import { aws_dynamodb } from "@cloudy-ts/cdk";
 import { CommandProxy } from "@cloudy-ts/util-command-proxy";
@@ -102,8 +102,7 @@ export class QueryCommand<
     clientStack: MiddlewareStack<ServiceInputTypes, ServiceOutputTypes>,
     configuration: ResolvedConfiguration,
     options: any,
-    // ): Handler<BaseCommandInput, BaseCommandOutput> {
-  ) {
+  ): Handler<BaseCommandInput, BaseCommandOutput> {
     return this.command.resolveMiddleware(clientStack, configuration, options);
   }
 }

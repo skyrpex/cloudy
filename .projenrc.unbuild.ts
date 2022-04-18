@@ -34,7 +34,7 @@ export class Unbuild extends Component {
     });
     // nodeProject.buildTask.exec("unbuild");
 
-    const { entries, emitCommonjs = false, emitTypes = false } = options;
+    const { entries, emitCommonjs = false, emitTypes = true } = options;
     nodeProject.package.addField("publishConfig", {
       main: emitCommonjs ? "./dist/index.cjs" : undefined,
       module: "./dist/index.mjs",

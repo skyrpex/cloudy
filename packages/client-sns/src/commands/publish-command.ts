@@ -65,8 +65,7 @@ export class PublishCommand<T extends aws_sns.MaterializedTopicProperties>
     clientStack: MiddlewareStack<ServiceInputTypes, ServiceOutputTypes>,
     configuration: ResolvedConfiguration,
     options: any,
-    // ): Handler<BaseCommandInput, BaseCommandOutput> {
-  ) {
+  ): Handler<BaseCommandInput, BaseCommandOutput> {
     return this.command.resolveMiddleware(clientStack, configuration, options);
   }
 }
