@@ -6,8 +6,8 @@
     "test": "npx projen test"
   },
   "devDependencies": {
-    "@cloudy-ts/cdk": "0.0.0",
-    "@cloudy-ts/eslint-plugin": "*",
+    "@cloudy-ts/cdk": "workspace:0.0.0",
+    "@cloudy-ts/eslint-plugin": "workspace:*",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
     "eslint": "^8.13.0",
@@ -25,10 +25,10 @@
     "@aws-sdk/smithy-client": "^3.72.0",
     "@aws-sdk/types": "^3.55.0",
     "@aws-sdk/util-dynamodb": "^3.72.0",
-    "@cloudy-ts/opaque-type": "^0.0.0",
-    "@cloudy-ts/string-codec": "^0.0.0",
-    "@cloudy-ts/util-command-proxy": "^0.0.0",
-    "@cloudy-ts/util-dynamodb": "^0.0.0",
+    "@cloudy-ts/opaque-type": "workspace:^0.0.0",
+    "@cloudy-ts/string-codec": "workspace:^0.0.0",
+    "@cloudy-ts/util-command-proxy": "workspace:^0.0.0",
+    "@cloudy-ts/util-dynamodb": "workspace:^0.0.0",
     "ts-toolbelt": "^9.6.0"
   },
   "engines": {

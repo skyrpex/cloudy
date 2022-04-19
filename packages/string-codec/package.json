@@ -6,7 +6,7 @@
     "test": "npx projen test"
   },
   "devDependencies": {
-    "@cloudy-ts/eslint-plugin": "*",
+    "@cloudy-ts/eslint-plugin": "workspace:*",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
     "eslint": "^8.13.0",
@@ -17,7 +17,7 @@
     "unbuild": "*"
   },
   "dependencies": {
-    "@cloudy-ts/opaque-type": "workspace:^"
+    "@cloudy-ts/opaque-type": "workspace:^0.0.0"
   },
   "engines": {
     "node": "^14.13.1 || >=16.0.0"
