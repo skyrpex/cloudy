@@ -99,7 +99,7 @@ importers:
       '@cloudy-ts/string-codec': workspace:^0.0.0
       '@cloudy-ts/util-dynamodb': workspace:^0.0.0
       '@pulumi/pulumi': ^3.29.1
-      '@types/aws-lambda': '*'
+      '@types/aws-lambda': ^8.10.93
       '@typescript-eslint/eslint-plugin': ^5.20.0
       '@typescript-eslint/parser': ^5.20.0
       aws-cdk-lib: ^2.20.0
