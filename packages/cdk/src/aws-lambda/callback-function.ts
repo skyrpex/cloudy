@@ -32,6 +32,7 @@ import {
 import * as logs from "aws-cdk-lib/aws-logs";
 import * as sns from "aws-cdk-lib/aws-sns";
 import * as sqs from "aws-cdk-lib/aws-sqs";
+import { Context } from "aws-lambda";
 import { Construct } from "constructs";
 
 import { codeFromFunction } from "./code-from-function.js";
@@ -44,7 +45,7 @@ export interface CallbackFunctionProperties<InputType, OutputType>
     cdk.aws_lambda.FunctionProps,
     "code" | "handler" | "runtime" | "events"
   > {
-  handler: (input: InputType) => Promise<OutputType>;
+  handler: (input: InputType, context: Context) => Promise<OutputType>;
 
   /**
    * Event sources for this function.

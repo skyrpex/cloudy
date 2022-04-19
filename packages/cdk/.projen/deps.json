@@ -81,6 +81,10 @@
       "type": "runtime"
     },
     {
+      "name": "@types/aws-lambda",
+      "type": "runtime"
+    },
+    {
       "name": "esbuild",
       "type": "runtime"
     },

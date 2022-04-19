@@ -99,6 +99,7 @@ importers:
       '@cloudy-ts/string-codec': workspace:^0.0.0
       '@cloudy-ts/util-dynamodb': workspace:^0.0.0
       '@pulumi/pulumi': ^3.29.1
+      '@types/aws-lambda': '*'
       '@typescript-eslint/eslint-plugin': ^5.20.0
       '@typescript-eslint/parser': ^5.20.0
       aws-cdk-lib: ^2.20.0
@@ -119,6 +120,7 @@ importers:
       '@cloudy-ts/string-codec': link:../string-codec
       '@cloudy-ts/util-dynamodb': link:../util-dynamodb
       '@pulumi/pulumi': 3.29.1
+      '@types/aws-lambda': 8.10.93
       esbuild: 0.14.36
       find-up: 6.3.0
       ts-toolbelt: 9.6.0
@@ -1781,6 +1783,10 @@ packages:
   /@tsconfig/node16/1.0.2:
     resolution: {integrity: sha512-eZxlbI8GZscaGS7kkc/trHTT5xgrjH3/1n2JDwusC9iahPKWMRvRjJSAN5mCXviuTGQ/lHnhvv8Q1YTpnfz9gA==}
     dev: true
+
+  /@types/aws-lambda/8.10.93:
+    resolution: {integrity: sha512-Vsyi9ogDAY3REZDjYnXMRJJa62SDvxHXxJI5nGDQdZW058dDE+av/anynN2rLKbCKXDRNw3D/sQmqxVflZFi4A==}
+    dev: false
 
   /@types/estree/0.0.39:
     resolution: {integrity: sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==}

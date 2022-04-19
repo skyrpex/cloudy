@@ -213,6 +213,7 @@ new WorkspaceProject(project, {
   name: "@cloudy-ts/cdk",
   outdir: "packages/cdk",
   deps: [
+    "@types/aws-lambda",
     "@aws-sdk/util-dynamodb",
     "@cloudy-ts/json-codec",
     "@cloudy-ts/opaque-type",
