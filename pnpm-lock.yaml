@@ -63,7 +63,7 @@ importers:
       '@typescript-eslint/parser': ^5.20.0
       aws-cdk: ^2.20.0
       aws-cdk-lib: ^2.20.0
-      constructs: ^10.0.118
+      constructs: ^10.0.119
       eslint: ^8.13.0
       eslint-import-resolver-node: ^0.3.6
       eslint-import-resolver-typescript: ^2.7.1
@@ -76,8 +76,8 @@ importers:
       '@cloudy-ts/client-sns': link:../packages/client-sns
       '@cloudy-ts/esm-node': link:../tools/esm-node
       aws-cdk: 2.20.0
-      aws-cdk-lib: 2.20.0_constructs@10.0.118
-      constructs: 10.0.118
+      aws-cdk-lib: 2.20.0_constructs@10.0.119
+      constructs: 10.0.119
     devDependencies:
       '@cloudy-ts/eslint-plugin': link:../tools/eslint-plugin
       '@typescript-eslint/eslint-plugin': 5.20.0_b9ac9b5656ce5dffade639fcf5e491bf
@@ -102,7 +102,7 @@ importers:
       '@typescript-eslint/eslint-plugin': ^5.20.0
       '@typescript-eslint/parser': ^5.20.0
       aws-cdk-lib: ^2.20.0
-      constructs: ^10.0.118
+      constructs: ^10.0.119
       esbuild: ^0.14.36
       eslint: ^8.13.0
       eslint-import-resolver-node: ^0.3.6
@@ -127,8 +127,8 @@ importers:
       '@cloudy-ts/eslint-plugin': link:../../tools/eslint-plugin
       '@typescript-eslint/eslint-plugin': 5.20.0_b9ac9b5656ce5dffade639fcf5e491bf
       '@typescript-eslint/parser': 5.20.0_eslint@8.13.0+typescript@4.6.3
-      aws-cdk-lib: 2.20.0_constructs@10.0.118
-      constructs: 10.0.118
+      aws-cdk-lib: 2.20.0_constructs@10.0.119
+      constructs: 10.0.119
       eslint: 8.13.0
       eslint-import-resolver-node: 0.3.6
       eslint-import-resolver-typescript: 2.7.1_25dbcfb8cfecb7418ebda712664abe37
@@ -357,7 +357,7 @@ importers:
       '@typescript-eslint/parser': ^5.20.0
       aws-cdk: ^2.20.0
       aws-cdk-lib: ^2.20.0
-      constructs: ^10.0.118
+      constructs: ^10.0.119
       eslint: ^8.13.0
       eslint-import-resolver-node: ^0.3.6
       eslint-import-resolver-typescript: ^2.7.1
@@ -369,8 +369,8 @@ importers:
       '@cloudy-ts/client-sns': link:../packages/client-sns
       '@cloudy-ts/esm-node': link:../tools/esm-node
       aws-cdk: 2.20.0
-      aws-cdk-lib: 2.20.0_constructs@10.0.118
-      constructs: 10.0.118
+      aws-cdk-lib: 2.20.0_constructs@10.0.119
+      constructs: 10.0.119
     devDependencies:
       '@cloudy-ts/eslint-plugin': link:../tools/eslint-plugin
       '@typescript-eslint/eslint-plugin': 5.20.0_b9ac9b5656ce5dffade639fcf5e491bf
@@ -2355,7 +2355,7 @@ packages:
       - supports-color
     dev: true
 
-  /aws-cdk-lib/2.20.0_constructs@10.0.118:
+  /aws-cdk-lib/2.20.0_constructs@10.0.119:
     resolution: {integrity: sha512-jACK/1UJxtWWl6QH+I1V8Oc8F1EEL6aFQYk24DIrzNyB1Aj9LIs9/NyDu5zN00QFKrR6aDE7WAv1VG3sa6wWdg==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
@@ -2363,7 +2363,7 @@ packages:
     dependencies:
       '@balena/dockerignore': 1.0.2
       case: 1.6.3
-      constructs: 10.0.118
+      constructs: 10.0.119
       fs-extra: 9.1.0
       ignore: 5.2.0
       jsonschema: 1.4.0
@@ -2800,8 +2800,8 @@ packages:
     resolution: {integrity: sha1-PXz0Rk22RG6mRL9LOVB/mFEAjo4=}
     dev: true
 
-  /constructs/10.0.118:
-    resolution: {integrity: sha512-BJd/EEgnxe03pG/5/NuGFH1PfmfSfqhfcXjGhd+JGl5p9d79vC8Yqqe8ghvb6RxBlxz0Sl8kXXiDXpzOFU8zcQ==}
+  /constructs/10.0.119:
+    resolution: {integrity: sha512-Dx2qmqy3uTrFnt6uejO7uqVzB61QkD25L/nayvSPv2kcb1jE03y/4XDsbnTmr8wnt51NajmzZiRuwap749pMzw==}
     engines: {node: '>= 12.7.0'}
 
   /conventional-changelog-angular/5.0.13:
