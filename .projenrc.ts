@@ -70,7 +70,7 @@ new Turborepo(project, {
       outputs: ["dist/**"],
     },
     test: {
-      dependsOn: ["@cloudy-ts/esm-node#build"],
+      dependsOn: [],
       outputs: [],
     },
     lint: {
@@ -115,30 +115,6 @@ eslintPlugin.addFields({
     ".": {
       require: "./dist/index.cjs",
       import: "./dist/index.mjs",
-    },
-  },
-});
-
-const esmNode = new WorkspaceProject(project, {
-  name: "@cloudy-ts/esm-node",
-  outdir: "tools/esm-node",
-  deps: ["cross-spawn", "esbuild", "node-fetch", "semver"],
-  build: {
-    entries: ["src/index"],
-    emitTypes: false,
-    sampleFiles: false,
-  },
-  autoDetectBin: false,
-  bin: {
-    "esm-node": "./bin/esm-node.js",
-  },
-});
-esmNode.addFields({
-  files: ["dist/", "bin/"],
-  module: "./src/index.js",
-  exports: {
-    ".": {
-      import: "./src/index.js",
     },
   },
 });

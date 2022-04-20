@@ -5,7 +5,7 @@
     "test": "npx projen test"
   },
   "devDependencies": {
-    "@cloudy-ts/eslint-plugin": "workspace:*",
+    "@cloudy-ts/eslint-plugin": "*",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
     "eslint": "^8.13.0",
@@ -15,10 +15,10 @@
     "eslint-plugin-unicorn": "^42.0.0"
   },
   "dependencies": {
-    "@cloudy-ts/cdk": "workspace:^0.0.0",
-    "@cloudy-ts/client-dynamodb": "workspace:^0.0.0",
-    "@cloudy-ts/client-sns": "workspace:^0.0.0",
-    "@cloudy-ts/esm-node": "workspace:^0.0.0",
+    "@cloudy-ts/cdk": "^0.0.0",
+    "@cloudy-ts/client-dynamodb": "^0.0.0",
+    "@cloudy-ts/client-sns": "^0.0.0",
+    "@cloudy-ts/esm-node": "*",
     "aws-cdk": "^2.20.0",
     "aws-cdk-lib": "^2.20.0",
     "constructs": "^10.0.119"

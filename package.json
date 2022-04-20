@@ -18,8 +18,8 @@
     "projen": "npx projen"
   },
   "devDependencies": {
-    "@cloudy-ts/eslint-plugin": "workspace:^0.0.0",
-    "@cloudy-ts/esm-node": "workspace:*",
+    "@cloudy-ts/eslint-plugin": "*",
+    "@cloudy-ts/esm-node": "*",
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
     "@tsconfig/node14": "^1.0.1",

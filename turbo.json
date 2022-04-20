@@ -19,9 +19,7 @@
       ]
     },
     "test": {
-      "dependsOn": [
-        "@cloudy-ts/esm-node#build"
-      ],
+      "dependsOn": [],
       "outputs": []
     },
     "lint": {
