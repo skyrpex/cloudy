@@ -19,7 +19,7 @@
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.74.0",
     "@aws-sdk/util-dynamodb": "^3.74.0",
-    "@cloudy-ts/string-codec": "^0.0.0"
+    "@cloudy-ts/string-codec": "workspace:^0.0.0"
   },
   "engines": {
     "node": "^14.13.1 || >=16.0.0"

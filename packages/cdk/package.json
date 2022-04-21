@@ -25,12 +25,12 @@
   },
   "dependencies": {
     "@aws-sdk/util-dynamodb": "^3.74.0",
-    "@cloudy-ts/json-codec": "^0.0.0",
-    "@cloudy-ts/opaque-type": "^0.0.0",
-    "@cloudy-ts/string-codec": "^0.0.0",
-    "@cloudy-ts/util-dynamodb": "^0.0.0",
-    "@pulumi/pulumi": "^3.29.1",
-    "@types/aws-lambda": "^8.10.93",
+    "@cloudy-ts/json-codec": "workspace:^0.0.0",
+    "@cloudy-ts/opaque-type": "workspace:^0.0.0",
+    "@cloudy-ts/string-codec": "workspace:^0.0.0",
+    "@cloudy-ts/util-dynamodb": "workspace:^0.0.0",
+    "@pulumi/pulumi": "^3.30.0",
+    "@types/aws-lambda": "^8.10.94",
     "esbuild": "^0.14.37",
     "find-up": "^6.3.0",
     "ts-toolbelt": "^9.6.0"
