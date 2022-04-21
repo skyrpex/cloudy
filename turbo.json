@@ -23,9 +23,7 @@
       "outputs": []
     },
     "lint": {
-      "dependsOn": [
-        "@cloudy-ts/eslint-plugin#build"
-      ],
+      "dependsOn": [],
       "outputs": []
     }
   }

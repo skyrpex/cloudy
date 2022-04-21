@@ -7,7 +7,6 @@ packages:
   - packages/cdk
   - packages/client-dynamodb
   - packages/client-sns
-  - tools/eslint-plugin
   - examples
   - packages/json-codec
   - packages/opaque-type

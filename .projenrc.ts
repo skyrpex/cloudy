@@ -74,7 +74,7 @@ new Turborepo(project, {
       outputs: [],
     },
     lint: {
-      dependsOn: ["@cloudy-ts/eslint-plugin#build"],
+      dependsOn: [],
       outputs: [],
     },
   },
@@ -92,29 +92,7 @@ new Turborepo(project, {
 new TypeScript(project, {
   tsconfig: {
     paths: {
-      "@cloudy-ts/*": ["./packages/*", "./tools/*"],
-    },
-  },
-});
-
-const eslintPlugin = new WorkspaceProject(project, {
-  name: "@cloudy-ts/eslint-plugin",
-  outdir: "tools/eslint-plugin",
-  deps: ["eslint-module-utils", "is-core-module"],
-  build: {
-    entries: ["src/index"],
-    emitTypes: false,
-    emitCommonjs: true,
-  },
-  lint: false,
-});
-eslintPlugin.addFields({
-  main: "./dist/index.cjs",
-  module: "./dist/index.mjs",
-  exports: {
-    ".": {
-      require: "./dist/index.cjs",
-      import: "./dist/index.mjs",
+      "@cloudy-ts/*": ["./packages/*"],
     },
   },
 });

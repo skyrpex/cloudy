@@ -28,7 +28,7 @@ importers:
       turbo: ^1.2.4
       typescript: ^4.6.3
     devDependencies:
-      '@cloudy-ts/eslint-plugin': link:tools/eslint-plugin
+      '@cloudy-ts/eslint-plugin': 0.0.0_eslint@8.13.0
       '@cloudy-ts/esm-node': 0.0.2
       '@commitlint/cli': 16.2.3
       '@commitlint/config-conventional': 16.2.1
@@ -79,7 +79,7 @@ importers:
       aws-cdk-lib: 2.20.0_constructs@10.0.120
       constructs: 10.0.120
     devDependencies:
-      '@cloudy-ts/eslint-plugin': link:../tools/eslint-plugin
+      '@cloudy-ts/eslint-plugin': 0.0.0_eslint@8.13.0
       '@typescript-eslint/eslint-plugin': 5.20.0_b9ac9b5656ce5dffade639fcf5e491bf
       '@typescript-eslint/parser': 5.20.0_eslint@8.13.0+typescript@4.6.3
       eslint: 8.13.0
@@ -126,7 +126,7 @@ importers:
       ts-toolbelt: 9.6.0
     devDependencies:
       '@aws-sdk/client-dynamodb': 3.72.0
-      '@cloudy-ts/eslint-plugin': link:../../tools/eslint-plugin
+      '@cloudy-ts/eslint-plugin': 0.0.0_eslint@8.13.0
       '@typescript-eslint/eslint-plugin': 5.20.0_b9ac9b5656ce5dffade639fcf5e491bf
       '@typescript-eslint/parser': 5.20.0_eslint@8.13.0+typescript@4.6.3
       aws-cdk-lib: 2.20.0_constructs@10.0.120
@@ -171,7 +171,7 @@ importers:
       ts-toolbelt: 9.6.0
     devDependencies:
       '@cloudy-ts/cdk': link:../cdk
-      '@cloudy-ts/eslint-plugin': link:../../tools/eslint-plugin
+      '@cloudy-ts/eslint-plugin': 0.0.0_eslint@8.13.0
       '@typescript-eslint/eslint-plugin': 5.20.0_b9ac9b5656ce5dffade639fcf5e491bf
       '@typescript-eslint/parser': 5.20.0_eslint@8.13.0+typescript@4.6.3
       eslint: 8.13.0
@@ -206,7 +206,7 @@ importers:
       ts-toolbelt: 9.6.0
     devDependencies:
       '@cloudy-ts/cdk': link:../cdk
-      '@cloudy-ts/eslint-plugin': link:../../tools/eslint-plugin
+      '@cloudy-ts/eslint-plugin': 0.0.0_eslint@8.13.0
       '@typescript-eslint/eslint-plugin': 5.20.0_b9ac9b5656ce5dffade639fcf5e491bf
       '@typescript-eslint/parser': 5.20.0_eslint@8.13.0+typescript@4.6.3
       eslint: 8.13.0
@@ -233,7 +233,7 @@ importers:
     dependencies:
       '@cloudy-ts/opaque-type': link:../opaque-type
     devDependencies:
-      '@cloudy-ts/eslint-plugin': link:../../tools/eslint-plugin
+      '@cloudy-ts/eslint-plugin': 0.0.0_eslint@8.13.0
       '@cloudy-ts/esm-node': 0.0.2
       '@typescript-eslint/eslint-plugin': 5.20.0_b9ac9b5656ce5dffade639fcf5e491bf
       '@typescript-eslint/parser': 5.20.0_eslint@8.13.0+typescript@4.6.3
@@ -257,7 +257,7 @@ importers:
       eslint-plugin-unicorn: ^42.0.0
       unbuild: '*'
     devDependencies:
-      '@cloudy-ts/eslint-plugin': link:../../tools/eslint-plugin
+      '@cloudy-ts/eslint-plugin': 0.0.0_eslint@8.13.0
       '@typescript-eslint/eslint-plugin': 5.20.0_b9ac9b5656ce5dffade639fcf5e491bf
       '@typescript-eslint/parser': 5.20.0_eslint@8.13.0+typescript@4.6.3
       eslint: 8.13.0
@@ -282,7 +282,7 @@ importers:
     dependencies:
       '@cloudy-ts/opaque-type': link:../opaque-type
     devDependencies:
-      '@cloudy-ts/eslint-plugin': link:../../tools/eslint-plugin
+      '@cloudy-ts/eslint-plugin': 0.0.0_eslint@8.13.0
       '@typescript-eslint/eslint-plugin': 5.20.0_b9ac9b5656ce5dffade639fcf5e491bf
       '@typescript-eslint/parser': 5.20.0_eslint@8.13.0+typescript@4.6.3
       eslint: 8.13.0
@@ -309,7 +309,7 @@ importers:
       '@aws-sdk/smithy-client': 3.72.0
       '@aws-sdk/types': 3.55.0
     devDependencies:
-      '@cloudy-ts/eslint-plugin': link:../../tools/eslint-plugin
+      '@cloudy-ts/eslint-plugin': 0.0.0_eslint@8.13.0
       '@typescript-eslint/eslint-plugin': 5.20.0_b9ac9b5656ce5dffade639fcf5e491bf
       '@typescript-eslint/parser': 5.20.0_eslint@8.13.0+typescript@4.6.3
       eslint: 8.13.0
@@ -338,7 +338,7 @@ importers:
       '@aws-sdk/util-dynamodb': 3.72.0
       '@cloudy-ts/string-codec': link:../string-codec
     devDependencies:
-      '@cloudy-ts/eslint-plugin': link:../../tools/eslint-plugin
+      '@cloudy-ts/eslint-plugin': 0.0.0_eslint@8.13.0
       '@typescript-eslint/eslint-plugin': 5.20.0_b9ac9b5656ce5dffade639fcf5e491bf
       '@typescript-eslint/parser': 5.20.0_eslint@8.13.0+typescript@4.6.3
       eslint: 8.13.0
@@ -374,7 +374,7 @@ importers:
       aws-cdk-lib: 2.20.0_constructs@10.0.120
       constructs: 10.0.120
     devDependencies:
-      '@cloudy-ts/eslint-plugin': link:../tools/eslint-plugin
+      '@cloudy-ts/eslint-plugin': 0.0.0_eslint@8.13.0
       '@typescript-eslint/eslint-plugin': 5.20.0_b9ac9b5656ce5dffade639fcf5e491bf
       '@typescript-eslint/parser': 5.20.0_eslint@8.13.0+typescript@4.6.3
       eslint: 8.13.0
@@ -382,17 +382,6 @@ importers:
       eslint-import-resolver-typescript: 2.7.1_25dbcfb8cfecb7418ebda712664abe37
       eslint-plugin-import: 2.26.0_eslint@8.13.0
       eslint-plugin-unicorn: 42.0.0_eslint@8.13.0
-
-  tools/eslint-plugin:
-    specifiers:
-      eslint-module-utils: ^2.7.3
-      is-core-module: ^2.8.1
-      unbuild: '*'
-    dependencies:
-      eslint-module-utils: 2.7.3
-      is-core-module: 2.9.0
-    devDependencies:
-      unbuild: 0.7.4
 
 packages:
 
@@ -1212,6 +1201,15 @@ packages:
 
   /@balena/dockerignore/1.0.2:
     resolution: {integrity: sha512-wMue2Sy4GAVTk6Ic4tJVcnfdau+gx2EnG7S+uAEe+TWJFqE4YoWN4/H8MSLj4eYJKxGg26lZwboEniNiNwZQ6Q==}
+
+  /@cloudy-ts/eslint-plugin/0.0.0_eslint@8.13.0:
+    resolution: {integrity: sha512-yXCw3uzQ2o2JiATLYVP/pJdZju/vuRmEJHt7Vcyvvdbza+mDz2nS2fFoFYMmce3AJIdoBT71jkLz9a29PeUKAA==}
+    engines: {node: '>= 14.18.0'}
+    peerDependencies:
+      eslint: ^8.13.0
+    dependencies:
+      eslint: 8.13.0
+    dev: true
 
   /@cloudy-ts/esm-node/0.0.2:
     resolution: {integrity: sha512-HjXSh1zlYD4QgrGJVSaDdJWnVaRj8EVQ/YZOaxJ7Tb6R4elRMlCJx0iWFdLvFACMyqSk2FAqC2u+JlUUxwW2AA==}
@@ -2933,6 +2931,7 @@ packages:
     resolution: {integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==}
     dependencies:
       ms: 2.1.3
+    dev: true
 
   /debug/4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
@@ -3619,6 +3618,7 @@ packages:
     dependencies:
       debug: 3.2.7
       find-up: 2.1.0
+    dev: true
 
   /eslint-plugin-import/2.26.0_eslint@8.13.0:
     resolution: {integrity: sha512-hYfi3FXaM8WPLf4S1cikh/r4IxnO6zrhZbEGz2b660EJRbuxgpDS5gkCuYgGWg2xxh2rBuIr4Pvhve/7c31koA==}
@@ -3914,6 +3914,7 @@ packages:
     engines: {node: '>=4'}
     dependencies:
       locate-path: 2.0.0
+    dev: true
 
   /find-up/3.0.0:
     resolution: {integrity: sha512-1yD6RmLI1XBfxugvORwlck6f75tYL+iR0jqwsOrOxMZyGYqUuDhJ0l4AXdO1iX/FTs9cBAMEk1gWSEx1kSbylg==}
@@ -4890,6 +4891,7 @@ packages:
     dependencies:
       p-locate: 2.0.0
       path-exists: 3.0.0
+    dev: true
 
   /locate-path/3.0.0:
     resolution: {integrity: sha512-7AO748wWnIhNqAuaty2ZWHkQHRSNfPVIsPIfwEOWO22AmaoVrWavlOcMR5nzTLNYvp36X220/maaRsrec1G65A==}
@@ -5259,6 +5261,7 @@ packages:
 
   /ms/2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
+    dev: true
 
   /natural-compare/1.4.0:
     resolution: {integrity: sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=}
@@ -5563,6 +5566,7 @@ packages:
     engines: {node: '>=4'}
     dependencies:
       p-try: 1.0.0
+    dev: true
 
   /p-limit/2.3.0:
     resolution: {integrity: sha512-//88mFWSJx8lxCzwdAABTJL2MyWB12+eIY7MDL2SqLmAkeKU9qxRvWuSyTjm3FUmpBEMuFfckAIqEaVGUDxb6w==}
@@ -5589,6 +5593,7 @@ packages:
     engines: {node: '>=4'}
     dependencies:
       p-limit: 1.3.0
+    dev: true
 
   /p-locate/3.0.0:
     resolution: {integrity: sha512-x+12w/To+4GFfgJhBEpiDcLozRJGegY+Ei7/z0tSLkMmxGZNybVMSfWj9aJn8Z5Fc7dBUNJOOVgPv2H7IwulSQ==}
@@ -5639,6 +5644,7 @@ packages:
   /p-try/1.0.0:
     resolution: {integrity: sha1-y8ec26+P1CKOE/Yh8rGiN8GyB7M=}
     engines: {node: '>=4'}
+    dev: true
 
   /p-try/2.2.0:
     resolution: {integrity: sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==}
@@ -5724,6 +5730,7 @@ packages:
   /path-exists/3.0.0:
     resolution: {integrity: sha1-zg6+ql94yxiSXqfYENe1mwEP1RU=}
     engines: {node: '>=4'}
+    dev: true
 
   /path-exists/4.0.0:
     resolution: {integrity: sha512-ak9Qy5Q7jYb2Wwcey5Fpvg2KoAc/ZIhLSLOSBmRmygPsGwkVVt0fZa0qrtMz+m6tJTAHfZQ8FnmB4MG4LWy7/w==}
