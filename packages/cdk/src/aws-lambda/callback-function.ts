@@ -1,20 +1,14 @@
-import {
-  CfnFunction,
-  Code,
-  Function,
-  FunctionProps,
-  Runtime,
-  verifyCodeConfig,
-} from "aws-cdk-lib/aws-lambda";
+import { Runtime } from "aws-cdk-lib/aws-lambda";
 import { type Context } from "aws-lambda";
 import { Construct } from "constructs";
 
 import { codeFromFunction } from "./code-from-function.js";
 import { IEventSource } from "./event-source.js";
 import { IFunction } from "./function-base.js";
+import { FunctionProperties, Function } from "./function.js";
 
 export interface CallbackFunctionProperties<InputType, OutputType>
-  extends Omit<FunctionProps, "code" | "handler" | "runtime" | "events"> {
+  extends Omit<FunctionProperties, "code" | "handler" | "runtime" | "events"> {
   /**
      * The function that Lambda calls. The function serialization captures any variables captured by the function body and serializes those values into the generated text along with the function body. This process is recursive, so that functions referenced by the body of the serialized function will themselves be serialized as well. This process also deeply serializes captured object values, including prototype chains and property descriptors, such that the semantics of the function when deserialized should match the original function.
 
@@ -48,37 +42,15 @@ export class CallbackFunction<InputType, OutputType>
     id: string,
     properties: CallbackFunctionProperties<InputType, OutputType>,
   ) {
+    const code = codeFromFunction(properties.handler);
+
     super(scope, id, {
-      code: Code.fromInline("export function handler() {}"),
+      code: code.then(({ code }) => code),
       handler,
       runtime,
     });
 
-    const resource = this.node.children.find(
-      (children): children is CfnFunction => children instanceof CfnFunction,
-    );
-    if (!resource) {
-      throw new Error("Resource [CfnFunction] not found");
-    }
-
-    codeFromFunction(properties.handler).then(({ code, tokens }) => {
-      const codeConfig = code.bind(this);
-      verifyCodeConfig(codeConfig, {
-        ...properties,
-        code,
-        handler,
-        runtime,
-      });
-
-      resource.code = {
-        s3Bucket: codeConfig.s3Location?.bucketName,
-        s3Key: codeConfig.s3Location?.objectKey,
-        s3ObjectVersion: codeConfig.s3Location?.objectVersion,
-        zipFile: codeConfig.inlineCode,
-        imageUri: codeConfig.image?.imageUri,
-      };
-      code.bindToResource(resource);
-
+    code.then(({ tokens }) => {
       for (const { construct, cfnToken, hash } of tokens) {
         this.node.addDependency(construct);
         this.addEnvironment(hash, cfnToken);
