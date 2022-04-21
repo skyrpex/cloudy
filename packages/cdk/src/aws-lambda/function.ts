@@ -32,7 +32,9 @@ export class Function extends BaseFunction {
   constructor(scope: Construct, id: string, properties: FunctionProperties) {
     super(scope, id, {
       ...properties,
-      code: Code.fromInline("export function handler() {}"),
+      // code: Code.fromInline("export function handler() {}"),
+      // code: Code.fromInline("throw new Error()"),
+      code: Code.fromInline(" "),
       handler: "index.handler",
       runtime: Runtime.NODEJS_14_X,
     });
