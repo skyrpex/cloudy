@@ -17,8 +17,8 @@
     "unbuild": "*"
   },
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.72.0",
-    "@aws-sdk/util-dynamodb": "^3.72.0",
+    "@aws-sdk/client-dynamodb": "^3.74.0",
+    "@aws-sdk/util-dynamodb": "^3.74.0",
     "@cloudy-ts/string-codec": "^0.0.0"
   },
   "engines": {

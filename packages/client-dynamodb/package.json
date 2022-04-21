@@ -21,10 +21,10 @@
     "@cloudy-ts/cdk": "^0.0.0"
   },
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.72.0",
+    "@aws-sdk/client-dynamodb": "^3.74.0",
     "@aws-sdk/smithy-client": "^3.72.0",
     "@aws-sdk/types": "^3.55.0",
-    "@aws-sdk/util-dynamodb": "^3.72.0",
+    "@aws-sdk/util-dynamodb": "^3.74.0",
     "@cloudy-ts/opaque-type": "^0.0.0",
     "@cloudy-ts/string-codec": "^0.0.0",
     "@cloudy-ts/util-command-proxy": "^0.0.0",

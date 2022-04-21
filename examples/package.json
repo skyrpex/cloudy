@@ -22,7 +22,7 @@
     "@cloudy-ts/esm-node": "*",
     "aws-cdk": "^2.20.0",
     "aws-cdk-lib": "^2.20.0",
-    "constructs": "^10.0.119"
+    "constructs": "^10.0.121"
   },
   "engines": {
     "node": "^14.13.1 || >=16.0.0"

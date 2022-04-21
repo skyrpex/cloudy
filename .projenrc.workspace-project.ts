@@ -89,15 +89,7 @@ export class WorkspaceProject extends NodeProject {
       });
       // Use Cloudy's ESLint plugin.
       this.addDevDeps("@cloudy-ts/eslint-plugin");
-      this.eslint.addPlugins("@cloudy-ts");
-      this.eslint.addRules({
-        "@cloudy-ts/extensions": [
-          "error",
-          "ignorePackages",
-          { ".ts": "never" },
-        ],
-      });
-      // this.addDevDeps("eslint");
+      this.eslint.addExtends("plugin:@cloudy-ts/recommended");
       this.addTask("lint", {
         exec: "eslint --ext ts .",
       });

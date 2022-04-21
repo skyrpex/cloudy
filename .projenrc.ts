@@ -28,10 +28,7 @@ project.defaultTask?.exec(`esm-node .projenrc.ts`);
 
 // Use Cloudy's ESLint plugin.
 project.addDevDeps("@cloudy-ts/eslint-plugin");
-project.eslint.addPlugins("@cloudy-ts");
-project.eslint.addRules({
-  "@cloudy-ts/extensions": ["error", "ignorePackages", { ".ts": "never" }],
-});
+project.eslint.addExtends("plugin:@cloudy-ts/recommended");
 
 // Ignore CDK and unbuild outputs.
 project.gitignore.exclude("cdk.out/", "dist/");
