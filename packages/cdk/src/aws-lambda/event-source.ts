@@ -1,6 +1,6 @@
 import { IFunction } from "./function-base.js";
 
-const inputTypeSymbol = Symbol("@cloudy-ts/cdk/aws_lambda/function/inputType");
+const tag = Symbol("@cloudy-ts/cdk/aws_lambda/function/inputType");
 
 export interface IEventSource<InputType, OutputType = unknown> {
   /**
@@ -18,7 +18,7 @@ export interface IEventSource<InputType, OutputType = unknown> {
    * Adding a property with the type InputType, will forbid interchanges
    * unless the InputType's are of the same shape.
    */
-  readonly [inputTypeSymbol]: InputType | undefined;
+  readonly [tag]: InputType;
 }
 
 export abstract class BaseEventSource<InputType, OutputType = unknown>
@@ -26,5 +26,5 @@ export abstract class BaseEventSource<InputType, OutputType = unknown>
 {
   abstract bind(target: IFunction<InputType, OutputType>): void;
 
-  readonly [inputTypeSymbol]!: InputType | undefined;
+  declare readonly [tag]: InputType;
 }
