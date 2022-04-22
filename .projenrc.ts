@@ -19,6 +19,7 @@ const project = new DefaultNodeProject({
   eslint: {
     devFiles: ["**/build.config.ts"],
   },
+  github: false,
 });
 
 // project.addGitIgnore("/.yarn/cache/*");
