@@ -17,15 +17,12 @@ const raceCondition = new cloudy.aws_lambda.Function(stack, "RaceCondition", {
             "export function handler() { return 'HELLO WORLD'; }",
           ),
         ),
-      5_000,
+      5000,
     );
   }),
   handler: "index.handler",
   runtime: cdk.aws_lambda.Runtime.NODEJS_14_X,
 });
 
-// Calling app.synth() manually will let the race condition happen. If left
-// commented, the cdk process will somehow prevent it from happening  (that
-// includes both "cdk synth" and "cdk deploy", but also the special watch and
-// hotswap modes.
-// app.synth();
+await cloudy.aws_lambda.Function.waitForCodePromises(app);
+app.synth();
