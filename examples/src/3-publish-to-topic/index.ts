@@ -1,12 +1,10 @@
-import * as cdk from "aws-cdk-lib";
-
 import * as cloudy from "@cloudy-ts/cdk";
 import { SNSClient, PublishCommand } from "@cloudy-ts/client-sns";
+import * as cdk from "aws-cdk-lib";
 
 import { buildExampleStackName } from "../util.js";
 
 const app = new cdk.App();
-
 const stack = new cdk.Stack(app, buildExampleStackName(import.meta.url));
 
 const topic = new cloudy.aws_sns.Topic(stack, "Topic", {
