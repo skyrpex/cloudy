@@ -7,7 +7,9 @@ import {
   Runtime,
   verifyCodeConfig,
 } from "aws-cdk-lib/aws-lambda";
-import { Construct, IConstruct } from "constructs";
+import { Construct } from "constructs";
+
+import { AsyncDependenciesContext } from "../core";
 
 export interface FunctionProperties extends Omit<FunctionProps, "code"> {
   /**
@@ -17,138 +19,6 @@ export interface FunctionProperties extends Omit<FunctionProps, "code"> {
    */
   code: Code | Promise<Code>;
 }
-
-const tag = Symbol("@cloudy-ts/cdk.AsyncDependenciesContext");
-
-interface MaybeTaggedApp extends App {
-  [tag]?: AsyncDependenciesContext;
-}
-
-class AsyncDependenciesContext {
-  private readonly promises: Promise<any>[] = [];
-
-  private readonly fulfillmentStatus: ("pending" | "fulfilled" | "failed")[] =
-    [];
-
-  private constructor(app: App) {
-    // if ((app as any)[tag]) {
-    //   throw new Error(
-    //     `The app has already been tagged with [${tag.toString()}]`,
-    //   );
-    // }
-
-    Object.assign(app, {
-      [tag]: this,
-      synth: () => {
-        if (this.isPending()) {
-          throw new Error(
-            "There are pending dependencies. You must run `await cloudy.aws_lambda.Function.waitForCodePromises(app)` before running `app.synth()`.",
-          );
-        }
-
-        if (this.hasFailed()) {
-          throw new Error("Some dependencies failed. Can't synthetize.");
-        }
-
-        // Forward the synth call to the app.
-        return App.prototype.synth.call(app);
-      },
-    });
-  }
-
-  static of(root: IConstruct) {
-    if (!(root instanceof App)) {
-      throw new TypeError(
-        "The root construct must be an instance of [cdk.App]",
-      );
-    }
-
-    const app: MaybeTaggedApp = root;
-    return app[tag] ?? new AsyncDependenciesContext(app);
-  }
-
-  addAsyncDependency(promise: Promise<any>) {
-    this.promises.push(promise);
-
-    const index = this.fulfillmentStatus.length;
-    this.fulfillmentStatus.push("pending");
-    promise.then(
-      () => {
-        this.fulfillmentStatus[index] = "fulfilled";
-      },
-      () => {
-        this.fulfillmentStatus[index] = "failed";
-      },
-    );
-  }
-
-  async waitForAsyncDependencies() {
-    await Promise.all(this.promises);
-  }
-
-  isPending() {
-    return this.fulfillmentStatus.includes("pending");
-  }
-
-  isFulfilled() {
-    return this.fulfillmentStatus.every((status) => status === "pending");
-  }
-
-  hasFailed() {
-    return this.fulfillmentStatus.includes("failed");
-  }
-}
-
-// interface AppContext {
-//   // All the promises that must be resolved before the synth process begins.
-//   promises: Promise<any>[];
-//   // The state of the promises.
-//   asyncDependencies: boolean[];
-// }
-
-// interface TaggedApp extends App {
-//   [tag]?: AppContext;
-// }
-
-// /**
-//  * Gets or creates a new app context for the given root construct.
-//  * @param root The root of the CDK constructs.
-//  * @returns The app context.
-//  */
-// function getAppContext(root: IConstruct): AppContext {
-//   if (!(root instanceof App)) {
-//     throw new TypeError("The root construct must be an instance of [cdk.App]");
-//   }
-
-//   const app: TaggedApp = root;
-
-//   // Return early if the app context exists.
-//   let appContext = app[tag];
-//   if (appContext) {
-//     return appContext;
-//   }
-
-//   // Create a new app context, assign it and patch the app.synth() method.
-//   appContext = {
-//     asyncDependencies: [],
-//     promises: [],
-//   };
-//   Object.assign(app, {
-//     [tag]: appContext,
-//     synth() {
-//       // Throw an error if there's unresolved async dependencies.
-//       if (appContext?.asyncDependencies.includes(false)) {
-//         throw new Error(
-//           "You must run `await cloudy.aws_lambda.Function.waitForCodePromises(app)` before running `app.synth()`.",
-//         );
-//       }
-
-//       // Forward the synth call to the app.
-//       return App.prototype.synth.call(app);
-//     },
-//   });
-//   return appContext;
-// }
 
 /**
  * Deploys a file from inside the construct library as a function.
@@ -170,18 +40,12 @@ export class Function extends BaseFunction {
       // The problem right now is that whatever we pass to the constructor gets
       // processed. Maybe there's a method or property that only gets called on
       // the synthesizing process.
-      // code: Code.fromInline("export function handler() {}"),
-      // code: Code.fromInline("throw new Error()"),
       code: Code.fromInline(" "),
       handler: "index.handler",
       runtime: Runtime.NODEJS_14_X,
     });
 
-    // // Get our private context.
-    // const appContext = getAppContext(scope.node.root);
-    // const dependencyIndex = appContext.asyncDependencies.length;
-    // appContext.asyncDependencies.push(false);
-    const appDependencies = AsyncDependenciesContext.of(scope.node.root);
+    const appDependencies = AsyncDependenciesContext.of(scope);
 
     const resource = this.node.children.find(
       (children): children is CfnFunction => children instanceof CfnFunction,
@@ -205,18 +69,7 @@ export class Function extends BaseFunction {
         imageUri: codeConfig.image?.imageUri,
       };
       code.bindToResource(resource);
-
-      // // Resolve our async dependency.
-      // appContext.asyncDependencies[dependencyIndex] = true;
     });
-    // appContext.promises.push(promise);
     appDependencies.addAsyncDependency(promise);
-  }
-
-  static async waitForCodePromises(app: App) {
-    // const appContext = getAppContext(app);
-    // await Promise.all(appContext.promises);
-    const appDependencies = AsyncDependenciesContext.of(app);
-    await appDependencies.waitForAsyncDependencies();
   }
 }

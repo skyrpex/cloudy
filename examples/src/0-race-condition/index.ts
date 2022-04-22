@@ -24,5 +24,5 @@ const raceCondition = new cloudy.aws_lambda.Function(stack, "RaceCondition", {
   runtime: cdk.aws_lambda.Runtime.NODEJS_14_X,
 });
 
-await cloudy.aws_lambda.Function.waitForCodePromises(app);
+await cloudy.waitForAsyncDependencies(app);
 app.synth();
