@@ -42,32 +42,12 @@ export class AsyncDependenciesContext {
   private readonly promises: Promise<void>[] = [];
 
   /**
-   * Holds the dependencies fulfillment statuses.
-   */
-  private readonly fulfillmentStatus: ("pending" | "fulfilled" | "failed")[] =
-    [];
-
-  /**
    * Creates a new AsyncDependenciesContext and patches the app so it can't
    * synth before the dependencies are fulfilled.
    * @param app The CDK app.
    */
   private constructor(app: App) {
-    Object.assign(app, {
-      [tag]: this,
-      synth: () => {
-        if (this.isPending()) {
-          throw AsyncDependenciesError.pendingDependencies();
-        }
-
-        if (this.hasFailed()) {
-          throw AsyncDependenciesError.someDependenciesFailed();
-        }
-
-        // Forward the synth call to the app.
-        return App.prototype.synth.call(app);
-      },
-    });
+    Object.assign(app, { [tag]: this });
   }
 
   /**
@@ -96,17 +76,6 @@ export class AsyncDependenciesContext {
    */
   addAsyncDependency(dependency: Promise<void>) {
     this.promises.push(dependency);
-
-    const index = this.fulfillmentStatus.length;
-    this.fulfillmentStatus.push("pending");
-    dependency.then(
-      () => {
-        this.fulfillmentStatus[index] = "fulfilled";
-      },
-      () => {
-        this.fulfillmentStatus[index] = "failed";
-      },
-    );
   }
 
   /**
@@ -115,30 +84,6 @@ export class AsyncDependenciesContext {
    */
   async waitForAsyncDependencies() {
     await Promise.all(this.promises);
-  }
-
-  /**
-   * Returns if there are pending dependencies.
-   * @returns True if there are pending dependencies.
-   */
-  isPending() {
-    return this.fulfillmentStatus.includes("pending");
-  }
-
-  /**
-   * Returns if all of the dependencies are fulfilled.
-   * @returns True if all of the dependencies are fulfilled.
-   */
-  isFulfilled() {
-    return this.fulfillmentStatus.every((status) => status === "fulfilled");
-  }
-
-  /**
-   * Returns if any of the dependencies failed.
-   * @returns True if any of the dependencies failed.
-   */
-  hasFailed() {
-    return this.fulfillmentStatus.includes("failed");
   }
 }
 

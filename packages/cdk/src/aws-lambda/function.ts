@@ -68,7 +68,40 @@ export class Function extends BaseFunction {
       };
       code.bindToResource(resource);
     });
+
     const appDependencies = AsyncDependenciesContext.of(scope);
     appDependencies.addAsyncDependency(promise);
+
+    let codeIsResolved = false;
+    let codeFailure: unknown | undefined;
+    promise.catch((error) => {
+      codeFailure = error;
+    });
+    promise.finally(() => {
+      codeIsResolved = true;
+    });
+    this.node.addValidation({
+      validate() {
+        if (!codeIsResolved) {
+          return [
+            "The code property must be resolved before the function can be deployed. Try calling `await cloudy.waitForAsyncDependencies(app)` before synthesizing, or `await cloudy.synth(app)`.",
+          ];
+        }
+
+        if (codeFailure) {
+          if (codeFailure instanceof Error) {
+            return [codeFailure.message];
+          }
+
+          if (typeof codeFailure === "string") {
+            return [codeFailure];
+          }
+
+          return ["Unknown error while resolving code."];
+        }
+
+        return [];
+      },
+    });
   }
 }
