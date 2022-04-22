@@ -1,10 +1,10 @@
+import { OpaqueType } from "@cloudy-ts/opaque-type";
 import * as cdk from "aws-cdk-lib";
 import { Construct } from "constructs";
 import { F } from "ts-toolbelt";
 
+import { ValueType } from "../core/value-type.js";
 import { ITopicSubscription } from "./subscription.js";
-import { ValueType } from "../value-type.js";
-import { OpaqueType } from "@cloudy-ts/opaque-type";
 
 type MessageAttribute =
   | {

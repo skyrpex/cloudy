@@ -6,9 +6,9 @@ import {
   TableProps,
 } from "aws-cdk-lib/aws-dynamodb";
 import { F } from "ts-toolbelt";
-import { staticTest } from "../static-test.js";
 
-import { ValueType } from "../value-type.js";
+import { ValueType } from "../core/value-type.js";
+import { staticTest } from "../static-test.js";
 import { IsExact, typeAssert } from "./table.conditional-type-checks.js";
 
 type DynamodbPrimitiveValues =

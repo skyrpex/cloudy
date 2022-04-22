@@ -13,8 +13,6 @@ export * from "./core/index.js";
 // export * from "./aws-sns-subscriptions/index.js"
 // export * from "./aws-sqs/index.js"
 
-export * from "./value-type.js";
-
 export * from "@cloudy-ts/opaque-type";
 export * from "@cloudy-ts/json-codec";
 export * from "@cloudy-ts/string-codec";

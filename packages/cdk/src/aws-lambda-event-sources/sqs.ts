@@ -1,3 +1,5 @@
+import { JsonEncoded } from "@cloudy-ts/json-codec";
+import { StringEncoded } from "@cloudy-ts/string-codec";
 import { IFunction as IBaseFunction } from "aws-cdk-lib/aws-lambda";
 import {
   SqsEventSource as BaseSqsEventSource,
@@ -6,17 +8,14 @@ import {
 import { Construct } from "constructs";
 import { F } from "ts-toolbelt";
 
-import { JsonEncoded } from "@cloudy-ts/json-codec";
-import { StringEncoded } from "@cloudy-ts/string-codec";
-
 import { BaseEventSource, IFunction } from "../aws-lambda/index.js";
 import {
   MaterializedQueueProperties,
   MaterializeQueueProperties,
   Queue,
 } from "../aws-sqs/queue.js";
+import { ValueType } from "../core/value-type.js";
 import { staticTest } from "../static-test.js";
-import { ValueType } from "../value-type.js";
 
 export interface SqsEventSourceProperties extends BaseProperties {}
 

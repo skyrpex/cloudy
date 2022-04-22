@@ -1,4 +1,5 @@
 import type { AttributeValue } from "@aws-sdk/client-dynamodb";
+import { OpaqueType } from "@cloudy-ts/opaque-type";
 import {
   Table as BaseTable,
   AttributeType,
@@ -7,10 +8,6 @@ import {
 } from "aws-cdk-lib/aws-dynamodb";
 import { Construct } from "constructs";
 import { Function, Union, Object, List, F } from "ts-toolbelt";
-
-import { OpaqueType } from "@cloudy-ts/opaque-type";
-
-import { staticTest } from "../static-test.js";
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 export { AttributeValue } from "@aws-sdk/client-dynamodb";
@@ -22,7 +19,8 @@ export {
 
 import { ToAttributeMap } from "@cloudy-ts/util-dynamodb";
 
-import { ValueType } from "../value-type.js";
+import { ValueType } from "../core/value-type.js";
+import { staticTest } from "../static-test.js";
 import { IsExact, typeAssert } from "./table.conditional-type-checks.js";
 
 type DynamodbPrimitiveValues =

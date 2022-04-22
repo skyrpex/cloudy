@@ -1,12 +1,11 @@
+import { JsonEncoded } from "@cloudy-ts/json-codec";
+import { OpaqueType } from "@cloudy-ts/opaque-type";
+import { StringEncoded } from "@cloudy-ts/string-codec";
 import { aws_sqs } from "aws-cdk-lib";
 import { Construct } from "constructs";
 import { F } from "ts-toolbelt";
 
-import { JsonEncoded } from "@cloudy-ts/json-codec";
-import { StringEncoded } from "@cloudy-ts/string-codec";
-
-import { ValueType } from "../value-type.js";
-import { OpaqueType } from "@cloudy-ts/opaque-type";
+import { ValueType } from "../core/value-type.js";
 
 type MessageAttribute =
   | {
