@@ -27,28 +27,8 @@ project.gitignore.exclude("cdk.out/", "dist/");
 project.prettier?.ignoreFile?.addPatterns("cdk.out/", "dist/");
 project.eslint.ignoreFile.addPatterns("cdk.out/", "dist/");
 
-// Setup commitlint.
-project.addDevDeps("@commitlint/cli", "@commitlint/config-conventional");
-new JsonFile(project, ".commitlintrc.json", {
-  obj: {
-    extends: ["@commitlint/config-conventional"],
-  },
-});
-
-// Setup lint-staged.
-project.addDevDeps("lint-staged");
-new JsonFile(project, ".lintstagedrc.json", {
-  obj: {
-    "*.{js,mjs,cjs,ts,mts,cts}": ["eslint --fix", "prettier --write"],
-  },
-});
-
-// Setup husky.
-project.addDevDeps("husky");
-
 // Setup Turborepo.
 new Turborepo(project, {
-  workspaces: ["packages/*", "tools/*", "playground"],
   pipeline: {
     release: {
       dependsOn: ["^release"],

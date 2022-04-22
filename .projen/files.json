@@ -1,12 +1,10 @@
 {
   "files": [
-    ".commitlintrc.json",
     ".editorconfig",
     ".eslintignore",
     ".eslintrc.json",
     ".gitattributes",
     ".gitignore",
-    ".lintstagedrc.json",
     ".npmignore",
     ".prettierignore",
     ".prettierrc.json",
