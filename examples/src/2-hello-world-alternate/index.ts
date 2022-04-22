@@ -1,5 +1,5 @@
-// You can actually import Cloudy as the CDK object. It exports the same as AWS
-// CDK from "aws-cdk-lib", including some additional constructs.
+// You can actually substitute the aws-cdk-lib import with cloudy. It exports
+// the same objects, including some additional constructs.
 import * as cdk from "@cloudy-ts/cdk";
 
 import { buildExampleStackName } from "../util.js";
@@ -8,11 +8,12 @@ const app = new cdk.App();
 const stack = new cdk.Stack(app, buildExampleStackName(import.meta.url));
 
 const helloWorld = new cdk.aws_lambda.CallbackFunction(stack, "HelloWorld", {
-  async handler(input: any) {
+  async handler(input: unknown) {
     return `hello world, ${JSON.stringify(input, undefined, 2)}!`;
   },
 });
 
+// Create a function URL and output the URL to the console.
 const functionUrl = helloWorld.addFunctionUrl({
   authType: cdk.aws_lambda.FunctionUrlAuthType.NONE,
 });

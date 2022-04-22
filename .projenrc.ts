@@ -1,7 +1,7 @@
 import * as path from "node:path";
 
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { JsonFile } from "projen";
+import { JsonFile, SampleFile } from "projen";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { NodePackageManager } from "projen/lib/javascript";
 
@@ -206,6 +206,30 @@ const examples = new WorkspaceProject(project, {
 });
 examples.eslint?.addIgnorePattern("cdk.out/");
 examples.testTask.exec("tsc --noEmit");
+
+for (const example of [
+  "1-hello-world",
+  "2-hello-world-alternate",
+  "3-publish-to-topic",
+]) {
+  new SampleFile(examples, `src/${example}/index.ts`, {
+    contents: [
+      'import * as cdk from "@cloudy-ts/cdk";',
+      "",
+      'import { buildExampleStackName } from "../util.js";',
+      "",
+      "const app = new cdk.App();",
+      "const stack = new cdk.Stack(app, buildExampleStackName(import.meta.url));",
+      "",
+    ].join("\n"),
+  });
+
+  new JsonFile(examples, `src/${example}/cdk.json`, {
+    obj: {
+      app: "pnpx esm-node index.ts",
+    },
+  });
+}
 // new JsonFile(examples, "tsconfig.json", {
 //   obj: {
 //     extends: "../tsconfig.json",

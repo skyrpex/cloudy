@@ -113,7 +113,7 @@ importers:
       find-up: ^6.3.0
       ts-toolbelt: ^9.6.0
       tsup: ^5.12.6
-      typescript: '*'
+      typescript: ^4.6.3
       vitest: ^0.9.4
     dependencies:
       '@aws-sdk/util-dynamodb': 3.75.0
