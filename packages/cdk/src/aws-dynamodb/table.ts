@@ -1,4 +1,3 @@
-import type { AttributeValue } from "@aws-sdk/client-dynamodb";
 import { OpaqueType } from "@cloudy-ts/opaque-type";
 import {
   Table as BaseTable,
@@ -7,8 +6,7 @@ import {
   TableProps,
 } from "aws-cdk-lib/aws-dynamodb";
 import { Construct } from "constructs";
-import { Function, Union, Object, List, F } from "ts-toolbelt";
-
+import { F } from "ts-toolbelt";
 // eslint-disable-next-line import/no-extraneous-dependencies
 export { AttributeValue } from "@aws-sdk/client-dynamodb";
 export {
@@ -16,8 +14,6 @@ export {
   StreamViewType,
   BillingMode,
 } from "aws-cdk-lib/aws-dynamodb";
-
-import { ToAttributeMap } from "@cloudy-ts/util-dynamodb";
 
 import { ValueType } from "../core/value-type.js";
 import { staticTest } from "../static-test.js";
@@ -301,7 +297,7 @@ export class Table<
   public constructor(
     scope: Construct,
     id: string,
-    properties: Function.Narrow<
+    properties: F.Narrow<
       TableProperties<PartitionKey, SortKey, ItemType, Stream>
     >,
     // properties: TableProperties<PartitionKey, SortKey, ItemType, Stream>,

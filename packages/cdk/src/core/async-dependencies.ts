@@ -1,4 +1,4 @@
-import { App } from "aws-cdk-lib";
+import { App, StageSynthesisOptions } from "aws-cdk-lib";
 import { IConstruct } from "constructs";
 
 const tag = Symbol("@cloudy-ts/cdk.AsyncDependenciesContext");
@@ -143,10 +143,26 @@ export class AsyncDependenciesContext {
 }
 
 /**
- * Waits for all of the async dependencies in the app.
+ * Waits for all of the async dependencies in the app to resolve.
  * @param app The CDK app.
  */
 export async function waitForAsyncDependencies(app: App) {
   const appDependencies = AsyncDependenciesContext.of(app);
   await appDependencies.waitForAsyncDependencies();
+}
+
+/**
+ * Synthesize this stage into a cloud assembly.
+ *
+ * Once an assembly has been synthesized, it cannot be modified. Subsequent
+ * calls will return the same assembly.
+ *
+ * Waits for all of the async dependencies to resolve before starting to
+ * synthesize.
+ *
+ * @see {@link App.synth()}
+ */
+export async function synth(app: App, options?: StageSynthesisOptions) {
+  await waitForAsyncDependencies(app);
+  return app.synth(options);
 }
