@@ -3,10 +3,22 @@ import { IConstruct } from "constructs";
 
 const tag = Symbol("@cloudy-ts/cdk.AsyncDependenciesContext");
 
+/**
+ * Represents a CDK app that may have been tagged with an
+ * AsyncDependenciesContext.
+ */
 interface MaybeTaggedApp extends App {
   [tag]?: AsyncDependenciesContext;
 }
 
+/**
+ * Manages all of the async dependencies in a CDK application and makes sure
+ * that the synth process doesn't start before that.
+ *
+ * When instantiated, the AsyncDependenciesContext will save itself in the CDK
+ * app as a singleton, and will patch the `app.synth()` method, ensuring it
+ * can't start before all of the async dependencies are fulfilled.
+ */
 export class AsyncDependenciesContext {
   /**
    * Holds all of the dependencies promises.
@@ -20,7 +32,8 @@ export class AsyncDependenciesContext {
     [];
 
   /**
-   * Creates a new AsyncDependenciesContext and patches the app so it can't synth before the dependencies are fulfilled.
+   * Creates a new AsyncDependenciesContext and patches the app so it can't
+   * synth before the dependencies are fulfilled.
    * @param app The CDK app.
    */
   private constructor(app: App) {
@@ -47,7 +60,7 @@ export class AsyncDependenciesContext {
    * Returns the AsyncDependenciesContext of the app.
    *
    * @param node The construct node.
-   * @returns
+   * @returns The AsyncDependenciesContext of the app.
    */
   static of(node: IConstruct) {
     const root = node.node.root;
@@ -83,7 +96,8 @@ export class AsyncDependenciesContext {
   }
 
   /**
-   * Creates a Promise that is resolved when all of the async dependencies resolve, or rejected when any async dependency fails.
+   * Creates a Promise that is resolved when all of the async dependencies
+   * resolve, or rejected when any async dependency fails.
    */
   async waitForAsyncDependencies() {
     await Promise.all(this.promises);
