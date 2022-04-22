@@ -3,22 +3,6 @@ import { IConstruct } from "constructs";
 
 const tag = Symbol("@cloudy-ts/cdk.AsyncDependencies");
 
-export class AsyncDependenciesError extends Error {
-  constructor(reason: string) {
-    super(`Can't run "app.synth()" because: ${reason}`);
-  }
-
-  static pendingDependencies() {
-    return new AsyncDependenciesError(
-      "There are pending dependencies. You must run `await cloudy.waitForAsyncDependencies(app)` before running `app.synth()`.",
-    );
-  }
-
-  static someDependenciesFailed() {
-    return new AsyncDependenciesError("Some dependencies failed.");
-  }
-}
-
 /**
  * Represents a CDK app that may have been tagged with an
  * AsyncDependenciesContext.
