@@ -10,6 +10,7 @@ import { Turborepo } from "./.projenrc.turborepo.js";
 import { TypeScript } from "./.projenrc.typescript.js";
 import { WorkspaceProject } from "./.projenrc.workspace-project.js";
 
+///////////////////////////////////////////////////////////////////////////////
 const project = new DefaultNodeProject({
   name: "@cloudy-ts/monorepo",
   defaultReleaseBranch: "main",
@@ -22,9 +23,12 @@ const project = new DefaultNodeProject({
 
 // project.addGitIgnore("/.yarn/cache/*");
 
-// Use Cloudy's esm-node to run projen.
-project.addDevDeps("@cloudy-ts/esm-node");
-project.defaultTask?.exec(`esm-node .projenrc.ts`);
+// // Use Cloudy's esm-node to run projen.
+// project.addDevDeps("@cloudy-ts/esm-node");
+// project.defaultTask?.exec(`esm-node .projenrc.ts`);
+// Use vite-node to run projen.
+project.addDevDeps("vite-node");
+project.defaultTask?.exec(`vite-node .projenrc.ts`);
 
 // Use Cloudy's ESLint plugin.
 project.addDevDeps("@cloudy-ts/eslint-plugin");
@@ -94,11 +98,13 @@ new TypeScript(project, {
   },
 });
 
+///////////////////////////////////////////////////////////////////////////////
 new WorkspaceProject(project, {
   name: "@cloudy-ts/opaque-type",
   outdir: "packages/opaque-type",
 });
 
+///////////////////////////////////////////////////////////////////////////////
 new WorkspaceProject(project, {
   name: "@cloudy-ts/json-codec",
   outdir: "packages/json-codec",
@@ -106,18 +112,21 @@ new WorkspaceProject(project, {
   ava: true,
 });
 
+///////////////////////////////////////////////////////////////////////////////
 new WorkspaceProject(project, {
   name: "@cloudy-ts/string-codec",
   outdir: "packages/string-codec",
   deps: ["@cloudy-ts/opaque-type"],
 });
 
+///////////////////////////////////////////////////////////////////////////////
 new WorkspaceProject(project, {
   name: "@cloudy-ts/util-command-proxy",
   outdir: "packages/util-command-proxy",
   deps: ["@aws-sdk/smithy-client", "@aws-sdk/types"],
 });
 
+///////////////////////////////////////////////////////////////////////////////
 new WorkspaceProject(project, {
   name: "@cloudy-ts/util-dynamodb",
   outdir: "packages/util-dynamodb",
@@ -128,6 +137,7 @@ new WorkspaceProject(project, {
   ],
 });
 
+///////////////////////////////////////////////////////////////////////////////
 new WorkspaceProject(project, {
   name: "@cloudy-ts/client-dynamodb",
   outdir: "packages/client-dynamodb",
@@ -146,6 +156,7 @@ new WorkspaceProject(project, {
   devDeps: ["@cloudy-ts/cdk"],
 });
 
+///////////////////////////////////////////////////////////////////////////////
 new WorkspaceProject(project, {
   name: "@cloudy-ts/client-sns",
   outdir: "packages/client-sns",
@@ -160,7 +171,8 @@ new WorkspaceProject(project, {
   devDeps: ["@cloudy-ts/cdk"],
 });
 
-new WorkspaceProject(project, {
+///////////////////////////////////////////////////////////////////////////////
+const cdk = new WorkspaceProject(project, {
   name: "@cloudy-ts/cdk",
   outdir: "packages/cdk",
   deps: [
@@ -183,6 +195,11 @@ new WorkspaceProject(project, {
   },
 });
 
+// Test.
+cdk.addDevDeps("vitest");
+cdk.testTask.exec("vitest --run");
+
+///////////////////////////////////////////////////////////////////////////////
 const playground = new WorkspaceProject(project, {
   name: "@cloudy-ts/playground",
   outdir: "playground",
@@ -199,6 +216,7 @@ const playground = new WorkspaceProject(project, {
 });
 playground.eslint?.addIgnorePattern("cdk.out/");
 
+///////////////////////////////////////////////////////////////////////////////
 const examples = new WorkspaceProject(project, {
   name: "@cloudy-ts/examples",
   outdir: "examples",
@@ -224,4 +242,5 @@ examples.testTask.exec("tsc --noEmit");
 //   },
 // });
 
+///////////////////////////////////////////////////////////////////////////////
 project.synth();

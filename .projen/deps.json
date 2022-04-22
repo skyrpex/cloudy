@@ -5,10 +5,6 @@
       "type": "build"
     },
     {
-      "name": "@cloudy-ts/esm-node",
-      "type": "build"
-    },
-    {
       "name": "@commitlint/cli",
       "type": "build"
     },
@@ -93,6 +89,10 @@
     },
     {
       "name": "typescript",
+      "type": "build"
+    },
+    {
+      "name": "vite-node",
       "type": "build"
     }
   ],

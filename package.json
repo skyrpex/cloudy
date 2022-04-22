@@ -19,7 +19,6 @@
   },
   "devDependencies": {
     "@cloudy-ts/eslint-plugin": "*",
-    "@cloudy-ts/esm-node": "*",
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
     "@tsconfig/node14": "^1.0.1",
@@ -40,7 +39,8 @@
     "projen": "^0.54.40",
     "standard-version": "^9",
     "turbo": "^1.2.5",
-    "typescript": "^4.6.3"
+    "typescript": "^4.6.3",
+    "vite-node": "*"
   },
   "license": "Apache-2.0",
   "version": "0.0.0",

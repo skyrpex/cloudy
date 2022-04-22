@@ -82,7 +82,7 @@
       "description": "Synthesize project files",
       "steps": [
         {
-          "exec": "esm-node .projenrc.ts"
+          "exec": "vite-node .projenrc.ts"
         }
       ]
     },
