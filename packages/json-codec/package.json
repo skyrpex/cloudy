@@ -16,7 +16,7 @@
     "eslint-import-resolver-typescript": "^2.7.1",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-unicorn": "^42.0.0",
-    "unbuild": "*"
+    "tsup": "^5.12.6"
   },
   "dependencies": {
     "@cloudy-ts/opaque-type": "workspace:^0.0.0"
@@ -41,6 +41,19 @@
   "files": [
     "dist/"
   ],
+  "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "sourcemap": true,
+    "clean": true,
+    "dts": true,
+    "target": "node14",
+    "format": [
+      "esm",
+      "cjs"
+    ]
+  },
   "ava": {
     "extensions": {
       "ts": "module"

@@ -33,7 +33,7 @@
       "type": "build"
     },
     {
-      "name": "unbuild",
+      "name": "tsup",
       "type": "build"
     }
   ],

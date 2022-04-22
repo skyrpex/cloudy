@@ -1,10 +1,13 @@
-import { SampleFile, TextFile } from "projen";
+import { SampleDir, SampleFile, TextFile } from "projen";
 import { NodeProject, NodeProjectOptions } from "projen/lib/javascript";
+
 import { Eslint } from "./.projenrc.eslint.js";
+import { Tsup, TsupOptions } from "./.projenrc.tsup.js";
 
-import { Unbuild, UnbuildOptions } from "./.projenrc.unbuild.js";
+// import { Unbuild, UnbuildOptions } from "./.projenrc.unbuild.js";
 
-interface BuildOptions extends UnbuildOptions {
+// interface BuildOptions extends UnbuildOptions {
+interface BuildOptions extends TsupOptions {
   sampleFiles?: boolean;
 }
 
@@ -105,15 +108,23 @@ export class WorkspaceProject extends NodeProject {
           ],
         });
 
-        new SampleFile(this, "src/index.ts", {
-          contents: ["export {};", ""].join("\n"),
+        new SampleDir(this, "src", {
+          files: {
+            "index.ts": "export {};\n",
+          },
         });
       }
 
-      new Unbuild(
+      // new Unbuild(
+      //   this,
+      //   options.build ?? {
+      //     entries: ["src/index"],
+      //   },
+      // );
+      new Tsup(
         this,
         options.build ?? {
-          entries: ["src/index"],
+          entries: ["src/index.ts"],
         },
       );
     }

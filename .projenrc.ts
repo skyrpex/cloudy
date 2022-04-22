@@ -189,9 +189,6 @@ const cdk = new WorkspaceProject(project, {
   ],
   peerDeps: ["aws-cdk-lib", "constructs"],
   devDeps: ["@aws-sdk/client-dynamodb", "aws-cdk-lib", "constructs"],
-  build: {
-    entries: ["src/index"],
-  },
 });
 
 // Test.
