@@ -11,7 +11,7 @@
     "@cloudy-ts/eslint-plugin": "*",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
-    "aws-cdk-lib": "^2.20.0",
+    "aws-cdk-lib": "^2.21.0",
     "c8": "^7.11.2",
     "constructs": "^10.0.122",
     "eslint": "^8.13.0",
@@ -20,6 +20,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-unicorn": "^42.0.0",
     "tsup": "^5.12.6",
+    "typescript": "^4.6.3",
     "vitest": "^0.9.4"
   },
   "peerDependencies": {

@@ -175,7 +175,12 @@ const cdk = new WorkspaceProject(project, {
     "ts-toolbelt",
   ],
   peerDeps: ["aws-cdk-lib", "constructs"],
-  devDeps: ["@aws-sdk/client-dynamodb", "aws-cdk-lib", "constructs"],
+  devDeps: [
+    "@aws-sdk/client-dynamodb",
+    "aws-cdk-lib",
+    "constructs",
+    "typescript",
+  ],
 });
 
 // Test.

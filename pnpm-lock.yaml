@@ -61,8 +61,8 @@ importers:
       '@cloudy-ts/esm-node': '*'
       '@typescript-eslint/eslint-plugin': ^5.20.0
       '@typescript-eslint/parser': ^5.20.0
-      aws-cdk: ^2.20.0
-      aws-cdk-lib: ^2.20.0
+      aws-cdk: ^2.21.0
+      aws-cdk-lib: ^2.21.0
       constructs: ^10.0.122
       eslint: ^8.13.0
       eslint-import-resolver-node: ^0.3.6
@@ -75,8 +75,8 @@ importers:
       '@cloudy-ts/client-dynamodb': link:../packages/client-dynamodb
       '@cloudy-ts/client-sns': link:../packages/client-sns
       '@cloudy-ts/esm-node': 0.0.4
-      aws-cdk: 2.20.0
-      aws-cdk-lib: 2.20.0_constructs@10.0.122
+      aws-cdk: 2.21.0
+      aws-cdk-lib: 2.21.0_constructs@10.0.122
       constructs: 10.0.122
     devDependencies:
       '@cloudy-ts/eslint-plugin': 0.0.1_eslint@8.13.0
@@ -101,7 +101,7 @@ importers:
       '@pulumi/pulumi': ^3.30.0
       '@typescript-eslint/eslint-plugin': ^5.20.0
       '@typescript-eslint/parser': ^5.20.0
-      aws-cdk-lib: ^2.20.0
+      aws-cdk-lib: ^2.21.0
       c8: ^7.11.2
       constructs: ^10.0.122
       esbuild: ^0.14.38
@@ -113,6 +113,7 @@ importers:
       find-up: ^6.3.0
       ts-toolbelt: ^9.6.0
       tsup: ^5.12.6
+      typescript: '*'
       vitest: ^0.9.4
     dependencies:
       '@aws-sdk/util-dynamodb': 3.75.0
@@ -129,7 +130,7 @@ importers:
       '@cloudy-ts/eslint-plugin': 0.0.1_eslint@8.13.0
       '@typescript-eslint/eslint-plugin': 5.20.0_b9ac9b5656ce5dffade639fcf5e491bf
       '@typescript-eslint/parser': 5.20.0_eslint@8.13.0+typescript@4.6.3
-      aws-cdk-lib: 2.20.0_constructs@10.0.122
+      aws-cdk-lib: 2.21.0_constructs@10.0.122
       c8: 7.11.2
       constructs: 10.0.122
       eslint: 8.13.0
@@ -138,6 +139,7 @@ importers:
       eslint-plugin-import: 2.26.0_eslint@8.13.0
       eslint-plugin-unicorn: 42.0.0_eslint@8.13.0
       tsup: 5.12.6_typescript@4.6.3
+      typescript: 4.6.3
       vitest: 0.9.4_c8@7.11.2
 
   packages/client-dynamodb:
@@ -349,41 +351,6 @@ importers:
       eslint-plugin-import: 2.26.0_eslint@8.13.0
       eslint-plugin-unicorn: 42.0.0_eslint@8.13.0
       tsup: 5.12.6_typescript@4.6.3
-
-  playground:
-    specifiers:
-      '@cloudy-ts/cdk': workspace:^0.0.0
-      '@cloudy-ts/client-dynamodb': workspace:^0.0.0
-      '@cloudy-ts/client-sns': workspace:^0.0.0
-      '@cloudy-ts/eslint-plugin': '*'
-      '@cloudy-ts/esm-node': '*'
-      '@typescript-eslint/eslint-plugin': ^5.20.0
-      '@typescript-eslint/parser': ^5.20.0
-      aws-cdk: ^2.20.0
-      aws-cdk-lib: ^2.20.0
-      constructs: ^10.0.122
-      eslint: ^8.13.0
-      eslint-import-resolver-node: ^0.3.6
-      eslint-import-resolver-typescript: ^2.7.1
-      eslint-plugin-import: ^2.26.0
-      eslint-plugin-unicorn: ^42.0.0
-    dependencies:
-      '@cloudy-ts/cdk': link:../packages/cdk
-      '@cloudy-ts/client-dynamodb': link:../packages/client-dynamodb
-      '@cloudy-ts/client-sns': link:../packages/client-sns
-      '@cloudy-ts/esm-node': 0.0.4
-      aws-cdk: 2.20.0
-      aws-cdk-lib: 2.20.0_constructs@10.0.122
-      constructs: 10.0.122
-    devDependencies:
-      '@cloudy-ts/eslint-plugin': 0.0.1_eslint@8.13.0
-      '@typescript-eslint/eslint-plugin': 5.20.0_b9ac9b5656ce5dffade639fcf5e491bf
-      '@typescript-eslint/parser': 5.20.0_eslint@8.13.0+typescript@4.6.3
-      eslint: 8.13.0
-      eslint-import-resolver-node: 0.3.6
-      eslint-import-resolver-typescript: 2.7.1_25dbcfb8cfecb7418ebda712664abe37
-      eslint-plugin-import: 2.26.0_eslint@8.13.0
-      eslint-plugin-unicorn: 42.0.0_eslint@8.13.0
 
 packages:
 
@@ -1969,8 +1936,8 @@ packages:
       - supports-color
     dev: true
 
-  /aws-cdk-lib/2.20.0_constructs@10.0.122:
-    resolution: {integrity: sha512-jACK/1UJxtWWl6QH+I1V8Oc8F1EEL6aFQYk24DIrzNyB1Aj9LIs9/NyDu5zN00QFKrR6aDE7WAv1VG3sa6wWdg==}
+  /aws-cdk-lib/2.21.0_constructs@10.0.122:
+    resolution: {integrity: sha512-ctwEOjkpp2DFfMiPQjRUC/OHnZBTprKcJ1sxHNEsOnMmN4w2Vqe22tiAXXmxThfdv0WdBKUdRuiYQybbsTb37g==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       constructs: ^10.0.0
@@ -1996,8 +1963,8 @@ packages:
       - semver
       - yaml
 
-  /aws-cdk/2.20.0:
-    resolution: {integrity: sha512-rs9LTpvrlbsMcenZ3t7TuLDGbHhbnDocrE63Xb2PT++VptR/A8svllK8k1W7hPl77L9QS75GNK5gh+ShkEzsnw==}
+  /aws-cdk/2.21.0:
+    resolution: {integrity: sha512-qkACsURr7uBhYvVQ0szGwK0yDMPGKqt6QhYIPZxURk1DZokJtTK23qok9ncpX2dwiIOpcsjVkQQibtireDOO9g==}
     engines: {node: '>= 14.15.0'}
     hasBin: true
     optionalDependencies:
