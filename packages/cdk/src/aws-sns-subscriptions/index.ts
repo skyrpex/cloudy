@@ -1,4 +1,4 @@
-/* eslint-disable import/export */
+/* eslint import/export: "warn" */
 export * from "aws-cdk-lib/aws-sns-subscriptions";
 
 import { aws_sns, aws_sns_subscriptions } from "aws-cdk-lib";

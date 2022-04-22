@@ -31,6 +31,10 @@ type IClient = Client<
   BaseClientResolvedConfiguration
 >;
 
+/**
+ * A client for AWS SNS.
+ * @see {@link BaseClient SNSClient from "@aws-sdk/client-sns"}
+ */
 export class SNSClient implements IClient {
   private client: IClient | undefined;
 

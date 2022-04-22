@@ -2,6 +2,10 @@ import { OpaqueType } from "@cloudy-ts/opaque-type";
 
 type JsonSerializablePrimitive = string | number | boolean;
 
+/**
+ * Represents a record ({ [key: string]: object}) that can be serialized to
+ * JSON.
+ */
 export interface JsonSerializableRecord {
   [key: string]:
     | JsonSerializablePrimitive
@@ -14,12 +18,18 @@ export interface JsonSerializableRecord {
     | undefined[];
 }
 
+/**
+ * Represents an object that can be serialized to JSON.
+ */
 export type JsonSerializable =
   | JsonSerializablePrimitive
   | JsonSerializablePrimitive[]
   | JsonSerializableRecord
   | JsonSerializableRecord[];
 
+/**
+ * Represents an object that has been converted to a JSON string.
+ */
 export type JsonEncoded<T extends JsonSerializable = JsonSerializable> =
   OpaqueType<string, T>;
 

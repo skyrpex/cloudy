@@ -1,6 +1,10 @@
 # @cloudy/examples
 
+Here you can try some example stacks.
+
 ## Deploying Examples
+
+Just run `cd examples` and:
 
 ```sh
 # Deploy example 1:

@@ -1,4 +1,4 @@
-/* eslint-disable import/export */
+/* eslint import/export: "warn" */
 export * from "aws-cdk-lib/aws-sqs";
 
 export {
