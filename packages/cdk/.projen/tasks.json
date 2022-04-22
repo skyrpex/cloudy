@@ -21,7 +21,7 @@
       "description": "Run tests",
       "steps": [
         {
-          "exec": "vitest"
+          "exec": "vitest --run"
         }
       ]
     }

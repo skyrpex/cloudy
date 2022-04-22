@@ -1,3 +1,6 @@
+/* eslint-disable import/export */
+export * from "aws-cdk-lib/aws-sns-subscriptions";
+
 import { aws_sns, aws_sns_subscriptions } from "aws-cdk-lib";
 
 import { BaseTopicSubscription } from "../aws-sns/subscription.js";

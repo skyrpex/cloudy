@@ -1,3 +1,10 @@
-export { FifoThroughputLimit, DeduplicationScope } from "aws-cdk-lib/aws-sqs";
+/* eslint-disable import/export */
+export * from "aws-cdk-lib/aws-sqs";
 
-export * from "./queue.js";
+export {
+  type MaterializeQueueProperties,
+  type MaterializedQueueProperties,
+  Queue,
+  type QueueProperties,
+  type QueueUrl,
+} from "./queue.js";

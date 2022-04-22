@@ -1,13 +1,5 @@
-// export {
-//   // Annotations,
-//   // Template,
-//   Capture,
-//   Match,
-//   MatchCapture,
-//   MatchFailure,
-//   MatchResult,
-//   Matcher,
-// } from "aws-cdk-lib/assertions";
+/* eslint-disable import/export */
+export * from "aws-cdk-lib/assertions";
 
-export * from "./annotations.js";
-export * from "./template.js";
+export { Annotations } from "./annotations.js";
+export { Template } from "./template.js";

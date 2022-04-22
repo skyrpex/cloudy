@@ -1,6 +1,24 @@
 import { Runtime } from "aws-cdk-lib/aws-lambda";
-import { type Context } from "aws-lambda";
 import { Construct } from "constructs";
+
+/**
+ * {@link Handler} context parameter.
+ * See {@link https://docs.aws.amazon.com/lambda/latest/dg/nodejs-prog-model-context.html AWS documentation}.
+ */
+// Would prefer to use the "aws-lambda" package, but it fails to build the
+// types when using unbuild.
+export interface Context {
+  callbackWaitsForEmptyEventLoop: boolean;
+  functionName: string;
+  functionVersion: string;
+  invokedFunctionArn: string;
+  memoryLimitInMB: string;
+  awsRequestId: string;
+  logGroupName: string;
+  logStreamName: string;
+
+  getRemainingTimeInMillis(): number;
+}
 
 import { codeFromFunction } from "./code-from-function.js";
 import { IEventSource } from "./event-source.js";

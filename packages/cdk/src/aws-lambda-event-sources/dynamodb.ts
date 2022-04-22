@@ -1,3 +1,9 @@
+import { ToAttributeMap } from "@cloudy-ts/util-dynamodb";
+import {
+  AttributeType,
+  BillingMode,
+  StreamViewType,
+} from "aws-cdk-lib/aws-dynamodb";
 import { IFunction as IBaseFunction } from "aws-cdk-lib/aws-lambda";
 import {
   DynamoEventSource as BaseDynamoEventSource,
@@ -6,16 +12,14 @@ import {
 import { Construct } from "constructs";
 import { Union } from "ts-toolbelt";
 
-import { ToAttributeMap } from "@cloudy-ts/util-dynamodb";
-
 import {
   // AccessPatterns,
-  AttributeType,
-  BillingMode,
-  DynamodbItem,
-  MaterializedTableProperties,
+  // AttributeType,
+  // BillingMode,
+  // DynamodbItem,
+  // MaterializedTableProperties,
   MaterializeTableProperties,
-  StreamViewType,
+  // StreamViewType,
   Table,
   TableProperties,
   // TableItemType,

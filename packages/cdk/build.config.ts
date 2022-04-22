@@ -14,4 +14,5 @@ export default defineBuildConfig({
     ...Object.keys(packageJson.devDependencies ?? []),
     ...Object.keys(packageJson.peerDependencies ?? []),
   ],
+  declaration: true,
 });

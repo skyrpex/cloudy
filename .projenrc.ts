@@ -176,7 +176,6 @@ const cdk = new WorkspaceProject(project, {
   name: "@cloudy-ts/cdk",
   outdir: "packages/cdk",
   deps: [
-    "@types/aws-lambda",
     "@aws-sdk/util-dynamodb",
     "@cloudy-ts/json-codec",
     "@cloudy-ts/opaque-type",
@@ -191,7 +190,6 @@ const cdk = new WorkspaceProject(project, {
   devDeps: ["@aws-sdk/client-dynamodb", "aws-cdk-lib", "constructs"],
   build: {
     entries: ["src/index"],
-    emitTypes: false,
   },
 });
 
