@@ -23,38 +23,39 @@ Cloudy is a set of constructs for the [AWS Cloud Development Kit](https://github
 
 ## Example
 
-### Publishing typed messages on a topic using an inline lambda function
+You can check out a list of examples in the [examples/src](examples/src) directory.
+
+### Publishing typed messages on a topic using a callback lambda function
 
 ```ts
-import * as cdk from "aws-cdk-lib";
-import * as cloudy from "@cloudy-ts/cdk";
+import * as cdk from "@cloudy-ts/cdk";
 import { SNSClient, PublishCommand } from "@cloudy-ts/client-sns";
 
 const app = new cdk.App();
+const stack = new cdk.Stack(app, "cloudy-example");
 
-const stack = new cdk.Stack(app, "cloudy-playground");
-
-const topic = new cloudy.aws_sns.Topic(stack, "topic", {
-  messageType: cloudy.ValueType.as<"Hello" | "World!">(),
+const topic = new cdk.aws_sns.Topic(stack, "Topic", {
+  // Cloudy allows you to restrict the SNS Topic message types. In this
+  // example, we will only allow messages with either "hello" or "world!".
+  messageType: cdk.ValueType.string<"hello" | "world!">(),
 });
 
 const sns = new SNSClient({});
-const publishMessage = new cloudy.aws_lambda.Function(stack, "publishMessage", {
-  async handler() {
-    await sns.send(
-      new PublishCommand({
-        TopicArn: topic.topicArn,
-        Message: "Hello",
-      }),
-    );
-    await sns.send(
-      new PublishCommand({
-        TopicArn: topic.topicArn,
-        Message: "World!",
-      }),
-    );
+const publishMessage = new cdk.aws_lambda.CallbackFunction(
+  stack,
+  "PublishMessage",
+  {
+    async handler() {
+      await sns.send(
+        new PublishCommand({
+          TopicArn: topic.topicArn,
+          // If you try writing a different message, you'll get a type error.
+          Message: "hello",
+        }),
+      );
+    },
   },
-});
+);
 topic.grantPublish(publishMessage);
 ```
 
@@ -78,22 +79,16 @@ Install dependencies:
 pnpm install
 ```
 
-Enable Git hooks:
-
-```sh
-pnpx husky install
-```
-
-Start testing:
-
-```sh
-pnpx ava --watch
-```
-
 ### Lint
 
 ```sh
-pnpx eslint --ext js,mjs,cjs,ts,mts,cts .
+pnpx turbo run lint
+```
+
+### Test
+
+```sh
+pnpx turbo run test
 ```
 
 ### Update Dependencies

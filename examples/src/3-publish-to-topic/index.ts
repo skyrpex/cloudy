@@ -20,8 +20,7 @@ const topic = new cdk.aws_sns.Topic(stack, "Topic", {
 });
 
 // Cloudy has a SNSClient proxy that enforces type constraints, depending
-// on the topic you're interacting with. The CallbackFunction will grab the
-// client even if it's defined outside of the handler.
+// on the topic you're interacting with.
 const sns = new SNSClient({});
 const publishMessage = new cdk.aws_lambda.CallbackFunction(
   stack,
