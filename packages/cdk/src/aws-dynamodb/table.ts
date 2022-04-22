@@ -1,41 +1,24 @@
-import type { AttributeValue } from "@aws-sdk/client-dynamodb"
+import { OpaqueType } from "@cloudy-ts/opaque-type";
 import {
   Table as BaseTable,
   AttributeType,
   StreamViewType,
-  TableProps,
-} from "aws-cdk-lib/aws-dynamodb"
-import { Construct } from "constructs"
-import { Function, Union, Object, List } from "ts-toolbelt"
+  TableProps as BaseTableProps,
+} from "aws-cdk-lib/aws-dynamodb";
+import { Construct } from "constructs";
+import { F } from "ts-toolbelt";
+// // eslint-disable-next-line import/no-extraneous-dependencies
+// export { AttributeValue } from "@aws-sdk/client-dynamodb";
+// export {
+//   AttributeType,
+//   StreamViewType,
+//   BillingMode,
+// } from "aws-cdk-lib/aws-dynamodb";
 
-import { OpaqueType } from "@cloudy-ts/opaque-type"
+import { ValueType } from "../core/value-type.js";
+import { staticTest } from "../static-test.js";
+import { IsExact, typeAssert } from "./table.conditional-type-checks.js";
 
-import { staticTest } from "../static-test.js"
-
-export { AttributeValue } from "@aws-sdk/client-dynamodb"
-export {
-  AttributeType,
-  StreamViewType,
-  BillingMode,
-} from "aws-cdk-lib/aws-dynamodb"
-
-/**
- * Represents a DynamoDB item.
- */
-export interface DynamodbItem {
-  [key: string]: AttributeValue
-}
-
-// S: string;
-//         N?: never;
-//         B?: never;
-//         SS?: never;
-//         NS?: never;
-//         BS?: never;
-//         M?: never;
-//         L?: never;
-//         NULL?: never;
-//         BOOL?: never;
 type DynamodbPrimitiveValues =
   | string
   | number
@@ -45,92 +28,19 @@ type DynamodbPrimitiveValues =
   | string[]
   | (number | bigint)[]
   | Uint8Array[]
-  | boolean[]
+  | boolean[];
 
-interface DynamodbMapValue {
-  [name: string]:
-    | DynamodbPrimitiveValues
-    | DynamodbMapValue
-    | DynamodbMapValue[]
+export interface DynamodbItem {
+  [name: string]: DynamodbPrimitiveValues | DynamodbItem | DynamodbItem[];
 }
+// export type DynamodbItem = {
+//   [name: string]: DynamodbPrimitiveValues | DynamodbItem | DynamodbItem[];
+// };
 
-type DynamodbMap = DynamodbMapValue
-
-// /**
-//  * Returns the AttributeValue of the given DynamoDB item key.
-//  *
-//  * @example
-//  * ```ts
-//  * type User = {
-//  *   id: { N: string }
-//  *   name: { S: string }
-//  * }
-//  * type UserId = ItemAttributeValue<User, "id"> // { N: string }
-//  * type UserName = ItemAttributeValue<User, "name"> // { S: string }
-//  * ```
-//  */
-// type ItemAttributeValue<
-//   Item extends DynamodbItem,
-//   Key extends keyof Item,
-// > = Key extends keyof Item ? Item[Key] : never
-
-// /**
-//  * Returns the equivalent AttributeType for the given DynamoDB item key.
-//  *
-//  * @example
-//  * ```ts
-//  * type User = {
-//  *   id: { N: string }
-//  *   name: { S: string }
-//  * }
-//  * type UserIdAttributeType = ItemAttributeType<User, "id"> // AttributeType.NUMBER
-//  * type UserNameAttributeType = ItemAttributeType<User, "name"> // AttributeType.STRING
-//  * ```
-//  */
-// type ItemAttributeType<
-//   Item extends DynamodbItem,
-//   Key extends keyof Item,
-// > = ItemAttributeValue<Item, Key> extends AttributeValue.SMember
-//   ? AttributeType.STRING
-//   : ItemAttributeValue<Item, Key> extends AttributeValue.NMember
-//   ? AttributeType.NUMBER
-//   : ItemAttributeValue<Item, Key> extends AttributeValue.BMember
-//   ? AttributeType.BINARY
-//   : never
-
-// /**
-//  * Returns the equivalent AttributeValue for the given AttributeType.
-//  *
-//  * @example
-//  * ```ts
-//  * type Type = AttributeValueFromAttributeType<AttributeType.STRING> // { S: string }
-//  * type Type = AttributeValueFromAttributeType<AttributeType.NUMBER> // { N: string }
-//  * type Type = AttributeValueFromAttributeType<AttributeType.BINARY> // { B: Uint8Array }
-//  * ```
-//  */
-// type AttributeValueFromAttributeType<T extends AttributeType> =
-//   T extends AttributeType.STRING
-//     ? { S: string }
-//     : T extends AttributeType.NUMBER
-//     ? { N: string }
-//     : T extends AttributeType.BINARY
-//     ? { B: Uint8Array }
-//     : never
-
-/**
- * Defines a table key such as partition key or sort key.
- */
-export type KeyDefinition = {
-  name: string
-  type: AttributeType
-}
-
-// type AttributeFromKeyDefinition<T extends KeyDefinition | undefined> =
-//   T extends KeyDefinition
-//     ? {
-//         [name in T["name"]]: AttributeValueFromAttributeType<T["type"]>
-//       }
-//     : {}
+type KeyDefinition = {
+  name: string;
+  type: AttributeType;
+};
 
 type TypeFromAttributeType<T extends AttributeType> =
   T extends AttributeType.STRING
@@ -139,72 +49,196 @@ type TypeFromAttributeType<T extends AttributeType> =
     ? number | bigint
     : T extends AttributeType.BINARY
     ? Uint8Array
-    : never
-export type AttributeFromKeyDefinition<T extends KeyDefinition | undefined> =
-  T extends KeyDefinition
-    ? {
-        [name in T["name"]]: TypeFromAttributeType<T["type"]>
-      }
-    : {}
+    : never;
 
-// /**
-//  * Defines the properties that we're interested in: partitionKey, sortKey and stream.
-//  *
-//  * Those are used to provide type-safe constraints.
-//  */
-// export type StaticProperties = {
-//   partitionKey: KeyDefinition
-//   sortKey?: KeyDefinition | undefined
-//   stream?: StreamViewType | undefined
-// }
+type AttributeFromKeyDefinition<T extends KeyDefinition> = {
+  [name in T["name"]]: TypeFromAttributeType<T["type"]>;
+};
 
-// /**
-//  * Defines the rest of table properties.
-//  */
-// type BaseProperties = Omit<TableProps, "partitionKey" | "sortKey" | "stream">
-
-export type AccessPattern<
+type AccessPattern<
   PartitionKey extends KeyDefinition,
   SortKey extends KeyDefinition | undefined,
-> = DynamodbMap &
+> = DynamodbItem &
   AttributeFromKeyDefinition<PartitionKey> &
-  AttributeFromKeyDefinition<SortKey>
+  AttributeFromKeyDefinition<NonNullable<SortKey>>;
 
-interface TableProperties<
+export interface TableProps<
   PartitionKey extends KeyDefinition,
   SortKey extends KeyDefinition | undefined,
-  AccessPatterns extends AccessPattern<PartitionKey, SortKey> | "any",
-  StreamView extends StreamViewType | undefined = undefined,
-> extends TableProps {
-  partitionKey: PartitionKey
-  sortKey?: SortKey
-  accessPatterns: AccessPatterns
-  stream?: StreamView
+  ItemType extends AccessPattern<PartitionKey, SortKey> | undefined,
+  Stream extends StreamViewType | undefined,
+> extends BaseTableProps {
+  partitionKey: PartitionKey;
+  sortKey?: SortKey;
+  itemType?: ValueType<ItemType>;
+  stream?: Stream;
 }
 
-/**
- * Represents the name of a dynamodb table along with the table types.
- */
-export type TableName<
-  PartitionKey extends KeyDefinition,
-  SortKey extends KeyDefinition | undefined,
-  AccessPatterns extends AccessPattern<PartitionKey, SortKey> | "any",
-  StreamView extends StreamViewType | undefined,
-> = OpaqueType<
-  string,
-  {
-    readonly t: unique symbol
-    AccessPatterns: AccessPatterns
-    PartitionKey: PartitionKey
-    SortKey: SortKey
-    StreamView: StreamView
-  }
->
+type ResolveValueType<T> = T extends ValueType<infer V> ? V : T;
 
-// export type TopicArn<Types extends TopicTypes, Fifo extends boolean> = Opaque<
-//   string,
-//   { readonly t: unique symbol; types: TopicTypes; fifo: Fifo }
-// >
+export interface MaterializedTableProps<T extends DynamodbItem = DynamodbItem> {
+  partitionKey: keyof T;
+  sortKey: keyof T | never;
+  itemType: T;
+  stream: StreamViewType | never;
+}
+
+export type MaterializeTableProps<T extends TableProps<any, any, any, any>> = {
+  partitionKey: T["partitionKey"]["name"] extends string
+    ? T["partitionKey"]["name"]
+    : never;
+  sortKey: T["sortKey"] extends infer SortKey
+    ? SortKey extends KeyDefinition
+      ? SortKey["name"]
+      : never
+    : never;
+  itemType: ResolveValueType<
+    T["itemType"] extends infer ItemType | undefined ? ItemType : T["itemType"]
+  > extends infer ItemType
+    ? unknown extends ItemType
+      ? AccessPattern<T["partitionKey"], T["sortKey"]>
+      : ItemType extends undefined
+      ? AccessPattern<T["partitionKey"], T["sortKey"]>
+      : ItemType
+    : AccessPattern<T["partitionKey"], T["sortKey"]>;
+  stream: T["stream"] extends infer Stream
+    ? Stream extends StreamViewType
+      ? Stream
+      : never
+    : never;
+};
+
+staticTest(() => {
+  type p1 = MaterializeTableProps<
+    TableProps<
+      { name: "id"; type: AttributeType.STRING },
+      undefined,
+      { id: string },
+      undefined
+    >
+  >;
+  typeAssert<
+    IsExact<
+      p1,
+      {
+        partitionKey: "id";
+        sortKey: never;
+        itemType: { id: string };
+        stream: never;
+      }
+    >
+  >(true);
+
+  type p2 = MaterializeTableProps<
+    TableProps<
+      { name: "id"; type: AttributeType.STRING },
+      { name: "sk"; type: AttributeType.STRING },
+      { id: string; sk: string },
+      undefined
+    >
+  >;
+  typeAssert<
+    IsExact<
+      p2,
+      {
+        partitionKey: "id";
+        sortKey: "sk";
+        itemType: { id: string; sk: string };
+        stream: never;
+      }
+    >
+  >(true);
+
+  type p3 = MaterializeTableProps<
+    TableProps<
+      { name: "id"; type: AttributeType.STRING },
+      { name: "sk"; type: AttributeType.NUMBER },
+      { id: string; sk: number; age: number },
+      undefined
+    >
+  >;
+  typeAssert<
+    IsExact<
+      p3,
+      {
+        partitionKey: "id";
+        sortKey: "sk";
+        itemType: { id: string; sk: number; age: number };
+        stream: never;
+        // exact: true;
+      }
+    >
+  >(true);
+
+  type p4 = TableProps<
+    { name: "id"; type: AttributeType.STRING },
+    { name: "sk"; type: AttributeType.STRING },
+    // @ts-expect-error: sk is missing.
+    { id: string },
+    undefined
+  >;
+  type p5 = TableProps<
+    { name: "id"; type: AttributeType.STRING },
+    { name: "sk"; type: AttributeType.STRING },
+    // @ts-expect-error: id is missing.
+    {},
+    undefined
+  >;
+  type p6 = TableProps<
+    { name: "id"; type: AttributeType.STRING },
+    undefined,
+    // @ts-expect-error: id is missing.
+    {},
+    undefined
+  >;
+
+  type p7 = MaterializeTableProps<
+    TableProps<
+      { name: "id"; type: AttributeType.STRING },
+      undefined,
+      undefined,
+      undefined
+    >
+  >;
+  typeAssert<
+    IsExact<
+      p7,
+      {
+        partitionKey: "id";
+        sortKey: never;
+        itemType: { id: string };
+        stream: never;
+        // exact: false;
+      }
+    >
+  >(true);
+
+  type p8 = MaterializeTableProps<
+    TableProps<
+      { name: "id"; type: AttributeType.STRING },
+      { name: "sk"; type: AttributeType.NUMBER },
+      | { id: "age"; sk: number; age: number }
+      | { id: "name"; sk: number; name: string },
+      undefined
+    >
+  >;
+  typeAssert<
+    IsExact<
+      p8,
+      {
+        partitionKey: "id";
+        sortKey: "sk";
+        itemType:
+          | { id: "age"; sk: number; age: number }
+          | { id: "name"; sk: number; name: string };
+        stream: never;
+        // exact: true;
+      }
+    >
+  >(true);
+});
+
+export type TableName<T extends MaterializedTableProps> = OpaqueType<string, T>;
 
 /**
  * Defines a type-safe DynamoDB table.
@@ -212,10 +246,10 @@ export type TableName<
  * @example
  * ```ts
  * type User = {
- *   pk: { S: string }
- *   sk: { N: string }
- * }
- * const table = new cloudy.Table(this, "table", {
+ *   pk: string;
+ *   sk: number;
+ * };
+ * const table = new cloudy.aws_dynamodb.Table(this, "table", {
  *   partitionKey: {
  *     name: "pk",
  *     type: cloudy.AttributeType.STRING,
@@ -224,304 +258,79 @@ export type TableName<
  *     name: "sk",
  *     type: cloudy.AttributeType.NUMBER,
  *   },
- * }).withItemType<User>()
+ *   itemType: cloudy.ValueType.as<User>(),
+ * });
  * ```
  */
 export class Table<
+  // PartitionKey extends KeyDefinition = KeyDefinition,
   PartitionKey extends KeyDefinition,
   SortKey extends KeyDefinition | undefined = undefined,
-  AccessPatterns extends AccessPattern<PartitionKey, SortKey> | "any" = "any",
-  StreamView extends StreamViewType | undefined = undefined,
+  ItemType extends AccessPattern<PartitionKey, SortKey> = AccessPattern<
+    PartitionKey,
+    SortKey
+  >,
+  Stream extends StreamViewType | undefined = undefined,
+  // PartitionKey extends KeyDefinition,
+  // SortKey extends KeyDefinition | undefined,
+  // ItemType extends AccessPattern<PartitionKey, SortKey>,
+  // Stream extends StreamViewType | undefined,
 > extends BaseTable {
   /**
    * Name of the dynamodb table.
    *
    * @attribute
    */
-  public readonly tableName!: TableName<
-    PartitionKey,
-    SortKey,
-    AccessPatterns,
-    StreamView
-  >
+  public declare readonly tableName: TableName<
+    MaterializeTableProps<TableProps<PartitionKey, SortKey, ItemType, Stream>>
+  >;
 
   public constructor(
     scope: Construct,
     id: string,
-    properties: Function.Narrow<
-      TableProperties<PartitionKey, SortKey, AccessPatterns, StreamView>
-    >,
-    // properties: TableProperties<
-    //   PartitionKey,
-    //   SortKey,
-    //   AccessPatterns,
-    //   StreamView
-    // >,
+    properties: F.Narrow<TableProps<PartitionKey, SortKey, ItemType, Stream>>,
+    // properties: TableProps<PartitionKey, SortKey, ItemType, Stream>,
   ) {
-    super(scope, id, properties as unknown as TableProps)
+    super(scope, id, properties as unknown as BaseTableProps);
   }
 }
 
-export const AccessPatterns = {
-  // boolType,
-  // stringType,
-  // numberType,
-  // arrayType,
-  // objectType,
-  // BOOL: boolType,
-  // STRING: stringType,
-  // NUMBER: numberType,
-  // ARRAY: arrayType,
-  // OBJECT: objectType,
-  // bool: boolType,
-  // string: stringType,
-  // number: numberType,
-  // array: arrayType,
-  // object: objectType,
-  from: accessPatternsFrom,
-  as: accessPatternsFrom,
-  // asAny() {
-  //   // return undefined as unknown as DynamodbMap
-  //   return "any" as const
-  // },
-  any() {
-    // return undefined as unknown as DynamodbMap
-    return "any" as const
-  },
-}
+() => {
+  const x: ValueType<
+    AccessPattern<{ name: "streamId"; type: AttributeType.STRING }, undefined>
+  > = ValueType.as<{
+    streamId: string;
+    events: {
+      id: string;
+      data: string;
+      // metadata: JsonEncoded
+    }[];
+  }>();
 
-// export function boolType() {
-//   // return { BOOL: undefined as unknown as T }
-//   return undefined as unknown as boolean
-// }
-
-// export function stringType<T extends string>() {
-//   // return { S: undefined as unknown as T }
-//   return undefined as unknown as T
-// }
-
-// export function numberType<T extends number | bigint>() {
-//   // return { N: undefined as unknown as T }
-//   return undefined as unknown as T
-// }
-
-// export function arrayType<T extends AttributeValue>(arrayOf: T) {
-//   // return { L: undefined as unknown as T[] }
-//   return undefined as unknown as T[]
-// }
-
-// export function objectType<T extends DynamodbItem>(object: T) {
-//   // return { M: undefined as unknown as T }
-//   return undefined as unknown as T
-// }
-
-// // export function conjunctionType<T extends DynamodbItem[]>(...types: T) {
-// //   return {} as T
-// // }
-// // export function conjunctionType<T extends DynamodbItem, T2 extends DynamodbItem>(t1: T, t2: T2) {
-// //   return {} as T| T2
-// // }
-// // export function conjunctionType<Ts extends DynamodbItem[]>(...types: Ts) {
-// //   return {} as MergeList<Ts>
-// // }
-// export function conjunctionType<Ts extends any[]>(...types: Ts) {
-//   return {} as MergeList<Ts>
-// }
-
-// type MergeList<Ts extends any[]> = Ts extends [
-//   infer T1,
-//   infer T2,
-//   ...infer Tail,
-// ]
-//   ? T1 | T2 | MergeList<Tail>
-//   : Ts extends [infer T1]
-//   ? T1
-//   : never
-
-// type X0 = MergeList<[]>
-// type X1 = MergeList<[{ id: "1"; yes: "yes" }]>
-// type X2 = MergeList<[{ id: "1"; yes: "yes" }, { id: "2"; no: "no" }]>
-// type X3 = MergeList<
-//   [{ id: "1"; yes: "yes" }, { id: "2"; no: "no" }, { id: "3"; maybe: "maybe" }]
-// >
-
-// // type Pattern =
-// //   | {
-// //       id: `YES#${string}`
-// //       yes: "yes"
-// //     }
-// //   | {
-// //       id: `NO#${string}`
-// //       no: "no"
-// //     }
-// const x = conjunctionType(
-//   {
-//     id: AccessPatterns.stringType<`YES#${string}`>(),
-//     yes: AccessPatterns.stringType<"yes">(),
-//     // id: undefined as unknown as `YES#${string}`,
-//     // yes: undefined as unknown as "yes",
-//   },
-//   {
-//     id: AccessPatterns.stringType<`NO#${string}`>(),
-//     no: AccessPatterns.stringType<"no">(),
-//     // id: undefined as unknown as `NO#${string}`,
-//     // no: undefined as unknown as "no",
-//   },
-// )
-// type X = typeof x
-// // type X =
-// //   // | { id: { S: `YES#${string}` }; yes: { S: "yes" } }
-// //   // | { id: { S: `NO#${string}` }; no: { S: "no" } }
-// //   | { id: `YES#${string}`; yes: { S: "yes" } }
-// //   | { id:`NO#${string}`; no: { S: "no" } }
-// function caca(x: X) {}
-// // caca({
-// //   id: { S: "YES#1" },
-// //   yes: { S: "yes" },
-// //   no: { S: "no" },
-// // })
-// // caca({
-// //   id: { S: "NO#1" },
-// //   yes: { S: "yes" },
-// //   no: { S: "no" },
-// // })
-// caca({
-//   id: "YES#1",
-//   yes: "yes",
-//   no: "no",
-// })
-// caca({
-//   id: "NO#1",
-//   yes: "yes",
-//   no: "no",
-// })
-
-function accessPatternsFrom<T extends DynamodbMap>() {
-  return {} as T
-}
-
-type Revision = OpaqueType<bigint, { readonly t: unique symbol }>
-staticTest((scope: Construct, id: string) => {
-  type A = {
-    id: `a#${string}`
-    ho: Revision
-    // a: "a"
-  }
-  type B = {
-    id: `b#${string}`
-    ho: Revision
-    b: "b"
-    caca: boolean
-    // x: () => number
-    cacas: {
-      lol: string
-      x: string[]
-    }[]
-  }
-  const table = new Table(scope, id, {
+  new Table(undefined as unknown as Construct, "Transactions", {
     partitionKey: {
-      name: "id",
+      name: "streamId",
       type: AttributeType.STRING,
     },
-    // sortKey: {
-    //   name: "ho",
-    //   type: AttributeType.NUMBER,
-    // },
-    stream: StreamViewType.NEW_IMAGE,
-    accessPatterns: AccessPatterns.from<A | B>(),
-    // accessPatterns: AccessPatterns.any(),
-    // accessPatterns: AccessPatterns.from<A>(),
-    // accessPatterns: conjunctionType(
-    //   {
-    //     id: AccessPatterns.stringType<`YES#${string}`>(),
-    //     ho: AccessPatterns.numberType(),
-    //     yes: AccessPatterns.stringType<"yes">(),
-    //   },
-    //   {
-    //     id: AccessPatterns.stringType<`NO#${string}`>(),
-    //     ho: AccessPatterns.numberType(),
-    //     no: AccessPatterns.stringType<"no">(),
-    //   },
-    // ),
-  })
-})
+    itemType: ValueType.as<{
+      streamId: string;
+      events: {
+        id: string;
+      }[];
+    }>(),
+  });
 
-// /**
-//  * Returns the table item type.
-//  *
-//  * @example
-//  * ```ts
-//  * type User = { id: { S: string } }
-//  * declare const table: Table<User>
-//  * const item: TableItemType<typeof table> = { id: { S: "user_1" } }
-//  * ```
-//  */
-// export type TableItemType<T extends Table> = T extends Table<infer Item>
-//   ? Item
-//   : never
-
-// staticTest((table: Table<{ id: { S: string } }, any>) => {
-//   const item: TableItemType<typeof table> = {
-//     id: { S: "user_1" },
-//   }
-// })
-
-// export type TableKeys<T extends Table<any, any>> = T extends Table<
-//   any,
-//   infer P
-// >
-//   ? Union.Merge<
-//       {
-//         [name in P["partitionKey"]["name"]]: TableItemType<T>[name]
-//       } & (P["sortKey"] extends KeyDefinition
-//         ? {
-//             [name in P["sortKey"]["name"]]: TableItemType<T>[name]
-//           }
-//         : {})
-//     >
-//   : never
-
-// export type TableNameFor<T extends Table<any, any>> = T extends Table<
-//   infer I,
-//   infer P
-// >
-//   ? TableName<I, P>
-//   : never
-
-// staticTest((scope: Construct, id: string) => {
-//   type AccessPatternsFromTable<T extends Table<any, any, any, any>> = T extends Table<any, any, infer AccessPatterns, any> ? AccessPatterns : never
-
-//   // interface Input<T extends Table<any, any, any, any>> {
-//   //   TableName: T["tableName"]
-//   //   // Item: T["accessPatterns"]
-//   //   Item: AccessPatternsFromTable<T>
-//   // }
-
-//   type Input<T extends Table<any, any, any, any>> = T extends Table<infer PartitionKey, infer SortKey, infer AccessPatterns, infer StreamViewType> ? {
-//     TableName: TableName<PartitionKey, SortKey, AccessPatterns, StreamViewType>
-//     // Item: T["accessPatterns"]
-//     Item: AccessPatternsFromTable<T>
-//   } : never
-
-//   class Command<T extends Table<any, any, any, any>> {
-//     constructor(input: Function.Narrow<Input<T>>) {}
-//   }
-
-//   const table = new Table(scope, id, {
-//     partitionKey: {
-//       name: "pk",
-//       type: AttributeType.STRING,
-//     },
-//     accessPatterns: AccessPatterns.as<{
-//       pk: string
-//       // text: string
-//     }>()
-//   })
-
-//   new Command({
-//     TableName: table.tableName,
-//     Item: {
-
-//     }
-//   })
-// })
+  new Table(undefined as unknown as Construct, "Transactions", {
+    partitionKey: { name: "pk", type: AttributeType.STRING },
+    itemType: ValueType.as<
+      | {
+          pk: "name";
+          name: string;
+        }
+      | {
+          pk: "age";
+          age: number;
+        }
+    >(),
+  });
+};

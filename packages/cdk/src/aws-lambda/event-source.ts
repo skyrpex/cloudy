@@ -1,15 +1,15 @@
-import { IFunction } from "./function-base.js"
+import { IFunction } from "./function-base.js";
 
-const inputTypeSymbol = Symbol("@cloudy-ts/cdk/aws_lambda/function/inputType")
+const tag = Symbol("@cloudy-ts/cdk.aws_lambda.IEventSource");
 
-export interface IEventSource<InputType> {
+export interface IEventSource<InputType, OutputType = unknown> {
   /**
    * Called by `lambda.addEventSource` to allow the event source to bind to this
    * function.
    *
    * @param target That lambda function to bind to.
    */
-  bind(target: IFunction<InputType, any>): void
+  bind(target: IFunction<InputType, OutputType>): void;
 
   /**
    * This property is necessary because otherwise, TypeScript will allow
@@ -18,13 +18,13 @@ export interface IEventSource<InputType> {
    * Adding a property with the type InputType, will forbid interchanges
    * unless the InputType's are of the same shape.
    */
-  readonly [inputTypeSymbol]: InputType | undefined
+  readonly [tag]: InputType;
 }
 
-export abstract class BaseEventSource<InputType>
+export abstract class BaseEventSource<InputType, OutputType = unknown>
   implements IEventSource<InputType>
 {
-  abstract bind(target: IFunction<InputType, any>): void
+  abstract bind(target: IFunction<InputType, OutputType>): void;
 
-  readonly [inputTypeSymbol]!: InputType | undefined
+  declare readonly [tag]: InputType;
 }

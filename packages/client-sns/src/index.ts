@@ -1,44 +1,18 @@
-export * from "./commands/index.js"
-export * from "./sns-client.js"
+/* eslint import/export: "warn" */
+export * from "@aws-sdk/client-sns";
+
 export {
-  AddPermissionCommand,
-  CheckIfPhoneNumberIsOptedOutCommand,
-  ConfirmSubscriptionCommand,
-  CreatePlatformApplicationCommand,
-  CreatePlatformEndpointCommand,
-  CreateSMSSandboxPhoneNumberCommand,
-  CreateTopicCommand,
-  DeleteEndpointCommand,
-  DeletePlatformApplicationCommand,
-  DeleteSMSSandboxPhoneNumberCommand,
-  DeleteTopicCommand,
-  GetEndpointAttributesCommand,
-  GetPlatformApplicationAttributesCommand,
-  GetSMSAttributesCommand,
-  GetSMSSandboxAccountStatusCommand,
-  GetSubscriptionAttributesCommand,
-  GetTopicAttributesCommand,
-  ListEndpointsByPlatformApplicationCommand,
-  ListOriginationNumbersCommand,
-  ListPhoneNumbersOptedOutCommand,
-  ListPlatformApplicationsCommand,
-  ListSMSSandboxPhoneNumbersCommand,
-  ListSubscriptionsByTopicCommand,
-  ListSubscriptionsCommand,
-  ListTagsForResourceCommand,
-  ListTopicsCommand,
-  OptInPhoneNumberCommand,
   PublishBatchCommand,
-  // PublishCommand,
-  RemovePermissionCommand,
-  SetEndpointAttributesCommand,
-  SetPlatformApplicationAttributesCommand,
-  SetSMSAttributesCommand,
-  SetSubscriptionAttributesCommand,
-  SetTopicAttributesCommand,
-  SubscribeCommand,
-  TagResourceCommand,
-  UnsubscribeCommand,
-  UntagResourceCommand,
-  VerifySMSSandboxPhoneNumberCommand,
-} from "@aws-sdk/client-sns"
+  type PublishBatchCommandInput,
+  type PublishBatchCommandOutput,
+  type PublishBatchRequestEntry,
+  PublishCommand,
+  type PublishCommandInput,
+  type PublishCommandOutput,
+} from "./commands/index.js";
+
+export {
+  SNSClient,
+  type ServiceInputTypes,
+  type ServiceOutputTypes,
+} from "./sns-client.js";

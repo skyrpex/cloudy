@@ -5,26 +5,26 @@ import {
   DynamoDBClientResolvedConfig as ResolvedConfiguration,
   ReturnConsumedCapacity,
   ReturnItemCollectionMetrics,
-} from "@aws-sdk/client-dynamodb"
-import { Command } from "@aws-sdk/smithy-client"
-import { MiddlewareStack } from "@aws-sdk/types"
+} from "@aws-sdk/client-dynamodb";
+import { Command } from "@aws-sdk/smithy-client";
+import { Handler, MetadataBearer, MiddlewareStack } from "@aws-sdk/types";
 
-import { aws_dynamodb } from "@cloudy-ts/cdk"
-import { ToAttributeMap } from "@cloudy-ts/util-dynamodb"
+import { aws_dynamodb, OpaqueType, ValueType } from "@cloudy-ts/cdk";
+import {
+  DynamodbItem,
+  MaterializedTableProps,
+} from "@cloudy-ts/cdk/src/aws-dynamodb/table.js";
+import { CommandProxy } from "@cloudy-ts/util-command-proxy";
+import { ToAttributeMap } from "@cloudy-ts/util-dynamodb";
 
-import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js"
+import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js";
 
 export type PutItemCommandInput<
-  PartitionKey extends aws_dynamodb.KeyDefinition = aws_dynamodb.KeyDefinition,
-  SortKey extends aws_dynamodb.KeyDefinition | undefined = undefined,
-  AccessPatterns extends
-    | aws_dynamodb.AccessPattern<PartitionKey, SortKey>
-    | "any" = "any",
+  T extends MaterializedTableProps = MaterializedTableProps,
 > = Omit<BaseCommandInput, "Item"> & {
-  TableName: aws_dynamodb.TableName<PartitionKey, SortKey, AccessPatterns, any>
-  Item: AccessPatterns extends "any"
-    ? ToAttributeMap<aws_dynamodb.AccessPattern<PartitionKey, SortKey>>
-    : ToAttributeMap<AccessPatterns extends object ? AccessPatterns : never>
+  TableName: aws_dynamodb.TableName<T>;
+  Item: ToAttributeMap<T["itemType"]>;
+  // meh: T;
   // ReturnConsumedCapacity?: ReturnConsumedCapacity
   // ReturnItemCollectionMetrics?: ReturnItemCollectionMetrics
   // ConditionExpression?: string
@@ -34,44 +34,79 @@ export type PutItemCommandInput<
   // ExpressionAttributeValues?: {
   //   [key: string]: AttributeValue
   // }
-}
+};
 
 export interface PutItemCommandOutput extends BaseCommandOutput {}
 
-export class PutItemCommand<
-  PartitionKey extends aws_dynamodb.KeyDefinition,
-  SortKey extends aws_dynamodb.KeyDefinition | undefined,
-  AccessPatterns extends
-    | aws_dynamodb.AccessPattern<PartitionKey, SortKey>
-    | "any",
-> implements
+// export class PutItemCommand<
+//   T extends MaterializedTableProps,
+// > extends CommandProxy<
+//   BaseCommandInput,
+//   BaseCommandOutput,
+//   ResolvedConfiguration
+// > {
+//   constructor(input: PutItemCommandInput<T>) {
+//     super(new BaseCommand(input as unknown as BaseCommandInput));
+//   }
+// }
+export class PutItemCommand<T extends MaterializedTableProps>
+  implements
     Command<BaseCommandInput, BaseCommandOutput, ResolvedConfiguration>
 {
-  private readonly command: BaseCommand
+  private readonly command: BaseCommand;
 
-  // This is necessary for TypeScript to stop complaining about not providing
-  // the input that the Command interface requires. We can do that since we
-  // don't really use the input object: we only proxy it to the base command
-  // implementation.
-  //
-  // Maybe we could create an abstract CommandProxy class that accepts a raw
-  // command and defines all properties and methods that require our commands.
-  readonly input!: BaseCommandInput
+  constructor(input: PutItemCommandInput<T>) {
+    this.command = new BaseCommand(input as unknown as BaseCommandInput);
+  }
 
-  constructor(
-    input: PutItemCommandInput<PartitionKey, SortKey, AccessPatterns>,
-  ) {
-    this.command = new BaseCommand(input as unknown as BaseCommandInput)
+  get input(): BaseCommandInput {
+    return this.command.input;
   }
 
   get middlewareStack(): MiddlewareStack<BaseCommandInput, BaseCommandOutput> {
-    return this.command.middlewareStack
+    return this.command.middlewareStack;
   }
 
   resolveMiddleware(
     clientStack: MiddlewareStack<ServiceInputTypes, ServiceOutputTypes>,
     configuration: ResolvedConfiguration,
-  ) {
-    return this.command.resolveMiddleware(clientStack, configuration)
+    options: any,
+  ): Handler<BaseCommandInput, BaseCommandOutput> {
+    return this.command.resolveMiddleware(clientStack, configuration, options);
   }
 }
+
+() => {
+  type MyString = OpaqueType<string, "MyString">;
+  const table = new aws_dynamodb.Table(undefined as any, "Table", {
+    partitionKey: {
+      name: "id",
+      type: aws_dynamodb.AttributeType.STRING,
+    },
+    itemType: ValueType.as<{
+      id: MyString;
+    }>(),
+  });
+  new PutItemCommand({
+    TableName: table.tableName,
+    Item: {
+      id: { S: "" as MyString },
+      // @ts-expect-error: text is not defined in itemType.
+      text: { S: "" },
+    },
+    // meh: {exact},
+  });
+};
+
+() => {
+  const table = new aws_dynamodb.Table(undefined as any, "Table", {
+    partitionKey: {
+      name: "id",
+      type: aws_dynamodb.AttributeType.STRING,
+    },
+  });
+  new PutItemCommand({
+    TableName: table.tableName,
+    Item: { id: { S: "" }, o: { N: "1" } },
+  });
+};

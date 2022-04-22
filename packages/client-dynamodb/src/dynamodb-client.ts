@@ -4,9 +4,9 @@ import {
   DynamoDBClientResolvedConfig as BaseClientResolvedConfiguration,
   ServiceInputTypes as BaseServiceInputTypes,
   ServiceOutputTypes as BaseServiceOutputTypes,
-} from "@aws-sdk/client-dynamodb"
-import { Client } from "@aws-sdk/smithy-client"
-import { Command, HttpHandlerOptions } from "@aws-sdk/types"
+} from "@aws-sdk/client-dynamodb";
+import { Client } from "@aws-sdk/smithy-client";
+import { Command, HttpHandlerOptions, MiddlewareStack } from "@aws-sdk/types";
 
 import {
   PutItemCommandInput,
@@ -15,42 +15,45 @@ import {
   QueryCommandOutput,
   UpdateItemCommandInput,
   UpdateItemCommandOutput,
-} from "./commands/index.js"
+} from "./commands/index.js";
 
 export type ServiceInputTypes =
   | PutItemCommandInput
   | QueryCommandInput
   | UpdateItemCommandInput
-  | BaseServiceInputTypes
+  | BaseServiceInputTypes;
 export type ServiceOutputTypes =
   | PutItemCommandOutput
   | QueryCommandOutput
   | UpdateItemCommandOutput
-  | BaseServiceOutputTypes
+  | BaseServiceOutputTypes;
 
 type IClient = Client<
   HttpHandlerOptions,
   ServiceInputTypes,
   ServiceOutputTypes,
   BaseClientResolvedConfiguration
->
+>;
 
 export class DynamoDBClient implements IClient {
-  private client: IClient | undefined
+  private client: IClient | undefined;
 
   constructor(readonly configuration: BaseClientConfiguration) {}
 
   private resolveClient() {
-    this.client = this.client ?? new BaseClient(this.configuration)
-    return this.client
+    this.client = this.client ?? new BaseClient(this.configuration);
+    return this.client;
   }
 
   get config() {
-    return this.resolveClient().config
+    return this.resolveClient().config;
   }
 
-  get middlewareStack() {
-    return this.resolveClient().middlewareStack
+  get middlewareStack(): MiddlewareStack<
+    ServiceInputTypes,
+    ServiceOutputTypes
+  > {
+    return this.resolveClient().middlewareStack;
   }
 
   send<
@@ -65,7 +68,7 @@ export class DynamoDBClient implements IClient {
       BaseClientResolvedConfiguration
     >,
     options?: HttpHandlerOptions,
-  ): Promise<OutputType>
+  ): Promise<OutputType>;
   send<
     InputType extends ServiceInputTypes,
     OutputType extends ServiceOutputTypes,
@@ -78,7 +81,7 @@ export class DynamoDBClient implements IClient {
       BaseClientResolvedConfiguration
     >,
     callback: (error: any, data?: OutputType) => void,
-  ): void
+  ): void;
   send<
     InputType extends ServiceInputTypes,
     OutputType extends ServiceOutputTypes,
@@ -92,15 +95,15 @@ export class DynamoDBClient implements IClient {
     >,
     options: HttpHandlerOptions,
     callback: (error: any, data?: OutputType) => void,
-  ): void
+  ): void;
   send<
     InputType extends ServiceInputTypes,
     OutputType extends ServiceOutputTypes,
   >(command: any, options?: any, callback?: any): void | Promise<OutputType> {
-    return this.resolveClient().send(command, options, callback)
+    return this.resolveClient().send(command, options, callback);
   }
 
   destroy(): void {
-    this.resolveClient().destroy()
+    this.resolveClient().destroy();
   }
 }

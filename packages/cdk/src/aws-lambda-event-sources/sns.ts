@@ -1,45 +1,39 @@
-import { IFunction as IBaseFunction } from "aws-cdk-lib/aws-lambda"
+import { IFunction as IBaseFunction } from "aws-cdk-lib/aws-lambda";
 import {
   SnsEventSource as BaseSnsEventSource,
-  SnsEventSourceProps as BaseProperties,
-} from "aws-cdk-lib/aws-lambda-event-sources"
-import { Construct } from "constructs"
-import { Union } from "ts-toolbelt"
+  SnsEventSourceProps as BaseProps,
+} from "aws-cdk-lib/aws-lambda-event-sources";
+import { Construct } from "constructs";
+import { Union } from "ts-toolbelt";
 
-import { JsonEncoded } from "@cloudy-ts/json-codec"
+import { JsonEncoded } from "@cloudy-ts/json-codec";
 
-import { BaseEventSource, IFunction } from "../aws-lambda/index.js"
-import { Topic } from "../aws-sns/topic.js"
-import { staticTest } from "../static-test.js"
+import { BaseEventSource, IFunction } from "../aws-lambda/index.js";
+import { MaterializeTopicProps, Topic } from "../aws-sns/topic.js";
+import { staticTest } from "../static-test.js";
 
-export interface SnsEventSourceProperties extends BaseProperties {}
+export interface SnsEventSourceProps extends BaseProps {}
 
-type AnyTopic = Topic<string, string, string, undefined, boolean>
+type TopicMessageType<T extends Topic> = T extends Topic<infer P>
+  ? MaterializeTopicProps<P>["message"]
+  : never;
 
-type TopicMessageType<T extends AnyTopic> = T extends Topic<
-  infer Message,
-  string,
-  string
->
-  ? Message
-  : never
+export type SnsEventType<T extends Topic> = {
+  Message: TopicMessageType<T>;
+};
 
-export type SnsEventType<T extends AnyTopic> = {
-  Message: TopicMessageType<T>
-}
-
-export class SnsEventSource<T extends AnyTopic> extends BaseEventSource<
+export class SnsEventSource<T extends Topic> extends BaseEventSource<
   SnsEventType<T>
 > {
-  private readonly source: BaseSnsEventSource
+  private readonly source: BaseSnsEventSource;
 
-  constructor(topic: T, properties?: SnsEventSourceProperties) {
-    super()
-    this.source = new BaseSnsEventSource(topic, properties)
+  constructor(topic: T, properties?: SnsEventSourceProps) {
+    super();
+    this.source = new BaseSnsEventSource(topic, properties);
   }
 
   bind(target: IFunction<SnsEventType<T>, any>): void {
-    this.source.bind(target as IBaseFunction)
+    this.source.bind(target as IBaseFunction);
   }
 }
 

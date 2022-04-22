@@ -1,6 +1,0 @@
-{
-  "app": "yarn esm-node index.ts",
-  "watch": {
-    "include": ["*.ts"]
-  }
-}

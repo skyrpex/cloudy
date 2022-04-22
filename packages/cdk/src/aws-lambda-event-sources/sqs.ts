@@ -1,116 +1,134 @@
-import { IFunction as IBaseFunction } from "aws-cdk-lib/aws-lambda"
+import { JsonEncoded } from "@cloudy-ts/json-codec";
+import { StringEncoded } from "@cloudy-ts/string-codec";
+import { IFunction as IBaseFunction } from "aws-cdk-lib/aws-lambda";
 import {
   SqsEventSource as BaseSqsEventSource,
-  SqsEventSourceProps as BaseProperties,
-} from "aws-cdk-lib/aws-lambda-event-sources"
-import { Construct } from "constructs"
-import { Union } from "ts-toolbelt"
+  SqsEventSourceProps as BaseProps,
+} from "aws-cdk-lib/aws-lambda-event-sources";
+import { Construct } from "constructs";
+import { F } from "ts-toolbelt";
 
-import { JsonEncoded } from "@cloudy-ts/json-codec"
-import { StringEncoded } from "@cloudy-ts/string-codec"
+import { BaseEventSource, IFunction } from "../aws-lambda/index.js";
+import {
+  MaterializedQueueProps,
+  MaterializeQueueProps,
+  Queue,
+} from "../aws-sqs/queue.js";
+import { ValueType } from "../core/value-type.js";
+import { staticTest } from "../static-test.js";
 
-import { BaseEventSource, IFunction } from "../aws-lambda/index.js"
-import { MessageAttributesBaseType } from "../aws-sns/topic.js"
-import { Queue } from "../aws-sqs/queue.js"
-import { staticTest } from "../static-test.js"
+export interface SqsEventSourceProps extends BaseProps {}
 
-export interface SqsEventSourceProperties extends BaseProperties {}
-
-type AnyQueue = Queue<string, string, string, any, boolean>
-
-type TopicMessageType<T extends AnyQueue> = T extends Queue<
-  infer Message,
-  string,
-  string
->
-  ? Message
-  : never
+type QueueMessageType<T extends Queue> = T extends Queue<infer P>
+  ? MaterializeQueueProps<P>["message"]
+  : never;
 
 interface SqsEventTypeRaw<
-  Message extends string = string,
-  MessageGroupId extends string = string,
-  MessageDeduplicationId extends string = string,
-  MessageAttributes extends MessageAttributesBaseType | undefined = undefined,
-  Fifo extends boolean = boolean,
+  T extends MaterializedQueueProps,
   RawMessageDelivery extends boolean = boolean,
 > {
   Records: {
-    messageId: string
-    receiptHandle: string
+    messageId: string;
+    receiptHandle: string;
+    // body: QueueMessageType<T>;
     body: RawMessageDelivery extends true
-      ? Message
+      ? T["message"]
       : JsonEncoded<{
-          Message: Message
-          MessageId: string
-          SequenceNumber: StringEncoded<bigint>
-          Timestamp: "2022-04-11T16:25:46.848Z"
-          TopicArn: string
-          Type: "Notification"
-          UnsubscribeURL: string
-        }>
+          Message: T["message"];
+          MessageId: string;
+          SequenceNumber: StringEncoded<bigint>;
+          Timestamp: "2022-04-11T16:25:46.848Z";
+          TopicArn: string;
+          Type: "Notification";
+          UnsubscribeURL: string;
+        }>;
+    // body: T["message"];
     attributes: {
-      ApproximateReceiveCount: StringEncoded<number>
-      SentTimestamp: StringEncoded<number>
-      SequenceNumber: StringEncoded<bigint>
-      SenderId: string
-      ApproximateFirstReceiveTimestamp: StringEncoded<number>
-    } & (Fifo extends true
+      ApproximateReceiveCount: StringEncoded<number>;
+      SentTimestamp: StringEncoded<number>;
+      SequenceNumber: StringEncoded<bigint>;
+      SenderId: string;
+      ApproximateFirstReceiveTimestamp: StringEncoded<number>;
+    } & (T["fifo"] extends true
       ? {
-          MessageGroupId: MessageGroupId
-          MessageDeduplicationId: MessageDeduplicationId
+          MessageGroupId: T["messageGroupId"];
+          MessageDeduplicationId: T["messageDeduplicationId"];
         }
-      : {})
-    messageAttributes: MessageAttributes
-    md5OfBody: string
-    eventSource: "aws:sqs"
-    eventSourceARN: string
-    awsRegion: string
-  }[]
+      : {});
+    messageAttributes: T["messageAttributes"];
+    md5OfBody: string;
+    eventSource: "aws:sqs";
+    eventSourceARN: string;
+    awsRegion: string;
+  }[];
 }
 
+// type x = MaterializeQueueProps<T>
+
 export type SqsEventType<
-  T extends AnyQueue,
+  T extends Queue,
   RawMessageDelivery extends boolean,
-> = SqsEventTypeRaw<
-  T extends Queue<infer Message> ? Message : never,
-  T extends Queue<any, infer MessageGroupId> ? MessageGroupId : never,
-  T extends Queue<any, any, infer MessageDeduplicationId>
-    ? MessageDeduplicationId
-    : never,
-  T extends Queue<any, any, any, infer MessageAttributes>
-    ? MessageAttributes
-    : never,
-  T extends Queue<any, any, any, any, infer Fifo> ? Fifo : never,
-  RawMessageDelivery
->
+> = T extends Queue<infer P>
+  ? SqsEventTypeRaw<MaterializeQueueProps<P>, RawMessageDelivery>
+  : never;
+// > = F.Narrow<{
+// > = T extends Queue<infer P>
+//   ? MaterializeQueueProps<P> extends infer U
+//     ? U extends MaterializedQueueProps
+//       ? SqsEventTypeRaw<U, RawMessageDelivery>
+//       : never
+//     : never
+//   : never;
 
 export class SqsEventSource<
-  T extends AnyQueue,
+  T extends Queue,
   // RawMessageDelivery extends boolean,
   // > extends BaseEventSource<SqsEventType<T, RawMessageDelivery>> {
 > extends BaseEventSource<SqsEventType<T, true>> {
-  private readonly source: BaseSqsEventSource
+  private readonly source: BaseSqsEventSource;
 
-  constructor(topic: T, properties?: SqsEventSourceProperties) {
-    super()
-    this.source = new BaseSqsEventSource(topic, properties)
+  constructor(queue: T, properties?: SqsEventSourceProps) {
+    super();
+    this.source = new BaseSqsEventSource(queue, properties);
   }
 
   // bind(target: IFunction<SqsEventType<T, RawMessageDelivery>, any>): void {
   bind(target: IFunction<SqsEventType<T, true>, any>): void {
-    this.source.bind(target as IBaseFunction)
+    this.source.bind(target as IBaseFunction);
   }
 }
 
 staticTest((scope: Construct, id: string) => {
   const queue = new Queue(scope, id, {
     fifo: true,
-  })
+    messageType: ValueType.as<"hello world">(),
+    messageAttributesType: {
+      test: {
+        DataType: "String",
+        StringValue: ValueType.as<"testvalue">(),
+      },
+    },
+  });
 
-  const eventSource = new SqsEventSource(queue)
+  type m = F.Narrow<MaterializeQueueProps<typeof queue>>;
 
-  type X1 = SqsEventType<typeof queue, true>
+  const eventSource = new SqsEventSource(queue);
+
+  type X1 = SqsEventType<typeof queue, true>;
   staticTest((event: X1) => {
-    event.Records[0]?.body
-  })
-})
+    event.Records[0]?.body;
+    event.Records[0]?.messageAttributes.test.StringValue;
+  });
+
+  // type X<T extends MaterializedQueueProps> =
+  //   MaterializeQueueProps<T>["message"];
+  type x = QueueMessageType<typeof queue>;
+
+  type QueueMessageType2<T extends Queue> = T extends Queue<infer P>
+    ? {
+        message: MaterializeQueueProps<P>["message"];
+        messageAttributes: MaterializeQueueProps<P>["messageAttributes"];
+      }
+    : never;
+  type y = QueueMessageType2<typeof queue>;
+});

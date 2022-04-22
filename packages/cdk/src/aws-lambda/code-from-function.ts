@@ -1,24 +1,24 @@
-import { runtime } from "@pulumi/pulumi"
-import * as cdk from "aws-cdk-lib"
-import { Construct } from "constructs"
+import { runtime } from "@pulumi/pulumi";
+import * as cdk from "aws-cdk-lib";
+import { Construct } from "constructs";
 
-import { EsbuildBundling } from "./esbuild-bundling.js"
+import { EsbuildBundling } from "./esbuild-bundling.js";
 
 export async function codeFromFunction(function_: (...any: any[]) => any) {
   const tokens: {
     // construct: cdk.Resource
-    construct: Construct
-    attribute: string
-    cfnToken: string
-    hash: string
+    construct: Construct;
+    attribute: string;
+    cfnToken: string;
+    hash: string;
     // hash2: string
-  }[] = []
+  }[] = [];
   const serializationContext = {
     // construct: undefined as cdk.Resource | undefined,
     construct: undefined as Construct | undefined,
     attribute: undefined as string | undefined,
     cfnToken: undefined as string | undefined,
-  }
+  };
   const result = await runtime.serializeFunction(function_, {
     serialize(item) {
       // console.log({
@@ -29,21 +29,21 @@ export async function codeFromFunction(function_: (...any: any[]) => any) {
       // })
       // if (item && Construct.isConstruct(item) && cdk.Resource.isResource(item)) {
       if (item && Construct.isConstruct(item)) {
-        serializationContext.construct = item
+        serializationContext.construct = item;
       } else if (
         serializationContext.construct &&
         !serializationContext.attribute &&
         typeof item === "string"
       ) {
-        serializationContext.attribute = item
+        serializationContext.attribute = item;
       } else if (
         serializationContext.construct &&
         serializationContext.attribute &&
         typeof item === "string" &&
         /^\${Token\[TOKEN\.(\d+)]}$/.test(item)
       ) {
-        serializationContext.cfnToken = item
-        const { construct, attribute, cfnToken } = serializationContext
+        serializationContext.cfnToken = item;
+        const { construct, attribute, cfnToken } = serializationContext;
         if (construct && attribute && cfnToken) {
           // console.log({ attribute, cfnToken })
           tokens.push({
@@ -54,22 +54,22 @@ export async function codeFromFunction(function_: (...any: any[]) => any) {
             //   tokens.length
             // }`,
             hash: `${cdk.Names.uniqueId(construct)}${attribute}`,
-          })
+          });
         }
-        serializationContext.attribute = undefined
-        serializationContext.cfnToken = undefined
+        serializationContext.attribute = undefined;
+        serializationContext.cfnToken = undefined;
       }
-      return true
+      return true;
     },
-  })
+  });
 
-  let sourceCode = result.text
+  let sourceCode = result.text;
 
   for (const token of tokens) {
     sourceCode = sourceCode.replace(
       `"${token.cfnToken}"`,
       `process.env["${token.hash}"]`,
-    )
+    );
   }
 
   const code = EsbuildBundling.bundle({
@@ -79,10 +79,10 @@ export async function codeFromFunction(function_: (...any: any[]) => any) {
     },
     // define
     // external
-  })
+  });
 
   return {
     code,
     tokens,
-  }
+  };
 }

@@ -2,36 +2,38 @@ import {
   UpdateItemCommand as BaseCommand,
   UpdateItemCommandInput as BaseCommandInput,
   UpdateItemCommandOutput as BaseCommandOutput,
-  DynamoDBClientResolvedConfig,
-} from "@aws-sdk/client-dynamodb"
-import { Command } from "@aws-sdk/smithy-client"
-import { MiddlewareStack } from "@aws-sdk/types"
+  DynamoDBClientResolvedConfig as ResolvedConfiguration,
+} from "@aws-sdk/client-dynamodb";
+import { Command } from "@aws-sdk/smithy-client";
+import { Handler, MiddlewareStack } from "@aws-sdk/types";
 
-import { aws_dynamodb } from "@cloudy-ts/cdk"
+import { aws_dynamodb } from "@cloudy-ts/cdk";
+import { MaterializedTableProps } from "@cloudy-ts/cdk/src/aws-dynamodb";
+import { CommandProxy } from "@cloudy-ts/util-command-proxy";
 import {
   ExpressionAttributeNames,
   ExpressionAttributeValues,
   ToAttributeMap,
-} from "@cloudy-ts/util-dynamodb"
+  ToAttributeValue,
+} from "@cloudy-ts/util-dynamodb";
 
-import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js"
+import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js";
 
 // type TableItem<T extends aws_dynamodb.TableName<any, any>> = T extends aws_dynamodb.TableName<infer Item, any> ? Item : never
 
+type KeyOfItem<T extends MaterializedTableProps> = {
+  [name in T["partitionKey"] | T["sortKey"]]: T["itemType"][name];
+};
+
 export type UpdateItemCommandInput<
-  PartitionKey extends aws_dynamodb.KeyDefinition = aws_dynamodb.KeyDefinition,
-  SortKey extends aws_dynamodb.KeyDefinition | undefined = undefined,
-  AccessPatterns extends aws_dynamodb.AccessPattern<
-    PartitionKey,
-    SortKey
-  > = aws_dynamodb.AccessPattern<PartitionKey, SortKey>,
+  T extends aws_dynamodb.MaterializedTableProps = aws_dynamodb.MaterializedTableProps,
   UpdateExpression extends string = string,
   ConditionExpression extends string = string,
-> = BaseCommandInput & {
-  TableName: aws_dynamodb.TableName<PartitionKey, SortKey, AccessPatterns, any>
-  Key: ToAttributeMap<aws_dynamodb.AccessPattern<PartitionKey, SortKey>>
-  UpdateExpression: UpdateExpression
-  ConditionExpression: ConditionExpression
+> = Omit<BaseCommandInput, "Key"> & {
+  TableName: aws_dynamodb.TableName<T>;
+  Key: ToAttributeMap<KeyOfItem<T>>;
+  UpdateExpression: UpdateExpression;
+  ConditionExpression: ConditionExpression;
   // Item: Item
   // ReturnConsumedCapacity?: ReturnConsumedCapacity
   // ReturnItemCollectionMetrics?: ReturnItemCollectionMetrics
@@ -42,41 +44,41 @@ export type UpdateItemCommandInput<
 } & ExpressionAttributeValues<UpdateExpression> &
   ExpressionAttributeNames<UpdateExpression> &
   ExpressionAttributeValues<ConditionExpression> &
-  ExpressionAttributeNames<ConditionExpression>
+  ExpressionAttributeNames<ConditionExpression>;
 
 export interface UpdateItemCommandOutput extends BaseCommandOutput {}
 
 export class UpdateItemCommand<
-  PartitionKey extends aws_dynamodb.KeyDefinition,
-  SortKey extends aws_dynamodb.KeyDefinition | undefined,
-  AccessPatterns extends aws_dynamodb.AccessPattern<PartitionKey, SortKey>,
+  T extends aws_dynamodb.MaterializedTableProps,
   UpdateExpression extends string,
   ConditionExpression extends string,
 > implements
-    Command<BaseCommandInput, BaseCommandOutput, DynamoDBClientResolvedConfig>
+    Command<BaseCommandInput, BaseCommandOutput, ResolvedConfiguration>
 {
-  private readonly command: BaseCommand
+  // constructor(
+  //   input: UpdateItemCommandInput<T, UpdateExpression, ConditionExpression>,
+  // ) {
+  //   super(new BaseCommand(input as unknown as BaseCommandInput));
+  // }
+  private readonly command: BaseCommand;
 
-  constructor(
-    readonly input: UpdateItemCommandInput<
-      PartitionKey,
-      SortKey,
-      AccessPatterns,
-      UpdateExpression,
-      ConditionExpression
-    >,
-  ) {
-    this.command = new BaseCommand(input as unknown as BaseCommandInput)
+  constructor(input: UpdateItemCommandInput<T>) {
+    this.command = new BaseCommand(input as unknown as BaseCommandInput);
+  }
+
+  get input(): BaseCommandInput {
+    return this.command.input;
   }
 
   get middlewareStack(): MiddlewareStack<BaseCommandInput, BaseCommandOutput> {
-    return this.command.middlewareStack as any
+    return this.command.middlewareStack;
   }
 
   resolveMiddleware(
     clientStack: MiddlewareStack<ServiceInputTypes, ServiceOutputTypes>,
-    configuration: DynamoDBClientResolvedConfig,
-  ) {
-    return this.command.resolveMiddleware(clientStack as any, configuration)
+    configuration: ResolvedConfiguration,
+    options: any,
+  ): Handler<BaseCommandInput, BaseCommandOutput> {
+    return this.command.resolveMiddleware(clientStack, configuration, options);
   }
 }
