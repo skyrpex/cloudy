@@ -35,11 +35,7 @@ export class Function extends BaseFunction {
   constructor(scope: Construct, id: string, properties: FunctionProps) {
     super(scope, id, {
       ...properties,
-      // TODO: Find a Code that crashes when trying to synthesize... Maybe a
-      // docker image that throws or doesn't exist, or an impossible S3 asset.
-      // The problem right now is that whatever we pass to the constructor gets
-      // processed. Maybe there's a method or property that only gets called on
-      // the synthesizing process.
+      // Use a dummy code object until we can get the code from the properties.
       code: Code.fromInline(" "),
       handler: "index.handler",
       runtime: Runtime.NODEJS_14_X,
