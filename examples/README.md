@@ -4,14 +4,16 @@ Here you can try some example stacks.
 
 ## Deploying Examples
 
-Just run `cd examples` and:
+Just go to the example directory you want to run, and execute the cdk CLI:
 
 ```sh
 # Deploy example 1:
-pnpx cdk deploy --app "esm-node src/1-hello-world/index.ts"
+cd examples/src/1-hello-world
+pnpx cdk deploy
+```
 
-# Deploy example 3:
-pnpx cdk deploy --app "esm-node src/3-publish-to-topic/index.ts"
+Don't forget to delete your stack after you're done. You can do that with:
 
-# And so on...
+```sh
+pnpx cdk destroy
 ```
