@@ -1,7 +1,7 @@
 import { App, StageSynthesisOptions } from "aws-cdk-lib";
 import { IConstruct } from "constructs";
 
-const tag = Symbol("@cloudy-ts/cdk.AsyncDependenciesContext");
+const tag = Symbol("@cloudy-ts/cdk.AsyncDependencies");
 
 export class AsyncDependenciesError extends Error {
   constructor(reason: string) {

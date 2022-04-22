@@ -6,7 +6,6 @@ import { aws_sns, aws_sns_subscriptions } from "aws-cdk-lib";
 import { BaseTopicSubscription } from "../aws-sns/subscription.js";
 import { Topic } from "../aws-sns/topic.js";
 import { MaterializeQueueProperties, Queue } from "../aws-sqs/queue.js";
-import { ValueType } from "../core/value-type.js";
 
 export interface SqsSubscriptionProperties<RawMessageDelivery extends true>
   extends aws_sns_subscriptions.SqsSubscriptionProps {

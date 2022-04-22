@@ -1,6 +1,6 @@
 import { aws_sns } from "aws-cdk-lib";
 
-const tag = Symbol("@cloudy-ts/cdk/aws-sns/Subscription");
+const tag = Symbol("@cloudy-ts/cdk.aws_sns.ITopicSubscription");
 
 export interface ITopicSubscription<Message extends string>
   extends aws_sns.ITopicSubscription {
