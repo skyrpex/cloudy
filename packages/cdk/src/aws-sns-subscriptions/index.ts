@@ -5,15 +5,15 @@ import { aws_sns, aws_sns_subscriptions } from "aws-cdk-lib";
 
 import { BaseTopicSubscription } from "../aws-sns/subscription.js";
 import { Topic } from "../aws-sns/topic.js";
-import { MaterializeQueueProperties, Queue } from "../aws-sqs/queue.js";
+import { MaterializeQueueProps, Queue } from "../aws-sqs/queue.js";
 
-export interface SqsSubscriptionProperties<RawMessageDelivery extends true>
+export interface SqsSubscriptionProps<RawMessageDelivery extends true>
   extends aws_sns_subscriptions.SqsSubscriptionProps {
   rawMessageDelivery: RawMessageDelivery;
 }
 
 type QueueMessage<T extends Queue> = T extends Queue<infer P>
-  ? MaterializeQueueProperties<P>["message"]
+  ? MaterializeQueueProps<P>["message"]
   : never;
 
 type TopicFromQueue<T extends Queue> = T extends Queue<infer P>
@@ -38,7 +38,7 @@ export class SqsSubscription<T extends Queue, RawMessageDelivery extends true>
    */
   public constructor(
     queue: T,
-    properties: SqsSubscriptionProperties<RawMessageDelivery>,
+    properties: SqsSubscriptionProps<RawMessageDelivery>,
   ) {
     // super(queue, properties)
     super();

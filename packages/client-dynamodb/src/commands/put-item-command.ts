@@ -12,7 +12,7 @@ import { Handler, MetadataBearer, MiddlewareStack } from "@aws-sdk/types";
 import { aws_dynamodb, OpaqueType, ValueType } from "@cloudy-ts/cdk";
 import {
   DynamodbItem,
-  MaterializedTableProperties,
+  MaterializedTableProps,
 } from "@cloudy-ts/cdk/src/aws-dynamodb/table.js";
 import { CommandProxy } from "@cloudy-ts/util-command-proxy";
 import { ToAttributeMap } from "@cloudy-ts/util-dynamodb";
@@ -20,7 +20,7 @@ import { ToAttributeMap } from "@cloudy-ts/util-dynamodb";
 import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js";
 
 export type PutItemCommandInput<
-  T extends MaterializedTableProperties = MaterializedTableProperties,
+  T extends MaterializedTableProps = MaterializedTableProps,
 > = Omit<BaseCommandInput, "Item"> & {
   TableName: aws_dynamodb.TableName<T>;
   Item: ToAttributeMap<T["itemType"]>;
@@ -39,7 +39,7 @@ export type PutItemCommandInput<
 export interface PutItemCommandOutput extends BaseCommandOutput {}
 
 // export class PutItemCommand<
-//   T extends MaterializedTableProperties,
+//   T extends MaterializedTableProps,
 // > extends CommandProxy<
 //   BaseCommandInput,
 //   BaseCommandOutput,
@@ -49,7 +49,7 @@ export interface PutItemCommandOutput extends BaseCommandOutput {}
 //     super(new BaseCommand(input as unknown as BaseCommandInput));
 //   }
 // }
-export class PutItemCommand<T extends MaterializedTableProperties>
+export class PutItemCommand<T extends MaterializedTableProps>
   implements
     Command<BaseCommandInput, BaseCommandOutput, ResolvedConfiguration>
 {

@@ -7,7 +7,7 @@ import {
 import { IFunction as IBaseFunction } from "aws-cdk-lib/aws-lambda";
 import {
   DynamoEventSource as BaseDynamoEventSource,
-  DynamoEventSourceProps,
+  DynamoEventSourceProps as BaseDynamoEventSourceProps,
 } from "aws-cdk-lib/aws-lambda-event-sources";
 import { Construct } from "constructs";
 import { Union } from "ts-toolbelt";
@@ -17,11 +17,11 @@ import {
   // AttributeType,
   // BillingMode,
   // DynamodbItem,
-  // MaterializedTableProperties,
-  MaterializeTableProperties,
+  // MaterializedTableProps,
+  MaterializeTableProps,
   // StreamViewType,
   Table,
-  TableProperties,
+  TableProps,
   // TableItemType,
 } from "../aws-dynamodb/table.js";
 import { BaseEventSource, IFunction } from "../aws-lambda/index.js";
@@ -62,17 +62,17 @@ export type TableStreamViewType<T> = T extends Table<
 //     : never
 //   : never;
 
-type PropertiesOfTable<T extends AnyTable> = T extends Table<
+type PropsOfTable<T extends AnyTable> = T extends Table<
   infer P,
   infer S,
   infer I,
   infer Stream
 >
-  ? TableProperties<P, S, I, Stream>
+  ? TableProps<P, S, I, Stream>
   : never;
 
-type TableItemType<T extends AnyTable> = MaterializeTableProperties<
-  PropertiesOfTable<T>
+type TableItemType<T extends AnyTable> = MaterializeTableProps<
+  PropsOfTable<T>
 >["itemType"];
 
 type StreamEventDynamodbImage<T extends AnyTable> = Union.Merge<
@@ -182,7 +182,7 @@ export type DynamoStreamEventType<T extends AnyTable> =
         Records: DynamoStreamEventRecord<T>[];
       };
 
-export interface DynamoEventSourceProperties extends DynamoEventSourceProps {}
+export interface DynamoEventSourceProps extends BaseDynamoEventSourceProps {}
 
 /**
  * Use an Amazon DynamoDB stream as an event source for AWS Lambda.
@@ -192,7 +192,7 @@ export class DynamoEventSource<
 > extends BaseEventSource<DynamoStreamEventType<T>> {
   private readonly source: BaseDynamoEventSource;
 
-  constructor(table: T, properties: DynamoEventSourceProperties) {
+  constructor(table: T, properties: DynamoEventSourceProps) {
     super();
     this.source = new BaseDynamoEventSource(table, properties);
   }

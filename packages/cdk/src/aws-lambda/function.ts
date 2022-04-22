@@ -3,7 +3,7 @@ import {
   CfnFunction,
   Code,
   Function as BaseFunction,
-  FunctionProps,
+  FunctionProps as BaseFunctionProps,
   Runtime,
   verifyCodeConfig,
 } from "aws-cdk-lib/aws-lambda";
@@ -11,7 +11,7 @@ import { Construct } from "constructs";
 
 import { AsyncDependenciesContext } from "../core";
 
-export interface FunctionProperties extends Omit<FunctionProps, "code"> {
+export interface FunctionProps extends Omit<BaseFunctionProps, "code"> {
   /**
    * The source code of your Lambda function. You can point to a file in an
    * Amazon Simple Storage Service (Amazon S3) bucket or specify your source
@@ -32,7 +32,7 @@ export interface FunctionProperties extends Omit<FunctionProps, "code"> {
  * library.
  */
 export class Function extends BaseFunction {
-  constructor(scope: Construct, id: string, properties: FunctionProperties) {
+  constructor(scope: Construct, id: string, properties: FunctionProps) {
     super(scope, id, {
       ...properties,
       // TODO: Find a Code that crashes when trying to synthesize... Maybe a

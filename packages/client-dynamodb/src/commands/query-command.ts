@@ -19,7 +19,7 @@ import {
 import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js";
 
 export type QueryCommandInput<
-  T extends aws_dynamodb.MaterializedTableProperties = aws_dynamodb.MaterializedTableProperties,
+  T extends aws_dynamodb.MaterializedTableProps = aws_dynamodb.MaterializedTableProps,
   FilterExpression extends string = string,
   KeyConditionExpression extends string = string,
   ProjectionExpression extends string = string,
@@ -48,7 +48,7 @@ export type QueryCommandInput<
 export interface QueryCommandOutput extends BaseCommandOutput {}
 
 // export class QueryCommand<
-//   T extends aws_dynamodb.MaterializedTableProperties = aws_dynamodb.MaterializedTableProperties,
+//   T extends aws_dynamodb.MaterializedTableProps = aws_dynamodb.MaterializedTableProps,
 //   FilterExpression extends string = string,
 //   KeyConditionExpression extends string = string,
 //   ProjectionExpression extends string = string,
@@ -70,7 +70,7 @@ export interface QueryCommandOutput extends BaseCommandOutput {}
 // }
 
 export class QueryCommand<
-  T extends aws_dynamodb.MaterializedTableProperties = aws_dynamodb.MaterializedTableProperties,
+  T extends aws_dynamodb.MaterializedTableProps = aws_dynamodb.MaterializedTableProps,
   FilterExpression extends string = string,
   KeyConditionExpression extends string = string,
   ProjectionExpression extends string = string,

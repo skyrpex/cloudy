@@ -54,7 +54,7 @@ type AccessPattern<
   AttributeFromKeyDefinition<PartitionKey> &
   AttributeFromKeyDefinition<SortKey>;
 
-interface TableProperties<
+interface TableProps<
   PartitionKey extends KeyDefinition,
   SortKey extends KeyDefinition | undefined,
   ItemType extends AccessPattern<PartitionKey, SortKey> | undefined,
@@ -68,14 +68,14 @@ interface TableProperties<
 
 type ResolveValueType<T> = T extends ValueType<infer V> ? V : T;
 
-interface MaterializedTableProperties<T extends DynamodbItem = DynamodbItem> {
+interface MaterializedTableProps<T extends DynamodbItem = DynamodbItem> {
   partitionKey: keyof T;
   sortKey: keyof T | undefined;
   itemType: T;
   stream: StreamViewType | never;
 }
 
-type Materialize<T extends TableProperties<any, any, any, any>> = {
+type Materialize<T extends TableProps<any, any, any, any>> = {
   partitionKey: T["partitionKey"]["name"];
   sortKey: T["sortKey"] extends infer SortKey
     ? SortKey extends KeyDefinition
@@ -100,7 +100,7 @@ type Materialize<T extends TableProperties<any, any, any, any>> = {
 
 staticTest(() => {
   type p1 = Materialize<
-    TableProperties<
+    TableProps<
       { name: "id"; type: AttributeType.STRING },
       undefined,
       { id: string },
@@ -120,7 +120,7 @@ staticTest(() => {
   >(true);
 
   type p2 = Materialize<
-    TableProperties<
+    TableProps<
       { name: "id"; type: AttributeType.STRING },
       { name: "sk"; type: AttributeType.STRING },
       { id: string; sk: string },
@@ -140,7 +140,7 @@ staticTest(() => {
   >(true);
 
   type p3 = Materialize<
-    TableProperties<
+    TableProps<
       { name: "id"; type: AttributeType.STRING },
       { name: "sk"; type: AttributeType.NUMBER },
       { id: string; sk: number; age: number },
@@ -159,21 +159,21 @@ staticTest(() => {
     >
   >(true);
 
-  type p4 = TableProperties<
+  type p4 = TableProps<
     { name: "id"; type: AttributeType.STRING },
     { name: "sk"; type: AttributeType.STRING },
     // @ts-expect-error: sk is missing.
     { id: string },
     undefined
   >;
-  type p5 = TableProperties<
+  type p5 = TableProps<
     { name: "id"; type: AttributeType.STRING },
     { name: "sk"; type: AttributeType.STRING },
     // @ts-expect-error: id is missing.
     {},
     undefined
   >;
-  type p6 = TableProperties<
+  type p6 = TableProps<
     { name: "id"; type: AttributeType.STRING },
     undefined,
     // @ts-expect-error: id is missing.
@@ -182,7 +182,7 @@ staticTest(() => {
   >;
 
   type p7 = Materialize<
-    TableProperties<
+    TableProps<
       { name: "id"; type: AttributeType.STRING },
       undefined,
       undefined,
@@ -202,7 +202,7 @@ staticTest(() => {
   >(true);
 });
 
-type TableName<T extends MaterializedTableProperties> = OpaqueType<string, T>;
+type TableName<T extends MaterializedTableProps> = OpaqueType<string, T>;
 
 class Table<
   PartitionKey extends KeyDefinition,
@@ -214,17 +214,15 @@ class Table<
   Stream extends StreamViewType | undefined = undefined,
 > {
   public declare readonly tableName: TableName<
-    Materialize<TableProperties<PartitionKey, SortKey, ItemType, Stream>>
+    Materialize<TableProps<PartitionKey, SortKey, ItemType, Stream>>
   >;
 
   constructor(
-    properties: F.Narrow<
-      TableProperties<PartitionKey, SortKey, ItemType, Stream>
-    >,
+    properties: F.Narrow<TableProps<PartitionKey, SortKey, ItemType, Stream>>,
   ) {}
 }
 
-function command<T extends MaterializedTableProperties>(input: {
+function command<T extends MaterializedTableProps>(input: {
   tableName: TableName<T>;
   item: ToAttributeMap<T["itemType"]>;
 }) {}
@@ -448,7 +446,7 @@ staticTest(() => {
 
 // staticTest(() => {
 //   // eslint-disable-next-line unicorn/consistent-function-scoping
-//   function command<T extends MaterializedTableProperties<any, any>>(input: {
+//   function command<T extends MaterializedTableProps<any, any>>(input: {
 //     tableName: TableName<T>;
 //     item: ToAttributeMap<T["itemType"]>;
 //   }) {}
@@ -456,7 +454,7 @@ staticTest(() => {
 // });
 
 // staticTest(() => {
-//   interface TableProperties2<
+//   interface TableProps2<
 //     PartitionKey extends KeyDefinition,
 //     SortKey extends KeyDefinition | undefined,
 //     ItemType extends AccessPattern<PartitionKey, SortKey> | undefined,
@@ -468,14 +466,14 @@ staticTest(() => {
 //     stream?: Stream;
 //   }
 
-//   // interface MaterializedTableProperties2<ItemType extends DynamodbItem> {
+//   // interface MaterializedTableProps2<ItemType extends DynamodbItem> {
 //   //   partitionKey: keyof ItemType;
 //   //   sortKey: keyof ItemType | never;
 //   //   // itemType: ItemType;
 //   //   stream: StreamViewType | never;
 //   // }
 
-//   type Materialize2<T extends TableProperties2<any, any, any>> = {
+//   type Materialize2<T extends TableProps2<any, any, any>> = {
 //     partitionKey: T["partitionKey"]["name"];
 //     sortKey: T["sortKey"] extends infer SortKey
 //       ? SortKey extends KeyDefinition
@@ -501,7 +499,7 @@ staticTest(() => {
 //   };
 
 //   type t1 = Materialize2<
-//     TableProperties2<
+//     TableProps2<
 //       { name: "id"; type: AttributeType.STRING },
 //       undefined,
 //       undefined,
@@ -509,7 +507,7 @@ staticTest(() => {
 //     >
 //   >;
 //   type t2 = Materialize2<
-//     TableProperties2<
+//     TableProps2<
 //       { name: "id"; type: AttributeType.STRING },
 //       { name: "sk"; type: AttributeType.STRING },
 //       undefined,
@@ -517,7 +515,7 @@ staticTest(() => {
 //     >
 //   >;
 //   type t3 = Materialize2<
-//     TableProperties2<
+//     TableProps2<
 //       { name: "id"; type: AttributeType.STRING },
 //       { name: "sk"; type: AttributeType.STRING },
 //       undefined,
@@ -534,7 +532,7 @@ staticTest(() => {
 //     stream: StreamViewType.NEW_IMAGE,
 //   };
 //   type t4 = Materialize2<
-//     TableProperties2<
+//     TableProps2<
 //       { name: "id"; type: AttributeType.STRING },
 //       { name: "sk"; type: AttributeType.STRING },
 //       { id: string; sk: string; age: number },
@@ -544,7 +542,7 @@ staticTest(() => {
 // });
 
 staticTest(() => {
-  type Event<T extends MaterializedTableProperties> = T["stream"] extends never
+  type Event<T extends MaterializedTableProps> = T["stream"] extends never
     ? never
     : {
         item: T["itemType"];
@@ -554,7 +552,7 @@ staticTest(() => {
       never,
       Event<
         Materialize<
-          TableProperties<
+          TableProps<
             { name: "id"; type: AttributeType.STRING },
             undefined,
             undefined,
@@ -570,7 +568,7 @@ staticTest(() => {
       { item: { id: string } },
       Event<
         Materialize<
-          TableProperties<
+          TableProps<
             { name: "id"; type: AttributeType.STRING },
             undefined,
             undefined,
@@ -586,7 +584,7 @@ staticTest(() => {
       { item: { pk: string; sk: string } },
       Event<
         Materialize<
-          TableProperties<
+          TableProps<
             { name: "pk"; type: AttributeType.STRING },
             { name: "sk"; type: AttributeType.STRING },
             undefined,
@@ -602,7 +600,7 @@ staticTest(() => {
       { item: { pk: "pk"; sk: "sk"; age: number } },
       Event<
         Materialize<
-          TableProperties<
+          TableProps<
             { name: "pk"; type: AttributeType.STRING },
             { name: "sk"; type: AttributeType.STRING },
             { pk: "pk"; sk: "sk"; age: number },
@@ -618,7 +616,7 @@ staticTest(() => {
   typeAssert<
     IsExact<
       Materialize<
-        TableProperties<
+        TableProps<
           { name: "pk"; type: AttributeType.STRING },
           undefined,
           undefined,
@@ -676,7 +674,7 @@ staticTest(() => {
   // >(true);
   // typeAssert<IsExact<AttributeFromKeyDefinition2<undefined>, {}>>(true);
 
-  // // type MatItem<T extends TableProperties<any, any, any, any>> = AccessPattern<
+  // // type MatItem<T extends TableProps<any, any, any, any>> = AccessPattern<
   // //   T["partitionKey"],
   // //   T["sortKey"]
   // // >;
@@ -689,7 +687,7 @@ staticTest(() => {
   //   AttributeFromKeyDefinition3Base<RemoveUndefined<T>>;
 
   // type MatItem<
-  //   T extends TableProperties<
+  //   T extends TableProps<
   //     KeyDefinition,
   //     KeyDefinition | undefined,
   //     any,
@@ -716,7 +714,7 @@ staticTest(() => {
   // >;
 
   // type r = MatItem<
-  //   TableProperties<
+  //   TableProps<
   //     { name: "pk"; type: AttributeType.STRING },
   //     // { name: "sk"; type: AttributeType.STRING },
   //     undefined,
@@ -736,7 +734,7 @@ staticTest(() => {
   // typeAssert<
   //   IsExact<
   //     MatItem<
-  //       TableProperties<
+  //       TableProps<
   //         { name: "pk"; type: AttributeType.STRING },
   //         // { name: "sk"; type: AttributeType.STRING },
   //         undefined,
@@ -753,7 +751,7 @@ staticTest(() => {
   // typeAssert<
   //   IsExact<
   //     MatItem<
-  //       TableProperties<
+  //       TableProps<
   //         { name: "pk"; type: AttributeType.STRING },
   //         { name: "sk"; type: AttributeType.STRING },
   //         undefined,

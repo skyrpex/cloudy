@@ -13,7 +13,7 @@ import { ServiceInputTypes, ServiceOutputTypes } from "../sns-client.js";
 import { staticTest } from "../static-test.js";
 
 export type PublishCommandInput<
-  T extends aws_sns.MaterializedTopicProperties = aws_sns.MaterializedTopicProperties,
+  T extends aws_sns.MaterializedTopicProps = aws_sns.MaterializedTopicProps,
 > = Omit<
   BaseCommandInput,
   | "TopicArn"
@@ -42,7 +42,7 @@ export type PublishCommandInput<
 
 export interface PublishCommandOutput extends BaseCommandOutput {}
 
-export class PublishCommand<T extends aws_sns.MaterializedTopicProperties>
+export class PublishCommand<T extends aws_sns.MaterializedTopicProps>
   implements
     Command<BaseCommandInput, BaseCommandOutput, ResolvedConfiguration>
 {

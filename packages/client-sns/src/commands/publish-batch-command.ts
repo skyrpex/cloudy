@@ -14,7 +14,7 @@ import { ServiceInputTypes, ServiceOutputTypes } from "../sns-client.js";
 import { staticTest } from "../static-test.js";
 
 export type PublishBatchRequestEntry<
-  T extends aws_sns.MaterializedTopicProperties,
+  T extends aws_sns.MaterializedTopicProps,
   // > = BasePublishBatchRequestEntry & {
 > = {
   Id: string;
@@ -36,7 +36,7 @@ export type PublishBatchRequestEntry<
       });
 
 export type PublishBatchCommandInput<
-  T extends aws_sns.MaterializedTopicProperties = aws_sns.MaterializedTopicProperties,
+  T extends aws_sns.MaterializedTopicProps = aws_sns.MaterializedTopicProps,
 > = Omit<BaseCommandInput, "TopicArn" | "PublishBatchRequestEntries"> & {
   TopicArn: aws_sns.TopicArn<T>;
   PublishBatchRequestEntries: PublishBatchRequestEntry<T>[];
@@ -44,7 +44,7 @@ export type PublishBatchCommandInput<
 
 export interface PublishBatchCommandOutput extends BaseCommandOutput {}
 
-export class PublishBatchCommand<T extends aws_sns.MaterializedTopicProperties>
+export class PublishBatchCommand<T extends aws_sns.MaterializedTopicProps>
   implements
     Command<BaseCommandInput, BaseCommandOutput, ResolvedConfiguration>
 {

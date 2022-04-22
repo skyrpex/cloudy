@@ -16,7 +16,7 @@ type MessageAttribute =
       BinaryValue: ValueType<Uint8Array>;
     };
 
-export interface TopicProperties extends cdk.aws_sns.TopicProps {
+export interface TopicProps extends cdk.aws_sns.TopicProps {
   // fifo?: boolean;
   messageType?: ValueType<string>;
   messageGroupIdType?: ValueType<string>;
@@ -26,7 +26,7 @@ export interface TopicProperties extends cdk.aws_sns.TopicProps {
   };
 }
 
-export interface MaterializedTopicProperties {
+export interface MaterializedTopicProps {
   message: string;
   messageGroupId: string | never;
   messageDeduplicationId: string | never;
@@ -45,10 +45,7 @@ export interface MaterializedTopicProperties {
     | never;
 }
 
-export type TopicArn<T extends MaterializedTopicProperties> = OpaqueType<
-  string,
-  T
->;
+export type TopicArn<T extends MaterializedTopicProps> = OpaqueType<string, T>;
 
 type RecursivelyMapValueType<T> = T extends ValueType<infer V>
   ? V
@@ -61,7 +58,7 @@ type DefaultTo<T, Default> = T extends ValueType<infer U>
     ? Default
     : T
   : Default;
-export type MaterializeTopicProperties<T extends TopicProperties> =
+export type MaterializeTopicProps<T extends TopicProps> =
   RecursivelyMapValueType<{
     message: DefaultTo<T["messageType"], string>;
     messageGroupId: T["fifo"] extends true
@@ -77,14 +74,14 @@ export type MaterializeTopicProperties<T extends TopicProperties> =
       : never;
   }>;
 
-export class Topic<T extends TopicProperties = TopicProperties> extends cdk
-  .aws_sns.Topic {
-  public declare readonly topicArn: TopicArn<MaterializeTopicProperties<T>>;
+export class Topic<T extends TopicProps = TopicProps> extends cdk.aws_sns
+  .Topic {
+  public declare readonly topicArn: TopicArn<MaterializeTopicProps<T>>;
 
   public constructor(
     scope: Construct,
     id: string,
-    private readonly properties?: F.Exact<T, TopicProperties>,
+    private readonly properties?: F.Exact<T, TopicProps>,
   ) {
     super(scope, id, {
       topicName: properties?.fifo ? buildFifoName(scope, id) : undefined,
@@ -100,7 +97,7 @@ export class Topic<T extends TopicProperties = TopicProperties> extends cdk
     // subscription: ITopicSubscription<Message> | cdk.aws_sns.ITopicSubscription,
     // subscription: ITopicSubscription<Message>,
     // subscription: ITopicSubscription<MapValueType<T["messageType"], string>>,
-    subscription: ITopicSubscription<MaterializeTopicProperties<T>["message"]>,
+    subscription: ITopicSubscription<MaterializeTopicProps<T>["message"]>,
   ) {
     return super.addSubscription(subscription);
   }

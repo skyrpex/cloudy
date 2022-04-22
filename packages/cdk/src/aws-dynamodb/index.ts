@@ -3,9 +3,9 @@ export * from "aws-cdk-lib/aws-dynamodb";
 
 export {
   type DynamodbItem,
-  type MaterializeTableProperties,
-  type MaterializedTableProperties,
+  type MaterializeTableProps,
+  type MaterializedTableProps,
   Table,
   type TableName,
-  type TableProperties,
+  type TableProps,
 } from "./table.js";

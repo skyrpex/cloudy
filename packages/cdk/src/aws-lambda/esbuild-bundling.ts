@@ -33,7 +33,7 @@ const findDepsLockFilePath = (input: string) => {
 //   return `node${match[1]}`
 // }
 
-export interface EsbuildBundlingProperties {
+export interface EsbuildBundlingProps {
   // input: string
   // stdin: esbuild.StdinOptions
   stdin: {
@@ -48,7 +48,7 @@ export interface EsbuildBundlingProperties {
 }
 
 export class EsbuildBundling {
-  public static bundle(options: EsbuildBundlingProperties): AssetCode {
+  public static bundle(options: EsbuildBundlingProps): AssetCode {
     // const depsLockFilePath = findDepsLockFilePath(options.input)
     const depsLockFilePath = findDepsLockFilePath(options.stdin.resolveDir);
     // console.log({ depsLockFilePath })
@@ -63,7 +63,7 @@ export class EsbuildBundling {
 
   public readonly local: cdk.ILocalBundling;
 
-  constructor(private readonly properties: EsbuildBundlingProperties) {
+  constructor(private readonly properties: EsbuildBundlingProps) {
     this.image = cdk.DockerImage.fromRegistry("dummy");
     this.local = {
       tryBundle(outputDirectory) {

@@ -6,9 +6,9 @@ export {
   type ITopicSubscription,
 } from "./subscription.js";
 export {
-  type MaterializeTopicProperties,
-  type MaterializedTopicProperties,
+  type MaterializeTopicProps,
+  type MaterializedTopicProps,
   Topic,
   type TopicArn,
-  type TopicProperties,
+  type TopicProps,
 } from "./topic.js";

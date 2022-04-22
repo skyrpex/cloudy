@@ -2,9 +2,9 @@
 export * from "aws-cdk-lib/aws-sqs";
 
 export {
-  type MaterializeQueueProperties,
-  type MaterializedQueueProperties,
+  type MaterializeQueueProps,
+  type MaterializedQueueProps,
   Queue,
-  type QueueProperties,
+  type QueueProps,
   type QueueUrl,
 } from "./queue.js";

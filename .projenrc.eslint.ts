@@ -177,6 +177,14 @@ export class Eslint extends Component {
         "error",
         { devDependencies: options?.devFiles ?? undefined },
       ],
+      "unicorn/prevent-abbreviations": [
+        "error",
+        {
+          replacements: {
+            props: false,
+          },
+        },
+      ],
     };
 
     new JsonFile(project, ".eslintrc.json", {

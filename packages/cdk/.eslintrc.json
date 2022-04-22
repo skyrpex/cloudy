@@ -64,6 +64,14 @@
           "**/*.test.ts"
         ]
       }
+    ],
+    "unicorn/prevent-abbreviations": [
+      "error",
+      {
+        "replacements": {
+          "props": false
+        }
+      }
     ]
   }
 }

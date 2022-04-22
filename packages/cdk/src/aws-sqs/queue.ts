@@ -17,7 +17,7 @@ type MessageAttribute =
       BinaryValue: ValueType<Uint8Array>;
     };
 
-export interface QueueProperties extends aws_sqs.QueueProps {
+export interface QueueProps extends aws_sqs.QueueProps {
   fifo?: boolean;
   messageType?: ValueType<string>;
   messageGroupIdType?: ValueType<string>;
@@ -27,7 +27,7 @@ export interface QueueProperties extends aws_sqs.QueueProps {
   };
 }
 
-export interface MaterializedQueueProperties {
+export interface MaterializedQueueProps {
   fifo: boolean;
   message: string;
   messageGroupId: string | never;
@@ -57,7 +57,7 @@ type DefaultTo<T, Default> = T extends ValueType<infer U>
     ? Default
     : T
   : Default;
-export type MaterializeQueueProperties<T extends QueueProperties> =
+export type MaterializeQueueProps<T extends QueueProps> =
   RecursivelyMapValueType<{
     fifo: DefaultTo<T["fifo"], false>;
     message: DefaultTo<T["messageType"], string>;
@@ -74,20 +74,15 @@ export type MaterializeQueueProperties<T extends QueueProperties> =
       : never;
   }>;
 
-export type QueueUrl<T extends MaterializedQueueProperties> = OpaqueType<
-  string,
-  T
->;
+export type QueueUrl<T extends MaterializedQueueProps> = OpaqueType<string, T>;
 
-export class Queue<
-  T extends QueueProperties = QueueProperties,
-> extends aws_sqs.Queue {
-  public declare readonly queueUrl: QueueUrl<MaterializeQueueProperties<T>>;
+export class Queue<T extends QueueProps = QueueProps> extends aws_sqs.Queue {
+  public declare readonly queueUrl: QueueUrl<MaterializeQueueProps<T>>;
 
   public constructor(
     scope: Construct,
     id: string,
-    properties?: F.Exact<T, QueueProperties>,
+    properties?: F.Exact<T, QueueProps>,
   ) {
     super(scope, id, properties as aws_sqs.QueueProps);
   }

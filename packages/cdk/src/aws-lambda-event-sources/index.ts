@@ -10,18 +10,18 @@ import { SqsEventType } from "./sqs.js";
 
 export {
   DynamoEventSource,
-  type DynamoEventSourceProperties,
+  type DynamoEventSourceProps,
   type DynamoStreamEventType,
   type TableStreamViewType,
 } from "./dynamodb.js";
 export {
   SnsEventSource,
-  type SnsEventSourceProperties,
+  type SnsEventSourceProps,
   type SnsEventType,
 } from "./sns.js";
 export {
   SqsEventSource,
-  type SqsEventSourceProperties,
+  type SqsEventSourceProps,
   type SqsEventType,
 } from "./sqs.js";
 

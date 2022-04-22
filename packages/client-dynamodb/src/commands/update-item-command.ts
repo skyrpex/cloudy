@@ -8,7 +8,7 @@ import { Command } from "@aws-sdk/smithy-client";
 import { Handler, MiddlewareStack } from "@aws-sdk/types";
 
 import { aws_dynamodb } from "@cloudy-ts/cdk";
-import { MaterializedTableProperties } from "@cloudy-ts/cdk/src/aws-dynamodb";
+import { MaterializedTableProps } from "@cloudy-ts/cdk/src/aws-dynamodb";
 import { CommandProxy } from "@cloudy-ts/util-command-proxy";
 import {
   ExpressionAttributeNames,
@@ -21,12 +21,12 @@ import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js";
 
 // type TableItem<T extends aws_dynamodb.TableName<any, any>> = T extends aws_dynamodb.TableName<infer Item, any> ? Item : never
 
-type KeyOfItem<T extends MaterializedTableProperties> = {
+type KeyOfItem<T extends MaterializedTableProps> = {
   [name in T["partitionKey"] | T["sortKey"]]: T["itemType"][name];
 };
 
 export type UpdateItemCommandInput<
-  T extends aws_dynamodb.MaterializedTableProperties = aws_dynamodb.MaterializedTableProperties,
+  T extends aws_dynamodb.MaterializedTableProps = aws_dynamodb.MaterializedTableProps,
   UpdateExpression extends string = string,
   ConditionExpression extends string = string,
 > = Omit<BaseCommandInput, "Key"> & {
@@ -49,7 +49,7 @@ export type UpdateItemCommandInput<
 export interface UpdateItemCommandOutput extends BaseCommandOutput {}
 
 export class UpdateItemCommand<
-  T extends aws_dynamodb.MaterializedTableProperties,
+  T extends aws_dynamodb.MaterializedTableProps,
   UpdateExpression extends string,
   ConditionExpression extends string,
 > implements
