@@ -35,11 +35,7 @@ export class Function extends BaseFunction {
   constructor(scope: Construct, id: string, properties: FunctionProps) {
     super(scope, id, {
       ...properties,
-      // TODO: Find a Code that crashes when trying to synthesize... Maybe a
-      // docker image that throws or doesn't exist, or an impossible S3 asset.
-      // The problem right now is that whatever we pass to the constructor gets
-      // processed. Maybe there's a method or property that only gets called on
-      // the synthesizing process.
+      // Use a dummy code object until we can get the code from the properties.
       code: Code.fromInline(" "),
       handler: "index.handler",
       runtime: Runtime.NODEJS_14_X,
@@ -68,7 +64,40 @@ export class Function extends BaseFunction {
       };
       code.bindToResource(resource);
     });
+
     const appDependencies = AsyncDependenciesContext.of(scope);
     appDependencies.addAsyncDependency(promise);
+
+    let codeIsResolved = false;
+    let codeFailure: unknown | undefined;
+    promise.catch((error) => {
+      codeFailure = error;
+    });
+    promise.finally(() => {
+      codeIsResolved = true;
+    });
+    this.node.addValidation({
+      validate() {
+        if (!codeIsResolved) {
+          return [
+            "The code property must be resolved before the function can be deployed. Try calling `await cloudy.waitForAsyncDependencies(app)` before synthesizing, or `await cloudy.synth(app)`.",
+          ];
+        }
+
+        if (codeFailure) {
+          if (codeFailure instanceof Error) {
+            return [codeFailure.message];
+          }
+
+          if (typeof codeFailure === "string") {
+            return [codeFailure];
+          }
+
+          return ["Unknown error while resolving code."];
+        }
+
+        return [];
+      },
+    });
   }
 }
