@@ -45,8 +45,6 @@ export class Function extends BaseFunction {
       runtime: Runtime.NODEJS_14_X,
     });
 
-    const appDependencies = AsyncDependenciesContext.of(scope);
-
     const resource = this.node.children.find(
       (children): children is CfnFunction => children instanceof CfnFunction,
     );
@@ -70,6 +68,7 @@ export class Function extends BaseFunction {
       };
       code.bindToResource(resource);
     });
+    const appDependencies = AsyncDependenciesContext.of(scope);
     appDependencies.addAsyncDependency(promise);
   }
 }
