@@ -39,8 +39,6 @@ jspm_packages/
 !/.editorconfig
 cdk.out/
 dist/
-!/.commitlintrc.json
-!/.lintstagedrc.json
 !/turbo.json
 !/tsconfig.json
 .turbo/
