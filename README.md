@@ -1,6 +1,8 @@
 # Cloudy
 
-![Cloudy](docs/cloudy.svg)
+<p align="center">
+<img src="docs/cloudy.svg" height="120">
+</p>
 
 > These packages aren't yet published on npm. This is still highly experimental.
 > Need to figure out a few things before releasing the first version:
@@ -23,19 +25,19 @@ Cloudy is a set of constructs for the [AWS Cloud Development Kit](https://github
 ### Publishing typed messages on a topic using an inline lambda function
 
 ```ts
-import * as cdk from "aws-cdk-lib"
-import * as cloudy from "@cloudy-ts/cdk"
-import { SNSClient, PublishCommand } from "@cloudy-ts/client-sns"
+import * as cdk from "aws-cdk-lib";
+import * as cloudy from "@cloudy-ts/cdk";
+import { SNSClient, PublishCommand } from "@cloudy-ts/client-sns";
 
-const app = new cdk.App()
+const app = new cdk.App();
 
-const stack = new cdk.Stack(app, "cloudy-playground")
+const stack = new cdk.Stack(app, "cloudy-playground");
 
 const topic = new cloudy.aws_sns.Topic(stack, "topic").withMessageType<
   "Hello" | "World!"
->()
+>();
 
-const sns = new SNSClient({})
+const sns = new SNSClient({});
 const publishMessage = new cloudy.aws_lambda.Function(stack, "function", {
   async handler() {
     await sns.send(
@@ -43,16 +45,16 @@ const publishMessage = new cloudy.aws_lambda.Function(stack, "function", {
         TopicArn: topic.topicArn,
         Message: "Hello",
       }),
-    )
+    );
     await sns.send(
       new PublishCommand({
         TopicArn: topic.topicArn,
         Message: "World!",
       }),
-    )
+    );
   },
-})
-topic.grantPublish(publishMessage)
+});
+topic.grantPublish(publishMessage);
 ```
 
 ## Explanation
