@@ -184,23 +184,6 @@ cdk.testTask.exec("vitest run --coverage");
 cdk.addTask("dev").exec("vitest");
 
 ///////////////////////////////////////////////////////////////////////////////
-const playground = new WorkspaceProject(project, {
-  name: "@cloudy-ts/playground",
-  outdir: "playground",
-  deps: [
-    "aws-cdk",
-    "aws-cdk-lib",
-    "constructs",
-    "@cloudy-ts/cdk",
-    "@cloudy-ts/client-dynamodb",
-    "@cloudy-ts/client-sns",
-    "@cloudy-ts/esm-node",
-  ],
-  build: false,
-});
-playground.eslint?.addIgnorePattern("cdk.out/");
-
-///////////////////////////////////////////////////////////////////////////////
 const examples = new WorkspaceProject(project, {
   name: "@cloudy-ts/examples",
   outdir: "examples",
