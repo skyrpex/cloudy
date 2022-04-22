@@ -85,3 +85,33 @@ app.synth();
 // ...or: await app.waitAndSynth();
 // ...or: await app.synthAfterDependencies();
 ```
+
+## Other Thoughts
+
+Either way, we could also provide helpers for testing. For example, instead of:
+
+```ts
+import * as cdk from "aws-cdk-lib";
+const app = new cdk.App();
+const stack = new cdk.Stack(app, "Stack");
+const template = cdk.assertions.Template.fromStack(stack);
+template.hasResourceProperties("AWS::Lambda::Function", {
+  Handler: "index.handler",
+  Runtime: cdk.aws_lambda.Runtime.NODEJS_14_X.name,
+});
+```
+
+We could use a promisified method:
+
+```ts
+import * as cloudy from "@cloudy-ts/cdk";
+import * as cdk from "aws-cdk-lib";
+const app = new cdk.App();
+const stack = new cdk.Stack(app, "Stack");
+// Waits for dependencies and synthesizes.
+const template = await cloudy.assertions.Template.fromStack(stack);
+template.hasResourceProperties("AWS::Lambda::Function", {
+  Handler: "index.handler",
+  Runtime: cdk.aws_lambda.Runtime.NODEJS_14_X.name,
+});
+```

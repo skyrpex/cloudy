@@ -1,5 +1,4 @@
 import * as cdk from "aws-cdk-lib";
-import { Template } from "aws-cdk-lib/assertions";
 import { expect, test } from "vitest";
 
 import * as cloudy from "../../src/index.js";
@@ -17,7 +16,7 @@ test("synthesizes correctly after waiting for the async dependencies", async () 
 
   await cloudy.waitForAsyncDependencies(app);
 
-  const template = Template.fromStack(stack);
+  const template = cdk.assertions.Template.fromStack(stack);
   template.hasResourceProperties("AWS::Lambda::Function", {
     Handler: "index.handler",
     Runtime: cdk.aws_lambda.Runtime.NODEJS_14_X.name,
@@ -67,7 +66,7 @@ test("synthesizes correctly even without calling to waitForAsyncDependencies dir
 
   await new Promise((resolve) => setTimeout(resolve, 1));
 
-  const template = Template.fromStack(stack);
+  const template = cdk.assertions.Template.fromStack(stack);
   template.hasResourceProperties("AWS::Lambda::Function", {
     Handler: "index.handler",
     Runtime: cdk.aws_lambda.Runtime.NODEJS_14_X.name,
