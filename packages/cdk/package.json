@@ -2,6 +2,7 @@
   "name": "@cloudy-ts/cdk",
   "scripts": {
     "build": "npx projen build",
+    "dev": "npx projen dev",
     "lint": "npx projen lint",
     "test": "npx projen test"
   },
@@ -11,6 +12,7 @@
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
     "aws-cdk-lib": "^2.20.0",
+    "c8": "^7.11.2",
     "constructs": "^10.0.122",
     "eslint": "^8.13.0",
     "eslint-import-resolver-node": "^0.3.6",
@@ -40,10 +42,12 @@
   },
   "license": "Apache-2.0",
   "publishConfig": {
+    "main": "./dist/index.cjs",
     "module": "./dist/index.mjs",
     "types": "./dist/index.d.ts",
     "exports": {
       ".": {
+        "require": "./dist/index.cjs",
         "import": "./dist/index.mjs",
         "types": "./dist/index.d.ts"
       }

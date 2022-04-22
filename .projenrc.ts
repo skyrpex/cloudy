@@ -15,27 +15,14 @@ const project = new DefaultNodeProject({
   name: "@cloudy-ts/monorepo",
   defaultReleaseBranch: "main",
   packageManager: NodePackageManager.PNPM,
-  // packageManager: NodePackageManager.YARN,
-  eslint: {
-    devFiles: ["**/build.config.ts"],
-  },
   github: false,
 });
 
-// project.addGitIgnore("/.yarn/cache/*");
-
-// // Use Cloudy's esm-node to run projen.
-// project.addDevDeps("@cloudy-ts/esm-node");
-// project.defaultTask?.exec(`esm-node .projenrc.ts`);
 // Use vite-node to run projen.
 project.addDevDeps("vite-node");
 project.defaultTask?.exec(`vite-node .projenrc.ts`);
 
-// Use Cloudy's ESLint plugin.
-project.addDevDeps("@cloudy-ts/eslint-plugin");
-project.eslint.addExtends("plugin:@cloudy-ts/recommended");
-
-// Ignore CDK and unbuild outputs.
+// Ignore CDK and build outputs.
 project.gitignore.exclude("cdk.out/", "dist/");
 project.prettier?.ignoreFile?.addPatterns("cdk.out/", "dist/");
 project.eslint.ignoreFile.addPatterns("cdk.out/", "dist/");
@@ -192,8 +179,9 @@ const cdk = new WorkspaceProject(project, {
 });
 
 // Test.
-cdk.addDevDeps("vitest");
-cdk.testTask.exec("vitest --run");
+cdk.addDevDeps("vitest", "c8");
+cdk.testTask.exec("vitest run --coverage");
+cdk.addTask("dev").exec("vitest");
 
 ///////////////////////////////////////////////////////////////////////////////
 const playground = new WorkspaceProject(project, {

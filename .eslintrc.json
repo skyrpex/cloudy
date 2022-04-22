@@ -14,9 +14,9 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:import/recommended",
     "plugin:import/typescript",
+    "plugin:@cloudy-ts/recommended",
     "prettier",
-    "plugin:prettier/recommended",
-    "plugin:@cloudy-ts/recommended"
+    "plugin:prettier/recommended"
   ],
   "plugins": [
     "prettier"
@@ -75,8 +75,7 @@
       {
         "devDependencies": [
           "**/.projenrc*.ts",
-          "**/*.test.ts",
-          "**/build.config.ts"
+          "**/*.test.ts"
         ]
       }
     ],

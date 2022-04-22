@@ -98,6 +98,14 @@
         }
       ]
     },
+    "lint": {
+      "name": "lint",
+      "steps": [
+        {
+          "exec": "eslint --ext ts ."
+        }
+      ]
+    },
     "package": {
       "name": "package",
       "description": "Creates the distribution package",

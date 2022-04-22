@@ -135,6 +135,10 @@ export class Eslint extends Component {
     this.addIgnorePattern("!.*.ts");
     this.addIgnorePattern("node_modules/");
 
+    project.addTask("lint", {
+      exec: "eslint --ext ts .",
+    });
+
     project.addDevDeps(
       "eslint",
       "@typescript-eslint/eslint-plugin",
@@ -143,6 +147,7 @@ export class Eslint extends Component {
       "eslint-import-resolver-typescript",
       "eslint-plugin-import",
       "eslint-plugin-unicorn",
+      "@cloudy-ts/eslint-plugin",
     );
 
     this.addExtends(
@@ -150,6 +155,7 @@ export class Eslint extends Component {
       "plugin:@typescript-eslint/recommended",
       "plugin:import/recommended",
       "plugin:import/typescript",
+      "plugin:@cloudy-ts/recommended",
     );
 
     // exclude some files
