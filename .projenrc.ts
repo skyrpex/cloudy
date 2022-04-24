@@ -179,7 +179,7 @@ const examples = new WorkspaceProject(project, {
     "@cloudy-ts/cdk",
     "@cloudy-ts/client-dynamodb",
     "@cloudy-ts/client-sns",
-    "@cloudy-ts/esm-node",
+    "cloudy-node",
   ],
   devDeps: ["typescript"],
   build: false,
@@ -206,7 +206,7 @@ for (const example of [
 
   new JsonFile(examples, `src/${example}/cdk.json`, {
     obj: {
-      app: "pnpx esm-node index.ts",
+      app: "pnpx cloudy-node index.ts",
     },
   });
 }

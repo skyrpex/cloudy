@@ -8,7 +8,7 @@
     "@cloudy-ts/eslint-plugin": "*",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
-    "eslint": "^8.13.0",
+    "eslint": "^8.14.0",
     "eslint-import-resolver-node": "^0.3.6",
     "eslint-import-resolver-typescript": "^2.7.1",
     "eslint-plugin-import": "^2.26.0",
@@ -19,10 +19,10 @@
     "@cloudy-ts/cdk": "workspace:^0.0.0",
     "@cloudy-ts/client-dynamodb": "workspace:^0.0.0",
     "@cloudy-ts/client-sns": "workspace:^0.0.0",
-    "@cloudy-ts/esm-node": "*",
-    "aws-cdk": "^2.21.0",
-    "aws-cdk-lib": "^2.21.0",
-    "constructs": "^10.0.122"
+    "aws-cdk": "^2.21.1",
+    "aws-cdk-lib": "^2.21.1",
+    "cloudy-node": "*",
+    "constructs": "^10.0.124"
   },
   "engines": {
     "node": "^14.13.1 || >=16.0.0"

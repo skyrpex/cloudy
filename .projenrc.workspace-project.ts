@@ -124,12 +124,12 @@ export class WorkspaceProject extends NodeProject {
     }
 
     if (options.ava) {
-      this.addDevDeps("ava", "@cloudy-ts/esm-node");
+      this.addDevDeps("ava", "cloudy-node");
       this.package.addField("ava", {
         extensions: {
           ts: "module",
         },
-        nodeArguments: ["--loader=@cloudy-ts/esm-node"],
+        nodeArguments: ["--loader=cloudy-node"],
         files: ["**/*.test.ts"],
         failWithoutAssertions: false,
       });

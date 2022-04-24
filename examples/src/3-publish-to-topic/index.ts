@@ -41,6 +41,10 @@ const publishMessage = new cdk.aws_lambda.CallbackFunction(
           },
         }),
       );
+
+      return {
+        message: "published a message",
+      };
     },
   },
 );
