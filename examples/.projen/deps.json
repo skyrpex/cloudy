@@ -49,15 +49,15 @@
       "type": "runtime"
     },
     {
-      "name": "@cloudy-ts/esm-node",
-      "type": "runtime"
-    },
-    {
       "name": "aws-cdk",
       "type": "runtime"
     },
     {
       "name": "aws-cdk-lib",
+      "type": "runtime"
+    },
+    {
+      "name": "cloudy-node",
       "type": "runtime"
     },
     {
