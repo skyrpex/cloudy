@@ -1,5 +1,9 @@
 import { SampleDir, SampleFile, TextFile } from "projen";
-import { NodeProject, NodeProjectOptions } from "projen/lib/javascript";
+import {
+  NodeProject,
+  NodeProjectOptions,
+  TrailingComma,
+} from "projen/lib/javascript";
 
 import { Eslint } from "./.projenrc.eslint.js";
 import { Tsup, TsupOptions } from "./.projenrc.tsup.js";
@@ -39,6 +43,12 @@ export class WorkspaceProject extends NodeProject {
       release: false,
       stale: false,
       projenDevDependency: false,
+      prettier: true,
+      prettierOptions: {
+        settings: {
+          trailingComma: TrailingComma.ALL,
+        },
+      },
       ...options,
       readme: {
         contents: [
@@ -88,6 +98,7 @@ export class WorkspaceProject extends NodeProject {
 
     if (options.lint !== false) {
       this.eslint = new Eslint(this, {
+        prettier: options.prettier ?? true,
         devFiles: ["**/*.test.ts"],
       });
     }

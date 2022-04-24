@@ -30,6 +30,8 @@ jspm_packages/
 .yarn-integrity
 .cache
 !/.projenrc.js
+!/.prettierignore
+!/.prettierrc.json
 !/.eslintignore
 !/.eslintrc.json
 !/index.ts

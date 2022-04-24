@@ -27,10 +27,7 @@ export class DefaultNodeProject extends NodeProject {
       prettier: true,
       prettierOptions: {
         settings: {
-          tabWidth: 2,
           trailingComma: TrailingComma.ALL,
-          // semi: false,
-          semi: true,
         },
       },
       projenrcJs: false,
@@ -48,6 +45,7 @@ export class DefaultNodeProject extends NodeProject {
     this.prettier?.ignoreFile?.addPatterns("node_modules/");
 
     this.eslint = new Eslint(this, {
+      prettier: options.prettier ?? true,
       pathGroups: this.packageScope
         ? [
             {

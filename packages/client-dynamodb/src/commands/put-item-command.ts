@@ -8,7 +8,6 @@ import {
 } from "@aws-sdk/client-dynamodb";
 import { Command } from "@aws-sdk/smithy-client";
 import { Handler, MetadataBearer, MiddlewareStack } from "@aws-sdk/types";
-
 import { aws_dynamodb, OpaqueType, ValueType } from "@cloudy-ts/cdk";
 import {
   DynamodbItem,

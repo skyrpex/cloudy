@@ -75,7 +75,12 @@
     },
     "compile": {
       "name": "compile",
-      "description": "Only compile"
+      "description": "Only compile",
+      "steps": [
+        {
+          "exec": "turbo run lint:fix test build"
+        }
+      ]
     },
     "default": {
       "name": "default",
@@ -98,11 +103,35 @@
         }
       ]
     },
+    "format": {
+      "name": "format",
+      "steps": [
+        {
+          "exec": "prettier --check '**/*.ts'"
+        }
+      ]
+    },
+    "format:fix": {
+      "name": "format:fix",
+      "steps": [
+        {
+          "exec": "prettier --write '**/*.ts'"
+        }
+      ]
+    },
     "lint": {
       "name": "lint",
       "steps": [
         {
           "exec": "eslint --ext ts ."
+        }
+      ]
+    },
+    "lint:fix": {
+      "name": "lint:fix",
+      "steps": [
+        {
+          "exec": "eslint --ext ts . --fix"
         }
       ]
     },
@@ -156,7 +185,12 @@
     },
     "test": {
       "name": "test",
-      "description": "Run tests"
+      "description": "Run tests",
+      "steps": [
+        {
+          "exec": "turbo run lint:fix test"
+        }
+      ]
     },
     "unbump": {
       "name": "unbump",

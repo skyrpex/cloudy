@@ -1,3 +1,4 @@
+import { JsonEncoded } from "@cloudy-ts/json-codec";
 import { IFunction as IBaseFunction } from "aws-cdk-lib/aws-lambda";
 import {
   SnsEventSource as BaseSnsEventSource,
@@ -5,8 +6,6 @@ import {
 } from "aws-cdk-lib/aws-lambda-event-sources";
 import { Construct } from "constructs";
 import { Union } from "ts-toolbelt";
-
-import { JsonEncoded } from "@cloudy-ts/json-codec";
 
 import { BaseEventSource, IFunction } from "../aws-lambda/index.js";
 import { MaterializeTopicProps, Topic } from "../aws-sns/topic.js";
