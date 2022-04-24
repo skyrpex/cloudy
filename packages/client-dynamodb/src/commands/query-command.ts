@@ -8,7 +8,6 @@ import {
 } from "@aws-sdk/client-dynamodb";
 import { Command } from "@aws-sdk/smithy-client";
 import { Handler, MiddlewareStack } from "@aws-sdk/types";
-
 import { aws_dynamodb } from "@cloudy-ts/cdk";
 import { CommandProxy } from "@cloudy-ts/util-command-proxy";
 import {
