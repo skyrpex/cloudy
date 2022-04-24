@@ -44,7 +44,7 @@ export class AsyncDependenciesContext {
     const root = node.node.root;
     if (!(root instanceof App)) {
       throw new TypeError(
-        "The root construct must be an instance of [cdk.App]."
+        "The root construct must be an instance of [cdk.App].",
       );
     }
 

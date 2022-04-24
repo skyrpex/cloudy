@@ -95,7 +95,7 @@ type ParseConditionExpressionValues<Text extends string | undefined> = Extract<
 type ParsePrefixedString<
   Prefix extends string,
   Text extends string | undefined = undefined,
-  Names extends string | undefined = undefined
+  Names extends string | undefined = undefined,
 > = undefined | "" extends Text
   ? Names
   : Text extends `${Prefix}${infer Tail}`
@@ -113,7 +113,7 @@ type ParsePrefixedString<
 
 type Skip<
   S extends string,
-  Char extends string | number
+  Char extends string | number,
 > = S extends `${Char}${infer Tail}`
   ? Skip<Tail, Char>
   : S extends `${Char}`
@@ -125,7 +125,7 @@ type Skip<
 type Read<
   S extends string,
   Char extends string | number,
-  Accum extends string = ""
+  Accum extends string = "",
 > = S extends `${infer C}${infer rest}`
   ? C extends Char
     ? Read<rest, Char, `${Accum}${C}`>

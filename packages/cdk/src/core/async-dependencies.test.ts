@@ -9,7 +9,7 @@ test("synthesizes correctly after waiting for [waitForAsyncDependencies]", async
   const stack = new cdk.Stack(app, "Stack");
   new Function(stack, "Function", {
     code: cdk.aws_lambda.Code.fromInline(
-      "export function handler() { return 'HELLO WORLD'; }"
+      "export function handler() { return 'HELLO WORLD'; }",
     ),
     handler: "index.handler",
     runtime: cdk.aws_lambda.Runtime.NODEJS_14_X,
@@ -32,7 +32,7 @@ test("throws when attempting to synthesize before waiting for [waitForAsyncDepen
   const stack = new cdk.Stack(app, "Stack");
   new Function(stack, "Function", {
     code: cdk.aws_lambda.Code.fromInline(
-      "export function handler() { return 'HELLO WORLD'; }"
+      "export function handler() { return 'HELLO WORLD'; }",
     ),
     handler: "index.handler",
     runtime: cdk.aws_lambda.Runtime.NODEJS_14_X,
@@ -62,7 +62,7 @@ test("synthesizes correctly even without calling to [waitForAsyncDependencies] d
   const stack = new cdk.Stack(app, "Test");
   new Function(stack, "RaceCondition", {
     code: cdk.aws_lambda.Code.fromInline(
-      "export function handler() { return 'HELLO WORLD'; }"
+      "export function handler() { return 'HELLO WORLD'; }",
     ),
     handler: "index.handler",
     runtime: cdk.aws_lambda.Runtime.NODEJS_14_X,
@@ -83,7 +83,7 @@ test("[synth] waits and synthesizes", async () => {
   const stack = new cdk.Stack(app, "Test");
   new Function(stack, "RaceCondition", {
     code: cdk.aws_lambda.Code.fromInline(
-      "export function handler() { return 'HELLO WORLD'; }"
+      "export function handler() { return 'HELLO WORLD'; }",
     ),
     handler: "index.handler",
     runtime: cdk.aws_lambda.Runtime.NODEJS_14_X,

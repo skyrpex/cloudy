@@ -27,10 +27,7 @@ export class DefaultNodeProject extends NodeProject {
       prettier: true,
       prettierOptions: {
         settings: {
-          tabWidth: 2,
           trailingComma: TrailingComma.ALL,
-          // semi: false,
-          semi: true,
         },
       },
       projenrcJs: false,

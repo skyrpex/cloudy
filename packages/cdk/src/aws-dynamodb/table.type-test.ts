@@ -49,7 +49,7 @@ type AttributeFromKeyDefinition<T extends KeyDefinition | undefined> =
 
 type AccessPattern<
   PartitionKey extends KeyDefinition,
-  SortKey extends KeyDefinition | undefined
+  SortKey extends KeyDefinition | undefined,
 > = DynamodbItem &
   AttributeFromKeyDefinition<PartitionKey> &
   AttributeFromKeyDefinition<SortKey>;
@@ -58,7 +58,7 @@ interface TableProps<
   PartitionKey extends KeyDefinition,
   SortKey extends KeyDefinition | undefined,
   ItemType extends AccessPattern<PartitionKey, SortKey> | undefined,
-  Stream extends StreamViewType | undefined
+  Stream extends StreamViewType | undefined,
 > extends TableProps {
   partitionKey: PartitionKey;
   sortKey?: SortKey;
@@ -211,14 +211,14 @@ class Table<
     PartitionKey,
     SortKey
   >,
-  Stream extends StreamViewType | undefined = undefined
+  Stream extends StreamViewType | undefined = undefined,
 > {
   public declare readonly tableName: TableName<
     Materialize<TableProps<PartitionKey, SortKey, ItemType, Stream>>
   >;
 
   constructor(
-    properties: F.Narrow<TableProps<PartitionKey, SortKey, ItemType, Stream>>
+    properties: F.Narrow<TableProps<PartitionKey, SortKey, ItemType, Stream>>,
   ) {}
 }
 

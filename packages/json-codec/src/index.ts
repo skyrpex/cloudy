@@ -50,7 +50,7 @@ export type JsonEncoded<T extends JsonSerializable = JsonSerializable> =
 export function jsonEncode<T extends JsonSerializable>(
   value: T,
   replacer?: ((key: string, value: any) => any) | undefined,
-  space?: string | number
+  space?: string | number,
 ): JsonEncoded<T>;
 
 /**
@@ -62,13 +62,13 @@ export function jsonEncode<T extends JsonSerializable>(
 export function jsonEncode<T extends JsonSerializable>(
   value: T,
   replacer?: (number | string)[] | undefined,
-  space?: string | number
+  space?: string | number,
 ): JsonEncoded<T>;
 
 export function jsonEncode<T extends JsonSerializable>(
   value: T,
   replacer?: any,
-  space?: string | number | undefined
+  space?: string | number | undefined,
 ): JsonEncoded<T> {
   return JSON.stringify(value, replacer, space) as JsonEncoded<T>;
 }
@@ -88,7 +88,7 @@ export function jsonEncode<T extends JsonSerializable>(
  */
 export function jsonDecode<T extends JsonSerializable>(
   json: JsonEncoded<T>,
-  reviver?: ((this: any, key: string, value: any) => any) | undefined
+  reviver?: ((this: any, key: string, value: any) => any) | undefined,
 ) {
   return JSON.parse(json, reviver) as T;
 }

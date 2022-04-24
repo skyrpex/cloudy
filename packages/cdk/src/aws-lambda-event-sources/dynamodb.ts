@@ -188,7 +188,7 @@ export interface DynamoEventSourceProps extends BaseDynamoEventSourceProps {}
  * Use an Amazon DynamoDB stream as an event source for AWS Lambda.
  */
 export class DynamoEventSource<
-  T extends Table<any, any, any, StreamViewType>
+  T extends Table<any, any, any, StreamViewType>,
 > extends BaseEventSource<DynamoStreamEventType<T>> {
   private readonly source: BaseDynamoEventSource;
 

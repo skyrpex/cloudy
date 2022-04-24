@@ -58,7 +58,7 @@ export class CallbackFunction<InputType, OutputType>
   constructor(
     scope: Construct,
     id: string,
-    properties: CallbackFunctionProps<InputType, OutputType>
+    properties: CallbackFunctionProps<InputType, OutputType>,
   ) {
     const code = codeFromFunction(properties.handler);
 

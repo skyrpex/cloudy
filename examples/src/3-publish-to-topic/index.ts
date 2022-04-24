@@ -39,13 +39,13 @@ const publishMessage = new cdk.aws_lambda.CallbackFunction(
               StringValue: "1",
             },
           },
-        })
+        }),
       );
 
       return {
         message: "published a message",
       };
     },
-  }
+  },
 );
 topic.grantPublish(publishMessage);

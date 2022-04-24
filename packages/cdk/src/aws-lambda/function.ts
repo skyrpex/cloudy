@@ -42,7 +42,7 @@ export class Function extends BaseFunction {
     });
 
     const resource = this.node.children.find(
-      (children): children is CfnFunction => children instanceof CfnFunction
+      (children): children is CfnFunction => children instanceof CfnFunction,
     );
     if (!resource) {
       throw new Error("Resource [CfnFunction] not found");

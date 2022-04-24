@@ -1,5 +1,9 @@
 import { SampleDir, SampleFile, TextFile } from "projen";
-import { NodeProject, NodeProjectOptions } from "projen/lib/javascript";
+import {
+  NodeProject,
+  NodeProjectOptions,
+  TrailingComma,
+} from "projen/lib/javascript";
 
 import { Eslint } from "./.projenrc.eslint.js";
 import { Tsup, TsupOptions } from "./.projenrc.tsup.js";
@@ -40,6 +44,11 @@ export class WorkspaceProject extends NodeProject {
       stale: false,
       projenDevDependency: false,
       prettier: true,
+      prettierOptions: {
+        settings: {
+          trailingComma: TrailingComma.ALL,
+        },
+      },
       ...options,
       readme: {
         contents: [

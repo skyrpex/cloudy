@@ -81,7 +81,7 @@ export class Topic<T extends TopicProps = TopicProps> extends cdk.aws_sns
   public constructor(
     scope: Construct,
     id: string,
-    private readonly properties?: F.Exact<T, TopicProps>
+    private readonly properties?: F.Exact<T, TopicProps>,
   ) {
     super(scope, id, {
       topicName: properties?.fifo ? buildFifoName(scope, id) : undefined,
@@ -97,7 +97,7 @@ export class Topic<T extends TopicProps = TopicProps> extends cdk.aws_sns
     // subscription: ITopicSubscription<Message> | cdk.aws_sns.ITopicSubscription,
     // subscription: ITopicSubscription<Message>,
     // subscription: ITopicSubscription<MapValueType<T["messageType"], string>>,
-    subscription: ITopicSubscription<MaterializeTopicProps<T>["message"]>
+    subscription: ITopicSubscription<MaterializeTopicProps<T>["message"]>,
   ) {
     return super.addSubscription(subscription);
   }

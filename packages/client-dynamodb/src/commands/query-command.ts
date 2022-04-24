@@ -21,7 +21,7 @@ export type QueryCommandInput<
   T extends aws_dynamodb.MaterializedTableProps = aws_dynamodb.MaterializedTableProps,
   FilterExpression extends string = string,
   KeyConditionExpression extends string = string,
-  ProjectionExpression extends string = string
+  ProjectionExpression extends string = string,
 > = BaseCommandInput & {
   TableName: aws_dynamodb.TableName<T>;
   FilterExpression?: FilterExpression;
@@ -72,7 +72,7 @@ export class QueryCommand<
   T extends aws_dynamodb.MaterializedTableProps = aws_dynamodb.MaterializedTableProps,
   FilterExpression extends string = string,
   KeyConditionExpression extends string = string,
-  ProjectionExpression extends string = string
+  ProjectionExpression extends string = string,
 > implements
     Command<BaseCommandInput, BaseCommandOutput, ResolvedConfiguration>
 {
@@ -84,7 +84,7 @@ export class QueryCommand<
       FilterExpression,
       KeyConditionExpression,
       ProjectionExpression
-    >
+    >,
   ) {
     this.command = new BaseCommand(input as unknown as BaseCommandInput);
   }
@@ -100,7 +100,7 @@ export class QueryCommand<
   resolveMiddleware(
     clientStack: MiddlewareStack<ServiceInputTypes, ServiceOutputTypes>,
     configuration: ResolvedConfiguration,
-    options: any
+    options: any,
   ): Handler<BaseCommandInput, BaseCommandOutput> {
     return this.command.resolveMiddleware(clientStack, configuration, options);
   }

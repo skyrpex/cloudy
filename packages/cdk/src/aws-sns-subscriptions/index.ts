@@ -38,13 +38,13 @@ export class SqsSubscription<T extends Queue, RawMessageDelivery extends true>
    */
   public constructor(
     queue: T,
-    properties: SqsSubscriptionProps<RawMessageDelivery>
+    properties: SqsSubscriptionProps<RawMessageDelivery>,
   ) {
     // super(queue, properties)
     super();
     this.subscription = new aws_sns_subscriptions.SqsSubscription(
       queue,
-      properties
+      properties,
     );
   }
 

@@ -19,7 +19,7 @@ import { ToAttributeMap } from "@cloudy-ts/util-dynamodb";
 import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js";
 
 export type PutItemCommandInput<
-  T extends MaterializedTableProps = MaterializedTableProps
+  T extends MaterializedTableProps = MaterializedTableProps,
 > = Omit<BaseCommandInput, "Item"> & {
   TableName: aws_dynamodb.TableName<T>;
   Item: ToAttributeMap<T["itemType"]>;
@@ -69,7 +69,7 @@ export class PutItemCommand<T extends MaterializedTableProps>
   resolveMiddleware(
     clientStack: MiddlewareStack<ServiceInputTypes, ServiceOutputTypes>,
     configuration: ResolvedConfiguration,
-    options: any
+    options: any,
   ): Handler<BaseCommandInput, BaseCommandOutput> {
     return this.command.resolveMiddleware(clientStack, configuration, options);
   }

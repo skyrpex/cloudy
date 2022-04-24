@@ -9,7 +9,7 @@ export class CommandProxy<
   Output extends ClientOutput,
   ResolvedClientConfiguration,
   ClientInput extends object = any,
-  ClientOutput extends MetadataBearer = any
+  ClientOutput extends MetadataBearer = any,
 > implements
     Command<
       Input,
@@ -26,7 +26,7 @@ export class CommandProxy<
       ResolvedClientConfiguration,
       ClientInput,
       ClientOutput
-    >
+    >,
   ) {}
 
   get input(): Input {
@@ -41,7 +41,7 @@ export class CommandProxy<
   resolveMiddleware(
     clientStack: MiddlewareStack<ClientInput, ClientOutput>,
     configuration: ResolvedClientConfiguration,
-    options: any
+    options: any,
   ): Handler<Input, Output> {
     return this.command.resolveMiddleware(clientStack, configuration, options);
   }

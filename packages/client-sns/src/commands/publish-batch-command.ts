@@ -14,7 +14,7 @@ import { ServiceInputTypes, ServiceOutputTypes } from "../sns-client.js";
 import { staticTest } from "../static-test.js";
 
 export type PublishBatchRequestEntry<
-  T extends aws_sns.MaterializedTopicProps
+  T extends aws_sns.MaterializedTopicProps,
   // > = BasePublishBatchRequestEntry & {
 > = {
   Id: string;
@@ -36,7 +36,7 @@ export type PublishBatchRequestEntry<
       });
 
 export type PublishBatchCommandInput<
-  T extends aws_sns.MaterializedTopicProps = aws_sns.MaterializedTopicProps
+  T extends aws_sns.MaterializedTopicProps = aws_sns.MaterializedTopicProps,
 > = Omit<BaseCommandInput, "TopicArn" | "PublishBatchRequestEntries"> & {
   TopicArn: aws_sns.TopicArn<T>;
   PublishBatchRequestEntries: PublishBatchRequestEntry<T>[];
@@ -65,7 +65,7 @@ export class PublishBatchCommand<T extends aws_sns.MaterializedTopicProps>
   resolveMiddleware(
     clientStack: MiddlewareStack<ServiceInputTypes, ServiceOutputTypes>,
     configuration: ResolvedConfiguration,
-    options: any
+    options: any,
   ): Handler<BaseCommandInput, BaseCommandOutput> {
     return this.command.resolveMiddleware(clientStack, configuration, options);
   }
@@ -132,7 +132,7 @@ staticTest(
       messageAttributesType: {
         userId: { DataType: "String"; StringValue: ValueType<"test"> };
       };
-    }>
+    }>,
   ) => {
     new PublishBatchCommand({
       TopicArn: topic.topicArn,
@@ -153,5 +153,5 @@ staticTest(
         { Id: "", Message: "" },
       ],
     });
-  }
+  },
 );
