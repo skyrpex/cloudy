@@ -1,5 +1,6 @@
 {
   "name": "@cloudy-ts/cdk",
+  "description": "Set of constructs for the AWS Cloud Development Kit that aim to improve the DX by providing a faster and type-safe code environment",
   "scripts": {
     "build": "npx projen build",
     "dev": "npx projen dev",

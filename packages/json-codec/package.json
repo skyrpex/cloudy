@@ -1,5 +1,6 @@
 {
   "name": "@cloudy-ts/json-codec",
+  "description": "Encode and decode JSON objects while maintaining the original type",
   "scripts": {
     "build": "npx projen build",
     "format": "npx projen format",

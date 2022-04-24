@@ -53,6 +53,7 @@ export class WorkspaceProject extends NodeProject {
       readme: {
         contents: [
           `# ${options.name}`,
+          ...(options.description ? ["", `${options.description}.`]:[]),
           "",
           `[![NPM version](https://img.shields.io/npm/v/${options.name}/latest.svg)](https://www.npmjs.com/package/${options.name})`,
           `[![NPM downloads](https://img.shields.io/npm/dm/${options.name}.svg)](https://www.npmjs.com/package/${options.name})`,

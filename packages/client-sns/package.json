@@ -1,5 +1,6 @@
 {
   "name": "@cloudy-ts/client-sns",
+  "description": "Cloudy SDK for JavaScript SNS Client",
   "scripts": {
     "build": "npx projen build",
     "format": "npx projen format",

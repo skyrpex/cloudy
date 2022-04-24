@@ -1,5 +1,6 @@
 {
   "name": "@cloudy-ts/util-dynamodb",
+  "description": "Utilities for DynamoDB clients",
   "scripts": {
     "build": "npx projen build",
     "format": "npx projen format",

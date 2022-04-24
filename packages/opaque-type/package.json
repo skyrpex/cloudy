@@ -1,5 +1,6 @@
 {
   "name": "@cloudy-ts/opaque-type",
+  "description": "Implement opaque types in TypeScript",
   "scripts": {
     "build": "npx projen build",
     "format": "npx projen format",

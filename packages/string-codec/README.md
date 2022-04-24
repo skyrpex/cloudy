@@ -1,9 +1,9 @@
 # @cloudy-ts/string-codec
 
+Encode values to strings, while maintaining the original type.
+
 [![NPM version](https://img.shields.io/npm/v/@cloudy-ts/string-codec/latest.svg)](https://www.npmjs.com/package/@cloudy-ts/string-codec)
 [![NPM downloads](https://img.shields.io/npm/dm/@cloudy-ts/string-codec.svg)](https://www.npmjs.com/package/@cloudy-ts/string-codec)
-
-Encodes values to strings, while maintaining the original type.
 
 ## Usage
 

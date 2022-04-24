@@ -1,5 +1,6 @@
 {
   "name": "@cloudy-ts/monorepo",
+  "description": "Monorepo for the Cloudy packages",
   "scripts": {
     "build": "npx projen build",
     "bump": "npx projen bump",
