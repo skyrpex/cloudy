@@ -57,10 +57,13 @@ importers:
       cloudy-node: '*'
       constructs: ^10.0.124
       eslint: ^8.14.0
+      eslint-config-prettier: ^8.5.0
       eslint-import-resolver-node: ^0.3.6
       eslint-import-resolver-typescript: ^2.7.1
       eslint-plugin-import: ^2.26.0
+      eslint-plugin-prettier: ^4.0.0
       eslint-plugin-unicorn: ^42.0.0
+      prettier: ^2.6.2
       typescript: ^4.6.3
     dependencies:
       '@cloudy-ts/cdk': link:../packages/cdk
@@ -75,10 +78,13 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.20.0_81f0d1a74f014d44d273bd1612c85fd9
       '@typescript-eslint/parser': 5.20.0_eslint@8.14.0+typescript@4.6.3
       eslint: 8.14.0
+      eslint-config-prettier: 8.5.0_eslint@8.14.0
       eslint-import-resolver-node: 0.3.6
       eslint-import-resolver-typescript: 2.7.1_662e1b2e8ef3f6aa5d22c3f7cd670612
       eslint-plugin-import: 2.26.0_eslint@8.14.0
+      eslint-plugin-prettier: 4.0.0_665eb419c9d7860ca0c224f7f6dcdace
       eslint-plugin-unicorn: 42.0.0_eslint@8.14.0
+      prettier: 2.6.2
       typescript: 4.6.3
 
   packages/cdk:
@@ -98,14 +104,14 @@ importers:
       constructs: ^10.0.124
       esbuild: ^0.14.38
       eslint: ^8.14.0
-      eslint-config-prettier: '*'
+      eslint-config-prettier: ^8.5.0
       eslint-import-resolver-node: ^0.3.6
       eslint-import-resolver-typescript: ^2.7.1
       eslint-plugin-import: ^2.26.0
-      eslint-plugin-prettier: '*'
+      eslint-plugin-prettier: ^4.0.0
       eslint-plugin-unicorn: ^42.0.0
       find-up: ^6.3.0
-      prettier: '*'
+      prettier: ^2.6.2
       ts-toolbelt: ^9.6.0
       tsup: ^5.12.6
       typescript: ^4.6.3
@@ -155,10 +161,13 @@ importers:
       '@typescript-eslint/eslint-plugin': ^5.20.0
       '@typescript-eslint/parser': ^5.20.0
       eslint: ^8.14.0
+      eslint-config-prettier: ^8.5.0
       eslint-import-resolver-node: ^0.3.6
       eslint-import-resolver-typescript: ^2.7.1
       eslint-plugin-import: ^2.26.0
+      eslint-plugin-prettier: ^4.0.0
       eslint-plugin-unicorn: ^42.0.0
+      prettier: ^2.6.2
       ts-toolbelt: ^9.6.0
       tsup: ^5.12.6
     dependencies:
@@ -177,10 +186,13 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.20.0_81f0d1a74f014d44d273bd1612c85fd9
       '@typescript-eslint/parser': 5.20.0_eslint@8.14.0+typescript@4.6.3
       eslint: 8.14.0
+      eslint-config-prettier: 8.5.0_eslint@8.14.0
       eslint-import-resolver-node: 0.3.6
       eslint-import-resolver-typescript: 2.7.1_662e1b2e8ef3f6aa5d22c3f7cd670612
       eslint-plugin-import: 2.26.0_eslint@8.14.0
+      eslint-plugin-prettier: 4.0.0_665eb419c9d7860ca0c224f7f6dcdace
       eslint-plugin-unicorn: 42.0.0_eslint@8.14.0
+      prettier: 2.6.2
       tsup: 5.12.6_typescript@4.6.3
 
   packages/client-sns:
@@ -194,10 +206,13 @@ importers:
       '@typescript-eslint/eslint-plugin': ^5.20.0
       '@typescript-eslint/parser': ^5.20.0
       eslint: ^8.14.0
+      eslint-config-prettier: ^8.5.0
       eslint-import-resolver-node: ^0.3.6
       eslint-import-resolver-typescript: ^2.7.1
       eslint-plugin-import: ^2.26.0
+      eslint-plugin-prettier: ^4.0.0
       eslint-plugin-unicorn: ^42.0.0
+      prettier: ^2.6.2
       ts-toolbelt: ^9.6.0
       tsup: ^5.12.6
     dependencies:
@@ -212,10 +227,13 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.20.0_81f0d1a74f014d44d273bd1612c85fd9
       '@typescript-eslint/parser': 5.20.0_eslint@8.14.0+typescript@4.6.3
       eslint: 8.14.0
+      eslint-config-prettier: 8.5.0_eslint@8.14.0
       eslint-import-resolver-node: 0.3.6
       eslint-import-resolver-typescript: 2.7.1_662e1b2e8ef3f6aa5d22c3f7cd670612
       eslint-plugin-import: 2.26.0_eslint@8.14.0
+      eslint-plugin-prettier: 4.0.0_665eb419c9d7860ca0c224f7f6dcdace
       eslint-plugin-unicorn: 42.0.0_eslint@8.14.0
+      prettier: 2.6.2
       tsup: 5.12.6_typescript@4.6.3
 
   packages/json-codec:
@@ -227,10 +245,13 @@ importers:
       ava: '*'
       cloudy-node: '*'
       eslint: ^8.14.0
+      eslint-config-prettier: ^8.5.0
       eslint-import-resolver-node: ^0.3.6
       eslint-import-resolver-typescript: ^2.7.1
       eslint-plugin-import: ^2.26.0
+      eslint-plugin-prettier: ^4.0.0
       eslint-plugin-unicorn: ^42.0.0
+      prettier: ^2.6.2
       tsup: ^5.12.6
     dependencies:
       '@cloudy-ts/opaque-type': link:../opaque-type
@@ -241,10 +262,13 @@ importers:
       ava: 4.2.0
       cloudy-node: 0.0.5
       eslint: 8.14.0
+      eslint-config-prettier: 8.5.0_eslint@8.14.0
       eslint-import-resolver-node: 0.3.6
       eslint-import-resolver-typescript: 2.7.1_662e1b2e8ef3f6aa5d22c3f7cd670612
       eslint-plugin-import: 2.26.0_eslint@8.14.0
+      eslint-plugin-prettier: 4.0.0_665eb419c9d7860ca0c224f7f6dcdace
       eslint-plugin-unicorn: 42.0.0_eslint@8.14.0
+      prettier: 2.6.2
       tsup: 5.12.6_typescript@4.6.3
 
   packages/opaque-type:
@@ -253,20 +277,26 @@ importers:
       '@typescript-eslint/eslint-plugin': ^5.20.0
       '@typescript-eslint/parser': ^5.20.0
       eslint: ^8.14.0
+      eslint-config-prettier: ^8.5.0
       eslint-import-resolver-node: ^0.3.6
       eslint-import-resolver-typescript: ^2.7.1
       eslint-plugin-import: ^2.26.0
+      eslint-plugin-prettier: ^4.0.0
       eslint-plugin-unicorn: ^42.0.0
+      prettier: ^2.6.2
       tsup: ^5.12.6
     devDependencies:
       '@cloudy-ts/eslint-plugin': 0.0.2_eslint@8.14.0
       '@typescript-eslint/eslint-plugin': 5.20.0_81f0d1a74f014d44d273bd1612c85fd9
       '@typescript-eslint/parser': 5.20.0_eslint@8.14.0+typescript@4.6.3
       eslint: 8.14.0
+      eslint-config-prettier: 8.5.0_eslint@8.14.0
       eslint-import-resolver-node: 0.3.6
       eslint-import-resolver-typescript: 2.7.1_662e1b2e8ef3f6aa5d22c3f7cd670612
       eslint-plugin-import: 2.26.0_eslint@8.14.0
+      eslint-plugin-prettier: 4.0.0_665eb419c9d7860ca0c224f7f6dcdace
       eslint-plugin-unicorn: 42.0.0_eslint@8.14.0
+      prettier: 2.6.2
       tsup: 5.12.6_typescript@4.6.3
 
   packages/string-codec:
@@ -276,10 +306,13 @@ importers:
       '@typescript-eslint/eslint-plugin': ^5.20.0
       '@typescript-eslint/parser': ^5.20.0
       eslint: ^8.14.0
+      eslint-config-prettier: ^8.5.0
       eslint-import-resolver-node: ^0.3.6
       eslint-import-resolver-typescript: ^2.7.1
       eslint-plugin-import: ^2.26.0
+      eslint-plugin-prettier: ^4.0.0
       eslint-plugin-unicorn: ^42.0.0
+      prettier: ^2.6.2
       tsup: ^5.12.6
     dependencies:
       '@cloudy-ts/opaque-type': link:../opaque-type
@@ -288,10 +321,13 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.20.0_81f0d1a74f014d44d273bd1612c85fd9
       '@typescript-eslint/parser': 5.20.0_eslint@8.14.0+typescript@4.6.3
       eslint: 8.14.0
+      eslint-config-prettier: 8.5.0_eslint@8.14.0
       eslint-import-resolver-node: 0.3.6
       eslint-import-resolver-typescript: 2.7.1_662e1b2e8ef3f6aa5d22c3f7cd670612
       eslint-plugin-import: 2.26.0_eslint@8.14.0
+      eslint-plugin-prettier: 4.0.0_665eb419c9d7860ca0c224f7f6dcdace
       eslint-plugin-unicorn: 42.0.0_eslint@8.14.0
+      prettier: 2.6.2
       tsup: 5.12.6_typescript@4.6.3
 
   packages/util-command-proxy:
@@ -302,10 +338,13 @@ importers:
       '@typescript-eslint/eslint-plugin': ^5.20.0
       '@typescript-eslint/parser': ^5.20.0
       eslint: ^8.14.0
+      eslint-config-prettier: ^8.5.0
       eslint-import-resolver-node: ^0.3.6
       eslint-import-resolver-typescript: ^2.7.1
       eslint-plugin-import: ^2.26.0
+      eslint-plugin-prettier: ^4.0.0
       eslint-plugin-unicorn: ^42.0.0
+      prettier: ^2.6.2
       tsup: ^5.12.6
     dependencies:
       '@aws-sdk/smithy-client': 3.72.0
@@ -315,10 +354,13 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.20.0_81f0d1a74f014d44d273bd1612c85fd9
       '@typescript-eslint/parser': 5.20.0_eslint@8.14.0+typescript@4.6.3
       eslint: 8.14.0
+      eslint-config-prettier: 8.5.0_eslint@8.14.0
       eslint-import-resolver-node: 0.3.6
       eslint-import-resolver-typescript: 2.7.1_662e1b2e8ef3f6aa5d22c3f7cd670612
       eslint-plugin-import: 2.26.0_eslint@8.14.0
+      eslint-plugin-prettier: 4.0.0_665eb419c9d7860ca0c224f7f6dcdace
       eslint-plugin-unicorn: 42.0.0_eslint@8.14.0
+      prettier: 2.6.2
       tsup: 5.12.6_typescript@4.6.3
 
   packages/util-dynamodb:
@@ -330,10 +372,13 @@ importers:
       '@typescript-eslint/eslint-plugin': ^5.20.0
       '@typescript-eslint/parser': ^5.20.0
       eslint: ^8.14.0
+      eslint-config-prettier: ^8.5.0
       eslint-import-resolver-node: ^0.3.6
       eslint-import-resolver-typescript: ^2.7.1
       eslint-plugin-import: ^2.26.0
+      eslint-plugin-prettier: ^4.0.0
       eslint-plugin-unicorn: ^42.0.0
+      prettier: ^2.6.2
       tsup: ^5.12.6
     dependencies:
       '@aws-sdk/client-dynamodb': 3.76.0
@@ -344,10 +389,13 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.20.0_81f0d1a74f014d44d273bd1612c85fd9
       '@typescript-eslint/parser': 5.20.0_eslint@8.14.0+typescript@4.6.3
       eslint: 8.14.0
+      eslint-config-prettier: 8.5.0_eslint@8.14.0
       eslint-import-resolver-node: 0.3.6
       eslint-import-resolver-typescript: 2.7.1_662e1b2e8ef3f6aa5d22c3f7cd670612
       eslint-plugin-import: 2.26.0_eslint@8.14.0
+      eslint-plugin-prettier: 4.0.0_665eb419c9d7860ca0c224f7f6dcdace
       eslint-plugin-unicorn: 42.0.0_eslint@8.14.0
+      prettier: 2.6.2
       tsup: 5.12.6_typescript@4.6.3
 
 packages:

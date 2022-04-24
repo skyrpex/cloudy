@@ -1,7 +1,7 @@
 import * as path from "node:path";
 
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { JsonFile, SampleFile } from "projen";
+import { JsonFile, Projenrc, SampleFile } from "projen";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { NodePackageManager } from "projen/lib/javascript";
 
@@ -18,14 +18,21 @@ const project = new DefaultNodeProject({
   github: false,
 });
 
+project.testTask.exec("turbo run lint:fix test");
+project.compileTask.exec("turbo run lint:fix test build");
+
 // Use vite-node to run projen.
 project.addDevDeps("vite-node");
 project.defaultTask?.exec(`vite-node .projenrc.ts`);
 
-// Ignore CDK and build outputs.
+// Ignore CDK and build outputs from versioning.
 project.gitignore.exclude("cdk.out/", "dist/");
-project.prettier?.ignoreFile?.addPatterns("cdk.out/", "dist/");
-project.eslint.ignoreFile.addPatterns("cdk.out/", "dist/");
+
+// Ignore workspace directories from formatting and linting at the workspace level.
+for (const pattern of ["examples/", "packages/", "playground/"]) {
+  project.prettier?.ignoreFile?.addPatterns(pattern);
+  project.eslint.ignoreFile.addPatterns(pattern);
+}
 
 // Setup Turborepo.
 new Turborepo(project, {
