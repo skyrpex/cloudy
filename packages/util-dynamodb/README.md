@@ -1,5 +1,7 @@
 # @cloudy-ts/util-dynamodb
 
+Utilities for DynamoDB clients.
+
 [![NPM version](https://img.shields.io/npm/v/@cloudy-ts/util-dynamodb/latest.svg)](https://www.npmjs.com/package/@cloudy-ts/util-dynamodb)
 [![NPM downloads](https://img.shields.io/npm/dm/@cloudy-ts/util-dynamodb.svg)](https://www.npmjs.com/package/@cloudy-ts/util-dynamodb)
 

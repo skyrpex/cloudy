@@ -1,5 +1,6 @@
 {
   "name": "@cloudy-ts/client-dynamodb",
+  "description": "Cloudy SDK for JavaScript Dynamodb Client",
   "scripts": {
     "build": "npx projen build",
     "format": "npx projen format",

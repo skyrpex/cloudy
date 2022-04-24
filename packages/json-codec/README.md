@@ -1,9 +1,9 @@
 # @cloudy-ts/json-codec
 
+Encode and decode JSON objects while maintaining the original type.
+
 [![NPM version](https://img.shields.io/npm/v/@cloudy-ts/json-codec/latest.svg)](https://www.npmjs.com/package/@cloudy-ts/json-codec)
 [![NPM downloads](https://img.shields.io/npm/dm/@cloudy-ts/json-codec.svg)](https://www.npmjs.com/package/@cloudy-ts/json-codec)
-
-Encode and decode JSON objects while maintaining the original type.
 
 ## Installation
 

@@ -13,6 +13,7 @@ import { WorkspaceProject } from "./.projenrc.workspace-project.js";
 ///////////////////////////////////////////////////////////////////////////////
 const project = new DefaultNodeProject({
   name: "@cloudy-ts/monorepo",
+  description: "Monorepo for the Cloudy packages",
   defaultReleaseBranch: "main",
   packageManager: NodePackageManager.PNPM,
   github: false,
@@ -89,12 +90,14 @@ new TypeScript(project, {
 new WorkspaceProject(project, {
   name: "@cloudy-ts/opaque-type",
   outdir: "packages/opaque-type",
+  description: "Implement opaque types in TypeScript",
 });
 
 ///////////////////////////////////////////////////////////////////////////////
 new WorkspaceProject(project, {
   name: "@cloudy-ts/json-codec",
   outdir: "packages/json-codec",
+  description: "Encode and decode JSON objects while maintaining the original type",
   deps: ["@cloudy-ts/opaque-type"],
   ava: true,
 });
@@ -103,6 +106,7 @@ new WorkspaceProject(project, {
 new WorkspaceProject(project, {
   name: "@cloudy-ts/string-codec",
   outdir: "packages/string-codec",
+  description: "Encode values to strings, while maintaining the original type",
   deps: ["@cloudy-ts/opaque-type"],
 });
 
@@ -117,6 +121,7 @@ new WorkspaceProject(project, {
 new WorkspaceProject(project, {
   name: "@cloudy-ts/util-dynamodb",
   outdir: "packages/util-dynamodb",
+  description: "Utilities for DynamoDB clients",
   deps: [
     "@aws-sdk/client-dynamodb",
     "@aws-sdk/util-dynamodb",
@@ -128,6 +133,7 @@ new WorkspaceProject(project, {
 new WorkspaceProject(project, {
   name: "@cloudy-ts/client-dynamodb",
   outdir: "packages/client-dynamodb",
+  description: "Cloudy SDK for JavaScript Dynamodb Client",
   deps: [
     "@aws-sdk/client-dynamodb",
     "@aws-sdk/smithy-client",
@@ -147,6 +153,7 @@ new WorkspaceProject(project, {
 new WorkspaceProject(project, {
   name: "@cloudy-ts/client-sns",
   outdir: "packages/client-sns",
+  description: "Cloudy SDK for JavaScript SNS Client",
   deps: [
     "@aws-sdk/client-sns",
     "@aws-sdk/smithy-client",
@@ -162,6 +169,7 @@ new WorkspaceProject(project, {
 const cdk = new WorkspaceProject(project, {
   name: "@cloudy-ts/cdk",
   outdir: "packages/cdk",
+  description: "Set of constructs for the AWS Cloud Development Kit that aim to improve the DX by providing a faster and type-safe code environment",
   deps: [
     "@aws-sdk/util-dynamodb",
     "@cloudy-ts/json-codec",
