@@ -49,6 +49,10 @@
       "type": "build"
     },
     {
+      "name": "typescript",
+      "type": "build"
+    },
+    {
       "name": "@aws-sdk/smithy-client",
       "type": "runtime"
     },

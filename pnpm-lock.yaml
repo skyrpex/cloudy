@@ -71,7 +71,7 @@ importers:
       '@cloudy-ts/client-sns': link:../packages/client-sns
       aws-cdk: 2.21.1
       aws-cdk-lib: 2.21.1_constructs@10.0.124
-      cloudy-node: 0.0.5
+      cloudy-node: 0.0.6
       constructs: 10.0.124
     devDependencies:
       '@cloudy-ts/eslint-plugin': 0.0.2_eslint@8.14.0
@@ -170,6 +170,7 @@ importers:
       prettier: ^2.6.2
       ts-toolbelt: ^9.6.0
       tsup: ^5.12.6
+      typescript: '*'
     dependencies:
       '@aws-sdk/client-dynamodb': 3.76.0
       '@aws-sdk/smithy-client': 3.72.0
@@ -194,6 +195,7 @@ importers:
       eslint-plugin-unicorn: 42.0.0_eslint@8.14.0
       prettier: 2.6.2
       tsup: 5.12.6_typescript@4.6.3
+      typescript: 4.6.3
 
   packages/client-sns:
     specifiers:
@@ -260,7 +262,7 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.20.0_81f0d1a74f014d44d273bd1612c85fd9
       '@typescript-eslint/parser': 5.20.0_eslint@8.14.0+typescript@4.6.3
       ava: 4.2.0
-      cloudy-node: 0.0.5
+      cloudy-node: 0.0.6
       eslint: 8.14.0
       eslint-config-prettier: 8.5.0_eslint@8.14.0
       eslint-import-resolver-node: 0.3.6
@@ -2120,8 +2122,8 @@ packages:
       mimic-response: 1.0.1
     dev: true
 
-  /cloudy-node/0.0.5:
-    resolution: {integrity: sha512-qsn0Zw3gntraqpXWqgS2Svq+PxGoGRbRlo5pTvtDGk2GQcBNXZ+7wD2e8IjfQBKRtTYLvrNZ1YKmnmG6yyR6yw==}
+  /cloudy-node/0.0.6:
+    resolution: {integrity: sha512-udnu2S3YEhZwadM2rt0PTI3mHgx6q22NX7l97NpyL1CMdDF5AhLEiU9OWBd+kF3/R6ielL7wis39F8rWWSrG0Q==}
     engines: {node: '>= 14.18.0'}
     hasBin: true
     dependencies:
