@@ -139,6 +139,20 @@ export class Eslint extends Component {
       exec: "eslint --ext ts .",
     });
 
+    project.addTask("lint:fix", {
+      exec: "eslint --ext ts . --fix",
+    });
+
+    if (options.prettier) {
+      project.addTask("format", {
+        exec: "prettier --check '**/*.ts'",
+      });
+
+      project.addTask("format:fix", {
+        exec: "prettier --write '**/*.ts'",
+      });
+    }
+
     project.addDevDeps(
       "eslint",
       "@typescript-eslint/eslint-plugin",

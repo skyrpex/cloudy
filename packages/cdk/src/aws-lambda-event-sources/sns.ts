@@ -7,7 +7,6 @@ import {
 import { Construct } from "constructs";
 import { Union } from "ts-toolbelt";
 
-
 import { BaseEventSource, IFunction } from "../aws-lambda/index.js";
 import { MaterializeTopicProps, Topic } from "../aws-sns/topic.js";
 import { staticTest } from "../static-test.js";

@@ -20,18 +20,18 @@ import {
 
 export const marshall: <
   Item extends object,
-  MarshallOptions extends marshallOptions | undefined,
+  MarshallOptions extends marshallOptions | undefined
 >(
   item: Item,
-  options?: MarshallOptions,
+  options?: MarshallOptions
 ) => ToAttributeMap<Item> = _marshall;
 
 export const unmarshall: <
   Item extends AttributeMap,
-  UnmarshallOptions extends unmarshallOptions | undefined,
+  UnmarshallOptions extends unmarshallOptions | undefined
 >(
   item: Item,
-  options?: UnmarshallOptions,
+  options?: UnmarshallOptions
 ) => {
   [property in keyof Item]: Unmarshall<Item[property], UnmarshallOptions>;
 } = _unmarshall as any;
@@ -42,7 +42,7 @@ export interface NumberValue<N extends number> {
 
 export type Unmarshall<
   T,
-  UnmarshallOptions extends unmarshallOptions | undefined,
+  UnmarshallOptions extends unmarshallOptions | undefined
 > = T extends S<infer s>
   ? s
   : T extends B

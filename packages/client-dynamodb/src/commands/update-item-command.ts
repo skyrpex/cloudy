@@ -27,7 +27,7 @@ type KeyOfItem<T extends MaterializedTableProps> = {
 export type UpdateItemCommandInput<
   T extends aws_dynamodb.MaterializedTableProps = aws_dynamodb.MaterializedTableProps,
   UpdateExpression extends string = string,
-  ConditionExpression extends string = string,
+  ConditionExpression extends string = string
 > = Omit<BaseCommandInput, "Key"> & {
   TableName: aws_dynamodb.TableName<T>;
   Key: ToAttributeMap<KeyOfItem<T>>;
@@ -50,7 +50,7 @@ export interface UpdateItemCommandOutput extends BaseCommandOutput {}
 export class UpdateItemCommand<
   T extends aws_dynamodb.MaterializedTableProps,
   UpdateExpression extends string,
-  ConditionExpression extends string,
+  ConditionExpression extends string
 > implements
     Command<BaseCommandInput, BaseCommandOutput, ResolvedConfiguration>
 {
@@ -76,7 +76,7 @@ export class UpdateItemCommand<
   resolveMiddleware(
     clientStack: MiddlewareStack<ServiceInputTypes, ServiceOutputTypes>,
     configuration: ResolvedConfiguration,
-    options: any,
+    options: any
   ): Handler<BaseCommandInput, BaseCommandOutput> {
     return this.command.resolveMiddleware(clientStack, configuration, options);
   }

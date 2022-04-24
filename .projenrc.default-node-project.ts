@@ -48,6 +48,7 @@ export class DefaultNodeProject extends NodeProject {
     this.prettier?.ignoreFile?.addPatterns("node_modules/");
 
     this.eslint = new Eslint(this, {
+      prettier: options.prettier ?? true,
       pathGroups: this.packageScope
         ? [
             {

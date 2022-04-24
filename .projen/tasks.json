@@ -106,6 +106,14 @@
         }
       ]
     },
+    "lint:fix": {
+      "name": "lint:fix",
+      "steps": [
+        {
+          "exec": "eslint --ext ts . --fix"
+        }
+      ]
+    },
     "package": {
       "name": "package",
       "description": "Creates the distribution package",

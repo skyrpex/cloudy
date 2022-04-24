@@ -10,12 +10,12 @@ const findDepsLockFilePath = (input: string) => {
     ["package-lock.json", "yarn.lock", "pnpm-lock.yaml"],
     {
       cwd: input,
-    },
+    }
   );
 
   if (!lockFilePath) {
     throw new Error(
-      "Couldn't find a lock file (package-lock.json or yarn.lock)",
+      "Couldn't find a lock file (package-lock.json or yarn.lock)"
     );
   }
 

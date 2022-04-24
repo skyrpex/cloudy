@@ -39,6 +39,7 @@ export class WorkspaceProject extends NodeProject {
       release: false,
       stale: false,
       projenDevDependency: false,
+      prettier: true,
       ...options,
       readme: {
         contents: [
@@ -88,6 +89,7 @@ export class WorkspaceProject extends NodeProject {
 
     if (options.lint !== false) {
       this.eslint = new Eslint(this, {
+        prettier: options.prettier ?? true,
         devFiles: ["**/*.test.ts"],
       });
     }

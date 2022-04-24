@@ -58,7 +58,7 @@ export class DynamoDBClient implements IClient {
 
   send<
     InputType extends ServiceInputTypes,
-    OutputType extends ServiceOutputTypes,
+    OutputType extends ServiceOutputTypes
   >(
     command: Command<
       ServiceInputTypes,
@@ -67,11 +67,11 @@ export class DynamoDBClient implements IClient {
       OutputType,
       BaseClientResolvedConfiguration
     >,
-    options?: HttpHandlerOptions,
+    options?: HttpHandlerOptions
   ): Promise<OutputType>;
   send<
     InputType extends ServiceInputTypes,
-    OutputType extends ServiceOutputTypes,
+    OutputType extends ServiceOutputTypes
   >(
     command: Command<
       ServiceInputTypes,
@@ -80,11 +80,11 @@ export class DynamoDBClient implements IClient {
       OutputType,
       BaseClientResolvedConfiguration
     >,
-    callback: (error: any, data?: OutputType) => void,
+    callback: (error: any, data?: OutputType) => void
   ): void;
   send<
     InputType extends ServiceInputTypes,
-    OutputType extends ServiceOutputTypes,
+    OutputType extends ServiceOutputTypes
   >(
     command: Command<
       ServiceInputTypes,
@@ -94,11 +94,11 @@ export class DynamoDBClient implements IClient {
       BaseClientResolvedConfiguration
     >,
     options: HttpHandlerOptions,
-    callback: (error: any, data?: OutputType) => void,
+    callback: (error: any, data?: OutputType) => void
   ): void;
   send<
     InputType extends ServiceInputTypes,
-    OutputType extends ServiceOutputTypes,
+    OutputType extends ServiceOutputTypes
   >(command: any, options?: any, callback?: any): void | Promise<OutputType> {
     return this.resolveClient().send(command, options, callback);
   }

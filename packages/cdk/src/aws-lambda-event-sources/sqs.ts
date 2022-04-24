@@ -25,7 +25,7 @@ type QueueMessageType<T extends Queue> = T extends Queue<infer P>
 
 interface SqsEventTypeRaw<
   T extends MaterializedQueueProps,
-  RawMessageDelivery extends boolean = boolean,
+  RawMessageDelivery extends boolean = boolean
 > {
   Records: {
     messageId: string;
@@ -67,7 +67,7 @@ interface SqsEventTypeRaw<
 
 export type SqsEventType<
   T extends Queue,
-  RawMessageDelivery extends boolean,
+  RawMessageDelivery extends boolean
 > = T extends Queue<infer P>
   ? SqsEventTypeRaw<MaterializeQueueProps<P>, RawMessageDelivery>
   : never;
@@ -81,7 +81,7 @@ export type SqsEventType<
 //   : never;
 
 export class SqsEventSource<
-  T extends Queue,
+  T extends Queue
   // RawMessageDelivery extends boolean,
   // > extends BaseEventSource<SqsEventType<T, RawMessageDelivery>> {
 > extends BaseEventSource<SqsEventType<T, true>> {

@@ -13,7 +13,7 @@ import { ServiceInputTypes, ServiceOutputTypes } from "../sns-client.js";
 import { staticTest } from "../static-test.js";
 
 export type PublishCommandInput<
-  T extends aws_sns.MaterializedTopicProps = aws_sns.MaterializedTopicProps,
+  T extends aws_sns.MaterializedTopicProps = aws_sns.MaterializedTopicProps
 > = Omit<
   BaseCommandInput,
   | "TopicArn"
@@ -63,7 +63,7 @@ export class PublishCommand<T extends aws_sns.MaterializedTopicProps>
   resolveMiddleware(
     clientStack: MiddlewareStack<ServiceInputTypes, ServiceOutputTypes>,
     configuration: ResolvedConfiguration,
-    options: any,
+    options: any
   ): Handler<BaseCommandInput, BaseCommandOutput> {
     return this.command.resolveMiddleware(clientStack, configuration, options);
   }
@@ -116,7 +116,7 @@ staticTest(
       messageAttributesType: {
         userId: { DataType: "String"; StringValue: ValueType<"test"> };
       };
-    }>,
+    }>
   ) => {
     new PublishCommand({
       TopicArn: topic.topicArn,
@@ -130,5 +130,5 @@ staticTest(
       TopicArn: topic.topicArn,
       Message: "",
     });
-  },
+  }
 );

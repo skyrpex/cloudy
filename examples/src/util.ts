@@ -3,6 +3,6 @@ import url from "node:url";
 
 export function buildExampleStackName(metaUrl: string) {
   return `cloudy-example-${path.basename(
-    path.dirname(url.fileURLToPath(metaUrl)),
+    path.dirname(url.fileURLToPath(metaUrl))
   )}`;
 }

@@ -82,7 +82,7 @@ export class Queue<T extends QueueProps = QueueProps> extends aws_sqs.Queue {
   public constructor(
     scope: Construct,
     id: string,
-    properties?: F.Exact<T, QueueProps>,
+    properties?: F.Exact<T, QueueProps>
   ) {
     super(scope, id, properties as aws_sqs.QueueProps);
   }

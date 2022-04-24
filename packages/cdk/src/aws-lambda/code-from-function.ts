@@ -68,7 +68,7 @@ export async function codeFromFunction(function_: (...any: any[]) => any) {
   for (const token of tokens) {
     sourceCode = sourceCode.replace(
       `"${token.cfnToken}"`,
-      `process.env["${token.hash}"]`,
+      `process.env["${token.hash}"]`
     );
   }
 

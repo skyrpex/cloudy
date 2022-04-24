@@ -105,7 +105,7 @@ export interface BOOL<B = boolean> {
 // }
 
 export interface M<
-  M extends Record<string, AttributeValue> = Record<string, AttributeValue>,
+  M extends Record<string, AttributeValue> = Record<string, AttributeValue>
 > {
   M: M;
 }
@@ -141,7 +141,7 @@ export interface NULL {
 // }
 
 export interface L<
-  L extends ArrayLike<AttributeValue> = ArrayLike<AttributeValue>,
+  L extends ArrayLike<AttributeValue> = ArrayLike<AttributeValue>
 > {
   L: L;
 }

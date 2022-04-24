@@ -57,7 +57,7 @@ type AttributeFromKeyDefinition<T extends KeyDefinition> = {
 
 type AccessPattern<
   PartitionKey extends KeyDefinition,
-  SortKey extends KeyDefinition | undefined,
+  SortKey extends KeyDefinition | undefined
 > = DynamodbItem &
   AttributeFromKeyDefinition<PartitionKey> &
   AttributeFromKeyDefinition<NonNullable<SortKey>>;
@@ -66,7 +66,7 @@ export interface TableProps<
   PartitionKey extends KeyDefinition,
   SortKey extends KeyDefinition | undefined,
   ItemType extends AccessPattern<PartitionKey, SortKey> | undefined,
-  Stream extends StreamViewType | undefined,
+  Stream extends StreamViewType | undefined
 > extends BaseTableProps {
   partitionKey: PartitionKey;
   sortKey?: SortKey;
@@ -270,7 +270,7 @@ export class Table<
     PartitionKey,
     SortKey
   >,
-  Stream extends StreamViewType | undefined = undefined,
+  Stream extends StreamViewType | undefined = undefined
   // PartitionKey extends KeyDefinition,
   // SortKey extends KeyDefinition | undefined,
   // ItemType extends AccessPattern<PartitionKey, SortKey>,
@@ -288,7 +288,7 @@ export class Table<
   public constructor(
     scope: Construct,
     id: string,
-    properties: F.Narrow<TableProps<PartitionKey, SortKey, ItemType, Stream>>,
+    properties: F.Narrow<TableProps<PartitionKey, SortKey, ItemType, Stream>>
     // properties: TableProps<PartitionKey, SortKey, ItemType, Stream>,
   ) {
     super(scope, id, properties as unknown as BaseTableProps);

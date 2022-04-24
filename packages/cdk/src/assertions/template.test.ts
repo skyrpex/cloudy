@@ -13,11 +13,11 @@ test("The [fromStack] method waits for dependencies", async () => {
         () =>
           resolve(
             cdk.aws_lambda.Code.fromInline(
-              "export function handler() { return 'HELLO WORLD'; }",
-            ),
+              "export function handler() { return 'HELLO WORLD'; }"
+            )
           ),
-        1,
-      ),
+        1
+      )
     ),
     handler: "index.handler",
     runtime: cdk.aws_lambda.Runtime.NODEJS_14_X,

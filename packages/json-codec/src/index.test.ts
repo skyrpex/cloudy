@@ -7,7 +7,7 @@ test("encodes correctly", (t) => {
     jsonEncode({
       key: "value",
     }) as string,
-    '{"key":"value"}',
+    '{"key":"value"}'
   );
 });
 
@@ -16,10 +16,10 @@ test("decodes correctly", (t) => {
     jsonDecode(
       jsonEncode({
         key: "value",
-      }),
+      })
     ),
     {
       key: "value",
-    },
+    }
   );
 });

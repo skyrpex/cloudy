@@ -18,7 +18,7 @@ export class Annotations {
    * @see {@link cdk.assertions.Annotations}
    */
   static async fromStack(
-    stack: cdk.Stack,
+    stack: cdk.Stack
   ): Promise<cdk.assertions.Annotations> {
     const app = stack.node.root;
     assert(app instanceof cdk.App);

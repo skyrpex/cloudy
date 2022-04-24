@@ -2,7 +2,10 @@
   "name": "@cloudy-ts/client-dynamodb",
   "scripts": {
     "build": "npx projen build",
+    "format": "npx projen format",
+    "format:fix": "npx projen format:fix",
     "lint": "npx projen lint",
+    "lint:fix": "npx projen lint:fix",
     "test": "npx projen test"
   },
   "devDependencies": {
@@ -11,10 +14,13 @@
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
     "eslint": "^8.14.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-node": "^0.3.6",
     "eslint-import-resolver-typescript": "^2.7.1",
     "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-unicorn": "^42.0.0",
+    "prettier": "^2.6.2",
     "tsup": "^5.12.6"
   },
   "peerDependencies": {

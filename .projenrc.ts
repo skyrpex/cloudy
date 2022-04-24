@@ -42,8 +42,20 @@ new Turborepo(project, {
       dependsOn: [],
       outputs: [],
     },
-    lint: {
+    format: {
       dependsOn: [],
+      outputs: [],
+    },
+    "format:fix": {
+      dependsOn: [],
+      outputs: [],
+    },
+    lint: {
+      dependsOn: ["format"],
+      outputs: [],
+    },
+    "lint:fix": {
+      dependsOn: ["format:fix"],
       outputs: [],
     },
   },

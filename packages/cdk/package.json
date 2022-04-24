@@ -3,7 +3,10 @@
   "scripts": {
     "build": "npx projen build",
     "dev": "npx projen dev",
+    "format": "npx projen format",
+    "format:fix": "npx projen format:fix",
     "lint": "npx projen lint",
+    "lint:fix": "npx projen lint:fix",
     "test": "npx projen test"
   },
   "devDependencies": {
@@ -15,10 +18,13 @@
     "c8": "^7.11.2",
     "constructs": "^10.0.124",
     "eslint": "^8.14.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-node": "^0.3.6",
     "eslint-import-resolver-typescript": "^2.7.1",
     "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-unicorn": "^42.0.0",
+    "prettier": "^2.6.2",
     "tsup": "^5.12.6",
     "typescript": "^4.6.3",
     "vitest": "^0.9.4"

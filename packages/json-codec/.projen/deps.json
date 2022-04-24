@@ -25,6 +25,10 @@
       "type": "build"
     },
     {
+      "name": "eslint-config-prettier",
+      "type": "build"
+    },
+    {
       "name": "eslint-import-resolver-node",
       "type": "build"
     },
@@ -37,7 +41,15 @@
       "type": "build"
     },
     {
+      "name": "eslint-plugin-prettier",
+      "type": "build"
+    },
+    {
       "name": "eslint-plugin-unicorn",
+      "type": "build"
+    },
+    {
+      "name": "prettier",
       "type": "build"
     },
     {
