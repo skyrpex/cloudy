@@ -17,7 +17,6 @@ const project = new DefaultNodeProject({
   defaultReleaseBranch: "main",
   packageManager: NodePackageManager.PNPM,
   release: false,
-  // depsUpgrade: false,
 });
 
 // Define build and test tasks.
