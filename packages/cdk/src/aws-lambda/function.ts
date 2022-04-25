@@ -1,4 +1,4 @@
-import { App } from "aws-cdk-lib";
+import assert from "node:assert";
 import {
   CfnFunction,
   Code,
@@ -41,19 +41,17 @@ export class Function extends BaseFunction {
       runtime: Runtime.NODEJS_14_X,
     });
 
-    const resource = this.node.children.find(
-      (children): children is CfnFunction => children instanceof CfnFunction,
-    );
-    if (!resource) {
-      throw new Error("Resource [CfnFunction] not found");
-    }
-
     const promise = Promise.resolve(properties.code).then((code) => {
       const codeConfig = code.bind(this);
       verifyCodeConfig(codeConfig, {
         ...properties,
         code,
       });
+
+      const resource = this.node.children.find(
+        (children): children is CfnFunction => children instanceof CfnFunction,
+      );
+      assert(resource, "Could not find resource [CfnFunction]");
 
       resource.code = {
         s3Bucket: codeConfig.s3Location?.bucketName,
@@ -70,12 +68,13 @@ export class Function extends BaseFunction {
 
     let codeIsResolved = false;
     let codeFailure: unknown | undefined;
-    promise.catch((error) => {
-      codeFailure = error;
-    });
-    promise.finally(() => {
-      codeIsResolved = true;
-    });
+    promise
+      .catch((error) => {
+        codeFailure = error;
+      })
+      .finally(() => {
+        codeIsResolved = true;
+      });
     this.node.addValidation({
       validate() {
         if (!codeIsResolved) {
@@ -101,3 +100,15 @@ export class Function extends BaseFunction {
     });
   }
 }
+
+// function isPromise<T, S>(value: PromiseLike<T> | S): value is PromiseLike<T> {
+//   return !!value && (typeof value === 'object' || typeof value === 'function') && typeof (value as any).then === 'function';
+// }
+
+// function toPromise(value: Code | PromiseLike<Code>): Promise<Code> {
+//   if (isPromise(value)) {
+//     return value as Promise<Code>;
+//   }
+
+//   return Promise.resolve(value);
+// }
