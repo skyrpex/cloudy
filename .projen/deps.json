@@ -22,6 +22,10 @@
       "type": "build"
     },
     {
+      "name": "cloudy-node",
+      "type": "build"
+    },
+    {
       "name": "eslint",
       "type": "build"
     },
@@ -50,6 +54,11 @@
       "type": "build"
     },
     {
+      "name": "npm-check-updates",
+      "version": "^12",
+      "type": "build"
+    },
+    {
       "name": "prettier",
       "type": "build"
     },
@@ -63,10 +72,6 @@
     },
     {
       "name": "typescript",
-      "type": "build"
-    },
-    {
-      "name": "vite-node",
       "type": "build"
     }
   ],

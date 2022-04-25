@@ -34,7 +34,7 @@ export class WorkspaceProject extends NodeProject {
       packageManager: parent.package.packageManager,
       jest: false,
       buildWorkflow: false,
-      depsUpgrade: false,
+      // depsUpgrade: false,
       entrypoint: "",
       github: false,
       package: false,
@@ -74,20 +74,20 @@ export class WorkspaceProject extends NodeProject {
       },
     });
 
-    for (const task of [
-      "build",
-      "clobber",
-      "compile",
-      "eject",
-      "default",
-      "package",
-      "post-compile",
-      "pre-compile",
-      // "test",
-      "projen",
-    ]) {
-      this.removeTask(task);
-    }
+    // for (const task of [
+    //   "build",
+    //   "clobber",
+    //   "compile",
+    //   "eject",
+    //   "default",
+    //   "package",
+    //   "post-compile",
+    //   "pre-compile",
+    //   // "test",
+    //   "projen",
+    // ]) {
+    //   this.removeTask(task);
+    // }
 
     this.removeScript("projen");
 

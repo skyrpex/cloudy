@@ -55,20 +55,6 @@ export class Turborepo extends Component {
       },
       marker: false,
     });
-
-    // Stop using `yarn --check-files`, which doesn't work on Yarn 2/3.
-    if (
-      this.nodeProject.package.packageManager === NodePackageManager.YARN &&
-      !execSync("yarn -v").toString().startsWith("1.")
-    ) {
-      Object.assign(nodeProject.package, {
-        renderInstallCommand(frozen: boolean) {
-          return `yarn install ${
-            frozen ? "--immutable --immutable-cache" : ""
-          }`;
-        },
-      });
-    }
   }
 
   private get subprojects(): Project[] {
