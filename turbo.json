@@ -20,7 +20,9 @@
     },
     "test": {
       "dependsOn": [],
-      "outputs": []
+      "outputs": [
+        "coverage/**"
+      ]
     },
     "format": {
       "dependsOn": [],
@@ -31,9 +33,7 @@
       "outputs": []
     },
     "lint": {
-      "dependsOn": [
-        "format"
-      ],
+      "dependsOn": [],
       "outputs": []
     },
     "lint:fix": {
