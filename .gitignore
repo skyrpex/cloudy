@@ -3,6 +3,7 @@
 !/.projen/tasks.json
 !/.projen/deps.json
 !/.projen/files.json
+!/.github/workflows/pull-request-lint.yml
 !/package.json
 !/LICENSE
 !/.npmignore
@@ -30,8 +31,9 @@ jspm_packages/
 .yarn-integrity
 .cache
 !/.projenrc.js
-/dist/changelog.md
-/dist/version.txt
+!/.github/workflows/build.yml
+!/.mergify.yml
+!/.github/pull_request_template.md
 !/.prettierignore
 !/.prettierrc.json
 !/.eslintignore

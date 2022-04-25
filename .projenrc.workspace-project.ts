@@ -1,4 +1,4 @@
-import { SampleDir, SampleFile, TextFile } from "projen";
+import { SampleDir, TextFile } from "projen";
 import {
   NodeProject,
   NodeProjectOptions,
@@ -53,7 +53,7 @@ export class WorkspaceProject extends NodeProject {
       readme: {
         contents: [
           `# ${options.name}`,
-          ...(options.description ? ["", `${options.description}.`]:[]),
+          ...(options.description ? ["", `${options.description}.`] : []),
           "",
           `[![NPM version](https://img.shields.io/npm/v/${options.name}/latest.svg)](https://www.npmjs.com/package/${options.name})`,
           `[![NPM downloads](https://img.shields.io/npm/dm/${options.name}.svg)](https://www.npmjs.com/package/${options.name})`,

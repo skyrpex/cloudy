@@ -1,7 +1,7 @@
 import * as path from "node:path";
 
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { JsonFile, Projenrc, SampleFile } from "projen";
+import { JsonFile, SampleFile } from "projen";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { NodePackageManager } from "projen/lib/javascript";
 
@@ -16,11 +16,12 @@ const project = new DefaultNodeProject({
   description: "Monorepo for the Cloudy packages",
   defaultReleaseBranch: "main",
   packageManager: NodePackageManager.PNPM,
-  github: false,
+  release: false,
+  depsUpgrade: false,
 });
 
-project.testTask.exec("turbo run lint:fix test");
-project.compileTask.exec("turbo run lint:fix test build");
+project.testTask.exec("turbo run format lint test");
+project.compileTask.exec("turbo run build");
 
 // Use vite-node to run projen.
 project.addDevDeps("vite-node");
@@ -48,7 +49,7 @@ new Turborepo(project, {
     },
     test: {
       dependsOn: [],
-      outputs: [],
+      outputs: ["coverage/**"],
     },
     format: {
       dependsOn: [],
@@ -59,7 +60,7 @@ new Turborepo(project, {
       outputs: [],
     },
     lint: {
-      dependsOn: ["format"],
+      dependsOn: [],
       outputs: [],
     },
     "lint:fix": {
@@ -97,7 +98,8 @@ new WorkspaceProject(project, {
 new WorkspaceProject(project, {
   name: "@cloudy-ts/json-codec",
   outdir: "packages/json-codec",
-  description: "Encode and decode JSON objects while maintaining the original type",
+  description:
+    "Encode and decode JSON objects while maintaining the original type",
   deps: ["@cloudy-ts/opaque-type"],
   ava: true,
 });
@@ -169,7 +171,8 @@ new WorkspaceProject(project, {
 const cdk = new WorkspaceProject(project, {
   name: "@cloudy-ts/cdk",
   outdir: "packages/cdk",
-  description: "Set of constructs for the AWS Cloud Development Kit that aim to improve the DX by providing a faster and type-safe code environment",
+  description:
+    "Set of constructs for the AWS Cloud Development Kit that aim to improve the DX by providing a faster and type-safe code environment",
   deps: [
     "@aws-sdk/util-dynamodb",
     "@cloudy-ts/json-codec",
