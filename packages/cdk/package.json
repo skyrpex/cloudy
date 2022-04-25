@@ -17,7 +17,7 @@
     "@typescript-eslint/parser": "^5.20.0",
     "aws-cdk-lib": "^2.21.1",
     "c8": "^7.11.2",
-    "constructs": "^10.0.124",
+    "constructs": "^10.0.125",
     "eslint": "^8.14.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-node": "^0.3.6",

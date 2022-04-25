@@ -28,7 +28,7 @@
     "aws-cdk": "^2.21.1",
     "aws-cdk-lib": "^2.21.1",
     "cloudy-node": "*",
-    "constructs": "^10.0.124"
+    "constructs": "^10.0.125"
   },
   "engines": {
     "node": "^14.13.1 || >=16.0.0"
