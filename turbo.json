@@ -41,6 +41,10 @@
         "format:fix"
       ],
       "outputs": []
+    },
+    "upgrade": {
+      "dependsOn": [],
+      "cache": false
     }
   }
 }

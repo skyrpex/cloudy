@@ -17,15 +17,23 @@ const project = new DefaultNodeProject({
   defaultReleaseBranch: "main",
   packageManager: NodePackageManager.PNPM,
   release: false,
-  depsUpgrade: false,
 });
 
+// Define build and test tasks.
 project.testTask.exec("turbo run format lint test");
 project.compileTask.exec("turbo run build");
 
-// Use vite-node to run projen.
-project.addDevDeps("vite-node");
-project.defaultTask?.exec(`vite-node .projenrc.ts`);
+// Update the workspaces.
+project.upgradeWorkflow.postUpgradeTask.exec("pnpm update -r");
+// project.upgradeWorkflow.postUpgradeTask.exec("turbo run upgrade");
+// project.upgradeWorkflow.postUpgradeTask.exec(
+//   "turbo run upgrade --concurrency=1",
+// );
+project.upgradeWorkflow.postUpgradeTask.exec("npx projen");
+
+// Use cloudy-node to run projen.
+project.addDevDeps("cloudy-node");
+project.defaultTask?.exec("cloudy-node .projenrc.ts");
 
 // Ignore CDK and build outputs from versioning.
 project.gitignore.exclude("cdk.out/", "dist/");
@@ -66,6 +74,10 @@ new Turborepo(project, {
     "lint:fix": {
       dependsOn: ["format:fix"],
       outputs: [],
+    },
+    upgrade: {
+      dependsOn: [],
+      cache: false,
     },
   },
   forAllWorkspaces(workspace) {
