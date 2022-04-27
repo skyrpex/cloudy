@@ -19,8 +19,8 @@
   },
   "devDependencies": {
     "@cloudy-ts/eslint-plugin": "*",
-    "@typescript-eslint/eslint-plugin": "^5.20.0",
-    "@typescript-eslint/parser": "^5.20.0",
+    "@typescript-eslint/eslint-plugin": "^5.21.0",
+    "@typescript-eslint/parser": "^5.21.0",
     "eslint": "^8.14.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-node": "^0.3.6",
@@ -34,8 +34,8 @@
     "typescript": "^4.6.3"
   },
   "dependencies": {
-    "@aws-sdk/smithy-client": "^3.72.0",
-    "@aws-sdk/types": "^3.55.0"
+    "@aws-sdk/smithy-client": "^3.78.0",
+    "@aws-sdk/types": "^3.78.0"
   },
   "engines": {
     "node": "^14.13.1 || >=16.0.0"

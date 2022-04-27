@@ -19,8 +19,8 @@
   },
   "devDependencies": {
     "@cloudy-ts/eslint-plugin": "*",
-    "@typescript-eslint/eslint-plugin": "^5.20.0",
-    "@typescript-eslint/parser": "^5.20.0",
+    "@typescript-eslint/eslint-plugin": "^5.21.0",
+    "@typescript-eslint/parser": "^5.21.0",
     "eslint": "^8.14.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-node": "^0.3.6",
@@ -39,7 +39,7 @@
     "aws-cdk": "^2.21.1",
     "aws-cdk-lib": "^2.21.1",
     "cloudy-node": "*",
-    "constructs": "^10.0.125"
+    "constructs": "^10.0.127"
   },
   "engines": {
     "node": "^14.13.1 || >=16.0.0"

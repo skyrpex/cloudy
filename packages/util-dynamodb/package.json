@@ -20,8 +20,8 @@
   },
   "devDependencies": {
     "@cloudy-ts/eslint-plugin": "*",
-    "@typescript-eslint/eslint-plugin": "^5.20.0",
-    "@typescript-eslint/parser": "^5.20.0",
+    "@typescript-eslint/eslint-plugin": "^5.21.0",
+    "@typescript-eslint/parser": "^5.21.0",
     "eslint": "^8.14.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-node": "^0.3.6",
@@ -35,8 +35,8 @@
     "typescript": "^4.6.3"
   },
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.76.0",
-    "@aws-sdk/util-dynamodb": "^3.76.0",
+    "@aws-sdk/client-dynamodb": "^3.78.0",
+    "@aws-sdk/util-dynamodb": "^3.78.0",
     "@cloudy-ts/string-codec": "workspace:0.0.0"
   },
   "engines": {
