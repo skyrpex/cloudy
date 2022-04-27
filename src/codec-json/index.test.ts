@@ -1,25 +1,23 @@
-// import test from "ava";
+import { expect, test } from "vitest";
 
-// import { jsonEncode, jsonDecode } from ".";
+import { jsonEncode, jsonDecode } from "./index.js";
 
-// test("encodes correctly", (t) => {
-//   t.deepEqual(
-//     jsonEncode({
-//       key: "value",
-//     }) as string,
-//     '{"key":"value"}',
-//   );
-// });
+test("encodes correctly", (t) => {
+  expect(
+    jsonEncode({
+      key: "value",
+    }) as string,
+  ).toBe('{"key":"value"}');
+});
 
-// test("decodes correctly", (t) => {
-//   t.deepEqual(
-//     jsonDecode(
-//       jsonEncode({
-//         key: "value",
-//       }),
-//     ),
-//     {
-//       key: "value",
-//     },
-//   );
-// });
+test("decodes correctly", (t) => {
+  expect(
+    jsonDecode(
+      jsonEncode({
+        key: "value",
+      }),
+    ),
+  ).toEqual({
+    key: "value",
+  });
+});
