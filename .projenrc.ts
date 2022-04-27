@@ -22,7 +22,7 @@ const project = new DefaultNodeProject({
     "ts-toolbelt",
   ],
   peerDeps: ["aws-cdk-lib", "constructs"],
-  devDeps: ["aws-cdk-lib", "constructs", "vitest"],
+  devDeps: ["aws-cdk-lib", "constructs"],
   releaseToNpm: true,
 });
 
@@ -37,6 +37,7 @@ project.addFields({
 project.addPackageIgnore("docs/");
 project.addPackageIgnore(".projenrc*");
 
+// Compile and export.
 const exports = [
   "assertions",
   "aws-dynamodb",
@@ -49,21 +50,8 @@ const exports = [
   "client-sns",
 ];
 new TypeScript(project, {
-  entries: [
-    "src/index.ts",
-    ...exports.map((path) => `src/${path}/index.ts`),
-    // "src/assertions/index.ts",
-    // "src/aws-dynamodb/index.ts",
-    // "src/aws-lambda/index.ts",
-    // "src/aws-lambda-event-sources/index.ts",
-    // "src/aws-sns/index.ts",
-    // "src/aws-sns-subscriptions/index.ts",
-    // "src/aws-sqs/index.ts",
-    // "src/client-dynamodb/index.ts",
-    // "src/client-sns/index.ts",
-  ],
+  entries: ["src/index.ts", ...exports.map((path) => `src/${path}/index.ts`)],
 });
-
 const libdir = "lib";
 project.package.addField("publishConfig", {
   main: `./${libdir}/index.cjs`,
@@ -79,5 +67,9 @@ project.package.addField("publishConfig", {
     }, {}),
   },
 });
+
+// Tests.
+project.addDevDeps("vitest", "c8");
+project.testTask.exec("vitest run --coverage --passWithNoTests");
 
 project.synth();

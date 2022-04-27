@@ -29,6 +29,7 @@
     "@typescript-eslint/eslint-plugin": "^5.21.0",
     "@typescript-eslint/parser": "^5.21.0",
     "aws-cdk-lib": "2.21.1",
+    "c8": "^7.11.2",
     "cloudy-node": "^0.0.10",
     "constructs": "10.0.127",
     "eslint": "^8.14.0",

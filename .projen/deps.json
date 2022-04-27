@@ -26,6 +26,10 @@
       "type": "build"
     },
     {
+      "name": "c8",
+      "type": "build"
+    },
+    {
       "name": "cloudy-node",
       "type": "build"
     },

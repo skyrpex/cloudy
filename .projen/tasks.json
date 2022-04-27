@@ -185,7 +185,12 @@
     },
     "test": {
       "name": "test",
-      "description": "Run tests"
+      "description": "Run tests",
+      "steps": [
+        {
+          "exec": "vitest run --coverage --passWithNoTests"
+        }
+      ]
     },
     "unbump": {
       "name": "unbump",
