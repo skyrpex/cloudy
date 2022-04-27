@@ -6,6 +6,8 @@ import {
 } from "aws-cdk-lib/aws-dynamodb";
 import { Construct } from "constructs";
 import { F } from "ts-toolbelt";
+
+import { ValueType } from "../core/value-type.js";
 import { OpaqueType } from "../opaque-type/index.js";
 // // eslint-disable-next-line import/no-extraneous-dependencies
 // export { AttributeValue } from "@aws-sdk/client-dynamodb";
@@ -15,7 +17,6 @@ import { OpaqueType } from "../opaque-type/index.js";
 //   BillingMode,
 // } from "aws-cdk-lib/aws-dynamodb";
 
-import { ValueType } from "../core/value-type.js";
 import { staticTest } from "../static-test.js";
 import { IsExact, typeAssert } from "./table.conditional-type-checks.js";
 

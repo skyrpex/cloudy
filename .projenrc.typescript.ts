@@ -1,7 +1,7 @@
 import { Component, JsonFile, Project } from "projen";
 import { NodeProject, Prettier } from "projen/lib/javascript";
-import { Eslint } from "./.projenrc.eslint.js";
 
+import { Eslint } from "./.projenrc.eslint.js";
 import { Tsup } from "./.projenrc.tsup.js";
 
 interface TypeScriptOptions {

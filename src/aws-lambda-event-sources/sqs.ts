@@ -5,8 +5,6 @@ import {
 } from "aws-cdk-lib/aws-lambda-event-sources";
 import { Construct } from "constructs";
 import { F } from "ts-toolbelt";
-import { JsonEncoded } from "../codec-json/index.js";
-import { StringEncoded } from "../codec-string/index.js";
 
 import { BaseEventSource, IFunction } from "../aws-lambda/index.js";
 import {
@@ -14,6 +12,8 @@ import {
   MaterializeQueueProps,
   Queue,
 } from "../aws-sqs/queue.js";
+import { JsonEncoded } from "../codec-json/index.js";
+import { StringEncoded } from "../codec-string/index.js";
 import { ValueType } from "../core/value-type.js";
 import { staticTest } from "../static-test.js";
 

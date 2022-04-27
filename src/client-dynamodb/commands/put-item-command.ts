@@ -7,6 +7,7 @@ import {
 import { Command } from "@aws-sdk/smithy-client";
 import { Handler, MiddlewareStack } from "@aws-sdk/types";
 import { AttributeType } from "aws-cdk-lib/aws-dynamodb";
+
 import {
   MaterializedTableProps,
   Table,
@@ -14,7 +15,6 @@ import {
 } from "../../aws-dynamodb/table.js";
 import { ValueType } from "../../core/value-type.js";
 import { OpaqueType } from "../../opaque-type/index.js";
-
 import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js";
 import { ToAttributeMap } from "../util/attribute-value.js";
 

@@ -1,6 +1,7 @@
 import assert from "node:assert";
 
 import * as cdk from "aws-cdk-lib";
+
 import { waitForAsyncDependencies } from "../core/async-dependencies.js";
 
 /**

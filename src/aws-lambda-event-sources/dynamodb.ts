@@ -10,7 +10,6 @@ import {
 } from "aws-cdk-lib/aws-lambda-event-sources";
 import { Construct } from "constructs";
 import { Union } from "ts-toolbelt";
-import { ToAttributeMap } from "../client-dynamodb/util/attribute-value.js";
 
 import {
   // AccessPatterns,
@@ -25,6 +24,7 @@ import {
   // TableItemType,
 } from "../aws-dynamodb/table.js";
 import { BaseEventSource, IFunction } from "../aws-lambda/index.js";
+import { ToAttributeMap } from "../client-dynamodb/util/attribute-value.js";
 import { staticTest } from "../static-test.js";
 
 /**
