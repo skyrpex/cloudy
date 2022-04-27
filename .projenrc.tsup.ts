@@ -1,9 +1,8 @@
-import { Component, JsonFile, Project, SourceCode } from "projen";
-import { NodeProject, Prettier } from "projen/lib/javascript";
-
-import { Eslint } from "./.projenrc.eslint.js";
+import { Component, Project } from "projen";
+import { NodeProject } from "projen/lib/javascript";
 
 export interface TsupOptions {
+  libdir: string;
   entries: string[];
 }
 
@@ -17,16 +16,11 @@ export class Tsup extends Component {
   constructor(public readonly nodeProject: NodeProject, options: TsupOptions) {
     super(nodeProject);
 
-    const { entries } = options;
-
-    nodeProject.addGitIgnore("dist/");
-    nodeProject.package.addField("files", ["dist/"]);
-
     nodeProject.addDevDeps("tsup");
 
     nodeProject.addFields({
       tsup: {
-        entry: entries,
+        entry: options.entries,
         sourcemap: true,
         clean: true,
         dts: true,
@@ -35,27 +29,19 @@ export class Tsup extends Component {
       },
     });
 
-    // nodeProject.addTask("unbuild", {
-    //   exec: "unbuild",
-    // });
-    nodeProject.removeTask("build");
-    nodeProject.addTask("build", { exec: "tsup" });
-    // nodeProject.buildTask.exec("unbuild");
+    nodeProject.compileTask.exec("tsup --out-dir=lib");
 
     nodeProject.package.addField("publishConfig", {
-      main: "./dist/index.cjs",
-      module: "./dist/index.mjs",
-      types: "./dist/index.d.ts",
+      main: `./${options.libdir}/index.cjs`,
+      module: `./${options.libdir}/index.js`,
+      types: `./${options.libdir}/index.d.ts`,
       exports: {
         ".": {
-          require: "./dist/index.cjs",
-          import: "./dist/index.mjs",
-          types: "./dist/index.d.ts",
+          require: `./${options.libdir}/index.cjs`,
+          import: `./${options.libdir}/index.js`,
+          types: `./${options.libdir}/index.d.ts`,
         },
       },
     });
-
-    Eslint.of(nodeProject)?.addIgnorePattern("dist/");
-    Prettier.of(nodeProject)?.addIgnorePattern("dist/");
   }
 }

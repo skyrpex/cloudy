@@ -39,8 +39,8 @@ export class DefaultNodeProject extends NodeProject {
       ...options,
     });
 
-    this.package.addField("type", "module");
-    this.package.addField("sideEffects", false);
+    // this.package.addField("type", "module");
+    // this.package.addField("sideEffects", false);
 
     this.prettier?.ignoreFile?.addPatterns("node_modules/");
 

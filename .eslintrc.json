@@ -50,13 +50,7 @@
       "warn",
       {
         "newlines-between": "always",
-        "pathGroups": [
-          {
-            "pattern": "@cloudy-ts/**",
-            "group": "external",
-            "position": "after"
-          }
-        ],
+        "pathGroups": [],
         "pathGroupsExcludedImportTypes": [
           "builtin"
         ],
