@@ -4,11 +4,10 @@ import {
   NodePackageManager,
   NodeProject,
   TrailingComma,
+  TypeScriptModuleResolution,
 } from "projen/lib/javascript";
 import { TypeScriptProject } from "projen/lib/typescript";
 
-import { DefaultNodeProject } from "./.projenrc.default-node-project.js";
-import { Eslint } from "./.projenrc.eslint.js";
 import { TypeScript } from "./.projenrc.typescript.js";
 
 const project = new TypeScriptProject({
@@ -44,6 +43,25 @@ const project = new TypeScriptProject({
   },
 
   jest: false,
+
+  disableTsconfig: true,
+  tsconfigDevFile: "tsconfig.json",
+  tsconfigDev: {
+    include: [".projenrc*.ts"],
+    // extends: "@tsconfig/node14/tsconfig.json",
+    compilerOptions: {
+      module: "ES2022",
+      moduleResolution: TypeScriptModuleResolution.NODE,
+      lib: ["DOM", "ES2020"],
+      noUncheckedIndexedAccess: true,
+      noUnusedLocals: false,
+      noUnusedParameters: false,
+      target: "ES2020",
+      // useDefineForClassFields: true,
+      // resolveJsonModule: true,
+      // strict: true,
+    },
+  },
 });
 
 project.addFields({

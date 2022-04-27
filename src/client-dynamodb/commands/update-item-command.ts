@@ -8,7 +8,7 @@ import { Command } from "@aws-sdk/smithy-client";
 import { Handler, MiddlewareStack } from "@aws-sdk/types";
 
 import {
-  MaterializedTableProps as MaterializedTableProperties,
+  MaterializedTableProps as MaterializedTableProps,
   TableName,
 } from "../../aws-dynamodb/table.js";
 import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js";
@@ -20,12 +20,12 @@ import {
 
 // type TableItem<T extends TableName<any, any>> = T extends TableName<infer Item, any> ? Item : never
 
-type KeyOfItem<T extends MaterializedTableProperties> = {
+type KeyOfItem<T extends MaterializedTableProps> = {
   [name in T["partitionKey"] | T["sortKey"]]: T["itemType"][name];
 };
 
 export type UpdateItemCommandInput<
-  T extends MaterializedTableProperties = MaterializedTableProperties,
+  T extends MaterializedTableProps = MaterializedTableProps,
   UpdateExpression extends string = string,
   ConditionExpression extends string = string,
 > = Omit<BaseCommandInput, "Key"> & {
@@ -48,7 +48,7 @@ export type UpdateItemCommandInput<
 export interface UpdateItemCommandOutput extends BaseCommandOutput {}
 
 export class UpdateItemCommand<
-  T extends MaterializedTableProperties,
+  T extends MaterializedTableProps,
   UpdateExpression extends string,
   ConditionExpression extends string,
 > implements

@@ -9,7 +9,7 @@ import { Handler, MiddlewareStack } from "@aws-sdk/types";
 import { AttributeType } from "aws-cdk-lib/aws-dynamodb";
 
 import {
-  MaterializedTableProps as MaterializedTableProperties,
+  MaterializedTableProps as MaterializedTableProps,
   Table,
   TableName,
 } from "../../aws-dynamodb/table.js";
@@ -19,7 +19,7 @@ import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js";
 import { ToAttributeMap } from "../util/attribute-value.js";
 
 export type PutItemCommandInput<
-  T extends MaterializedTableProperties = MaterializedTableProperties,
+  T extends MaterializedTableProps = MaterializedTableProps,
 > = Omit<BaseCommandInput, "Item"> & {
   TableName: TableName<T>;
   Item: ToAttributeMap<T["itemType"]>;
@@ -48,7 +48,7 @@ export interface PutItemCommandOutput extends BaseCommandOutput {}
 //     super(new BaseCommand(input as unknown as BaseCommandInput));
 //   }
 // }
-export class PutItemCommand<T extends MaterializedTableProperties>
+export class PutItemCommand<T extends MaterializedTableProps>
   implements
     Command<BaseCommandInput, BaseCommandOutput, ResolvedConfiguration>
 {

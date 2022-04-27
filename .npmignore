@@ -4,7 +4,6 @@
 /dist/version.txt
 /.mergify.yml
 /test/
-/tsconfig.dev.json
 /.eslintrc.json
 docs/
 .projenrc*

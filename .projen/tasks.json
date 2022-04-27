@@ -78,9 +78,6 @@
       "description": "Only compile",
       "steps": [
         {
-          "exec": "tsc --build"
-        },
-        {
           "exec": "tsup --out-dir=lib"
         }
       ]

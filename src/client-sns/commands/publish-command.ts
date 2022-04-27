@@ -8,7 +8,7 @@ import { Command } from "@aws-sdk/smithy-client";
 import { Handler, MiddlewareStack } from "@aws-sdk/types";
 
 import {
-  MaterializedTopicProps as MaterializedTopicProperties,
+  MaterializedTopicProps as MaterializedTopicProps,
   Topic,
   TopicArn,
 } from "../../aws-sns/topic.js";
@@ -18,7 +18,7 @@ import { ServiceInputTypes, ServiceOutputTypes } from "../sns-client.js";
 import { staticTest } from "../static-test.js";
 
 export type PublishCommandInput<
-  T extends MaterializedTopicProperties = MaterializedTopicProperties,
+  T extends MaterializedTopicProps = MaterializedTopicProps,
 > = Omit<
   BaseCommandInput,
   | "TopicArn"
@@ -47,7 +47,7 @@ export type PublishCommandInput<
 
 export interface PublishCommandOutput extends BaseCommandOutput {}
 
-export class PublishCommand<T extends MaterializedTopicProperties>
+export class PublishCommand<T extends MaterializedTopicProps>
   implements
     Command<BaseCommandInput, BaseCommandOutput, ResolvedConfiguration>
 {

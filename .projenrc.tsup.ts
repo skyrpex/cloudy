@@ -29,6 +29,7 @@ export class Tsup extends Component {
       },
     });
 
+    nodeProject.compileTask.reset();
     nodeProject.compileTask.exec("tsup --out-dir=lib");
 
     // nodeProject.package.addField("publishConfig", {

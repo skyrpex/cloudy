@@ -23,10 +23,10 @@ export interface Context {
 import { codeFromFunction } from "./code-from-function.js";
 import { IEventSource } from "./event-source.js";
 import { IFunction } from "./function-base.js";
-import { FunctionProps as FunctionProperties, Function } from "./function.js";
+import { FunctionProps as FunctionProps, Function } from "./function.js";
 
-export interface CallbackFunctionProperties<InputType, OutputType>
-  extends Omit<FunctionProperties, "code" | "handler" | "runtime" | "events"> {
+export interface CallbackFunctionProps<InputType, OutputType>
+  extends Omit<FunctionProps, "code" | "handler" | "runtime" | "events"> {
   /**
      * The function that Lambda calls. The function serialization captures any variables captured by the function body and serializes those values into the generated text along with the function body. This process is recursive, so that functions referenced by the body of the serialized function will themselves be serialized as well. This process also deeply serializes captured object values, including prototype chains and property descriptors, such that the semantics of the function when deserialized should match the original function.
 
@@ -58,7 +58,7 @@ export class CallbackFunction<InputType, OutputType>
   constructor(
     scope: Construct,
     id: string,
-    properties: CallbackFunctionProperties<InputType, OutputType>,
+    properties: CallbackFunctionProps<InputType, OutputType>,
   ) {
     const code = codeFromFunction(properties.handler);
 

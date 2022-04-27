@@ -1,7 +1,6 @@
 import { Component, JsonFile, Project } from "projen";
 import { NodeProject, Prettier } from "projen/lib/javascript";
 
-import { Eslint } from "./.projenrc.eslint.js";
 import { Tsup } from "./.projenrc.tsup.js";
 
 interface TypeScriptOptions {
@@ -88,8 +87,5 @@ export class TypeScript extends Component {
       libdir,
       entries: options.entries,
     });
-
-    // Eslint.of(nodeProject)?.addIgnorePattern(`${libdir}/`);
-    // Prettier.of(nodeProject)?.addIgnorePattern(`${libdir}/`);
   }
 }
