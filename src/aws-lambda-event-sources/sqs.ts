@@ -1,15 +1,15 @@
 import { IFunction as IBaseFunction } from "aws-cdk-lib/aws-lambda";
 import {
   SqsEventSource as BaseSqsEventSource,
-  SqsEventSourceProps as BaseProps,
+  SqsEventSourceProps as BaseProperties,
 } from "aws-cdk-lib/aws-lambda-event-sources";
 import { Construct } from "constructs";
 import { F } from "ts-toolbelt";
 
 import { BaseEventSource, IFunction } from "../aws-lambda/index.js";
 import {
-  MaterializedQueueProps,
-  MaterializeQueueProps,
+  MaterializedQueueProps as MaterializedQueueProperties,
+  MaterializeQueueProps as MaterializeQueueProperties,
   Queue,
 } from "../aws-sqs/queue.js";
 import { JsonEncoded } from "../codec-json/index.js";
@@ -17,14 +17,14 @@ import { StringEncoded } from "../codec-string/index.js";
 import { ValueType } from "../core/value-type.js";
 import { staticTest } from "../static-test.js";
 
-export interface SqsEventSourceProps extends BaseProps {}
+export interface SqsEventSourceProperties extends BaseProperties {}
 
 type QueueMessageType<T extends Queue> = T extends Queue<infer P>
-  ? MaterializeQueueProps<P>["message"]
+  ? MaterializeQueueProperties<P>["message"]
   : never;
 
 interface SqsEventTypeRaw<
-  T extends MaterializedQueueProps,
+  T extends MaterializedQueueProperties,
   RawMessageDelivery extends boolean = boolean,
 > {
   Records: {
@@ -69,7 +69,7 @@ export type SqsEventType<
   T extends Queue,
   RawMessageDelivery extends boolean,
 > = T extends Queue<infer P>
-  ? SqsEventTypeRaw<MaterializeQueueProps<P>, RawMessageDelivery>
+  ? SqsEventTypeRaw<MaterializeQueueProperties<P>, RawMessageDelivery>
   : never;
 // > = F.Narrow<{
 // > = T extends Queue<infer P>
@@ -87,7 +87,7 @@ export class SqsEventSource<
 > extends BaseEventSource<SqsEventType<T, true>> {
   private readonly source: BaseSqsEventSource;
 
-  constructor(queue: T, properties?: SqsEventSourceProps) {
+  constructor(queue: T, properties?: SqsEventSourceProperties) {
     super();
     this.source = new BaseSqsEventSource(queue, properties);
   }
@@ -110,7 +110,7 @@ staticTest((scope: Construct, id: string) => {
     },
   });
 
-  type m = F.Narrow<MaterializeQueueProps<typeof queue>>;
+  type m = F.Narrow<MaterializeQueueProperties<typeof queue>>;
 
   const eventSource = new SqsEventSource(queue);
 
@@ -126,8 +126,8 @@ staticTest((scope: Construct, id: string) => {
 
   type QueueMessageType2<T extends Queue> = T extends Queue<infer P>
     ? {
-        message: MaterializeQueueProps<P>["message"];
-        messageAttributes: MaterializeQueueProps<P>["messageAttributes"];
+        message: MaterializeQueueProperties<P>["message"];
+        messageAttributes: MaterializeQueueProperties<P>["messageAttributes"];
       }
     : never;
   type y = QueueMessageType2<typeof queue>;

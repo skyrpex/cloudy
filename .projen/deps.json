@@ -15,10 +15,12 @@
     },
     {
       "name": "@typescript-eslint/eslint-plugin",
+      "version": "^5",
       "type": "build"
     },
     {
       "name": "@typescript-eslint/parser",
+      "version": "^5",
       "type": "build"
     },
     {
@@ -35,10 +37,6 @@
     },
     {
       "name": "constructs",
-      "type": "build"
-    },
-    {
-      "name": "eslint",
       "type": "build"
     },
     {
@@ -63,6 +61,15 @@
     },
     {
       "name": "eslint-plugin-unicorn",
+      "type": "build"
+    },
+    {
+      "name": "eslint",
+      "version": "^8",
+      "type": "build"
+    },
+    {
+      "name": "json-schema",
       "type": "build"
     },
     {

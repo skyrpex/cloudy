@@ -9,7 +9,10 @@ import {
 import { Command } from "@aws-sdk/smithy-client";
 import { Handler, MiddlewareStack } from "@aws-sdk/types";
 
-import { MaterializedTableProps, TableName } from "../../aws-dynamodb/table.js";
+import {
+  MaterializedTableProps as MaterializedTableProperties,
+  TableName,
+} from "../../aws-dynamodb/table.js";
 import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js";
 import {
   ExpressionAttributeNames,
@@ -17,7 +20,7 @@ import {
 } from "../util/expression-attributes.js";
 
 export type QueryCommandInput<
-  T extends MaterializedTableProps = MaterializedTableProps,
+  T extends MaterializedTableProperties = MaterializedTableProperties,
   FilterExpression extends string = string,
   KeyConditionExpression extends string = string,
   ProjectionExpression extends string = string,
@@ -68,7 +71,7 @@ export interface QueryCommandOutput extends BaseCommandOutput {}
 // }
 
 export class QueryCommand<
-  T extends MaterializedTableProps = MaterializedTableProps,
+  T extends MaterializedTableProperties = MaterializedTableProperties,
   FilterExpression extends string = string,
   KeyConditionExpression extends string = string,
   ProjectionExpression extends string = string,

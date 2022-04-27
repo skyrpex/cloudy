@@ -2,7 +2,7 @@ import {
   Table as BaseTable,
   AttributeType,
   StreamViewType,
-  TableProps as BaseTableProps,
+  TableProps as BaseTableProperties,
 } from "aws-cdk-lib/aws-dynamodb";
 import { Construct } from "constructs";
 import { F } from "ts-toolbelt";
@@ -63,12 +63,12 @@ type AccessPattern<
   AttributeFromKeyDefinition<PartitionKey> &
   AttributeFromKeyDefinition<NonNullable<SortKey>>;
 
-export interface TableProps<
+export interface TableProperties<
   PartitionKey extends KeyDefinition,
   SortKey extends KeyDefinition | undefined,
   ItemType extends AccessPattern<PartitionKey, SortKey> | undefined,
   Stream extends StreamViewType | undefined,
-> extends BaseTableProps {
+> extends BaseTableProperties {
   partitionKey: PartitionKey;
   sortKey?: SortKey;
   itemType?: ValueType<ItemType>;
@@ -77,14 +77,18 @@ export interface TableProps<
 
 type ResolveValueType<T> = T extends ValueType<infer V> ? V : T;
 
-export interface MaterializedTableProps<T extends DynamodbItem = DynamodbItem> {
+export interface MaterializedTableProperties<
+  T extends DynamodbItem = DynamodbItem,
+> {
   partitionKey: keyof T;
   sortKey: keyof T | never;
   itemType: T;
   stream: StreamViewType | never;
 }
 
-export type MaterializeTableProps<T extends TableProps<any, any, any, any>> = {
+export type MaterializeTableProps<
+  T extends TableProperties<any, any, any, any>,
+> = {
   partitionKey: T["partitionKey"]["name"] extends string
     ? T["partitionKey"]["name"]
     : never;
@@ -111,7 +115,7 @@ export type MaterializeTableProps<T extends TableProps<any, any, any, any>> = {
 
 staticTest(() => {
   type p1 = MaterializeTableProps<
-    TableProps<
+    TableProperties<
       { name: "id"; type: AttributeType.STRING },
       undefined,
       { id: string },
@@ -131,7 +135,7 @@ staticTest(() => {
   >(true);
 
   type p2 = MaterializeTableProps<
-    TableProps<
+    TableProperties<
       { name: "id"; type: AttributeType.STRING },
       { name: "sk"; type: AttributeType.STRING },
       { id: string; sk: string },
@@ -151,7 +155,7 @@ staticTest(() => {
   >(true);
 
   type p3 = MaterializeTableProps<
-    TableProps<
+    TableProperties<
       { name: "id"; type: AttributeType.STRING },
       { name: "sk"; type: AttributeType.NUMBER },
       { id: string; sk: number; age: number },
@@ -171,21 +175,21 @@ staticTest(() => {
     >
   >(true);
 
-  type p4 = TableProps<
+  type p4 = TableProperties<
     { name: "id"; type: AttributeType.STRING },
     { name: "sk"; type: AttributeType.STRING },
     // @ts-expect-error: sk is missing.
     { id: string },
     undefined
   >;
-  type p5 = TableProps<
+  type p5 = TableProperties<
     { name: "id"; type: AttributeType.STRING },
     { name: "sk"; type: AttributeType.STRING },
     // @ts-expect-error: id is missing.
     {},
     undefined
   >;
-  type p6 = TableProps<
+  type p6 = TableProperties<
     { name: "id"; type: AttributeType.STRING },
     undefined,
     // @ts-expect-error: id is missing.
@@ -194,7 +198,7 @@ staticTest(() => {
   >;
 
   type p7 = MaterializeTableProps<
-    TableProps<
+    TableProperties<
       { name: "id"; type: AttributeType.STRING },
       undefined,
       undefined,
@@ -215,7 +219,7 @@ staticTest(() => {
   >(true);
 
   type p8 = MaterializeTableProps<
-    TableProps<
+    TableProperties<
       { name: "id"; type: AttributeType.STRING },
       { name: "sk"; type: AttributeType.NUMBER },
       | { id: "age"; sk: number; age: number }
@@ -239,7 +243,10 @@ staticTest(() => {
   >(true);
 });
 
-export type TableName<T extends MaterializedTableProps> = OpaqueType<string, T>;
+export type TableName<T extends MaterializedTableProperties> = OpaqueType<
+  string,
+  T
+>;
 
 /**
  * Defines a type-safe DynamoDB table.
@@ -283,16 +290,20 @@ export class Table<
    * @attribute
    */
   public declare readonly tableName: TableName<
-    MaterializeTableProps<TableProps<PartitionKey, SortKey, ItemType, Stream>>
+    MaterializeTableProps<
+      TableProperties<PartitionKey, SortKey, ItemType, Stream>
+    >
   >;
 
   public constructor(
     scope: Construct,
     id: string,
-    properties: F.Narrow<TableProps<PartitionKey, SortKey, ItemType, Stream>>,
+    properties: F.Narrow<
+      TableProperties<PartitionKey, SortKey, ItemType, Stream>
+    >,
     // properties: TableProps<PartitionKey, SortKey, ItemType, Stream>,
   ) {
-    super(scope, id, properties as unknown as BaseTableProps);
+    super(scope, id, properties as unknown as BaseTableProperties);
   }
 }
 

@@ -13,10 +13,6 @@ const tag = Symbol("cloudy-cdk-lib.ValueType");
  * ```
  */
 export class ValueType<T> {
-  declare readonly [tag]: T;
-
-  private constructor() {}
-
   /**
    * Create a string-based ValueType.
    */
@@ -44,4 +40,8 @@ export class ValueType<T> {
   public static as<T>() {
     return new ValueType<T>();
   }
+
+  declare readonly [tag]: T;
+
+  private constructor() {}
 }

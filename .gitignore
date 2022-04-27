@@ -40,10 +40,11 @@ jspm_packages/
 !/.github/pull_request_template.md
 !/.prettierignore
 !/.prettierrc.json
+!/test/
+!/tsconfig.json
+!/tsconfig.dev.json
+!/.eslintrc.json
 !/src/
 /lib
 /dist/
-!/tsconfig.json
-!/.eslintignore
-!/.eslintrc.json
 !/.editorconfig

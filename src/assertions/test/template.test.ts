@@ -1,8 +1,8 @@
 import * as cdk from "aws-cdk-lib";
 import { test } from "vitest";
 
-import { Function } from "../aws-lambda/function.js";
-import { Template } from "./template.js";
+import { Function } from "../../aws-lambda/function.js";
+import { Template } from "../template.js";
 
 test("The [fromStack] method waits for dependencies", async () => {
   const app = new cdk.App();

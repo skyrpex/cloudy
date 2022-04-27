@@ -57,6 +57,7 @@ export class TypeScript extends Component {
     nodeProject.npmignore?.exclude("tsconfig.tsbuildinfo");
 
     // Use cloudy-node to run projen.
+    nodeProject.deps.removeDependency("ts-node");
     nodeProject.addDevDeps("cloudy-node");
     nodeProject.defaultTask?.exec("cloudy-node .projenrc.ts");
 
@@ -66,29 +67,29 @@ export class TypeScript extends Component {
       "typescript",
     );
 
-    this.tsconfig = new JsonFile(this.project, "tsconfig.json", {
-      obj: {
-        extends: "@tsconfig/node14/tsconfig.json",
-        compilerOptions: {
-          module: "ES2022",
-          moduleResolution: "node",
-          lib: ["DOM", "ES2020"],
-          noUncheckedIndexedAccess: true,
-          useDefineForClassFields: true,
-          resolveJsonModule: true,
-          paths: options.tsconfig?.paths,
-        },
-        // include: ["**/*.ts", "**/.*.ts"],
-        // exclude: ["**/node_modules/**"],
-      },
-    });
+    // this.tsconfig = new JsonFile(this.project, "tsconfig.json", {
+    //   obj: {
+    //     extends: "@tsconfig/node14/tsconfig.json",
+    //     compilerOptions: {
+    //       module: "ES2022",
+    //       moduleResolution: "node",
+    //       lib: ["DOM", "ES2020"],
+    //       noUncheckedIndexedAccess: true,
+    //       useDefineForClassFields: true,
+    //       resolveJsonModule: true,
+    //       paths: options.tsconfig?.paths,
+    //     },
+    //     // include: ["**/*.ts", "**/.*.ts"],
+    //     // exclude: ["**/node_modules/**"],
+    //   },
+    // });
 
     new Tsup(nodeProject, {
       libdir,
       entries: options.entries,
     });
 
-    Eslint.of(nodeProject)?.addIgnorePattern(`${libdir}/`);
-    Prettier.of(nodeProject)?.addIgnorePattern(`${libdir}/`);
+    // Eslint.of(nodeProject)?.addIgnorePattern(`${libdir}/`);
+    // Prettier.of(nodeProject)?.addIgnorePattern(`${libdir}/`);
   }
 }

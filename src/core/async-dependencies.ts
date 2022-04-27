@@ -21,20 +21,6 @@ interface MaybeTaggedApp extends App {
  */
 export class AsyncDependenciesContext {
   /**
-   * Holds all of the dependencies promises.
-   */
-  private readonly promises: Promise<void>[] = [];
-
-  /**
-   * Creates a new AsyncDependenciesContext and patches the app so it can't
-   * synth before the dependencies are fulfilled.
-   * @param app The CDK app.
-   */
-  private constructor(app: App) {
-    Object.assign(app, { [tag]: this });
-  }
-
-  /**
    * Returns the AsyncDependenciesContext of the app.
    *
    * @param node The construct node.
@@ -51,6 +37,20 @@ export class AsyncDependenciesContext {
     // Return any existing context, or create a new one.
     const app: MaybeTaggedApp = root;
     return app[tag] ?? new AsyncDependenciesContext(app);
+  }
+
+  /**
+   * Holds all of the dependencies promises.
+   */
+  private readonly promises: Promise<void>[] = [];
+
+  /**
+   * Creates a new AsyncDependenciesContext and patches the app so it can't
+   * synth before the dependencies are fulfilled.
+   * @param app The CDK app.
+   */
+  private constructor(app: App) {
+    Object.assign(app, { [tag]: this });
   }
 
   /**

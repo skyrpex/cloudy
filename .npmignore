@@ -3,6 +3,9 @@
 /dist/changelog.md
 /dist/version.txt
 /.mergify.yml
+/test/
+/tsconfig.dev.json
+/.eslintrc.json
 docs/
 .projenrc*
 /src/
@@ -16,7 +19,4 @@ dist
 /.idea/
 /.projenrc.js
 tsconfig.tsbuildinfo
-.eslintignore
-.eslintrc*
-/.eslintrc.json
 .editorconfig

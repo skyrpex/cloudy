@@ -1,16 +1,19 @@
 import { IFunction as IBaseFunction } from "aws-cdk-lib/aws-lambda";
 import {
   SnsEventSource as BaseSnsEventSource,
-  SnsEventSourceProps as BaseProps,
+  SnsEventSourceProps as BaseProperties,
 } from "aws-cdk-lib/aws-lambda-event-sources";
 
 import { BaseEventSource, IFunction } from "../aws-lambda/index.js";
-import { MaterializeTopicProps, Topic } from "../aws-sns/topic.js";
+import {
+  MaterializeTopicProps as MaterializeTopicProperties,
+  Topic,
+} from "../aws-sns/topic.js";
 
-export interface SnsEventSourceProps extends BaseProps {}
+export interface SnsEventSourceProperties extends BaseProperties {}
 
 type TopicMessageType<T extends Topic> = T extends Topic<infer P>
-  ? MaterializeTopicProps<P>["message"]
+  ? MaterializeTopicProperties<P>["message"]
   : never;
 
 export type SnsEventType<T extends Topic> = {
@@ -22,7 +25,7 @@ export class SnsEventSource<T extends Topic> extends BaseEventSource<
 > {
   private readonly source: BaseSnsEventSource;
 
-  constructor(topic: T, properties?: SnsEventSourceProps) {
+  constructor(topic: T, properties?: SnsEventSourceProperties) {
     super();
     this.source = new BaseSnsEventSource(topic, properties);
   }

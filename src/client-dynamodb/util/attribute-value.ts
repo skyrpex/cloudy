@@ -79,8 +79,8 @@ export type ToAttributeValue<T> = T extends undefined
 //   return a !== undefined && "S" in a
 // }
 
-export interface S<S extends string = string> {
-  S: S;
+export interface S<T extends string = string> {
+  S: T;
 }
 
 // export function isB(a: any): a is B {
@@ -95,8 +95,8 @@ export interface B {
 //   return a !== undefined && "BOOL" in a
 // }
 
-export interface BOOL<B = boolean> {
-  BOOL: B;
+export interface BOOL<T = boolean> {
+  BOOL: T;
 }
 
 // export function isM(a: any): a is M {
@@ -104,27 +104,27 @@ export interface BOOL<B = boolean> {
 // }
 
 export interface M<
-  M extends Record<string, AttributeValue> = Record<string, AttributeValue>,
+  T extends Record<string, AttributeValue> = Record<string, AttributeValue>,
 > {
-  M: M;
+  M: T;
 }
 
 // export function isN(a: any): a is N {
 //   return a !== undefined && "N" in a
 // }
 
-export interface N<N extends number = number> {
+export interface N<T extends number = number> {
   // If number extends N, it means that N is just a plain number,
   // so we make it acceptable to pass raw number strings instead
   // of forcing the user to use the `stringEncode` method.
-  N: number extends N ? `${N}` | StringEncoded<N> : StringEncoded<N>;
+  N: number extends T ? `${T}` | StringEncoded<T> : StringEncoded<T>;
 }
 
-export interface NB<N extends bigint = bigint> {
+export interface NB<T extends bigint = bigint> {
   // If bigint extends N, it means that N is just a plain bigint,
   // so we make it acceptable to pass raw bigint strings instead
   // of forcing the user to use the `stringEncode` method.
-  N: bigint extends N ? `${N}` | StringEncoded<N> : StringEncoded<N>;
+  N: bigint extends T ? `${T}` | StringEncoded<T> : StringEncoded<T>;
 }
 
 // export function isNULL(a: any): a is NULL {
@@ -140,9 +140,9 @@ export interface NULL {
 // }
 
 export interface L<
-  L extends ArrayLike<AttributeValue> = ArrayLike<AttributeValue>,
+  T extends ArrayLike<AttributeValue> = ArrayLike<AttributeValue>,
 > {
-  L: L;
+  L: T;
 }
 
 // export interface Stringifable {

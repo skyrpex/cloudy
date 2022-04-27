@@ -4,7 +4,7 @@ import {
   CfnFunction,
   Code,
   Function as BaseFunction,
-  FunctionProps as BaseFunctionProps,
+  FunctionProps as BaseFunctionProperties,
   Runtime,
   verifyCodeConfig,
 } from "aws-cdk-lib/aws-lambda";
@@ -12,7 +12,8 @@ import { Construct } from "constructs";
 
 import { AsyncDependenciesContext } from "../core";
 
-export interface FunctionProps extends Omit<BaseFunctionProps, "code"> {
+export interface FunctionProperties
+  extends Omit<BaseFunctionProperties, "code"> {
   /**
    * The source code of your Lambda function. You can point to a file in an
    * Amazon Simple Storage Service (Amazon S3) bucket or specify your source
@@ -33,7 +34,7 @@ export interface FunctionProps extends Omit<BaseFunctionProps, "code"> {
  * library.
  */
 export class Function extends BaseFunction {
-  constructor(scope: Construct, id: string, properties: FunctionProps) {
+  constructor(scope: Construct, id: string, properties: FunctionProperties) {
     super(scope, id, {
       ...properties,
       // Use a dummy code object until we can get the code from the properties.

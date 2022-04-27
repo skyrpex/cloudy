@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
 
-import { jsonEncode, jsonDecode } from "./index.js";
+import { jsonEncode, jsonDecode } from "../index.js";
 
 test("encodes correctly", (t) => {
   expect(

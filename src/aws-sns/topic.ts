@@ -16,7 +16,7 @@ type MessageAttribute =
       BinaryValue: ValueType<Uint8Array>;
     };
 
-export interface TopicProps extends cdk.aws_sns.TopicProps {
+export interface TopicProperties extends cdk.aws_sns.TopicProps {
   // fifo?: boolean;
   messageType?: ValueType<string>;
   messageGroupIdType?: ValueType<string>;
@@ -26,7 +26,7 @@ export interface TopicProps extends cdk.aws_sns.TopicProps {
   };
 }
 
-export interface MaterializedTopicProps {
+export interface MaterializedTopicProperties {
   message: string;
   messageGroupId: string | never;
   messageDeduplicationId: string | never;
@@ -45,7 +45,10 @@ export interface MaterializedTopicProps {
     | never;
 }
 
-export type TopicArn<T extends MaterializedTopicProps> = OpaqueType<string, T>;
+export type TopicArn<T extends MaterializedTopicProperties> = OpaqueType<
+  string,
+  T
+>;
 
 type RecursivelyMapValueType<T> = T extends ValueType<infer V>
   ? V
@@ -58,7 +61,7 @@ type DefaultTo<T, Default> = T extends ValueType<infer U>
     ? Default
     : T
   : Default;
-export type MaterializeTopicProps<T extends TopicProps> =
+export type MaterializeTopicProps<T extends TopicProperties> =
   RecursivelyMapValueType<{
     message: DefaultTo<T["messageType"], string>;
     messageGroupId: T["fifo"] extends true
@@ -74,14 +77,14 @@ export type MaterializeTopicProps<T extends TopicProps> =
       : never;
   }>;
 
-export class Topic<T extends TopicProps = TopicProps> extends cdk.aws_sns
-  .Topic {
+export class Topic<T extends TopicProperties = TopicProperties> extends cdk
+  .aws_sns.Topic {
   public declare readonly topicArn: TopicArn<MaterializeTopicProps<T>>;
 
   public constructor(
     scope: Construct,
     id: string,
-    private readonly properties?: F.Exact<T, TopicProps>,
+    private readonly properties?: F.Exact<T, TopicProperties>,
   ) {
     super(scope, id, {
       topicName: properties?.fifo ? buildFifoName(scope, id) : undefined,

@@ -1,8 +1,8 @@
 import * as cdk from "aws-cdk-lib";
 import { expect, test } from "vitest";
 
-import { Function } from "../aws-lambda/function.js";
-import { synth, waitForAsyncDependencies } from "./async-dependencies.js";
+import { Function } from "../../aws-lambda/function.js";
+import { synth, waitForAsyncDependencies } from "../async-dependencies.js";
 
 test("synthesizes correctly after waiting for [waitForAsyncDependencies]", async () => {
   const app = new cdk.App();

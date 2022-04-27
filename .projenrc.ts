@@ -5,12 +5,13 @@ import {
   NodeProject,
   TrailingComma,
 } from "projen/lib/javascript";
+import { TypeScriptProject } from "projen/lib/typescript";
 
 import { DefaultNodeProject } from "./.projenrc.default-node-project.js";
 import { Eslint } from "./.projenrc.eslint.js";
 import { TypeScript } from "./.projenrc.typescript.js";
 
-const project = new NodeProject({
+const project = new TypeScriptProject({
   name: "cloudy-cdk-lib",
   description:
     "Set of constructs for the AWS Cloud Development Kit that aim to improve the DX by providing a faster and type-safe code environment",
@@ -31,8 +32,9 @@ const project = new NodeProject({
   devDeps: ["aws-cdk-lib", "constructs"],
 
   packageManager: NodePackageManager.PNPM,
-  projenrcJs: false,
   releaseToNpm: true,
+  projenrcJs: false,
+  sampleCode: false,
 
   prettier: true,
   prettierOptions: {
@@ -91,19 +93,21 @@ project.addDevDeps("vitest", "c8");
 project.testTask.exec("vitest run --coverage --passWithNoTests");
 
 // Lint.
-const eslint = new Eslint(project, {
-  prettier: true,
-  devFiles: ["**/.projenrc*.ts", "**/*.test.ts"],
-});
-eslint.addIgnorePattern("coverage/");
-eslint.addIgnorePattern("dist/");
-eslint.addIgnorePattern("lib/");
-project.prettier?.ignoreFile?.addPatterns(
-  "node_modules/",
-  "coverage/",
-  "dist/",
-  "lib/",
+project.addDevDeps("eslint-plugin-unicorn", "@cloudy-ts/eslint-plugin");
+project.eslint.addExtends(
+  "plugin:unicorn/recommended",
+  "plugin:@cloudy-ts/recommended",
 );
+project.eslint.addRules({
+  "unicorn/prevent-abbreviations": [
+    "error",
+    {
+      replacements: {
+        props: false,
+      },
+    },
+  ],
+});
 new TextFile(project, ".editorconfig", {
   lines: [
     "root = true",

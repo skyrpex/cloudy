@@ -13,14 +13,14 @@ importers:
       '@pulumi/pulumi': ^3.30.0
       '@tsconfig/node14': ^1.0.1
       '@types/node': ^14
-      '@typescript-eslint/eslint-plugin': ^5.21.0
-      '@typescript-eslint/parser': ^5.21.0
+      '@typescript-eslint/eslint-plugin': ^5
+      '@typescript-eslint/parser': ^5
       aws-cdk-lib: 2.21.1
       c8: ^7.11.2
       cloudy-node: ^0.0.10
       constructs: 10.0.127
       esbuild: ^0.14.38
-      eslint: ^8.14.0
+      eslint: ^8
       eslint-config-prettier: ^8.5.0
       eslint-import-resolver-node: ^0.3.6
       eslint-import-resolver-typescript: ^2.7.1
@@ -28,6 +28,7 @@ importers:
       eslint-plugin-prettier: ^4.0.0
       eslint-plugin-unicorn: ^42.0.0
       find-up: '*'
+      json-schema: ^0.4.0
       npm-check-updates: ^12
       prettier: ^2.6.2
       projen: ^0.54.48
@@ -63,6 +64,7 @@ importers:
       eslint-plugin-import: 2.26.0_eslint@8.14.0
       eslint-plugin-prettier: 4.0.0_665eb419c9d7860ca0c224f7f6dcdace
       eslint-plugin-unicorn: 42.0.0_eslint@8.14.0
+      json-schema: 0.4.0
       npm-check-updates: 12.5.9
       prettier: 2.6.2
       projen: 0.54.48
@@ -4136,6 +4138,10 @@ packages:
 
   /json-schema-traverse/0.4.1:
     resolution: {integrity: sha512-xbbCH5dCYU5T8LcEhhuh7HJ88HXuW3qsI3Y0zOZFKfZEHcpWiHU/Jxzk629Brsab/mMiHQti9wMP+845RPe3Vg==}
+    dev: true
+
+  /json-schema/0.4.0:
+    resolution: {integrity: sha512-es94M3nTIfsEPisRafak+HDLfHXnKBhV3vU5eqPcS3flIWqcxJWgXHXiey3YrpaNsanY5ei1VoYEbOzijuq9BA==}
     dev: true
 
   /json-stable-stringify-without-jsonify/1.0.1:
