@@ -1,15 +1,21 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { NodePackageManager } from "projen/lib/javascript";
+import { TextFile } from "projen";
+import {
+  NodePackageManager,
+  NodeProject,
+  TrailingComma,
+} from "projen/lib/javascript";
 
 import { DefaultNodeProject } from "./.projenrc.default-node-project.js";
+import { Eslint } from "./.projenrc.eslint.js";
 import { TypeScript } from "./.projenrc.typescript.js";
 
-const project = new DefaultNodeProject({
+const project = new NodeProject({
   name: "cloudy-cdk-lib",
   description:
     "Set of constructs for the AWS Cloud Development Kit that aim to improve the DX by providing a faster and type-safe code environment",
   defaultReleaseBranch: "main",
-  packageManager: NodePackageManager.PNPM,
+
   deps: [
     "@aws-sdk/client-dynamodb",
     "@aws-sdk/client-sns",
@@ -23,7 +29,19 @@ const project = new DefaultNodeProject({
   ],
   peerDeps: ["aws-cdk-lib", "constructs"],
   devDeps: ["aws-cdk-lib", "constructs"],
+
+  packageManager: NodePackageManager.PNPM,
+  projenrcJs: false,
   releaseToNpm: true,
+
+  prettier: true,
+  prettierOptions: {
+    settings: {
+      trailingComma: TrailingComma.ALL,
+    },
+  },
+
+  jest: false,
 });
 
 project.addFields({
@@ -71,5 +89,38 @@ project.package.addField("publishConfig", {
 // Tests.
 project.addDevDeps("vitest", "c8");
 project.testTask.exec("vitest run --coverage --passWithNoTests");
+
+// Lint.
+const eslint = new Eslint(project, {
+  prettier: true,
+  devFiles: ["**/.projenrc*.ts", "**/*.test.ts"],
+});
+eslint.addIgnorePattern("coverage/");
+eslint.addIgnorePattern("dist/");
+eslint.addIgnorePattern("lib/");
+project.prettier?.ignoreFile?.addPatterns(
+  "node_modules/",
+  "coverage/",
+  "dist/",
+  "lib/",
+);
+new TextFile(project, ".editorconfig", {
+  lines: [
+    "root = true",
+    "",
+    "[*]",
+    "indent_style = space",
+    "indent_size = 2",
+    "end_of_line = lf",
+    "charset = utf-8",
+    "trim_trailing_whitespace = true",
+    "insert_final_newline = true",
+    "",
+    "[*.md]",
+    "trim_trailing_whitespace = false",
+    "",
+  ],
+});
+project.addPackageIgnore(".editorconfig");
 
 project.synth();

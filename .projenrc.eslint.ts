@@ -145,7 +145,7 @@ export class Eslint extends Component {
       exec: "eslint --ext ts . --fix",
     });
 
-    if (options.prettier) {
+    if (options?.prettier) {
       project.addTask("format", {
         exec: "prettier --check '**/*.ts'",
       });
