@@ -22,7 +22,7 @@ const project = new DefaultNodeProject({
     "ts-toolbelt",
   ],
   peerDeps: ["aws-cdk-lib", "constructs"],
-  devDeps: ["aws-cdk-lib", "constructs"],
+  devDeps: ["aws-cdk-lib", "constructs", "vitest"],
   releaseToNpm: true,
 });
 
