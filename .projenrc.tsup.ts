@@ -31,17 +31,17 @@ export class Tsup extends Component {
 
     nodeProject.compileTask.exec("tsup --out-dir=lib");
 
-    nodeProject.package.addField("publishConfig", {
-      main: `./${options.libdir}/index.cjs`,
-      module: `./${options.libdir}/index.js`,
-      types: `./${options.libdir}/index.d.ts`,
-      exports: {
-        ".": {
-          require: `./${options.libdir}/index.cjs`,
-          import: `./${options.libdir}/index.js`,
-          types: `./${options.libdir}/index.d.ts`,
-        },
-      },
-    });
+    // nodeProject.package.addField("publishConfig", {
+    //   main: `./${options.libdir}/index.cjs`,
+    //   module: `./${options.libdir}/index.js`,
+    //   types: `./${options.libdir}/index.d.ts`,
+    //   exports: {
+    //     ".": {
+    //       require: `./${options.libdir}/index.cjs`,
+    //       import: `./${options.libdir}/index.js`,
+    //       types: `./${options.libdir}/index.d.ts`,
+    //     },
+    //   },
+    // });
   }
 }

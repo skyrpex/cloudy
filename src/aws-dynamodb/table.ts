@@ -6,7 +6,7 @@ import {
 } from "aws-cdk-lib/aws-dynamodb";
 import { Construct } from "constructs";
 import { F } from "ts-toolbelt";
-import { OpaqueType } from "../../opaque-type/index.js";
+import { OpaqueType } from "../opaque-type/index.js";
 // // eslint-disable-next-line import/no-extraneous-dependencies
 // export { AttributeValue } from "@aws-sdk/client-dynamodb";
 // export {

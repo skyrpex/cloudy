@@ -5,8 +5,8 @@ import {
 } from "aws-cdk-lib/aws-lambda-event-sources";
 import { Construct } from "constructs";
 import { F } from "ts-toolbelt";
-import { JsonEncoded } from "../../codec-json/index.js";
-import { StringEncoded } from "../../codec-string/index.js";
+import { JsonEncoded } from "../codec-json/index.js";
+import { StringEncoded } from "../codec-string/index.js";
 
 import { BaseEventSource, IFunction } from "../aws-lambda/index.js";
 import {

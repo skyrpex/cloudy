@@ -66,14 +66,16 @@
   "license": "Apache-2.0",
   "publishConfig": {
     "main": "./lib/index.cjs",
-    "module": "./lib/index.js",
     "types": "./lib/index.d.ts",
     "exports": {
-      ".": {
-        "require": "./lib/index.cjs",
-        "import": "./lib/index.js",
-        "types": "./lib/index.d.ts"
-      }
+      ".": "./lib/index.js",
+      "./assertions": "./lib/assertions/index.js",
+      "./aws-dynamodb": "./lib/aws-dynamodb/index.js",
+      "./aws-lambda": "./lib/aws-lambda/index.js",
+      "./aws-sns": "./lib/aws-sns/index.js",
+      "./aws-sqs": "./lib/aws-sqs/index.js",
+      "./client-dynamodb": "./lib/client-dynamodb/index.js",
+      "./client-sns": "./lib/client-sns/index.js"
     }
   },
   "version": "0.0.0",
@@ -81,7 +83,16 @@
   "type": "module",
   "tsup": {
     "entry": [
-      "src/index.ts"
+      "src/index.ts",
+      "src/assertions/index.ts",
+      "src/aws-dynamodb/index.ts",
+      "src/aws-lambda/index.ts",
+      "src/aws-lambda/index.ts",
+      "src/aws-sns/index.ts",
+      "src/aws-sns/index.ts",
+      "src/aws-sqs/index.ts",
+      "src/client-dynamodb/index.ts",
+      "src/client-sns/index.ts"
     ],
     "sourcemap": true,
     "clean": true,

@@ -6,7 +6,12 @@ import {
 } from "@aws-sdk/client-sns";
 import { Command } from "@aws-sdk/smithy-client";
 import { Handler, MiddlewareStack } from "@aws-sdk/types";
-import { aws_sns, ValueType } from "../../cdk/index.js";
+import {
+  MaterializedTopicProps,
+  Topic,
+  TopicArn,
+} from "../../aws-sns/topic.js";
+import { ValueType } from "../../core/value-type.js";
 import { OpaqueType } from "../../opaque-type/index.js";
 // import { CommandProxy } from "@cloudy-ts/util-command-proxy";
 
@@ -14,7 +19,7 @@ import { ServiceInputTypes, ServiceOutputTypes } from "../sns-client.js";
 import { staticTest } from "../static-test.js";
 
 export type PublishCommandInput<
-  T extends aws_sns.MaterializedTopicProps = aws_sns.MaterializedTopicProps,
+  T extends MaterializedTopicProps = MaterializedTopicProps,
 > = Omit<
   BaseCommandInput,
   | "TopicArn"
@@ -23,7 +28,7 @@ export type PublishCommandInput<
   | "MessageDeduplicationId"
   | "MessageAttributes"
 > & {
-  TopicArn: aws_sns.TopicArn<T>;
+  TopicArn: TopicArn<T>;
   Message: T["message"];
 } & (T["messageGroupId"] extends never
     ? {}
@@ -43,7 +48,7 @@ export type PublishCommandInput<
 
 export interface PublishCommandOutput extends BaseCommandOutput {}
 
-export class PublishCommand<T extends aws_sns.MaterializedTopicProps>
+export class PublishCommand<T extends MaterializedTopicProps>
   implements
     Command<BaseCommandInput, BaseCommandOutput, ResolvedConfiguration>
 {
@@ -70,7 +75,7 @@ export class PublishCommand<T extends aws_sns.MaterializedTopicProps>
   }
 }
 
-staticTest((topic: aws_sns.Topic<{}>) => {
+staticTest((topic: Topic<{}>) => {
   new PublishCommand({
     TopicArn: topic.topicArn,
     Message: "",
@@ -84,7 +89,7 @@ staticTest((topic: aws_sns.Topic<{}>) => {
   });
 });
 
-staticTest((topic: aws_sns.Topic<{ fifo: true }>) => {
+staticTest((topic: Topic<{ fifo: true }>) => {
   new PublishCommand({
     TopicArn: topic.topicArn,
     Message: "",
@@ -99,7 +104,7 @@ staticTest((topic: aws_sns.Topic<{ fifo: true }>) => {
 });
 
 type MyString = OpaqueType<string, { readonly t: unique symbol }>;
-staticTest((topic: aws_sns.Topic<{ messageType: ValueType<MyString> }>) => {
+staticTest((topic: Topic<{ messageType: ValueType<MyString> }>) => {
   new PublishCommand({
     TopicArn: topic.topicArn,
     Message: "" as MyString,
@@ -113,7 +118,7 @@ staticTest((topic: aws_sns.Topic<{ messageType: ValueType<MyString> }>) => {
 
 staticTest(
   (
-    topic: aws_sns.Topic<{
+    topic: Topic<{
       messageAttributesType: {
         userId: { DataType: "String"; StringValue: ValueType<"test"> };
       };

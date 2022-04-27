@@ -1,7 +1,7 @@
 import * as cdk from "aws-cdk-lib";
 import { Construct } from "constructs";
 import { F } from "ts-toolbelt";
-import { OpaqueType } from "../../opaque-type/index.js";
+import { OpaqueType } from "../opaque-type/index.js";
 
 import { ValueType } from "../core/value-type.js";
 import { ITopicSubscription } from "./subscription.js";

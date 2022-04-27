@@ -1,4 +1,4 @@
-import { JsonEncoded, JsonSerializable } from "../../codec-json/index.js";
+import { JsonEncoded, JsonSerializable } from "../codec-json/index.js";
 
 const tag = Symbol("@cloudy-ts/cdk.ValueType");
 

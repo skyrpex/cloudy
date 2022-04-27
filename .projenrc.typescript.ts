@@ -5,6 +5,7 @@ import { Eslint } from "./.projenrc.eslint.js";
 import { Tsup } from "./.projenrc.tsup.js";
 
 interface TypeScriptOptions {
+  entries: string[];
   tsconfig?: {
     paths?: { [name: string]: string[] };
   };
@@ -22,7 +23,7 @@ export class TypeScript extends Component {
 
   constructor(
     public readonly nodeProject: NodeProject,
-    options?: TypeScriptOptions,
+    options: TypeScriptOptions,
   ) {
     super(nodeProject);
 
@@ -75,7 +76,7 @@ export class TypeScript extends Component {
           noUncheckedIndexedAccess: true,
           useDefineForClassFields: true,
           resolveJsonModule: true,
-          paths: options?.tsconfig?.paths,
+          paths: options.tsconfig?.paths,
         },
         // include: ["**/*.ts", "**/.*.ts"],
         // exclude: ["**/node_modules/**"],
@@ -84,7 +85,7 @@ export class TypeScript extends Component {
 
     new Tsup(nodeProject, {
       libdir,
-      entries: ["src/index.ts"],
+      entries: options.entries,
     });
 
     Eslint.of(nodeProject)?.addIgnorePattern(`${libdir}/`);

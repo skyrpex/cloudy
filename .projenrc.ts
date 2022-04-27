@@ -37,6 +37,47 @@ project.addFields({
 project.addPackageIgnore("docs/");
 project.addPackageIgnore(".projenrc*");
 
-new TypeScript(project);
+const exports = [
+  "assertions",
+  "aws-dynamodb",
+  "aws-lambda",
+  "aws-lambda",
+  "aws-sns",
+  "aws-sns",
+  "aws-sqs",
+  "client-dynamodb",
+  "client-sns",
+];
+new TypeScript(project, {
+  entries: [
+    "src/index.ts",
+    ...exports.map((path) => `src/${path}/index.ts`),
+    // "src/assertions/index.ts",
+    // "src/aws-dynamodb/index.ts",
+    // "src/aws-lambda/index.ts",
+    // "src/aws-lambda-event-sources/index.ts",
+    // "src/aws-sns/index.ts",
+    // "src/aws-sns-subscriptions/index.ts",
+    // "src/aws-sqs/index.ts",
+    // "src/client-dynamodb/index.ts",
+    // "src/client-sns/index.ts",
+  ],
+});
+
+const libdir = "lib";
+project.package.addField("publishConfig", {
+  main: `./${libdir}/index.cjs`,
+  types: `./${libdir}/index.d.ts`,
+  exports: {
+    ".": `./${libdir}/index.js`,
+    // eslint-disable-next-line unicorn/no-array-reduce
+    ...exports.reduce((exports, path) => {
+      return {
+        ...exports,
+        [`./${path}`]: `./${libdir}/${path}/index.js`,
+      };
+    }, {}),
+  },
+});
 
 project.synth();

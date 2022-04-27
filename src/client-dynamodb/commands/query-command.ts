@@ -9,10 +9,7 @@ import {
 import { Command } from "@aws-sdk/smithy-client";
 import { Handler, MiddlewareStack } from "@aws-sdk/types";
 
-import {
-  MaterializedTableProps,
-  TableName,
-} from "../../cdk/aws-dynamodb/table.js";
+import { MaterializedTableProps, TableName } from "../../aws-dynamodb/table.js";
 import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js";
 import {
   ExpressionAttributeNames,
