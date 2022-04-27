@@ -79,6 +79,9 @@ export class DefaultNodeProject extends NodeProject {
         "",
       ],
     });
+    this.addPackageIgnore(".editorconfig");
+    this.addPackageIgnore(".prettierignore");
+    this.addPackageIgnore(".prettierrc*");
   }
 
   private get packageScope() {

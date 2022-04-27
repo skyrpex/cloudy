@@ -3,7 +3,14 @@
 /dist/changelog.md
 /dist/version.txt
 /.mergify.yml
+.eslintignore
+.eslintrc*
 /.eslintrc.json
+.editorconfig
+.prettierignore
+.prettierrc*
+docs/
+.projenrc*
 /src/
 !/lib/
 !/lib/**/*.js

@@ -6,7 +6,8 @@ import { TypeScript } from "./.projenrc.typescript.js";
 
 const project = new DefaultNodeProject({
   name: "cloudy-cdk-lib",
-  description: "Monorepo for the Cloudy packages",
+  description:
+    "Set of constructs for the AWS Cloud Development Kit that aim to improve the DX by providing a faster and type-safe code environment",
   defaultReleaseBranch: "main",
   packageManager: NodePackageManager.PNPM,
   deps: [
@@ -32,6 +33,9 @@ project.addFields({
     node: "^14.13.1 || >=16.0.0",
   },
 });
+
+project.addPackageIgnore("docs/");
+project.addPackageIgnore(".projenrc*");
 
 new TypeScript(project);
 

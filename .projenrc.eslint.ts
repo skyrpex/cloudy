@@ -134,6 +134,8 @@ export class Eslint extends Component {
     this.ignoreFile = new IgnoreFile(project, ".eslintignore");
     this.addIgnorePattern("!.*.ts");
     this.addIgnorePattern("node_modules/");
+    this.nodeProject.addPackageIgnore(".eslintignore");
+    this.nodeProject.addPackageIgnore(".eslintrc*");
 
     project.addTask("lint", {
       exec: "eslint --ext ts .",
