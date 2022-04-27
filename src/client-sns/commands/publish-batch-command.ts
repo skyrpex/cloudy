@@ -9,7 +9,6 @@ import { Command } from "@aws-sdk/smithy-client";
 import { Handler, MiddlewareStack } from "@aws-sdk/types";
 import { aws_sns, ValueType } from "../../index.js";
 import { OpaqueType } from "../../opaque-type/index.js";
-// import { CommandProxy } from "@cloudy-ts/util-command-proxy";
 
 import { ServiceInputTypes, ServiceOutputTypes } from "../sns-client.js";
 import { staticTest } from "../static-test.js";

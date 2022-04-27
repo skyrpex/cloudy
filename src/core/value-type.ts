@@ -1,6 +1,6 @@
 import { JsonEncoded, JsonSerializable } from "../codec-json/index.js";
 
-const tag = Symbol("@cloudy-ts/cdk.ValueType");
+const tag = Symbol("cloudy-cdk-lib.ValueType");
 
 /**
  * Represents a type of value. Useful to define specialized attribute types

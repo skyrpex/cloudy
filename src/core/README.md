@@ -22,7 +22,7 @@ Cons:
 Example:
 
 ```ts
-import * as cloudy from "@cloudy-ts/cdk";
+import * as cloudy from "cloudy-cdk-lib";
 import * as cdk from "aws-cdk-lib";
 const app = new cdk.App();
 const stack = new cdk.Stack(app, "Test");
@@ -60,7 +60,7 @@ Cons:
 Example:
 
 ```ts
-import * as cloudy from "@cloudy-ts/cdk";
+import * as cloudy from "cloudy-cdk-lib";
 import * as cdk from "aws-cdk-lib";
 const app = new cloudy.App();
 const stack = new cdk.Stack(app, "Test");
@@ -104,7 +104,7 @@ template.hasResourceProperties("AWS::Lambda::Function", {
 We could use a promisified method:
 
 ```ts
-import * as cloudy from "@cloudy-ts/cdk";
+import * as cloudy from "cloudy-cdk-lib";
 import * as cdk from "aws-cdk-lib";
 const app = new cdk.App();
 const stack = new cdk.Stack(app, "Stack");

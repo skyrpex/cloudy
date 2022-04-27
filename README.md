@@ -28,8 +28,8 @@ You can check out a list of examples in the [examples/src](examples/src) directo
 ### Publishing typed messages on a topic using a callback lambda function
 
 ```ts
-import * as cdk from "@cloudy-ts/cdk";
-import { SNSClient, PublishCommand } from "@cloudy-ts/client-sns";
+import * as cdk from "cloudy-cdk-lib";
+import { SNSClient, PublishCommand } from "cloudy-cdk-lib/client-sns";
 
 const app = new cdk.App();
 const stack = new cdk.Stack(app, "cloudy-example");

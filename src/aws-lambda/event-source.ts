@@ -1,6 +1,6 @@
 import { IFunction } from "./function-base.js";
 
-const tag = Symbol("@cloudy-ts/cdk.aws_lambda.IEventSource");
+const tag = Symbol("cloudy-cdk-lib.aws_lambda.IEventSource");
 
 export interface IEventSource<InputType, OutputType = unknown> {
   /**

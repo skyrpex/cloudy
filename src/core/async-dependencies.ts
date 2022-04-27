@@ -1,7 +1,7 @@
 import { App, StageSynthesisOptions } from "aws-cdk-lib";
 import { IConstruct } from "constructs";
 
-const tag = Symbol("@cloudy-ts/cdk.AsyncDependencies");
+const tag = Symbol("cloudy-cdk-lib.AsyncDependencies");
 
 /**
  * Represents a CDK app that may have been tagged with an
