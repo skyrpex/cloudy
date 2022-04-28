@@ -44,11 +44,7 @@ const project = new TypeScriptProject({
 
   jest: false,
 
-  disableTsconfig: true,
-  tsconfigDevFile: "tsconfig.json",
-  tsconfigDev: {
-    include: [".projenrc*.ts", "index.ts"],
-    // extends: "@tsconfig/node14/tsconfig.json",
+  tsconfig: {
     compilerOptions: {
       module: "ES2022",
       moduleResolution: TypeScriptModuleResolution.NODE,
@@ -57,10 +53,11 @@ const project = new TypeScriptProject({
       noUnusedLocals: false,
       noUnusedParameters: false,
       target: "ES2020",
-      // useDefineForClassFields: true,
-      // resolveJsonModule: true,
-      // strict: true,
     },
+  },
+  tsconfigDev: {
+    include: ["**/*.test.ts", "**/.*.ts"],
+    compilerOptions: {},
   },
 });
 
@@ -73,7 +70,11 @@ project.addFields({
 });
 
 project.addPackageIgnore("docs/");
-project.addPackageIgnore(".projenrc*");
+project.addPackageIgnore(".prettierignore");
+project.addPackageIgnore(".prettierrc*");
+project.addPackageIgnore(".*.ts");
+project.addPackageIgnore("*.ts");
+project.addPackageIgnore("pnpm-lock.yaml");
 
 // Compile and export.
 const exports = [
@@ -91,18 +92,20 @@ new TypeScript(project, {
   entries: ["src/index.ts", ...exports.map((path) => `src/${path}/index.ts`)],
 });
 project.addFields({
-  main: `./index.cjs`,
-  types: `./index.d.ts`,
-  module: `./index.js`,
-  exports: {
-    ".": `./index.js`,
-    // eslint-disable-next-line unicorn/no-array-reduce
-    ...exports.reduce((exports, path) => {
-      return {
-        ...exports,
-        [`./${path}`]: `./${path}/index.js`,
-      };
-    }, {}),
+  publishConfig: {
+    main: `./index.cjs`,
+    types: `./index.d.ts`,
+    module: `./index.js`,
+    exports: {
+      ".": `./index.js`,
+      // eslint-disable-next-line unicorn/no-array-reduce
+      ...exports.reduce((exports, path) => {
+        return {
+          ...exports,
+          [`./${path}`]: `./${path}/index.js`,
+        };
+      }, {}),
+    },
   },
 });
 project.addGitIgnore("*.js");

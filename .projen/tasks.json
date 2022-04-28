@@ -78,7 +78,13 @@
       "description": "Only compile",
       "steps": [
         {
-          "exec": "tsup --out-dir=lib"
+          "exec": "tsc --declaration --emitDeclarationOnly"
+        },
+        {
+          "exec": "esbuild src/*.ts src/**/*.ts --outdir=lib --format=esm --minify --platform=node --sourcemap --target=es2020"
+        },
+        {
+          "exec": "esbuild src/*.ts src/**/*.ts --outdir=lib --format=cjs --minify --platform=node --sourcemap --target=node14 --out-extension:.js=.cjs"
         }
       ]
     },
@@ -139,7 +145,12 @@
     },
     "pre-compile": {
       "name": "pre-compile",
-      "description": "Prepare the project for compilation"
+      "description": "Prepare the project for compilation",
+      "steps": [
+        {
+          "exec": "rm -rf lib"
+        }
+      ]
     },
     "release": {
       "name": "release",

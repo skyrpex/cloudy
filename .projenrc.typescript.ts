@@ -1,8 +1,6 @@
 import { Component, JsonFile, Project } from "projen";
 import { NodeProject, Prettier } from "projen/lib/javascript";
 
-import { Tsup } from "./.projenrc.tsup.js";
-
 interface TypeScriptOptions {
   entries: string[];
   tsconfig?: {
@@ -58,32 +56,20 @@ export class TypeScript extends Component {
     nodeProject.addDevDeps("cloudy-node");
     nodeProject.defaultTask?.exec("cloudy-node .projenrc.ts");
 
-    this.nodeProject.addDevDeps(
-      "@tsconfig/node14",
-      "@types/node@^14",
-      "typescript",
+    nodeProject.addDevDeps("@tsconfig/node14", "@types/node@^14", "typescript");
+
+    nodeProject.addDevDeps("esbuild");
+    nodeProject.preCompileTask.exec(`rm -rf ${libdir}`);
+    nodeProject.compileTask.reset();
+    nodeProject.compileTask.exec(`tsc --declaration --emitDeclarationOnly`);
+    nodeProject.compileTask.exec(
+      `esbuild src/*.ts src/**/*.ts --outdir=${libdir} --format=esm --minify --platform=node --sourcemap --target=es2020`,
     );
+    nodeProject.compileTask.exec(
+      `esbuild src/*.ts src/**/*.ts --outdir=${libdir} --format=cjs --minify --platform=node --sourcemap --target=node14 --out-extension:.js=.cjs`,
+    );
+    nodeProject.postCompileTask.exec(`mv ${libdir}/* .`);
 
-    // this.tsconfig = new JsonFile(this.project, "tsconfig.json", {
-    //   obj: {
-    //     extends: "@tsconfig/node14/tsconfig.json",
-    //     compilerOptions: {
-    //       module: "ES2022",
-    //       moduleResolution: "node",
-    //       lib: ["DOM", "ES2020"],
-    //       noUncheckedIndexedAccess: true,
-    //       useDefineForClassFields: true,
-    //       resolveJsonModule: true,
-    //       paths: options.tsconfig?.paths,
-    //     },
-    //     // include: ["**/*.ts", "**/.*.ts"],
-    //     // exclude: ["**/node_modules/**"],
-    //   },
-    // });
-
-    new Tsup(nodeProject, {
-      libdir,
-      entries: options.entries,
-    });
+    nodeProject.addPackageIgnore("*.ts");
   }
 }

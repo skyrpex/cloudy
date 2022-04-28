@@ -23,4 +23,5 @@
 /src/1-hello-world/cdk.json linguist-generated
 /src/2-hello-world-alternate/cdk.json linguist-generated
 /src/3-publish-to-topic/cdk.json linguist-generated
+/tsconfig.dev.json linguist-generated
 /tsconfig.json linguist-generated
