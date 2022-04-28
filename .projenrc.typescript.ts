@@ -56,11 +56,7 @@ export class TypeScript extends Component {
     nodeProject.addDevDeps("cloudy-node");
     nodeProject.defaultTask?.exec("cloudy-node .projenrc.ts");
 
-    nodeProject.addDevDeps(
-      "@tsconfig/node14",
-      "@types/node@^14",
-      "typescript",
-    );
+    nodeProject.addDevDeps("@tsconfig/node14", "@types/node@^14", "typescript");
 
     nodeProject.addDevDeps("esbuild");
     nodeProject.preCompileTask.exec(`rm -rf ${libdir}`);
@@ -72,7 +68,8 @@ export class TypeScript extends Component {
     nodeProject.compileTask.exec(
       `esbuild src/*.ts src/**/*.ts --outdir=${libdir} --format=cjs --minify --platform=node --sourcemap --target=node14 --out-extension:.js=.cjs`,
     );
+    nodeProject.postCompileTask.exec(`mv ${libdir}/* .`);
 
-    nodeProject.addPackageIgnore("*.ts")
+    nodeProject.addPackageIgnore("*.ts");
   }
 }
