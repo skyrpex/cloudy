@@ -76,9 +76,9 @@
       "src/assertions/index.ts",
       "src/aws-dynamodb/index.ts",
       "src/aws-lambda/index.ts",
-      "src/aws-lambda/index.ts",
+      "src/aws-lambda-event-sources/index.ts",
       "src/aws-sns/index.ts",
-      "src/aws-sns/index.ts",
+      "src/aws-sns-subscriptions/index.ts",
       "src/aws-sqs/index.ts",
       "src/client-dynamodb/index.ts",
       "src/client-sns/index.ts"
@@ -99,7 +99,9 @@
     "./assertions": "./assertions/index.js",
     "./aws-dynamodb": "./aws-dynamodb/index.js",
     "./aws-lambda": "./aws-lambda/index.js",
+    "./aws-lambda-event-sources": "./aws-lambda-event-sources/index.js",
     "./aws-sns": "./aws-sns/index.js",
+    "./aws-sns-subscriptions": "./aws-sns-subscriptions/index.js",
     "./aws-sqs": "./aws-sqs/index.js",
     "./client-dynamodb": "./client-dynamodb/index.js",
     "./client-sns": "./client-sns/index.js"
