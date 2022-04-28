@@ -63,10 +63,10 @@ export class TypeScript extends Component {
     nodeProject.compileTask.reset();
     nodeProject.compileTask.exec(`tsc --declaration --emitDeclarationOnly`);
     nodeProject.compileTask.exec(
-      `esbuild src/*.ts src/**/*.ts --outdir=${libdir} --format=esm --minify --platform=node --sourcemap --target=es2020`,
+      `esbuild $(find src -name '*.ts') --outdir=${libdir} --format=esm --minify --platform=node --sourcemap --target=es2020`,
     );
     nodeProject.compileTask.exec(
-      `esbuild src/*.ts src/**/*.ts --outdir=${libdir} --format=cjs --minify --platform=node --sourcemap --target=node14 --out-extension:.js=.cjs`,
+      `esbuild $(find src -name '*.ts') --outdir=${libdir} --format=cjs --minify --platform=node --sourcemap --target=node14 --out-extension:.js=.cjs`,
     );
     nodeProject.postCompileTask.exec(`mv ${libdir}/* .`);
 
