@@ -39,7 +39,7 @@
     "@cloudy-ts/cdk": "^0.0.0"
   },
   "dependencies": {
-    "@aws-sdk/client-sns": "^3.78.0",
+    "@aws-sdk/client-sns": "^3.79.0",
     "@aws-sdk/smithy-client": "^3.78.0",
     "@aws-sdk/types": "^3.78.0",
     "@cloudy-ts/util-command-proxy": "workspace:0.0.0",

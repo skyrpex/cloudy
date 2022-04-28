@@ -20,7 +20,7 @@
     "upgrade": "npx projen upgrade"
   },
   "devDependencies": {
-    "@aws-sdk/client-dynamodb": "^3.78.0",
+    "@aws-sdk/client-dynamodb": "^3.79.0",
     "@cloudy-ts/eslint-plugin": "*",
     "@typescript-eslint/eslint-plugin": "^5.21.0",
     "@typescript-eslint/parser": "^5.21.0",
@@ -45,7 +45,7 @@
     "constructs": "^10.0.125"
   },
   "dependencies": {
-    "@aws-sdk/util-dynamodb": "^3.78.0",
+    "@aws-sdk/util-dynamodb": "^3.79.0",
     "@cloudy-ts/json-codec": "workspace:0.0.0",
     "@cloudy-ts/opaque-type": "workspace:0.0.0",
     "@cloudy-ts/string-codec": "workspace:0.0.0",
