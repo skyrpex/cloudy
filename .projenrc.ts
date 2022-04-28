@@ -116,7 +116,7 @@ project.addGitIgnore("*.d.ts");
 
 // Tests.
 project.addDevDeps("vitest", "c8");
-project.testTask.exec("vitest run --coverage --passWithNoTests");
+project.testTask.exec("vitest run --coverage --passWithNoTests --dir src");
 project.addPackageIgnore("coverage/");
 
 // Lint.

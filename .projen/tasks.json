@@ -81,10 +81,10 @@
           "exec": "tsc --declaration --emitDeclarationOnly"
         },
         {
-          "exec": "esbuild src/*.ts src/**/*.ts --outdir=lib --format=esm --minify --platform=node --sourcemap --target=es2020"
+          "exec": "esbuild $(find src -name '*.ts') --outdir=lib --format=esm --minify --platform=node --sourcemap --target=es2020"
         },
         {
-          "exec": "esbuild src/*.ts src/**/*.ts --outdir=lib --format=cjs --minify --platform=node --sourcemap --target=node14 --out-extension:.js=.cjs"
+          "exec": "esbuild $(find src -name '*.ts') --outdir=lib --format=cjs --minify --platform=node --sourcemap --target=node14 --out-extension:.js=.cjs"
         }
       ]
     },
@@ -184,7 +184,7 @@
           "spawn": "eslint"
         },
         {
-          "exec": "vitest run --coverage --passWithNoTests"
+          "exec": "vitest run --coverage --passWithNoTests --dir src"
         }
       ]
     },
