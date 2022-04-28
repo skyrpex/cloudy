@@ -92,6 +92,7 @@
       "cjs"
     ]
   },
+  "module": "./lib/index.js",
   "exports": {
     ".": "./lib/index.js",
     "./assertions": "./lib/assertions/index.js",
