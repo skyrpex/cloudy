@@ -9,6 +9,9 @@ export * as aws_sns_subscriptions from "./aws-sns-subscriptions/index.js";
 export * as aws_sqs from "./aws-sqs/index.js";
 export * from "./core/index.js";
 
-// export * from "../opaque-type/index.js";
-// export * from "../codec-json/index.js";
-// export * from "../codec-string/index.js";
+export * from "./opaque-type/index.js";
+export * from "./codec-json/index.js";
+export * from "./codec-string/index.js";
+
+export * as client_dynamodb from "./client-dynamodb/index.js";
+export * as client_sns from "./client-sns/index.js";

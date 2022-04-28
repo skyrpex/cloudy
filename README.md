@@ -79,38 +79,6 @@ Install dependencies:
 pnpm install
 ```
 
-### Lint
-
-```sh
-pnpx turbo run lint
-```
-
-### Test
-
-```sh
-pnpx turbo run test
-```
-
-### Update Dependencies
-
-```sh
-pnpm up -r
-```
-
-Interactive, with the latest versions:
-
-```sh
-pnpm up -iLr
-```
-
-### Release
-
-```sh
-pnpx turbo run lint test build
-pnpx standard-version # --first-release
-git push --folow-tags origin main
-```
-
 ## Other
 
 Temporary logo from <a href="https://www.vecteezy.com/free-vector/web">Web Vectors by Vecteezy</a>.

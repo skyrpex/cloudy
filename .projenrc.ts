@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { TextFile } from "projen";
+import { JsonFile, SampleFile, TextFile } from "projen";
 import {
   NodePackageManager,
   NodeProject,
@@ -91,7 +91,8 @@ new TypeScript(project, {
   entries: ["src/index.ts", ...exports.map((path) => `src/${path}/index.ts`)],
 });
 const libdir = "lib";
-project.package.addField("publishConfig", {
+// project.package.addField("publishConfig", {
+project.addFields({
   main: `./${libdir}/index.cjs`,
   types: `./${libdir}/index.d.ts`,
   exports: {
@@ -109,14 +110,15 @@ project.package.addField("publishConfig", {
 // Tests.
 project.addDevDeps("vitest", "c8");
 project.testTask.exec("vitest run --coverage --passWithNoTests");
+project.addPackageIgnore("coverage/");
 
 // Lint.
 project.addDevDeps("eslint-plugin-unicorn", "@cloudy-ts/eslint-plugin");
-project.eslint.addExtends(
+project.eslint?.addExtends(
   "plugin:unicorn/recommended",
   "plugin:@cloudy-ts/recommended",
 );
-project.eslint.addRules({
+project.eslint?.addRules({
   "unicorn/prevent-abbreviations": [
     "error",
     {
@@ -144,5 +146,57 @@ new TextFile(project, ".editorconfig", {
   ],
 });
 project.addPackageIgnore(".editorconfig");
+
+///////////////////////////////////////////////////////////////////////////////
+project.addPackageIgnore("examples/");
+const examples = new NodeProject({
+  parent: project,
+  name: "examples",
+  outdir: "examples",
+  deps: [
+    "aws-cdk",
+    "aws-cdk-lib",
+    "constructs",
+    "cloudy-cdk-lib@link:..",
+    "cloudy-node",
+  ],
+  devDeps: ["typescript"],
+  defaultReleaseBranch: "main",
+  packageManager: NodePackageManager.PNPM,
+  jest: false,
+});
+new JsonFile(examples, `.eslintrc.json`, {
+  obj: {
+    root: true,
+    extends: ["../eslintrc.json"],
+  },
+});
+new JsonFile(examples, `tsconfig.json`, {
+  obj: {
+    extends: "../tsconfig.json",
+  },
+});
+for (const example of [
+  "1-hello-world",
+  "2-hello-world-alternate",
+  "3-publish-to-topic",
+]) {
+  new SampleFile(examples, `src/${example}/index.ts`, {
+    contents: [
+      'import * as cdk from "@cloudy-ts/cdk";',
+      "",
+      'import { buildExampleStackName } from "../util.js";',
+      "",
+      "const app = new cdk.App();",
+      "const stack = new cdk.Stack(app, buildExampleStackName(import.meta.url));",
+      "",
+    ].join("\n"),
+  });
+  new JsonFile(examples, `src/${example}/cdk.json`, {
+    obj: {
+      app: "pnpx cloudy-node index.ts",
+    },
+  });
+}
 
 project.synth();
