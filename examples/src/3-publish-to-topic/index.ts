@@ -1,5 +1,5 @@
-import * as cdk from "@cloudy-ts/cdk";
-import { SNSClient, PublishCommand } from "@cloudy-ts/client-sns";
+import * as cdk from "cloudy-cdk-lib";
+import { SNSClient, PublishCommand } from "cloudy-cdk-lib/client-sns";
 
 import { buildExampleStackName } from "../util.js";
 

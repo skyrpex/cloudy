@@ -1,4 +1,4 @@
-import * as cloudy from "@cloudy-ts/cdk";
+import * as cloudy from "cloudy-cdk-lib";
 import * as cdk from "aws-cdk-lib";
 
 import { buildExampleStackName } from "../util.js";

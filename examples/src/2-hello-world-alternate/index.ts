@@ -1,6 +1,6 @@
 // You can actually substitute the aws-cdk-lib import with cloudy. It exports
 // the same objects, including some additional constructs.
-import * as cdk from "@cloudy-ts/cdk";
+import * as cdk from "cloudy-cdk-lib";
 
 import { buildExampleStackName } from "../util.js";
 

@@ -30,12 +30,8 @@ jspm_packages/
 .yarn-integrity
 .cache
 !/.projenrc.js
-!/.prettierignore
-!/.prettierrc.json
-!/.eslintignore
 !/.eslintrc.json
+!/tsconfig.json
 !/src/1-hello-world/cdk.json
 !/src/2-hello-world-alternate/cdk.json
 !/src/3-publish-to-topic/cdk.json
-.turbo/
-!/tsconfig.json

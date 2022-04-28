@@ -59,7 +59,12 @@
     },
     "default": {
       "name": "default",
-      "description": "Synthesize project files"
+      "description": "Synthesize project files",
+      "steps": [
+        {
+          "exec": "node .projenrc.js"
+        }
+      ]
     },
     "eject": {
       "name": "eject",
@@ -73,41 +78,17 @@
         }
       ]
     },
-    "format": {
-      "name": "format",
-      "steps": [
-        {
-          "exec": "prettier --check '**/*.ts'"
-        }
-      ]
-    },
-    "format:fix": {
-      "name": "format:fix",
-      "steps": [
-        {
-          "exec": "prettier --write '**/*.ts'"
-        }
-      ]
-    },
-    "lint": {
-      "name": "lint",
-      "steps": [
-        {
-          "exec": "eslint --ext ts ."
-        }
-      ]
-    },
-    "lint:fix": {
-      "name": "lint:fix",
-      "steps": [
-        {
-          "exec": "eslint --ext ts . --fix"
-        }
-      ]
-    },
     "package": {
       "name": "package",
-      "description": "Creates the distribution package"
+      "description": "Creates the distribution package",
+      "steps": [
+        {
+          "exec": "mkdir -p dist/js"
+        },
+        {
+          "exec": "mv $(npm pack) dist/js/"
+        }
+      ]
     },
     "post-compile": {
       "name": "post-compile",
@@ -123,12 +104,7 @@
     },
     "test": {
       "name": "test",
-      "description": "Run tests",
-      "steps": [
-        {
-          "exec": "tsc --noEmit"
-        }
-      ]
+      "description": "Run tests"
     },
     "upgrade": {
       "name": "upgrade",
@@ -141,19 +117,19 @@
           "exec": "pnpm update npm-check-updates"
         },
         {
-          "exec": "npm-check-updates --dep dev --upgrade --target=minor"
+          "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='cloudy-cdk-lib'"
         },
         {
-          "exec": "npm-check-updates --dep optional --upgrade --target=minor"
+          "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='cloudy-cdk-lib'"
         },
         {
-          "exec": "npm-check-updates --dep peer --upgrade --target=minor"
+          "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='cloudy-cdk-lib'"
         },
         {
-          "exec": "npm-check-updates --dep prod --upgrade --target=minor"
+          "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='cloudy-cdk-lib'"
         },
         {
-          "exec": "npm-check-updates --dep bundle --upgrade --target=minor"
+          "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='cloudy-cdk-lib'"
         },
         {
           "exec": "pnpm i --no-frozen-lockfile"

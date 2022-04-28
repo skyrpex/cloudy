@@ -1,0 +1,169 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "constructs.Construct",
+          "version": "10.0.127"
+        }
+      },
+      "cloudy-example-1-hello-world": {
+        "id": "cloudy-example-1-hello-world",
+        "path": "cloudy-example-1-hello-world",
+        "children": {
+          "HelloWorld": {
+            "id": "HelloWorld",
+            "path": "cloudy-example-1-hello-world/HelloWorld",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "cloudy-example-1-hello-world/HelloWorld/ServiceRole",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "cloudy-example-1-hello-world/HelloWorld/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.21.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.21.1"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "cloudy-example-1-hello-world/HelloWorld/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                      },
+                      "s3Key": "3eef5d1e30e061dd83c39127e0c96a358ea5cc4b99730fb51e3250614ff8d2d8.zip"
+                    },
+                    "role": {
+                      "Fn::GetAtt": [
+                        "HelloWorldServiceRoleF3F7D8B0",
+                        "Arn"
+                      ]
+                    },
+                    "handler": "index.handler",
+                    "runtime": "nodejs14.x"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.21.1"
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "cloudy-example-1-hello-world/HelloWorld/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "cloudy-example-1-hello-world/HelloWorld/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.21.1"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "cloudy-example-1-hello-world/HelloWorld/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.21.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.21.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.21.1"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "cloudy-example-1-hello-world/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "cloudy-example-1-hello-world/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.22.0"
+                }
+              },
+              "Condition": {
+                "id": "Condition",
+                "path": "cloudy-example-1-hello-world/CDKMetadata/Condition",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnCondition",
+                  "version": "2.22.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.0.127"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.22.0"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "aws-cdk-lib.App",
+      "version": "2.22.0"
+    }
+  }
+}

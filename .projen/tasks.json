@@ -24,6 +24,23 @@
         }
       ]
     },
+    "bump": {
+      "name": "bump",
+      "description": "Bumps version based on latest git tag and generates a changelog entry",
+      "env": {
+        "OUTFILE": "package.json",
+        "CHANGELOG": "dist/changelog.md",
+        "BUMPFILE": "dist/version.txt",
+        "RELEASETAG": "dist/releasetag.txt",
+        "RELEASE_TAG_PREFIX": ""
+      },
+      "steps": [
+        {
+          "builtin": "release/bump-version"
+        }
+      ],
+      "condition": "! git log --oneline -1 | grep -q \"chore(release):\""
+    },
     "clobber": {
       "name": "clobber",
       "description": "hard resets to HEAD of origin and cleans the local repo",
@@ -61,7 +78,7 @@
       "description": "Only compile",
       "steps": [
         {
-          "exec": "turbo run build"
+          "exec": "tsup --out-dir=lib"
         }
       ]
     },
@@ -86,35 +103,12 @@
         }
       ]
     },
-    "format": {
-      "name": "format",
+    "eslint": {
+      "name": "eslint",
+      "description": "Runs eslint against the codebase",
       "steps": [
         {
-          "exec": "prettier --check '**/*.ts'"
-        }
-      ]
-    },
-    "format:fix": {
-      "name": "format:fix",
-      "steps": [
-        {
-          "exec": "prettier --write '**/*.ts'"
-        }
-      ]
-    },
-    "lint": {
-      "name": "lint",
-      "steps": [
-        {
-          "exec": "eslint --ext ts ."
-        }
-      ]
-    },
-    "lint:fix": {
-      "name": "lint:fix",
-      "steps": [
-        {
-          "exec": "eslint --ext ts . --fix"
+          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern src test build-tools .projenrc.js"
         }
       ]
     },
@@ -132,30 +126,70 @@
     },
     "post-compile": {
       "name": "post-compile",
-      "description": "Runs after successful compilation"
+      "description": "Runs after successful compilation",
+      "steps": [
+        {
+          "exec": "mv lib/* ."
+        }
+      ]
     },
     "post-upgrade": {
       "name": "post-upgrade",
-      "description": "Runs after upgrading dependencies",
-      "steps": [
-        {
-          "exec": "pnpm update -r"
-        },
-        {
-          "exec": "npx projen"
-        }
-      ]
+      "description": "Runs after upgrading dependencies"
     },
     "pre-compile": {
       "name": "pre-compile",
       "description": "Prepare the project for compilation"
+    },
+    "release": {
+      "name": "release",
+      "description": "Prepare a release from \"main\" branch",
+      "env": {
+        "RELEASE": "true"
+      },
+      "steps": [
+        {
+          "exec": "rm -fr dist"
+        },
+        {
+          "spawn": "bump"
+        },
+        {
+          "spawn": "build"
+        },
+        {
+          "spawn": "unbump"
+        },
+        {
+          "exec": "git diff --ignore-space-at-eol --exit-code"
+        }
+      ]
     },
     "test": {
       "name": "test",
       "description": "Run tests",
       "steps": [
         {
-          "exec": "turbo run format lint test"
+          "spawn": "eslint"
+        },
+        {
+          "exec": "vitest run --coverage --passWithNoTests"
+        }
+      ]
+    },
+    "unbump": {
+      "name": "unbump",
+      "description": "Restores version to 0.0.0",
+      "env": {
+        "OUTFILE": "package.json",
+        "CHANGELOG": "dist/changelog.md",
+        "BUMPFILE": "dist/version.txt",
+        "RELEASETAG": "dist/releasetag.txt",
+        "RELEASE_TAG_PREFIX": ""
+      },
+      "steps": [
+        {
+          "builtin": "release/reset-version"
         }
       ]
     },
@@ -195,6 +229,15 @@
         },
         {
           "spawn": "post-upgrade"
+        }
+      ]
+    },
+    "watch": {
+      "name": "watch",
+      "description": "Watch & compile in the background",
+      "steps": [
+        {
+          "exec": "tsc --build -w"
         }
       ]
     }
