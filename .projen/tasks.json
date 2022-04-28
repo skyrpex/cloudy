@@ -184,7 +184,7 @@
           "spawn": "eslint"
         },
         {
-          "exec": "vitest run --coverage --passWithNoTests"
+          "exec": "vitest run --coverage --passWithNoTests --dir src"
         }
       ]
     },
