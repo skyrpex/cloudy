@@ -21,6 +21,7 @@ export class Tsup extends Component {
     nodeProject.addFields({
       tsup: {
         entry: options.entries,
+        splitting: false,
         sourcemap: true,
         clean: true,
         dts: true,
@@ -31,6 +32,7 @@ export class Tsup extends Component {
 
     nodeProject.compileTask.reset();
     nodeProject.compileTask.exec("tsup --out-dir=lib");
+    nodeProject.postCompileTask.exec("mv lib/* .");
 
     // nodeProject.package.addField("publishConfig", {
     //   main: `./${options.libdir}/index.cjs`,

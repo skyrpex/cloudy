@@ -1,5 +1,5 @@
 import * as cdk from "cloudy-cdk-lib";
-// import { SNSClient, PublishCommand } from "cloudy-cdk-lib/client-sns";
+import { SNSClient, PublishCommand } from "cloudy-cdk-lib/client-sns";
 
 import { buildExampleStackName } from "../util.js";
 
@@ -21,14 +21,14 @@ const topic = new cdk.aws_sns.Topic(stack, "Topic", {
 
 // Cloudy has a SNSClient proxy that enforces type constraints, depending
 // on the topic you're interacting with.
-const sns = new cdk.client_sns.SNSClient({});
+const sns = new SNSClient({});
 const publishMessage = new cdk.aws_lambda.CallbackFunction(
   stack,
   "PublishMessage",
   {
     async handler() {
       await sns.send(
-        new cdk.client_sns.PublishCommand({
+        new PublishCommand({
           TopicArn: topic.topicArn,
           // If you try writing a different message, you'll get a type error.
           Message: "hello",

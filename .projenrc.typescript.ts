@@ -11,8 +11,6 @@ interface TypeScriptOptions {
 }
 
 export class TypeScript extends Component {
-  public readonly tsconfig: JsonFile;
-
   public static of(project: Project): TypeScript | undefined {
     const isTypeScript = (c: Component): c is TypeScript =>
       c instanceof TypeScript;

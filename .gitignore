@@ -47,4 +47,9 @@ jspm_packages/
 /lib
 /dist/
 !/index.ts
+*.js
+*.js.map
+*.cjs
+*.cjs.map
+*.d.ts
 !/.editorconfig
