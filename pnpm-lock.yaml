@@ -34,7 +34,6 @@ importers:
       projen: ^0.54.51
       standard-version: ^9
       ts-toolbelt: ^9.6.0
-      tsup: ^5.12.6
       typescript: ^4.6.3
       vitest: ^0.10.0
     dependencies:
@@ -69,7 +68,6 @@ importers:
       prettier: 2.6.2
       projen: 0.54.51
       standard-version: 9.3.2
-      tsup: 5.12.6_typescript@4.6.3
       typescript: 4.6.3
       vitest: 0.10.0_c8@7.11.2
 
@@ -1681,7 +1679,7 @@ packages:
     dev: false
 
   /@pulumi/query/0.3.0:
-    resolution: {integrity: sha512-xfo+yLRM2zVjVEA4p23IjQWzyWl1ZhWOGobsBqRpIarzLvwNH/RAGaoehdxlhx4X92302DrpdIFgTICMN4P38w==, tarball: '@pulumi/query/-/query-0.3.0.tgz'}
+    resolution: {integrity: sha512-xfo+yLRM2zVjVEA4p23IjQWzyWl1ZhWOGobsBqRpIarzLvwNH/RAGaoehdxlhx4X92302DrpdIFgTICMN4P38w==}
     dev: false
 
   /@sindresorhus/is/0.14.0:

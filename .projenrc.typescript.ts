@@ -1,8 +1,6 @@
 import { Component, JsonFile, Project } from "projen";
 import { NodeProject, Prettier } from "projen/lib/javascript";
 
-import { Tsup } from "./.projenrc.tsup.js";
-
 interface TypeScriptOptions {
   entries: string[];
   tsconfig?: {
@@ -81,9 +79,20 @@ export class TypeScript extends Component {
     //   },
     // });
 
-    new Tsup(nodeProject, {
-      libdir,
-      entries: options.entries,
-    });
+    nodeProject.addDevDeps("esbuild");
+    nodeProject.preCompileTask.exec(`rm -rf ${libdir}`);
+    nodeProject.compileTask.reset();
+    nodeProject.compileTask.exec(
+      `tsc --declaration --emitDeclarationOnly --outDir ${libdir}`,
+    );
+    nodeProject.compileTask.exec(
+      `esbuild src/*.ts src/**/*.ts --outdir=${libdir}/src --format=esm --minify --platform=node --sourcemap --target=es2020`,
+    );
+    nodeProject.compileTask.exec(
+      `esbuild src/*.ts src/**/*.ts --outdir=${libdir}/src --format=cjs --minify --platform=node --sourcemap --target=node14 --out-extension:.js=.cjs`,
+    );
+    // nodeProject.postCompileTask.exec(`ls -al`);
+    // nodeProject.postCompileTask.exec(`ls -al ${libdir}/src/*`);
+    // nodeProject.postCompileTask.exec(`mv ${libdir}/src/* .`);
   }
 }

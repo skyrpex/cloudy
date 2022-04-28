@@ -78,7 +78,13 @@
       "description": "Only compile",
       "steps": [
         {
-          "exec": "tsup --out-dir=lib"
+          "exec": "tsc --declaration --emitDeclarationOnly --outDir lib"
+        },
+        {
+          "exec": "esbuild src/*.ts src/**/*.ts --outdir=lib/src --format=esm --minify --platform=node --sourcemap --target=es2020"
+        },
+        {
+          "exec": "esbuild src/*.ts src/**/*.ts --outdir=lib/src --format=cjs --minify --platform=node --sourcemap --target=node14 --out-extension:.js=.cjs"
         }
       ]
     },
@@ -126,12 +132,7 @@
     },
     "post-compile": {
       "name": "post-compile",
-      "description": "Runs after successful compilation",
-      "steps": [
-        {
-          "exec": "mv lib/* ."
-        }
-      ]
+      "description": "Runs after successful compilation"
     },
     "post-upgrade": {
       "name": "post-upgrade",
@@ -139,7 +140,12 @@
     },
     "pre-compile": {
       "name": "pre-compile",
-      "description": "Prepare the project for compilation"
+      "description": "Prepare the project for compilation",
+      "steps": [
+        {
+          "exec": "rm -rf lib"
+        }
+      ]
     },
     "release": {
       "name": "release",
