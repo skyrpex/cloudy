@@ -78,13 +78,13 @@
       "description": "Only compile",
       "steps": [
         {
-          "exec": "tsc --declaration --emitDeclarationOnly --outDir lib"
+          "exec": "tsc --declaration --emitDeclarationOnly"
         },
         {
-          "exec": "esbuild src/*.ts src/**/*.ts --outdir=lib/src --format=esm --minify --platform=node --sourcemap --target=es2020"
+          "exec": "esbuild src/*.ts src/**/*.ts --outdir=lib --format=esm --minify --platform=node --sourcemap --target=es2020"
         },
         {
-          "exec": "esbuild src/*.ts src/**/*.ts --outdir=lib/src --format=cjs --minify --platform=node --sourcemap --target=node14 --out-extension:.js=.cjs"
+          "exec": "esbuild src/*.ts src/**/*.ts --outdir=lib --format=cjs --minify --platform=node --sourcemap --target=node14 --out-extension:.js=.cjs"
         }
       ]
     },

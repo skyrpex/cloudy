@@ -44,11 +44,7 @@ const project = new TypeScriptProject({
 
   jest: false,
 
-  disableTsconfig: true,
-  tsconfigDevFile: "tsconfig.json",
-  tsconfigDev: {
-    include: [".projenrc*.ts", "index.ts"],
-    // extends: "@tsconfig/node14/tsconfig.json",
+  tsconfig: {
     compilerOptions: {
       module: "ES2022",
       moduleResolution: TypeScriptModuleResolution.NODE,
@@ -57,10 +53,11 @@ const project = new TypeScriptProject({
       noUnusedLocals: false,
       noUnusedParameters: false,
       target: "ES2020",
-      // useDefineForClassFields: true,
-      // resolveJsonModule: true,
-      // strict: true,
     },
+  },
+  tsconfigDev: {
+    include: ["**/*.test.ts", "**/.*.ts"],
+    compilerOptions: {},
   },
 });
 
@@ -73,8 +70,11 @@ project.addFields({
 });
 
 project.addPackageIgnore("docs/");
-project.addPackageIgnore(".projenrc*");
-project.addPackageIgnore("*.test.ts");
+project.addPackageIgnore(".prettierignore");
+project.addPackageIgnore(".prettierrc*");
+project.addPackageIgnore(".*.ts");
+project.addPackageIgnore("*.ts");
+project.addPackageIgnore("pnpm-lock.yaml");
 
 // Compile and export.
 const exports = [

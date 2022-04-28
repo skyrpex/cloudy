@@ -4,10 +4,13 @@
 /dist/version.txt
 /.mergify.yml
 /test/
+/tsconfig.dev.json
 /.eslintrc.json
 docs/
-.projenrc*
-*.test.ts
+.prettierignore
+.prettierrc*
+.*.ts
+pnpm-lock.yaml
 /src/
 !/lib/
 !/lib/**/*.js
@@ -19,6 +22,7 @@ dist
 /.idea/
 /.projenrc.js
 tsconfig.tsbuildinfo
+*.ts
 coverage/
 .editorconfig
 examples/
