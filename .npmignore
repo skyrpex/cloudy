@@ -23,6 +23,7 @@ dist
 /.projenrc.js
 tsconfig.tsbuildinfo
 *.ts
+!*.d.ts
 coverage/
 .editorconfig
 examples/

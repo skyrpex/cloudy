@@ -71,5 +71,6 @@ export class TypeScript extends Component {
     nodeProject.postCompileTask.exec(`mv ${libdir}/* .`);
 
     nodeProject.addPackageIgnore("*.ts");
+    nodeProject.addPackageIgnore("!*.d.ts");
   }
 }
