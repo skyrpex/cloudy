@@ -18,3 +18,15 @@ export {
   type ServiceInputTypes,
   type ServiceOutputTypes,
 } from "./dynamodb-client.js";
+
+export {
+  type AttributeMap,
+  type ToAttributeMap,
+  type AttributeValue,
+  marshall,
+  type marshallOptions,
+  unmarshall,
+  type unmarshallOptions,
+  type Unmarshall,
+  type ToAttributeValue,
+} from "./util/index.js";
