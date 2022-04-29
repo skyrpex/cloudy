@@ -14,20 +14,20 @@ export {
   type DynamoStreamEventType,
   type TableStreamViewType,
 } from "./dynamodb.js";
-export {
-  SnsEventSource,
-  type SnsEventSourceProps,
-  type SnsEventType,
-} from "./sns.js";
+// export {
+//   SnsEventSource,
+//   type SnsEventSourceProps,
+//   type SnsEventType,
+// } from "./sns.js";
 export {
   SqsEventSource,
   type SqsEventSourceProps,
   type SqsEventType,
 } from "./sqs.js";
 
-export type LambdaEventType<T> = T extends Topic
+export type LambdaEventType<T> = /*T extends Topic
   ? SnsEventType<T>
-  : T extends Queue
+  :*/ T extends Queue
   ? SqsEventType<T, true>
   : T extends Table<any, any, any, any>
   ? DynamoStreamEventType<T>
