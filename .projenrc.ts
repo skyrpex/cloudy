@@ -32,6 +32,8 @@ const project = new TypeScriptProject({
 
   packageManager: NodePackageManager.PNPM,
   releaseToNpm: true,
+  autoApproveUpgrades: true,
+  autoApproveOptions: {},
   projenrcJs: false,
   sampleCode: false,
 
