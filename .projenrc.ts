@@ -33,7 +33,9 @@ const project = new TypeScriptProject({
   packageManager: NodePackageManager.PNPM,
   releaseToNpm: true,
   autoApproveUpgrades: true,
-  autoApproveOptions: {},
+  autoApproveOptions: {
+    secret: "PROJEN_GITHUB_TOKEN",
+  },
   projenrcJs: false,
   sampleCode: false,
 
