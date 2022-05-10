@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { JsonFile, SampleFile, TextFile } from "projen";
+import { JsonFile, SampleFile, TextFile, github } from "projen";
 import {
   NodePackageManager,
   NodeProject,
@@ -34,7 +34,10 @@ const project = new TypeScriptProject({
   releaseToNpm: true,
   autoApproveUpgrades: true,
   autoApproveOptions: {
-    secret: "PROJEN_GITHUB_TOKEN",
+    allowedUsernames: ["skyrpex", "skyrpex-bot[bot]"],
+  },
+  githubOptions: {
+    projenCredentials: github.GithubCredentials.fromApp(),
   },
   projenrcJs: false,
   sampleCode: false,
