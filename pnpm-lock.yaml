@@ -14,7 +14,7 @@ specifiers:
   '@typescript-eslint/parser': ^5
   aws-cdk-lib: 2.23.0
   c8: ^7.11.2
-  cloudy-node: ^0.0.19
+  cloudy-node: ^0.0.20
   constructs: 10.0.0
   esbuild: ^0.14.39
   eslint: ^8
@@ -32,7 +32,7 @@ specifiers:
   standard-version: ^9
   ts-toolbelt: ^9.6.0
   typescript: ^4.6.4
-  vitest: ^0.12.4
+  vitest: ^0.12.6
 
 dependencies:
   '@aws-sdk/client-dynamodb': 3.87.0
@@ -46,14 +46,14 @@ dependencies:
   ts-toolbelt: 9.6.0
 
 devDependencies:
-  '@cloudy-ts/eslint-plugin': 0.0.13_eslint@8.15.0
+  '@cloudy-ts/eslint-plugin': 0.0.15_eslint@8.15.0
   '@tsconfig/node14': 1.0.1
   '@types/node': 14.18.18
   '@typescript-eslint/eslint-plugin': 5.23.0_17b6d2ce7129f0b36f2c30ae592c16e7
   '@typescript-eslint/parser': 5.23.0_eslint@8.15.0+typescript@4.6.4
   aws-cdk-lib: 2.23.0_constructs@10.0.0
   c8: 7.11.2
-  cloudy-node: 0.0.19
+  cloudy-node: 0.0.20
   constructs: 10.0.0
   eslint: 8.15.0
   eslint-config-prettier: 8.5.0_eslint@8.15.0
@@ -68,7 +68,7 @@ devDependencies:
   projen: 0.56.8
   standard-version: 9.3.2
   typescript: 4.6.4
-  vitest: 0.12.4_c8@7.11.2
+  vitest: 0.12.6_c8@7.11.2
 
 packages:
 
@@ -777,8 +777,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin/0.0.13_eslint@8.15.0:
-    resolution: {integrity: sha512-r6eEFcKSs62LJj7022WyV5iwRmv7/ZvV99N+7kaIHigNneHBiOUThkSRtn6KvzO3zt02nFx/ZhANy1gq6XXBtQ==}
+  /@cloudy-ts/eslint-plugin/0.0.15_eslint@8.15.0:
+    resolution: {integrity: sha512-kvL/u9Ynss8P+GkZca01YwjqU4EuZnDRah8ZRJ/zs3pwO6onxh0xDIKGB2GFtSQZotvK4dvZDcGi2M5BvHSa/w==}
     engines: {node: '>= 14.18.0'}
     peerDependencies:
       eslint: ^8.15.0
@@ -1516,7 +1516,7 @@ packages:
       '@npmcli/move-file': 2.0.0
       chownr: 2.0.0
       fs-minipass: 2.1.0
-      glob: 8.0.2
+      glob: 8.0.3
       infer-owner: 1.0.4
       lru-cache: 7.10.1
       minipass: 3.1.6
@@ -1669,8 +1669,8 @@ packages:
       mimic-response: 1.0.1
     dev: true
 
-  /cloudy-node/0.0.19:
-    resolution: {integrity: sha512-Ab3dz2A+HWtWmgXxK4mKhQzj1j26UUHDSUmBBjKi8V6eAiikKcS8nMWqTEwqkhHfEPX1NEQlbmFv5DaNFUEdKw==}
+  /cloudy-node/0.0.20:
+    resolution: {integrity: sha512-jTWlZoeQOBvbjDl1dBBQVBKWGv8EWVhu1LjY51rTLh39g89U52s5yad6QO3Tzg9HTfnWd3S2t0dd4ryzxT4IiQ==}
     engines: {node: '>= 14.18.0'}
     hasBin: true
     dependencies:
@@ -2419,7 +2419,7 @@ packages:
       debug: 4.3.4
       eslint: 8.15.0
       eslint-plugin-import: 2.26.0_eslint@8.15.0
-      glob: 7.2.0
+      glob: 7.2.2
       is-glob: 4.0.3
       resolve: 1.22.0
       tsconfig-paths: 3.14.1
@@ -2944,9 +2944,20 @@ packages:
       minimatch: 3.1.2
       once: 1.4.0
       path-is-absolute: 1.0.1
+    dev: true
 
-  /glob/8.0.2:
-    resolution: {integrity: sha512-0jzor6jfIKaDg/2FIN+9L8oDxzHTkI/+vwJimOmOZjaVjFVVZJFojOYbbWC0okXbBVSgYpbcuQ7xy6gDP9f8gw==}
+  /glob/7.2.2:
+    resolution: {integrity: sha512-NzDgHDiJwKYByLrL5lONmQFpK/2G78SMMfo+E9CuGlX4IkvfKDsiQSNPwAYxEy+e6p7ZQ3uslSLlwlJcqezBmQ==}
+    dependencies:
+      fs.realpath: 1.0.0
+      inflight: 1.0.6
+      inherits: 2.0.4
+      minimatch: 3.1.2
+      once: 1.4.0
+      path-is-absolute: 1.0.1
+
+  /glob/8.0.3:
+    resolution: {integrity: sha512-ull455NHSHI/Y1FqGaaYFaLGkNMMJbavMrEGFXG/PGrg6y7sutWHUHrz6gy6WEBH6akM1M414dWKCNs+IhKdiQ==}
     engines: {node: '>=12'}
     dependencies:
       fs.realpath: 1.0.0
@@ -3868,7 +3879,7 @@ packages:
     hasBin: true
     dependencies:
       env-paths: 2.2.1
-      glob: 7.2.0
+      glob: 7.2.2
       graceful-fs: 4.2.10
       make-fetch-happen: 10.1.3
       nopt: 5.0.0
@@ -3990,7 +4001,7 @@ packages:
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
     hasBin: true
     dependencies:
-      glob: 8.0.2
+      glob: 8.0.3
       ignore-walk: 5.0.1
       npm-bundled: 1.1.2
       npm-normalize-package-bin: 1.0.1
@@ -4497,7 +4508,7 @@ packages:
   /read-package-json/2.1.2:
     resolution: {integrity: sha512-D1KmuLQr6ZSJS0tW8hf3WGpRlwszJOXZ3E8Yd/DNRaM5d+1wVRZdHlpGBLAuovjr28LbWvjpWkBHMxpRGGjzNA==}
     dependencies:
-      glob: 7.2.0
+      glob: 7.2.2
       json-parse-even-better-errors: 2.3.1
       normalize-package-data: 2.5.0
       npm-normalize-package-bin: 1.0.1
@@ -4507,7 +4518,7 @@ packages:
     resolution: {integrity: sha512-MALHuNgYWdGW3gKzuNMuYtcSSZbGQm94fAp16xt8VsYTLBjUSc55bLMKe6gzpWue0Tfi6CBgwCSdDAqutGDhMg==}
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
     dependencies:
-      glob: 8.0.2
+      glob: 8.0.3
       json-parse-even-better-errors: 2.3.1
       normalize-package-data: 4.0.0
       npm-normalize-package-bin: 1.0.1
@@ -4682,11 +4693,11 @@ packages:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
     hasBin: true
     dependencies:
-      glob: 7.2.0
+      glob: 7.2.2
     dev: true
 
-  /rollup/2.72.1:
-    resolution: {integrity: sha512-NTc5UGy/NWFGpSqF1lFY8z9Adri6uhyMLI6LvPAXdBKoPRFhIIiBUpt+Qg2awixqO3xvzSijjhnb4+QEZwJmxA==}
+  /rollup/2.73.0:
+    resolution: {integrity: sha512-h/UngC3S4Zt28mB3g0+2YCMegT5yoftnQplwzPqGZcKvlld5e+kT/QRmJiL+qxGyZKOYpgirWGdLyEO1b0dpLQ==}
     engines: {node: '>=10.0.0'}
     hasBin: true
     optionalDependencies:
@@ -5020,7 +5031,7 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       '@istanbuljs/schema': 0.1.3
-      glob: 7.2.0
+      glob: 7.2.2
       minimatch: 3.1.2
     dev: true
 
@@ -5314,13 +5325,13 @@ packages:
       esbuild: 0.14.39
       postcss: 8.4.13
       resolve: 1.22.0
-      rollup: 2.72.1
+      rollup: 2.73.0
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.12.4_c8@7.11.2:
-    resolution: {integrity: sha512-EDxdhlAt6vcu6y4VouAI60z78iCAVFnfBL4VlSQVQnGmOk5altOtIKvp3xfZ+cfo4iVHgqq1QNyf5qOFiL4leg==}
+  /vitest/0.12.6_c8@7.11.2:
+    resolution: {integrity: sha512-YWbCTv0XKBuBw5YtuW/iufuguoi8QhGpYyi2g57Oo7akpscMkkWTAaZGgY0ux1oJJtO/pc/8GFt0EF32WFBUUQ==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:

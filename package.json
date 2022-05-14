@@ -28,7 +28,7 @@
     "@typescript-eslint/parser": "^5",
     "aws-cdk-lib": "2.23.0",
     "c8": "^7.11.2",
-    "cloudy-node": "^0.0.19",
+    "cloudy-node": "^0.0.20",
     "constructs": "10.0.0",
     "esbuild": "^0.14.39",
     "eslint": "^8",
@@ -44,7 +44,7 @@
     "projen": "^0.56.8",
     "standard-version": "^9",
     "typescript": "^4.6.4",
-    "vitest": "^0.12.4"
+    "vitest": "^0.12.6"
   },
   "peerDependencies": {
     "aws-cdk-lib": "^2.23.0",
