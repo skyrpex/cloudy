@@ -68,7 +68,7 @@ export class TypeScript extends Component {
     nodeProject.compileTask.exec(
       `esbuild $(find src -name '*.ts') --outdir=${libdir} --format=cjs --minify --platform=node --sourcemap --target=node14 --out-extension:.js=.cjs`,
     );
-    nodeProject.postCompileTask.exec(`mv ${libdir}/* .`);
+    nodeProject.postCompileTask.exec(`rsync -a ${libdir}/* .`);
 
     nodeProject.addPackageIgnore("*.ts");
     nodeProject.addPackageIgnore("!*.d.ts");
