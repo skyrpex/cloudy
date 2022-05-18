@@ -20,7 +20,7 @@ test("The [fromStack] method waits for dependencies", async () => {
       ),
     ),
     handler: "index.handler",
-    runtime: cdk.aws_lambda.Runtime.NODEJS_14_X,
+    runtime: cdk.aws_lambda.Runtime.NODEJS_16_X,
   });
 
   const template = await Template.fromStack(stack);
@@ -29,6 +29,6 @@ test("The [fromStack] method waits for dependencies", async () => {
       ZipFile: "export function handler() { return 'HELLO WORLD'; }",
     },
     Handler: "index.handler",
-    Runtime: cdk.aws_lambda.Runtime.NODEJS_14_X.name,
+    Runtime: cdk.aws_lambda.Runtime.NODEJS_16_X.name,
   });
 });
