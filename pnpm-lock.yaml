@@ -12,7 +12,7 @@ specifiers:
   '@types/node': ^14
   '@typescript-eslint/eslint-plugin': ^5
   '@typescript-eslint/parser': ^5
-  aws-cdk-lib: 2.23.0
+  aws-cdk-lib: 2.24.0
   c8: ^7.11.3
   cloudy-node: ^0.0.24
   constructs: 10.0.0
@@ -51,7 +51,7 @@ devDependencies:
   '@types/node': 14.18.18
   '@typescript-eslint/eslint-plugin': 5.25.0_83b4734ba99fefa06dfff9f51a4c4301
   '@typescript-eslint/parser': 5.25.0_eslint@8.15.0+typescript@4.6.4
-  aws-cdk-lib: 2.23.0_constructs@10.0.0
+  aws-cdk-lib: 2.24.0_constructs@10.0.0
   c8: 7.11.3
   cloudy-node: 0.0.24
   constructs: 10.0.0
@@ -1044,7 +1044,7 @@ packages:
     dev: false
 
   /@pulumi/query/0.3.0:
-    resolution: {integrity: sha512-xfo+yLRM2zVjVEA4p23IjQWzyWl1ZhWOGobsBqRpIarzLvwNH/RAGaoehdxlhx4X92302DrpdIFgTICMN4P38w==}
+    resolution: {integrity: sha512-xfo+yLRM2zVjVEA4p23IjQWzyWl1ZhWOGobsBqRpIarzLvwNH/RAGaoehdxlhx4X92302DrpdIFgTICMN4P38w==, tarball: '@pulumi/query/-/query-0.3.0.tgz'}
     dev: false
 
   /@sindresorhus/is/0.14.0:
@@ -1407,8 +1407,8 @@ packages:
     engines: {node: '>= 4.0.0'}
     dev: true
 
-  /aws-cdk-lib/2.23.0_constructs@10.0.0:
-    resolution: {integrity: sha512-ewUgVRnXA31yZPz/X1BfyVgzCBlPfyjadmkYQsZgT3vRE+NbddTRG4O5r+k9O46xLC41YV8ZMCnhsfPfa5VRKA==}
+  /aws-cdk-lib/2.24.0_constructs@10.0.0:
+    resolution: {integrity: sha512-icYISk6uddpBDe2csqIpZ0PPo8ryg8Polyxyh9ri6rmRIElOJIkBmTpJc7ORcP9vv9LjFIH6BRV7OltUxpcWUg==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       constructs: ^10.0.0
@@ -1418,7 +1418,7 @@ packages:
       constructs: 10.0.0
       fs-extra: 9.1.0
       ignore: 5.2.0
-      jsonschema: 1.4.0
+      jsonschema: 1.4.1
       minimatch: 3.1.2
       punycode: 2.1.1
       semver: 7.3.7
@@ -3472,8 +3472,8 @@ packages:
     engines: {'0': node >= 0.2.0}
     dev: true
 
-  /jsonschema/1.4.0:
-    resolution: {integrity: sha512-/YgW6pRMr6M7C+4o8kS+B/2myEpHCrxO4PEWnqJNBFMjn7EWXqlQ4tGwL6xTHeRplwuZmcAncdvfOad1nT2yMw==}
+  /jsonschema/1.4.1:
+    resolution: {integrity: sha512-S6cATIPVv1z0IlxdN+zUk5EPjkGCdnhN4wVSBlvoUO1tOLJootbo9CquNJmbIh4yikWHiUedhRYrNPn1arpEmQ==}
     dev: true
 
   /keyv/3.1.0:

@@ -12,7 +12,7 @@ test("synthesizes correctly after waiting for [waitForAsyncDependencies]", async
       "export function handler() { return 'HELLO WORLD'; }",
     ),
     handler: "index.handler",
-    runtime: cdk.aws_lambda.Runtime.NODEJS_14_X,
+    runtime: cdk.aws_lambda.Runtime.NODEJS_16_X,
   });
 
   await waitForAsyncDependencies(app);
@@ -23,7 +23,7 @@ test("synthesizes correctly after waiting for [waitForAsyncDependencies]", async
       ZipFile: "export function handler() { return 'HELLO WORLD'; }",
     },
     Handler: "index.handler",
-    Runtime: cdk.aws_lambda.Runtime.NODEJS_14_X.name,
+    Runtime: cdk.aws_lambda.Runtime.NODEJS_16_X.name,
   });
 });
 
@@ -35,7 +35,7 @@ test("throws when attempting to synthesize before waiting for [waitForAsyncDepen
       "export function handler() { return 'HELLO WORLD'; }",
     ),
     handler: "index.handler",
-    runtime: cdk.aws_lambda.Runtime.NODEJS_14_X,
+    runtime: cdk.aws_lambda.Runtime.NODEJS_16_X,
   });
 
   expect(() => {
@@ -49,7 +49,7 @@ test("[waitForAsyncDependencies] throws if there are failed dependencies", async
   new Function(stack, "RaceCondition", {
     code: Promise.reject("Couldn't build my code"),
     handler: "index.handler",
-    runtime: cdk.aws_lambda.Runtime.NODEJS_14_X,
+    runtime: cdk.aws_lambda.Runtime.NODEJS_16_X,
   });
 
   await expect(async () => {
@@ -65,7 +65,7 @@ test("synthesizes correctly even without calling to [waitForAsyncDependencies] d
       "export function handler() { return 'HELLO WORLD'; }",
     ),
     handler: "index.handler",
-    runtime: cdk.aws_lambda.Runtime.NODEJS_14_X,
+    runtime: cdk.aws_lambda.Runtime.NODEJS_16_X,
   });
 
   await new Promise((resolve) => setTimeout(resolve, 1));
@@ -74,7 +74,7 @@ test("synthesizes correctly even without calling to [waitForAsyncDependencies] d
   template.hasResourceProperties("AWS::Lambda::Function", {
     Code: { ZipFile: "export function handler() { return 'HELLO WORLD'; }" },
     Handler: "index.handler",
-    Runtime: cdk.aws_lambda.Runtime.NODEJS_14_X.name,
+    Runtime: cdk.aws_lambda.Runtime.NODEJS_16_X.name,
   });
 });
 
@@ -86,7 +86,7 @@ test("[synth] waits and synthesizes", async () => {
       "export function handler() { return 'HELLO WORLD'; }",
     ),
     handler: "index.handler",
-    runtime: cdk.aws_lambda.Runtime.NODEJS_14_X,
+    runtime: cdk.aws_lambda.Runtime.NODEJS_16_X,
   });
 
   await synth(app);
@@ -95,6 +95,6 @@ test("[synth] waits and synthesizes", async () => {
   template.hasResourceProperties("AWS::Lambda::Function", {
     Code: { ZipFile: "export function handler() { return 'HELLO WORLD'; }" },
     Handler: "index.handler",
-    Runtime: cdk.aws_lambda.Runtime.NODEJS_14_X.name,
+    Runtime: cdk.aws_lambda.Runtime.NODEJS_16_X.name,
   });
 });

@@ -27,7 +27,7 @@ const project = new TypeScriptProject({
     "find-up",
     "ts-toolbelt",
   ],
-  peerDeps: ["aws-cdk-lib@^2.23.0", "constructs@^10.0.0"],
+  peerDeps: ["aws-cdk-lib@^2.24.0", "constructs@^10.0.0"],
   devDeps: ["aws-cdk-lib", "constructs"],
 
   packageManager: NodePackageManager.PNPM,
