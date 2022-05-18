@@ -135,7 +135,7 @@
       "description": "Runs after successful compilation",
       "steps": [
         {
-          "exec": "mv lib/* ."
+          "exec": "rsync -a lib/* ."
         }
       ]
     },
