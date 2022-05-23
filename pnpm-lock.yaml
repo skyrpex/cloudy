@@ -14,7 +14,7 @@ specifiers:
   '@typescript-eslint/parser': ^5
   aws-cdk-lib: 2.24.0
   c8: ^7.11.3
-  cloudy-node: ^0.0.28
+  cloudy-node: ^0.0.29
   constructs: 10.0.0
   esbuild: ^0.14.39
   eslint: ^8
@@ -28,7 +28,7 @@ specifiers:
   json-schema: ^0.4.0
   npm-check-updates: ^12
   prettier: ^2.6.2
-  projen: ^0.56.27
+  projen: ^0.56.28
   standard-version: ^9
   ts-toolbelt: ^9.6.0
   typescript: ^4.6.4
@@ -46,14 +46,14 @@ dependencies:
   ts-toolbelt: 9.6.0
 
 devDependencies:
-  '@cloudy-ts/eslint-plugin': 0.0.22_eslint@8.16.0
+  '@cloudy-ts/eslint-plugin': 0.0.23_eslint@8.16.0
   '@tsconfig/node14': 1.0.1
   '@types/node': 14.18.18
   '@typescript-eslint/eslint-plugin': 5.25.0_4ba2eb2aa3853cfb440cb10dd593ed15
   '@typescript-eslint/parser': 5.25.0_eslint@8.16.0+typescript@4.6.4
   aws-cdk-lib: 2.24.0_constructs@10.0.0
   c8: 7.11.3
-  cloudy-node: 0.0.28
+  cloudy-node: 0.0.29
   constructs: 10.0.0
   eslint: 8.16.0
   eslint-config-prettier: 8.5.0_eslint@8.16.0
@@ -65,7 +65,7 @@ devDependencies:
   json-schema: 0.4.0
   npm-check-updates: 12.5.12
   prettier: 2.6.2
-  projen: 0.56.27
+  projen: 0.56.28
   standard-version: 9.5.0
   typescript: 4.6.4
   vitest: 0.12.9_c8@7.11.3
@@ -777,8 +777,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin/0.0.22_eslint@8.16.0:
-    resolution: {integrity: sha512-N6YfK0B0atdR/jDMqFxOWjJYAP2HU3a2HGKYjPh6p1RDTTVl2eCZcC6W6eV/msqOmFHdIWUHsTbvpDC2xb3XZQ==}
+  /@cloudy-ts/eslint-plugin/0.0.23_eslint@8.16.0:
+    resolution: {integrity: sha512-UVmLP8AYVUraj3AqZRdQA3VULsMSTkG/GRUXRetbZ6PgZKVi4flNoqnol+U75MgWrVQToFEsVEFUHInfHxOSuA==}
     engines: {node: '>= 14.18.0'}
     peerDependencies:
       eslint: ^8.16.0
@@ -1680,8 +1680,8 @@ packages:
       mimic-response: 1.0.1
     dev: true
 
-  /cloudy-node/0.0.28:
-    resolution: {integrity: sha512-o9Mon3zAppg5Iih+m4V2THZh/+RjcH0+8BcrZ0w8mHG429ObPQ3xdqaDB8TW2IvaGAtRwqZ9LrobK5SCWjwJKg==}
+  /cloudy-node/0.0.29:
+    resolution: {integrity: sha512-iXJ6OFbMEGUNNQWrr6WGDGCReC54YhE2qDRLq4DcgOBhHJcfT0pSvqaOzaY93B3tv4TTuGQIfQldx4QuZ+CXZQ==}
     engines: {node: '>= 14.18.0'}
     hasBin: true
     dependencies:
@@ -4364,8 +4364,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen/0.56.27:
-    resolution: {integrity: sha512-BfwNEhCrgXIRGWk4C7VhjCYZ5C2VqiaFsjBeMv9rXUsdNcx/1OmdRbHxJyHh3HO2Hqhsi1o/UW75THiyLy72CA==}
+  /projen/0.56.28:
+    resolution: {integrity: sha512-p7uamZw/V0xW+B2NjAvAiG9uFpz2YVQKpRLfY45O3khxmfL/LdXhP6Cfht/PsoOXmwTfk6fuZ0Tt1YepMHCmaQ==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
