@@ -8,13 +8,13 @@ specifiers:
   '@aws-sdk/util-dynamodb': ^3.105.0
   '@cloudy-ts/eslint-plugin': '*'
   '@pulumi/pulumi': ^3.34.1
-  '@tsconfig/node14': ^1.0.1
+  '@tsconfig/node14': ^1.0.2
   '@types/node': ^14
   '@typescript-eslint/eslint-plugin': ^5
   '@typescript-eslint/parser': ^5
   aws-cdk-lib: 2.24.0
   c8: ^7.11.3
-  cloudy-node: ^0.0.46
+  cloudy-node: ^0.0.47
   constructs: 10.0.0
   esbuild: ^0.14.43
   eslint: ^8
@@ -28,7 +28,7 @@ specifiers:
   json-schema: ^0.4.0
   npm-check-updates: ^12
   prettier: ^2.6.2
-  projen: ^0.58.5
+  projen: ^0.58.6
   standard-version: ^9
   ts-toolbelt: ^9.6.0
   typescript: ^4.7.3
@@ -46,14 +46,14 @@ dependencies:
   ts-toolbelt: 9.6.0
 
 devDependencies:
-  '@cloudy-ts/eslint-plugin': 0.0.40_eslint@8.17.0
-  '@tsconfig/node14': 1.0.1
+  '@cloudy-ts/eslint-plugin': 0.0.41_eslint@8.17.0
+  '@tsconfig/node14': 1.0.2
   '@types/node': 14.18.21
   '@typescript-eslint/eslint-plugin': 5.27.1_043f48e0ee10c350c28cdede89899bc7
   '@typescript-eslint/parser': 5.27.1_eslint@8.17.0+typescript@4.7.3
   aws-cdk-lib: 2.24.0_constructs@10.0.0
   c8: 7.11.3
-  cloudy-node: 0.0.46
+  cloudy-node: 0.0.47
   constructs: 10.0.0
   eslint: 8.17.0
   eslint-config-prettier: 8.5.0_eslint@8.17.0
@@ -65,7 +65,7 @@ devDependencies:
   json-schema: 0.4.0
   npm-check-updates: 12.5.12
   prettier: 2.6.2
-  projen: 0.58.5
+  projen: 0.58.6
   standard-version: 9.5.0
   typescript: 4.7.3
   vitest: 0.14.2_c8@7.11.3
@@ -790,8 +790,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin/0.0.40_eslint@8.17.0:
-    resolution: {integrity: sha512-+Wb4G/f84wPMMjme8N734wxOdcj0E608JZQgWFDvsRkUHvd0K5/b2Kelf1YIbbPpfCP93MwIeD7wU8oumLnb2g==}
+  /@cloudy-ts/eslint-plugin/0.0.41_eslint@8.17.0:
+    resolution: {integrity: sha512-Q8uw2wrYE1gJtIAnVqnwTwsvtKnzVpDbaUPz0WevN0oIqgsLjU/4d2Cj+LPESdBexCNDLc85hbu0UW3H6Z6WPA==}
     engines: {node: '>= 14.18.0'}
     peerDependencies:
       eslint: ^8.17.0
@@ -1053,8 +1053,8 @@ packages:
     engines: {node: '>= 10'}
     dev: true
 
-  /@tsconfig/node14/1.0.1:
-    resolution: {integrity: sha512-509r2+yARFfHHE7T6Puu2jjkoycftovhXRqW328PDXTVGKihlb1P8Z9mMZH04ebyajfRY7dedfGynlrFHJUQCg==}
+  /@tsconfig/node14/1.0.2:
+    resolution: {integrity: sha512-YwrUA5ysDXHFYfL0Xed9x3sNS4P+aKlCOnnbqUa2E5HdQshHFleCJVrj1PlGTb4GgFUCDyte1v3JWLy2sz8Oqg==}
     dev: true
 
   /@types/chai-subset/1.3.3:
@@ -1689,8 +1689,8 @@ packages:
       mimic-response: 1.0.1
     dev: true
 
-  /cloudy-node/0.0.46:
-    resolution: {integrity: sha512-EqUXKEHz1vNIqUgYcrUoyZ1jMeG1I6YjIy1334nfACJ3+/ok3CzCECpR8HY6ZC08tmXg6sPsjdc79ecu1m4jDw==}
+  /cloudy-node/0.0.47:
+    resolution: {integrity: sha512-Iu1UbnmiMZMc0ZeFRt5d/4JSelf/RGg3WPEZS76VcpDtOmkwNJTPDreaDT9XGvMaGyvHZucfhKQ7azRvxW97Ag==}
     engines: {node: '>= 14.18.0'}
     hasBin: true
     dependencies:
@@ -4415,8 +4415,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen/0.58.5:
-    resolution: {integrity: sha512-ygtv1LR/ht4Jph0u9MDKssQXiNV7TxqfuPaRAZy+ED7wNrD5KLVuDFHqS4C7m4o2rkBRYow7tBaCt9Q2+lbOmA==}
+  /projen/0.58.6:
+    resolution: {integrity: sha512-cBeAl1CUraT0hCWKYOqlO2M7SSSzmXYJct99Bmw2yn7dZFcxDXwkmPYwLRkCEgP5zIvayWvfvllCRadlgMgQ9g==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
@@ -5213,7 +5213,7 @@ packages:
     dev: true
 
   /typedarray/0.0.6:
-    resolution: {integrity: sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=}
+    resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
     dev: true
 
   /typescript/3.7.7:
@@ -5300,18 +5300,18 @@ packages:
     dev: true
 
   /url-parse-lax/3.0.0:
-    resolution: {integrity: sha1-FrXK/Afb42dsGxmZF3gj1lA6yww=}
+    resolution: {integrity: sha512-NjFKA0DidqPa5ciFcSrXnAltTtzz84ogy+NebPvfEgAck0+TNg4UJ4IN+fB7zRZfbgUf0syOo9MDxFkDSMuFaQ==}
     engines: {node: '>=4'}
     dependencies:
       prepend-http: 2.0.0
     dev: true
 
   /util-deprecate/1.0.2:
-    resolution: {integrity: sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=}
+    resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
     dev: true
 
   /util-promisify/2.1.0:
-    resolution: {integrity: sha1-PCI2R2xNMsX/PEcAKt18E7moKlM=}
+    resolution: {integrity: sha512-K+5eQPYs14b3+E+hmE2J6gCZ4JmMl9DbYS6BeP2CHq6WMuNxErxf5B/n0fz85L8zUuoO6rIzNNmIQDu/j+1OcA==}
     dependencies:
       object.getownpropertydescriptors: 2.1.4
     dev: false
