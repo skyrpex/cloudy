@@ -14,7 +14,7 @@ specifiers:
   '@typescript-eslint/parser': ^5
   aws-cdk-lib: 2.24.0
   c8: ^7.11.3
-  cloudy-node: ^0.0.47
+  cloudy-node: ^0.0.48
   constructs: 10.0.0
   esbuild: ^0.14.43
   eslint: ^8
@@ -28,7 +28,7 @@ specifiers:
   json-schema: ^0.4.0
   npm-check-updates: ^12
   prettier: ^2.6.2
-  projen: ^0.58.6
+  projen: ^0.58.7
   standard-version: ^9
   ts-toolbelt: ^9.6.0
   typescript: ^4.7.3
@@ -46,14 +46,14 @@ dependencies:
   ts-toolbelt: 9.6.0
 
 devDependencies:
-  '@cloudy-ts/eslint-plugin': 0.0.41_eslint@8.17.0
+  '@cloudy-ts/eslint-plugin': 0.0.42_eslint@8.17.0
   '@tsconfig/node14': 1.0.2
   '@types/node': 14.18.21
   '@typescript-eslint/eslint-plugin': 5.27.1_043f48e0ee10c350c28cdede89899bc7
   '@typescript-eslint/parser': 5.27.1_eslint@8.17.0+typescript@4.7.3
   aws-cdk-lib: 2.24.0_constructs@10.0.0
   c8: 7.11.3
-  cloudy-node: 0.0.47
+  cloudy-node: 0.0.48
   constructs: 10.0.0
   eslint: 8.17.0
   eslint-config-prettier: 8.5.0_eslint@8.17.0
@@ -65,7 +65,7 @@ devDependencies:
   json-schema: 0.4.0
   npm-check-updates: 12.5.12
   prettier: 2.6.2
-  projen: 0.58.6
+  projen: 0.58.7
   standard-version: 9.5.0
   typescript: 4.7.3
   vitest: 0.14.2_c8@7.11.3
@@ -790,8 +790,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin/0.0.41_eslint@8.17.0:
-    resolution: {integrity: sha512-Q8uw2wrYE1gJtIAnVqnwTwsvtKnzVpDbaUPz0WevN0oIqgsLjU/4d2Cj+LPESdBexCNDLc85hbu0UW3H6Z6WPA==}
+  /@cloudy-ts/eslint-plugin/0.0.42_eslint@8.17.0:
+    resolution: {integrity: sha512-XsJLLi9zTmnicja3FPyG2KAvEWc28bB9zrmugIe3KDjRGqmpNfQAbqm90VKywibF3CD8e62SFEd8PH6L42q8FA==}
     engines: {node: '>= 14.18.0'}
     peerDependencies:
       eslint: ^8.17.0
@@ -1689,8 +1689,8 @@ packages:
       mimic-response: 1.0.1
     dev: true
 
-  /cloudy-node/0.0.47:
-    resolution: {integrity: sha512-Iu1UbnmiMZMc0ZeFRt5d/4JSelf/RGg3WPEZS76VcpDtOmkwNJTPDreaDT9XGvMaGyvHZucfhKQ7azRvxW97Ag==}
+  /cloudy-node/0.0.48:
+    resolution: {integrity: sha512-+lhD7w+gDK49saHqKfpoTXyoIVuwBdIYhqMoLh8hw8Nw6Bm3CGPO1YmkXRc6QEczSJp6S4iwTf5uMPGlCH2/mw==}
     engines: {node: '>= 14.18.0'}
     hasBin: true
     dependencies:
@@ -4415,8 +4415,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen/0.58.6:
-    resolution: {integrity: sha512-cBeAl1CUraT0hCWKYOqlO2M7SSSzmXYJct99Bmw2yn7dZFcxDXwkmPYwLRkCEgP5zIvayWvfvllCRadlgMgQ9g==}
+  /projen/0.58.7:
+    resolution: {integrity: sha512-27gkmgK0HWNURa3NnBzG8Qow1qmjNw3YDgUAc+QasG09EJ4EuwBEy0tnSlMoKLj8LafjW7Mi4GR8V+OSGsfV0w==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
@@ -5447,7 +5447,7 @@ packages:
     dev: true
 
   /wordwrap/1.0.0:
-    resolution: {integrity: sha1-J1hIEIkUVqQXHI0CJkQa3pDLyus=}
+    resolution: {integrity: sha512-gvVzJFlPycKc5dZN4yPkP8w7Dc37BtP1yczEneOb4uq34pXZcvrtRTmWV8W+Ume+XCxKgbjM+nevkyFPMybd4Q==}
     dev: true
 
   /wrap-ansi/7.0.0:
@@ -5460,7 +5460,7 @@ packages:
     dev: true
 
   /wrappy/1.0.2:
-    resolution: {integrity: sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=}
+    resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
 
   /write-file-atomic/3.0.3:
     resolution: {integrity: sha512-AvHcyZ5JnSfq3ioSyjrBkH9yW4m7Ayk8/9My/DD9onKeu/94fwrMocemO2QAJFAlnnDN+ZDS+ZjAR5ua1/PV/Q==}
@@ -5530,7 +5530,7 @@ packages:
     dev: true
 
   /yn/2.0.0:
-    resolution: {integrity: sha1-5a2ryKz0CPY4X8dklWhMiOavaJo=}
+    resolution: {integrity: sha512-uTv8J/wiWTgUTg+9vLTi//leUl5vDQS6uii/emeTb2ssY7vl6QWf2fFbIIGjnhjvbdKlU0ed7QPgY1htTC86jQ==}
     engines: {node: '>=4'}
     dev: false
 
