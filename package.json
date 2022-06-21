@@ -30,7 +30,7 @@
     "c8": "^7.11.3",
     "cloudy-node": "^0.0.55",
     "constructs": "10.0.0",
-    "esbuild": "^0.14.46",
+    "esbuild": "^0.14.47",
     "eslint": "^8",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-node": "^0.3.6",
@@ -57,7 +57,7 @@
     "@aws-sdk/types": "^3.110.0",
     "@aws-sdk/util-dynamodb": "^3.113.0",
     "@pulumi/pulumi": "^3.34.1",
-    "esbuild": "^0.14.46",
+    "esbuild": "^0.14.47",
     "find-up": "*",
     "ts-toolbelt": "^9.6.0"
   },
