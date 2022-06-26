@@ -14,7 +14,7 @@ specifiers:
   '@typescript-eslint/parser': ^5
   aws-cdk-lib: 2.24.0
   c8: ^7.11.3
-  cloudy-node: ^0.0.58
+  cloudy-node: ^0.0.59
   constructs: 10.0.0
   esbuild: ^0.14.47
   eslint: ^8
@@ -46,14 +46,14 @@ dependencies:
   ts-toolbelt: 9.6.0
 
 devDependencies:
-  '@cloudy-ts/eslint-plugin': 0.0.53_eslint@8.18.0
+  '@cloudy-ts/eslint-plugin': 0.0.54_eslint@8.18.0
   '@tsconfig/node14': 1.0.3
   '@types/node': 14.18.21
   '@typescript-eslint/eslint-plugin': 5.29.0_841815610045eaf78ed2b3f13a174733
   '@typescript-eslint/parser': 5.29.0_eslint@8.18.0+typescript@4.7.4
   aws-cdk-lib: 2.24.0_constructs@10.0.0
   c8: 7.11.3
-  cloudy-node: 0.0.58
+  cloudy-node: 0.0.59
   constructs: 10.0.0
   eslint: 8.18.0
   eslint-config-prettier: 8.5.0_eslint@8.18.0
@@ -809,8 +809,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin/0.0.53_eslint@8.18.0:
-    resolution: {integrity: sha512-+a8TDvUci7M4+HVXdOgYfcdyquGomWkT35rrIVy/wtj5dOtHlIdT9BHXd2E+1aCN5ODZMW2nY2MIgZxkqkwliA==}
+  /@cloudy-ts/eslint-plugin/0.0.54_eslint@8.18.0:
+    resolution: {integrity: sha512-hcgPOOzsNd0CeqCFVyuROzjxDfM5ozpzU4y3P8wfgXymetb0yacZZ+57IUJmperZIYdrcYrrbfE72y8QOAkc8A==}
     engines: {node: '>= 14.18.0'}
     peerDependencies:
       eslint: ^8.18.0
@@ -1664,8 +1664,8 @@ packages:
       mimic-response: 1.0.1
     dev: true
 
-  /cloudy-node/0.0.58:
-    resolution: {integrity: sha512-83eaLUIjvkPpPwYiAaFapjhMZ9l+bN5qcvFdfB+dcoWzLUokysPCvqE15LKsYTo9Vum3T6wwizXHo0DrWX/PMQ==}
+  /cloudy-node/0.0.59:
+    resolution: {integrity: sha512-6wqnYZoBTkFoBZNNoW0LF5PY1lVsHK1nVAoLzXHOKw7PZEcue3bntxvNNf4J6SU7lA78krOm4xCITS49EVSuPw==}
     engines: {node: '>= 14.18.0'}
     hasBin: true
     dependencies:
