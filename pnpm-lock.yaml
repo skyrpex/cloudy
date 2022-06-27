@@ -14,7 +14,7 @@ specifiers:
   '@typescript-eslint/parser': ^5
   aws-cdk-lib: 2.24.0
   c8: ^7.11.3
-  cloudy-node: ^0.0.59
+  cloudy-node: ^0.0.60
   constructs: 10.0.0
   esbuild: ^0.14.47
   eslint: ^8
@@ -46,14 +46,14 @@ dependencies:
   ts-toolbelt: 9.6.0
 
 devDependencies:
-  '@cloudy-ts/eslint-plugin': 0.0.54_eslint@8.18.0
+  '@cloudy-ts/eslint-plugin': 0.0.55_eslint@8.18.0
   '@tsconfig/node14': 1.0.3
   '@types/node': 14.18.21
   '@typescript-eslint/eslint-plugin': 5.29.0_841815610045eaf78ed2b3f13a174733
   '@typescript-eslint/parser': 5.29.0_eslint@8.18.0+typescript@4.7.4
   aws-cdk-lib: 2.24.0_constructs@10.0.0
   c8: 7.11.3
-  cloudy-node: 0.0.59
+  cloudy-node: 0.0.60
   constructs: 10.0.0
   eslint: 8.18.0
   eslint-config-prettier: 8.5.0_eslint@8.18.0
@@ -809,8 +809,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin/0.0.54_eslint@8.18.0:
-    resolution: {integrity: sha512-hcgPOOzsNd0CeqCFVyuROzjxDfM5ozpzU4y3P8wfgXymetb0yacZZ+57IUJmperZIYdrcYrrbfE72y8QOAkc8A==}
+  /@cloudy-ts/eslint-plugin/0.0.55_eslint@8.18.0:
+    resolution: {integrity: sha512-kpVVmOAJTB/A8k2A8YbMyYRP5YMYNzHZf+cJeMpQhBOSVVn0MVH0fj+euBXa6DMkdTFK1tdEfLFQqjQ2PXM4rA==}
     engines: {node: '>= 14.18.0'}
     peerDependencies:
       eslint: ^8.18.0
@@ -875,20 +875,20 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /@jridgewell/resolve-uri/3.0.7:
-    resolution: {integrity: sha512-8cXDaBBHOr2pQ7j77Y6Vp5VDT2sIqWyWQ56TjEq4ih/a4iST3dItRe8Q9fp0rrIl9DoKhWQtUQz/YpOxLkXbNA==}
+  /@jridgewell/resolve-uri/3.0.8:
+    resolution: {integrity: sha512-YK5G9LaddzGbcucK4c8h5tWFmMPBvRZ/uyWmN1/SbBdIvqGUdWGkJ5BAaccgs6XbzVLsqbPJrBSFwKv3kT9i7w==}
     engines: {node: '>=6.0.0'}
     dev: true
 
-  /@jridgewell/sourcemap-codec/1.4.13:
-    resolution: {integrity: sha512-GryiOJmNcWbovBxTfZSF71V/mXbgcV3MewDe3kIMCLyIh5e7SKAeUZs+rMnJ8jkMolZ/4/VsdBmMrw3l+VdZ3w==}
+  /@jridgewell/sourcemap-codec/1.4.14:
+    resolution: {integrity: sha512-XPSJHWmi394fuUuzDnGz1wiKqWfo1yXecHQMRf2l6hztTO+nPru658AyDngaBe7isIxEkRsPR3FZh+s7iVa4Uw==}
     dev: true
 
-  /@jridgewell/trace-mapping/0.3.13:
-    resolution: {integrity: sha512-o1xbKhp9qnIAoHJSWd6KlCZfqslL4valSF81H8ImioOAxluWYWOpWkpyktY2vnt4tbrX9XYaxovq6cgowaJp2w==}
+  /@jridgewell/trace-mapping/0.3.14:
+    resolution: {integrity: sha512-bJWEfQ9lPTvm3SneWwRFVLzrh6nhjwqw7TUFFBEMzwvg7t7PCDenf2lDwqo4NQXzdpgBXyFgDWnQA+2vkruksQ==}
     dependencies:
-      '@jridgewell/resolve-uri': 3.0.7
-      '@jridgewell/sourcemap-codec': 1.4.13
+      '@jridgewell/resolve-uri': 3.0.8
+      '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
   /@logdna/tail-file/2.2.0:
@@ -1664,8 +1664,8 @@ packages:
       mimic-response: 1.0.1
     dev: true
 
-  /cloudy-node/0.0.59:
-    resolution: {integrity: sha512-6wqnYZoBTkFoBZNNoW0LF5PY1lVsHK1nVAoLzXHOKw7PZEcue3bntxvNNf4J6SU7lA78krOm4xCITS49EVSuPw==}
+  /cloudy-node/0.0.60:
+    resolution: {integrity: sha512-x+d+4WuYUaUIreys66u8qQ5CWPjNoE8NE0Esath04DFJM4ICaKzrzmVxmaI2B7vYJ0CQHXlmb5+YNY0oEEDFMQ==}
     engines: {node: '>= 14.18.0'}
     hasBin: true
     dependencies:
@@ -5241,7 +5241,7 @@ packages:
     resolution: {integrity: sha512-74Y4LqY74kLE6IFyIjPtkSTWzUZmj8tdHT9Ii/26dvQ6K9Dl2NbEfj0XgU2sHCtKgt5VupqhlO/5aWuqS+IY1w==}
     engines: {node: '>=10.12.0'}
     dependencies:
-      '@jridgewell/trace-mapping': 0.3.13
+      '@jridgewell/trace-mapping': 0.3.14
       '@types/istanbul-lib-coverage': 2.0.4
       convert-source-map: 1.8.0
     dev: true
