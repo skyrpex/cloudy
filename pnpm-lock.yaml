@@ -14,7 +14,7 @@ specifiers:
   '@typescript-eslint/parser': ^5
   aws-cdk-lib: 2.24.0
   c8: ^7.11.3
-  cloudy-node: ^0.0.61
+  cloudy-node: ^0.0.62
   constructs: 10.0.0
   esbuild: ^0.14.47
   eslint: ^8
@@ -46,14 +46,14 @@ dependencies:
   ts-toolbelt: 9.6.0
 
 devDependencies:
-  '@cloudy-ts/eslint-plugin': 0.0.56_eslint@8.18.0
+  '@cloudy-ts/eslint-plugin': 0.0.57_eslint@8.18.0
   '@tsconfig/node14': 1.0.3
   '@types/node': 14.18.21
   '@typescript-eslint/eslint-plugin': 5.30.0_eb27092288e495ddbd8abfd1fa139db3
   '@typescript-eslint/parser': 5.30.0_eslint@8.18.0+typescript@4.7.4
   aws-cdk-lib: 2.24.0_constructs@10.0.0
   c8: 7.11.3
-  cloudy-node: 0.0.61
+  cloudy-node: 0.0.62
   constructs: 10.0.0
   eslint: 8.18.0
   eslint-config-prettier: 8.5.0_eslint@8.18.0
@@ -809,8 +809,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin/0.0.56_eslint@8.18.0:
-    resolution: {integrity: sha512-YewMxOIE709qdOsVrTFV1KMuDsv7YWF904eQlg1144+PMuyeonj2tYIaJMvM/0n415TDRfSimrEuey0tsC/RgA==}
+  /@cloudy-ts/eslint-plugin/0.0.57_eslint@8.18.0:
+    resolution: {integrity: sha512-9UrKTSHo8aLRgegIKM0JNYXNtm3ModnZtQGvHz1gykQ7xtwFb5R1rDm33joUa+qd3RhsnOna5JYvyTlyBy2yCg==}
     engines: {node: '>= 14.18.0'}
     peerDependencies:
       eslint: ^8.18.0
@@ -969,14 +969,15 @@ packages:
       infer-owner: 1.0.4
     dev: true
 
-  /@npmcli/run-script/4.1.4:
-    resolution: {integrity: sha512-1Qk/EsHBKc40XkN1dF79ztae+ua9jEjDupU0rQgO/k+94t7eFjXGN/baRvA00aEOJuTZ4VjwlC2u+XECImJi5w==}
+  /@npmcli/run-script/4.1.5:
+    resolution: {integrity: sha512-FyrZkZ+O0bCnQqm+mRb6sKbEJgyJudInwFN84gCcMUcxrWkR15Ags1uOHwnxHYdpj3T5eqrCZNW/Ys20MGTQ6Q==}
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
     dependencies:
       '@npmcli/node-gyp': 2.0.0
       '@npmcli/promise-spawn': 3.0.0
       node-gyp: 9.0.0
       read-package-json-fast: 2.0.3
+      which: 2.0.2
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1514,7 +1515,7 @@ packages:
       glob: 8.0.3
       infer-owner: 1.0.4
       lru-cache: 7.10.2
-      minipass: 3.3.3
+      minipass: 3.3.4
       minipass-collect: 1.0.2
       minipass-flush: 1.0.5
       minipass-pipeline: 1.2.4
@@ -1664,8 +1665,8 @@ packages:
       mimic-response: 1.0.1
     dev: true
 
-  /cloudy-node/0.0.61:
-    resolution: {integrity: sha512-y7PIn9nlsHVYKatzbuB35P+R7ZlVVh/3uf3TmK2+1Dc7dV87jhcmPObOvoQsKRFXdy+ClecumpJKeugqA87QNQ==}
+  /cloudy-node/0.0.62:
+    resolution: {integrity: sha512-XMn7o+EPwjZZB2C3FmQMmhe/DIuc/N8Tbcz9bYPZe6Eoi4OzBkNYqFoZxdad3Hu7mreS9MRwBRqCokOEWmxvxQ==}
     engines: {node: '>= 14.18.0'}
     hasBin: true
     dependencies:
@@ -2778,7 +2779,7 @@ packages:
     resolution: {integrity: sha512-V/JgOLFCS+R6Vcq0slCuaeWEdNC3ouDlJMNIsacH2VtALiu9mV4LPrHc5cDl8k5aw6J8jwgWWpiTo5RYhmIzvg==}
     engines: {node: '>= 8'}
     dependencies:
-      minipass: 3.3.3
+      minipass: 3.3.4
     dev: true
 
   /fs.realpath/1.0.0:
@@ -3633,7 +3634,7 @@ packages:
       https-proxy-agent: 5.0.1
       is-lambda: 1.0.1
       lru-cache: 7.10.2
-      minipass: 3.3.3
+      minipass: 3.3.4
       minipass-collect: 1.0.2
       minipass-fetch: 2.1.0
       minipass-flush: 1.0.5
@@ -3724,14 +3725,14 @@ packages:
     resolution: {integrity: sha512-6T6lH0H8OG9kITm/Jm6tdooIbogG9e0tLgpY6mphXSm/A9u8Nq1ryBG+Qspiub9LjWlBPsPS3tWQ/Botq4FdxA==}
     engines: {node: '>= 8'}
     dependencies:
-      minipass: 3.3.3
+      minipass: 3.3.4
     dev: true
 
   /minipass-fetch/2.1.0:
     resolution: {integrity: sha512-H9U4UVBGXEyyWJnqYDCLp1PwD8XIkJ4akNHp1aGVI+2Ym7wQMlxDKi4IB4JbmyU+pl9pEs/cVrK6cOuvmbK4Sg==}
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
     dependencies:
-      minipass: 3.3.3
+      minipass: 3.3.4
       minipass-sized: 1.0.3
       minizlib: 2.1.2
     optionalDependencies:
@@ -3742,32 +3743,32 @@ packages:
     resolution: {integrity: sha512-JmQSYYpPUqX5Jyn1mXaRwOda1uQ8HP5KAT/oDSLCzt1BYRhQU0/hDtsB1ufZfEEzMZ9aAVmsBw8+FWsIXlClWw==}
     engines: {node: '>= 8'}
     dependencies:
-      minipass: 3.3.3
+      minipass: 3.3.4
     dev: true
 
   /minipass-json-stream/1.0.1:
     resolution: {integrity: sha512-ODqY18UZt/I8k+b7rl2AENgbWE8IDYam+undIJONvigAz8KR5GWblsFTEfQs0WODsjbSXWlm+JHEv8Gr6Tfdbg==}
     dependencies:
       jsonparse: 1.3.1
-      minipass: 3.3.3
+      minipass: 3.3.4
     dev: true
 
   /minipass-pipeline/1.2.4:
     resolution: {integrity: sha512-xuIq7cIOt09RPRJ19gdi4b+RiNvDFYe5JH+ggNvBqGqpQXcru3PcRmOZuHBKWK1Txf9+cQ+HMVN4d6z46LZP7A==}
     engines: {node: '>=8'}
     dependencies:
-      minipass: 3.3.3
+      minipass: 3.3.4
     dev: true
 
   /minipass-sized/1.0.3:
     resolution: {integrity: sha512-MbkQQ2CTiBMlA2Dm/5cY+9SWFEN8pzzOXi6rlM5Xxq0Yqbda5ZQy9sU75a673FE9ZK0Zsbr6Y5iP6u9nktfg2g==}
     engines: {node: '>=8'}
     dependencies:
-      minipass: 3.3.3
+      minipass: 3.3.4
     dev: true
 
-  /minipass/3.3.3:
-    resolution: {integrity: sha512-N0BOsdFAlNRfmwMhjAsLVWOk7Ljmeb39iqFlsV1At+jqRhSUP9yeof8FyJu4imaJiSUp8vQebWD/guZwGQC8iA==}
+  /minipass/3.3.4:
+    resolution: {integrity: sha512-I9WPbWHCGu8W+6k1ZiGpPu0GkoKBeorkfKNuAFBNS1HNFJvke82sxvI5bzcCNpWPorkOO5QQ+zomzzwRxejXiw==}
     engines: {node: '>=8'}
     dependencies:
       yallist: 4.0.0
@@ -3777,7 +3778,7 @@ packages:
     resolution: {integrity: sha512-bAxsR8BVfj60DWXHE3u30oHzfl4G7khkSuPW+qvpd7jFRHm7dLxOjUk1EHACJ/hxLY8phGJ0YhYHZo7jil7Qdg==}
     engines: {node: '>= 8'}
     dependencies:
-      minipass: 3.3.3
+      minipass: 3.3.4
       yallist: 4.0.0
     dev: true
 
@@ -4000,7 +4001,7 @@ packages:
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
     dependencies:
       make-fetch-happen: 10.1.8
-      minipass: 3.3.3
+      minipass: 3.3.4
       minipass-fetch: 2.1.0
       minipass-json-stream: 1.0.1
       minizlib: 2.1.2
@@ -4179,12 +4180,12 @@ packages:
       '@npmcli/git': 3.0.1
       '@npmcli/installed-package-contents': 1.0.7
       '@npmcli/promise-spawn': 3.0.0
-      '@npmcli/run-script': 4.1.4
+      '@npmcli/run-script': 4.1.5
       cacache: 16.1.1
       chownr: 2.0.0
       fs-minipass: 2.1.0
       infer-owner: 1.0.4
-      minipass: 3.3.3
+      minipass: 3.3.4
       mkdirp: 1.0.4
       npm-package-arg: 9.1.0
       npm-packlist: 5.1.0
@@ -4857,7 +4858,7 @@ packages:
     resolution: {integrity: sha512-o57Wcn66jMQvfHG1FlYbWeZWW/dHZhJXjpIcTfXldXEk5nz5lStPo3mK0OJQfGR3RbZUlbISexbljkJzuEj/8Q==}
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
     dependencies:
-      minipass: 3.3.3
+      minipass: 3.3.4
     dev: true
 
   /standard-version/9.5.0:
@@ -4973,7 +4974,7 @@ packages:
     dependencies:
       chownr: 2.0.0
       fs-minipass: 2.1.0
-      minipass: 3.3.3
+      minipass: 3.3.4
       minizlib: 2.1.2
       mkdirp: 1.0.4
       yallist: 4.0.0
