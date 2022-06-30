@@ -7,14 +7,14 @@ specifiers:
   '@aws-sdk/types': ^3.110.0
   '@aws-sdk/util-dynamodb': ^3.118.1
   '@cloudy-ts/eslint-plugin': '*'
-  '@pulumi/pulumi': ^3.35.1
+  '@pulumi/pulumi': ^3.35.2
   '@tsconfig/node14': ^1.0.3
   '@types/node': ^14
   '@typescript-eslint/eslint-plugin': ^5
   '@typescript-eslint/parser': ^5
   aws-cdk-lib: 2.24.0
   c8: ^7.11.3
-  cloudy-node: ^0.0.62
+  cloudy-node: ^0.0.63
   constructs: 10.0.0
   esbuild: ^0.14.47
   eslint: ^8
@@ -28,7 +28,7 @@ specifiers:
   json-schema: ^0.4.0
   npm-check-updates: ^12
   prettier: ^2.7.1
-  projen: ^0.58.17
+  projen: ^0.58.21
   standard-version: ^9
   ts-toolbelt: ^9.6.0
   typescript: ^4.7.4
@@ -40,20 +40,20 @@ dependencies:
   '@aws-sdk/smithy-client': 3.110.0
   '@aws-sdk/types': 3.110.0
   '@aws-sdk/util-dynamodb': 3.118.1
-  '@pulumi/pulumi': 3.35.1
+  '@pulumi/pulumi': 3.35.2
   esbuild: 0.14.47
   find-up: 6.3.0
   ts-toolbelt: 9.6.0
 
 devDependencies:
-  '@cloudy-ts/eslint-plugin': 0.0.57_eslint@8.18.0
+  '@cloudy-ts/eslint-plugin': 0.0.58_eslint@8.18.0
   '@tsconfig/node14': 1.0.3
   '@types/node': 14.18.21
   '@typescript-eslint/eslint-plugin': 5.30.0_eb27092288e495ddbd8abfd1fa139db3
   '@typescript-eslint/parser': 5.30.0_eslint@8.18.0+typescript@4.7.4
   aws-cdk-lib: 2.24.0_constructs@10.0.0
   c8: 7.11.3
-  cloudy-node: 0.0.62
+  cloudy-node: 0.0.63
   constructs: 10.0.0
   eslint: 8.18.0
   eslint-config-prettier: 8.5.0_eslint@8.18.0
@@ -65,7 +65,7 @@ devDependencies:
   json-schema: 0.4.0
   npm-check-updates: 12.5.12
   prettier: 2.7.1
-  projen: 0.58.17
+  projen: 0.58.21
   standard-version: 9.5.0
   typescript: 4.7.4
   vitest: 0.16.0_c8@7.11.3
@@ -809,8 +809,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin/0.0.57_eslint@8.18.0:
-    resolution: {integrity: sha512-9UrKTSHo8aLRgegIKM0JNYXNtm3ModnZtQGvHz1gykQ7xtwFb5R1rDm33joUa+qd3RhsnOna5JYvyTlyBy2yCg==}
+  /@cloudy-ts/eslint-plugin/0.0.58_eslint@8.18.0:
+    resolution: {integrity: sha512-tNoR84KCb/gLK/AqGrawpsEfKVniEza9qimUMQd9cX/8rQy1HU6l42eGQIC1FQY0CEKVTeqs0WQBooHrCqyRSw==}
     engines: {node: '>= 14.18.0'}
     peerDependencies:
       eslint: ^8.18.0
@@ -930,7 +930,7 @@ packages:
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
     dependencies:
       '@npmcli/promise-spawn': 3.0.0
-      lru-cache: 7.10.2
+      lru-cache: 7.12.0
       mkdirp: 1.0.4
       npm-pick-manifest: 7.0.1
       proc-log: 2.0.1
@@ -1011,8 +1011,8 @@ packages:
     engines: {node: '>=8.0'}
     dev: true
 
-  /@pulumi/pulumi/3.35.1:
-    resolution: {integrity: sha512-seWHsBB8gCLgYjhoHFfclYVWPjz0k4lwHkMUr278yoxlD0WT20NDfnEy+0fD7zsBm0XcJrltaYKLrbOCvF2LGw==}
+  /@pulumi/pulumi/3.35.2:
+    resolution: {integrity: sha512-HI17rHJw0N8GrHeuqV2H3n1fnSuGPKR1ckjPq2YF6ijePa3cfqXSrMQu/Zj0SXgMDhElY6nqmJwoS2W3pLeW5w==}
     engines: {node: '>=8.13.0 || >=10.10.0'}
     dependencies:
       '@grpc/grpc-js': 1.3.8
@@ -1026,7 +1026,7 @@ packages:
       read-package-tree: 5.3.1
       require-from-string: 2.0.2
       semver: 6.3.0
-      source-map-support: 0.4.18
+      source-map-support: 0.5.21
       ts-node: 7.0.1
       typescript: 3.7.7
       upath: 1.2.0
@@ -1514,7 +1514,7 @@ packages:
       fs-minipass: 2.1.0
       glob: 8.0.3
       infer-owner: 1.0.4
-      lru-cache: 7.10.2
+      lru-cache: 7.12.0
       minipass: 3.3.4
       minipass-collect: 1.0.2
       minipass-flush: 1.0.5
@@ -1665,8 +1665,8 @@ packages:
       mimic-response: 1.0.1
     dev: true
 
-  /cloudy-node/0.0.62:
-    resolution: {integrity: sha512-XMn7o+EPwjZZB2C3FmQMmhe/DIuc/N8Tbcz9bYPZe6Eoi4OzBkNYqFoZxdad3Hu7mreS9MRwBRqCokOEWmxvxQ==}
+  /cloudy-node/0.0.63:
+    resolution: {integrity: sha512-9eGXaEsLtRxpOHZoUYK/maLTllHLLdK3DYNIpKjLTWiu2AMEPPUEX5TsS+TfDHIDtLc7gSyyeYTeqbKC+dqscA==}
     engines: {node: '>= 14.18.0'}
     hasBin: true
     dependencies:
@@ -3076,7 +3076,7 @@ packages:
     resolution: {integrity: sha512-rRnjWu0Bxj+nIfUOkz0695C0H6tRrN5iYIzYejb0tDEefe2AekHu/U5Kn9pEie5vsJqpNQU02az7TGSH3qpz4Q==}
     engines: {node: ^12.13.0 || ^14.15.0 || >=16}
     dependencies:
-      lru-cache: 7.10.2
+      lru-cache: 7.12.0
     dev: true
 
   /html-escaper/2.0.2:
@@ -3607,8 +3607,8 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /lru-cache/7.10.2:
-    resolution: {integrity: sha512-9zDbhgmXAUvUMPV81A705K3tVzcPiZL3Bf5/5JC/FjYJlLZ5AJCeqIRFHJqyBppiLosqF+uKB7p8/RDXylqBIw==}
+  /lru-cache/7.12.0:
+    resolution: {integrity: sha512-OIP3DwzRZDfLg9B9VP/huWBlpvbkmbfiBy8xmsXp4RPmE4A3MhwNozc5ZJ3fWnSg8fDcdlE/neRTPG2ycEKliw==}
     engines: {node: '>=12'}
     dev: true
 
@@ -3633,7 +3633,7 @@ packages:
       http-proxy-agent: 5.0.0
       https-proxy-agent: 5.0.1
       is-lambda: 1.0.1
-      lru-cache: 7.10.2
+      lru-cache: 7.12.0
       minipass: 3.3.4
       minipass-collect: 1.0.2
       minipass-fetch: 2.1.0
@@ -3975,8 +3975,8 @@ packages:
       validate-npm-package-name: 4.0.0
     dev: true
 
-  /npm-packlist/5.1.0:
-    resolution: {integrity: sha512-a04sqF6FbkyOAFA19AA0e94gS7Et5T2/IMj3VOT9nOF2RaRdVPQ1Q17Fb/HaDRFs+gbC7HOmhVZ29adpWgmDZg==}
+  /npm-packlist/5.1.1:
+    resolution: {integrity: sha512-UfpSvQ5YKwctmodvPPkK6Fwk603aoVsf8AEbmVKAEECrfvL8SSe1A2YIwrJ6xmTHAITKPwwZsWo7WwEbNk0kxw==}
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
     hasBin: true
     dependencies:
@@ -4188,7 +4188,7 @@ packages:
       minipass: 3.3.4
       mkdirp: 1.0.4
       npm-package-arg: 9.1.0
-      npm-packlist: 5.1.0
+      npm-packlist: 5.1.1
       npm-pick-manifest: 7.0.1
       npm-registry-fetch: 13.1.1
       proc-log: 2.0.1
@@ -4346,8 +4346,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen/0.58.17:
-    resolution: {integrity: sha512-dwVCHFB9cMDDn8ctJM/AXVHHabh+G+AbZ84kSOPo2uvpVdzTMkuJV/T/oXu+CDhkHCJQIfSh5zJ+7Ebpo5MGyg==}
+  /projen/0.58.21:
+    resolution: {integrity: sha512-Oai5QjuM4j3qfaOhErlllCJ8mSVKzyNft9aORhIwClfJCSJxdaJY0EeePjtt9wRocipCTzjL+IAEazwlP7iuGg==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
@@ -4795,22 +4795,11 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /source-map-support/0.4.18:
-    resolution: {integrity: sha512-try0/JqxPLF9nOjvSta7tVondkP5dwgyLDjVoyMDlmjugT2lRZ1OfsrYTkCd2hkDnJTKRbO/Rl3orm8vlsUzbA==}
-    dependencies:
-      source-map: 0.5.7
-    dev: false
-
   /source-map-support/0.5.21:
     resolution: {integrity: sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==}
     dependencies:
       buffer-from: 1.1.2
       source-map: 0.6.1
-
-  /source-map/0.5.7:
-    resolution: {integrity: sha512-LbrmJOMUSdEVxIKvdcJzQC+nQhe8FUZQTXQy6+I75skNgn3OoQ0DZA8YnFa7gp8tqtL3KPf1kmo0R5DoApeSGQ==}
-    engines: {node: '>=0.10.0'}
-    dev: false
 
   /source-map/0.6.1:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
