@@ -14,7 +14,7 @@ specifiers:
   '@typescript-eslint/parser': ^5
   aws-cdk-lib: 2.24.0
   c8: ^7.11.3
-  cloudy-node: ^0.0.70
+  cloudy-node: ^0.0.71
   constructs: 10.0.0
   esbuild: ^0.14.48
   eslint: ^8
@@ -32,7 +32,7 @@ specifiers:
   standard-version: ^9
   ts-toolbelt: ^9.6.0
   typescript: ^4.7.4
-  vitest: ^0.17.0
+  vitest: ^0.17.1
 
 dependencies:
   '@aws-sdk/client-dynamodb': 3.121.0
@@ -46,14 +46,14 @@ dependencies:
   ts-toolbelt: 9.6.0
 
 devDependencies:
-  '@cloudy-ts/eslint-plugin': 0.0.65_eslint@8.19.0
+  '@cloudy-ts/eslint-plugin': 0.0.66_eslint@8.19.0
   '@tsconfig/node14': 1.0.3
   '@types/node': 14.18.21
   '@typescript-eslint/eslint-plugin': 5.30.5_f646e16e2de31e818e163bded4698d6b
   '@typescript-eslint/parser': 5.30.5_eslint@8.19.0+typescript@4.7.4
   aws-cdk-lib: 2.24.0_constructs@10.0.0
   c8: 7.11.3
-  cloudy-node: 0.0.70
+  cloudy-node: 0.0.71
   constructs: 10.0.0
   eslint: 8.19.0
   eslint-config-prettier: 8.5.0_eslint@8.19.0
@@ -68,7 +68,7 @@ devDependencies:
   projen: 0.58.21
   standard-version: 9.5.0
   typescript: 4.7.4
-  vitest: 0.17.0_c8@7.11.3
+  vitest: 0.17.1_c8@7.11.3
 
 packages:
 
@@ -809,8 +809,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin/0.0.65_eslint@8.19.0:
-    resolution: {integrity: sha512-wN5bfuJOBZWRR4ULjPbdoarhaarsgQNn41MoIiI57pwCE7nscwKc2Q9jP1oRlgy2TTzjJ7QgwTZKyhVkuasXtQ==}
+  /@cloudy-ts/eslint-plugin/0.0.66_eslint@8.19.0:
+    resolution: {integrity: sha512-6Cs/LJkIPw5lIhiVrF8CN3/TF2g+2vryuZEIqfALRBQGOKsEJE0+A18D/xEudA18J0XC4KZTCP4nYu/ZgLnbCg==}
     engines: {node: '>= 14.18.0'}
     peerDependencies:
       eslint: ^8.19.0
@@ -1665,8 +1665,8 @@ packages:
       mimic-response: 1.0.1
     dev: true
 
-  /cloudy-node/0.0.70:
-    resolution: {integrity: sha512-jPrt4b5nXHr8CZ/PpPRyCDwM8LOMnavtGJ3z3QT+49s+kFLUK9UBUxhxp2xYc4Zf96bPg7y+GIAFZDgLEy5KuA==}
+  /cloudy-node/0.0.71:
+    resolution: {integrity: sha512-PZ1xYk2sJ5Ib1iq0rBq8dwKhr0EG0RQ2Bn5BfetBvULoOaQdigwqVX9Jkc+/XTNkW2PaoNclVnCEfMmNgmEsnA==}
     engines: {node: '>= 14.18.0'}
     hasBin: true
     dependencies:
@@ -2099,8 +2099,8 @@ packages:
       minimatch: 3.1.2
     dev: true
 
-  /duplexer3/0.1.4:
-    resolution: {integrity: sha512-CEj8FwwNA4cVH2uFCoHUrmojhYh1vmCdOaneKJXwkeY1i9jnlslVo9dx+hQ5Hl9GnH/Bwy/IjxAyOePyPKYnzA==}
+  /duplexer3/0.1.5:
+    resolution: {integrity: sha512-1A8za6ws41LQgv9HrE/66jyC5yuSjQ3L/KOpFtoBilsAK2iA2wuS5rTt1OCzIvtS2V7nVmedsUU+DGRcjBmOYA==}
     dev: true
 
   /emoji-regex/8.0.0:
@@ -2989,7 +2989,7 @@ packages:
       '@types/responselike': 1.0.0
       cacheable-request: 6.1.0
       decompress-response: 3.3.0
-      duplexer3: 0.1.4
+      duplexer3: 0.1.5
       get-stream: 4.1.0
       lowercase-keys: 1.0.1
       mimic-response: 1.0.1
@@ -5273,8 +5273,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.17.0_c8@7.11.3:
-    resolution: {integrity: sha512-5YO9ubHo0Zg35mea3+zZAr4sCku32C3usvIH5COeJB48TZV/R0J9aGNtGOOqEWZYfOKP0pGZUvTokne3x/QEFg==}
+  /vitest/0.17.1_c8@7.11.3:
+    resolution: {integrity: sha512-d6NsFC6FPmZ5XdiSYfW5rwJ/b8060wqe2steNNlVbhO69HWma6CucIm5g7PXlCSkmKvrdEbUsZHPAarlH83VGw==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
