@@ -14,7 +14,7 @@ specifiers:
   '@typescript-eslint/parser': ^5
   aws-cdk-lib: 2.24.0
   c8: ^7.11.3
-  cloudy-node: ^0.0.71
+  cloudy-node: ^0.0.72
   constructs: 10.0.0
   esbuild: ^0.14.48
   eslint: ^8
@@ -46,14 +46,14 @@ dependencies:
   ts-toolbelt: 9.6.0
 
 devDependencies:
-  '@cloudy-ts/eslint-plugin': 0.0.66_eslint@8.19.0
+  '@cloudy-ts/eslint-plugin': 0.0.67_eslint@8.19.0
   '@tsconfig/node14': 1.0.3
   '@types/node': 14.18.21
   '@typescript-eslint/eslint-plugin': 5.30.5_f646e16e2de31e818e163bded4698d6b
   '@typescript-eslint/parser': 5.30.5_eslint@8.19.0+typescript@4.7.4
   aws-cdk-lib: 2.24.0_constructs@10.0.0
   c8: 7.11.3
-  cloudy-node: 0.0.71
+  cloudy-node: 0.0.72
   constructs: 10.0.0
   eslint: 8.19.0
   eslint-config-prettier: 8.5.0_eslint@8.19.0
@@ -809,8 +809,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin/0.0.66_eslint@8.19.0:
-    resolution: {integrity: sha512-6Cs/LJkIPw5lIhiVrF8CN3/TF2g+2vryuZEIqfALRBQGOKsEJE0+A18D/xEudA18J0XC4KZTCP4nYu/ZgLnbCg==}
+  /@cloudy-ts/eslint-plugin/0.0.67_eslint@8.19.0:
+    resolution: {integrity: sha512-idE8LkVzP/aEqTfr6GEyB4BD1d/ZdqBDG6Yya93Cy0bezVCyFJYWtnm++R5XH4keL1hYW9KCtms5bYKd7SWJeA==}
     engines: {node: '>= 14.18.0'}
     peerDependencies:
       eslint: ^8.19.0
@@ -1665,8 +1665,8 @@ packages:
       mimic-response: 1.0.1
     dev: true
 
-  /cloudy-node/0.0.71:
-    resolution: {integrity: sha512-PZ1xYk2sJ5Ib1iq0rBq8dwKhr0EG0RQ2Bn5BfetBvULoOaQdigwqVX9Jkc+/XTNkW2PaoNclVnCEfMmNgmEsnA==}
+  /cloudy-node/0.0.72:
+    resolution: {integrity: sha512-Noz7feJzlNsjEv65iLdv9f9rSS2nc4AhBtDNZPbPJLuG9Xc3I8n38NMGu0XL14cjQOJMy2lTdnyfuaOA53diQw==}
     engines: {node: '>= 14.18.0'}
     hasBin: true
     dependencies:
@@ -4651,8 +4651,8 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rollup/2.75.7:
-    resolution: {integrity: sha512-VSE1iy0eaAYNCxEXaleThdFXqZJ42qDBatAwrfnPlENEZ8erQ+0LYX4JXOLPceWfZpV1VtZwZ3dFCuOZiSyFtQ==}
+  /rollup/2.76.0:
+    resolution: {integrity: sha512-9jwRIEY1jOzKLj3nsY/yot41r19ITdQrhs+q3ggNWhr9TQgduHqANvPpS32RNpzGklJu3G1AJfvlZLi/6wFgWA==}
     engines: {node: '>=10.0.0'}
     hasBin: true
     optionalDependencies:
@@ -5249,8 +5249,8 @@ packages:
       builtins: 5.0.1
     dev: true
 
-  /vite/2.9.13:
-    resolution: {integrity: sha512-AsOBAaT0AD7Mhe8DuK+/kE4aWYFMx/i0ZNi98hJclxb4e0OhQcZYUrvLjIaQ8e59Ui7txcvKMiJC1yftqpQoDw==}
+  /vite/2.9.14:
+    resolution: {integrity: sha512-P/UCjSpSMcE54r4mPak55hWAZPlyfS369svib/gpmz8/01L822lMPOJ/RYW6tLCe1RPvMvOsJ17erf55bKp4Hw==}
     engines: {node: '>=12.2.0'}
     hasBin: true
     peerDependencies:
@@ -5268,7 +5268,7 @@ packages:
       esbuild: 0.14.48
       postcss: 8.4.14
       resolve: 1.22.1
-      rollup: 2.75.7
+      rollup: 2.76.0
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
@@ -5304,7 +5304,7 @@ packages:
       local-pkg: 0.4.1
       tinypool: 0.2.2
       tinyspy: 0.3.3
-      vite: 2.9.13
+      vite: 2.9.14
     transitivePeerDependencies:
       - less
       - sass
