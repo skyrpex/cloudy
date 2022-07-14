@@ -14,7 +14,7 @@ specifiers:
   '@typescript-eslint/parser': ^5
   aws-cdk-lib: 2.24.0
   c8: ^7.11.3
-  cloudy-node: ^0.0.75
+  cloudy-node: ^0.0.76
   constructs: 10.0.0
   esbuild: ^0.14.49
   eslint: ^8
@@ -28,7 +28,7 @@ specifiers:
   json-schema: ^0.4.0
   npm-check-updates: ^12
   prettier: ^2.7.1
-  projen: ^0.58.28
+  projen: ^0.58.29
   standard-version: ^9
   ts-toolbelt: ^9.6.0
   typescript: ^4.7.4
@@ -46,14 +46,14 @@ dependencies:
   ts-toolbelt: 9.6.0
 
 devDependencies:
-  '@cloudy-ts/eslint-plugin': 0.0.71_eslint@8.19.0
+  '@cloudy-ts/eslint-plugin': 0.0.72_eslint@8.19.0
   '@tsconfig/node14': 1.0.3
-  '@types/node': 14.18.21
+  '@types/node': 14.18.22
   '@typescript-eslint/eslint-plugin': 5.30.6_d567d64e305900596f70368277b02083
   '@typescript-eslint/parser': 5.30.6_eslint@8.19.0+typescript@4.7.4
   aws-cdk-lib: 2.24.0_constructs@10.0.0
   c8: 7.11.3
-  cloudy-node: 0.0.75
+  cloudy-node: 0.0.76
   constructs: 10.0.0
   eslint: 8.19.0
   eslint-config-prettier: 8.5.0_eslint@8.19.0
@@ -65,7 +65,7 @@ devDependencies:
   json-schema: 0.4.0
   npm-check-updates: 12.5.12
   prettier: 2.7.1
-  projen: 0.58.28
+  projen: 0.58.29
   standard-version: 9.5.0
   typescript: 4.7.4
   vitest: 0.18.0_c8@7.11.3
@@ -809,8 +809,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin/0.0.71_eslint@8.19.0:
-    resolution: {integrity: sha512-DUwTvDu3c2RaIIFeVaBsWpTrJoGY/DqQdnjc5BH0zhv1ifeVoYt0+VVUNrHz4cTbyHPD0DdRT+msgLDR7UCwUg==}
+  /@cloudy-ts/eslint-plugin/0.0.72_eslint@8.19.0:
+    resolution: {integrity: sha512-PpVCYNmQsTcekMu1RsFrLIUboheoKBTYEz9BhmRMTjxWURjrYPEFgO/aekztjMtkjndsCX78MpHa7SXYQVFxyA==}
     engines: {node: '>= 14.18.0'}
     peerDependencies:
       eslint: ^8.19.0
@@ -843,7 +843,7 @@ packages:
     resolution: {integrity: sha512-4qJqqn+CU/nBydz9ePJP+oa8dz0U42Ut/GejlbyaQ1xTkynCc+ndNHHnISlNeHawDsv4MOAyP3mV/EnDNUw2zA==}
     engines: {node: ^8.13.0 || >=10.10.0}
     dependencies:
-      '@types/node': 14.18.21
+      '@types/node': 14.18.22
     dev: false
 
   /@humanwhocodes/config-array/0.9.5:
@@ -975,7 +975,7 @@ packages:
     dependencies:
       '@npmcli/node-gyp': 2.0.0
       '@npmcli/promise-spawn': 3.0.0
-      node-gyp: 9.0.0
+      node-gyp: 9.1.0
       read-package-json-fast: 2.0.3
       which: 2.0.2
     transitivePeerDependencies:
@@ -1093,8 +1093,8 @@ packages:
     resolution: {integrity: sha512-X3bUMdK/VmvrWdoTkz+VCn6nwKwrKCFTHtqwBIaQJNx4RUIBBUFXM00bqPz/DsDd+Icjmzm6/tyYZzeGVqb6/Q==}
     dev: true
 
-  /@types/node/14.18.21:
-    resolution: {integrity: sha512-x5W9s+8P4XteaxT/jKF0PSb7XEvo5VmqEWgsMlyeY4ZlLK8I6aH6g5TPPyDlLAep+GYf4kefb7HFyc7PAO3m+Q==}
+  /@types/node/14.18.22:
+    resolution: {integrity: sha512-qzaYbXVzin6EPjghf/hTdIbnVW1ErMx8rPzwRNJhlbyJhu2SyqlvjGOY/tbUt6VFyzg56lROcOeSQRInpt63Yw==}
 
   /@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
@@ -1496,7 +1496,7 @@ packages:
       foreground-child: 2.0.0
       istanbul-lib-coverage: 3.2.0
       istanbul-lib-report: 3.0.0
-      istanbul-reports: 3.1.4
+      istanbul-reports: 3.1.5
       rimraf: 3.0.2
       test-exclude: 6.0.0
       v8-to-istanbul: 9.0.1
@@ -1665,8 +1665,8 @@ packages:
       mimic-response: 1.0.1
     dev: true
 
-  /cloudy-node/0.0.75:
-    resolution: {integrity: sha512-qM0GPsLvlHtwZ3xJf6PtZRjKzKXuWhDDuSLdK1dUGMfZ5sW0PPa3vLUH47QX50IYRCHg555newf30WnN0Jgy7A==}
+  /cloudy-node/0.0.76:
+    resolution: {integrity: sha512-HcupuwDiX9GhQ4FnoSigSIu2DBjR8crPWb/heWjyJxalVEohCQR/MiXL8Cvr9W96Au2enS1nQJdUofk5McTdYg==}
     engines: {node: '>= 14.18.0'}
     hasBin: true
     dependencies:
@@ -3370,8 +3370,8 @@ packages:
       supports-color: 7.2.0
     dev: true
 
-  /istanbul-reports/3.1.4:
-    resolution: {integrity: sha512-r1/DshN4KSE7xWEknZLLLLDn5CJybV3nw01VTkp6D5jzLuELlcbudfj/eSQFvrKsJuTVCGnePO7ho82Nw9zzfw==}
+  /istanbul-reports/3.1.5:
+    resolution: {integrity: sha512-nUsEMa9pBt/NOHqbcbeJEgqIlY/K7rVWUX6Lql2orY5e9roQOthbR3vtY4zzf2orPELg80fnxxk9zUyPlgwD1w==}
     engines: {node: '>=8'}
     dependencies:
       html-escaper: 2.0.2
@@ -3851,8 +3851,8 @@ packages:
       formdata-polyfill: 4.0.10
     dev: true
 
-  /node-gyp/9.0.0:
-    resolution: {integrity: sha512-Ma6p4s+XCTPxCuAMrOA/IJRmVy16R8Sdhtwl4PrCr7IBlj4cPawF0vg/l7nOT1jPbuNS7lIRJpBSvVsXwEZuzw==}
+  /node-gyp/9.1.0:
+    resolution: {integrity: sha512-HkmN0ZpQJU7FLbJauJTHkHlSVAXlNGDAzH/VYFZGDOnFyn/Na3GlNJfkudmufOdS6/jNFhy88ObzL7ERz9es1g==}
     engines: {node: ^12.22 || ^14.13 || >=16}
     hasBin: true
     dependencies:
@@ -4346,8 +4346,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen/0.58.28:
-    resolution: {integrity: sha512-0BZdljKTcxmincEbOD7I2/nAGYTRpkVLSUqDWB047/Pa0MSXlMnidBpnPclwvjlPBSawD582cWAlpoY6pPqQIg==}
+  /projen/0.58.29:
+    resolution: {integrity: sha512-xRh0w8uI1jGxg8wF/E3+Xy+pAmwaMmTXn7+4Sx/WGvk5L+ltfG7NZhP6Wt9EcIsbWvuw/bipHIPghp0+Y8JJRw==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
@@ -5249,20 +5249,23 @@ packages:
       builtins: 5.0.1
     dev: true
 
-  /vite/2.9.14:
-    resolution: {integrity: sha512-P/UCjSpSMcE54r4mPak55hWAZPlyfS369svib/gpmz8/01L822lMPOJ/RYW6tLCe1RPvMvOsJ17erf55bKp4Hw==}
-    engines: {node: '>=12.2.0'}
+  /vite/3.0.0:
+    resolution: {integrity: sha512-M7phQhY3+fRZa0H+1WzI6N+/onruwPTBTMvaj7TzgZ0v2TE+N2sdLKxJOfOv9CckDWt5C4HmyQP81xB4dwRKzA==}
+    engines: {node: '>=14.18.0'}
     hasBin: true
     peerDependencies:
       less: '*'
       sass: '*'
       stylus: '*'
+      terser: ^5.4.0
     peerDependenciesMeta:
       less:
         optional: true
       sass:
         optional: true
       stylus:
+        optional: true
+      terser:
         optional: true
     dependencies:
       esbuild: 0.14.49
@@ -5297,19 +5300,20 @@ packages:
     dependencies:
       '@types/chai': 4.3.1
       '@types/chai-subset': 1.3.3
-      '@types/node': 14.18.21
+      '@types/node': 14.18.22
       c8: 7.11.3
       chai: 4.3.6
       debug: 4.3.4
       local-pkg: 0.4.2
       tinypool: 0.2.2
       tinyspy: 0.3.3
-      vite: 2.9.14
+      vite: 3.0.0
     transitivePeerDependencies:
       - less
       - sass
       - stylus
       - supports-color
+      - terser
     dev: true
 
   /web-streams-polyfill/3.2.1:
@@ -5389,7 +5393,7 @@ packages:
       '@oozcitak/dom': 1.15.8
       '@oozcitak/infra': 1.0.8
       '@oozcitak/util': 8.3.8
-      '@types/node': 14.18.21
+      '@types/node': 14.18.22
       js-yaml: 3.14.0
     dev: true
 
