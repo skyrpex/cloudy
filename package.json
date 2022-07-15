@@ -28,7 +28,7 @@
     "@typescript-eslint/parser": "^5",
     "aws-cdk-lib": "2.24.0",
     "c8": "^7.11.3",
-    "cloudy-node": "^0.0.76",
+    "cloudy-node": "^0.0.77",
     "constructs": "10.0.0",
     "esbuild": "^0.14.49",
     "eslint": "^8",
@@ -41,7 +41,7 @@
     "json-schema": "^0.4.0",
     "npm-check-updates": "^12",
     "prettier": "^2.7.1",
-    "projen": "^0.58.29",
+    "projen": "^0.58.30",
     "standard-version": "^9",
     "typescript": "^4.7.4",
     "vitest": "^0.18.0"
@@ -51,12 +51,12 @@
     "constructs": "^10.0.0"
   },
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.128.0",
-    "@aws-sdk/client-sns": "^3.128.0",
+    "@aws-sdk/client-dynamodb": "^3.130.0",
+    "@aws-sdk/client-sns": "^3.130.0",
     "@aws-sdk/smithy-client": "^3.127.0",
     "@aws-sdk/types": "^3.127.0",
-    "@aws-sdk/util-dynamodb": "^3.128.0",
-    "@pulumi/pulumi": "^3.35.3",
+    "@aws-sdk/util-dynamodb": "^3.130.0",
+    "@pulumi/pulumi": "^3.36.0",
     "esbuild": "^0.14.49",
     "find-up": "*",
     "ts-toolbelt": "^9.6.0"
