@@ -28,7 +28,7 @@ specifiers:
   json-schema: ^0.4.0
   npm-check-updates: ^15
   prettier: ^2.7.1
-  projen: ^0.59.3
+  projen: ^0.59.4
   standard-version: ^9
   ts-toolbelt: ^9.6.0
   typescript: ^4.7.4
@@ -46,7 +46,7 @@ dependencies:
   ts-toolbelt: 9.6.0
 
 devDependencies:
-  '@cloudy-ts/eslint-plugin': 0.0.78_eslint@8.20.0
+  '@cloudy-ts/eslint-plugin': 0.0.79_eslint@8.20.0
   '@tsconfig/node14': 1.0.3
   '@types/node': 14.18.22
   '@typescript-eslint/eslint-plugin': 5.30.7_f59730a40ab520cf82d095906622871f
@@ -65,7 +65,7 @@ devDependencies:
   json-schema: 0.4.0
   npm-check-updates: 15.3.4
   prettier: 2.7.1
-  projen: 0.59.3
+  projen: 0.59.4
   standard-version: 9.5.0
   typescript: 4.7.4
   vitest: 0.18.1_c8@7.12.0
@@ -809,8 +809,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin/0.0.78_eslint@8.20.0:
-    resolution: {integrity: sha512-vZcfPFYeoHlSJqWrYNuCwdv0Ykd2pNf8kAIP2DlsBSufnNt8nVMFh//iszYdzS1drQTnmIA7LaJ4P+TcbWHRLw==}
+  /@cloudy-ts/eslint-plugin/0.0.79_eslint@8.20.0:
+    resolution: {integrity: sha512-+HTjTV5zXMo/uuqz0XG57DVy2R5/cgJTVfjQ7nyp92eSDNkbtxEATglSXOUt+qAkVsWzjROkfE+03/UImdL1nw==}
     engines: {node: '>= 14.18.0'}
     peerDependencies:
       eslint: ^8.20.0
@@ -917,8 +917,8 @@ packages:
       fastq: 1.13.0
     dev: true
 
-  /@npmcli/fs/2.1.0:
-    resolution: {integrity: sha512-DmfBvNXGaetMxj9LTp8NAN9vEidXURrf5ZTslQzEAi/6GbW+4yjaLFQc6Tue5cpZ9Frlk4OBo/Snf1Bh/S7qTQ==}
+  /@npmcli/fs/2.1.1:
+    resolution: {integrity: sha512-1Q0uzx6c/NVNGszePbr5Gc2riSU1zLpNlo/1YWntH+eaPmMgBssAW0qXofCVkpdj3ce4swZtlDYQu+NKiYcptg==}
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
     dependencies:
       '@gar/promisify': 1.1.3
@@ -1018,8 +1018,8 @@ packages:
       graceful-fs: 4.2.10
     dev: true
 
-  /@pnpm/npm-conf/1.0.4:
-    resolution: {integrity: sha512-o5YFq/+ksEJMbSzzkaQDHlp00aonLDU5xNPVTRL12hTWBbVSSeWXxPukq75h+mvXnoOWT95vV2u1HSTw2C4XOw==}
+  /@pnpm/npm-conf/1.0.5:
+    resolution: {integrity: sha512-hD8ml183638O3R6/Txrh0L8VzGOrFXgRtRDG4qQC4tONdZ5Z1M+tlUUDUvrjYdmK6G+JTBTeaCLMna11cXzi8A==}
     engines: {node: '>=12'}
     dependencies:
       '@pnpm/network.ca-file': 1.0.1
@@ -1485,7 +1485,7 @@ packages:
       chalk: 5.0.1
       cli-boxes: 3.0.0
       string-width: 5.1.2
-      type-fest: 2.16.0
+      type-fest: 2.17.0
       widest-line: 4.0.1
       wrap-ansi: 8.0.1
     dev: true
@@ -1546,7 +1546,7 @@ packages:
     resolution: {integrity: sha512-VDKN+LHyCQXaaYZ7rA/qtkURU+/yYhviUdvqEv2LT6QPZU8jpyzEkEVAcKlKLt5dJ5BRp11ym8lo3NKLluEPLg==}
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
     dependencies:
-      '@npmcli/fs': 2.1.0
+      '@npmcli/fs': 2.1.1
       '@npmcli/move-file': 2.0.0
       chownr: 2.0.0
       fs-minipass: 2.1.0
@@ -4411,8 +4411,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen/0.59.3:
-    resolution: {integrity: sha512-7gPJuva0tj/BYc8C9DUw4AGm4AzssKdO73I/+hbOOWNAlcvdS6AL82jDvmePrAnRgHREVRTkatCVzQGtParQvQ==}
+  /projen/0.59.4:
+    resolution: {integrity: sha512-IiM1dWzhRFU0NR/wHw0dENzwvbI1oSPBc4cpfMspGR1L9flbjgf7/ZxgNBLZncno8uAYX1c3ZuqFdVLG7S2geA==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
@@ -4665,7 +4665,7 @@ packages:
     resolution: {integrity: sha512-UfxVOj8seK1yaIOiieV4FIP01vfBDLsY0H9sQzi9EbbUdJiuuBjJgLa1DpImXMNPnVkBD4eVxTEXcrZA6kfpJA==}
     engines: {node: '>=14'}
     dependencies:
-      '@pnpm/npm-conf': 1.0.4
+      '@pnpm/npm-conf': 1.0.5
     dev: true
 
   /registry-url/6.0.1:
@@ -5202,8 +5202,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /type-fest/2.16.0:
-    resolution: {integrity: sha512-qpaThT2HQkFb83gMOrdKVsfCN7LKxP26Yq+smPzY1FqoHRjqmjqHXA7n5Gkxi8efirtbeEUxzfEdePthQWCuHw==}
+  /type-fest/2.17.0:
+    resolution: {integrity: sha512-U+g3/JVXnOki1kLSc+xZGPRll3Ah9u2VIG6Sn9iH9YX6UkPERmt6O/0fIyTgsd2/whV0+gAaHAg8fz6sG1QzMA==}
     engines: {node: '>=12.20'}
     dev: true
 
