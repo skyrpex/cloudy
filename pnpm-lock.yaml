@@ -28,7 +28,7 @@ specifiers:
   json-schema: ^0.4.0
   npm-check-updates: ^15
   prettier: ^2.7.1
-  projen: ^0.59.7
+  projen: ^0.59.8
   standard-version: ^9
   ts-toolbelt: ^9.6.0
   typescript: ^4.7.4
@@ -46,7 +46,7 @@ dependencies:
   ts-toolbelt: 9.6.0
 
 devDependencies:
-  '@cloudy-ts/eslint-plugin': 0.0.81_eslint@8.20.0
+  '@cloudy-ts/eslint-plugin': 0.0.82_eslint@8.20.0
   '@tsconfig/node14': 1.0.3
   '@types/node': 14.18.22
   '@typescript-eslint/eslint-plugin': 5.30.7_f59730a40ab520cf82d095906622871f
@@ -65,7 +65,7 @@ devDependencies:
   json-schema: 0.4.0
   npm-check-updates: 15.3.4
   prettier: 2.7.1
-  projen: 0.59.7
+  projen: 0.59.8
   standard-version: 9.5.0
   typescript: 4.7.4
   vitest: 0.18.1_c8@7.12.0
@@ -809,8 +809,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin/0.0.81_eslint@8.20.0:
-    resolution: {integrity: sha512-vDTdZflGl4npIb3FOAF4TrT6CCnS9xJ8bpT0N8PgXRQts8NjFwxJC9pF2lK85ddh4t5lIckTI5xC6ce3VVsS8Q==}
+  /@cloudy-ts/eslint-plugin/0.0.82_eslint@8.20.0:
+    resolution: {integrity: sha512-vrXETnaETM40hIRhtbDbp9RvX35FiOMJ5iNoYRQff42Vbnz2irjVXfUqM1XfRWSSwTXI3eut5N+njSoFvO3vog==}
     engines: {node: '>= 14.18.0'}
     peerDependencies:
       eslint: ^8.20.0
@@ -4411,8 +4411,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen/0.59.7:
-    resolution: {integrity: sha512-nKRPK+sfO46id+wiqZiw8u82S869LbT8d5ij+7OEvcxvroO/tcDGj/ov81iMrTDdpvQaTj6h8k8/EgwSMlangQ==}
+  /projen/0.59.8:
+    resolution: {integrity: sha512-u6sz4SotWP9KUs7MGGth7dR07yVVy4WHBmEkzijf40N8y5aw3R/K2XkyqYFKBjKBLyA1diG/E+OpGEf9OhZ/4Q==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
