@@ -41,7 +41,7 @@
     "json-schema": "^0.4.0",
     "npm-check-updates": "^15",
     "prettier": "^2.7.1",
-    "projen": "^0.60.3",
+    "projen": "^0.60.4",
     "standard-version": "^9",
     "typescript": "^4.7.4",
     "vitest": "^0.19.1"
@@ -51,11 +51,11 @@
     "constructs": "^10.0.0"
   },
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.131.0",
-    "@aws-sdk/client-sns": "^3.131.0",
-    "@aws-sdk/smithy-client": "^3.127.0",
+    "@aws-sdk/client-dynamodb": "^3.137.0",
+    "@aws-sdk/client-sns": "^3.137.0",
+    "@aws-sdk/smithy-client": "^3.137.0",
     "@aws-sdk/types": "^3.127.0",
-    "@aws-sdk/util-dynamodb": "^3.131.0",
+    "@aws-sdk/util-dynamodb": "^3.137.0",
     "@pulumi/pulumi": "^3.36.0",
     "esbuild": "^0.14.50",
     "find-up": "*",
