@@ -28,7 +28,7 @@ specifiers:
   json-schema: ^0.4.0
   npm-check-updates: ^15
   prettier: ^2.7.1
-  projen: ^0.60.15
+  projen: ^0.60.18
   standard-version: ^9
   ts-toolbelt: ^9.6.0
   typescript: ^4.7.4
@@ -46,7 +46,7 @@ dependencies:
   ts-toolbelt: 9.6.0
 
 devDependencies:
-  '@cloudy-ts/eslint-plugin': 0.0.93_eslint@8.21.0
+  '@cloudy-ts/eslint-plugin': 0.0.94_eslint@8.21.0
   '@tsconfig/node14': 1.0.3
   '@types/node': 14.18.23
   '@typescript-eslint/eslint-plugin': 5.32.0_43a51d9e2446a740dea4259743d3ab3e
@@ -65,7 +65,7 @@ devDependencies:
   json-schema: 0.4.0
   npm-check-updates: 15.3.4
   prettier: 2.7.1
-  projen: 0.60.15
+  projen: 0.60.18
   standard-version: 9.5.0
   typescript: 4.7.4
   vitest: 0.20.3_c8@7.12.0
@@ -809,8 +809,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin/0.0.93_eslint@8.21.0:
-    resolution: {integrity: sha512-crrz/5KOxMHHJSb1bnmu/UqKl6elfwLRLKQnN5r5vQxcpkzj6MM26/wOmmlyIw64X4abzrTBHi/pCMP69GMkig==}
+  /@cloudy-ts/eslint-plugin/0.0.94_eslint@8.21.0:
+    resolution: {integrity: sha512-+H2JN+2obM2w4qN+wrZTvSsR2G8pzTRst4/7n7qC3ZVp68c2PGe4ghJHo2pnMgvYTKgpDqj9olv1PKubJhn1Mg==}
     engines: {node: '>= 14.18.0'}
     peerDependencies:
       eslint: ^8.21.0
@@ -2530,7 +2530,7 @@ packages:
       eslint-import-resolver-node: 0.3.6
       eslint-module-utils: 2.7.3
       has: 1.0.3
-      is-core-module: 2.9.0
+      is-core-module: 2.10.0
       is-glob: 4.0.3
       minimatch: 3.1.2
       object.values: 1.1.5
@@ -3325,8 +3325,8 @@ packages:
       ci-info: 3.3.2
     dev: true
 
-  /is-core-module/2.9.0:
-    resolution: {integrity: sha512-+5FPy5PnwmO3lvfMb0AsoPaBG+5KHUI0wYFXOtYPnVVVspTFUuMZNfNaNVRt3FZadstu2c8x23vykRW/NBoU6A==}
+  /is-core-module/2.10.0:
+    resolution: {integrity: sha512-Erxj2n/LDAZ7H8WNJXd9tw38GYM3dv8rk8Zcs+jJuxYTW7sozH+SS8NtrSjVL1/vpLvWi1hxy96IzjJ3EHTJJg==}
     dependencies:
       has: 1.0.3
 
@@ -3985,7 +3985,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       hosted-git-info: 4.1.0
-      is-core-module: 2.9.0
+      is-core-module: 2.10.0
       semver: 7.3.7
       validate-npm-package-license: 3.0.4
     dev: true
@@ -3995,7 +3995,7 @@ packages:
     engines: {node: ^12.13.0 || ^14.15.0 || >=16}
     dependencies:
       hosted-git-info: 5.0.0
-      is-core-module: 2.9.0
+      is-core-module: 2.10.0
       semver: 7.3.7
       validate-npm-package-license: 3.0.4
     dev: true
@@ -4433,8 +4433,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen/0.60.15:
-    resolution: {integrity: sha512-fyveD0SAXdChCI/xYjCAmVyzCVOgSVytP21h2U5e9rZVTuuaaSnWbJ9vEhZ5LgfpDe8Bg9uiVZ6Mf9SwNjVW+A==}
+  /projen/0.60.18:
+    resolution: {integrity: sha512-i86vRHkbfxhsrphvQmRPzSDYOKzXNRBDq92scoTeGy+pILcpVcLbS1lZ0YPLHk553okOsZYRxx46Fe3Q3zA3XA==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
@@ -4724,7 +4724,7 @@ packages:
     resolution: {integrity: sha512-nBpuuYuY5jFsli/JIs1oldw6fOQCBioohqWZg/2hiaOybXOft4lonv85uDOKXdf8rhyK159cxU5cDcK/NKk8zw==}
     hasBin: true
     dependencies:
-      is-core-module: 2.9.0
+      is-core-module: 2.10.0
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
 
