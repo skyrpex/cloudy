@@ -28,11 +28,11 @@ specifiers:
   json-schema: ^0.4.0
   npm-check-updates: ^15
   prettier: ^2.7.1
-  projen: ^0.60.18
+  projen: ^0.61.1
   standard-version: ^9
   ts-toolbelt: ^9.6.0
   typescript: ^4.7.4
-  vitest: ^0.20.3
+  vitest: ^0.21.0
 
 dependencies:
   '@aws-sdk/client-dynamodb': 3.142.0
@@ -46,7 +46,7 @@ dependencies:
   ts-toolbelt: 9.6.0
 
 devDependencies:
-  '@cloudy-ts/eslint-plugin': 0.0.94_eslint@8.21.0
+  '@cloudy-ts/eslint-plugin': 0.0.95_eslint@8.21.0
   '@tsconfig/node14': 1.0.3
   '@types/node': 14.18.23
   '@typescript-eslint/eslint-plugin': 5.32.0_43a51d9e2446a740dea4259743d3ab3e
@@ -65,10 +65,10 @@ devDependencies:
   json-schema: 0.4.0
   npm-check-updates: 15.3.4
   prettier: 2.7.1
-  projen: 0.60.18
+  projen: 0.61.1
   standard-version: 9.5.0
   typescript: 4.7.4
-  vitest: 0.20.3_c8@7.12.0
+  vitest: 0.21.0_c8@7.12.0
 
 packages:
 
@@ -809,8 +809,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin/0.0.94_eslint@8.21.0:
-    resolution: {integrity: sha512-+H2JN+2obM2w4qN+wrZTvSsR2G8pzTRst4/7n7qC3ZVp68c2PGe4ghJHo2pnMgvYTKgpDqj9olv1PKubJhn1Mg==}
+  /@cloudy-ts/eslint-plugin/0.0.95_eslint@8.21.0:
+    resolution: {integrity: sha512-7bkk1MEQKxINYRPgN2VE2jld5tumFRKM4VFaDK30xDUWReqNH2tz5OeGoZ8JJ/1VtLf0PHeTZtB3G+ck8WpDqQ==}
     engines: {node: '>= 14.18.0'}
     peerDependencies:
       eslint: ^8.21.0
@@ -1578,8 +1578,8 @@ packages:
       unique-filename: 1.1.1
     dev: true
 
-  /cacheable-lookup/6.0.4:
-    resolution: {integrity: sha512-mbcDEZCkv2CZF4G01kr8eBd/5agkt9oCqz75tJMSIsquvRZ2sL6Hi5zGVKi/0OSC9oO1GHfJ2AV0ZIOY9vye0A==}
+  /cacheable-lookup/6.1.0:
+    resolution: {integrity: sha512-KJ/Dmo1lDDhmW2XDPMo+9oiy/CeqosPguPCrgcVzKyZrL6pM1gU2GmPY/xo6OQPTUaA/c0kwHuywB4E6nmT9ww==}
     engines: {node: '>=10.6.0'}
     dev: true
 
@@ -3071,7 +3071,7 @@ packages:
       '@szmarczak/http-timer': 5.0.1
       '@types/cacheable-request': 6.0.2
       '@types/responselike': 1.0.0
-      cacheable-lookup: 6.0.4
+      cacheable-lookup: 6.1.0
       cacheable-request: 7.0.2
       decompress-response: 6.0.0
       form-data-encoder: 2.0.1
@@ -4433,8 +4433,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen/0.60.18:
-    resolution: {integrity: sha512-i86vRHkbfxhsrphvQmRPzSDYOKzXNRBDq92scoTeGy+pILcpVcLbS1lZ0YPLHk553okOsZYRxx46Fe3Q3zA3XA==}
+  /projen/0.61.1:
+    resolution: {integrity: sha512-p1neu6V1dK0uL1N0oivXSqrYFX93LMYGXAP1DqNDSIRCMFsvkjTsjvIEZyPYChgT+WAGDl94fvCkwUNgps0dtA==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
@@ -5390,8 +5390,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.20.3_c8@7.12.0:
-    resolution: {integrity: sha512-cXMjTbZxBBUUuIF3PUzEGPLJWtIMeURBDXVxckSHpk7xss4JxkiiWh5cnIlfGyfJne2Ii3QpbiRuFL5dMJtljw==}
+  /vitest/0.21.0_c8@7.12.0:
+    resolution: {integrity: sha512-+BQB2swk4wQdw5loOoL8esIYh/1ifAliuwj2HWHNE2F8SAl/jF7/aoCJBoXGSf/Ws19k3pH4NrWeVtcSwM0j2w==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
