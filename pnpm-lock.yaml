@@ -46,7 +46,7 @@ dependencies:
   ts-toolbelt: 9.6.0
 
 devDependencies:
-  '@cloudy-ts/eslint-plugin': 0.0.96_eslint@8.21.0
+  '@cloudy-ts/eslint-plugin': 0.0.97_eslint@8.21.0
   '@tsconfig/node14': 1.0.3
   '@types/node': 14.18.23
   '@typescript-eslint/eslint-plugin': 5.32.0_43a51d9e2446a740dea4259743d3ab3e
@@ -809,8 +809,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin/0.0.96_eslint@8.21.0:
-    resolution: {integrity: sha512-QnlDwGy2P1QnTMQUC2oga9hvMmrw81xX9SmrxJ8Xbiaf7AJQLaf8iHkH86MSMvHCdpkgs0HPBIt7bb02s1o4iw==}
+  /@cloudy-ts/eslint-plugin/0.0.97_eslint@8.21.0:
+    resolution: {integrity: sha512-DgKgqo23CSOBQfL5EjduxZdY+RRpI7XCF1bqvkdDEk5Enbm+kPmW4d29lTRaWIC7kBYxyrqQRo7RqLnh/q8+wA==}
     engines: {node: '>= 14.18.0'}
     peerDependencies:
       eslint: ^8.21.0
@@ -1096,11 +1096,11 @@ packages:
   /@types/chai-subset/1.3.3:
     resolution: {integrity: sha512-frBecisrNGz+F4T6bcc+NLeolfiojh5FxW2klu669+8BARtyQv2C/GkNW6FUodVe4BroGMP/wER/YDGc7rEllw==}
     dependencies:
-      '@types/chai': 4.3.1
+      '@types/chai': 4.3.2
     dev: true
 
-  /@types/chai/4.3.1:
-    resolution: {integrity: sha512-/zPMqDkzSZ8t3VtxOa4KPq7uzzW978M9Tvh+j7GHKuo6k6GTLxPJ4J5gE5cjfJ26pnXst0N5Hax8Sr0T2Mi9zQ==}
+  /@types/chai/4.3.2:
+    resolution: {integrity: sha512-TNeRJV5O1L0s7NM4Xg9q8HPbLnyAMQ9twPMul53hWRld//NnjV/VSw7InBCNrPJyWBPhyoSLlzR2mR9Fq5nJTg==}
     dev: true
 
   /@types/http-cache-semantics/4.0.1:
@@ -5415,7 +5415,7 @@ packages:
       jsdom:
         optional: true
     dependencies:
-      '@types/chai': 4.3.1
+      '@types/chai': 4.3.2
       '@types/chai-subset': 1.3.3
       '@types/node': 14.18.23
       c8: 7.12.0
