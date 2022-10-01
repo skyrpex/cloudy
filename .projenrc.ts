@@ -172,7 +172,7 @@ const examples = new NodeProject({
     "aws-cdk-lib",
     "constructs",
     "cloudy-cdk-lib@link:..",
-    "cloudy-node",
+    "tsx",
   ],
   devDeps: ["typescript"],
   defaultReleaseBranch: "main",
@@ -208,7 +208,7 @@ for (const example of [
   });
   new JsonFile(examples, `src/${example}/cdk.json`, {
     obj: {
-      app: "pnpx cloudy-node index.ts",
+      app: "pnpm exec tsx index.ts",
     },
   });
 }

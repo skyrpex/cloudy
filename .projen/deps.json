@@ -32,10 +32,6 @@
       "type": "build"
     },
     {
-      "name": "cloudy-node",
-      "type": "build"
-    },
-    {
       "name": "constructs",
       "type": "build"
     },
@@ -92,6 +88,10 @@
     {
       "name": "standard-version",
       "version": "^9",
+      "type": "build"
+    },
+    {
+      "name": "tsx",
       "type": "build"
     },
     {

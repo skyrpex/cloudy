@@ -93,7 +93,7 @@
       "description": "Synthesize project files",
       "steps": [
         {
-          "exec": "cloudy-node .projenrc.ts"
+          "exec": "tsx .projenrc.ts"
         }
       ]
     },

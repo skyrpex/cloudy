@@ -27,11 +27,11 @@
       "type": "runtime"
     },
     {
-      "name": "cloudy-node",
+      "name": "constructs",
       "type": "runtime"
     },
     {
-      "name": "constructs",
+      "name": "tsx",
       "type": "runtime"
     }
   ],
