@@ -1,0 +1,33 @@
+// Vitest Snapshot v1
+
+exports[`serializes functions correctly 1`] = `
+{
+  "exportName": "handler",
+  "text": "exports.handler = __sum;
+function __sum(__0, __1) {
+  return (function() {
+    let sum = __sum;
+
+    return function /*sum*/(a, b) {
+      return a + b;
+    };
+  }).apply(undefined, undefined).apply(this, arguments);
+}",
+}
+`;
+
+exports[`serializes functions correctly 2 1`] = `
+{
+  "exportName": "handler",
+  "text": "exports.handler = __sum;
+function __sum(__0, __1) {
+  return (function() {
+    let sum = __sum;
+
+    return function /*sum*/(a, b) {
+      return { ...a, ...b };
+    };
+  }).apply(undefined, undefined).apply(this, arguments);
+}",
+}
+`;
