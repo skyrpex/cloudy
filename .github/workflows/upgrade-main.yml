@@ -19,9 +19,9 @@ jobs:
         with:
           ref: main
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2.0.1
+        uses: pnpm/action-setup@v2.2.2
         with:
-          version: 6.14.7
+          version: "7"
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
       - name: Upgrade dependencies
