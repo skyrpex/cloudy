@@ -51,10 +51,10 @@ export class TypeScript extends Component {
     nodeProject.npmignore?.exclude("/.projenrc.js");
     nodeProject.npmignore?.exclude("tsconfig.tsbuildinfo");
 
-    // Use cloudy-node to run projen.
+    // Use tsx to run projen.
     nodeProject.deps.removeDependency("ts-node");
-    nodeProject.addDevDeps("cloudy-node");
-    nodeProject.defaultTask?.exec("cloudy-node .projenrc.ts");
+    nodeProject.addDevDeps("tsx");
+    nodeProject.defaultTask?.exec("tsx .projenrc.ts");
 
     nodeProject.addDevDeps("@tsconfig/node14", "@types/node@^14", "typescript");
 

@@ -27,7 +27,7 @@ const project = new TypeScriptProject({
     "find-up",
     "ts-toolbelt",
   ],
-  peerDeps: ["aws-cdk-lib@^2.24.0", "constructs@^10.0.0"],
+  peerDeps: ["aws-cdk-lib", "constructs"],
   devDeps: ["aws-cdk-lib", "constructs"],
 
   packageManager: NodePackageManager.PNPM,
@@ -122,7 +122,7 @@ project.addGitIgnore("*.cjs.map");
 project.addGitIgnore("*.d.ts");
 
 // Tests.
-project.addDevDeps("vitest", "c8");
+project.addDevDeps("vitest", "@vitest/coverage-c8");
 project.testTask.exec("vitest run --coverage --passWithNoTests --dir src");
 project.addPackageIgnore("coverage/");
 
@@ -172,7 +172,7 @@ const examples = new NodeProject({
     "aws-cdk-lib",
     "constructs",
     "cloudy-cdk-lib@link:..",
-    "cloudy-node",
+    "tsx",
   ],
   devDeps: ["typescript"],
   defaultReleaseBranch: "main",
@@ -208,7 +208,7 @@ for (const example of [
   });
   new JsonFile(examples, `src/${example}/cdk.json`, {
     obj: {
-      app: "pnpx cloudy-node index.ts",
+      app: "pnpm exec tsx index.ts",
     },
   });
 }

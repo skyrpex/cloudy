@@ -23,8 +23,8 @@
     "aws-cdk": "^2.22.0",
     "aws-cdk-lib": "^2.22.0",
     "cloudy-cdk-lib": "link:..",
-    "cloudy-node": "*",
-    "constructs": "^10.0.127"
+    "constructs": "^10.0.127",
+    "tsx": "^3.9.0"
   },
   "main": "lib/index.js",
   "license": "Apache-2.0",
