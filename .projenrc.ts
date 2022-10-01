@@ -99,20 +99,18 @@ new TypeScript(project, {
   entries: ["src/index.ts", ...exports.map((path) => `src/${path}/index.ts`)],
 });
 project.addFields({
-  publishConfig: {
-    main: `./index.cjs`,
-    types: `./index.d.ts`,
-    module: `./index.js`,
-    exports: {
-      ".": `./index.js`,
-      // eslint-disable-next-line unicorn/no-array-reduce
-      ...exports.reduce((exports, path) => {
-        return {
-          ...exports,
-          [`./${path}`]: `./${path}/index.js`,
-        };
-      }, {}),
-    },
+  main: "./index.cjs",
+  types: "./index.d.ts",
+  module: "./index.js",
+  exports: {
+    ".": "./index.js",
+    // eslint-disable-next-line unicorn/no-array-reduce
+    ...exports.reduce((exports, path) => {
+      return {
+        ...exports,
+        [`./${path}`]: `./${path}/index.js`,
+      };
+    }, {}),
   },
 });
 project.addGitIgnore("*.js");
