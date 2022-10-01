@@ -24,11 +24,11 @@
       "type": "build"
     },
     {
-      "name": "aws-cdk-lib",
+      "name": "@vitest/coverage-c8",
       "type": "build"
     },
     {
-      "name": "c8",
+      "name": "aws-cdk-lib",
       "type": "build"
     },
     {

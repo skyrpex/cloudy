@@ -122,7 +122,7 @@ project.addGitIgnore("*.cjs.map");
 project.addGitIgnore("*.d.ts");
 
 // Tests.
-project.addDevDeps("vitest", "c8");
+project.addDevDeps("vitest", "@vitest/coverage-c8");
 project.testTask.exec("vitest run --coverage --passWithNoTests --dir src");
 project.addPackageIgnore("coverage/");
 
