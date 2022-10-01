@@ -64,25 +64,29 @@
   "engines": {
     "node": "^14.13.1 || >=16.0.0"
   },
-  "main": "./index.cjs",
+  "main": "lib/index.js",
   "license": "Apache-2.0",
+  "publishConfig": {
+    "main": "./index.cjs",
+    "types": "./index.d.ts",
+    "module": "./index.js",
+    "exports": {
+      ".": "./index.js",
+      "./assertions": "./assertions/index.js",
+      "./aws-dynamodb": "./aws-dynamodb/index.js",
+      "./aws-lambda": "./aws-lambda/index.js",
+      "./aws-lambda-event-sources": "./aws-lambda-event-sources/index.js",
+      "./aws-sns": "./aws-sns/index.js",
+      "./aws-sns-subscriptions": "./aws-sns-subscriptions/index.js",
+      "./aws-sqs": "./aws-sqs/index.js",
+      "./client-dynamodb": "./client-dynamodb/index.js",
+      "./client-sns": "./client-sns/index.js"
+    }
+  },
   "version": "0.0.0",
-  "types": "./index.d.ts",
+  "types": "lib/index.d.ts",
   "sideEffects": false,
   "type": "module",
-  "module": "./index.js",
-  "exports": {
-    ".": "./index.js",
-    "./assertions": "./assertions/index.js",
-    "./aws-dynamodb": "./aws-dynamodb/index.js",
-    "./aws-lambda": "./aws-lambda/index.js",
-    "./aws-lambda-event-sources": "./aws-lambda-event-sources/index.js",
-    "./aws-sns": "./aws-sns/index.js",
-    "./aws-sns-subscriptions": "./aws-sns-subscriptions/index.js",
-    "./aws-sqs": "./aws-sqs/index.js",
-    "./client-dynamodb": "./client-dynamodb/index.js",
-    "./client-sns": "./client-sns/index.js"
-  },
   "pnpm": {
     "overrides": {
       "@types/responselike": "1.0.0",
