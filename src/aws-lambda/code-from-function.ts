@@ -1,4 +1,4 @@
-import { serializeFunction } from "@functionless/nodejs-closure-serializer";
+import { runtime } from "@pulumi/pulumi";
 import * as cdk from "aws-cdk-lib";
 import { Construct } from "constructs";
 
@@ -19,7 +19,7 @@ export async function codeFromFunction(function_: (...any: any[]) => any) {
     attribute: undefined as string | undefined,
     cfnToken: undefined as string | undefined,
   };
-  const result = await serializeFunction(function_, {
+  const result = await runtime.serializeFunction(function_, {
     serialize(item) {
       // console.log({
       //   instanceOfResource: item instanceof cdk.Resource,

@@ -141,7 +141,7 @@
       "type": "runtime"
     },
     {
-      "name": "@functionless/nodejs-closure-serializer",
+      "name": "@pulumi/pulumi",
       "type": "runtime"
     },
     {

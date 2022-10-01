@@ -22,7 +22,7 @@ const project = new TypeScriptProject({
     "@aws-sdk/smithy-client",
     "@aws-sdk/types",
     "@aws-sdk/util-dynamodb",
-    "@functionless/nodejs-closure-serializer",
+    "@pulumi/pulumi",
     "esbuild",
     "find-up",
     "ts-toolbelt",
