@@ -154,10 +154,6 @@
       "type": "runtime"
     },
     {
-      "name": "google-protobuf",
-      "type": "runtime"
-    },
-    {
       "name": "ts-toolbelt",
       "type": "runtime"
     }

@@ -28,7 +28,6 @@ specifiers:
   eslint-plugin-prettier: ^4.2.1
   eslint-plugin-unicorn: ^44.0.0
   find-up: '*'
-  google-protobuf: ^3.21.0
   json-schema: ^0.4.0
   npm-check-updates: ^15
   prettier: ^2.7.1
@@ -48,7 +47,6 @@ dependencies:
   '@pulumi/pulumi': 3.33.2
   esbuild: 0.15.10
   find-up: 6.3.0
-  google-protobuf: 3.21.0
   ts-toolbelt: 9.6.0
 
 devDependencies:
