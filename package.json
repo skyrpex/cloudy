@@ -56,7 +56,7 @@
     "@aws-sdk/smithy-client": "^3.180.0",
     "@aws-sdk/types": "^3.178.0",
     "@aws-sdk/util-dynamodb": "^3.181.0",
-    "@pulumi/pulumi": "3.32.1",
+    "@pulumi/pulumi": "3.33",
     "esbuild": "^0.15.10",
     "find-up": "*",
     "google-protobuf": "^3.21.0",

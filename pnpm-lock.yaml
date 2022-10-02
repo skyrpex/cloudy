@@ -11,7 +11,7 @@ specifiers:
   '@aws-sdk/types': ^3.178.0
   '@aws-sdk/util-dynamodb': ^3.181.0
   '@cloudy-ts/eslint-plugin': '*'
-  '@pulumi/pulumi': 3.32.1
+  '@pulumi/pulumi': '3.33'
   '@tsconfig/node14': ^1.0.3
   '@types/node': ^14
   '@typescript-eslint/eslint-plugin': ^5
@@ -45,7 +45,7 @@ dependencies:
   '@aws-sdk/smithy-client': 3.180.0
   '@aws-sdk/types': 3.178.0
   '@aws-sdk/util-dynamodb': 3.181.0
-  '@pulumi/pulumi': 3.32.1
+  '@pulumi/pulumi': 3.33.2
   esbuild: 0.15.10
   find-up: 6.3.0
   google-protobuf: 3.21.0
@@ -1137,8 +1137,8 @@ packages:
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
     dev: false
 
-  /@pulumi/pulumi/3.32.1:
-    resolution: {integrity: sha512-R3pOp8BWEfQjZUdZXp4FRYjM4lCvDDwe4toe1uyqhtCoGSdtomHz0s6bHZ7SlLtjCgtWJklbi0p5V6WyiJ8IPg==}
+  /@pulumi/pulumi/3.33.2:
+    resolution: {integrity: sha512-qWtbz5njw32EBUvTAYIryQPATxP9EVwlg9A1DmN4Di33KLvH+6vnARKQLgBM+fCHSugfZmNPjHOZLSUb+A4KIg==}
     engines: {node: '>=8.13.0 || >=10.10.0'}
     dependencies:
       '@grpc/grpc-js': 1.3.8
