@@ -18,7 +18,7 @@ specifiers:
   '@typescript-eslint/parser': ^5
   '@vitest/coverage-c8': ^0.23.4
   aws-cdk-lib: 2.44.0
-  constructs: 10.1.118
+  constructs: 10.1.119
   esbuild: ^0.15.10
   eslint: ^8
   eslint-config-prettier: ^8.5.0
@@ -31,7 +31,7 @@ specifiers:
   json-schema: ^0.4.0
   npm-check-updates: ^15
   prettier: ^2.7.1
-  projen: ^0.63.1
+  projen: ^0.63.2
   standard-version: ^9
   ts-toolbelt: ^9.6.0
   tsx: ^3.9.0
@@ -56,8 +56,8 @@ devDependencies:
   '@typescript-eslint/eslint-plugin': 5.38.1_c7qepppml3d4ahu5cnfwqe6ltq
   '@typescript-eslint/parser': 5.38.1_ypn2ylkkyfa5i233caldtndbqa
   '@vitest/coverage-c8': 0.23.4
-  aws-cdk-lib: 2.44.0_constructs@10.1.118
-  constructs: 10.1.118
+  aws-cdk-lib: 2.44.0_constructs@10.1.119
+  constructs: 10.1.119
   eslint: 8.24.0
   eslint-config-prettier: 8.5.0_eslint@8.24.0
   eslint-import-resolver-node: 0.3.6
@@ -68,7 +68,7 @@ devDependencies:
   json-schema: 0.4.0
   npm-check-updates: 15.3.4
   prettier: 2.7.1
-  projen: 0.63.1
+  projen: 0.63.2
   standard-version: 9.5.0
   tsx: 3.9.0
   typescript: 4.8.4
@@ -1534,7 +1534,7 @@ packages:
     engines: {node: '>= 4.0.0'}
     dev: true
 
-  /aws-cdk-lib/2.44.0_constructs@10.1.118:
+  /aws-cdk-lib/2.44.0_constructs@10.1.119:
     resolution: {integrity: sha512-h0lCcS3t2TPF5FIpkA7OcE2t4vChtz/FGcZ5jVaORj21quiUz84eOhGk2BeRoKqfSp1Zqu2QxQUk6p6YpAOrRA==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
@@ -1542,7 +1542,7 @@ packages:
     dependencies:
       '@balena/dockerignore': 1.0.2
       case: 1.6.3
-      constructs: 10.1.118
+      constructs: 10.1.119
       fs-extra: 9.1.0
       ignore: 5.2.0
       jsonschema: 1.4.1
@@ -1879,8 +1879,8 @@ packages:
     resolution: {integrity: sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==}
     dev: true
 
-  /constructs/10.1.118:
-    resolution: {integrity: sha512-vTyGorgrfNBagaY7b56wmys6EVjScIePhGt72fXj4FFrxxp2yjOgv7LwSkrnC6LPvdqBwh0FtsM/33PH9FnApA==}
+  /constructs/10.1.119:
+    resolution: {integrity: sha512-sPP+wQn8KcpZn+Qu5yKU/zPQR2xP0QRacj7I+2VSZNY5QYdWAUQrH8ItlXJdlHOElF64CrVeX92G6uoSb5q3hA==}
     engines: {node: '>= 14.17.0'}
     dev: true
 
@@ -4572,8 +4572,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen/0.63.1:
-    resolution: {integrity: sha512-srGY1AV+9dHpr30k4350ajIrWUjP1dwTvR+Bt++6/4joGB48Lqzuwhsflzz/IIltMYFB30ltkHMD5KXiBNGMcg==}
+  /projen/0.63.2:
+    resolution: {integrity: sha512-KSPB//9gjPru+nhHK8F+CmOO1Us1+jkUPfbL/Mu722M7HoRzeZi8SJZb7y2ZkIG8QZYXvCi+ScEAzd9C6RBUmQ==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
