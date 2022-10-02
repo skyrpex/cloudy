@@ -22,10 +22,11 @@ const project = new TypeScriptProject({
     "@aws-sdk/smithy-client",
     "@aws-sdk/types",
     "@aws-sdk/util-dynamodb",
-    "@pulumi/pulumi",
     "esbuild",
     "find-up",
     "ts-toolbelt",
+    "@pulumi/pulumi@3.32.1",
+    "google-protobuf",
   ],
   peerDeps: ["aws-cdk-lib", "constructs"],
   devDeps: ["aws-cdk-lib", "constructs"],
@@ -84,7 +85,7 @@ project.addPackageIgnore("*.ts");
 project.addPackageIgnore("pnpm-lock.yaml");
 
 // Compile and export.
-const exports = [
+const entries = [
   "assertions",
   "aws-dynamodb",
   "aws-lambda",
@@ -96,23 +97,21 @@ const exports = [
   "client-sns",
 ];
 new TypeScript(project, {
-  entries: ["src/index.ts", ...exports.map((path) => `src/${path}/index.ts`)],
+  entries: ["src/index.ts", ...entries.map((path) => `src/${path}/index.ts`)],
 });
 project.addFields({
-  publishConfig: {
-    main: `./index.cjs`,
-    types: `./index.d.ts`,
-    module: `./index.js`,
-    exports: {
-      ".": `./index.js`,
-      // eslint-disable-next-line unicorn/no-array-reduce
-      ...exports.reduce((exports, path) => {
-        return {
-          ...exports,
-          [`./${path}`]: `./${path}/index.js`,
-        };
-      }, {}),
-    },
+  main: "./index.cjs",
+  types: "./index.d.ts",
+  module: "./index.js",
+  exports: {
+    ".": "./index.js",
+    // eslint-disable-next-line unicorn/no-array-reduce
+    ...entries.reduce((exports, path) => {
+      return {
+        ...exports,
+        [`./${path}`]: `./${path}/index.js`,
+      };
+    }, {}),
   },
 });
 project.addGitIgnore("*.js");
