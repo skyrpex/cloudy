@@ -142,7 +142,7 @@
     },
     {
       "name": "@pulumi/pulumi",
-      "version": "3.32.1",
+      "version": "3.33",
       "type": "runtime"
     },
     {
@@ -151,10 +151,6 @@
     },
     {
       "name": "find-up",
-      "type": "runtime"
-    },
-    {
-      "name": "google-protobuf",
       "type": "runtime"
     },
     {
