@@ -18,7 +18,7 @@ specifiers:
   '@typescript-eslint/parser': ^5
   '@vitest/coverage-c8': ^0.23.4
   aws-cdk-lib: 2.44.0
-  constructs: 10.1.119
+  constructs: 10.1.120
   esbuild: ^0.15.10
   eslint: ^8
   eslint-config-prettier: ^8.5.0
@@ -31,7 +31,7 @@ specifiers:
   json-schema: ^0.4.0
   npm-check-updates: ^15
   prettier: ^2.7.1
-  projen: ^0.63.2
+  projen: ^0.63.4
   standard-version: ^9
   ts-toolbelt: ^9.6.0
   tsx: ^3.9.0
@@ -50,14 +50,14 @@ dependencies:
   ts-toolbelt: 9.6.0
 
 devDependencies:
-  '@cloudy-ts/eslint-plugin': 0.0.135_eslint@8.24.0
+  '@cloudy-ts/eslint-plugin': 0.0.136_eslint@8.24.0
   '@tsconfig/node14': 1.0.3
   '@types/node': 14.18.31
   '@typescript-eslint/eslint-plugin': 5.38.1_c7qepppml3d4ahu5cnfwqe6ltq
   '@typescript-eslint/parser': 5.38.1_ypn2ylkkyfa5i233caldtndbqa
   '@vitest/coverage-c8': 0.23.4
-  aws-cdk-lib: 2.44.0_constructs@10.1.119
-  constructs: 10.1.119
+  aws-cdk-lib: 2.44.0_constructs@10.1.120
+  constructs: 10.1.120
   eslint: 8.24.0
   eslint-config-prettier: 8.5.0_eslint@8.24.0
   eslint-import-resolver-node: 0.3.6
@@ -68,7 +68,7 @@ devDependencies:
   json-schema: 0.4.0
   npm-check-updates: 15.3.4
   prettier: 2.7.1
-  projen: 0.63.2
+  projen: 0.63.4
   standard-version: 9.5.0
   tsx: 3.9.0
   typescript: 4.8.4
@@ -814,8 +814,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin/0.0.135_eslint@8.24.0:
-    resolution: {integrity: sha512-Va/WvKzC09h3yz8rFxwbEFSWkpWbVYynr4WDKh7RZVsfjGCt/LyYjqs2kUygEYRz9YFW8kCJY4Q9mTfoKnvkqw==}
+  /@cloudy-ts/eslint-plugin/0.0.136_eslint@8.24.0:
+    resolution: {integrity: sha512-bjOJu+5HkinVj+ncCEHPtzHDR4spMoWmu3RhtLhLt8e4T797VgOqFvYtRGScTkrwAsM96uexZiA19N8UQFTc3g==}
     engines: {node: '>= 14.18.0'}
     peerDependencies:
       eslint: ^8.24.0
@@ -1569,7 +1569,7 @@ packages:
     engines: {node: '>= 4.0.0'}
     dev: true
 
-  /aws-cdk-lib/2.44.0_constructs@10.1.119:
+  /aws-cdk-lib/2.44.0_constructs@10.1.120:
     resolution: {integrity: sha512-h0lCcS3t2TPF5FIpkA7OcE2t4vChtz/FGcZ5jVaORj21quiUz84eOhGk2BeRoKqfSp1Zqu2QxQUk6p6YpAOrRA==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
@@ -1577,7 +1577,7 @@ packages:
     dependencies:
       '@balena/dockerignore': 1.0.2
       case: 1.6.3
-      constructs: 10.1.119
+      constructs: 10.1.120
       fs-extra: 9.1.0
       ignore: 5.2.0
       jsonschema: 1.4.1
@@ -1913,8 +1913,8 @@ packages:
     resolution: {integrity: sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==}
     dev: true
 
-  /constructs/10.1.119:
-    resolution: {integrity: sha512-sPP+wQn8KcpZn+Qu5yKU/zPQR2xP0QRacj7I+2VSZNY5QYdWAUQrH8ItlXJdlHOElF64CrVeX92G6uoSb5q3hA==}
+  /constructs/10.1.120:
+    resolution: {integrity: sha512-joHfWQubSbemOgVz+VeiN6t07oS1rG3Tg9c0AxQ0MJRuxbUkDM3PoUB9uWBKxWnMlWI523lYTTuNqA25b3gWcQ==}
     engines: {node: '>= 14.17.0'}
     dev: true
 
@@ -4218,7 +4218,7 @@ packages:
       source-map-support: 0.5.21
       spawn-please: 1.0.0
       update-notifier: 6.0.2
-      yaml: 2.1.1
+      yaml: 2.1.2
     transitivePeerDependencies:
       - bluebird
       - supports-color
@@ -4626,8 +4626,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen/0.63.2:
-    resolution: {integrity: sha512-KSPB//9gjPru+nhHK8F+CmOO1Us1+jkUPfbL/Mu722M7HoRzeZi8SJZb7y2ZkIG8QZYXvCi+ScEAzd9C6RBUmQ==}
+  /projen/0.63.4:
+    resolution: {integrity: sha512-vyXlKbpowTYwVh4Zcy4Ki8DblT3da3Eiv9yOuXb17GYpVtLI0K1UloS9gvKNlWWy06GoMNDH1qZWb/bpBqpQJw==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
@@ -5111,13 +5111,13 @@ packages:
     dependencies:
       agent-base: 6.0.2
       debug: 4.3.4
-      socks: 2.7.0
+      socks: 2.7.1
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /socks/2.7.0:
-    resolution: {integrity: sha512-scnOe9y4VuiNUULJN72GrM26BNOjVsfPXI+j+98PkyEfsIXroa5ofyjT+FzGvn/xHs73U2JtoBYAVx9Hl4quSA==}
+  /socks/2.7.1:
+    resolution: {integrity: sha512-7maUZy1N7uo6+WVEX6psASxtNlKaNVMlGQKkG/63nEDdLOWNbiUMoLK7X4uYoLhQstau72mLgfEWcXcwsaHbYQ==}
     engines: {node: '>= 10.13.0', npm: '>= 3.0.0'}
     dependencies:
       ip: 2.0.0
@@ -5823,8 +5823,8 @@ packages:
     engines: {node: '>= 14'}
     dev: true
 
-  /yaml/2.1.1:
-    resolution: {integrity: sha512-o96x3OPo8GjWeSLF+wOAbrPfhFOGY0W00GNaxCDv+9hkcDJEnev1yh8S7pgHF0ik6zc8sQLuL8hjHjJULZp8bw==}
+  /yaml/2.1.2:
+    resolution: {integrity: sha512-VSdf2/K3FqAetooKQv45Hcu6sA00aDgWZeGcG6V9IYJnVLTnb6988Tie79K5nx2vK7cEpf+yW8Oy+7iPAbdiHA==}
     engines: {node: '>= 14'}
     dev: true
 
