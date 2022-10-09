@@ -18,7 +18,7 @@ specifiers:
   '@typescript-eslint/parser': ^5
   '@vitest/coverage-c8': ^0.24.0
   aws-cdk-lib: 2.45.0
-  constructs: 10.1.125
+  constructs: 10.1.126
   esbuild: ^0.15.10
   eslint: ^8
   eslint-config-prettier: ^8.5.0
@@ -31,7 +31,7 @@ specifiers:
   json-schema: ^0.4.0
   npm-check-updates: ^15
   prettier: ^2.7.1
-  projen: ^0.63.10
+  projen: ^0.63.11
   standard-version: ^9
   ts-toolbelt: ^9.6.0
   tsx: ^3.10.1
@@ -50,14 +50,14 @@ dependencies:
   ts-toolbelt: 9.6.0
 
 devDependencies:
-  '@cloudy-ts/eslint-plugin': 0.0.141_eslint@8.25.0
+  '@cloudy-ts/eslint-plugin': 0.0.142_eslint@8.25.0
   '@tsconfig/node14': 1.0.3
   '@types/node': 14.18.31
   '@typescript-eslint/eslint-plugin': 5.39.0_cfd7h3iktziq6hcwahu2qxhjhy
   '@typescript-eslint/parser': 5.39.0_z4bbprzjrhnsfa24uvmcbu7f5q
   '@vitest/coverage-c8': 0.24.0
-  aws-cdk-lib: 2.45.0_constructs@10.1.125
-  constructs: 10.1.125
+  aws-cdk-lib: 2.45.0_constructs@10.1.126
+  constructs: 10.1.126
   eslint: 8.25.0
   eslint-config-prettier: 8.5.0_eslint@8.25.0
   eslint-import-resolver-node: 0.3.6
@@ -68,7 +68,7 @@ devDependencies:
   json-schema: 0.4.0
   npm-check-updates: 15.3.4
   prettier: 2.7.1
-  projen: 0.63.10
+  projen: 0.63.11
   standard-version: 9.5.0
   tsx: 3.10.1
   typescript: 4.8.4
@@ -815,11 +815,11 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin/0.0.141_eslint@8.25.0:
-    resolution: {integrity: sha512-onTgwBgII83GVOFs1kjdxTTooTtejDl9StpI6MPwm6plkyrLKMosT73B4924qnwsvvFecadA9YIrw5sA07GO+Q==}
+  /@cloudy-ts/eslint-plugin/0.0.142_eslint@8.25.0:
+    resolution: {integrity: sha512-gKCMrqrfKJlayMG9RNjbH1ThqPhHw/yipXzfo5wldyWhbPA2h9SL7k0WjXy5Yds4mET/AIiQmp5co7H8WXExIA==}
     engines: {node: '>= 14.18.0'}
     peerDependencies:
-      eslint: ^8.24.0
+      eslint: ^8.25.0
     dependencies:
       eslint: 8.25.0
     dev: true
@@ -1566,7 +1566,7 @@ packages:
     engines: {node: '>= 4.0.0'}
     dev: true
 
-  /aws-cdk-lib/2.45.0_constructs@10.1.125:
+  /aws-cdk-lib/2.45.0_constructs@10.1.126:
     resolution: {integrity: sha512-oEeZZF8xjub9KYAB7n01A60wwQXSzNapmiih3t5uf9aEvlvqT+0as8/WrPdNIeAaf9Lhb0WQXdZ2o2DlsFHbAg==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
@@ -1574,7 +1574,7 @@ packages:
     dependencies:
       '@balena/dockerignore': 1.0.2
       case: 1.6.3
-      constructs: 10.1.125
+      constructs: 10.1.126
       fs-extra: 9.1.0
       ignore: 5.2.0
       jsonschema: 1.4.1
@@ -1790,8 +1790,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /ci-info/3.4.0:
-    resolution: {integrity: sha512-t5QdPT5jq3o262DOQ8zA6E1tlH2upmUc4Hlvrbx1pGYJuiiHl7O7rvVNI+l8HTVhd/q3Qc9vqimkNk5yiXsAug==}
+  /ci-info/3.5.0:
+    resolution: {integrity: sha512-yH4RezKOGlOhxkmhbeNuC4eYZKAUsEaGtBuBzDDP1eFUKiccDWzBABxBfOx31IDwDIXMTxWuwAxUGModvkbuVw==}
     dev: true
 
   /clean-regexp/1.0.0:
@@ -1910,8 +1910,8 @@ packages:
     resolution: {integrity: sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==}
     dev: true
 
-  /constructs/10.1.125:
-    resolution: {integrity: sha512-z82likyzK7UsEDdTlFwNRXC4miPQeM/q99C8EN2MXgYpZr9wAVKfxVFHL29bpO7ODc+LV+8dXTZpdot9EXeFXA==}
+  /constructs/10.1.126:
+    resolution: {integrity: sha512-Ki8VgmlLP/p9m6AmCM5IBqrfBTteLr3C2q9KX0R0+NsKwLtkRm+C4UB3Hr0qAW8skgwGNKSsYPC828qCJiW2Dg==}
     engines: {node: '>= 14.17.0'}
     dev: true
 
@@ -2712,7 +2712,7 @@ packages:
       eslint: '>=8.23.1'
     dependencies:
       '@babel/helper-validator-identifier': 7.19.1
-      ci-info: 3.4.0
+      ci-info: 3.5.0
       clean-regexp: 1.0.0
       eslint: 8.25.0
       eslint-utils: 3.0.0_eslint@8.25.0
@@ -3479,7 +3479,7 @@ packages:
     resolution: {integrity: sha512-ZYvCgrefwqoQ6yTyYUbQu64HsITZ3NfKX1lzaEYdkTDcfKzzCI/wthRRYKkdjHKFVgNiXKAKm65Zo1pk2as/QQ==}
     hasBin: true
     dependencies:
-      ci-info: 3.4.0
+      ci-info: 3.5.0
     dev: true
 
   /is-core-module/2.10.0:
@@ -4622,8 +4622,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen/0.63.10:
-    resolution: {integrity: sha512-X4upsSK3l0eBZhTefrhoaJFV1dOeCk7Wg/XE8Gw1Ls/ysYatC9JWaMKWU4wJml9YwRFvUmm+/x6xus6v3+y16g==}
+  /projen/0.63.11:
+    resolution: {integrity: sha512-nb+93ahK/C/62LbppN1ptSXsMc0BisC2T2OumBzbuR3GpNd4NB529qbbi6D5xmcFHHFwQoE7KqZD0hJd+JHylw==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
