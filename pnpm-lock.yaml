@@ -18,7 +18,7 @@ specifiers:
   '@typescript-eslint/parser': ^5
   '@vitest/coverage-c8': ^0.24.1
   aws-cdk-lib: 2.45.0
-  constructs: 10.1.129
+  constructs: 10.1.130
   esbuild: ^0.15.10
   eslint: ^8
   eslint-config-prettier: ^8.5.0
@@ -31,7 +31,7 @@ specifiers:
   json-schema: ^0.4.0
   npm-check-updates: ^16
   prettier: ^2.7.1
-  projen: ^0.63.17
+  projen: ^0.63.18
   standard-version: ^9
   ts-toolbelt: ^9.6.0
   tsx: ^3.10.1
@@ -50,14 +50,14 @@ dependencies:
   ts-toolbelt: 9.6.0
 
 devDependencies:
-  '@cloudy-ts/eslint-plugin': 0.0.145_eslint@8.25.0
+  '@cloudy-ts/eslint-plugin': 0.0.146_eslint@8.25.0
   '@tsconfig/node14': 1.0.3
   '@types/node': 14.18.32
   '@typescript-eslint/eslint-plugin': 5.40.0_25sstg4uu2sk4pm7xcyzuov7xq
   '@typescript-eslint/parser': 5.40.0_z4bbprzjrhnsfa24uvmcbu7f5q
   '@vitest/coverage-c8': 0.24.1
-  aws-cdk-lib: 2.45.0_constructs@10.1.129
-  constructs: 10.1.129
+  aws-cdk-lib: 2.45.0_constructs@10.1.130
+  constructs: 10.1.130
   eslint: 8.25.0
   eslint-config-prettier: 8.5.0_eslint@8.25.0
   eslint-import-resolver-node: 0.3.6
@@ -68,7 +68,7 @@ devDependencies:
   json-schema: 0.4.0
   npm-check-updates: 16.3.11
   prettier: 2.7.1
-  projen: 0.63.17
+  projen: 0.63.18
   standard-version: 9.5.0
   tsx: 3.10.1
   typescript: 4.8.4
@@ -815,8 +815,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin/0.0.145_eslint@8.25.0:
-    resolution: {integrity: sha512-g1Eki82QLWPbsKIZ3wA5z+kx3eIn2N4qOIGwwwfwZJqmF2g6EUZH9jPSMCw8OpMIN/japQRi+Swo9VmNZUfuFw==}
+  /@cloudy-ts/eslint-plugin/0.0.146_eslint@8.25.0:
+    resolution: {integrity: sha512-yiiZMN/JnwmzrJ5UX30kTogz0nkPlSQNKQFmF8gAVQ4gENfpGrju5C7sUbU97M4/XpXspkPW3uK3kIzsc0r/Qg==}
     engines: {node: '>= 14.18.0'}
     peerDependencies:
       eslint: ^8.25.0
@@ -1483,8 +1483,8 @@ packages:
       color-convert: 2.0.1
     dev: true
 
-  /ansi-styles/6.2.0:
-    resolution: {integrity: sha512-3MWBO/XxbkDtc/qpECaUwDM0DQ++ujBjdjs0ElZvChUoPv/P7GOnl3x+R2RF2My5UJHEW5R87q556MiR8U3PLw==}
+  /ansi-styles/6.2.1:
+    resolution: {integrity: sha512-bN798gFfQX+viw3R7yrGWRqnrN2oRkEkUjjl4JNn4E8GxxbjtG3FbrEIIY3l8/hrwUwIeCZvi4QuOTP4MErVug==}
     engines: {node: '>=12'}
     dev: true
 
@@ -1567,7 +1567,7 @@ packages:
     engines: {node: '>= 4.0.0'}
     dev: true
 
-  /aws-cdk-lib/2.45.0_constructs@10.1.129:
+  /aws-cdk-lib/2.45.0_constructs@10.1.130:
     resolution: {integrity: sha512-oEeZZF8xjub9KYAB7n01A60wwQXSzNapmiih3t5uf9aEvlvqT+0as8/WrPdNIeAaf9Lhb0WQXdZ2o2DlsFHbAg==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
@@ -1575,7 +1575,7 @@ packages:
     dependencies:
       '@balena/dockerignore': 1.0.2
       case: 1.6.3
-      constructs: 10.1.129
+      constructs: 10.1.130
       fs-extra: 9.1.0
       ignore: 5.2.0
       jsonschema: 1.4.1
@@ -1608,7 +1608,7 @@ packages:
     dependencies:
       ansi-align: 3.0.1
       camelcase: 7.0.0
-      chalk: 5.1.0
+      chalk: 5.1.2
       cli-boxes: 3.0.0
       string-width: 5.1.2
       type-fest: 2.19.0
@@ -1777,8 +1777,8 @@ packages:
       supports-color: 7.2.0
     dev: true
 
-  /chalk/5.1.0:
-    resolution: {integrity: sha512-56zD4khRTBoIyzUYAFgDDaPhUMN/fC/rySe6aZGqbj/VWiU2eI3l6ZLOtYGFZAV5v02mwPjtpzlrOveJiz5eZQ==}
+  /chalk/5.1.2:
+    resolution: {integrity: sha512-E5CkT4jWURs1Vy5qGJye+XwCkNj7Od3Af7CP6SujMetSMkLs8Do2RWJK5yx1wamHV/op8Rz+9rltjaTQWDnEFQ==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
     dev: true
 
@@ -1911,8 +1911,8 @@ packages:
     resolution: {integrity: sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==}
     dev: true
 
-  /constructs/10.1.129:
-    resolution: {integrity: sha512-KPo6cEkVmXqt6IGPFtWLxbKa3Ob0drOm1WWuJviYAEQrTq7YP6MaV425kfuLU71RUe19zYzR4TtTXO+t2BziYw==}
+  /constructs/10.1.130:
+    resolution: {integrity: sha512-0fmzTBjSOQQ3RLeLHOs74cVV7N6FuczeBbAHdI6MYvTkxTZ3Ly1Kz9ntmEYyAju8+kYhtEbePehF0FSYs56Vuw==}
     engines: {node: '>= 14.17.0'}
     dev: true
 
@@ -4187,7 +4187,7 @@ packages:
     engines: {node: '>=14.14'}
     hasBin: true
     dependencies:
-      chalk: 5.1.0
+      chalk: 5.1.2
       cli-table: 0.3.11
       commander: 9.4.1
       fast-memoize: 2.5.2
@@ -4581,8 +4581,8 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /postcss/8.4.17:
-    resolution: {integrity: sha512-UNxNOLQydcOFi41yHNMcKRZ39NeXlr8AxGuZJsdub8vIb12fHzcq37DTU/QtbI6WLxNg2gF9Z+8qtRwTj1UI1Q==}
+  /postcss/8.4.18:
+    resolution: {integrity: sha512-Wi8mWhncLJm11GATDaQKobXSNEYGUHeQLiQqDFG1qQ5UTDPTEvKw0Xt5NsTpktGTwLps3ByrWsBrG0rB8YQ9oA==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
       nanoid: 3.3.4
@@ -4622,8 +4622,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen/0.63.17:
-    resolution: {integrity: sha512-WEFRQfKfGtOup9DtjIv5gMtI7/puYOnLnC81judnd5yOB6AQ698AuwZYhRo5jnl+rNcspIiVf72SpaeeZnpAAw==}
+  /projen/0.63.18:
+    resolution: {integrity: sha512-sljJ5ERcSr/SLH+LoH6O7aZSY8Q+01QYQkWOteo7JNRSQnDyhqPldl7reqX2KAhgpK/Awaf/v2FQ5hYbbvi2fg==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
@@ -5589,7 +5589,7 @@ packages:
     engines: {node: '>=14.16'}
     dependencies:
       boxen: 7.0.0
-      chalk: 5.1.0
+      chalk: 5.1.2
       configstore: 6.0.0
       has-yarn: 3.0.0
       import-lazy: 4.0.0
@@ -5667,7 +5667,7 @@ packages:
         optional: true
     dependencies:
       esbuild: 0.15.10
-      postcss: 8.4.17
+      postcss: 8.4.18
       resolve: 1.22.1
       rollup: 2.78.1
     optionalDependencies:
@@ -5767,7 +5767,7 @@ packages:
     resolution: {integrity: sha512-QFF+ufAqhoYHvoHdajT/Po7KoXVBPXS2bgjIam5isfWJPfIOnQZ50JtUiVvCv/sjgacf3yRrt2ZKUZ/V4itN4g==}
     engines: {node: '>=12'}
     dependencies:
-      ansi-styles: 6.2.0
+      ansi-styles: 6.2.1
       string-width: 5.1.2
       strip-ansi: 7.0.1
     dev: true
