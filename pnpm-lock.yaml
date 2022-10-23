@@ -18,7 +18,7 @@ specifiers:
   '@typescript-eslint/parser': ^5
   '@vitest/coverage-c8': ^0.24.3
   aws-cdk-lib: 2.47.0
-  constructs: 10.1.136
+  constructs: 10.1.137
   esbuild: ^0.15.12
   eslint: ^8
   eslint-config-prettier: ^8.5.0
@@ -50,14 +50,14 @@ dependencies:
   ts-toolbelt: 9.6.0
 
 devDependencies:
-  '@cloudy-ts/eslint-plugin': 0.0.155_eslint@8.26.0
+  '@cloudy-ts/eslint-plugin': 0.0.156_eslint@8.26.0
   '@tsconfig/node14': 1.0.3
   '@types/node': 14.18.32
   '@typescript-eslint/eslint-plugin': 5.40.1_c4zyna56jjjrggqkyejnaxjxfu
   '@typescript-eslint/parser': 5.40.1_wyqvi574yv7oiwfeinomdzmc3m
   '@vitest/coverage-c8': 0.24.3
-  aws-cdk-lib: 2.47.0_constructs@10.1.136
-  constructs: 10.1.136
+  aws-cdk-lib: 2.47.0_constructs@10.1.137
+  constructs: 10.1.137
   eslint: 8.26.0
   eslint-config-prettier: 8.5.0_eslint@8.26.0
   eslint-import-resolver-node: 0.3.6
@@ -839,11 +839,11 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin/0.0.155_eslint@8.26.0:
-    resolution: {integrity: sha512-ik3WzeSoaSkPF+bJGO0ZAy3PCPLnUC6Svi/ihgTTwY8tOviCENCU7Oq73JhPO8cQfoG9v1KOmz10T7l4fiIgrA==}
+  /@cloudy-ts/eslint-plugin/0.0.156_eslint@8.26.0:
+    resolution: {integrity: sha512-6eP9BDdE1sxod/VFjbjMNK4hpJPmCne4UvVz2Kctthiib65hbyskX/hvLw1L1z8j2gxJD9EXXGmIONMnhga3HA==}
     engines: {node: '>= 14.18.0'}
     peerDependencies:
-      eslint: ^8.25.0
+      eslint: ^8.26.0
     dependencies:
       eslint: 8.26.0
     dev: true
@@ -1612,7 +1612,7 @@ packages:
     engines: {node: '>= 4.0.0'}
     dev: true
 
-  /aws-cdk-lib/2.47.0_constructs@10.1.136:
+  /aws-cdk-lib/2.47.0_constructs@10.1.137:
     resolution: {integrity: sha512-XnxA7FMhJljsj6OtMMDbUi5lPPYcrehAxqpui5b2Nv2cBWhiG7Wb5baOuQy7niyPhZEX03A4k0vYFas/nnB91g==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
@@ -1620,7 +1620,7 @@ packages:
     dependencies:
       '@balena/dockerignore': 1.0.2
       case: 1.6.3
-      constructs: 10.1.136
+      constructs: 10.1.137
       fs-extra: 9.1.0
       ignore: 5.2.0
       jsonschema: 1.4.1
@@ -1978,8 +1978,8 @@ packages:
     resolution: {integrity: sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==}
     dev: true
 
-  /constructs/10.1.136:
-    resolution: {integrity: sha512-/4gE6pzTwUdsThf6VEcOaOJ00WeayNDsN+O1joSPWNa4OFqUSXxitoVaflspPpIEjt6QI3JGY8mjgHw2GQxSSg==}
+  /constructs/10.1.137:
+    resolution: {integrity: sha512-jRuNdceHnCB1JRybA1QQL8ZPI704I6jvQmNgyhen3dvQPYfBkhbyNGVabnLPd5IDnnW4Q5y8XkYugLX2hwnLmg==}
     engines: {node: '>= 14.17.0'}
     dev: true
 
