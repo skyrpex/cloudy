@@ -10,7 +10,7 @@ import {
 } from "aws-cdk-lib/aws-lambda";
 import { Construct } from "constructs";
 
-import { AsyncDependenciesContext } from "../core";
+import { AsyncDependenciesContext } from "../core/index.js";
 
 export interface FunctionProps extends Omit<BaseFunctionProps, "code"> {
   /**
