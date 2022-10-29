@@ -1,4 +1,4 @@
-import { OpaqueType } from "../opaque-type";
+import { OpaqueType } from "../opaque-type/index.js";
 
 /**
  * Represents an object with a toString() method.

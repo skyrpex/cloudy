@@ -1,4 +1,4 @@
-import { OpaqueType } from "../opaque-type";
+import { OpaqueType } from "../opaque-type/index.js";
 
 type JsonSerializablePrimitive = string | number | boolean;
 
