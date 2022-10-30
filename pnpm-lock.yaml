@@ -18,7 +18,7 @@ specifiers:
   '@typescript-eslint/parser': ^5
   '@vitest/coverage-c8': ^0.24.3
   aws-cdk-lib: 2.49.0
-  constructs: 10.1.143
+  constructs: 10.1.144
   esbuild: ^0.15.12
   eslint: ^8
   eslint-config-prettier: ^8.5.0
@@ -31,7 +31,7 @@ specifiers:
   json-schema: ^0.4.0
   npm-check-updates: ^16
   prettier: ^2.7.1
-  projen: ^0.65.4
+  projen: ^0.65.5
   standard-version: ^9
   ts-toolbelt: ^9.6.0
   tsx: ^3.11.0
@@ -50,14 +50,14 @@ dependencies:
   ts-toolbelt: 9.6.0
 
 devDependencies:
-  '@cloudy-ts/eslint-plugin': 0.0.163_eslint@8.26.0
+  '@cloudy-ts/eslint-plugin': 0.0.164_eslint@8.26.0
   '@tsconfig/node14': 1.0.3
   '@types/node': 14.18.33
   '@typescript-eslint/eslint-plugin': 5.41.0_huremdigmcnkianavgfk3x6iou
   '@typescript-eslint/parser': 5.41.0_wyqvi574yv7oiwfeinomdzmc3m
   '@vitest/coverage-c8': 0.24.3
-  aws-cdk-lib: 2.49.0_constructs@10.1.143
-  constructs: 10.1.143
+  aws-cdk-lib: 2.49.0_constructs@10.1.144
+  constructs: 10.1.144
   eslint: 8.26.0
   eslint-config-prettier: 8.5.0_eslint@8.26.0
   eslint-import-resolver-node: 0.3.6
@@ -66,9 +66,9 @@ devDependencies:
   eslint-plugin-prettier: 4.2.1_aniwkeyvlpmwkidetuytnokvcm
   eslint-plugin-unicorn: 44.0.2_eslint@8.26.0
   json-schema: 0.4.0
-  npm-check-updates: 16.3.15
+  npm-check-updates: 16.3.16
   prettier: 2.7.1
-  projen: 0.65.4
+  projen: 0.65.5
   standard-version: 9.5.0
   tsx: 3.11.0
   typescript: 4.8.4
@@ -843,8 +843,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin/0.0.163_eslint@8.26.0:
-    resolution: {integrity: sha512-I211UgdCccqTDTBrpDyzEXE/u3Y0F0LF2u1BwSFw7YsOQqiqfaxGXvu8vny1pKsO2mjZxlIksgA80ObpYREQJA==}
+  /@cloudy-ts/eslint-plugin/0.0.164_eslint@8.26.0:
+    resolution: {integrity: sha512-681Y82AGXvDaiy0EyX0iDiz0aIXbPshfZ1STQA6G05OG1bvklOkLwPudaHGKUxjbASuhim71J3bKJfIxPaEb2A==}
     engines: {node: '>= 14.18.0'}
     peerDependencies:
       eslint: ^8.26.0
@@ -1617,7 +1617,7 @@ packages:
     engines: {node: '>= 4.0.0'}
     dev: true
 
-  /aws-cdk-lib/2.49.0_constructs@10.1.143:
+  /aws-cdk-lib/2.49.0_constructs@10.1.144:
     resolution: {integrity: sha512-HMrV41VaYVLFhm5i35bXuxiiib8IXPwuspDF7W3LJ4WVwxQZWx4eGcvRAdaXuNM7dDwM52cF5BNl8lYa/xCt5Q==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
@@ -1625,7 +1625,7 @@ packages:
     dependencies:
       '@balena/dockerignore': 1.0.2
       case: 1.6.3
-      constructs: 10.1.143
+      constructs: 10.1.144
       fs-extra: 9.1.0
       ignore: 5.2.0
       jsonschema: 1.4.1
@@ -1983,8 +1983,8 @@ packages:
     resolution: {integrity: sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==}
     dev: true
 
-  /constructs/10.1.143:
-    resolution: {integrity: sha512-8lb4ooWxUq+U3RLS0YOJdAAz2AuKEsA1wXFUT0OsiMc74gtjbGyco0awNDOOyaLWfAeiIHTYLQiDFOKmiwixGQ==}
+  /constructs/10.1.144:
+    resolution: {integrity: sha512-mFHa7o+uG3Lag1oIjeh2N75ce8BDX5LYCOE67rm+P/b0dYiPS0iQz5PQgcWFdVFjTNJ3o4vvzw0rlui4j6i0+g==}
     engines: {node: '>= 14.17.0'}
     dev: true
 
@@ -3501,6 +3501,11 @@ packages:
     resolution: {integrity: sha512-7PnF4oN3CvZF23ADhA5wRaYEQpJ8qygSkbtTXWBeXWXmEVRXK+1ITciHWwHhsjv1TmW0MgacIv6hEi5pX5NQdA==}
     engines: {node: '>=10'}
 
+  /ini/3.0.1:
+    resolution: {integrity: sha512-it4HyVAUTKBc6m8e1iXWvXSTdndF7HbdN713+kvLrymxTaU4AUBWrJ4vEooP+V7fexnVD3LKcBshjGGPefSMUQ==}
+    engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
+    dev: true
+
   /internal-slot/1.0.3:
     resolution: {integrity: sha512-O0DB1JC/sPyZl7cIo78n5dR7eUSwwpYPiXRhTzNxZVAMUuB8vlnRFyLxdrVToks6XPLVnFfbzaVd5WLjhgg+vA==}
     engines: {node: '>= 0.4'}
@@ -4251,8 +4256,8 @@ packages:
       npm-normalize-package-bin: 1.0.1
     dev: true
 
-  /npm-check-updates/16.3.15:
-    resolution: {integrity: sha512-gRjApPUQxcdZuwIMTvWxPrB1mBWTml0Xj4t50vxdsItXUaNryYGrGve3ouZGxbowcs46Tji1tSbw7+9lnGT0sA==}
+  /npm-check-updates/16.3.16:
+    resolution: {integrity: sha512-OJRfwc2+p0ZnDvZQ4FOou9ev4kI6c0Lmu+uEJjijCNUSXnf5AEpyB6+kX31HsmkDzQ10ApA4CvM1TE+rXP+R8g==}
     engines: {node: '>=14.14'}
     hasBin: true
     dependencies:
@@ -4265,6 +4270,7 @@ packages:
       get-stdin: 8.0.0
       globby: 11.1.0
       hosted-git-info: 5.2.1
+      ini: 3.0.1
       json-parse-helpfulerror: 1.0.3
       jsonlines: 0.1.1
       lodash: 4.17.21
@@ -4688,8 +4694,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen/0.65.4:
-    resolution: {integrity: sha512-dFgWJYt/g8Z1uPrf8pw1FNAccmM/30Oc8quvfgxcPAOl4FgRUlBQIAZ3LeD6JPyzs66sm1erpD2BlGR6b3Jipw==}
+  /projen/0.65.5:
+    resolution: {integrity: sha512-43MkD+MrNIkJCBpz2JltwVhlzfpB5cnMZgxKFgw9W/AghXGMJgBshtHakqQlxrYT2YddsB0z6Pu+NSd1YTUHSQ==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
