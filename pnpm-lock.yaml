@@ -18,7 +18,7 @@ specifiers:
   '@typescript-eslint/parser': ^5
   '@vitest/coverage-c8': ^0.24.3
   aws-cdk-lib: 2.49.0
-  constructs: 10.1.144
+  constructs: 10.1.145
   esbuild: ^0.15.12
   eslint: ^8
   eslint-config-prettier: ^8.5.0
@@ -31,7 +31,7 @@ specifiers:
   json-schema: ^0.4.0
   npm-check-updates: ^16
   prettier: ^2.7.1
-  projen: ^0.65.5
+  projen: ^0.65.6
   standard-version: ^9
   ts-toolbelt: ^9.6.0
   tsx: ^3.11.0
@@ -50,14 +50,14 @@ dependencies:
   ts-toolbelt: 9.6.0
 
 devDependencies:
-  '@cloudy-ts/eslint-plugin': 0.0.164_eslint@8.26.0
+  '@cloudy-ts/eslint-plugin': 0.0.165_eslint@8.26.0
   '@tsconfig/node14': 1.0.3
   '@types/node': 14.18.33
   '@typescript-eslint/eslint-plugin': 5.41.0_huremdigmcnkianavgfk3x6iou
   '@typescript-eslint/parser': 5.41.0_wyqvi574yv7oiwfeinomdzmc3m
   '@vitest/coverage-c8': 0.24.3
-  aws-cdk-lib: 2.49.0_constructs@10.1.144
-  constructs: 10.1.144
+  aws-cdk-lib: 2.49.0_constructs@10.1.145
+  constructs: 10.1.145
   eslint: 8.26.0
   eslint-config-prettier: 8.5.0_eslint@8.26.0
   eslint-import-resolver-node: 0.3.6
@@ -68,7 +68,7 @@ devDependencies:
   json-schema: 0.4.0
   npm-check-updates: 16.3.16
   prettier: 2.7.1
-  projen: 0.65.5
+  projen: 0.65.6
   standard-version: 9.5.0
   tsx: 3.11.0
   typescript: 4.8.4
@@ -843,8 +843,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin/0.0.164_eslint@8.26.0:
-    resolution: {integrity: sha512-681Y82AGXvDaiy0EyX0iDiz0aIXbPshfZ1STQA6G05OG1bvklOkLwPudaHGKUxjbASuhim71J3bKJfIxPaEb2A==}
+  /@cloudy-ts/eslint-plugin/0.0.165_eslint@8.26.0:
+    resolution: {integrity: sha512-fDvAXTWxbQVn67B5famU+TP/GGZkj5BpcDODjtW1z7DA2lhoKa+/3kt8LKzkROnWXbMJQNXAQHFumBlZsJh/zg==}
     engines: {node: '>= 14.18.0'}
     peerDependencies:
       eslint: ^8.26.0
@@ -1617,7 +1617,7 @@ packages:
     engines: {node: '>= 4.0.0'}
     dev: true
 
-  /aws-cdk-lib/2.49.0_constructs@10.1.144:
+  /aws-cdk-lib/2.49.0_constructs@10.1.145:
     resolution: {integrity: sha512-HMrV41VaYVLFhm5i35bXuxiiib8IXPwuspDF7W3LJ4WVwxQZWx4eGcvRAdaXuNM7dDwM52cF5BNl8lYa/xCt5Q==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
@@ -1625,7 +1625,7 @@ packages:
     dependencies:
       '@balena/dockerignore': 1.0.2
       case: 1.6.3
-      constructs: 10.1.144
+      constructs: 10.1.145
       fs-extra: 9.1.0
       ignore: 5.2.0
       jsonschema: 1.4.1
@@ -1983,8 +1983,8 @@ packages:
     resolution: {integrity: sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==}
     dev: true
 
-  /constructs/10.1.144:
-    resolution: {integrity: sha512-mFHa7o+uG3Lag1oIjeh2N75ce8BDX5LYCOE67rm+P/b0dYiPS0iQz5PQgcWFdVFjTNJ3o4vvzw0rlui4j6i0+g==}
+  /constructs/10.1.145:
+    resolution: {integrity: sha512-56SfAlrDyMLc4Y6MGSo5//oV4A9KpY/k0nedNMMDc1ILbplUbhfKn3yDhLqM/wDQX0P1+kmg9Osyu9h+Huk0jA==}
     engines: {node: '>= 14.17.0'}
     dev: true
 
@@ -2224,8 +2224,8 @@ packages:
     resolution: {integrity: sha512-syBZ+rnAK3EgMsH2aYEOLUW7mZSY9Gb+0wUMCFsZvcmiz+HigA0LOcq/HoQqVuGG+EKykunc7QG2bzrponfaSw==}
     dev: false
 
-  /decamelize-keys/1.1.0:
-    resolution: {integrity: sha512-ocLWuYzRPoS9bfiSdDd3cxvrzovVMZnRDVEzAs+hWIVXGDbHxWMECij2OBuyB/An0FFW/nLuq6Kv1i/YC5Qfzg==}
+  /decamelize-keys/1.1.1:
+    resolution: {integrity: sha512-WiPxgEirIV0/eIOMcnFBA3/IJZAZqKnwAwWyvvdi4lsr1WCN22nhdf/3db3DoZcUjTV2SqfzIwNyp6y2xs3nmg==}
     engines: {node: '>=0.10.0'}
     dependencies:
       decamelize: 1.2.0
@@ -4010,7 +4010,7 @@ packages:
     dependencies:
       '@types/minimist': 1.2.2
       camelcase-keys: 6.2.2
-      decamelize-keys: 1.1.0
+      decamelize-keys: 1.1.1
       hard-rejection: 2.1.0
       minimist-options: 4.1.0
       normalize-package-data: 3.0.3
@@ -4694,8 +4694,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen/0.65.5:
-    resolution: {integrity: sha512-43MkD+MrNIkJCBpz2JltwVhlzfpB5cnMZgxKFgw9W/AghXGMJgBshtHakqQlxrYT2YddsB0z6Pu+NSd1YTUHSQ==}
+  /projen/0.65.6:
+    resolution: {integrity: sha512-yJsEzgWqDHkvmlAMkRFYc2BrWslZA6DqkT55hrhLNFmBYwnn/gLDl41sx0vmTUmnjgmk6XNGnf3o438iUPYquw==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
