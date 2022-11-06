@@ -14,7 +14,7 @@ specifiers:
   '@typescript-eslint/parser': ^5
   '@vitest/coverage-c8': ^0.24.5
   aws-cdk-lib: 2.50.0
-  constructs: 10.1.150
+  constructs: 10.1.151
   esbuild: ^0.15.13
   eslint: ^8
   eslint-config-prettier: ^8.5.0
@@ -27,7 +27,7 @@ specifiers:
   json-schema: ^0.4.0
   npm-check-updates: ^16
   prettier: ^2.7.1
-  projen: ^0.65.14
+  projen: ^0.65.15
   standard-version: ^9
   ts-toolbelt: ^9.6.0
   tsx: ^3.11.0
@@ -46,14 +46,14 @@ dependencies:
   ts-toolbelt: 9.6.0
 
 devDependencies:
-  '@cloudy-ts/eslint-plugin': 0.0.170_eslint@8.26.0
+  '@cloudy-ts/eslint-plugin': 0.0.171_eslint@8.26.0
   '@tsconfig/node14': 1.0.3
   '@types/node': 14.18.33
   '@typescript-eslint/eslint-plugin': 5.42.0_6xw5wg2354iw4zujk2f3vyfrzu
   '@typescript-eslint/parser': 5.42.0_wyqvi574yv7oiwfeinomdzmc3m
   '@vitest/coverage-c8': 0.24.5
-  aws-cdk-lib: 2.50.0_constructs@10.1.150
-  constructs: 10.1.150
+  aws-cdk-lib: 2.50.0_constructs@10.1.151
+  constructs: 10.1.151
   eslint: 8.26.0
   eslint-config-prettier: 8.5.0_eslint@8.26.0
   eslint-import-resolver-node: 0.3.6
@@ -64,7 +64,7 @@ devDependencies:
   json-schema: 0.4.0
   npm-check-updates: 16.3.16
   prettier: 2.7.1
-  projen: 0.65.14
+  projen: 0.65.15
   standard-version: 9.5.0
   tsx: 3.11.0
   typescript: 4.8.4
@@ -851,8 +851,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin/0.0.170_eslint@8.26.0:
-    resolution: {integrity: sha512-n1XojI/CaI7yCFmnSPCQ+QklUPPP53Nl5B1J/L/ufNuimmRM8HV0iBEck5wAGoJFs1CwCjAIDzYG7so5P4iEMg==}
+  /@cloudy-ts/eslint-plugin/0.0.171_eslint@8.26.0:
+    resolution: {integrity: sha512-hVkkvGV8CtQ/dge1L0p6IMssn+8KY2ymUXIVvJQxVveB8NGjtRxYidQQkz/7tUV/K29aWNZ/gzIrHCWF84yX4Q==}
     engines: {node: '>= 14.18.0'}
     peerDependencies:
       eslint: ^8.26.0
@@ -1597,7 +1597,7 @@ packages:
     engines: {node: '>= 4.0.0'}
     dev: true
 
-  /aws-cdk-lib/2.50.0_constructs@10.1.150:
+  /aws-cdk-lib/2.50.0_constructs@10.1.151:
     resolution: {integrity: sha512-deDbZTI7oyu3rqUyqjwhP6tnUO8MD70lE98yR65xiYty4yXBpsWKbeH3s1wNLpLAWS3hWJYyMtjZ4ZfC35NtVg==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
@@ -1605,7 +1605,7 @@ packages:
     dependencies:
       '@balena/dockerignore': 1.0.2
       case: 1.6.3
-      constructs: 10.1.150
+      constructs: 10.1.151
       fs-extra: 9.1.0
       ignore: 5.2.0
       jsonschema: 1.4.1
@@ -1806,7 +1806,7 @@ packages:
       check-error: 1.0.2
       deep-eql: 3.0.1
       get-func-name: 2.0.0
-      loupe: 2.3.4
+      loupe: 2.3.5
       pathval: 1.1.1
       type-detect: 4.0.8
     dev: true
@@ -1956,8 +1956,8 @@ packages:
     resolution: {integrity: sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==}
     dev: true
 
-  /constructs/10.1.150:
-    resolution: {integrity: sha512-VJB9zsM3pAx0QUIOggWpbLPdJtNhmqshBLpmWLPe/qQcWIAMaHKidzaVNwaqQ7yp37IMRKZUUwapQH58z6ZFFA==}
+  /constructs/10.1.151:
+    resolution: {integrity: sha512-4UKo4nZdXaW1be+zKPStckePmJPE4D1MSDF9oe+R2g0i0wFVmPJrU3ZaRJcJW+LXdnRJ87nn/nDw83RJ48LEfQ==}
     engines: {node: '>= 14.17.0'}
     dev: true
 
@@ -3888,8 +3888,8 @@ packages:
     resolution: {integrity: sha512-XsP+KhQif4bjX1kbuSiySJFNAehNxgLb6hPRGJ9QsUr8ajHkuXGdrHmFUTUUXhDwVX2R5bY4JNZEwbUiMhV+MA==}
     dev: false
 
-  /loupe/2.3.4:
-    resolution: {integrity: sha512-OvKfgCC2Ndby6aSTREl5aCCPTNIzlDfQZvZxNUrBrihDhL3xcrYegTblhmEiCrg2kKQz4XsFIaemE5BF4ybSaQ==}
+  /loupe/2.3.5:
+    resolution: {integrity: sha512-KNGVjhsXDxvY/cYE8GNi7SBaJSfJIT+/+/8GlprqBXpoU6cSR7/RT7OBJOsoYtyxq0L3q6oIcO8tX7dbEEXr3A==}
     dependencies:
       get-func-name: 2.0.0
     dev: true
@@ -4651,8 +4651,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen/0.65.14:
-    resolution: {integrity: sha512-yfIJuLtKy3Ir4V/sVTeifjFnAR887GK0b4U96V+rqFz+CXEYwQ3YaKkwJvJHvNdVBjNoHT1G36DmIu0e76EtXw==}
+  /projen/0.65.15:
+    resolution: {integrity: sha512-tTvcch20D9ztXG/fnUhgEx3SwY8JqZnxSfVoZouQSGYIPJTJBri+wkJw0mXCxDdphvm52ezHu2X2R82GPsykmw==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
