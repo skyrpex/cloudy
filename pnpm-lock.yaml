@@ -12,9 +12,9 @@ specifiers:
   '@types/node': ^14
   '@typescript-eslint/eslint-plugin': ^5
   '@typescript-eslint/parser': ^5
-  '@vitest/coverage-c8': ^0.25.0
+  '@vitest/coverage-c8': ^0.25.1
   aws-cdk-lib: 2.50.0
-  constructs: 10.1.153
+  constructs: 10.1.154
   esbuild: ^0.15.13
   eslint: ^8
   eslint-config-prettier: ^8.5.0
@@ -27,12 +27,12 @@ specifiers:
   json-schema: ^0.4.0
   npm-check-updates: ^16
   prettier: ^2.7.1
-  projen: ^0.65.17
+  projen: ^0.65.18
   standard-version: ^9
   ts-toolbelt: ^9.6.0
   tsx: ^3.11.0
   typescript: ^4.8.4
-  vitest: ^0.25.0
+  vitest: ^0.25.1
 
 dependencies:
   '@aws-sdk/client-dynamodb': 3.204.0
@@ -51,9 +51,9 @@ devDependencies:
   '@types/node': 14.18.33
   '@typescript-eslint/eslint-plugin': 5.42.1_2udltptbznfmezdozpdoa2aemq
   '@typescript-eslint/parser': 5.42.1_rmayb2veg2btbq6mbmnyivgasy
-  '@vitest/coverage-c8': 0.25.0
-  aws-cdk-lib: 2.50.0_constructs@10.1.153
-  constructs: 10.1.153
+  '@vitest/coverage-c8': 0.25.1
+  aws-cdk-lib: 2.50.0_constructs@10.1.154
+  constructs: 10.1.154
   eslint: 8.27.0
   eslint-config-prettier: 8.5.0_eslint@8.27.0
   eslint-import-resolver-node: 0.3.6
@@ -64,11 +64,11 @@ devDependencies:
   json-schema: 0.4.0
   npm-check-updates: 16.3.18
   prettier: 2.7.1
-  projen: 0.65.17
+  projen: 0.65.18
   standard-version: 9.5.0
   tsx: 3.11.0
   typescript: 4.8.4
-  vitest: 0.25.0
+  vitest: 0.25.1
 
 packages:
 
@@ -1397,11 +1397,11 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@vitest/coverage-c8/0.25.0:
-    resolution: {integrity: sha512-rAeekiideYYvuHk0/nfMvlPiJhyeE9oFFL/Zxp5ZvRF3p2AvQaj8Z6Na//08lIxvm6oi9rDijdkYE0CFMtT7uA==}
+  /@vitest/coverage-c8/0.25.1:
+    resolution: {integrity: sha512-gpl5QNaNeIN0mfRiosCqBFoZcizb5GA458TDnOQXkGDc4kklazxn70u9evGfV62wiiAUfGGebgRhxlBkAa6m6g==}
     dependencies:
       c8: 7.12.0
-      vitest: 0.25.0
+      vitest: 0.25.1
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -1548,8 +1548,8 @@ packages:
     resolution: {integrity: sha512-c5AMf34bKdvPhQ7tBGhqkgKNUzMr4WUs+WDtC2ZUGOUncbxKMTvqxYctiseW3+L4bA8ec+GcZ6/A/FW4m8ukng==}
     dev: true
 
-  /array-includes/3.1.5:
-    resolution: {integrity: sha512-iSDYZMMyTPkiFasVqfuAQnWAYcvO/SeBSCGKePoEthjp4LEMTe4uLc7b025o4jAZpHhihh8xPo99TNWUWWkGDQ==}
+  /array-includes/3.1.6:
+    resolution: {integrity: sha512-sgTbLvL6cNnw24FnbaDyjmvddQ2ML8arZsgaJhoABMoplz/4QRhtrYS+alr1BUM1Bwp6dhx8vVCBSLG+StwOFw==}
     engines: {node: '>= 0.4'}
     dependencies:
       call-bind: 1.0.2
@@ -1602,7 +1602,7 @@ packages:
     engines: {node: '>= 4.0.0'}
     dev: true
 
-  /aws-cdk-lib/2.50.0_constructs@10.1.153:
+  /aws-cdk-lib/2.50.0_constructs@10.1.154:
     resolution: {integrity: sha512-deDbZTI7oyu3rqUyqjwhP6tnUO8MD70lE98yR65xiYty4yXBpsWKbeH3s1wNLpLAWS3hWJYyMtjZ4ZfC35NtVg==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
@@ -1610,7 +1610,7 @@ packages:
     dependencies:
       '@balena/dockerignore': 1.0.2
       case: 1.6.3
-      constructs: 10.1.153
+      constructs: 10.1.154
       fs-extra: 9.1.0
       ignore: 5.2.0
       jsonschema: 1.4.1
@@ -1961,8 +1961,8 @@ packages:
     resolution: {integrity: sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==}
     dev: true
 
-  /constructs/10.1.153:
-    resolution: {integrity: sha512-FWgBuYWlBlzZWO3uXNBWrA9YuRzG7CkDWcte/BWAQ9zO1wFq71YfgfOYq3PV3J5WtbyJ6jkzRQa877/XXyq/fg==}
+  /constructs/10.1.154:
+    resolution: {integrity: sha512-JStQT84+NhsfamESRExZoGzpq/f/gpq9xpzgtQNOzungs42Gy8kxjfU378MnVoRqwCHwk0vLN37HZjgH5tJo2A==}
     engines: {node: '>= 14.17.0'}
     dev: true
 
@@ -2707,7 +2707,7 @@ packages:
         optional: true
     dependencies:
       '@typescript-eslint/parser': 5.42.1_rmayb2veg2btbq6mbmnyivgasy
-      array-includes: 3.1.5
+      array-includes: 3.1.6
       array.prototype.flat: 1.3.1
       debug: 2.6.9
       doctrine: 2.1.0
@@ -4656,8 +4656,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen/0.65.17:
-    resolution: {integrity: sha512-/HuYsrtFfQPrIUrx1mWc+C4QCPNurE1DsG4WzlrH2sIDiVl/vQz4URr2AwBDTFJWQocelbsWUXSW68pt2jsMiQ==}
+  /projen/0.65.18:
+    resolution: {integrity: sha512-tzoj7Exz8oOenb9Pab453HajGI3nVv3fT++QUKPT2WTbe5oJ11XFBcgN4i3hhArzncfpNnZmOZck3yBnJIvzsA==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
@@ -5746,8 +5746,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.25.0:
-    resolution: {integrity: sha512-CVgBdKSeA27mowKC/C31Tx7ZBjRoyasq/yW7zoqUaCdKaOsjdzRUH5KgSL3eG36DzaaUsbnwWPUbAOtFz5k6tQ==}
+  /vitest/0.25.1:
+    resolution: {integrity: sha512-eH74h6MkuEgsqR4mAQZeMK9O0PROiKY+i+1GMz/fBi5A3L2ml5U7JQs7LfPU7+uWUziZyLHagl+rkyfR8SLhlA==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
