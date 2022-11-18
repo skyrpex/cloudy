@@ -1,11 +1,11 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@aws-sdk/client-dynamodb': ^3.212.0
-  '@aws-sdk/client-sns': ^3.212.0
+  '@aws-sdk/client-dynamodb': ^3.213.0
+  '@aws-sdk/client-sns': ^3.213.0
   '@aws-sdk/smithy-client': ^3.212.0
   '@aws-sdk/types': ^3.212.0
-  '@aws-sdk/util-dynamodb': ^3.212.0
+  '@aws-sdk/util-dynamodb': ^3.213.0
   '@cloudy-ts/eslint-plugin': '*'
   '@pulumi/pulumi': '3.33'
   '@tsconfig/node14': ^1.0.3
@@ -14,7 +14,7 @@ specifiers:
   '@typescript-eslint/parser': ^5
   '@vitest/coverage-c8': ^0.25.2
   aws-cdk-lib: 2.50.0
-  constructs: 10.1.162
+  constructs: 10.1.163
   esbuild: ^0.15.14
   eslint: ^8
   eslint-config-prettier: ^8.5.0
@@ -27,7 +27,7 @@ specifiers:
   json-schema: ^0.4.0
   npm-check-updates: ^16
   prettier: ^2.7.1
-  projen: ^0.65.26
+  projen: ^0.65.27
   standard-version: ^9
   ts-toolbelt: ^9.6.0
   tsx: ^3.12.1
@@ -35,11 +35,11 @@ specifiers:
   vitest: ^0.25.2
 
 dependencies:
-  '@aws-sdk/client-dynamodb': 3.212.0
-  '@aws-sdk/client-sns': 3.212.0
+  '@aws-sdk/client-dynamodb': 3.213.0
+  '@aws-sdk/client-sns': 3.213.0
   '@aws-sdk/smithy-client': 3.212.0
   '@aws-sdk/types': 3.212.0
-  '@aws-sdk/util-dynamodb': 3.212.0
+  '@aws-sdk/util-dynamodb': 3.213.0
   '@pulumi/pulumi': 3.33.2
   esbuild: 0.15.14
   find-up: 6.3.0
@@ -52,8 +52,8 @@ devDependencies:
   '@typescript-eslint/eslint-plugin': 5.43.0_wze2rj5tow7zwqpgbdx2buoy3m
   '@typescript-eslint/parser': 5.43.0_e3uo4sehh4zr4i6m57mkkxxv7y
   '@vitest/coverage-c8': 0.25.2
-  aws-cdk-lib: 2.50.0_constructs@10.1.162
-  constructs: 10.1.162
+  aws-cdk-lib: 2.50.0_constructs@10.1.163
+  constructs: 10.1.163
   eslint: 8.27.0
   eslint-config-prettier: 8.5.0_eslint@8.27.0
   eslint-import-resolver-node: 0.3.6
@@ -64,7 +64,7 @@ devDependencies:
   json-schema: 0.4.0
   npm-check-updates: 16.4.1
   prettier: 2.7.1
-  projen: 0.65.26
+  projen: 0.65.27
   standard-version: 9.5.0
   tsx: 3.12.1
   typescript: 4.9.3
@@ -121,13 +121,13 @@ packages:
       tslib: 2.4.1
     dev: false
 
-  /@aws-sdk/client-dynamodb/3.212.0:
-    resolution: {integrity: sha512-BXS+64t1d505PCS9e6qyjg1fghtTxZwzgZt3cYXGkRZO5E4zBX+9NxlEzayU0Wxp1P52260vJDN5dUP77ZOnEg==}
+  /@aws-sdk/client-dynamodb/3.213.0:
+    resolution: {integrity: sha512-TTDL8ZLOHE0BpsHiAgANs9f7Td0j3XxGRn7FWzkk3WqzfwF4LyeWrEVc56rHDK0odVwQioY7fSzjop/7kySi/A==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-crypto/sha256-browser': 2.0.0
       '@aws-crypto/sha256-js': 2.0.0
-      '@aws-sdk/client-sts': 3.212.0
+      '@aws-sdk/client-sts': 3.213.0
       '@aws-sdk/config-resolver': 3.212.0
       '@aws-sdk/credential-provider-node': 3.212.0
       '@aws-sdk/fetch-http-handler': 3.212.0
@@ -167,13 +167,13 @@ packages:
       - aws-crt
     dev: false
 
-  /@aws-sdk/client-sns/3.212.0:
-    resolution: {integrity: sha512-ipxI47Q1JpjPl0ZJ8QqCMSOcRzys3vF/FOToVWlssrvAaVccptZ4YUmycrhotlguQL25KrbKPTNcD+57wowAxQ==}
+  /@aws-sdk/client-sns/3.213.0:
+    resolution: {integrity: sha512-7rpku0umNOJmKMt2yFu8OzwVi2q9NbKWqoq1o7PB2sm0+KShCxBJCllXuN+02YWQHKeumZTWVSqCx0jrYcBmxQ==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-crypto/sha256-browser': 2.0.0
       '@aws-crypto/sha256-js': 2.0.0
-      '@aws-sdk/client-sts': 3.212.0
+      '@aws-sdk/client-sts': 3.213.0
       '@aws-sdk/config-resolver': 3.212.0
       '@aws-sdk/credential-provider-node': 3.212.0
       '@aws-sdk/fetch-http-handler': 3.212.0
@@ -291,8 +291,8 @@ packages:
       - aws-crt
     dev: false
 
-  /@aws-sdk/client-sts/3.212.0:
-    resolution: {integrity: sha512-Zl8665HT1Do/yfiFEtqEjLkHSkAo5Isg2QU65Kbknj2W2DFj92a1cRvMlHanDLxlpuoryGP9/u1efYZeWeIdlg==}
+  /@aws-sdk/client-sts/3.213.0:
+    resolution: {integrity: sha512-MCjtLaYVQJLIMeLubDc4yRjSyVVTOebKxhY4ix4cfpSA6X4jMc4gRY2eu4eja3qoISfHq/Ikrkxx9DD1+n1azg==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-crypto/sha256-browser': 2.0.0
@@ -766,8 +766,8 @@ packages:
       tslib: 2.4.1
     dev: false
 
-  /@aws-sdk/util-dynamodb/3.212.0:
-    resolution: {integrity: sha512-7rD2v7FfndDMEx2XaF2XxtFn35Kmz6DwAtdop6zTltnZ6Y3XU5/UHKdZy4MqLi3/hhRb18kKel2GKpuEIpzAMw==}
+  /@aws-sdk/util-dynamodb/3.213.0:
+    resolution: {integrity: sha512-xLMEce+KcGuXf6Oiy6CbGkRH84RMief/zOvigHy3ePgrb4dIHbrcmB80Dd4iF5I8IuJn3jew+PQpFMjydsYl5Q==}
     engines: {node: '>=14.0.0'}
     dependencies:
       tslib: 2.4.1
@@ -936,7 +936,7 @@ packages:
       ajv: 6.12.6
       debug: 4.3.4
       espree: 9.4.1
-      globals: 13.17.0
+      globals: 13.18.0
       ignore: 5.2.0
       import-fresh: 3.3.0
       js-yaml: 4.1.0
@@ -1634,7 +1634,7 @@ packages:
     engines: {node: '>= 4.0.0'}
     dev: true
 
-  /aws-cdk-lib/2.50.0_constructs@10.1.162:
+  /aws-cdk-lib/2.50.0_constructs@10.1.163:
     resolution: {integrity: sha512-deDbZTI7oyu3rqUyqjwhP6tnUO8MD70lE98yR65xiYty4yXBpsWKbeH3s1wNLpLAWS3hWJYyMtjZ4ZfC35NtVg==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
@@ -1642,7 +1642,7 @@ packages:
     dependencies:
       '@balena/dockerignore': 1.0.2
       case: 1.6.3
-      constructs: 10.1.162
+      constructs: 10.1.163
       fs-extra: 9.1.0
       ignore: 5.2.0
       jsonschema: 1.4.1
@@ -1994,8 +1994,8 @@ packages:
     resolution: {integrity: sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==}
     dev: true
 
-  /constructs/10.1.162:
-    resolution: {integrity: sha512-7baN0u86OKY5Cna7AzkFwcCKQo2caYZ/TMBNdUCj/1bYaz+k9KGhMsAQeXAdfK8UeJ18nqgE2HxQC2X+fErc2g==}
+  /constructs/10.1.163:
+    resolution: {integrity: sha512-UdwRPc1CLyIaytDwmTVjDsCEgSKfy5pZ64f89RfhwB4hJTeAgDRMjHQ4pNBVDRLlPXmzXAaM5UKfr+HeGFRFoQ==}
     engines: {node: '>= 14.17.0'}
     dev: true
 
@@ -2861,7 +2861,7 @@ packages:
       file-entry-cache: 6.0.1
       find-up: 5.0.0
       glob-parent: 6.0.2
-      globals: 13.17.0
+      globals: 13.18.0
       grapheme-splitter: 1.0.4
       ignore: 5.2.0
       import-fresh: 3.3.0
@@ -3246,8 +3246,8 @@ packages:
       ini: 2.0.0
     dev: true
 
-  /globals/13.17.0:
-    resolution: {integrity: sha512-1C+6nQRb1GwGMKm2dH/E7enFAMxGTmGI7/dEdhy/DNelv85w9B72t3uc5frtMNXIbzrarJJ/lTCjcaZwbLJmyw==}
+  /globals/13.18.0:
+    resolution: {integrity: sha512-/mR4KI8Ps2spmoc0Ulu9L7agOF0du1CZNQ3dke8yItYlyKNmGrkONemBbd6V8UTc1Wgcqn21t3WYB7dbRmh6/A==}
     engines: {node: '>=8'}
     dependencies:
       type-fest: 0.20.2
@@ -4729,8 +4729,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen/0.65.26:
-    resolution: {integrity: sha512-xtYD6rbSyP75NLFLcu91QhDRO2Ehvgn0KoJVv9mRsjPFnRr13OhXUc5e+gu30pdCz/Y13D9rFCLx1T9sS6x1Tg==}
+  /projen/0.65.27:
+    resolution: {integrity: sha512-tkylBpJvffZ5pD7b5voMuBTRImdB2gb1CRADd+WhA8UyoDlSkIQwpJVradxyF+JRIlQSEGmuN3MWViVrPDcMhg==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
