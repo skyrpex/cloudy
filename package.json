@@ -28,7 +28,7 @@
     "@typescript-eslint/parser": "^5",
     "@vitest/coverage-c8": "^0.25.3",
     "aws-cdk-lib": "2.51.1",
-    "constructs": "10.1.170",
+    "constructs": "10.1.171",
     "esbuild": "^0.15.15",
     "eslint": "^8",
     "eslint-config-prettier": "^8.5.0",
@@ -40,7 +40,7 @@
     "json-schema": "^0.4.0",
     "npm-check-updates": "^16",
     "prettier": "^2.8.0",
-    "projen": "^0.65.35",
+    "projen": "^0.65.36",
     "standard-version": "^9",
     "tsx": "^3.12.1",
     "typescript": "^4.9.3",
@@ -48,7 +48,7 @@
   },
   "peerDependencies": {
     "aws-cdk-lib": "^2.51.1",
-    "constructs": "^10.1.170"
+    "constructs": "^10.1.171"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.216.0",
