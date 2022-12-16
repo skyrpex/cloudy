@@ -14,7 +14,7 @@ specifiers:
   '@typescript-eslint/parser': ^5
   '@vitest/coverage-c8': ^0.25.8
   aws-cdk-lib: 2.55.0
-  constructs: 10.1.190
+  constructs: 10.1.191
   esbuild: ^0.16.7
   eslint: ^8
   eslint-config-prettier: ^8.5.0
@@ -27,7 +27,7 @@ specifiers:
   json-schema: ^0.4.0
   npm-check-updates: ^16
   prettier: ^2.8.1
-  projen: ^0.65.60
+  projen: ^0.65.63
   standard-version: ^9
   ts-toolbelt: ^9.6.0
   tsx: ^3.12.1
@@ -52,8 +52,8 @@ devDependencies:
   '@typescript-eslint/eslint-plugin': 5.46.1_imrg37k3svwu377c6q7gkarwmi
   '@typescript-eslint/parser': 5.46.1_ha6vam6werchizxrnqvarmz2zu
   '@vitest/coverage-c8': 0.25.8
-  aws-cdk-lib: 2.55.0_constructs@10.1.190
-  constructs: 10.1.190
+  aws-cdk-lib: 2.55.0_constructs@10.1.191
+  constructs: 10.1.191
   eslint: 8.29.0
   eslint-config-prettier: 8.5.0_eslint@8.29.0
   eslint-import-resolver-node: 0.3.6
@@ -64,7 +64,7 @@ devDependencies:
   json-schema: 0.4.0
   npm-check-updates: 16.6.0
   prettier: 2.8.1
-  projen: 0.65.60
+  projen: 0.65.63
   standard-version: 9.5.0
   tsx: 3.12.1
   typescript: 4.9.4
@@ -1843,7 +1843,7 @@ packages:
     engines: {node: '>= 4.0.0'}
     dev: true
 
-  /aws-cdk-lib/2.55.0_constructs@10.1.190:
+  /aws-cdk-lib/2.55.0_constructs@10.1.191:
     resolution: {integrity: sha512-YCtfmMiITU5ncrrQmq5wls2EeCUOLOBDLWO2ZkaUozIS+VbEDChK8rT66OmgQSPwFntKNSJq0P65tR7kN5/i8g==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
@@ -1854,7 +1854,7 @@ packages:
       '@aws-cdk/asset-node-proxy-agent-v5': 2.0.38
       '@balena/dockerignore': 1.0.2
       case: 1.6.3
-      constructs: 10.1.190
+      constructs: 10.1.191
       fs-extra: 9.1.0
       ignore: 5.2.1
       jsonschema: 1.4.1
@@ -1973,12 +1973,12 @@ packages:
       - bluebird
     dev: true
 
-  /cacache/17.0.3:
-    resolution: {integrity: sha512-pwsIK/grdM0cHpfVaNFxMdzElBtLJGsVPE+JnxqXP1l40O01Z1mfDE8MbRTuwomGq/UwEtGisOylutOEVJxEqg==}
+  /cacache/17.0.4:
+    resolution: {integrity: sha512-Z/nL3gU+zTUjz5pCA5vVjYM8pmaw2kxM7JEiE0fv3w77Wj+sFbi70CrBruUWH0uNcEdvLDixFpgA2JM4F4DBjA==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dependencies:
       '@npmcli/fs': 3.1.0
-      fs-minipass: 2.1.0
+      fs-minipass: 3.0.0
       glob: 8.0.3
       lru-cache: 7.14.1
       minipass: 4.0.0
@@ -2217,8 +2217,8 @@ packages:
     resolution: {integrity: sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==}
     dev: true
 
-  /constructs/10.1.190:
-    resolution: {integrity: sha512-wGMEBsIKp/tP+b2q3XEtIh/KJPZ2uk7G2XyEbGVEatOo6OQHFhXfBi9BCk8725zuWYP/gZUQJfAvd7KZ+lY5Yw==}
+  /constructs/10.1.191:
+    resolution: {integrity: sha512-TKe0otuo/2X6DKtlKMq78Zx/GIYhj4hmIvaWt0/Faw8u/2/Oj8T7GFvi9QuDP2FBsvEgPE3zPn01EQsAf7wNjg==}
     engines: {node: '>= 14.17.0'}
     dev: true
 
@@ -3355,6 +3355,13 @@ packages:
       minipass: 3.3.6
     dev: true
 
+  /fs-minipass/3.0.0:
+    resolution: {integrity: sha512-EUojgQaSPy6sxcqcZgQv6TVF6jiKvurji3AxhAivs/Ep4O1UpS8TusaxpybfFHZ2skRhLqzk6WR8nqNYIMMDeA==}
+    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
+    dependencies:
+      minipass: 4.0.0
+    dev: true
+
   /fs.realpath/1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
 
@@ -4281,7 +4288,7 @@ packages:
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dependencies:
       agentkeepalive: 4.2.1
-      cacache: 17.0.3
+      cacache: 17.0.4
       http-cache-semantics: 4.1.0
       http-proxy-agent: 5.0.0
       https-proxy-agent: 5.0.1
@@ -4863,7 +4870,7 @@ packages:
       '@npmcli/installed-package-contents': 2.0.1
       '@npmcli/promise-spawn': 6.0.2
       '@npmcli/run-script': 6.0.0
-      cacache: 17.0.3
+      cacache: 17.0.4
       fs-minipass: 2.1.0
       minipass: 3.3.6
       npm-package-arg: 10.1.0
@@ -5020,8 +5027,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen/0.65.60:
-    resolution: {integrity: sha512-mUIhNLpyLOYvp5IajhlxQDIdGDpimPfygHw/1fv//E4Kng1xpBBkvPgbC2VUBEht3vBFvTUkgGmzbKEdpSeFvg==}
+  /projen/0.65.63:
+    resolution: {integrity: sha512-k37Q8biBIjaKOOPvOxUodCGz+3ysQxFndiSfJD1036UArOamDzGuVQkACeDPk8I3AiEECkhHcxp8iTs27LRnJA==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
