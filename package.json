@@ -21,7 +21,7 @@
     "projen": "npx projen"
   },
   "devDependencies": {
-    "@cloudy-ts/eslint-plugin": "^0.0.179",
+    "@cloudy-ts/eslint-plugin": "^0.0.180",
     "@tsconfig/node14": "^1.0.3",
     "@types/node": "^14",
     "@typescript-eslint/eslint-plugin": "^5",
@@ -29,7 +29,7 @@
     "@vitest/coverage-c8": "^0.26.2",
     "aws-cdk-lib": "2.57.0",
     "constructs": "10.1.202",
-    "esbuild": "^0.16.11",
+    "esbuild": "^0.16.12",
     "eslint": "^8",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-node": "^0.3.6",
@@ -40,7 +40,7 @@
     "json-schema": "^0.4.0",
     "npm-check-updates": "^16",
     "prettier": "^2.8.1",
-    "projen": "^0.65.74",
+    "projen": "^0.65.75",
     "standard-version": "^9",
     "tsx": "^3.12.1",
     "typescript": "^4.9.4",
@@ -57,7 +57,7 @@
     "@aws-sdk/types": "^3.226.0",
     "@aws-sdk/util-dynamodb": "^3.238.0",
     "@pulumi/pulumi": "3.33",
-    "esbuild": "^0.16.11",
+    "esbuild": "^0.16.12",
     "find-up": "^6.3.0",
     "ts-toolbelt": "^9.6.0"
   },
