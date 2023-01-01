@@ -21,14 +21,14 @@
     "projen": "npx projen"
   },
   "devDependencies": {
-    "@cloudy-ts/eslint-plugin": "^0.0.182",
+    "@cloudy-ts/eslint-plugin": "^0.0.183",
     "@tsconfig/node14": "^1.0.3",
     "@types/node": "^14",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
     "@vitest/coverage-c8": "^0.26.2",
     "aws-cdk-lib": "2.58.1",
-    "constructs": "10.1.205",
+    "constructs": "10.1.206",
     "esbuild": "^0.16.12",
     "eslint": "^8",
     "eslint-config-prettier": "^8.5.0",
@@ -40,7 +40,7 @@
     "json-schema": "^0.4.0",
     "npm-check-updates": "^16",
     "prettier": "^2.8.1",
-    "projen": "^0.65.77",
+    "projen": "^0.65.78",
     "standard-version": "^9",
     "tsx": "^3.12.1",
     "typescript": "^4.9.4",
@@ -48,7 +48,7 @@
   },
   "peerDependencies": {
     "aws-cdk-lib": "^2.58.1",
-    "constructs": "^10.1.205"
+    "constructs": "^10.1.206"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.241.0",
