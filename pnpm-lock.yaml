@@ -6,15 +6,15 @@ specifiers:
   '@aws-sdk/smithy-client': ^3.234.0
   '@aws-sdk/types': ^3.226.0
   '@aws-sdk/util-dynamodb': ^3.241.0
-  '@cloudy-ts/eslint-plugin': ^0.0.183
+  '@cloudy-ts/eslint-plugin': ^0.0.184
   '@pulumi/pulumi': '3.33'
   '@tsconfig/node14': ^1.0.3
   '@types/node': ^14
   '@typescript-eslint/eslint-plugin': ^5
   '@typescript-eslint/parser': ^5
-  '@vitest/coverage-c8': ^0.26.2
+  '@vitest/coverage-c8': ^0.26.3
   aws-cdk-lib: 2.58.1
-  constructs: 10.1.206
+  constructs: 10.1.207
   esbuild: ^0.16.12
   eslint: ^8
   eslint-config-prettier: ^8.5.0
@@ -27,12 +27,12 @@ specifiers:
   json-schema: ^0.4.0
   npm-check-updates: ^16
   prettier: ^2.8.1
-  projen: ^0.65.78
+  projen: ^0.65.79
   standard-version: ^9
   ts-toolbelt: ^9.6.0
   tsx: ^3.12.1
   typescript: ^4.9.4
-  vitest: ^0.26.2
+  vitest: ^0.26.3
 
 dependencies:
   '@aws-sdk/client-dynamodb': 3.241.0
@@ -46,14 +46,14 @@ dependencies:
   ts-toolbelt: 9.6.0
 
 devDependencies:
-  '@cloudy-ts/eslint-plugin': 0.0.183_eslint@8.31.0
+  '@cloudy-ts/eslint-plugin': 0.0.184_eslint@8.31.0
   '@tsconfig/node14': 1.0.3
   '@types/node': 14.18.36
   '@typescript-eslint/eslint-plugin': 5.47.1_axni7f4fgvh6tlufnh6hwgsifq
   '@typescript-eslint/parser': 5.47.1_iukboom6ndih5an6iafl45j2fe
-  '@vitest/coverage-c8': 0.26.2
-  aws-cdk-lib: 2.58.1_constructs@10.1.206
-  constructs: 10.1.206
+  '@vitest/coverage-c8': 0.26.3
+  aws-cdk-lib: 2.58.1_constructs@10.1.207
+  constructs: 10.1.207
   eslint: 8.31.0
   eslint-config-prettier: 8.5.0_eslint@8.31.0
   eslint-import-resolver-node: 0.3.6
@@ -64,11 +64,11 @@ devDependencies:
   json-schema: 0.4.0
   npm-check-updates: 16.6.2
   prettier: 2.8.1
-  projen: 0.65.78
+  projen: 0.65.79
   standard-version: 9.5.0
   tsx: 3.12.1
   typescript: 4.9.4
-  vitest: 0.26.2
+  vitest: 0.26.3
 
 packages:
 
@@ -912,11 +912,11 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin/0.0.183_eslint@8.31.0:
-    resolution: {integrity: sha512-u5cDQXRzZ2eubqWk2qgjFozEVEZZul2F633ecirHmR6epskjG4rF6JMRdyZFfMzBsZm8ELv3ajK6X2/8EV074w==}
+  /@cloudy-ts/eslint-plugin/0.0.184_eslint@8.31.0:
+    resolution: {integrity: sha512-8w+LUpmDPeWLMypVYQgR8nkuZoPYaAfRP2P7fm8aCexMajL5K4EnoE9SGKbm14LgkE8zwQowyGp2kozc1YpoBA==}
     engines: {node: '>= 14.18.0'}
     peerDependencies:
-      eslint: ^8.30.0
+      eslint: ^8.31.0
     dependencies:
       eslint: 8.31.0
     dev: true
@@ -925,7 +925,7 @@ packages:
     resolution: {integrity: sha512-lhc/XLith28QdW0HpHZvZKkorWgmCNT7sVelMHDj3HFdTfdqkwEKvT+aXVQtNAmCC39VJhunDkWhONWB7335mg==}
     dependencies:
       '@esbuild-kit/core-utils': 3.0.0
-      get-tsconfig: 4.2.0
+      get-tsconfig: 4.3.0
     dev: true
 
   /@esbuild-kit/core-utils/3.0.0:
@@ -939,7 +939,7 @@ packages:
     resolution: {integrity: sha512-afmtLf6uqxD5IgwCzomtqCYIgz/sjHzCWZFvfS5+FzeYxOURPUo4QcHtqJxbxWOMOogKriZanN/1bJQE/ZL93A==}
     dependencies:
       '@esbuild-kit/core-utils': 3.0.0
-      get-tsconfig: 4.2.0
+      get-tsconfig: 4.3.0
     dev: true
 
   /@esbuild/android-arm/0.15.18:
@@ -1237,7 +1237,7 @@ packages:
     engines: {node: '>= 8'}
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
-      fastq: 1.14.0
+      fastq: 1.15.0
     dev: true
 
   /@npmcli/fs/2.1.2:
@@ -1632,11 +1632,11 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@vitest/coverage-c8/0.26.2:
-    resolution: {integrity: sha512-h7RZ7trUUsq+yixiXhBaGboap7pjee+x59HE9rsz/JbY/evJhgk+biLY5lOgjpyUonPN0Ymz3mxlrXW9Da54SQ==}
+  /@vitest/coverage-c8/0.26.3:
+    resolution: {integrity: sha512-sjmVYPozajWY2DawzuvhYX6hEe/LD6p2xv9VmPvh1zzDeNNVCAnyLcvXoaSMQD522x9bqciuyPrlrnh2iNkE/w==}
     dependencies:
       c8: 7.12.0
-      vitest: 0.26.2
+      vitest: 0.26.3
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -1841,7 +1841,7 @@ packages:
     engines: {node: '>= 4.0.0'}
     dev: true
 
-  /aws-cdk-lib/2.58.1_constructs@10.1.206:
+  /aws-cdk-lib/2.58.1_constructs@10.1.207:
     resolution: {integrity: sha512-Cb7gUYeOVGPana7AOo+1LU6b1sHhHf+Ssyj/aQKWCwAhJkSciF/WWquR6e9FqSbT85LoQWjjJaqcWMqyprW/Rw==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
@@ -1852,7 +1852,7 @@ packages:
       '@aws-cdk/asset-node-proxy-agent-v5': 2.0.38
       '@balena/dockerignore': 1.0.2
       case: 1.6.3
-      constructs: 10.1.206
+      constructs: 10.1.207
       fs-extra: 9.1.0
       ignore: 5.2.4
       jsonschema: 1.4.1
@@ -2214,8 +2214,8 @@ packages:
     resolution: {integrity: sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==}
     dev: true
 
-  /constructs/10.1.206:
-    resolution: {integrity: sha512-jjeA7reb3+GsyR49Yb8X+KmzkYVi6074Lbn3GZVSj4Xy9mELcooQGFO41OvxkQ2FM/hZ42sfAF1Y7kcwXw8Vcg==}
+  /constructs/10.1.207:
+    resolution: {integrity: sha512-Yu5O+4T7NRTUUR+EM9lh/XO68/+xJnuXJBk2hIgAotQ4wsG1oAc6XeuvARQMxN9qtxrXDKye198jHP5gZMIl+A==}
     engines: {node: '>= 14.17.0'}
     dev: true
 
@@ -2961,7 +2961,7 @@ packages:
       enhanced-resolve: 5.12.0
       eslint: 8.31.0
       eslint-plugin-import: 2.26.0_bpx4furzt4ibermwbsj75osuwi
-      get-tsconfig: 4.2.0
+      get-tsconfig: 4.3.0
       globby: 13.1.3
       is-core-module: 2.11.0
       is-glob: 4.0.3
@@ -3240,8 +3240,8 @@ packages:
       strnum: 1.0.5
     dev: false
 
-  /fastq/1.14.0:
-    resolution: {integrity: sha512-eR2D+V9/ExcbF9ls441yIuN6TI2ED1Y2ZcA5BmMtJsOkWOFRJQ0Jt0g1UwqXJJVAb+V+umH5Dfr8oh4EVP7VVg==}
+  /fastq/1.15.0:
+    resolution: {integrity: sha512-wBrocU2LCXXa+lWBt8RoIRD89Fi8OdABODa/kEnyeyjS5aZO5/GNvI5sEINADqP/h8M29UHTHUb53sUu5Ihqdw==}
     dependencies:
       reusify: 1.0.4
     dev: true
@@ -3443,8 +3443,8 @@ packages:
       call-bind: 1.0.2
       get-intrinsic: 1.1.3
 
-  /get-tsconfig/4.2.0:
-    resolution: {integrity: sha512-X8u8fREiYOE6S8hLbq99PeykTDoLVnxvF4DjWKJmz9xy2nNRdUcV8ZN9tniJFeKyTU3qnC9lL8n4Chd6LmVKHg==}
+  /get-tsconfig/4.3.0:
+    resolution: {integrity: sha512-YCcF28IqSay3fqpIu5y3Krg/utCBHBeoflkZyHj/QcqI2nrLPC3ZegS9CmIo+hJb8K7aiGsuUl7PwWVjNG2HQQ==}
     dev: true
 
   /git-raw-commits/2.0.11:
@@ -5053,8 +5053,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen/0.65.78:
-    resolution: {integrity: sha512-/vTVGMWT5kNdgAhPVy3Ye4+xIDXfl9wvwm+oTKtRPFQc17OC4JWdXVBw+PtmmlZ4o/a6Ho+JQ1e62BzLOGziuQ==}
+  /projen/0.65.79:
+    resolution: {integrity: sha512-MSnSYmDWP+A4SfRb4j5+ssTnfsrwzXOCKaR6XvsutF8NyilQgmDPZ/0YA5UT594hU4Ei1O3vNy+/yXRWX7h6qg==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
@@ -6112,8 +6112,8 @@ packages:
       builtins: 5.0.1
     dev: true
 
-  /vite-node/0.26.2_@types+node@14.18.36:
-    resolution: {integrity: sha512-4M/zlatItZAyvrQG+82zQBhgDjRZRhVJYFW4T9wcAKh7eMmSiPOVSeI5zsV9UzHXgCcIDKX0o0r3s4OxExTHqg==}
+  /vite-node/0.26.3_@types+node@14.18.36:
+    resolution: {integrity: sha512-Te2bq0Bfvq6XiO718I+1EinMjpNYKws6SNHKOmVbILAQimKoZKDd+IZLlkaYcBXPpK3HFe2U80k8Zw+m3w/a2w==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     dependencies:
@@ -6167,8 +6167,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.26.2:
-    resolution: {integrity: sha512-Jvqxh6SDy9SsuslkDjts0iDewDIdq4rveEt69YgDuAb1tVDGV0lDepVaeAFraoySWqneJmOt4TngFFNhlw7GfA==}
+  /vitest/0.26.3:
+    resolution: {integrity: sha512-FmHxU9aUCxTi23keF3vxb/Qp0lYXaaJ+jRLGOUmMS3qVTOJvgGE+f1VArupA6pEhaG2Ans4X+zV9dqM5WISMbg==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
@@ -6203,7 +6203,7 @@ packages:
       tinypool: 0.3.0
       tinyspy: 1.0.2
       vite: 4.0.3_@types+node@14.18.36
-      vite-node: 0.26.2_@types+node@14.18.36
+      vite-node: 0.26.3_@types+node@14.18.36
     transitivePeerDependencies:
       - less
       - sass
