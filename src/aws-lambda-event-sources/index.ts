@@ -1,12 +1,12 @@
 /* eslint import/export: "warn" */
 export * from "aws-cdk-lib/aws-lambda-event-sources";
 
-import { Table } from "../aws-dynamodb/table.js";
-import { Topic } from "../aws-sns/topic.js";
-import { Queue } from "../aws-sqs/queue.js";
 import { DynamoStreamEventType } from "./dynamodb.js";
 import { SnsEventType } from "./sns.js";
 import { SqsEventType } from "./sqs.js";
+import { Table } from "../aws-dynamodb/table.js";
+import { Topic } from "../aws-sns/topic.js";
+import { Queue } from "../aws-sqs/queue.js";
 
 export {
   DynamoEventSource,
