@@ -2,9 +2,9 @@ import * as cdk from "aws-cdk-lib";
 import { Construct } from "constructs";
 import { F } from "ts-toolbelt";
 
+import { ITopicSubscription } from "./subscription.js";
 import { ValueType } from "../core/value-type.js";
 import { OpaqueType } from "../opaque-type/index.js";
-import { ITopicSubscription } from "./subscription.js";
 
 type MessageAttribute =
   | {

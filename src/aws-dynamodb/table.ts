@@ -7,6 +7,7 @@ import {
 import { Construct } from "constructs";
 import { F } from "ts-toolbelt";
 
+import { IsExact, typeAssert } from "./table.conditional-type-checks.js";
 import { ValueType } from "../core/value-type.js";
 import { OpaqueType } from "../opaque-type/index.js";
 // // eslint-disable-next-line import/no-extraneous-dependencies
@@ -18,7 +19,6 @@ import { OpaqueType } from "../opaque-type/index.js";
 // } from "aws-cdk-lib/aws-dynamodb";
 
 import { staticTest } from "../static-test.js";
-import { IsExact, typeAssert } from "./table.conditional-type-checks.js";
 
 type DynamodbPrimitiveValues =
   | string

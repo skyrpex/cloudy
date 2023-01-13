@@ -5,7 +5,6 @@ import {
   unmarshall as _unmarshall,
 } from "@aws-sdk/util-dynamodb";
 
-import { StringEncoded } from "../../codec-string/index.js";
 import {
   AttributeMap,
   B,
@@ -17,6 +16,7 @@ import {
   S,
   ToAttributeMap,
 } from "./attribute-value.js";
+import { StringEncoded } from "../../codec-string/index.js";
 
 export const marshall: <
   Item extends object,
