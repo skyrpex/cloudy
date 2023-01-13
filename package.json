@@ -21,34 +21,34 @@
     "projen": "npx projen"
   },
   "devDependencies": {
-    "@cloudy-ts/eslint-plugin": "^0.0.193",
+    "@cloudy-ts/eslint-plugin": "^0.0.194",
     "@tsconfig/node14": "^1.0.3",
     "@types/node": "^14",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
-    "@vitest/coverage-c8": "^0.27.0",
-    "aws-cdk-lib": "2.59.0",
-    "constructs": "10.1.216",
-    "esbuild": "^0.16.16",
+    "@vitest/coverage-c8": "^0.27.1",
+    "aws-cdk-lib": "2.60.0",
+    "constructs": "10.1.218",
+    "esbuild": "^0.16.17",
     "eslint": "^8",
     "eslint-config-prettier": "^8.6.0",
-    "eslint-import-resolver-node": "^0.3.6",
-    "eslint-import-resolver-typescript": "^3.5.2",
-    "eslint-plugin-import": "^2.26.0",
+    "eslint-import-resolver-node": "^0.3.7",
+    "eslint-import-resolver-typescript": "^3.5.3",
+    "eslint-plugin-import": "^2.27.4",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-unicorn": "^44.0.2",
     "json-schema": "^0.4.0",
     "npm-check-updates": "^16",
     "prettier": "^2.8.2",
-    "projen": "^0.66.11",
+    "projen": "^0.66.13",
     "standard-version": "^9",
     "tsx": "^3.12.2",
     "typescript": "^4.9.4",
-    "vitest": "^0.27.0"
+    "vitest": "^0.27.1"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "^2.59.0",
-    "constructs": "^10.1.216"
+    "aws-cdk-lib": "^2.60.0",
+    "constructs": "^10.1.218"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.245.0",
@@ -57,7 +57,7 @@
     "@aws-sdk/types": "^3.226.0",
     "@aws-sdk/util-dynamodb": "^3.245.0",
     "@pulumi/pulumi": "3.33",
-    "esbuild": "^0.16.16",
+    "esbuild": "^0.16.17",
     "find-up": "^6.3.0",
     "ts-toolbelt": "^9.6.0"
   },
