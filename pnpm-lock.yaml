@@ -6,7 +6,7 @@ specifiers:
   '@aws-sdk/smithy-client': ^3.234.0
   '@aws-sdk/types': ^3.226.0
   '@aws-sdk/util-dynamodb': ^3.245.0
-  '@cloudy-ts/eslint-plugin': ^0.0.194
+  '@cloudy-ts/eslint-plugin': ^0.0.195
   '@pulumi/pulumi': '3.33'
   '@tsconfig/node14': ^1.0.3
   '@types/node': ^14
@@ -14,7 +14,7 @@ specifiers:
   '@typescript-eslint/parser': ^5
   '@vitest/coverage-c8': ^0.27.1
   aws-cdk-lib: 2.60.0
-  constructs: 10.1.218
+  constructs: 10.1.219
   esbuild: ^0.16.17
   eslint: ^8
   eslint-config-prettier: ^8.6.0
@@ -27,7 +27,7 @@ specifiers:
   json-schema: ^0.4.0
   npm-check-updates: ^16
   prettier: ^2.8.2
-  projen: ^0.66.13
+  projen: ^0.66.14
   standard-version: ^9
   ts-toolbelt: ^9.6.0
   tsx: ^3.12.2
@@ -46,14 +46,14 @@ dependencies:
   ts-toolbelt: 9.6.0
 
 devDependencies:
-  '@cloudy-ts/eslint-plugin': 0.0.194_eslint@8.31.0
+  '@cloudy-ts/eslint-plugin': 0.0.195_eslint@8.31.0
   '@tsconfig/node14': 1.0.3
   '@types/node': 14.18.36
   '@typescript-eslint/eslint-plugin': 5.48.1_3jon24igvnqaqexgwtxk6nkpse
   '@typescript-eslint/parser': 5.48.1_iukboom6ndih5an6iafl45j2fe
   '@vitest/coverage-c8': 0.27.1
-  aws-cdk-lib: 2.60.0_constructs@10.1.218
-  constructs: 10.1.218
+  aws-cdk-lib: 2.60.0_constructs@10.1.219
+  constructs: 10.1.219
   eslint: 8.31.0
   eslint-config-prettier: 8.6.0_eslint@8.31.0
   eslint-import-resolver-node: 0.3.7
@@ -64,7 +64,7 @@ devDependencies:
   json-schema: 0.4.0
   npm-check-updates: 16.6.2
   prettier: 2.8.2
-  projen: 0.66.13
+  projen: 0.66.14
   standard-version: 9.5.0
   tsx: 3.12.2
   typescript: 4.9.4
@@ -912,8 +912,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin/0.0.194_eslint@8.31.0:
-    resolution: {integrity: sha512-aG1nw09Dijrz1kpMyn8DGpYTXqOAqNNNNMOws1RmP2r2xX538AZTyBrvaTYhHjm93rC490BK7IC+AG0Pvc9RGA==}
+  /@cloudy-ts/eslint-plugin/0.0.195_eslint@8.31.0:
+    resolution: {integrity: sha512-h47X1MZP6zbRfHEW6bv8CL+BcrPINCGwecRaeiBU51LKulJzncSSlzhqCQC3uI6Fey2/Akcs+GqMc6m0zfCkTA==}
     engines: {node: '>= 14.18.0'}
     peerDependencies:
       eslint: ^8.31.0
@@ -1859,7 +1859,7 @@ packages:
     resolution: {integrity: sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==}
     engines: {node: '>= 0.4'}
 
-  /aws-cdk-lib/2.60.0_constructs@10.1.218:
+  /aws-cdk-lib/2.60.0_constructs@10.1.219:
     resolution: {integrity: sha512-AttvwGmS1TDiOgkskrRw4lQoDwoyzjb+M0iMzHEa75xDz7hkykudNVEvWOfcbid+rzkgfLQyElwtf/oz6m+O9A==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
@@ -1870,7 +1870,7 @@ packages:
       '@aws-cdk/asset-node-proxy-agent-v5': 2.0.38
       '@balena/dockerignore': 1.0.2
       case: 1.6.3
-      constructs: 10.1.218
+      constructs: 10.1.219
       fs-extra: 9.1.0
       ignore: 5.2.4
       jsonschema: 1.4.1
@@ -2238,8 +2238,8 @@ packages:
     resolution: {integrity: sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==}
     dev: true
 
-  /constructs/10.1.218:
-    resolution: {integrity: sha512-XTRRbPHw9wyTrRZ5j9OE61KgoW9B3gBkcVJz+FB9qH4xnXh94rJzoipcaCzTMMdtWe/LLGLEsjx25rOld9tosA==}
+  /constructs/10.1.219:
+    resolution: {integrity: sha512-6AfiIOVLFDNxwyW01FvS1YSKj71zxA3vXGXZ4LmXrwYHPRk8fAjmyFNJRxASUdfpUQF0A86IF28aescF3FFx3Q==}
     engines: {node: '>= 14.17.0'}
     dev: true
 
@@ -5113,8 +5113,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen/0.66.13:
-    resolution: {integrity: sha512-IoKe3Hv0d5snckD4Ew8J75h8WtIluxKvepoPJPqKEFV5InJchDruxd6sIU0j7MvgalJ9Pn/IPJDFTGFVCKf48Q==}
+  /projen/0.66.14:
+    resolution: {integrity: sha512-EGL2ss6Y6XZ2XbOdOXfd2noD1REsBRBpBkUyOtYyTsc2VAOVARfqX5dM0zJUPk/ksiyQvaBxmf4UGEU3LQBZhQ==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
