@@ -6,15 +6,15 @@ specifiers:
   '@aws-sdk/smithy-client': ^3.254.0
   '@aws-sdk/types': ^3.254.0
   '@aws-sdk/util-dynamodb': ^3.254.0
-  '@cloudy-ts/eslint-plugin': ^0.0.202
+  '@cloudy-ts/eslint-plugin': ^0.0.203
   '@pulumi/pulumi': '3.33'
   '@tsconfig/node14': ^1.0.3
   '@types/node': ^14
   '@typescript-eslint/eslint-plugin': ^5
   '@typescript-eslint/parser': ^5
-  '@vitest/coverage-c8': ^0.27.2
+  '@vitest/coverage-c8': ^0.27.3
   aws-cdk-lib: 2.61.1
-  constructs: 10.1.226
+  constructs: 10.1.227
   esbuild: ^0.17.3
   eslint: ^8
   eslint-config-prettier: ^8.6.0
@@ -27,12 +27,12 @@ specifiers:
   json-schema: ^0.4.0
   npm-check-updates: ^16
   prettier: ^2.8.3
-  projen: ^0.67.9
+  projen: ^0.67.10
   standard-version: ^9
   ts-toolbelt: ^9.6.0
   tsx: ^3.12.2
   typescript: ^4.9.4
-  vitest: ^0.27.2
+  vitest: ^0.27.3
 
 dependencies:
   '@aws-sdk/client-dynamodb': 3.254.0
@@ -46,14 +46,14 @@ dependencies:
   ts-toolbelt: 9.6.0
 
 devDependencies:
-  '@cloudy-ts/eslint-plugin': 0.0.202_eslint@8.32.0
+  '@cloudy-ts/eslint-plugin': 0.0.203_eslint@8.32.0
   '@tsconfig/node14': 1.0.3
   '@types/node': 14.18.36
   '@typescript-eslint/eslint-plugin': 5.48.2_caon6io6stgpr7lz2rtbhekxqy
   '@typescript-eslint/parser': 5.48.2_7uibuqfxkfaozanbtbziikiqje
-  '@vitest/coverage-c8': 0.27.2
-  aws-cdk-lib: 2.61.1_constructs@10.1.226
-  constructs: 10.1.226
+  '@vitest/coverage-c8': 0.27.3
+  aws-cdk-lib: 2.61.1_constructs@10.1.227
+  constructs: 10.1.227
   eslint: 8.32.0
   eslint-config-prettier: 8.6.0_eslint@8.32.0
   eslint-import-resolver-node: 0.3.7
@@ -64,11 +64,11 @@ devDependencies:
   json-schema: 0.4.0
   npm-check-updates: 16.6.2
   prettier: 2.8.3
-  projen: 0.67.9
+  projen: 0.67.10
   standard-version: 9.5.0
   tsx: 3.12.2
   typescript: 4.9.4
-  vitest: 0.27.2
+  vitest: 0.27.3
 
 packages:
 
@@ -922,8 +922,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin/0.0.202_eslint@8.32.0:
-    resolution: {integrity: sha512-qHhbtdwAngkZ+cD4zmqK6JebaqBUEf7nP4fnupxmY/u3oXa1uE0R0QSLKwq+dt2JbTVVAmAouwCLXZSwUfljYg==}
+  /@cloudy-ts/eslint-plugin/0.0.203_eslint@8.32.0:
+    resolution: {integrity: sha512-OW3GkWXowhqL+B8TVFXV/v7us1vOnp4QdPHgdxVnihtjbYddJad/UJD9zfVY0K4QkhftZvt0XLNvkcGRIpKOaQ==}
     engines: {node: '>= 14.18.0'}
     peerDependencies:
       eslint: ^8.32.0
@@ -1866,11 +1866,11 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@vitest/coverage-c8/0.27.2:
-    resolution: {integrity: sha512-1MFwlwfwIfPFLfu6aN+dZ5jo2aOah5nAwoq/SrqUkt9rXzUmohLOgI1GTT0PpXbJKqaZicIlWuBjiC+BjVgRwQ==}
+  /@vitest/coverage-c8/0.27.3:
+    resolution: {integrity: sha512-xIN4FXXwJqeP6z0gfQ06gbyBMRN2mYvZ4/mn4F96mKXzch0Y93fBeS81eo7D/2YtjbeJBUcU9/amPVb2T+h83Q==}
     dependencies:
       c8: 7.12.0
-      vitest: 0.27.2
+      vitest: 0.27.3
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -2089,7 +2089,7 @@ packages:
     resolution: {integrity: sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==}
     engines: {node: '>= 0.4'}
 
-  /aws-cdk-lib/2.61.1_constructs@10.1.226:
+  /aws-cdk-lib/2.61.1_constructs@10.1.227:
     resolution: {integrity: sha512-+n6rXkIbGtu151XGN54c9+vObUqTKI50skPsZsPo6S0eKgj4ZsYVfS/W6lM4pgv839BwN66hyYAzOvreXAbKeA==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
@@ -2100,7 +2100,7 @@ packages:
       '@aws-cdk/asset-node-proxy-agent-v5': 2.0.38
       '@balena/dockerignore': 1.0.2
       case: 1.6.3
-      constructs: 10.1.226
+      constructs: 10.1.227
       fs-extra: 9.1.0
       ignore: 5.2.4
       jsonschema: 1.4.1
@@ -2468,8 +2468,8 @@ packages:
     resolution: {integrity: sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==}
     dev: true
 
-  /constructs/10.1.226:
-    resolution: {integrity: sha512-pGm81tjyg6Z8PmFTMojnDZxTpxkr/bEv8G1Hu9zExcww03ixAnajFvEX/y8u+T3B513UlIgm/8ks1YNYKNdsRg==}
+  /constructs/10.1.227:
+    resolution: {integrity: sha512-pkLVeo+64NKWFStb1FAEs7FMUdrDh+PySxa7NfT4Ol/gI732cmD8lQTtOW0gLSN4+OIMGHVg3+bTKA3i/4TtPw==}
     engines: {node: '>= 14.17.0'}
     dev: true
 
@@ -5374,8 +5374,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen/0.67.9:
-    resolution: {integrity: sha512-mKSnbKSTCtGWWkdQbdjGtYGwhHRZPDOS+v1psjTSyaNV6T+Ctv7RnxMe/gCFJq3NbJO6TE4CO+lfeYHLMXdniQ==}
+  /projen/0.67.10:
+    resolution: {integrity: sha512-usEkvQHpXuszW9SP86ix+ycdpnpXOVOhuEhyrzVl3aAuU8Nrc2DtD0rV1O9hfIkodHaibhK9DvxwN4TSTqE7OQ==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
@@ -5983,6 +5983,10 @@ packages:
       yargs: 16.2.0
     dev: true
 
+  /std-env/3.3.1:
+    resolution: {integrity: sha512-3H20QlwQsSm2OvAxWIYhs+j01MzzqwMwGiiO1NQaJYZgJZFPuAbf95/DiKRBSTYIJ2FeGUc+B/6mPGcWP9dO3Q==}
+    dev: true
+
   /string-width/4.2.3:
     resolution: {integrity: sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==}
     engines: {node: '>=8'}
@@ -6448,8 +6452,8 @@ packages:
       builtins: 5.0.1
     dev: true
 
-  /vite-node/0.27.2_@types+node@14.18.36:
-    resolution: {integrity: sha512-IDwuVhslF10qCnWOGJui7/2KksAOBHi+UbVo6Pqt4f5lgn+kS2sVvYDsETRG5PSuslisGB5CFGvb9I6FQgymBQ==}
+  /vite-node/0.27.3_@types+node@14.18.36:
+    resolution: {integrity: sha512-eyJYOO64o5HIp8poc4bJX+ZNBwMZeI3f6/JdiUmJgW02Mt7LnoCtDMRVmLaY9S05SIsjGe339ZK4uo2wQ+bF9g==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     dependencies:
@@ -6505,8 +6509,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.27.2:
-    resolution: {integrity: sha512-y7tdsL2uaQy+KF18AlmNHZe29ukyFytlxrpSTwwmgLE2XHR/aPucJP9FLjWoqjgqFlXzRAjHlFJLU+HDyI/OsA==}
+  /vitest/0.27.3:
+    resolution: {integrity: sha512-Ld3UVgRVhJUtqvQ3dW89GxiApFAgBsWJZBCWzK+gA3w2yG68csXlGZZ4WDJURf+8ecNfgrScga6xY+8YSOpiMg==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
@@ -6538,12 +6542,13 @@ packages:
       local-pkg: 0.4.3
       picocolors: 1.0.0
       source-map: 0.6.1
+      std-env: 3.3.1
       strip-literal: 1.0.0
       tinybench: 2.3.1
       tinypool: 0.3.0
       tinyspy: 1.0.2
       vite: 4.0.4_@types+node@14.18.36
-      vite-node: 0.27.2_@types+node@14.18.36
+      vite-node: 0.27.3_@types+node@14.18.36
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less
