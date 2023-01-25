@@ -21,14 +21,14 @@
     "projen": "npx projen"
   },
   "devDependencies": {
-    "@cloudy-ts/eslint-plugin": "^0.0.205",
+    "@cloudy-ts/eslint-plugin": "^0.0.206",
     "@tsconfig/node14": "^1.0.3",
     "@types/node": "^14",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
     "@vitest/coverage-c8": "^0.28.1",
     "aws-cdk-lib": "2.61.1",
-    "constructs": "10.1.229",
+    "constructs": "10.1.230",
     "esbuild": "^0.17.4",
     "eslint": "^8",
     "eslint-config-prettier": "^8.6.0",
@@ -48,14 +48,14 @@
   },
   "peerDependencies": {
     "aws-cdk-lib": "^2.61.1",
-    "constructs": "^10.1.229"
+    "constructs": "^10.1.230"
   },
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.256.0",
-    "@aws-sdk/client-sns": "^3.256.0",
-    "@aws-sdk/smithy-client": "^3.254.0",
-    "@aws-sdk/types": "^3.254.0",
-    "@aws-sdk/util-dynamodb": "^3.256.0",
+    "@aws-sdk/client-dynamodb": "^3.257.0",
+    "@aws-sdk/client-sns": "^3.257.0",
+    "@aws-sdk/smithy-client": "^3.257.0",
+    "@aws-sdk/types": "^3.257.0",
+    "@aws-sdk/util-dynamodb": "^3.257.0",
     "@pulumi/pulumi": "3.33",
     "esbuild": "^0.17.4",
     "find-up": "^6.3.0",
