@@ -6,7 +6,7 @@ specifiers:
   '@aws-sdk/smithy-client': ^3.272.0
   '@aws-sdk/types': ^3.272.0
   '@aws-sdk/util-dynamodb': ^3.276.0
-  '@cloudy-ts/eslint-plugin': ^0.0.232
+  '@cloudy-ts/eslint-plugin': ^0.0.233
   '@pulumi/pulumi': '3.33'
   '@tsconfig/node14': ^1.0.3
   '@types/node': ^14
@@ -14,7 +14,7 @@ specifiers:
   '@typescript-eslint/parser': ^5
   '@vitest/coverage-c8': ^0.28.5
   aws-cdk-lib: 2.66.0
-  constructs: 10.1.257
+  constructs: 10.1.258
   esbuild: ^0.17.10
   eslint: ^8
   eslint-config-prettier: ^8.6.0
@@ -26,7 +26,7 @@ specifiers:
   find-up: ^6.3.0
   npm-check-updates: ^16
   prettier: ^2.8.4
-  projen: ^0.67.63
+  projen: ^0.67.64
   standard-version: ^9
   ts-toolbelt: ^9.6.0
   tsx: ^3.12.3
@@ -45,14 +45,14 @@ dependencies:
   ts-toolbelt: 9.6.0
 
 devDependencies:
-  '@cloudy-ts/eslint-plugin': 0.0.232_eslint@8.34.0
+  '@cloudy-ts/eslint-plugin': 0.0.233_eslint@8.34.0
   '@tsconfig/node14': 1.0.3
   '@types/node': 14.18.36
   '@typescript-eslint/eslint-plugin': 5.53.0_ny4s7qc6yg74faf3d6xty2ofzy
   '@typescript-eslint/parser': 5.53.0_7kw3g6rralp5ps6mg3uyzz6azm
   '@vitest/coverage-c8': 0.28.5
-  aws-cdk-lib: 2.66.0_constructs@10.1.257
-  constructs: 10.1.257
+  aws-cdk-lib: 2.66.0_constructs@10.1.258
+  constructs: 10.1.258
   eslint: 8.34.0
   eslint-config-prettier: 8.6.0_eslint@8.34.0
   eslint-import-resolver-node: 0.3.7
@@ -60,9 +60,9 @@ devDependencies:
   eslint-plugin-import: 2.27.5_2hqppaeqs2axgzqg6vttejknky
   eslint-plugin-prettier: 4.2.1_u5wnrdwibbfomslmnramz52buy
   eslint-plugin-unicorn: 44.0.2_eslint@8.34.0
-  npm-check-updates: 16.7.5
+  npm-check-updates: 16.7.9
   prettier: 2.8.4
-  projen: 0.67.63
+  projen: 0.67.64
   standard-version: 9.5.0
   tsx: 3.12.3
   typescript: 4.9.5
@@ -70,16 +70,16 @@ devDependencies:
 
 packages:
 
-  /@aws-cdk/asset-awscli-v1/2.2.75:
-    resolution: {integrity: sha512-O5E9ZdrNtx9Q8/KrVPjS9DdHbCsa2NsOURa+7eUnlD6n6K3oipPdiceeaUmznjyKhm8oYuHvxdr8qDluxPxGUg==}
+  /@aws-cdk/asset-awscli-v1/2.2.79:
+    resolution: {integrity: sha512-NCVpuGK5sAXLbPrYXJLSo93T8bDx/A3ui9Ey+1a5xVjDCsua61fOJxDaClXEI6EUalLGv/US99A2GWIddWSkCg==}
     dev: true
 
   /@aws-cdk/asset-kubectl-v20/2.1.1:
     resolution: {integrity: sha512-U1ntiX8XiMRRRH5J1IdC+1t5CE89015cwyt5U63Cpk0GnMlN5+h9WsWMlKlPXZR4rdq/m806JRlBMRpBUB2Dhw==}
     dev: true
 
-  /@aws-cdk/asset-node-proxy-agent-v5/2.0.64:
-    resolution: {integrity: sha512-pUG6YX1JTKTMca7YF8D+sCndDQvv5jOS9N+bvsrSVhS0LX499XdPOuKwnM4MZNGV9iEn8xqNlMJPYFdEp1nQaw==}
+  /@aws-cdk/asset-node-proxy-agent-v5/2.0.65:
+    resolution: {integrity: sha512-yApOKhsikPgGno9Tl3BrfUF3iOCz6t9wXLsyK9UjtRUBP/NlUPxp7/N3q9EGr66MeaZ2Pj9j12DxRYXgcDxjwA==}
     dev: true
 
   /@aws-crypto/ie11-detection/3.0.0:
@@ -907,8 +907,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin/0.0.232_eslint@8.34.0:
-    resolution: {integrity: sha512-+Cwo6+WInJRS7NxHCuLpTPwKZ0lnzo0VsclFo89iRxXGM0MFXfOBfHKiFz+Yv/qqXtE9I8qIl03+1G22GcQYnQ==}
+  /@cloudy-ts/eslint-plugin/0.0.233_eslint@8.34.0:
+    resolution: {integrity: sha512-5KqYOUcyPlkfArVNtn6C5f/6UY+GSkntAM8K2Mujj2OIBTbhvjydmCrqLSxXMvuuRwAFdjrBWhmDA3hogJblIg==}
     engines: {node: '>= 14.18.0'}
     peerDependencies:
       eslint: ^8.34.0
@@ -2074,18 +2074,18 @@ packages:
     resolution: {integrity: sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==}
     engines: {node: '>= 0.4'}
 
-  /aws-cdk-lib/2.66.0_constructs@10.1.257:
+  /aws-cdk-lib/2.66.0_constructs@10.1.258:
     resolution: {integrity: sha512-Qmw+lB8uFO+wJX8czw05ciUJObB5gJ5euOXYXXC9BuFPMy1WTA+HYqgSRvgv2mIEnjQb1zlG05oNalvH24Ha7Q==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       constructs: ^10.0.0
     dependencies:
-      '@aws-cdk/asset-awscli-v1': 2.2.75
+      '@aws-cdk/asset-awscli-v1': 2.2.79
       '@aws-cdk/asset-kubectl-v20': 2.1.1
-      '@aws-cdk/asset-node-proxy-agent-v5': 2.0.64
+      '@aws-cdk/asset-node-proxy-agent-v5': 2.0.65
       '@balena/dockerignore': 1.0.2
       case: 1.6.3
-      constructs: 10.1.257
+      constructs: 10.1.258
       fs-extra: 9.1.0
       ignore: 5.2.4
       jsonschema: 1.4.1
@@ -2217,7 +2217,7 @@ packages:
       fs-minipass: 3.0.1
       glob: 8.1.0
       lru-cache: 7.17.0
-      minipass: 4.0.3
+      minipass: 4.2.0
       minipass-collect: 1.0.2
       minipass-flush: 1.0.5
       minipass-pipeline: 1.2.4
@@ -2461,8 +2461,8 @@ packages:
     resolution: {integrity: sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==}
     dev: true
 
-  /constructs/10.1.257:
-    resolution: {integrity: sha512-Wyg17gM+YE/2TsuPMmS+QyWVZ39fTW77AD+87kSs3M94A+0hIrakPH58kif3Q0FlAVyoUDCZIy/qtTBh2AC+jA==}
+  /constructs/10.1.258:
+    resolution: {integrity: sha512-FLEnddBDZ44VkHC26W+5YGhWncHFOj8r6W9ci1JBQVrFJMXVOR+sHd0H+G9j4V+TiyIXuNuWmOSDg1F5QtUtDQ==}
     engines: {node: '>= 14.17.0'}
     dev: true
 
@@ -3441,7 +3441,7 @@ packages:
     resolution: {integrity: sha512-MhaJDcFRTuLidHrIttu0RDGyyXs/IYHVmlcxfLAEFIWjc1vdLAkdwT7Ace2u7DbitWC0toKMl5eJZRYNVreIMw==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dependencies:
-      minipass: 4.0.3
+      minipass: 4.2.0
     dev: true
 
   /fs.realpath/1.0.0:
@@ -4408,7 +4408,7 @@ packages:
       https-proxy-agent: 5.0.1
       is-lambda: 1.0.1
       lru-cache: 7.17.0
-      minipass: 4.0.3
+      minipass: 4.2.0
       minipass-fetch: 3.0.1
       minipass-flush: 1.0.5
       minipass-pipeline: 1.2.4
@@ -4529,7 +4529,7 @@ packages:
     resolution: {integrity: sha512-t9/wowtf7DYkwz8cfMSt0rMwiyNIBXf5CKZ3S5ZMqRqMYT0oLTp0x1WorMI9WTwvaPg21r1JbFxJMum8JrLGfw==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dependencies:
-      minipass: 4.0.3
+      minipass: 4.2.0
       minipass-sized: 1.0.3
       minizlib: 2.1.2
     optionalDependencies:
@@ -4571,8 +4571,8 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /minipass/4.0.3:
-    resolution: {integrity: sha512-OW2r4sQ0sI+z5ckEt5c1Tri4xTgZwYDxpE54eqWlQloQRoWtXjqt9udJ5Z4dSv7wK+nfFI7FRXyCpBSft+gpFw==}
+  /minipass/4.2.0:
+    resolution: {integrity: sha512-ExlilAIS7zJ2EWUMaVXi14H+FnZ18kr17kFkGemMqBx6jW0m8P6XfqwYVPEG53ENlgsED+alVP9ZxC3JzkK23Q==}
     engines: {node: '>=8'}
     dev: true
 
@@ -4716,8 +4716,8 @@ packages:
       npm-normalize-package-bin: 3.0.0
     dev: true
 
-  /npm-check-updates/16.7.5:
-    resolution: {integrity: sha512-g+U/cxA0iTvU/syX0EjXWtV10joEKQlN5s6DCFdvpv6eXSGbSYpOjOtifiyopSekdPnjogVuIDtxNlVdJECR8w==}
+  /npm-check-updates/16.7.9:
+    resolution: {integrity: sha512-2/T9PB0W1uABB1N11jdnPauqNLXMhPUyC0DBeeGlUktcGl/412f40iqFsnNGCqIAag/C37SjLNiW2/yuD7Salw==}
     engines: {node: '>=14.14'}
     hasBin: true
     dependencies:
@@ -4804,7 +4804,7 @@ packages:
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dependencies:
       make-fetch-happen: 11.0.3
-      minipass: 4.0.3
+      minipass: 4.2.0
       minipass-fetch: 3.0.1
       minipass-json-stream: 1.0.1
       minizlib: 2.1.2
@@ -4995,7 +4995,7 @@ packages:
       '@npmcli/run-script': 6.0.0
       cacache: 17.0.4
       fs-minipass: 3.0.1
-      minipass: 4.0.3
+      minipass: 4.2.0
       npm-package-arg: 10.1.0
       npm-packlist: 7.0.4
       npm-pick-manifest: 8.0.1
@@ -5172,8 +5172,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen/0.67.63:
-    resolution: {integrity: sha512-F2LMqcIXvvW7xscMjfqaLUSXOBRCn8vweU1P7+6yfniNdCNsRf2etdRL3nBUuxZ/j7XUwRmy54kv/YCjlNr3Zg==}
+  /projen/0.67.64:
+    resolution: {integrity: sha512-hUJkMiS+6Cae7qyoAxWwm24EkXqpqZj5Kdkd7dkW9dR4Og7xSwJaex+6MmW6dDeLiSSFKReNhj0AoSFEJcoEEw==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
@@ -5776,7 +5776,7 @@ packages:
     resolution: {integrity: sha512-WVy6di9DlPOeBWEjMScpNipeSX2jIZBGEn5Uuo8Q7aIuFEuDX0pw8RxcOjlD1TWP4obi24ki7m/13+nFpcbXrw==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dependencies:
-      minipass: 4.0.3
+      minipass: 4.2.0
     dev: true
 
   /ssri/9.0.1:
@@ -5952,7 +5952,7 @@ packages:
     dependencies:
       chownr: 2.0.0
       fs-minipass: 2.1.0
-      minipass: 4.0.3
+      minipass: 4.2.0
       minizlib: 2.1.2
       mkdirp: 1.0.4
       yallist: 4.0.0
