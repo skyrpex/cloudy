@@ -6,7 +6,7 @@ specifiers:
   '@aws-sdk/smithy-client': ^3.279.0
   '@aws-sdk/types': ^3.272.0
   '@aws-sdk/util-dynamodb': ^3.284.0
-  '@cloudy-ts/eslint-plugin': ^0.0.242
+  '@cloudy-ts/eslint-plugin': ^0.0.243
   '@pulumi/pulumi': '3.33'
   '@tsconfig/node14': ^1.0.3
   '@types/node': ^14
@@ -14,7 +14,7 @@ specifiers:
   '@typescript-eslint/parser': ^5
   '@vitest/coverage-c8': ^0.29.2
   aws-cdk-lib: 2.67.0
-  constructs: 10.1.267
+  constructs: 10.1.268
   esbuild: ^0.17.11
   eslint: ^8
   eslint-config-prettier: ^8.6.0
@@ -26,7 +26,7 @@ specifiers:
   find-up: ^6.3.0
   npm-check-updates: ^16
   prettier: ^2.8.4
-  projen: ^0.67.72
+  projen: ^0.67.73
   standard-version: ^9
   ts-toolbelt: ^9.6.0
   tsx: ^3.12.3
@@ -45,14 +45,14 @@ dependencies:
   ts-toolbelt: 9.6.0
 
 devDependencies:
-  '@cloudy-ts/eslint-plugin': 0.0.242_eslint@8.35.0
+  '@cloudy-ts/eslint-plugin': 0.0.243_eslint@8.35.0
   '@tsconfig/node14': 1.0.3
   '@types/node': 14.18.37
   '@typescript-eslint/eslint-plugin': 5.54.0_6mj2wypvdnknez7kws2nfdgupi
   '@typescript-eslint/parser': 5.54.0_ycpbpc6yetojsgtrx3mwntkhsu
   '@vitest/coverage-c8': 0.29.2_vitest@0.29.2
-  aws-cdk-lib: 2.67.0_constructs@10.1.267
-  constructs: 10.1.267
+  aws-cdk-lib: 2.67.0_constructs@10.1.268
+  constructs: 10.1.268
   eslint: 8.35.0
   eslint-config-prettier: 8.6.0_eslint@8.35.0
   eslint-import-resolver-node: 0.3.7
@@ -62,7 +62,7 @@ devDependencies:
   eslint-plugin-unicorn: 44.0.2_eslint@8.35.0
   npm-check-updates: 16.7.10
   prettier: 2.8.4
-  projen: 0.67.72
+  projen: 0.67.73
   standard-version: 9.5.0
   tsx: 3.12.3
   typescript: 4.9.5
@@ -70,16 +70,16 @@ devDependencies:
 
 packages:
 
-  /@aws-cdk/asset-awscli-v1/2.2.92:
-    resolution: {integrity: sha512-v4zKuXzFcV8XqWBb4k6EBiIuqpDV8ORZ1GfGCDz4AaZt4nMgcZaoxMrCQr+cpDF9YTvodTKc/vX+KxSJIjF/PQ==}
+  /@aws-cdk/asset-awscli-v1/2.2.93:
+    resolution: {integrity: sha512-+FHwuI5DPdwmnrmaiU3UsRSwaqwFz90TNTgEnoverROExEboWtkfY/hPuaqfrAaJ4MQgmQVUEibdPrOJ9qtFgg==}
     dev: true
 
   /@aws-cdk/asset-kubectl-v20/2.1.1:
     resolution: {integrity: sha512-U1ntiX8XiMRRRH5J1IdC+1t5CE89015cwyt5U63Cpk0GnMlN5+h9WsWMlKlPXZR4rdq/m806JRlBMRpBUB2Dhw==}
     dev: true
 
-  /@aws-cdk/asset-node-proxy-agent-v5/2.0.74:
-    resolution: {integrity: sha512-y33xXniA9hJs861JWSc+DP9FDDDrbPOUwihhmnzceCnpSpLYpIhAwf/6+aDhnlrhtQ36LrIYqQSZQN1fDDMtoA==}
+  /@aws-cdk/asset-node-proxy-agent-v5/2.0.75:
+    resolution: {integrity: sha512-NWBFHN4PgvRL36a1nN4johIGAf374ldKbVjMamvG27OVvXvDuLWpmJ3uYZadsHsaM99J5euxrxg855xYjBvlvA==}
     dev: true
 
   /@aws-crypto/ie11-detection/3.0.0:
@@ -907,8 +907,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin/0.0.242_eslint@8.35.0:
-    resolution: {integrity: sha512-OuWSz6KzfFxfdTveMdJg3irD2+DbdZDRCmVo61uIIbTm/7ttKITkaOD06HW14vpU1heNrnhJs+drgxpAZRM3ZQ==}
+  /@cloudy-ts/eslint-plugin/0.0.243_eslint@8.35.0:
+    resolution: {integrity: sha512-iGHq5YSWkHWONFzKvQHrgU6lEuCDrfleIgLEileFqsiuncGaCszeM2yBUJUww/HpbNdZ8h4a0iVQMzsCK+Z9MQ==}
     engines: {node: '>= 14.18.0'}
     peerDependencies:
       eslint: ^8.35.0
@@ -2076,18 +2076,18 @@ packages:
     resolution: {integrity: sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==}
     engines: {node: '>= 0.4'}
 
-  /aws-cdk-lib/2.67.0_constructs@10.1.267:
+  /aws-cdk-lib/2.67.0_constructs@10.1.268:
     resolution: {integrity: sha512-oVD0cZPKTtkGXvFkYLA+vNiq+QzyuQkOe/rDY/BSxi/cEElbu74StKwCFCFGq8ljTAHQjyYeE5dzlB2q8Wq20w==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       constructs: ^10.0.0
     dependencies:
-      '@aws-cdk/asset-awscli-v1': 2.2.92
+      '@aws-cdk/asset-awscli-v1': 2.2.93
       '@aws-cdk/asset-kubectl-v20': 2.1.1
-      '@aws-cdk/asset-node-proxy-agent-v5': 2.0.74
+      '@aws-cdk/asset-node-proxy-agent-v5': 2.0.75
       '@balena/dockerignore': 1.0.2
       case: 1.6.3
-      constructs: 10.1.267
+      constructs: 10.1.268
       fs-extra: 9.1.0
       ignore: 5.2.4
       jsonschema: 1.4.1
@@ -2463,8 +2463,8 @@ packages:
     resolution: {integrity: sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==}
     dev: true
 
-  /constructs/10.1.267:
-    resolution: {integrity: sha512-trA5DrdmXaLXeYzGcmAA1IAyYRB80CdzM1Yn6oXmBVQl4SOX3BSeFdD7sBfpszVW/VuFNB7Y5OnQBcJ62fTeaw==}
+  /constructs/10.1.268:
+    resolution: {integrity: sha512-mT5IE+3nAN9pl2cSjXbQYoQbRKlfoP2bfM4hwes8X6GvyiV29T98Li+axQ/PZuTY15KsO58m5ZThafyK76aeww==}
     engines: {node: '>= 14.17.0'}
     dev: true
 
@@ -4762,7 +4762,7 @@ packages:
       prompts-ncu: 2.5.1
       rc-config-loader: 4.1.2
       remote-git-tags: 3.0.0
-      rimraf: 4.2.0
+      rimraf: 4.3.0
       semver: 7.3.8
       semver-utils: 1.1.4
       source-map-support: 0.5.21
@@ -5200,8 +5200,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen/0.67.72:
-    resolution: {integrity: sha512-Wi3R/CbNtrIUB5sJySH+cQAFi2NhalE1llfe0z9N7Wgv2tq/Dgn1V6amxRSKn51MH2NDVYZEOGDlwQ+GPqhwKA==}
+  /projen/0.67.73:
+    resolution: {integrity: sha512-cEHzyirttdYIXvTIE+OGmEODcFvyGRpbW+jlub3gMGuXaZR7J169xdLUicSiPa0wd7Ld1Y40pqY7iETKyeCuOg==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
@@ -5553,8 +5553,8 @@ packages:
       glob: 7.2.3
     dev: true
 
-  /rimraf/4.2.0:
-    resolution: {integrity: sha512-tPt+gLORNVqRCk0NwuJ5SlMEcOGvt4CCU8sUPqgCFtCbnoNCTd9Q6vq7JlBbxQlACiH14OR28y7piA2Bak9Sxw==}
+  /rimraf/4.3.0:
+    resolution: {integrity: sha512-5qVDXPbByA1qSJEWMv1qAwKsoS22vVpsL2QyxCKBw4gf6XiFo1K3uRLY6uSOOBFDwnqAZtnbILqWKKlzh8bkGg==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
@@ -6030,8 +6030,8 @@ packages:
       globrex: 0.1.2
     dev: true
 
-  /tinybench/2.3.1:
-    resolution: {integrity: sha512-hGYWYBMPr7p4g5IarQE7XhlyWveh1EKhy4wUBS1LrHXCKYgvz+4/jCqgmJqZxxldesn05vccrtME2RLLZNW7iA==}
+  /tinybench/2.4.0:
+    resolution: {integrity: sha512-iyziEiyFxX4kyxSp+MtY1oCH/lvjH3PxFN8PGCDeqcZWAJ/i+9y+nL85w99PxVzrIvew/GSkSbDYtiGVa85Afg==}
     dev: true
 
   /tinypool/0.3.1:
@@ -6421,7 +6421,7 @@ packages:
       source-map: 0.6.1
       std-env: 3.3.2
       strip-literal: 1.0.1
-      tinybench: 2.3.1
+      tinybench: 2.4.0
       tinypool: 0.3.1
       tinyspy: 1.1.1
       vite: 4.1.4_@types+node@14.18.37
