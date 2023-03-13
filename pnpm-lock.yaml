@@ -6,7 +6,7 @@ specifiers:
   '@aws-sdk/smithy-client': ^3.289.0
   '@aws-sdk/types': ^3.289.0
   '@aws-sdk/util-dynamodb': ^3.289.0
-  '@cloudy-ts/eslint-plugin': ^0.0.250
+  '@cloudy-ts/eslint-plugin': ^0.0.251
   '@pulumi/pulumi': '3.33'
   '@tsconfig/node14': ^1.0.3
   '@types/node': ^14
@@ -14,7 +14,7 @@ specifiers:
   '@typescript-eslint/parser': ^5
   '@vitest/coverage-c8': ^0.29.2
   aws-cdk-lib: 2.68.0
-  constructs: 10.1.275
+  constructs: 10.1.276
   esbuild: ^0.17.11
   eslint: ^8
   eslint-config-prettier: ^8.7.0
@@ -26,10 +26,10 @@ specifiers:
   find-up: ^6.3.0
   npm-check-updates: ^16
   prettier: ^2.8.4
-  projen: ^0.67.83
+  projen: ^0.67.84
   standard-version: ^9
   ts-toolbelt: ^9.6.0
-  tsx: ^3.12.3
+  tsx: ^3.12.4
   typescript: ^4.9.5
   vitest: ^0.29.2
 
@@ -45,14 +45,14 @@ dependencies:
   ts-toolbelt: 9.6.0
 
 devDependencies:
-  '@cloudy-ts/eslint-plugin': 0.0.250_eslint@8.36.0
+  '@cloudy-ts/eslint-plugin': 0.0.251_eslint@8.36.0
   '@tsconfig/node14': 1.0.3
   '@types/node': 14.18.37
   '@typescript-eslint/eslint-plugin': 5.54.1_4rfaf6mlw2mmutqjcopwvbftpu
   '@typescript-eslint/parser': 5.54.1_vgl77cfdswitgr47lm5swmv43m
   '@vitest/coverage-c8': 0.29.2_vitest@0.29.2
-  aws-cdk-lib: 2.68.0_constructs@10.1.275
-  constructs: 10.1.275
+  aws-cdk-lib: 2.68.0_constructs@10.1.276
+  constructs: 10.1.276
   eslint: 8.36.0
   eslint-config-prettier: 8.7.0_eslint@8.36.0
   eslint-import-resolver-node: 0.3.7
@@ -62,24 +62,24 @@ devDependencies:
   eslint-plugin-unicorn: 44.0.2_eslint@8.36.0
   npm-check-updates: 16.7.12
   prettier: 2.8.4
-  projen: 0.67.83
+  projen: 0.67.84
   standard-version: 9.5.0
-  tsx: 3.12.3
+  tsx: 3.12.4
   typescript: 4.9.5
   vitest: 0.29.2
 
 packages:
 
-  /@aws-cdk/asset-awscli-v1/2.2.102:
-    resolution: {integrity: sha512-BkgsrU92ooQYfl5MdOrJkjD4MUHb+L6K1zyPfGQ/MWh9K5HS7Mzmz4SH90g+60JWEDwZ5m1KL9md5tyANyIFhw==}
+  /@aws-cdk/asset-awscli-v1/2.2.103:
+    resolution: {integrity: sha512-WBao2LH0NId5cZpLPkcZxBRHlcDGlM7RR6brzJW807kP2fRG7zqYDSK+AvYuCvqYjyWa+a6S5qaVrAroUXg+uw==}
     dev: true
 
   /@aws-cdk/asset-kubectl-v20/2.1.1:
     resolution: {integrity: sha512-U1ntiX8XiMRRRH5J1IdC+1t5CE89015cwyt5U63Cpk0GnMlN5+h9WsWMlKlPXZR4rdq/m806JRlBMRpBUB2Dhw==}
     dev: true
 
-  /@aws-cdk/asset-node-proxy-agent-v5/2.0.82:
-    resolution: {integrity: sha512-mcyIVXWHp5CUKb/C9OHykzQ0FBsW5n91zGhrZXdxDz2GK8Hrk6EFW/+DgYOWjoAGJDjaKriw4XYI7zq9UAxEWA==}
+  /@aws-cdk/asset-node-proxy-agent-v5/2.0.83:
+    resolution: {integrity: sha512-Y3G/gAAUMI4ZPTHmx7T3ope+j0J7Po+jjCE/g4MjESB3jNjUUQ9u6YxcYzxEHdWXE0d9UpBDxlsDdEQDjalZYg==}
     dev: true
 
   /@aws-crypto/ie11-detection/3.0.0:
@@ -907,8 +907,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin/0.0.250_eslint@8.36.0:
-    resolution: {integrity: sha512-LIxm/AevbFwK1vC/rH9YcOZSC8abAmRe3ZXeCch8iZ88ENMXlLhwUcPF8oWVOM3Is4sSc5zp7UT/5XkWNgmppw==}
+  /@cloudy-ts/eslint-plugin/0.0.251_eslint@8.36.0:
+    resolution: {integrity: sha512-hLnJVgw0dJKaR/Ogx6qeVo7S/Ktts+LzWsrQVW28J1vYNDrROJ/ooZetB1vtLK317nBVBTmw8g/I0YQHWuyOpg==}
     engines: {node: '>= 14.18.0'}
     peerDependencies:
       eslint: ^8.36.0
@@ -2021,6 +2021,12 @@ packages:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
     dev: true
 
+  /array-buffer-byte-length/1.0.0:
+    resolution: {integrity: sha512-LPuwb2P+NrQw3XhxGc36+XSvuBPopovXYTR9Ew++Du9Yb/bx5AzBfrIsBoj0EZUifjQU+sHL21sseZ3jerWO/A==}
+    dependencies:
+      call-bind: 1.0.2
+      is-array-buffer: 3.0.2
+
   /array-ify/1.0.0:
     resolution: {integrity: sha512-c5AMf34bKdvPhQ7tBGhqkgKNUzMr4WUs+WDtC2ZUGOUncbxKMTvqxYctiseW3+L4bA8ec+GcZ6/A/FW4m8ukng==}
     dev: true
@@ -2031,7 +2037,7 @@ packages:
     dependencies:
       call-bind: 1.0.2
       define-properties: 1.2.0
-      es-abstract: 1.21.1
+      es-abstract: 1.21.2
       get-intrinsic: 1.2.0
       is-string: 1.0.7
     dev: true
@@ -2051,7 +2057,7 @@ packages:
     dependencies:
       call-bind: 1.0.2
       define-properties: 1.2.0
-      es-abstract: 1.21.1
+      es-abstract: 1.21.2
       es-shim-unscopables: 1.0.0
     dev: true
 
@@ -2061,7 +2067,7 @@ packages:
     dependencies:
       call-bind: 1.0.2
       define-properties: 1.2.0
-      es-abstract: 1.21.1
+      es-abstract: 1.21.2
       es-shim-unscopables: 1.0.0
     dev: true
 
@@ -2071,7 +2077,7 @@ packages:
     dependencies:
       call-bind: 1.0.2
       define-properties: 1.2.0
-      es-abstract: 1.21.1
+      es-abstract: 1.21.2
       es-array-method-boxes-properly: 1.0.0
       is-string: 1.0.7
     dev: false
@@ -2097,18 +2103,18 @@ packages:
     resolution: {integrity: sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==}
     engines: {node: '>= 0.4'}
 
-  /aws-cdk-lib/2.68.0_constructs@10.1.275:
+  /aws-cdk-lib/2.68.0_constructs@10.1.276:
     resolution: {integrity: sha512-roN3xwzv/GleGG3CaJrf+thdzr9WBzJU4LotumEOs+0cGfeXSta8Pm/cGAeY4kplr5r10QWUovH0fv/bi6Vrbw==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       constructs: ^10.0.0
     dependencies:
-      '@aws-cdk/asset-awscli-v1': 2.2.102
+      '@aws-cdk/asset-awscli-v1': 2.2.103
       '@aws-cdk/asset-kubectl-v20': 2.1.1
-      '@aws-cdk/asset-node-proxy-agent-v5': 2.0.82
+      '@aws-cdk/asset-node-proxy-agent-v5': 2.0.83
       '@balena/dockerignore': 1.0.2
       case: 1.6.3
-      constructs: 10.1.275
+      constructs: 10.1.276
       fs-extra: 9.1.0
       ignore: 5.2.4
       jsonschema: 1.4.1
@@ -2484,8 +2490,8 @@ packages:
     resolution: {integrity: sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==}
     dev: true
 
-  /constructs/10.1.275:
-    resolution: {integrity: sha512-t/wi7j+tYCsTWh5NbyctGrM+LMzt+CsPSSqLW4sI2JjgjoMlvN5xZFsfijgXJikeyUhgXbQKWlYJBzZQUFl4DA==}
+  /constructs/10.1.276:
+    resolution: {integrity: sha512-NMYSBZfI0oe1InCer25WPK8X2z5ZCA2yyBrv0xH5uqs9YftE0TyKXV4pLVFf5SDNBJVXLWhq5rxRfGiGt/lvtg==}
     engines: {node: '>= 14.17.0'}
     dev: true
 
@@ -2889,15 +2895,15 @@ packages:
       is-arrayish: 0.2.1
     dev: true
 
-  /es-abstract/1.21.1:
-    resolution: {integrity: sha512-QudMsPOz86xYz/1dG1OuGBKOELjCh99IIWHLzy5znUB6j8xG2yMA7bfTV86VSqKF+Y/H08vQPR+9jyXpuC6hfg==}
+  /es-abstract/1.21.2:
+    resolution: {integrity: sha512-y/B5POM2iBnIxCiernH1G7rC9qQoM77lLIMQLuob0zhp8C56Po81+2Nj0WFKnd0pNReDTnkYryc+zhOzpEIROg==}
     engines: {node: '>= 0.4'}
     dependencies:
+      array-buffer-byte-length: 1.0.0
       available-typed-arrays: 1.0.5
       call-bind: 1.0.2
       es-set-tostringtag: 2.0.1
       es-to-primitive: 1.2.1
-      function-bind: 1.1.1
       function.prototype.name: 1.1.5
       get-intrinsic: 1.2.0
       get-symbol-description: 1.0.0
@@ -2921,6 +2927,7 @@ packages:
       object.assign: 4.1.4
       regexp.prototype.flags: 1.4.3
       safe-regex-test: 1.0.0
+      string.prototype.trim: 1.2.7
       string.prototype.trimend: 1.0.6
       string.prototype.trimstart: 1.0.6
       typed-array-length: 1.0.4
@@ -3488,7 +3495,7 @@ packages:
     dependencies:
       call-bind: 1.0.2
       define-properties: 1.2.0
-      es-abstract: 1.21.1
+      es-abstract: 1.21.2
       functions-have-names: 1.2.3
 
   /functions-have-names/1.2.3:
@@ -4889,7 +4896,7 @@ packages:
       array.prototype.reduce: 1.0.5
       call-bind: 1.0.2
       define-properties: 1.2.0
-      es-abstract: 1.21.1
+      es-abstract: 1.21.2
     dev: false
 
   /object.values/1.1.6:
@@ -4898,7 +4905,7 @@ packages:
     dependencies:
       call-bind: 1.0.2
       define-properties: 1.2.0
-      es-abstract: 1.21.1
+      es-abstract: 1.21.2
     dev: true
 
   /obliterator/1.6.1:
@@ -5221,8 +5228,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen/0.67.83:
-    resolution: {integrity: sha512-M0AfniPM7f5oEqpHwpsnMPTvcGARr6pDUVeBi11LzwuQyxy/yJOcxKcO7+LqOOWfNJexxfPLsm36vHn9D4/P/A==}
+  /projen/0.67.84:
+    resolution: {integrity: sha512-TbsigrbCfLK6Hr+hJVzexfOEo7qqkOK0azGqjBP3awbVti0XzjLmdELllhOXWNXxZI7pfxXzaG0e6vLzDPTDqg==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
@@ -5884,19 +5891,27 @@ packages:
       strip-ansi: 7.0.1
     dev: true
 
+  /string.prototype.trim/1.2.7:
+    resolution: {integrity: sha512-p6TmeT1T3411M8Cgg9wBTMRtY2q9+PNy9EV1i2lIXUN/btt763oIfxwN3RR8VU6wHX8j/1CFy0L+YuThm6bgOg==}
+    engines: {node: '>= 0.4'}
+    dependencies:
+      call-bind: 1.0.2
+      define-properties: 1.2.0
+      es-abstract: 1.21.2
+
   /string.prototype.trimend/1.0.6:
     resolution: {integrity: sha512-JySq+4mrPf9EsDBEDYMOb/lM7XQLulwg5R/m1r0PXEFqrV0qHvl58sdTilSXtKOflCsK2E8jxf+GKC0T07RWwQ==}
     dependencies:
       call-bind: 1.0.2
       define-properties: 1.2.0
-      es-abstract: 1.21.1
+      es-abstract: 1.21.2
 
   /string.prototype.trimstart/1.0.6:
     resolution: {integrity: sha512-omqjMDaY92pbn5HOX7f9IccLA+U1tA9GvtU4JrodiXFfYB7jPzzHpRzpglLAjtUV6bB557zwClJezTqnAiYnQA==}
     dependencies:
       call-bind: 1.0.2
       define-properties: 1.2.0
-      es-abstract: 1.21.1
+      es-abstract: 1.21.2
 
   /string_decoder/1.1.1:
     resolution: {integrity: sha512-n/ShnvDi6FHbbVfviro+WojiFzv+s8MPMHBczVePfUpDJLwoLT0ht1l4YwBCbi8pJAveEEdnkHyPyTP/mzRfwg==}
@@ -6121,8 +6136,8 @@ packages:
       typescript: 4.9.5
     dev: true
 
-  /tsx/3.12.3:
-    resolution: {integrity: sha512-Wc5BFH1xccYTXaQob+lEcimkcb/Pq+0en2s+ruiX0VEIC80nV7/0s7XRahx8NnsoCnpCVUPz8wrqVSPi760LkA==}
+  /tsx/3.12.4:
+    resolution: {integrity: sha512-IZ0Sqm2AwB3pgE+n/g63jLNoZZXinbXfdvNWB06wdwey+/7dlOurdS1Vb5pBGa7VO9nTjAOODbQgKCgHk7JsPA==}
     hasBin: true
     dependencies:
       '@esbuild-kit/cjs-loader': 2.4.2
