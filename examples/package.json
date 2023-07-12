@@ -14,16 +14,17 @@
   },
   "devDependencies": {
     "npm-check-updates": "^16",
-    "projen": "^0.54.51",
-    "typescript": "^4.6.3"
+    "projen": "^0.71.134",
+    "typescript": "^5.1.6"
   },
   "dependencies": {
     "aws-cdk": "^2.22.0",
     "aws-cdk-lib": "^2.22.0",
     "cloudy-cdk-lib": "link:..",
     "constructs": "^10.0.127",
-    "tsx": "^3.9.0"
+    "tsx": "^3.12.7"
   },
+  "pnpm": {},
   "main": "lib/index.js",
   "license": "Apache-2.0",
   "version": "0.0.0",

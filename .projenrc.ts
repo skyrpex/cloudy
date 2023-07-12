@@ -31,6 +31,7 @@ const project = new TypeScriptProject({
   devDeps: ["aws-cdk-lib", "constructs"],
 
   packageManager: NodePackageManager.PNPM,
+  pnpmVersion: "8",
   releaseToNpm: true,
   autoApproveUpgrades: true,
   autoApproveOptions: {
@@ -120,7 +121,7 @@ project.addGitIgnore("*.cjs.map");
 project.addGitIgnore("*.d.ts");
 
 // Tests.
-project.addDevDeps("vitest", "@vitest/coverage-c8");
+project.addDevDeps("vitest", "@vitest/coverage-v8");
 project.testTask.exec("vitest run --coverage --passWithNoTests --dir src");
 project.addPackageIgnore("coverage/");
 

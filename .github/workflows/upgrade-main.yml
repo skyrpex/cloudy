@@ -21,7 +21,7 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v2.2.4
         with:
-          version: "7"
+          version: "8"
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
       - name: Upgrade dependencies
@@ -76,7 +76,7 @@ jobs:
 
             Upgrades project dependencies. See details in [workflow run].
 
-            [Workflow Run]: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            [Workflow Run]: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
             ------
 
@@ -87,7 +87,7 @@ jobs:
           body: |-
             Upgrades project dependencies. See details in [workflow run].
 
-            [Workflow Run]: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            [Workflow Run]: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
             ------
 

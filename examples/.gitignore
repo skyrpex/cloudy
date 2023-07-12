@@ -30,6 +30,7 @@ jspm_packages/
 .yarn-integrity
 .cache
 !/.projenrc.js
+!/.npmrc
 !/.eslintrc.json
 !/tsconfig.json
 !/src/1-hello-world/cdk.json
