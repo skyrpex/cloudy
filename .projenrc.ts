@@ -31,6 +31,7 @@ const project = new TypeScriptProject({
   devDeps: ["aws-cdk-lib", "constructs"],
 
   packageManager: NodePackageManager.PNPM,
+  pnpmVersion: "8",
   releaseToNpm: true,
   autoApproveUpgrades: true,
   autoApproveOptions: {
