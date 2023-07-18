@@ -86,8 +86,8 @@ devDependencies:
     specifier: ^3.0.0
     version: 3.0.0
   projen:
-    specifier: ^0.71.138
-    version: 0.71.138
+    specifier: ^0.71.141
+    version: 0.71.141
   standard-version:
     specifier: ^9
     version: 9.5.0
@@ -1569,8 +1569,8 @@ packages:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
     dev: true
 
-  /@sindresorhus/is@5.5.1:
-    resolution: {integrity: sha512-wTsEUhqTXg1NDW+o9aWANj4LxELwWjqN0F3ltsWwpYoh0NSlMWo+u7FluRrSF2E2uaPYx7dJ3FnTf69git/0ug==}
+  /@sindresorhus/is@5.5.2:
+    resolution: {integrity: sha512-8ZMK+V6YpeZFfW6hU9uAeWVuq8v3t7BaG276gIO+kVqnAcLrHCXdFUOf7kgouyfAarkZtuavIqY3RsXTsTWviw==}
     engines: {node: '>=14.16'}
     dev: true
 
@@ -3224,7 +3224,7 @@ packages:
       is-regex: 1.1.4
       is-shared-array-buffer: 1.0.2
       is-string: 1.0.7
-      is-typed-array: 1.1.10
+      is-typed-array: 1.1.11
       is-weakref: 1.0.2
       object-inspect: 1.12.3
       object-keys: 1.1.1
@@ -4037,7 +4037,7 @@ packages:
     resolution: {integrity: sha512-mThBblvlAF1d4O5oqyvN+ZxLAYwIJK7bpMxgYqPD9okW0C3qm5FFn7k811QrcuEBwaogR3ngOFoCfs6mRv7teQ==}
     engines: {node: '>=14.16'}
     dependencies:
-      '@sindresorhus/is': 5.5.1
+      '@sindresorhus/is': 5.5.2
       '@szmarczak/http-timer': 5.0.1
       cacheable-lookup: 7.0.0
       cacheable-request: 10.2.12
@@ -4295,7 +4295,7 @@ packages:
     dependencies:
       call-bind: 1.0.2
       get-intrinsic: 1.2.1
-      is-typed-array: 1.1.10
+      is-typed-array: 1.1.11
 
   /is-arrayish@0.2.1:
     resolution: {integrity: sha512-zz06S8t0ozoDXMG+ube26zeCTNXcKIPJZJi8hBrF4idCLms4CG9QtK7qBl1boi5ODzFpjswb5JPmHCbMpjaYzg==}
@@ -4467,8 +4467,8 @@ packages:
       text-extensions: 1.9.0
     dev: true
 
-  /is-typed-array@1.1.10:
-    resolution: {integrity: sha512-PJqgEHiWZvMpaFZ3uTc8kHPM4+4ADTlDniuQL7cU/UDA0Ql7F70yGfHph3cLNe+c9toaigv+DFzTJKhc2CtO6A==}
+  /is-typed-array@1.1.11:
+    resolution: {integrity: sha512-l2SCJk9RflSWHQjOJJgNsV5FnE1pq/RpHnYW6ckSjTCYypv07SMbiRSCmLQD63WOv2eXaEwNsn+7kcn3csvYSw==}
     engines: {node: '>= 0.4'}
     dependencies:
       available-typed-arrays: 1.0.5
@@ -5637,8 +5637,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen@0.71.138:
-    resolution: {integrity: sha512-4vtVAy6IgJOyTtvCDolOGcejccM5D+e5pEjjhR0rYTnP6ZGk+/w9OUjTQ0CBOs0ZwOs6Xd+oynks4KDPVqKNcQ==}
+  /projen@0.71.141:
+    resolution: {integrity: sha512-G5CKV/NgmWlmHha9xXhxKliZkT8/ZDc9MQ8QQfY2OFT+gneLFR35xJtSzl3Musnu2AgpN5pd6MKcPffjagp+Tw==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
@@ -6000,8 +6000,8 @@ packages:
       glob: 10.3.3
     dev: true
 
-  /rollup@3.26.2:
-    resolution: {integrity: sha512-6umBIGVz93er97pMgQO08LuH3m6PUb3jlDUUGFsNJB6VgTCUaDFpupf5JfU30529m/UKOgmiX+uY6Sx8cOYpLA==}
+  /rollup@3.26.3:
+    resolution: {integrity: sha512-7Tin0C8l86TkpcMtXvQu6saWH93nhG3dGQ1/+l5V2TDMceTxO7kDiK6GzbfLWNNxqJXm591PcEZUozZm51ogwQ==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
@@ -6651,7 +6651,7 @@ packages:
     dependencies:
       call-bind: 1.0.2
       get-intrinsic: 1.2.1
-      is-typed-array: 1.1.10
+      is-typed-array: 1.1.11
 
   /typed-array-byte-length@1.0.0:
     resolution: {integrity: sha512-Or/+kvLxNpeQ9DtSydonMxCx+9ZXOswtwJn17SNLvhptaXYDJvkFFP5zbfU/uLmvnBJlI4yrnXRxpdWH/M5tNA==}
@@ -6660,7 +6660,7 @@ packages:
       call-bind: 1.0.2
       for-each: 0.3.3
       has-proto: 1.0.1
-      is-typed-array: 1.1.10
+      is-typed-array: 1.1.11
 
   /typed-array-byte-offset@1.0.0:
     resolution: {integrity: sha512-RD97prjEt9EL8YgAgpOkf3O4IF9lhJFr9g0htQkm0rchFp/Vx7LW5Q8fSXXub7BXAODyUQohRMyOc3faCPd0hg==}
@@ -6670,14 +6670,14 @@ packages:
       call-bind: 1.0.2
       for-each: 0.3.3
       has-proto: 1.0.1
-      is-typed-array: 1.1.10
+      is-typed-array: 1.1.11
 
   /typed-array-length@1.0.4:
     resolution: {integrity: sha512-KjZypGq+I/H7HI5HlOoGHkWUUGq+Q0TPhQurLbyrVrvnKTBgzLhIJ7j6J/XTQOi0d1RjyZ0wdas8bKs2p0x3Ng==}
     dependencies:
       call-bind: 1.0.2
       for-each: 0.3.3
-      is-typed-array: 1.1.10
+      is-typed-array: 1.1.11
 
   /typedarray-to-buffer@3.1.5:
     resolution: {integrity: sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==}
@@ -6873,7 +6873,7 @@ packages:
       '@types/node': 14.18.53
       esbuild: 0.18.13
       postcss: 8.4.26
-      rollup: 3.26.2
+      rollup: 3.26.3
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
@@ -6961,7 +6961,7 @@ packages:
       for-each: 0.3.3
       gopd: 1.0.1
       has-tostringtag: 1.0.0
-      is-typed-array: 1.1.10
+      is-typed-array: 1.1.11
 
   /which@2.0.2:
     resolution: {integrity: sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==}
