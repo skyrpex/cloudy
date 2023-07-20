@@ -2,38 +2,31 @@ import {
   PublishBatchCommand as BaseCommand,
   PublishBatchCommandInput as BaseCommandInput,
   PublishBatchCommandOutput as BaseCommandOutput,
-  SNSClientResolvedConfig as ResolvedConfiguration,
-  // PublishBatchRequestEntry as BasePublishBatchRequestEntry,
 } from "@aws-sdk/client-sns";
-import { Command } from "@aws-sdk/smithy-client";
-import { Handler, MiddlewareStack } from "@aws-sdk/types";
 
 import { aws_sns, ValueType } from "../../index.js";
 import { OpaqueType } from "../../opaque-type/index.js";
-import { ServiceInputTypes, ServiceOutputTypes } from "../sns-client.js";
 import { staticTest } from "../static-test.js";
 
-export type PublishBatchRequestEntry<
-  T extends aws_sns.MaterializedTopicProps,
-  // > = BasePublishBatchRequestEntry & {
-> = {
-  Id: string;
-  Message: T["message"];
-} & (T["messageGroupId"] extends never
-  ? {}
-  : {
-      MessageGroupId: T["messageGroupId"];
-    }) &
-  (T["messageDeduplicationId"] extends never
+export type PublishBatchRequestEntry<T extends aws_sns.MaterializedTopicProps> =
+  {
+    Id: string;
+    Message: T["message"];
+  } & (T["messageGroupId"] extends never
     ? {}
     : {
-        MessageDeduplicationId: T["messageDeduplicationId"];
+        MessageGroupId: T["messageGroupId"];
       }) &
-  (T["messageAttributes"] extends never
-    ? {}
-    : {
-        MessageAttributes: T["messageAttributes"];
-      });
+    (T["messageDeduplicationId"] extends never
+      ? {}
+      : {
+          MessageDeduplicationId: T["messageDeduplicationId"];
+        }) &
+    (T["messageAttributes"] extends never
+      ? {}
+      : {
+          MessageAttributes: T["messageAttributes"];
+        });
 
 export type PublishBatchCommandInput<
   T extends aws_sns.MaterializedTopicProps = aws_sns.MaterializedTopicProps,
@@ -44,30 +37,9 @@ export type PublishBatchCommandInput<
 
 export interface PublishBatchCommandOutput extends BaseCommandOutput {}
 
-export class PublishBatchCommand<T extends aws_sns.MaterializedTopicProps>
-  implements
-    Command<BaseCommandInput, BaseCommandOutput, ResolvedConfiguration>
-{
-  private readonly command: BaseCommand;
-
+export class PublishBatchCommand<T extends aws_sns.MaterializedTopicProps> {
   constructor(input: PublishBatchCommandInput<T>) {
-    this.command = new BaseCommand(input as unknown as BaseCommandInput);
-  }
-
-  get input(): BaseCommandInput {
-    return this.command.input;
-  }
-
-  get middlewareStack(): MiddlewareStack<BaseCommandInput, BaseCommandOutput> {
-    return this.command.middlewareStack;
-  }
-
-  resolveMiddleware(
-    clientStack: MiddlewareStack<ServiceInputTypes, ServiceOutputTypes>,
-    configuration: ResolvedConfiguration,
-    options: any,
-  ): Handler<BaseCommandInput, BaseCommandOutput> {
-    return this.command.resolveMiddleware(clientStack, configuration, options);
+    return new BaseCommand(input as unknown as BaseCommandInput);
   }
 }
 

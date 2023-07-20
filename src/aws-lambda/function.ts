@@ -39,7 +39,7 @@ export class Function extends BaseFunction {
       // Use a dummy code object until we can get the code from the properties.
       code: Code.fromInline(" "),
       handler: "index.handler",
-      runtime: Runtime.NODEJS_16_X,
+      runtime: Runtime.NODEJS_18_X,
     });
 
     const promise = Promise.resolve(properties.code).then((code) => {

@@ -2,10 +2,7 @@ import {
   PublishCommand as BaseCommand,
   PublishCommandInput as BaseCommandInput,
   PublishCommandOutput as BaseCommandOutput,
-  SNSClientResolvedConfig as ResolvedConfiguration,
 } from "@aws-sdk/client-sns";
-import { Command } from "@aws-sdk/smithy-client";
-import { Handler, MiddlewareStack } from "@aws-sdk/types";
 
 import {
   MaterializedTopicProps as MaterializedTopicProps,
@@ -14,7 +11,6 @@ import {
 } from "../../aws-sns/topic.js";
 import { ValueType } from "../../core/value-type.js";
 import { OpaqueType } from "../../opaque-type/index.js";
-import { ServiceInputTypes, ServiceOutputTypes } from "../sns-client.js";
 import { staticTest } from "../static-test.js";
 
 export type PublishCommandInput<
@@ -47,30 +43,9 @@ export type PublishCommandInput<
 
 export interface PublishCommandOutput extends BaseCommandOutput {}
 
-export class PublishCommand<T extends MaterializedTopicProps>
-  implements
-    Command<BaseCommandInput, BaseCommandOutput, ResolvedConfiguration>
-{
-  private readonly command: BaseCommand;
-
+export class PublishCommand<T extends MaterializedTopicProps> {
   constructor(input: PublishCommandInput<T>) {
-    this.command = new BaseCommand(input as unknown as BaseCommandInput);
-  }
-
-  get input(): BaseCommandInput {
-    return this.command.input;
-  }
-
-  get middlewareStack(): MiddlewareStack<BaseCommandInput, BaseCommandOutput> {
-    return this.command.middlewareStack;
-  }
-
-  resolveMiddleware(
-    clientStack: MiddlewareStack<ServiceInputTypes, ServiceOutputTypes>,
-    configuration: ResolvedConfiguration,
-    options: any,
-  ): Handler<BaseCommandInput, BaseCommandOutput> {
-    return this.command.resolveMiddleware(clientStack, configuration, options);
+    return new BaseCommand(input);
   }
 }
 
