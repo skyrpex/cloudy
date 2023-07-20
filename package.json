@@ -55,7 +55,7 @@
     "@aws-sdk/smithy-client": "^3.370.0",
     "@aws-sdk/types": "^3.370.0",
     "@aws-sdk/util-dynamodb": "^3.370.0",
-    "@pulumi/pulumi": "3.33",
+    "@pulumi/pulumi": "~3.75.0",
     "esbuild": "^0.18.14",
     "find-up": "^6.3.0",
     "ts-toolbelt": "^9.6.0"
