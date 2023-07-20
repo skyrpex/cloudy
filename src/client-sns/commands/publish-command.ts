@@ -2,8 +2,11 @@ import {
   PublishCommand as BaseCommand,
   PublishCommandInput as BaseCommandInput,
   PublishCommandOutput as BaseCommandOutput,
+  SNSClientResolvedConfig as ResolvedConfiguration,
 } from "@aws-sdk/client-sns";
 
+import { Command } from "@aws-sdk/smithy-client";
+import { Handler, MiddlewareStack } from "@aws-sdk/types";
 import {
   MaterializedTopicProps as MaterializedTopicProps,
   Topic,
@@ -11,7 +14,8 @@ import {
 } from "../../aws-sns/topic.js";
 import { ValueType } from "../../core/value-type.js";
 import { OpaqueType } from "../../opaque-type/index.js";
-import { staticTest } from "../static-test.js";
+import { staticTest } from "../../static-test.js";
+import { ServiceInputTypes, ServiceOutputTypes } from "../sns-client.js";
 
 export type PublishCommandInput<
   T extends MaterializedTopicProps = MaterializedTopicProps,
@@ -43,7 +47,18 @@ export type PublishCommandInput<
 
 export interface PublishCommandOutput extends BaseCommandOutput {}
 
-export class PublishCommand<T extends MaterializedTopicProps> {
+export class PublishCommand<T extends MaterializedTopicProps>
+  implements
+    Command<BaseCommandInput, BaseCommandOutput, ResolvedConfiguration>
+{
+  input: any;
+  middlewareStack: any;
+  // @ts-expect-error
+  resolveMiddleware: (
+    clientStack: MiddlewareStack<ServiceInputTypes, ServiceOutputTypes>,
+    configuration: ResolvedConfiguration,
+    options: any,
+  ) => Handler<BaseCommandInput, BaseCommandOutput>;
   constructor(input: PublishCommandInput<T>) {
     return new BaseCommand(input);
   }

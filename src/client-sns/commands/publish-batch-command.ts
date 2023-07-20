@@ -2,11 +2,15 @@ import {
   PublishBatchCommand as BaseCommand,
   PublishBatchCommandInput as BaseCommandInput,
   PublishBatchCommandOutput as BaseCommandOutput,
+  SNSClientResolvedConfig as ResolvedConfiguration,
 } from "@aws-sdk/client-sns";
 
+import { Command } from "@aws-sdk/smithy-client";
+import { Handler, MiddlewareStack } from "@aws-sdk/types";
 import { aws_sns, ValueType } from "../../index.js";
 import { OpaqueType } from "../../opaque-type/index.js";
-import { staticTest } from "../static-test.js";
+import { staticTest } from "../../static-test.js";
+import { ServiceInputTypes, ServiceOutputTypes } from "../sns-client.js";
 
 export type PublishBatchRequestEntry<T extends aws_sns.MaterializedTopicProps> =
   {
@@ -37,7 +41,18 @@ export type PublishBatchCommandInput<
 
 export interface PublishBatchCommandOutput extends BaseCommandOutput {}
 
-export class PublishBatchCommand<T extends aws_sns.MaterializedTopicProps> {
+export class PublishBatchCommand<T extends aws_sns.MaterializedTopicProps>
+  implements
+    Command<BaseCommandInput, BaseCommandOutput, ResolvedConfiguration>
+{
+  input: any;
+  middlewareStack: any;
+  // @ts-expect-error
+  resolveMiddleware: (
+    clientStack: MiddlewareStack<ServiceInputTypes, ServiceOutputTypes>,
+    configuration: ResolvedConfiguration,
+    options: any,
+  ) => Handler<BaseCommandInput, BaseCommandOutput>;
   constructor(input: PublishBatchCommandInput<T>) {
     return new BaseCommand(input as unknown as BaseCommandInput);
   }

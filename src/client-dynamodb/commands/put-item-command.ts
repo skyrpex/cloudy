@@ -2,7 +2,10 @@ import {
   PutItemCommand as BaseCommand,
   PutItemCommandInput as BaseCommandInput,
   PutItemCommandOutput as BaseCommandOutput,
+  DynamoDBClientResolvedConfig as ResolvedConfiguration,
 } from "@aws-sdk/client-dynamodb";
+import { Command } from "@aws-sdk/smithy-client";
+import { Handler, MiddlewareStack } from "@aws-sdk/types";
 import { AttributeType } from "aws-cdk-lib/aws-dynamodb";
 
 import {
@@ -13,6 +16,7 @@ import {
 import { ValueType } from "../../core/value-type.js";
 import { OpaqueType } from "../../opaque-type/index.js";
 import { staticTest } from "../../static-test.js";
+import { ServiceInputTypes, ServiceOutputTypes } from "../dynamodb-client.js";
 import { ToAttributeMap } from "../util/attribute-value.js";
 
 export type PutItemCommandInput<
@@ -33,7 +37,18 @@ export type PutItemCommandInput<
 
 export interface PutItemCommandOutput extends BaseCommandOutput {}
 
-export class PutItemCommand<T extends MaterializedTableProps> {
+export class PutItemCommand<T extends MaterializedTableProps>
+  implements
+    Command<BaseCommandInput, BaseCommandOutput, ResolvedConfiguration>
+{
+  input: any;
+  middlewareStack: any;
+  // @ts-expect-error
+  resolveMiddleware: (
+    clientStack: MiddlewareStack<ServiceInputTypes, ServiceOutputTypes>,
+    configuration: ResolvedConfiguration,
+    options: any,
+  ) => Handler<BaseCommandInput, BaseCommandOutput>;
   constructor(input: PutItemCommandInput<T>) {
     return new BaseCommand(input);
   }
