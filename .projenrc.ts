@@ -25,7 +25,7 @@ const project = new TypeScriptProject({
     "esbuild",
     "find-up",
     "ts-toolbelt",
-    "@pulumi/pulumi@3.33",
+    "@pulumi/pulumi",
   ],
   peerDeps: ["aws-cdk-lib", "constructs"],
   devDeps: ["aws-cdk-lib", "constructs"],
@@ -83,6 +83,8 @@ project.addPackageIgnore(".prettierrc*");
 project.addPackageIgnore(".*.ts");
 project.addPackageIgnore("*.ts");
 project.addPackageIgnore("pnpm-lock.yaml");
+
+project.addGitIgnore("cdk.out/");
 
 // Compile and export.
 const entries = [
@@ -194,11 +196,11 @@ for (const example of [
   "2-hello-world-alternate",
   "3-publish-to-topic",
 ]) {
-  new SampleFile(examples, `src/${example}/index.ts`, {
+  new SampleFile(examples, `src/${example}/index.mts`, {
     contents: [
       'import * as cdk from "@cloudy-ts/cdk";',
       "",
-      'import { buildExampleStackName } from "../util.js";',
+      'import { buildExampleStackName } from "../util.mjs";',
       "",
       "const app = new cdk.App();",
       "const stack = new cdk.Stack(app, buildExampleStackName(import.meta.url));",
@@ -207,7 +209,7 @@ for (const example of [
   });
   new JsonFile(examples, `src/${example}/cdk.json`, {
     obj: {
-      app: "pnpm exec tsx index.ts",
+      app: "pnpm exec tsx index.mts",
     },
   });
 }

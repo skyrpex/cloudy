@@ -1,7 +1,7 @@
 import * as cdk from "cloudy-cdk-lib";
 import { SNSClient, PublishCommand } from "cloudy-cdk-lib/client-sns";
 
-import { buildExampleStackName } from "../util.js";
+import { buildExampleStackName } from "../util.mjs";
 
 const app = new cdk.App();
 const stack = new cdk.Stack(app, buildExampleStackName(import.meta.url));

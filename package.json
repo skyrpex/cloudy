@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@cloudy-ts/eslint-plugin": "^0.0.260",
-    "@tsconfig/node14": "^1.0.3",
+    "@tsconfig/node14": "^14.1.0",
     "@types/node": "^14",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
@@ -36,7 +36,7 @@
     "eslint-import-resolver-typescript": "^3.5.5",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-prettier": "^5.0.0",
-    "eslint-plugin-unicorn": "^47.0.0",
+    "eslint-plugin-unicorn": "^48.0.0",
     "npm-check-updates": "^16",
     "prettier": "^3.0.0",
     "projen": "^0.71.144",
@@ -55,7 +55,7 @@
     "@aws-sdk/smithy-client": "^3.370.0",
     "@aws-sdk/types": "^3.370.0",
     "@aws-sdk/util-dynamodb": "^3.370.0",
-    "@pulumi/pulumi": "3.33",
+    "@pulumi/pulumi": "~3.75.0",
     "esbuild": "^0.18.14",
     "find-up": "^6.3.0",
     "ts-toolbelt": "^9.6.0"

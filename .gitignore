@@ -46,6 +46,7 @@ jspm_packages/
 !/tsconfig.json
 !/tsconfig.dev.json
 !/.eslintrc.json
+cdk.out/
 !/src/
 /lib
 /dist/

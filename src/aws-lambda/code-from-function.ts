@@ -84,5 +84,6 @@ export async function codeFromFunction(function_: (...any: any[]) => any) {
   return {
     code,
     tokens,
+    sourceCode,
   };
 }

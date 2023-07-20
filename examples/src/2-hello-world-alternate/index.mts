@@ -2,7 +2,7 @@
 // the same objects, including some additional constructs.
 import * as cdk from "cloudy-cdk-lib";
 
-import { buildExampleStackName } from "../util.js";
+import { buildExampleStackName } from "../util.mjs";
 
 const app = new cdk.App();
 const stack = new cdk.Stack(app, buildExampleStackName(import.meta.url));
