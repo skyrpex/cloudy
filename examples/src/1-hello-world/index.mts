@@ -1,7 +1,7 @@
 import * as cloudy from "cloudy-cdk-lib";
 import * as cdk from "aws-cdk-lib";
 
-import { buildExampleStackName } from "../util.js";
+import { buildExampleStackName } from "../util.mjs";
 
 const app = new cdk.App();
 const stack = new cdk.Stack(app, buildExampleStackName(import.meta.url));
@@ -14,5 +14,6 @@ new cloudy.aws_lambda.CallbackFunction(stack, "HelloWorld", {
   // topics, DynamoDB streams, etc.
   async handler(name: string) {
     console.log(`hello world, ${name}!`);
+    return `hello world, ${name}!`;
   },
 });

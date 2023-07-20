@@ -84,6 +84,8 @@ project.addPackageIgnore(".*.ts");
 project.addPackageIgnore("*.ts");
 project.addPackageIgnore("pnpm-lock.yaml");
 
+project.addGitIgnore("cdk.out/");
+
 // Compile and export.
 const entries = [
   "assertions",
