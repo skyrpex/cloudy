@@ -236,7 +236,7 @@
           "exec": "npm-check-updates --dep dev --upgrade --target=minor --reject='@pulumi/pulumi'"
         },
         {
-          "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='@pulumi/pulumi'"
+          "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='@pulumi/pulumi'"
         },
         {
           "exec": "npm-check-updates --dep peer --upgrade --target=minor --reject='@pulumi/pulumi'"
@@ -245,7 +245,7 @@
           "exec": "npm-check-updates --dep prod --upgrade --target=minor --reject='@pulumi/pulumi'"
         },
         {
-          "exec": "npm-check-updates --dep bundle --upgrade --target=minor --reject='@pulumi/pulumi'"
+          "exec": "npm-check-updates --dep optional --upgrade --target=minor --reject='@pulumi/pulumi'"
         },
         {
           "exec": "pnpm i --no-frozen-lockfile"
