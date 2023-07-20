@@ -37,7 +37,7 @@ new cloudy.aws_lambda.Function(stack, "Function", {
     );
   }),
   handler: "index.handler",
-  runtime: cdk.aws_lambda.Runtime.NODEJS_16_X,
+  runtime: cdk.aws_lambda.Runtime.NODEJS_18_X,
 });
 // Must call the following before synth.
 await cloudy.waitForAsyncDependencies(app);
@@ -75,7 +75,7 @@ new cloudy.aws_lambda.Function(stack, "Function", {
     );
   }),
   handler: "index.handler",
-  runtime: cdk.aws_lambda.Runtime.NODEJS_16_X,
+  runtime: cdk.aws_lambda.Runtime.NODEJS_18_X,
 });
 // Either...
 await app.waitForAsyncDependencies();
@@ -97,7 +97,7 @@ const stack = new cdk.Stack(app, "Stack");
 const template = cdk.assertions.Template.fromStack(stack);
 template.hasResourceProperties("AWS::Lambda::Function", {
   Handler: "index.handler",
-  Runtime: cdk.aws_lambda.Runtime.NODEJS_16_X.name,
+  Runtime: cdk.aws_lambda.Runtime.NODEJS_18_X.name,
 });
 ```
 
@@ -112,6 +112,6 @@ const stack = new cdk.Stack(app, "Stack");
 const template = await cloudy.assertions.Template.fromStack(stack);
 template.hasResourceProperties("AWS::Lambda::Function", {
   Handler: "index.handler",
-  Runtime: cdk.aws_lambda.Runtime.NODEJS_16_X.name,
+  Runtime: cdk.aws_lambda.Runtime.NODEJS_18_X.name,
 });
 ```

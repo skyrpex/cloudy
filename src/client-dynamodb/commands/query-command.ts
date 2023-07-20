@@ -48,38 +48,12 @@ export type QueryCommandInput<
 
 export interface QueryCommandOutput extends BaseCommandOutput {}
 
-// export class QueryCommand<
-//   T extends MaterializedTableProps = MaterializedTableProps,
-//   FilterExpression extends string = string,
-//   KeyConditionExpression extends string = string,
-//   ProjectionExpression extends string = string,
-// > extends CommandProxy<
-//   BaseCommandInput,
-//   BaseCommandOutput,
-//   DynamoDBClientResolvedConfig
-// > {
-//   constructor(
-//     input: QueryCommandInput<
-//       T,
-//       FilterExpression,
-//       KeyConditionExpression,
-//       ProjectionExpression
-//     >,
-//   ) {
-//     super(new BaseCommand(input as unknown as BaseCommandInput));
-//   }
-// }
-
 export class QueryCommand<
   T extends MaterializedTableProps = MaterializedTableProps,
   FilterExpression extends string = string,
   KeyConditionExpression extends string = string,
   ProjectionExpression extends string = string,
-> implements
-    Command<BaseCommandInput, BaseCommandOutput, ResolvedConfiguration>
-{
-  private readonly command: BaseCommand;
-
+> {
   constructor(
     input: QueryCommandInput<
       T,
@@ -88,22 +62,6 @@ export class QueryCommand<
       ProjectionExpression
     >,
   ) {
-    this.command = new BaseCommand(input as unknown as BaseCommandInput);
-  }
-
-  get input(): BaseCommandInput {
-    return this.command.input;
-  }
-
-  get middlewareStack(): MiddlewareStack<BaseCommandInput, BaseCommandOutput> {
-    return this.command.middlewareStack;
-  }
-
-  resolveMiddleware(
-    clientStack: MiddlewareStack<ServiceInputTypes, ServiceOutputTypes>,
-    configuration: ResolvedConfiguration,
-    options: any,
-  ): Handler<BaseCommandInput, BaseCommandOutput> {
-    return this.command.resolveMiddleware(clientStack, configuration, options);
+    return new BaseCommand(input as unknown as BaseCommandInput);
   }
 }

@@ -49,7 +49,7 @@ export interface CallbackFunctionProps<InputType, OutputType>
 
 const handler = "index.handler";
 
-const runtime = Runtime.NODEJS_16_X;
+const runtime = Runtime.NODEJS_18_X;
 
 export class CallbackFunction<InputType, OutputType>
   extends Function
