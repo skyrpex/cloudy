@@ -53,7 +53,17 @@ export class QueryCommand<
   FilterExpression extends string = string,
   KeyConditionExpression extends string = string,
   ProjectionExpression extends string = string,
-> {
+> implements
+    Command<BaseCommandInput, BaseCommandOutput, ResolvedConfiguration>
+{
+  input: any;
+  middlewareStack: any;
+  // @ts-expect-error
+  resolveMiddleware: (
+    clientStack: MiddlewareStack<ServiceInputTypes, ServiceOutputTypes>,
+    configuration: ResolvedConfiguration,
+    options: any,
+  ) => Handler<BaseCommandInput, BaseCommandOutput>;
   constructor(
     input: QueryCommandInput<
       T,
