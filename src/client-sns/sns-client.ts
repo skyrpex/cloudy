@@ -5,8 +5,8 @@ import {
   ServiceInputTypes as BaseServiceInputTypes,
   ServiceOutputTypes as BaseServiceOutputTypes,
 } from "@aws-sdk/client-sns";
-import { Client } from "@smithy/smithy-client";
 import { Command, HttpHandlerOptions, MiddlewareStack } from "@aws-sdk/types";
+import { Client } from "@smithy/smithy-client";
 
 import {
   PublishBatchCommandInput,
