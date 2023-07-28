@@ -111,11 +111,11 @@
       "type": "runtime"
     },
     {
-      "name": "@aws-sdk/client-sns",
+      "name": "@aws-sdk/client-lambda",
       "type": "runtime"
     },
     {
-      "name": "@aws-sdk/smithy-client",
+      "name": "@aws-sdk/client-sns",
       "type": "runtime"
     },
     {
@@ -128,6 +128,10 @@
     },
     {
       "name": "@pulumi/pulumi",
+      "type": "runtime"
+    },
+    {
+      "name": "@smithy/smithy-client",
       "type": "runtime"
     },
     {

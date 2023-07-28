@@ -6,8 +6,8 @@ import {
   ReturnConsumedCapacity,
   ReturnItemCollectionMetrics,
 } from "@aws-sdk/client-dynamodb";
-import { Command } from "@aws-sdk/smithy-client";
 import { Handler, MiddlewareStack } from "@aws-sdk/types";
+import { Command } from "@smithy/smithy-client";
 
 import {
   MaterializedTableProps as MaterializedTableProps,

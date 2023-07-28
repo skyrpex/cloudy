@@ -1,28 +1,17 @@
 import {
-  SNSClient as BaseClient,
-  SNSClientConfig as BaseClientConfiguration,
-  SNSClientResolvedConfig as BaseClientResolvedConfiguration,
+  LambdaClient as BaseClient,
+  LambdaClientConfig as BaseClientConfiguration,
+  LambdaClientResolvedConfig as BaseClientResolvedConfiguration,
   ServiceInputTypes as BaseServiceInputTypes,
   ServiceOutputTypes as BaseServiceOutputTypes,
-} from "@aws-sdk/client-sns";
+} from "@aws-sdk/client-lambda";
 import { Command, HttpHandlerOptions, MiddlewareStack } from "@aws-sdk/types";
 import { Client } from "@smithy/smithy-client";
 
-import {
-  PublishBatchCommandInput,
-  PublishBatchCommandOutput,
-  PublishCommandInput,
-  PublishCommandOutput,
-} from "./commands/index.js";
+import { InvokeCommandInput, InvokeCommandOutput } from "./commands/index.js";
 
-export type ServiceInputTypes =
-  | PublishBatchCommandInput
-  | PublishCommandInput
-  | BaseServiceInputTypes;
-export type ServiceOutputTypes =
-  | PublishBatchCommandOutput
-  | PublishCommandOutput
-  | BaseServiceOutputTypes;
+export type ServiceInputTypes = InvokeCommandInput | BaseServiceInputTypes;
+export type ServiceOutputTypes = InvokeCommandOutput | BaseServiceOutputTypes;
 
 type IClient = Client<
   HttpHandlerOptions,
@@ -32,10 +21,10 @@ type IClient = Client<
 >;
 
 /**
- * A client for AWS SNS.
- * @see {@link BaseClient SNSClient from "@aws-sdk/client-sns"}
+ * A client for AWS Lambda.
+ * @see {@link BaseClient LambdaClient from "@aws-sdk/client-lambda"}
  */
-export class SNSClient implements IClient {
+export class LambdaClient implements IClient {
   private client: IClient | undefined;
 
   constructor(readonly configuration: BaseClientConfiguration) {}
