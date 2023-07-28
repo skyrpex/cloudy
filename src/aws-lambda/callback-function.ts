@@ -23,7 +23,13 @@ export interface Context {
 import { codeFromFunction } from "./code-from-function.js";
 import { IEventSource } from "./event-source.js";
 import { IFunction } from "./function-base.js";
-import { FunctionProps as FunctionProps, Function } from "./function.js";
+import { FunctionProps, Function } from "./function.js";
+import { OpaqueType } from "../opaque-type/index.js";
+
+export type FunctionName<InputType, OutputType> = OpaqueType<
+  string,
+  { readonly t: unique symbol; readonly i: InputType; readonly o: OutputType }
+>;
 
 export interface CallbackFunctionProps<InputType, OutputType>
   extends Omit<FunctionProps, "code" | "handler" | "runtime" | "events"> {
@@ -55,6 +61,11 @@ export class CallbackFunction<InputType, OutputType>
   extends Function
   implements IFunction<InputType, OutputType>
 {
+  /**
+   * Name of this function.
+   */
+  public declare readonly functionName: FunctionName<InputType, OutputType>;
+
   constructor(
     scope: Construct,
     id: string,

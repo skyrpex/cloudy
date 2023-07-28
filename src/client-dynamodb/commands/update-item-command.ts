@@ -5,7 +5,7 @@ import {
   DynamoDBClientResolvedConfig as ResolvedConfiguration,
 } from "@aws-sdk/client-dynamodb";
 
-import { Command } from "@aws-sdk/smithy-client";
+import { Command } from "@smithy/smithy-client";
 import { Handler, MiddlewareStack } from "@aws-sdk/types";
 import {
   MaterializedTableProps as MaterializedTableProps,

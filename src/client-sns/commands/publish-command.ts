@@ -5,7 +5,7 @@ import {
   SNSClientResolvedConfig as ResolvedConfiguration,
 } from "@aws-sdk/client-sns";
 
-import { Command } from "@aws-sdk/smithy-client";
+import { Command } from "@smithy/smithy-client";
 import { Handler, MiddlewareStack } from "@aws-sdk/types";
 import {
   MaterializedTopicProps as MaterializedTopicProps,

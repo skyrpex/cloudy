@@ -19,7 +19,8 @@ const project = new TypeScriptProject({
   deps: [
     "@aws-sdk/client-dynamodb",
     "@aws-sdk/client-sns",
-    "@aws-sdk/smithy-client",
+    "@aws-sdk/client-lambda",
+    "@smithy/smithy-client",
     "@aws-sdk/types",
     "@aws-sdk/util-dynamodb",
     "esbuild",
@@ -97,6 +98,7 @@ const entries = [
   "aws-sqs",
   "client-dynamodb",
   "client-sns",
+  "client-lambda",
 ];
 new TypeScript(project, {
   entries: ["src/index.ts", ...entries.map((path) => `src/${path}/index.ts`)],
