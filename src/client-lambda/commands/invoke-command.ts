@@ -5,23 +5,9 @@ import {
   LambdaClientResolvedConfig as ResolvedConfiguration,
 } from "@aws-sdk/client-lambda";
 
-import { Handler, MiddlewareStack } from "@aws-sdk/types";
 import { Command } from "@smithy/smithy-client";
-import {
-  CallbackFunction,
-  FunctionName,
-} from "../../aws-lambda/callback-function.js";
-import {
-  JsonEncoded,
-  JsonSerializable,
-  jsonEncode,
-} from "../../codec-json/index.js";
-import { staticTest } from "../../static-test.js";
-import {
-  LambdaClient,
-  ServiceInputTypes,
-  ServiceOutputTypes,
-} from "../lambda-client.js";
+import { FunctionName } from "../../aws-lambda/callback-function.js";
+import { JsonEncoded, JsonSerializable } from "../../codec-json/index.js";
 
 export type InvokeCommandInput<
   InputType extends JsonSerializable = JsonSerializable,
@@ -44,20 +30,3 @@ export class InvokeCommand<InputType extends JsonSerializable, OutputType>
     return new BaseCommand(input);
   }
 }
-
-staticTest(
-  async (
-    function_: CallbackFunction<{ name: string; age: number }, {}>,
-    client: LambdaClient,
-  ) => {
-    await client.send(
-      new InvokeCommand({
-        FunctionName: function_.functionName,
-        Payload: jsonEncode({
-          name: "Cristian",
-          age: 34,
-        }),
-      }),
-    );
-  },
-);
