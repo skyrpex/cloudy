@@ -9,8 +9,11 @@ import { Command, HttpHandlerOptions, MiddlewareStack } from "@aws-sdk/types";
 import { Client } from "@smithy/smithy-client";
 
 import { InvokeCommandInput, InvokeCommandOutput } from "./commands/index.js";
+import { JsonSerializable } from "../codec-json/index.js";
 
-export type ServiceInputTypes = InvokeCommandInput | BaseServiceInputTypes;
+export type ServiceInputTypes =
+  | InvokeCommandInput<JsonSerializable, JsonSerializable>
+  | BaseServiceInputTypes;
 export type ServiceOutputTypes = InvokeCommandOutput | BaseServiceOutputTypes;
 
 type IClient = Client<
