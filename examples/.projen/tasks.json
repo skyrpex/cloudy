@@ -110,7 +110,7 @@
           "exec": "pnpm i --no-frozen-lockfile"
         },
         {
-          "exec": "pnpm update"
+          "exec": "pnpm update npm-check-updates projen typescript aws-cdk aws-cdk-lib cloudy-cdk-lib constructs tsx"
         },
         {
           "exec": "npx projen"
