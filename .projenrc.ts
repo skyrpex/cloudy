@@ -57,11 +57,11 @@ const project = new TypeScriptProject({
     compilerOptions: {
       module: "ES2022",
       moduleResolution: TypeScriptModuleResolution.NODE,
-      lib: ["DOM", "ES2020"],
+      lib: ["DOM", "ES2021"],
       noUncheckedIndexedAccess: true,
       noUnusedLocals: false,
       noUnusedParameters: false,
-      target: "ES2020",
+      target: "ES2021",
     },
   },
   tsconfigDev: {
@@ -74,7 +74,7 @@ project.addFields({
   sideEffects: false,
   type: "module",
   engines: {
-    node: "^14.13.1 || >=16.0.0",
+    node: ">=16.0.0",
   },
 });
 
