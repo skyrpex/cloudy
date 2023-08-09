@@ -72,6 +72,12 @@ export async function codeFromFunction(function_: (...any: any[]) => any) {
     );
   }
 
+  // Pulumi doesn't capture symbols correctly. This is a workaround.
+  sourceCode = sourceCode.replaceAll(
+    /^var\s(\w+)\s=\sObject\.create\(global\.Symbol\.prototype\);$/gm,
+    (_, name) => `var ${name} = Symbol();`,
+  );
+
   const code = EsbuildBundling.bundle({
     stdin: {
       contents: sourceCode,

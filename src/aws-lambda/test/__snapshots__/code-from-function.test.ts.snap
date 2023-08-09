@@ -1,0 +1,20 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`captures symbols correctly 1`] = `
+"exports.handler = __f0;
+
+var __symbol = Symbol();
+
+function __f0() {
+  return (function() {
+    with({ symbol: __symbol, this: undefined, arguments: undefined }) {
+
+return () => {
+    console.log({ symbol });
+  };
+
+    }
+  }).apply(undefined, undefined).apply(this, arguments);
+}
+"
+`;
