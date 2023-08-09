@@ -56,7 +56,7 @@ export class TypeScript extends Component {
     nodeProject.addDevDeps("tsx");
     nodeProject.defaultTask?.exec("tsx .projenrc.ts");
 
-    nodeProject.addDevDeps("@tsconfig/node14", "@types/node@^14", "typescript");
+    nodeProject.addDevDeps("@tsconfig/node18", "@types/node@^18", "typescript");
 
     nodeProject.addDevDeps("esbuild");
     nodeProject.preCompileTask.exec(`rm -rf ${libdir}`);

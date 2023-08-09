@@ -5,12 +5,12 @@
       "type": "build"
     },
     {
-      "name": "@tsconfig/node14",
+      "name": "@tsconfig/node18",
       "type": "build"
     },
     {
       "name": "@types/node",
-      "version": "^14",
+      "version": "^18",
       "type": "build"
     },
     {
