@@ -74,6 +74,7 @@ export class CallbackFunction<InputType, OutputType>
     const code = codeFromFunction(properties.handler);
 
     super(scope, id, {
+      ...properties,
       code: code.then((value) => value.code),
       handler,
       runtime,
