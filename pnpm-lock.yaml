@@ -21,8 +21,8 @@ dependencies:
     specifier: ^3.388.0
     version: 3.388.0
   '@pulumi/pulumi':
-    specifier: ~3.77.1
-    version: 3.77.1
+    specifier: ~3.78.0
+    version: 3.78.0
   '@smithy/smithy-client':
     specifier: ^2.0.2
     version: 2.0.2
@@ -56,8 +56,8 @@ devDependencies:
     specifier: ^0.34.1
     version: 0.34.1(vitest@0.34.1)
   aws-cdk-lib:
-    specifier: 2.90.0
-    version: 2.90.0(constructs@10.2.69)
+    specifier: 2.91.0
+    version: 2.91.0(constructs@10.2.69)
   constructs:
     specifier: 10.2.69
     version: 10.2.69
@@ -89,8 +89,8 @@ devDependencies:
     specifier: ^3.0.1
     version: 3.0.1
   projen:
-    specifier: ^0.72.7
-    version: 0.72.7
+    specifier: ^0.72.8
+    version: 0.72.8
   standard-version:
     specifier: ^9
     version: 9.5.0
@@ -1594,6 +1594,7 @@ packages:
   /@opentelemetry/api-metrics@0.32.0:
     resolution: {integrity: sha512-g1WLhpG8B6iuDyZJFRGsR+JKyZ94m5LEmY2f+duEJ9Xb4XRlLHrZvh6G34OH6GJ8iDHxfHb/sWjJ1ZpkI9yGMQ==}
     engines: {node: '>=14'}
+    deprecated: Please use @opentelemetry/api >= 1.3.0
     dependencies:
       '@opentelemetry/api': 1.4.1
     dev: false
@@ -1815,8 +1816,8 @@ packages:
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
     dev: false
 
-  /@pulumi/pulumi@3.77.1:
-    resolution: {integrity: sha512-smeip4uKWkaKcNhMiAmR5uW4nXRvmHSjq93C7zx+mMneNxeaD9HNIBnYW0H0FFgp7j1AdRYuiIa2ie9Ay51bpw==}
+  /@pulumi/pulumi@3.78.0:
+    resolution: {integrity: sha512-6mXy3aOGedH3UZAVPhr9hejDNFFKYXG/UF8YF5qYBkA9+c3HJ0bIfwh6ykkr+K5Lt6bdzg6kTClFYiotzPW75Q==}
     engines: {node: '>=8.13.0 || >=10.10.0'}
     dependencies:
       '@grpc/grpc-js': 1.8.21
@@ -2769,8 +2770,8 @@ packages:
     resolution: {integrity: sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==}
     engines: {node: '>= 0.4'}
 
-  /aws-cdk-lib@2.90.0(constructs@10.2.69):
-    resolution: {integrity: sha512-7v2qgbut9HX1kuqYKiLWT0MQU7JAu2464cMVP+xsj8omnMBnbAkMDpxeRD5XMor1wM4K3ImIZeacp5WID1Mpdg==}
+  /aws-cdk-lib@2.91.0(constructs@10.2.69):
+    resolution: {integrity: sha512-sxXVUlb9OOjwakEssppty7QMTcMX9F6/cNA980JMmQpKeVALXvT60jWdCeAeKeZcGz1Y4whLoXLdU2/bJzh07w==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       constructs: ^10.0.0
@@ -6028,8 +6029,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen@0.72.7:
-    resolution: {integrity: sha512-GWLPa1San4nUdaOJLGX8Kip9b98rLFmf0a203tRg/X6Drx0ScZI/saRJVn40VuRamyRQLSJQD7Y1ud8JeUVdbQ==}
+  /projen@0.72.8:
+    resolution: {integrity: sha512-zReQxBdBe0pLvZdmT3RIY/FQWUTkk+1Y+vleYB6wbn2zNlzEIpmEnOEhc9+DpfdNugnhYFUegG3QIxZYy1rtZw==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
