@@ -89,8 +89,8 @@ devDependencies:
     specifier: ^3.0.3
     version: 3.0.3
   projen:
-    specifier: ^0.73.2
-    version: 0.73.2
+    specifier: ^0.73.3
+    version: 0.73.3
   standard-version:
     specifier: ^9
     version: 9.5.0
@@ -6034,8 +6034,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen@0.73.2:
-    resolution: {integrity: sha512-PSGfdmUIsvptzmh8nsijDae/EPT+/LRKu1y9zySz8uYdvYFSWZNK/0tjhG5rPUWJmHVq33lwVpyTFlTjaCl5RQ==}
+  /projen@0.73.3:
+    resolution: {integrity: sha512-TwMMJ8rwIavaaX5IU3WDTlZwMvT2ZAZurgfk3W6CpJRmflNMinDCICmiuLvJjVln9IbQ2i3ssBjQpz1YiCXGKQ==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
