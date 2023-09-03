@@ -38,14 +38,14 @@ dependencies:
 
 devDependencies:
   '@cloudy-ts/eslint-plugin':
-    specifier: ^0.0.262
-    version: 0.0.262(eslint@8.48.0)
+    specifier: ^0.0.263
+    version: 0.0.263(eslint@8.48.0)
   '@tsconfig/node18':
     specifier: ^18.2.1
     version: 18.2.1
   '@types/node':
     specifier: ^18
-    version: 18.17.13
+    version: 18.17.14
   '@typescript-eslint/eslint-plugin':
     specifier: ^6
     version: 6.5.0(@typescript-eslint/parser@6.5.0)(eslint@8.48.0)(typescript@5.2.2)
@@ -56,8 +56,8 @@ devDependencies:
     specifier: ^0.34.3
     version: 0.34.3(vitest@0.34.3)
   aws-cdk-lib:
-    specifier: 2.93.0
-    version: 2.93.0(constructs@10.2.70)
+    specifier: 2.94.0
+    version: 2.94.0(constructs@10.2.70)
   constructs:
     specifier: 10.2.70
     version: 10.2.70
@@ -89,8 +89,8 @@ devDependencies:
     specifier: ^3.0.3
     version: 3.0.3
   projen:
-    specifier: ^0.73.4
-    version: 0.73.4
+    specifier: ^0.73.5
+    version: 0.73.5
   standard-version:
     specifier: ^9
     version: 9.5.0
@@ -704,8 +704,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin@0.0.262(eslint@8.48.0):
-    resolution: {integrity: sha512-THCltuFYN8uGNBB3YHXapuW/n5csyNT6Fb8MdXqN8g4wg6Gl8R1qh5TexhXT15Uul+U6kHjc7l4QkK9LOyfZ2g==}
+  /@cloudy-ts/eslint-plugin@0.0.263(eslint@8.48.0):
+    resolution: {integrity: sha512-0X4PIa1FQdiIjoj/Y8c98SSIA0hEvgIdRmgYoAdLRk/6P4Qq4Ch3too8iicFUYQKuwbzERwWtukZBustWtWJBg==}
     engines: {node: '>= 18.16.0'}
     peerDependencies:
       eslint: ^8.48.0
@@ -1179,7 +1179,7 @@ packages:
     engines: {node: ^8.13.0 || >=10.10.0}
     dependencies:
       '@grpc/proto-loader': 0.7.8
-      '@types/node': 18.17.13
+      '@types/node': 18.17.14
     dev: false
 
   /@grpc/proto-loader@0.7.8:
@@ -2147,8 +2147,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node@18.17.13:
-    resolution: {integrity: sha512-SlLPDDe6YQl1JnQQy4hgsuJeo5q5c1TBU4be4jeBLXsqpjoDbfb0HesSfhMwnaxfSJ4txtfzJzW5/x/43fkkfQ==}
+  /@types/node@18.17.14:
+    resolution: {integrity: sha512-ZE/5aB73CyGqgQULkLG87N9GnyGe5TcQjv34pwS8tfBs1IkCh0ASM69mydb2znqd6v0eX+9Ytvk6oQRqu8T1Vw==}
 
   /@types/normalize-package-data@2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
@@ -2588,8 +2588,8 @@ packages:
     resolution: {integrity: sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==}
     engines: {node: '>= 0.4'}
 
-  /aws-cdk-lib@2.93.0(constructs@10.2.70):
-    resolution: {integrity: sha512-kKbcKkts272Ju5xjGKI3pXTOpiJxW4OQbDF8Vmw/NIkkuJLo8GlRCFfeOfoN/hilvlYQgENA67GCgSWccbvu7w==}
+  /aws-cdk-lib@2.94.0(constructs@10.2.70):
+    resolution: {integrity: sha512-pB/UzKeM+p/wY9WuFYkEewOFUh2r8qwaML63is4vUChXY2G2Bj3pGyfJ97Xir2Q5KIhgJPJz5igdouI4+F9A+g==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       constructs: ^10.0.0
@@ -5789,8 +5789,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen@0.73.4:
-    resolution: {integrity: sha512-zomIRcIAv8SGX70y707k37727AG03wDTW+HcUD+jW9eUKxBLzMS1ZoS5ylGYwpHzTCGfcDT+GYDnlBW27znWvA==}
+  /projen@0.73.5:
+    resolution: {integrity: sha512-Hf87jQp04iQHAytrj26tdhv144h4HdzbTObf0t8hXTlvy/hKr/U2bTVS8ZE/N9NcAtvDKgxy9xn8j+svLazywA==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
@@ -5867,7 +5867,7 @@ packages:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
-      '@types/node': 18.17.13
+      '@types/node': 18.17.14
       long: 5.2.3
     dev: false
 
@@ -6959,7 +6959,7 @@ packages:
       builtins: 5.0.1
     dev: true
 
-  /vite-node@0.34.3(@types/node@18.17.13):
+  /vite-node@0.34.3(@types/node@18.17.14):
     resolution: {integrity: sha512-+0TzJf1g0tYXj6tR2vEyiA42OPq68QkRZCu/ERSo2PtsDJfBpDyEfuKbRvLmZqi/CgC7SCBtyC+WjTGNMRIaig==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -6969,7 +6969,7 @@ packages:
       mlly: 1.4.0
       pathe: 1.1.1
       picocolors: 1.0.0
-      vite: 4.4.7(@types/node@18.17.13)
+      vite: 4.4.7(@types/node@18.17.14)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -6981,7 +6981,7 @@ packages:
       - terser
     dev: true
 
-  /vite@4.4.7(@types/node@18.17.13):
+  /vite@4.4.7(@types/node@18.17.14):
     resolution: {integrity: sha512-6pYf9QJ1mHylfVh39HpuSfMPojPSKVxZvnclX1K1FyZ1PXDOcLBibdq5t1qxJSnL63ca8Wf4zts6mD8u8oc9Fw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -7009,7 +7009,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 18.17.13
+      '@types/node': 18.17.14
       esbuild: 0.18.20
       postcss: 8.4.27
       rollup: 3.27.0
@@ -7050,7 +7050,7 @@ packages:
     dependencies:
       '@types/chai': 4.3.5
       '@types/chai-subset': 1.3.3
-      '@types/node': 18.17.13
+      '@types/node': 18.17.14
       '@vitest/expect': 0.34.3
       '@vitest/runner': 0.34.3
       '@vitest/snapshot': 0.34.3
@@ -7069,8 +7069,8 @@ packages:
       strip-literal: 1.0.1
       tinybench: 2.5.0
       tinypool: 0.7.0
-      vite: 4.4.7(@types/node@18.17.13)
-      vite-node: 0.34.3(@types/node@18.17.13)
+      vite: 4.4.7(@types/node@18.17.14)
+      vite-node: 0.34.3(@types/node@18.17.14)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less
