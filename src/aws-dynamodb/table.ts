@@ -56,7 +56,7 @@ type AttributeFromKeyDefinition<T extends KeyDefinition> = {
   [name in T["name"]]: TypeFromAttributeType<T["type"]>;
 };
 
-type AccessPattern<
+export type AccessPattern<
   PartitionKey extends KeyDefinition,
   SortKey extends KeyDefinition | undefined,
 > = DynamodbItem &
