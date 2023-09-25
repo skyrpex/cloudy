@@ -38,8 +38,8 @@ dependencies:
 
 devDependencies:
   '@cloudy-ts/eslint-plugin':
-    specifier: ^0.0.283
-    version: 0.0.283(eslint@8.50.0)
+    specifier: ^0.0.284
+    version: 0.0.284(eslint@8.50.0)
   '@tsconfig/node18':
     specifier: ^18.2.2
     version: 18.2.2
@@ -89,14 +89,14 @@ devDependencies:
     specifier: ^3.0.3
     version: 3.0.3
   projen:
-    specifier: ^0.73.30
-    version: 0.73.30
+    specifier: ^0.73.31
+    version: 0.73.31
   standard-version:
     specifier: ^9
     version: 9.5.0
   tsx:
-    specifier: ^3.12.10
-    version: 3.12.10
+    specifier: ^3.13.0
+    version: 3.13.0
   typescript:
     specifier: ^5.2.2
     version: 5.2.2
@@ -724,8 +724,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin@0.0.283(eslint@8.50.0):
-    resolution: {integrity: sha512-n9wI89c7NIVzClOxxaHmTsBsd3seiXSiOZnyH2EEzo7btjvqmfJIFcf3EdY78r4YZ8h3qOWrTWsF1M1Ib3ZVIw==}
+  /@cloudy-ts/eslint-plugin@0.0.284(eslint@8.50.0):
+    resolution: {integrity: sha512-CAPQ03nCj+s9hPJNOwgqvh+p2EH08yUVxevpNWQYjbb5ErLrRQG6bWove1WmzeOsQ/Nh15EjduS46ZG1y9NCfw==}
     engines: {node: '>= 18.16.0'}
     peerDependencies:
       eslint: ^8.50.0
@@ -739,27 +739,6 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
-
-  /@esbuild-kit/cjs-loader@2.4.2:
-    resolution: {integrity: sha512-BDXFbYOJzT/NBEtp71cvsrGPwGAMGRB/349rwKuoxNSiKjPraNNnlK6MIIabViCjqZugu6j+xeMDlEkWdHHJSg==}
-    dependencies:
-      '@esbuild-kit/core-utils': 3.3.1
-      get-tsconfig: 4.7.0
-    dev: true
-
-  /@esbuild-kit/core-utils@3.3.1:
-    resolution: {integrity: sha512-zg2aeGLgbZ/U8AnHRD6y085BkRqlw7jOsqpI/AFaQg6FhcCRycAe+aFLibs9okVVYTMqWANDC76UVSzd3qBoOw==}
-    dependencies:
-      esbuild: 0.18.20
-      source-map-support: 0.5.21
-    dev: true
-
-  /@esbuild-kit/esm-loader@2.6.4:
-    resolution: {integrity: sha512-xcbyhN97xFFFEdDw6IC4EuzX9Ali3aV3cj2FIYragOQpbPM4X6QA2R5qaP3h7Tr0tuyI6dmJJdMw7oBHxBSXQA==}
-    dependencies:
-      '@esbuild-kit/core-utils': 3.3.1
-      get-tsconfig: 4.7.0
-    dev: true
 
   /@esbuild/android-arm64@0.18.20:
     resolution: {integrity: sha512-Nz4rJcchGDtENV0eMKUNa6L12zz2zBDXuhj/Vjh18zGqB44Bi7MBMSXjgunJgjRhCmKOjnPuZp4Mb6OKqtMHLQ==}
@@ -4090,6 +4069,12 @@ packages:
       resolve-pkg-maps: 1.0.0
     dev: true
 
+  /get-tsconfig@4.7.2:
+    resolution: {integrity: sha512-wuMsz4leaj5hbGgg4IvDU0bqJagpftG5l5cXIAvo8uZrqn0NJqwtfupTN00VnkQJPcIRrxYrm1Ue24btpCha2A==}
+    dependencies:
+      resolve-pkg-maps: 1.0.0
+    dev: true
+
   /git-raw-commits@2.0.11:
     resolution: {integrity: sha512-VnctFhw+xfj8Va1xtfEqCUD2XDrbAPSJx+hSrE5K7fGdjZruW7XV+QOrN7LF/RJyvspRiD2I0asWsxFp0ya26A==}
     engines: {node: '>=10'}
@@ -5836,8 +5821,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen@0.73.30:
-    resolution: {integrity: sha512-9+fpAIuwVaC+u1mQim5J8oStIwykS5wJXO/9KKM+h42XJIVBa0kPhcGn22tGcW23G7yBFaqL91hNoa8aPS6ADA==}
+  /projen@0.73.31:
+    resolution: {integrity: sha512-Q/lvLQYHfILw1FkiT06xLHCDcXjwa0BQFo/n79N5YJSjt4Cos5tcjJZQkuku0IBWlTuaBfHE88urS4OH2JEr6Q==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
@@ -6767,13 +6752,13 @@ packages:
   /tslib@2.6.1:
     resolution: {integrity: sha512-t0hLfiEKfMUoqhG+U1oid7Pva4bbDPHYfJNiB7BiIjRkj1pyC++4N3huJfqY6aRH6VTB0rvtzQwjM4K6qpfOig==}
 
-  /tsx@3.12.10:
-    resolution: {integrity: sha512-2+46h4xvUt1aLDNvk5YBT8Uzw+b7BolGbn7iSMucYqCXZiDc+1IMghLVdw8kKjING32JFOeO+Am9posvjkeclA==}
+  /tsx@3.13.0:
+    resolution: {integrity: sha512-rjmRpTu3as/5fjNq/kOkOtihgLxuIz6pbKdj9xwP4J5jOLkBxw/rjN5ANw+KyrrOXV5uB7HC8+SrrSJxT65y+A==}
     hasBin: true
     dependencies:
-      '@esbuild-kit/cjs-loader': 2.4.2
-      '@esbuild-kit/core-utils': 3.3.1
-      '@esbuild-kit/esm-loader': 2.6.4
+      esbuild: 0.18.20
+      get-tsconfig: 4.7.2
+      source-map-support: 0.5.21
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
