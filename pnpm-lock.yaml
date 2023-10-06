@@ -38,8 +38,8 @@ dependencies:
 
 devDependencies:
   '@cloudy-ts/eslint-plugin':
-    specifier: ^0.0.293
-    version: 0.0.293(eslint@8.50.0)
+    specifier: ^0.0.294
+    version: 0.0.294(eslint@8.50.0)
   '@tsconfig/node18':
     specifier: ^18.2.2
     version: 18.2.2
@@ -56,8 +56,8 @@ devDependencies:
     specifier: ^0.34.6
     version: 0.34.6(vitest@0.34.6)
   aws-cdk-lib:
-    specifier: 2.98.0
-    version: 2.98.0(constructs@10.2.70)
+    specifier: 2.99.1
+    version: 2.99.1(constructs@10.2.70)
   constructs:
     specifier: 10.2.70
     version: 10.2.70
@@ -89,8 +89,8 @@ devDependencies:
     specifier: ^3.0.3
     version: 3.0.3
   projen:
-    specifier: ^0.73.40
-    version: 0.73.40
+    specifier: ^0.73.44
+    version: 0.73.44
   standard-version:
     specifier: ^9
     version: 9.5.0
@@ -724,8 +724,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin@0.0.293(eslint@8.50.0):
-    resolution: {integrity: sha512-9+4h+Gxx4t+Byv/jFytLHQUvvPV4whw/tvV2fMB4dfBDu89tvfMO8yNJxZaUS3HrwD9fMw1jhoyqPkbeV4PUqw==}
+  /@cloudy-ts/eslint-plugin@0.0.294(eslint@8.50.0):
+    resolution: {integrity: sha512-kapJ9LhsqYZ1Um/kHH5i1JDzOA/JnWmwfLY+4pvRNBZYyF+/S1eDX8GcQ1XvTbCGwLffpH5yKphIdT8bEgBLSg==}
     engines: {node: '>= 18.16.0'}
     peerDependencies:
       eslint: ^8.50.0
@@ -2613,8 +2613,8 @@ packages:
     resolution: {integrity: sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==}
     engines: {node: '>= 0.4'}
 
-  /aws-cdk-lib@2.98.0(constructs@10.2.70):
-    resolution: {integrity: sha512-6APM6zVTCi59L/8lPX47DINlCD9ZG7OEQ28pD/ftmHZ8qC7AlBWwWqOfuSL+DyEbJBLcw3AZ2MLM1AMJPO+sVg==}
+  /aws-cdk-lib@2.99.1(constructs@10.2.70):
+    resolution: {integrity: sha512-mUhuT2JTy3VyX9o9IOSuy7UYDimFHGnmpASwTb4rD10Hksb1dTqqN2BsXU5kogHakYevBD3vwYc87rOVso4M7Q==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       constructs: ^10.0.0
@@ -5823,8 +5823,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen@0.73.40:
-    resolution: {integrity: sha512-oxJpG4XGpK3jNMTNMF3vlEOT+hZBbu9gVfKrMjo/0YXMYclT8Uiqdg8lplOEWTUMmS5pYeKvQ8QG2ERciviekQ==}
+  /projen@0.73.44:
+    resolution: {integrity: sha512-WnSwPfyNY1+V1it1gHF3BfArZ0aR0oED4KnFRWa7+j91/UxatSsZbu3I22dpVsd4EvdRdlO18UHlTODaq+XIhA==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
     dependencies:
