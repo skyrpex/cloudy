@@ -38,8 +38,8 @@ dependencies:
 
 devDependencies:
   '@cloudy-ts/eslint-plugin':
-    specifier: ^0.0.302
-    version: 0.0.302(eslint@8.51.0)
+    specifier: ^0.0.303
+    version: 0.0.303(eslint@8.51.0)
   '@tsconfig/node18':
     specifier: ^18.2.2
     version: 18.2.2
@@ -89,8 +89,8 @@ devDependencies:
     specifier: ^3.0.3
     version: 3.0.3
   projen:
-    specifier: ^0.74.11
-    version: 0.74.11
+    specifier: ^0.74.12
+    version: 0.74.12
   standard-version:
     specifier: ^9
     version: 9.5.0
@@ -724,8 +724,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin@0.0.302(eslint@8.51.0):
-    resolution: {integrity: sha512-hoeEXq6C5Fg9tYBFfiD5FztCPmDf5ipV+8ibu9H26xGJVlUGUg9WsVo9nFnIR7hxyaSaCUAL5+zLM8Rj/deACQ==}
+  /@cloudy-ts/eslint-plugin@0.0.303(eslint@8.51.0):
+    resolution: {integrity: sha512-XqqbMOkFQEC9JVSkJzT9g5mT5Jbx7KUP4E1h3J+RvMmBDSi/hoJbi3Su8muiShmmv8P5OWdgodhHZMk0lhpJyg==}
     engines: {node: '>= 18.16.0'}
     peerDependencies:
       eslint: ^8.51.0
@@ -5825,8 +5825,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen@0.74.11:
-    resolution: {integrity: sha512-Nu4jUKtlY1JJ3X7UPVqyWT78MEI2vzJQ0WUtV35ZkVX+aqYRV7ssF4b8bCMcSlQab1fP7Gx9WQWqKrImFUDeSw==}
+  /projen@0.74.12:
+    resolution: {integrity: sha512-byqKXt8r7K2WtsYmyE9C49Ud5OYNCFMafS4Ei88IyfzG1OfkjYUdvu5ToYjKR4WcIa4nlrDWwCjWpYPIGAjXrQ==}
     engines: {node: '>= 16.0.0'}
     hasBin: true
     dependencies:
@@ -5841,7 +5841,7 @@ packages:
       semver: 7.5.4
       shx: 0.3.4
       xmlbuilder2: 3.1.1
-      yaml: 2.3.2
+      yaml: 2.3.3
       yargs: 17.7.2
     dev: true
     bundledDependencies:
@@ -7239,8 +7239,8 @@ packages:
     engines: {node: '>= 6'}
     dev: true
 
-  /yaml@2.3.2:
-    resolution: {integrity: sha512-N/lyzTPaJasoDmfV7YTrYCI0G/3ivm/9wdG0aHuheKowWQwGTsK0Eoiw6utmzAnI6pkJa0DUVygvp3spqqEKXg==}
+  /yaml@2.3.3:
+    resolution: {integrity: sha512-zw0VAJxgeZ6+++/su5AFoqBbZbrEakwu+X0M5HmcwUiBL7AzcuPKjj5we4xfQLp78LkEMpD0cOnUhmgOVy3KdQ==}
     engines: {node: '>= 14'}
     dev: true
 
