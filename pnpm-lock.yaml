@@ -38,8 +38,8 @@ dependencies:
 
 devDependencies:
   '@cloudy-ts/eslint-plugin':
-    specifier: ^0.0.303
-    version: 0.0.303(eslint@8.51.0)
+    specifier: ^0.0.304
+    version: 0.0.304(eslint@8.51.0)
   '@tsconfig/node18':
     specifier: ^18.2.2
     version: 18.2.2
@@ -89,8 +89,8 @@ devDependencies:
     specifier: ^3.0.3
     version: 3.0.3
   projen:
-    specifier: ^0.74.12
-    version: 0.74.12
+    specifier: ^0.74.17
+    version: 0.74.17
   standard-version:
     specifier: ^9
     version: 9.5.0
@@ -724,8 +724,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin@0.0.303(eslint@8.51.0):
-    resolution: {integrity: sha512-XqqbMOkFQEC9JVSkJzT9g5mT5Jbx7KUP4E1h3J+RvMmBDSi/hoJbi3Su8muiShmmv8P5OWdgodhHZMk0lhpJyg==}
+  /@cloudy-ts/eslint-plugin@0.0.304(eslint@8.51.0):
+    resolution: {integrity: sha512-zhYhwrdMssS8KDTSlUkQAbkWwY8S75vac+TsZLGJMmUp0aCrbEfk4l1zs7OKADVo4O1xmEO5sgIi97NAh5FV+w==}
     engines: {node: '>= 18.16.0'}
     peerDependencies:
       eslint: ^8.51.0
@@ -5825,8 +5825,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen@0.74.12:
-    resolution: {integrity: sha512-byqKXt8r7K2WtsYmyE9C49Ud5OYNCFMafS4Ei88IyfzG1OfkjYUdvu5ToYjKR4WcIa4nlrDWwCjWpYPIGAjXrQ==}
+  /projen@0.74.17:
+    resolution: {integrity: sha512-5TWAuj9okHUiahp4ao9czf1scBZyT8qjDUfZbxb6hcTQmacSabq/SsF2SZrbM3r+OD162YVWizDoIoE15vMhgQ==}
     engines: {node: '>= 16.0.0'}
     hasBin: true
     dependencies:
