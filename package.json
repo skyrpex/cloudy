@@ -21,7 +21,7 @@
     "projen": "npx projen"
   },
   "devDependencies": {
-    "@cloudy-ts/eslint-plugin": "^0.0.304",
+    "@cloudy-ts/eslint-plugin": "^0.0.305",
     "@tsconfig/node18": "^18.2.2",
     "@types/node": "^18",
     "@typescript-eslint/eslint-plugin": "^6",
@@ -46,15 +46,15 @@
     "vitest": "^0.34.6"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "^2.101.0",
+    "aws-cdk-lib": "^2.101.1",
     "constructs": "^10.3.0"
   },
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.428.0",
-    "@aws-sdk/client-lambda": "^3.428.0",
-    "@aws-sdk/client-sns": "^3.428.0",
+    "@aws-sdk/client-dynamodb": "^3.429.0",
+    "@aws-sdk/client-lambda": "^3.429.0",
+    "@aws-sdk/client-sns": "^3.429.0",
     "@aws-sdk/types": "^3.428.0",
-    "@aws-sdk/util-dynamodb": "^3.428.0",
+    "@aws-sdk/util-dynamodb": "^3.429.0",
     "@pulumi/pulumi": "~3.88.1",
     "@smithy/smithy-client": "^2.1.11",
     "esbuild": "^0.19.4",
