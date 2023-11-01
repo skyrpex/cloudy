@@ -38,14 +38,14 @@ dependencies:
 
 devDependencies:
   '@cloudy-ts/eslint-plugin':
-    specifier: ^0.0.317
-    version: 0.0.317(eslint@8.52.0)
+    specifier: ^0.0.318
+    version: 0.0.318(eslint@8.52.0)
   '@tsconfig/node18':
     specifier: ^18.2.2
     version: 18.2.2
   '@types/node':
     specifier: ^18
-    version: 18.18.7
+    version: 18.18.8
   '@typescript-eslint/eslint-plugin':
     specifier: ^6
     version: 6.9.1(@typescript-eslint/parser@6.9.1)(eslint@8.52.0)(typescript@5.2.2)
@@ -740,8 +740,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin@0.0.317(eslint@8.52.0):
-    resolution: {integrity: sha512-GfZUZMW2SCzSbNYobqbk8quUZPtxr3yelKwnZlRqCEHOuOHw5P9uQKPecCcOlK6n7eyhKnSBzPZtZHbdiTYyVg==}
+  /@cloudy-ts/eslint-plugin@0.0.318(eslint@8.52.0):
+    resolution: {integrity: sha512-JyhhLFlu7ZrD02wA9gbkUeMKH7jdib1hNpyZoVnN+79OMV/zbLwoQzzURt/MrbNPYtIlnZfzdgkUunh7QGazxg==}
     engines: {node: '>= 18.16.0'}
     peerDependencies:
       eslint: ^8.52.0
@@ -1194,7 +1194,7 @@ packages:
     engines: {node: ^8.13.0 || >=10.10.0}
     dependencies:
       '@grpc/proto-loader': 0.7.8
-      '@types/node': 18.18.7
+      '@types/node': 18.18.8
     dev: false
 
   /@grpc/proto-loader@0.7.8:
@@ -2163,8 +2163,8 @@ packages:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
 
-  /@types/node@18.18.7:
-    resolution: {integrity: sha512-bw+lEsxis6eqJYW8Ql6+yTqkE6RuFtsQPSe5JxXbqYRFQEER5aJA9a5UH9igqDWm3X4iLHIKOHlnAXLM4mi7uQ==}
+  /@types/node@18.18.8:
+    resolution: {integrity: sha512-OLGBaaK5V3VRBS1bAkMVP2/W9B+H8meUfl866OrMNQqt7wDgdpWPp5o6gmIc9pB+lIQHSq4ZL8ypeH1vPxcPaQ==}
     dependencies:
       undici-types: 5.26.5
 
@@ -5861,7 +5861,7 @@ packages:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
-      '@types/node': 18.18.7
+      '@types/node': 18.18.8
       long: 5.2.3
     dev: false
 
@@ -6931,7 +6931,7 @@ packages:
       builtins: 5.0.1
     dev: true
 
-  /vite-node@0.34.6(@types/node@18.18.7):
+  /vite-node@0.34.6(@types/node@18.18.8):
     resolution: {integrity: sha512-nlBMJ9x6n7/Amaz6F3zJ97EBwR2FkzhBRxF5e+jE6LA3yi6Wtc2lyTij1OnDMIr34v5g/tVQtsVAzhT0jc5ygA==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -6941,7 +6941,7 @@ packages:
       mlly: 1.4.0
       pathe: 1.1.1
       picocolors: 1.0.0
-      vite: 4.4.7(@types/node@18.18.7)
+      vite: 4.4.7(@types/node@18.18.8)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -6953,7 +6953,7 @@ packages:
       - terser
     dev: true
 
-  /vite@4.4.7(@types/node@18.18.7):
+  /vite@4.4.7(@types/node@18.18.8):
     resolution: {integrity: sha512-6pYf9QJ1mHylfVh39HpuSfMPojPSKVxZvnclX1K1FyZ1PXDOcLBibdq5t1qxJSnL63ca8Wf4zts6mD8u8oc9Fw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -6981,7 +6981,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 18.18.7
+      '@types/node': 18.18.8
       esbuild: 0.18.20
       postcss: 8.4.27
       rollup: 3.27.0
@@ -7022,7 +7022,7 @@ packages:
     dependencies:
       '@types/chai': 4.3.5
       '@types/chai-subset': 1.3.3
-      '@types/node': 18.18.7
+      '@types/node': 18.18.8
       '@vitest/expect': 0.34.6
       '@vitest/runner': 0.34.6
       '@vitest/snapshot': 0.34.6
@@ -7041,8 +7041,8 @@ packages:
       strip-literal: 1.0.1
       tinybench: 2.5.0
       tinypool: 0.7.0
-      vite: 4.4.7(@types/node@18.18.7)
-      vite-node: 0.34.6(@types/node@18.18.7)
+      vite: 4.4.7(@types/node@18.18.8)
+      vite-node: 0.34.6(@types/node@18.18.8)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less
