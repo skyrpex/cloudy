@@ -38,8 +38,8 @@ dependencies:
 
 devDependencies:
   '@cloudy-ts/eslint-plugin':
-    specifier: ^0.0.321
-    version: 0.0.321(eslint@8.53.0)
+    specifier: ^0.0.322
+    version: 0.0.322(eslint@8.53.0)
   '@tsconfig/node18':
     specifier: ^18.2.2
     version: 18.2.2
@@ -740,11 +740,11 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin@0.0.321(eslint@8.53.0):
-    resolution: {integrity: sha512-CZSEiaQUKMyinFIwzRFCOYgZUiyqSJWYyRhHHbPVZIwQMp2uvi3aCl/SSGvQkpQ3R8zVLw8d/VWe1JpCFObOBg==}
+  /@cloudy-ts/eslint-plugin@0.0.322(eslint@8.53.0):
+    resolution: {integrity: sha512-+cJ6EOsjQRAHLuJZnR1VNs9gQ6xZa5PK921fmMPzJsvrlWIbjpQq1SikHtf5B78ooVAGa76pbjIocniNLcKAJg==}
     engines: {node: '>= 18.16.0'}
     peerDependencies:
-      eslint: ^8.52.0
+      eslint: ^8.53.0
     dependencies:
       eslint: 8.53.0
     dev: true
