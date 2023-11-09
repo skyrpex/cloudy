@@ -9,8 +9,8 @@ dependencies:
     specifier: ^3.445.0
     version: 3.445.0
   '@aws-sdk/client-lambda':
-    specifier: ^3.445.0
-    version: 3.445.0
+    specifier: ^3.446.0
+    version: 3.446.0
   '@aws-sdk/client-sns':
     specifier: ^3.445.0
     version: 3.445.0
@@ -38,8 +38,8 @@ dependencies:
 
 devDependencies:
   '@cloudy-ts/eslint-plugin':
-    specifier: ^0.0.324
-    version: 0.0.324(eslint@8.53.0)
+    specifier: ^0.0.325
+    version: 0.0.325(eslint@8.53.0)
   '@tsconfig/node18':
     specifier: ^18.2.2
     version: 18.2.2
@@ -230,8 +230,8 @@ packages:
       - aws-crt
     dev: false
 
-  /@aws-sdk/client-lambda@3.445.0:
-    resolution: {integrity: sha512-lkeXsSFNRdN2NQEnFgJPeqtFMGU3A/ZSJxw+sIDL4C7VXwXefzvQCTYFORhWBmf/3HHklzMki+giAcc99B6C2w==}
+  /@aws-sdk/client-lambda@3.446.0:
+    resolution: {integrity: sha512-QxId5Fh5Nk/4siyIRmu+QNJPHbPLi4U1bNVW4GGCIBQXFUFLpxrg3OIAthzCdSAaZCllIQTintjU1DoZuijPzQ==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-crypto/sha256-browser': 3.0.0
@@ -741,8 +741,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin@0.0.324(eslint@8.53.0):
-    resolution: {integrity: sha512-QYygbCuWxDVYAvDVZyQl9nHaGmXKrHSmkQBFPiP+qL/oe3HpBy5YgpKUQTruv65so1sjHoWfqWLDuAn3deu4LQ==}
+  /@cloudy-ts/eslint-plugin@0.0.325(eslint@8.53.0):
+    resolution: {integrity: sha512-rIymqCTZtMDHZ8FGYlfhHtKLNmzi0cOoybauBIPiwuBtSSNOZne5aRCN89cPdjeB/TITmh41y4XwocPf5Giqqg==}
     engines: {node: '>= 18.16.0'}
     peerDependencies:
       eslint: ^8.53.0
