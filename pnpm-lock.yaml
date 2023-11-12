@@ -38,8 +38,8 @@ dependencies:
 
 devDependencies:
   '@cloudy-ts/eslint-plugin':
-    specifier: ^0.0.326
-    version: 0.0.326(eslint@8.53.0)
+    specifier: ^0.0.327
+    version: 0.0.327(eslint@8.53.0)
   '@tsconfig/node18':
     specifier: ^18.2.2
     version: 18.2.2
@@ -56,8 +56,8 @@ devDependencies:
     specifier: ^0.34.6
     version: 0.34.6(vitest@0.34.6)
   aws-cdk-lib:
-    specifier: 2.105.0
-    version: 2.105.0(constructs@10.3.0)
+    specifier: 2.106.1
+    version: 2.106.1(constructs@10.3.0)
   constructs:
     specifier: 10.3.0
     version: 10.3.0
@@ -116,8 +116,8 @@ packages:
       '@jridgewell/trace-mapping': 0.3.18
     dev: true
 
-  /@aws-cdk/asset-awscli-v1@2.2.200:
-    resolution: {integrity: sha512-Kf5J8DfJK4wZFWT2Myca0lhwke7LwHcHBo+4TvWOGJrFVVKVuuiLCkzPPRBQQVDj0Vtn2NBokZAz8pfMpAqAKg==}
+  /@aws-cdk/asset-awscli-v1@2.2.201:
+    resolution: {integrity: sha512-INZqcwDinNaIdb5CtW3ez5s943nX5stGBQS6VOP2JDlOFP81hM3fds/9NDknipqfUkZM43dx+HgVvkXYXXARCQ==}
     dev: true
 
   /@aws-cdk/asset-kubectl-v20@2.1.2:
@@ -738,8 +738,8 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
-  /@cloudy-ts/eslint-plugin@0.0.326(eslint@8.53.0):
-    resolution: {integrity: sha512-yxDKnszgOsfBWyABURZLu1EC/4Ni6g0GxEAvaKIoG58el3XQPEZh9HZvOhrfs2BuZnfeS1v66TN8RpmQbrBRdg==}
+  /@cloudy-ts/eslint-plugin@0.0.327(eslint@8.53.0):
+    resolution: {integrity: sha512-TL8bDANf6vw8ot25oNuL+c7fuysqCWPnDNelwB/gAICGiNSeYTypRnOchuyfGmwjc/kt1Usr9AXFXtCwAj2kqA==}
     engines: {node: '>= 18.16.0'}
     peerDependencies:
       eslint: ^8.53.0
@@ -2634,13 +2634,13 @@ packages:
     resolution: {integrity: sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==}
     engines: {node: '>= 0.4'}
 
-  /aws-cdk-lib@2.105.0(constructs@10.3.0):
-    resolution: {integrity: sha512-pByAPfRyOzF+AVz56aLUPLhYiRZzfIjyV9Bf2t0X3cpwVW21zVC+8GrQcQwy+zWgFGg3Gx6IVFNio3t8awHXHA==}
+  /aws-cdk-lib@2.106.1(constructs@10.3.0):
+    resolution: {integrity: sha512-D+ZNbrxoCzmJ8+1d66TU4zaevvMa8Acb2DA5sx5CYwt3zXPPw8fJ9WOd376EGG6Ahn9Bwvmm0A6DHFsDRxG2ng==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       constructs: ^10.0.0
     dependencies:
-      '@aws-cdk/asset-awscli-v1': 2.2.200
+      '@aws-cdk/asset-awscli-v1': 2.2.201
       '@aws-cdk/asset-kubectl-v20': 2.1.2
       '@aws-cdk/asset-node-proxy-agent-v6': 2.0.1
       constructs: 10.3.0
