@@ -21,13 +21,13 @@
     "projen": "npx projen"
   },
   "devDependencies": {
-    "@cloudy-ts/eslint-plugin": "^0.0.326",
+    "@cloudy-ts/eslint-plugin": "^0.0.327",
     "@tsconfig/node18": "^18.2.2",
     "@types/node": "^18",
     "@typescript-eslint/eslint-plugin": "^6",
     "@typescript-eslint/parser": "^6",
     "@vitest/coverage-v8": "^0.34.6",
-    "aws-cdk-lib": "2.105.0",
+    "aws-cdk-lib": "2.106.1",
     "constructs": "10.3.0",
     "esbuild": "^0.19.5",
     "eslint": "^8",
