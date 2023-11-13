@@ -24,8 +24,8 @@ dependencies:
     specifier: ~3.93.0
     version: 3.93.0
   '@smithy/smithy-client':
-    specifier: ^2.1.13
-    version: 2.1.13
+    specifier: ^2.1.14
+    version: 2.1.14
   esbuild:
     specifier: ^0.19.5
     version: 0.19.5
@@ -209,7 +209,7 @@ packages:
       '@smithy/node-config-provider': 2.1.3
       '@smithy/node-http-handler': 2.1.8
       '@smithy/protocol-http': 3.0.8
-      '@smithy/smithy-client': 2.1.13
+      '@smithy/smithy-client': 2.1.14
       '@smithy/types': 2.4.0
       '@smithy/url-parser': 2.0.12
       '@smithy/util-base64': 2.0.0
@@ -261,7 +261,7 @@ packages:
       '@smithy/node-config-provider': 2.1.3
       '@smithy/node-http-handler': 2.1.8
       '@smithy/protocol-http': 3.0.8
-      '@smithy/smithy-client': 2.1.13
+      '@smithy/smithy-client': 2.1.14
       '@smithy/types': 2.4.0
       '@smithy/url-parser': 2.0.12
       '@smithy/util-base64': 2.0.0
@@ -310,7 +310,7 @@ packages:
       '@smithy/node-config-provider': 2.1.3
       '@smithy/node-http-handler': 2.1.8
       '@smithy/protocol-http': 3.0.8
-      '@smithy/smithy-client': 2.1.13
+      '@smithy/smithy-client': 2.1.14
       '@smithy/types': 2.4.0
       '@smithy/url-parser': 2.0.12
       '@smithy/util-base64': 2.0.0
@@ -344,7 +344,7 @@ packages:
       '@aws-sdk/util-user-agent-browser': 3.449.0
       '@aws-sdk/util-user-agent-node': 3.449.0
       '@smithy/config-resolver': 2.0.16
-      '@smithy/fetch-http-handler': 2.2.4
+      '@smithy/fetch-http-handler': 2.2.5
       '@smithy/hash-node': 2.0.12
       '@smithy/invalid-dependency': 2.0.12
       '@smithy/middleware-content-length': 2.0.14
@@ -355,17 +355,17 @@ packages:
       '@smithy/node-config-provider': 2.1.3
       '@smithy/node-http-handler': 2.1.8
       '@smithy/protocol-http': 3.0.8
-      '@smithy/smithy-client': 2.1.13
+      '@smithy/smithy-client': 2.1.14
       '@smithy/types': 2.4.0
       '@smithy/url-parser': 2.0.12
-      '@smithy/util-base64': 2.0.0
+      '@smithy/util-base64': 2.0.1
       '@smithy/util-body-length-browser': 2.0.0
       '@smithy/util-body-length-node': 2.1.0
       '@smithy/util-defaults-mode-browser': 2.0.16
       '@smithy/util-defaults-mode-node': 2.0.21
       '@smithy/util-endpoints': 1.0.2
       '@smithy/util-retry': 2.0.5
-      '@smithy/util-utf8': 2.0.0
+      '@smithy/util-utf8': 2.0.1
       tslib: 2.6.1
     transitivePeerDependencies:
       - aws-crt
@@ -391,7 +391,7 @@ packages:
       '@aws-sdk/util-user-agent-browser': 3.449.0
       '@aws-sdk/util-user-agent-node': 3.449.0
       '@smithy/config-resolver': 2.0.16
-      '@smithy/fetch-http-handler': 2.2.4
+      '@smithy/fetch-http-handler': 2.2.5
       '@smithy/hash-node': 2.0.12
       '@smithy/invalid-dependency': 2.0.12
       '@smithy/middleware-content-length': 2.0.14
@@ -402,17 +402,17 @@ packages:
       '@smithy/node-config-provider': 2.1.3
       '@smithy/node-http-handler': 2.1.8
       '@smithy/protocol-http': 3.0.8
-      '@smithy/smithy-client': 2.1.13
+      '@smithy/smithy-client': 2.1.14
       '@smithy/types': 2.4.0
       '@smithy/url-parser': 2.0.12
-      '@smithy/util-base64': 2.0.0
+      '@smithy/util-base64': 2.0.1
       '@smithy/util-body-length-browser': 2.0.0
       '@smithy/util-body-length-node': 2.1.0
       '@smithy/util-defaults-mode-browser': 2.0.16
       '@smithy/util-defaults-mode-node': 2.0.21
       '@smithy/util-endpoints': 1.0.2
       '@smithy/util-retry': 2.0.5
-      '@smithy/util-utf8': 2.0.0
+      '@smithy/util-utf8': 2.0.1
       fast-xml-parser: 4.2.5
       tslib: 2.6.1
     transitivePeerDependencies:
@@ -423,7 +423,7 @@ packages:
     resolution: {integrity: sha512-6GYLElUG1QTOdmXG8zXa+Ull9IUeSeItKDYHKzHYfIkbsagMfYlf7wm9XIYlatjtgodNfZ3gPHAJfRyPmwKrsg==}
     engines: {node: '>=14.0.0'}
     dependencies:
-      '@smithy/smithy-client': 2.1.13
+      '@smithy/smithy-client': 2.1.14
       tslib: 2.6.1
     dev: false
 
@@ -620,7 +620,7 @@ packages:
       '@aws-sdk/util-user-agent-browser': 3.449.0
       '@aws-sdk/util-user-agent-node': 3.449.0
       '@smithy/config-resolver': 2.0.16
-      '@smithy/fetch-http-handler': 2.2.4
+      '@smithy/fetch-http-handler': 2.2.5
       '@smithy/hash-node': 2.0.12
       '@smithy/invalid-dependency': 2.0.12
       '@smithy/middleware-content-length': 2.0.14
@@ -633,17 +633,17 @@ packages:
       '@smithy/property-provider': 2.0.13
       '@smithy/protocol-http': 3.0.8
       '@smithy/shared-ini-file-loader': 2.2.2
-      '@smithy/smithy-client': 2.1.13
+      '@smithy/smithy-client': 2.1.14
       '@smithy/types': 2.4.0
       '@smithy/url-parser': 2.0.12
-      '@smithy/util-base64': 2.0.0
+      '@smithy/util-base64': 2.0.1
       '@smithy/util-body-length-browser': 2.0.0
       '@smithy/util-body-length-node': 2.1.0
       '@smithy/util-defaults-mode-browser': 2.0.16
       '@smithy/util-defaults-mode-node': 2.0.21
       '@smithy/util-endpoints': 1.0.2
       '@smithy/util-retry': 2.0.5
-      '@smithy/util-utf8': 2.0.0
+      '@smithy/util-utf8': 2.0.1
       tslib: 2.6.1
     transitivePeerDependencies:
       - aws-crt
@@ -1779,7 +1779,7 @@ packages:
       '@smithy/protocol-http': 3.0.8
       '@smithy/querystring-builder': 2.0.12
       '@smithy/types': 2.4.0
-      '@smithy/util-base64': 2.0.0
+      '@smithy/util-base64': 2.0.1
       tslib: 2.6.1
     dev: false
 
@@ -1799,7 +1799,7 @@ packages:
     dependencies:
       '@smithy/types': 2.4.0
       '@smithy/util-buffer-from': 2.0.0
-      '@smithy/util-utf8': 2.0.0
+      '@smithy/util-utf8': 2.0.1
       tslib: 2.6.1
     dev: false
 
@@ -1948,17 +1948,17 @@ packages:
       '@smithy/util-hex-encoding': 2.0.0
       '@smithy/util-middleware': 2.0.5
       '@smithy/util-uri-escape': 2.0.0
-      '@smithy/util-utf8': 2.0.0
+      '@smithy/util-utf8': 2.0.1
       tslib: 2.6.1
     dev: false
 
-  /@smithy/smithy-client@2.1.13:
-    resolution: {integrity: sha512-iFqrjps6K/eLNbDKppyp5gCCZyEtv/BYMlDSBXwwHIrwV7sZ8l8r6OGAcg1a69j4Id1uJccYppaTpW5G1BLhsA==}
+  /@smithy/smithy-client@2.1.14:
+    resolution: {integrity: sha512-SMiflchpKadmyvjWPTVwBKjDcEigRHkiUjtzLBlTp9dEp2FmbCjpyc95BNvUdOGOMcPCIkoQQGeabo6avIZNiw==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@smithy/middleware-stack': 2.0.6
       '@smithy/types': 2.4.0
-      '@smithy/util-stream': 2.0.18
+      '@smithy/util-stream': 2.0.19
       tslib: 2.6.1
     dev: false
 
@@ -2026,7 +2026,7 @@ packages:
     engines: {node: '>= 10.0.0'}
     dependencies:
       '@smithy/property-provider': 2.0.13
-      '@smithy/smithy-client': 2.1.13
+      '@smithy/smithy-client': 2.1.14
       '@smithy/types': 2.4.0
       bowser: 2.11.0
       tslib: 2.6.1
@@ -2040,7 +2040,7 @@ packages:
       '@smithy/credential-provider-imds': 2.0.18
       '@smithy/node-config-provider': 2.1.3
       '@smithy/property-provider': 2.0.13
-      '@smithy/smithy-client': 2.1.13
+      '@smithy/smithy-client': 2.1.14
       '@smithy/types': 2.4.0
       tslib: 2.6.1
     dev: false
@@ -2082,18 +2082,18 @@ packages:
     resolution: {integrity: sha512-fP/ZQ27rRvHsqItds8yB7jerwMpZFTL3QqbQbidUiG0+mttMoKdP0ZqnvM8UK5q0/dfc3/pN7g4XKPXOU7oRWw==}
     engines: {node: '>=14.0.0'}
     dependencies:
-      '@smithy/fetch-http-handler': 2.2.4
+      '@smithy/fetch-http-handler': 2.2.5
       '@smithy/node-http-handler': 2.1.8
       '@smithy/types': 2.4.0
-      '@smithy/util-base64': 2.0.0
+      '@smithy/util-base64': 2.0.1
       '@smithy/util-buffer-from': 2.0.0
       '@smithy/util-hex-encoding': 2.0.0
-      '@smithy/util-utf8': 2.0.0
+      '@smithy/util-utf8': 2.0.1
       tslib: 2.6.1
     dev: false
 
-  /@smithy/util-stream@2.0.18:
-    resolution: {integrity: sha512-e/a7JrmHTy+gxHjdJKHQFyK8X2SCoJEaBXTrs5Q/HS69a3P4P0Mbu1znKFKFM/fDtppCxPCO0IcIbNvbVSEJ8w==}
+  /@smithy/util-stream@2.0.19:
+    resolution: {integrity: sha512-2kwTRyOKJcRFeO1LX4Qn1vniEyU1urMG1DfomTpiOLTFS0iV3dsqNvYNltvTbmzZd9u0f15H96l38QP8dsKF1w==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@smithy/fetch-http-handler': 2.2.5
@@ -2102,7 +2102,7 @@ packages:
       '@smithy/util-base64': 2.0.1
       '@smithy/util-buffer-from': 2.0.0
       '@smithy/util-hex-encoding': 2.0.0
-      '@smithy/util-utf8': 2.0.1
+      '@smithy/util-utf8': 2.0.2
       tslib: 2.6.1
     dev: false
 
@@ -2123,6 +2123,14 @@ packages:
 
   /@smithy/util-utf8@2.0.1:
     resolution: {integrity: sha512-JvpZMUTMIil6rstH3tyBjCE7tuTmCprcmCXHW4o8a5mSthhQ8fEj5lDWOonTigtB2CqiBQ/SWlpoctuzVO7J0Q==}
+    engines: {node: '>=14.0.0'}
+    dependencies:
+      '@smithy/util-buffer-from': 2.0.0
+      tslib: 2.6.1
+    dev: false
+
+  /@smithy/util-utf8@2.0.2:
+    resolution: {integrity: sha512-qOiVORSPm6Ce4/Yu6hbSgNHABLP2VMv8QOC3tTDNHHlWY19pPyc++fBTbZPtx6egPXi4HQxKDnMxVxpbtX2GoA==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@smithy/util-buffer-from': 2.0.0
