@@ -45,7 +45,7 @@
     "vitest": "^0.34.6"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "^2.106.0",
+    "aws-cdk-lib": "^2.106.1",
     "constructs": "^10.3.0"
   },
   "dependencies": {
@@ -55,7 +55,7 @@
     "@aws-sdk/types": "^3.449.0",
     "@aws-sdk/util-dynamodb": "^3.449.0",
     "@pulumi/pulumi": "~3.93.0",
-    "@smithy/smithy-client": "^2.1.13",
+    "@smithy/smithy-client": "^2.1.14",
     "esbuild": "^0.19.5",
     "find-up": "^6.3.0",
     "ts-toolbelt": "^9.6.0"
