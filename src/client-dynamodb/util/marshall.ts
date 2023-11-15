@@ -46,31 +46,31 @@ export type Unmarshall<
 > = T extends S<infer s>
   ? s
   : T extends B
-  ? NativeBinaryAttribute
-  : T extends NB<infer n>
-  ? Exclude<UnmarshallOptions, undefined>["wrapNumbers"] extends true
-    ? { value: StringEncoded<n> }
-    : never
-  : T extends N<infer n>
-  ? Exclude<UnmarshallOptions, undefined>["wrapNumbers"] extends true
-    ? { value: StringEncoded<n> }
-    : n
-  : T extends Date
-  ? string
-  : T extends L<infer Items>
-  ? {
-      [index in keyof Items]: index extends "length"
-        ? Items[index]
-        : Unmarshall<Items[index], UnmarshallOptions>;
-    }
-  : T extends M<infer Attributes>
-  ? {
-      [property in keyof Attributes]: Unmarshall<
-        Attributes[property],
-        UnmarshallOptions
-      >;
-    }
-  : never;
+    ? NativeBinaryAttribute
+    : T extends NB<infer n>
+      ? Exclude<UnmarshallOptions, undefined>["wrapNumbers"] extends true
+        ? { value: StringEncoded<n> }
+        : never
+      : T extends N<infer n>
+        ? Exclude<UnmarshallOptions, undefined>["wrapNumbers"] extends true
+          ? { value: StringEncoded<n> }
+          : n
+        : T extends Date
+          ? string
+          : T extends L<infer Items>
+            ? {
+                [index in keyof Items]: index extends "length"
+                  ? Items[index]
+                  : Unmarshall<Items[index], UnmarshallOptions>;
+              }
+            : T extends M<infer Attributes>
+              ? {
+                  [property in keyof Attributes]: Unmarshall<
+                    Attributes[property],
+                    UnmarshallOptions
+                  >;
+                }
+              : never;
 
 // type UnmarshallMap<
 //   Item extends AttributeMap,

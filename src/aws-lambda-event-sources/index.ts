@@ -30,5 +30,5 @@ export type LambdaEventType<T> = /*T extends Topic
   :*/ T extends Queue
   ? SqsEventType<T, true>
   : T extends Table<any, any, any, any>
-  ? DynamoStreamEventType<T>
-  : never;
+    ? DynamoStreamEventType<T>
+    : never;

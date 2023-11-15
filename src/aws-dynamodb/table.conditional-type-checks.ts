@@ -25,10 +25,10 @@ export type Assert<T extends true | false, Expected extends T> = never;
 export type Has<T, U> = IsAny<T> extends true
   ? true
   : IsAny<U> extends true
-  ? false
-  : Extract<T, U> extends never
-  ? false
-  : true;
+    ? false
+    : Extract<T, U> extends never
+      ? false
+      : true;
 
 /**
  * Checks if type `T` does not have the specified type `U`.
