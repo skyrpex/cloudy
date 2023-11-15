@@ -48,8 +48,8 @@ export interface MaterializedQueueProps {
 type RecursivelyMapValueType<T> = T extends ValueType<infer V>
   ? V
   : T extends { [name: string]: any }
-  ? { [name in keyof T]: RecursivelyMapValueType<T[name]> }
-  : T;
+    ? { [name in keyof T]: RecursivelyMapValueType<T[name]> }
+    : T;
 type DefaultTo<T, Default> = T extends ValueType<infer U>
   ? unknown extends U
     ? Default

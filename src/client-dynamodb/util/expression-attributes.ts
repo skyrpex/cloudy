@@ -42,12 +42,12 @@ export type ExpressionAttributeValues<Expression extends string | undefined> =
   undefined extends Expression
     ? {}
     : ParseConditionExpressionValues<Expression> extends never
-    ? {}
-    : {
-        ExpressionAttributeValues: {
-          [name in ParseConditionExpressionValues<Expression> as `:${name}`]: AttributeValue;
+      ? {}
+      : {
+          ExpressionAttributeValues: {
+            [name in ParseConditionExpressionValues<Expression> as `:${name}`]: AttributeValue;
+          };
         };
-      };
 
 // type XV =
 //   ExpressionAttributeValues<"SET #events = :events, #timestamp = :timestamp ADD #revision :totalNewEvents">
@@ -74,12 +74,12 @@ export type ExpressionAttributeNames<Expression extends string | undefined> =
   undefined extends Expression
     ? {}
     : ParseConditionExpressionNames<Expression> extends never
-    ? {}
-    : {
-        ExpressionAttributeNames: {
-          [name in ParseConditionExpressionNames<Expression> as `#${name}`]: string;
+      ? {}
+      : {
+          ExpressionAttributeNames: {
+            [name in ParseConditionExpressionNames<Expression> as `#${name}`]: string;
+          };
         };
-      };
 
 type ParseConditionExpressionNames<Text extends string | undefined> = Extract<
   ParsePrefixedString<"#", Text>,
@@ -99,17 +99,17 @@ type ParsePrefixedString<
 > = undefined | "" extends Text
   ? Names
   : Text extends `${Prefix}${infer Tail}`
-  ? // it is a name
-    ParsePrefixedString<
-      Prefix,
-      Skip<Tail, AlphaNumeric>,
-      undefined extends Names
-        ? Read<Tail, AlphaNumeric>
-        : Names | Read<Tail, AlphaNumeric>
-    >
-  : Text extends `${string}${infer Tail}`
-  ? ParsePrefixedString<Prefix, Tail, Names>
-  : Names;
+    ? // it is a name
+      ParsePrefixedString<
+        Prefix,
+        Skip<Tail, AlphaNumeric>,
+        undefined extends Names
+          ? Read<Tail, AlphaNumeric>
+          : Names | Read<Tail, AlphaNumeric>
+      >
+    : Text extends `${string}${infer Tail}`
+      ? ParsePrefixedString<Prefix, Tail, Names>
+      : Names;
 
 type Skip<
   S extends string,
@@ -117,8 +117,8 @@ type Skip<
 > = S extends `${Char}${infer Tail}`
   ? Skip<Tail, Char>
   : S extends `${Char}`
-  ? ""
-  : S;
+    ? ""
+    : S;
 
 // type a = Read<"abc", "a" | "b">;
 

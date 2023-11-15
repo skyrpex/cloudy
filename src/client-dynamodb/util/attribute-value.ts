@@ -50,30 +50,30 @@ export type ToAttributeMap<T extends object> = ToAttributeValue<T>["M"];
 export type ToAttributeValue<T> = T extends undefined
   ? undefined
   : T extends null
-  ? NULL
-  : T extends boolean
-  ? BOOL<T>
-  : T extends string
-  ? S<T>
-  : T extends number
-  ? N<T>
-  : T extends bigint
-  ? NB<T>
-  : // : // this behavior is not defined by https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html
-  // // should it be a number of string?
-  // T extends Date
-  // ? N<number>
-  T extends NativeBinaryAttribute
-  ? B
-  : T extends ArrayLike<unknown>
-  ? L<{
-      [index in keyof T]: index extends "length"
-        ? T[index]
-        : ToAttributeValue<T[index]>;
-    }>
-  : M<{
-      [name in keyof T]: ToAttributeValue<T[name]>;
-    }>;
+    ? NULL
+    : T extends boolean
+      ? BOOL<T>
+      : T extends string
+        ? S<T>
+        : T extends number
+          ? N<T>
+          : T extends bigint
+            ? NB<T>
+            : // : // this behavior is not defined by https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html
+              // // should it be a number of string?
+              // T extends Date
+              // ? N<number>
+              T extends NativeBinaryAttribute
+              ? B
+              : T extends ArrayLike<unknown>
+                ? L<{
+                    [index in keyof T]: index extends "length"
+                      ? T[index]
+                      : ToAttributeValue<T[index]>;
+                  }>
+                : M<{
+                    [name in keyof T]: ToAttributeValue<T[name]>;
+                  }>;
 
 // export function isS(a: any): a is S {
 //   return a !== undefined && "S" in a

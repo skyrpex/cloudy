@@ -47,10 +47,10 @@ type TypeFromAttributeType<T extends AttributeType> =
   T extends AttributeType.STRING
     ? string
     : T extends AttributeType.NUMBER
-    ? number | bigint
-    : T extends AttributeType.BINARY
-    ? Uint8Array
-    : never;
+      ? number | bigint
+      : T extends AttributeType.BINARY
+        ? Uint8Array
+        : never;
 
 type AttributeFromKeyDefinition<T extends KeyDefinition> = {
   [name in T["name"]]: TypeFromAttributeType<T["type"]>;
@@ -99,8 +99,8 @@ export type MaterializeTableProps<T extends TableProps<any, any, any, any>> = {
     ? unknown extends ItemType
       ? AccessPattern<T["partitionKey"], T["sortKey"]>
       : ItemType extends undefined
-      ? AccessPattern<T["partitionKey"], T["sortKey"]>
-      : ItemType
+        ? AccessPattern<T["partitionKey"], T["sortKey"]>
+        : ItemType
     : AccessPattern<T["partitionKey"], T["sortKey"]>;
   stream: T["stream"] extends infer Stream
     ? Stream extends StreamViewType

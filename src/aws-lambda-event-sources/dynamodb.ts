@@ -81,19 +81,19 @@ type StreamEventDynamodbImage<T extends AnyTable> = Union.Merge<
         NewImage: ToAttributeMap<TableItemType<T>> | undefined;
       }
     : TableStreamViewType<T> extends StreamViewType.NEW_AND_OLD_IMAGES
-    ? {
-        NewImage: ToAttributeMap<TableItemType<T>> | undefined;
-      }
-    : {}) &
+      ? {
+          NewImage: ToAttributeMap<TableItemType<T>> | undefined;
+        }
+      : {}) &
     (TableStreamViewType<T> extends StreamViewType.OLD_IMAGE
       ? {
           OldImage: ToAttributeMap<TableItemType<T>> | undefined;
         }
       : TableStreamViewType<T> extends StreamViewType.NEW_AND_OLD_IMAGES
-      ? {
-          OldImage: ToAttributeMap<TableItemType<T>> | undefined;
-        }
-      : {})
+        ? {
+            OldImage: ToAttributeMap<TableItemType<T>> | undefined;
+          }
+        : {})
 >;
 
 // /**
