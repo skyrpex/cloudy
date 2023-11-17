@@ -9,8 +9,8 @@ dependencies:
     specifier: ^3.451.0
     version: 3.451.0
   '@aws-sdk/client-lambda':
-    specifier: ^3.452.0
-    version: 3.452.0
+    specifier: ^3.453.0
+    version: 3.453.0
   '@aws-sdk/client-sns':
     specifier: ^3.451.0
     version: 3.451.0
@@ -21,8 +21,8 @@ dependencies:
     specifier: ^3.451.0
     version: 3.451.0(@aws-sdk/client-dynamodb@3.451.0)
   '@pulumi/pulumi':
-    specifier: ~3.94.0
-    version: 3.94.0
+    specifier: ~3.94.1
+    version: 3.94.1
   '@smithy/smithy-client':
     specifier: ^2.1.15
     version: 2.1.15
@@ -86,8 +86,8 @@ devDependencies:
     specifier: ^3.1.0
     version: 3.1.0
   projen:
-    specifier: ^0.76.27
-    version: 0.76.27(constructs@10.3.0)
+    specifier: ^0.76.28
+    version: 0.76.28(constructs@10.3.0)
   standard-version:
     specifier: ^9
     version: 9.5.0
@@ -227,8 +227,8 @@ packages:
       - aws-crt
     dev: false
 
-  /@aws-sdk/client-lambda@3.452.0:
-    resolution: {integrity: sha512-DcWbLPHvYyDFiB2LGNQK056RSWn4QXyAB+pedwq3rIeVOV0+D3BsJyAPPTAUR+esnA+eA0xV4bGh67PESTrotw==}
+  /@aws-sdk/client-lambda@3.453.0:
+    resolution: {integrity: sha512-MbCURw7HHikZOxdAS0LmlzBXHcw26l8LIwrUsBhWPMI9HHZ/86B2dV1p5BdL9JJjx4WMbXhTAk0FSS2O1Hjo+w==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@aws-crypto/sha256-browser': 3.0.0
@@ -1631,8 +1631,8 @@ packages:
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
     dev: false
 
-  /@pulumi/pulumi@3.94.0:
-    resolution: {integrity: sha512-+CGFuAmFI5Z4bL42I2qBH9kG2Y92aNLH6Vw2n7bYZ6uGYOiI5NUOpDBDcwilexZyPOpEACmeF6m+3vRMDAxLog==}
+  /@pulumi/pulumi@3.94.1:
+    resolution: {integrity: sha512-uftw2Ry9W0s6t5cAYWGPSIzB82n0dSuwUR21k8WaO9P56cO0aaUIdCxsORcNL4kI7+z7LJQOBVYcGNYVHvZeJQ==}
     engines: {node: '>=8.13.0 || >=10.10.0'}
     dependencies:
       '@grpc/grpc-js': 1.9.6
@@ -5789,8 +5789,8 @@ packages:
     engines: {node: '>=0.4.0'}
     dev: true
 
-  /projen@0.76.27(constructs@10.3.0):
-    resolution: {integrity: sha512-f/9MibFkrEk1KYIXcvYI9gWQgb0MU6Vhk/vB3L4CxUla8N5BvfihgWHRAlwTTRBiuwOE1/nQ7u/bskurugxCTw==}
+  /projen@0.76.28(constructs@10.3.0):
+    resolution: {integrity: sha512-7CeCRXhBT9mDe1h2lse9RJDH1ZBdQ27pqkVSrTTor4JdiKYumn4NqRF8/ANw0xyKUrXzvFvpXkuRTyBHrGKbCg==}
     engines: {node: '>= 16.0.0'}
     hasBin: true
     peerDependencies:
