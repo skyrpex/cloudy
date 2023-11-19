@@ -21,7 +21,7 @@
     "projen": "npx projen"
   },
   "devDependencies": {
-    "@cloudy-ts/eslint-plugin": "^0.0.329",
+    "@cloudy-ts/eslint-plugin": "^0.0.330",
     "@tsconfig/node18": "^18.2.2",
     "@types/node": "^18",
     "@typescript-eslint/eslint-plugin": "^6",
@@ -45,7 +45,7 @@
     "vitest": "^0.34.6"
   },
   "peerDependencies": {
-    "aws-cdk-lib": "^2.109.0",
+    "aws-cdk-lib": "^2.110.0",
     "constructs": "^10.3.0"
   },
   "dependencies": {
