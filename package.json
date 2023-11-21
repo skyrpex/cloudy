@@ -21,7 +21,7 @@
     "projen": "npx projen"
   },
   "devDependencies": {
-    "@cloudy-ts/eslint-plugin": "^0.0.331",
+    "@cloudy-ts/eslint-plugin": "^0.0.332",
     "@tsconfig/node18": "^18.2.2",
     "@types/node": "^18",
     "@typescript-eslint/eslint-plugin": "^6",
@@ -41,7 +41,7 @@
     "projen": "^0.77.1",
     "standard-version": "^9",
     "tsx": "^3.14.0",
-    "typescript": "^5.2.2",
+    "typescript": "^5.3.2",
     "vitest": "^0.34.6"
   },
   "peerDependencies": {
