@@ -230,16 +230,13 @@
       },
       "steps": [
         {
-          "exec": "pnpm update npm-check-updates"
-        },
-        {
-          "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@cloudy-ts/eslint-plugin,@tsconfig/node18,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,@vitest/coverage-v8,aws-cdk-lib,constructs,esbuild,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,eslint-plugin-unicorn,eslint,npm-check-updates,prettier,projen,standard-version,tsx,typescript,vitest,@aws-sdk/client-dynamodb,@aws-sdk/client-lambda,@aws-sdk/client-sns,@aws-sdk/types,@aws-sdk/util-dynamodb,@pulumi/pulumi,@smithy/smithy-client,find-up,ts-toolbelt"
+          "exec": "pnpx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@cloudy-ts/eslint-plugin,@tsconfig/node18,@types/node,@typescript-eslint/eslint-plugin,@typescript-eslint/parser,@vitest/coverage-v8,aws-cdk-lib,constructs,esbuild,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,eslint-plugin-unicorn,eslint,prettier,projen,standard-version,tsx,typescript,vitest,@aws-sdk/client-dynamodb,@aws-sdk/client-lambda,@aws-sdk/client-sns,@aws-sdk/types,@aws-sdk/util-dynamodb,@pulumi/pulumi,@smithy/smithy-client,find-up,ts-toolbelt"
         },
         {
           "exec": "pnpm i --no-frozen-lockfile"
         },
         {
-          "exec": "pnpm update @cloudy-ts/eslint-plugin @tsconfig/node18 @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser @vitest/coverage-v8 aws-cdk-lib constructs esbuild eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint-plugin-unicorn eslint npm-check-updates prettier projen standard-version tsx typescript vitest @aws-sdk/client-dynamodb @aws-sdk/client-lambda @aws-sdk/client-sns @aws-sdk/types @aws-sdk/util-dynamodb @pulumi/pulumi @smithy/smithy-client find-up ts-toolbelt"
+          "exec": "pnpm update @cloudy-ts/eslint-plugin @tsconfig/node18 @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser @vitest/coverage-v8 aws-cdk-lib constructs esbuild eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint-plugin-unicorn eslint prettier projen standard-version tsx typescript vitest @aws-sdk/client-dynamodb @aws-sdk/client-lambda @aws-sdk/client-sns @aws-sdk/types @aws-sdk/util-dynamodb @pulumi/pulumi @smithy/smithy-client find-up ts-toolbelt"
         },
         {
           "exec": "npx projen"
