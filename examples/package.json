@@ -14,7 +14,6 @@
   },
   "devDependencies": {
     "constructs": "^10.0.0",
-    "npm-check-updates": "^16",
     "projen": "^0.71.156",
     "typescript": "^5.1.6"
   },

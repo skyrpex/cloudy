@@ -89,16 +89,13 @@
       },
       "steps": [
         {
-          "exec": "pnpm update npm-check-updates"
-        },
-        {
-          "exec": "npm-check-updates --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=constructs,npm-check-updates,projen,typescript,aws-cdk,aws-cdk-lib,tsx"
+          "exec": "pnpx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=constructs,projen,typescript,aws-cdk,aws-cdk-lib,tsx"
         },
         {
           "exec": "pnpm i --no-frozen-lockfile"
         },
         {
-          "exec": "pnpm update constructs npm-check-updates projen typescript aws-cdk aws-cdk-lib tsx"
+          "exec": "pnpm update constructs projen typescript aws-cdk aws-cdk-lib tsx"
         },
         {
           "exec": "npx projen"
